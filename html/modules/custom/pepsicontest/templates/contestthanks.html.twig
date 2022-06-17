@@ -1,0 +1,153 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}'
+//-->
+</script>
+
+<section id="contentBlocks" class="container-fluid contest-thanks">
+    <div class="col-xs-12 text-center">
+
+
+
+        {% if data.signupnomemberGeo == '1' %}
+            <h3 class="blue">{{ "Unfortunately, this contest is not available in your region." | t }}</h3>
+            <br>
+            <h3 class="pink">{{ "However, there is just one last step left to become a Tasty Rewards Member." | t |raw }}</h3>
+            <h3 class="blue">{{ "Please check your email to activate your account and off you go!" | t |raw }}</h3>
+            <br>
+        {% else %}    
+            {% if data.signupnomember == '1' %}
+                {#<h3 class="blue">{{ "There is just one last step left to become a <br>Tasty Rewards Member and complete your contest entry:" | t |raw}}</h3>
+                <h3 class="pink uppercase text-center bold">{{ "check your email to activate your account</b> and off you go!" | t |raw }}</h3> #}
+                <br>
+                {# Call Pixel event as Registration  #}
+                <script>
+                    fbPixel('CompleteRegistration',{content_name: 'Contest Registration'});
+                </script>
+                {# Call Pixel event as Registration  #}
+            {% endif %}
+
+
+            {{ data.body | raw}}
+            <br>
+            <input type="hidden" name='node_url' id='node_url' value="{{ data.landinguri }}">
+            <input type="hidden" name='node_name' id='node_name' value="{{ data.contestname }}">
+            <input type="hidden" name='node_title' id='node_title' value="{{ data.title }}">
+            {# <input type="hidden" name='node_image' id='node_image' value="{{ file_url(data.image) }}"> #}
+            <input type="hidden" name='node_image' id='node_image' value="{{ data.image_url}}">
+
+        {% endif %}
+
+        {% if data.send_datalayer == 'no' %}
+        <script type="text/javascript">
+            // START: tracking the registration on signup: SubscriptionMember / SubscriptionNewsletter
+            var event_value = "";
+
+            {% if data.send_datalayer_optin_value== '1' %}
+                {% if data.signupnomemberGeo == '1' or data.signupnomember == '1' %}
+                event_value = "SubscriptionNewsletter";
+                if(event_value != ""){
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': event_value
+                    });
+                    console.log(event_value);
+                }
+                {% endif %}
+            {% endif %}
+
+            {#{% if data.signupnomemberGeo == '1' or data.signupnomember == '1' %}#}
+                {#event_value = "SubscriptionMember";#}
+                {#if(event_value != ""){#}
+                    {#window.dataLayer = window.dataLayer || [];#}
+                    {#window.dataLayer.push({#}
+                        {#'event': event_value#}
+                    {#});#}
+                    {#console.log(event_value);#}
+                {#}#}
+            {#{% endif %}#}
+
+
+
+            // END: tracking the registration on signup
+        </script>
+        {% endif %}
+
+{#        <div class="inline-share text-center col-xs-12 social-share">#}
+{#            <a href="#" class="pink" id="mk-article-fb-main" ><span class="fa fa-lg fa-facebook"></span><br>{{"Share"|t}}</a>#}
+{#            <a href="#" class="pink" id="mk-article-tw-main" ><span class="fa fa-lg fa-twitter"></span><br>{{"Share"|t}}</a>#}
+{#            <a href="#" class="pink" id="mk-article-pin-main" ><span class="fa fa-lg fa-pinterest"></span><br>{{"Pin it"|t}}</a>#}
+{#        </div>#}
+
+        <div class="inline-share text-center social-share contest__social-media">
+            <p>{{'Share Contest'|t}}</p>
+            <a href="#" class="pink" id="mk-article-fb-main" ><span class="fa fa-lg fa-facebook"></span></a>
+            <a href="#" class="pink" id="mk-article-tw-main" ><span class="fa fa-lg fa-twitter"></span></a>
+            <a href="#" class="pink" id="mk-article-pin-main" ><span class="fa fa-lg fa-pinterest"></span></a>
+        </div>
+
+
+        {% set elements = data.contestopened|length %}
+
+        {% if elements > 0 %}
+            
+            <div class="row">
+                <hr class="bg-grey" style="max-width: 100%; clear:left"/>
+            </div>
+            
+            <h2 class="signika blue uppercase text-center bold blue-general-color">{{"Stay tuned, more<br>contests coming soon!"|t | raw }}</h2>
+        {% endif %}
+
+{#        <section id="topBlocks" class="contest container-fluid topBlockContest">#}
+{#            {% for contest in  data.contestopened %}#}
+{#                {% if loop.index0 == 0 %}#}
+{#                    <meta property="og:image" content="{{ file_url(contest.image) }}" />#}
+{#                    <link rel="image_src" href="{{ file_url(contest.image) }}"/>#}
+{#                    <meta property="og:title" content="{{contest.title}}: {{'Enter Now!'|t}}" />#}
+{#                    <input type="hidden" name='node_url' id='node_url' value="{{ url('pepsicontest.landing') }}?id={{contest.uricontest}}">#}
+{#                    <input type="hidden" name='node_title' id='node_title' value="{{contest.title}}: {{'Enter Now!'|t}}">#}
+{#                    <input type="hidden" name='node_image' id='node_image' value="{{ file_url(contest.image) }}">#}
+{#                    <input type="hidden" name='node_mailto' id='node_mailto' value="{{ mailto}}">#}
+{#                {% endif %}#}
+{#                <div class="col-xs-12 col-sm-6">#}
+{#                    <img src="{{ file_url(contest.image) }}" data-btntext="{{'Enter Contest'|t }}" data-textabove="{{'JUST A CLICK AWAY FROM A CHANCE TO WIN!'|t}}"  data-contesturl="{{ path(data.language_url ~ '.pepsicontest.contest.signup', {'contest': contest.contestname}) }}" alt="{{contest.title}}" class="contestpic socialpic {% if (contest.opened == 2) or (contest.opened == 3) %}inactive{% endif  %}" style="height:auto;width:100%;" />#}
+{#                </div>#}
+{#            {% endfor %}#}
+
+{#            {% if elements >= 0 and elements is odd %}#}
+{#                <div class="col-xs-12 col-sm-6 morecontest-odd">#}
+{#                    <div class="morecontest">#}
+{#                        <h2 class="signika blue uppercase text-center bold">{{"Stay tuned, more<br>contests coming soon!"|t}}</h1>#}
+{#                    </div>#}
+
+{#                </div>#}
+{#            {% endif %}    #}
+
+{#        </section>#}
+
+        <style>
+            .thankyou-other h1 {
+                font-size: 30px !important;
+                color: #40a0d5 !important;
+            }
+        </style>
+        <div class="thankyou-other">
+            {# {{ drupal_view('contests', 'page_1') }}   template: views-view-unformatted--contests.html #}
+        </div>
+    </div>
+        <h2>&nbsp;</h2>
+        
+</section>
+        
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>         

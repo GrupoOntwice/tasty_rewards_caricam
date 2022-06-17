@@ -1,0 +1,136 @@
+{# Headline about contests  #}
+    {# {% include '@quaker_contest/include/custom-contest-headlines.html.twig' %} #}
+{% if not data.submitted %}
+  {% include '@quaker_contest/include/custom-contest-popup-prize-form.html.twig' %}
+{% endif %}
+{# headline about prizes  #}
+<div class="contest-claim description grabsnack-claim-banner">
+  <div class = "container content-container">
+    <div class = "row">
+      <div class = "col-md-6 claim-text">
+
+        <div class="claim-instruction">
+          <h2 class="montserrat-black color-lightblue ready-text"> {{'Ready?'|t }}</h2>
+              <p class="opensans-semibold"> {{'The first step in claiming your prize is providing the correct response to a mathematical skill-testing question. <br><br>
+
+            If you would prefer to continue with answering the mathematical skill-testing question over a phone call instead, please reach out to <a href="mailto:contest@tastyrewards.ca">contest@tastyrewards.ca</a>.<br><br>
+
+            You will have 3 minutes to submit the correct answer once you click on the “start” button.<br><br>
+
+            You only get one chance to answer correctly.<br><br>
+
+            Note: If you provide an incorrect answer or if you run out of time, you will forfeit your prize. Please be prepared before you start.<br><br>
+
+            Click “Start” to continue or press “Cancel” to come back later.<br><br>
+            '| t | raw}}
+            </p>
+          <div class = "start-cancel-button">
+                <button class="btn_red js-start">{{'Start'|t}} </button>
+               <button class="btn_red js-cancel">{{'Cancel'|t}} </button>
+          </div>
+        </div>
+
+      </div>
+      <div class = "col-md-6 contest-claim-form" id="form-scroll-anchor">
+        <div class="contest-detail__form-quacker">
+
+          <!-- Form -->
+          <form class="grabsnack-address-form form-disabled" data-toggle="validator" enctype="multipart/form-data" role="form" id='prize-claim' method="POST" autocomplete="off" data-nid="{{data.contest_id}}">
+            <div class="skill-timer-container" style="display: none;">
+              <p>
+                {{ 'Time remaining' | t }}
+              </p>
+              <p id="skill-timer"></p>
+            </div>
+            <input type="hidden" name="newregister"  value="{{newregister}}">
+            <div class="contest-detail__quacker-input skill-test">
+              <div class="contest-detail__quacker-input-col">
+                <p class="question"> {{'Please correctly answer the following question unaided:'|t}}</p>
+                <label class="skill-test-question" style="display: none;">{{data.challenge_question}}</label><br>
+                <input type="text" class="contest-detail__input " name="challenge" id="challenge" placeholder="{{ 'My answer is:'|t }}" value="{{data.challenge?:''}}" disabled="disabled" >
+                <span class="help-block err challenge">{{data.error.challenge?:''}}</span>
+                <input type="text" class="contest-detail__input hidden " name="challenge_id" id="challenge_id" value="{{data.challenge_id}}" disabled="disabled" >
+
+              </div>
+              <button class="btn_red button-style js-challenge-submit disabled" disabled="disabled">{{'Submit'|t}} </button>
+              
+              <p class="hidden js-challenge-success"><strong style="display:block;">{{"Congratulations! Your answer is correct."|t}}</strong><br>{{"The last step in the prize claim process is to complete the form below and accept the terms of the Prize Claim Release form so we can ship your prize."|t}}</p>
+              <p class="hidden js-challenge-error">{{"Unfortunately, your answer to the mathematical skill-testing question is incorrect and in accordance with the Official Rules, you are no longer eligible to win the prize."|t}}</p>
+              <p class="hidden js-challenge-timeout">{{"Sorry, you did not provide a response to the question in time, and in accordance with the Official Rules, you are no longer eligible to win the prize."|t}}</p>
+            </div>
+            <p class="show-on-correct form-required-fields-indicator">* {{ 'Required fields' | t }}</p>
+            <h4 class="show-on-correct shipping">{{'Shipping Address'|t}}</h4>
+            <!-- User data -->
+            <div class="show-on-correct contest-detail__quacker-input">
+              {# <div class="contest-detail__quacker-input-col" style = "width: 100% !important;">
+                <input type="text" class="contest-detail__input " name="email" id="email" placeholder="{{ 'Email *'|t }}" value="{{data.email?:''}}" disabled="disabled">
+                <span class="help-block err email">{{data.error.email?:''}}</span>
+              </div> #}
+                <input type="hidden" class="contest-detail__input" name="email" id="email" value="{{data.email?:''}}" disabled="disabled">
+
+            <div class="contest-detail__quacker-input first-column">
+                <div class="contest-detail__quacker-input-col">
+                <input type="text" class="contest-detail__input " name="firstname" id="firstname" placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}" disabled="disabled" >
+                <span class="help-block err firstname">{{data.error.firstname?:''}}</span>
+              </div>
+              <div class="contest-detail__quacker-input-col">
+                <input type="text" class="contest-detail__input " name="lastname" id="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}" disabled="disabled">
+                <span class="help-block err lastname">{{data.error.lastname?:''}}</span>
+              </div>
+            </div>
+            <div class="contest-detail__quacker-input">
+              <div class="contest-detail__quacker-input-col" style = "width: 100% !important;">
+                <input type="text" class="contest-detail__input " name="address1" id="address1" placeholder="{{ 'Address 1 *'|t }}" value="{{data.address1?:''}}" disabled="disabled">
+                <span class="help-block err address1">{{data.error.address1?:''}}</span>
+              </div>
+
+
+              <div class="contest-detail__quacker-input-col " style = "width: 100% !important;">
+                <input type="text" id="address2" class="contest-detail__input {{data.error.address2?'has-error':''}}" name="address2" placeholder="{{ 'Address 2'|t }}" value="{{data.address2?:''}}" disabled="disabled">
+                <span class="help-block err address2">{{data.error.address2?:''}}</span>
+              </div>
+            </div>
+            <div class="contest-detail__quacker-input">
+              <div class="contest-detail__quacker-input-col" style = "width: 100% !important;">
+                <input type="text" class="contest-detail__input " name="city" id="city" placeholder="{{ 'City *'|t }}" value="{{data.city?:''}}" disabled="disabled">
+                <span class="help-block err city">{{data.error.city?:''}}</span>
+              </div>
+
+            <div class="grabsnack-province-container">
+              <select class="province form-control modal__sign-up-select" name="province" id="province" disabled="disabled">
+                {{ data.provinces_options| raw }}
+              </select>
+              <span class="help-block err postalcode">{{data.error.province?:''}}</span>
+            </div>
+
+
+              <div class="contest-detail__quacker-input-col grabsnack-2col-input">
+                <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" disabled="disabled">
+                <span class="help-block err postalcode">{{data.error.postalcode?:''}}</span>
+              </div>
+
+              <div class="form-disclaimers">
+                <p>
+                  {{ 'By submitting this form, you agree to the terms of the Prize Claim Release Form.' | t }}
+                </p>
+                <a target="_blank" class="btn btn-recall" href="{{data.pdf_url}}" rel="noopener nofollow">
+                      {{ 'Download Prize Claim Release Form' | t }}
+                </a>
+
+                <p>
+                  {{ 'If you need assistance, please contact <a href="mailto:contest@tastyrewards.ca">contest@tastyrewards.ca</a>' | t | raw }}
+                </p>
+              </div>
+
+              <div class="contest-detail__submit">
+                <input id="submitclaim"  class="btn_red contest-detail__sign-up-button js-submit-claim button-style disabled" type="button" disabled value="{{'Submit'|t}}">
+              </div>
+            </div>
+
+          </form>
+      <!-- Form -->
+    </div>
+  </div>
+  </div>
+  </div>
+</div>

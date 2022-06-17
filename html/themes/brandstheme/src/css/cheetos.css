@@ -1,0 +1,1898 @@
+.cheetos h1, .cheetos h2, .cheetos h3, .cheetos h4, .cheetos h5, .cheetos h6{
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.fa-swap-cheetos {
+    cursor: pointer;
+}
+
+.mw-100 {
+  max-width: 100%;
+}
+
+.cheetos .banner_slide--text .btn_carousel{
+    font-family: 'Axe-Handel',sans-serif;
+    text-transform: uppercase;
+    background: #000000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    font-size: 24px !important;
+}
+
+.cheetos section#banner .banner-desktop span.h1{
+    font-family: 'Axe-Handel', sans-serif;
+    text-transform: uppercase;
+}
+
+.cheetos .header__logo-container {
+  z-index: 999999;
+}
+
+.cheetos #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.cheetos .brands-navbar__ul a{
+    font-family: 'Axe-Handel', sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.cheetos-navbar__vertical-align .brands-navbar_accounts-mbl{
+    font-family: 'Axe-Handel', sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.cheetos-banner .slick-dotted.slick-slider{
+    margin-bottom: -20px !important;
+}
+
+.cheetos-navbar__vertical-align {
+    background-color: #FECE1C;
+    padding: 7px 32px;
+}
+
+.cheetos-navbar__vertical-align .logo{
+    height: 65px;
+    width: 160px;
+    position: relative;
+}
+
+.cheetos .carousel_desktop {
+    display: block !important;
+}
+
+#cheetos-logo{
+    width: 180px;
+    height: 90px;
+    position: relative;
+    z-index: 1;
+}
+
+.cheetos-btn-black{
+    display: block !important;
+    color: #FFFFFF !important;
+    padding: 12px 15px;
+    margin: auto;
+    font-size: 25px !important;
+    font-family: 'Kapra-Bold',sans-serif !important;
+    text-transform: uppercase !important;
+    background-color: #000000 !important;
+    width: 150px;
+}
+
+li.brands-navbar__item-border {
+  width: max-content;
+}
+
+/*.cheetos-btn a{*/
+/*    width: 160px;*/
+/*    display: block;*/
+/*    padding: 12px 10px;*/
+/*    font-size: 24px !important;*/
+/*    margin: 0 auto;*/
+/*    text-align: center;*/
+/*    font-family: 'Axe-Handel',sans-serif !important;*/
+/*    text-transform: uppercase !important;*/
+/*    color: #FFFFFF !important;*/
+/*    background-color: #000000;*/
+/*}*/
+
+/*.cheetos-banner.homepage .banner-mobile{*/
+/*    height: 680px;*/
+/*}*/
+
+
+.cheetos #banner-mobile, .banner-mobile {
+  margin-bottom: -2px;
+}
+
+/**********************************
+     Navbar icon section
+***********************************/
+
+.cheetos .fa-navbar{
+    background: #000000;
+    color: #FECE1C;
+    font-size: 14px !important;
+}
+
+/**********************************
+           Product page
+***********************************/
+
+.cheetos-product-banner-block{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-product-banner.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.cheetos-products {
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 60px 0;
+}
+
+.cheetos-title-products{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Axe-Handel', sans-serif;
+    text-transform: uppercase;
+    font-size: 58px !important;
+    color: #FEC02E;
+}
+
+.cheetos-product-img img{
+    width: 100%;
+}
+
+.cheetos-product-category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.cheetos-brands .cheetos-product-box{
+    width: 45%;
+}
+
+.cheetos-brands .cheetos-product-box a{
+    height: auto;
+}
+
+.cheetos-product-box{
+    margin: 25px 20px;
+    text-align: center;
+    width: 242px;
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    align-items: center;
+}
+
+.cheetos-product-img{
+    display: flex;
+    align-items: center;
+    height: 260px;
+}
+
+.cheetos-product-box h4{
+    font-family: 'Kapra-Bold',sans-serif;
+    text-transform: inherit;
+    margin: 15px 0;
+}
+
+.cheetos-product-box h4 a{
+    color: #000000;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    height: 95px;
+}
+
+.cheetos-product-box sup{
+    font-size: 16px !important;
+}
+
+/*html:lang(en) .cheetos-product-box h4 a{*/
+/*    height: 85px;*/
+/*}*/
+
+/*html:lang(fr) .cheetos-product-box h4 a{*/
+/*    height: 120px;*/
+/*}*/
+
+
+/**********************************
+      Product categories Mac and Cheese
+***********************************/
+
+.cheetos-product-macncheese-banner-block{
+    width: 100%;
+    display: block;
+}
+
+.cheetos-product-macncheese-banner-block-mobile{
+    display: none;
+}
+
+html:lang(en) .cheetos-product-macncheese-banner-block.fr, html:lang(en) .cheetos-product-macncheese-banner-block-mobile.fr{
+    display: none;
+}
+
+html:lang(fr) .cheetos-product-macncheese-banner-block.en, html:lang(fr) .cheetos-product-macncheese-banner-block-mobile.en{
+    display: none;
+}
+
+/*html:lang(en) .cheetos-product-macncheese-banner-block.en{*/
+/*    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-macncheese-desktop-banner.png");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
+/*    position: relative;*/
+/*    height: 520px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding: 120px 12% 160px;*/
+/*}*/
+
+
+/*html:lang(fr) .cheetos-product-macncheese-banner-block.fr{*/
+/*    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-macncheese-desktop-banner-fr.png");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
+/*    position: relative;*/
+/*    height: 520px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding: 120px 12% 160px;*/
+/*}*/
+
+.cheetos-products-macncheese{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-wall-background-categories-product.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 7px 0;
+}
+
+.cheetos-product-macncheese-img{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.cheetos-product-macncheese-img img{
+    width: 100%;
+}
+
+.cheetos-product-macncheese-box{
+    margin: 0 20px 60px;
+    text-align: center;
+    display: flex;
+    justify-content: inherit;
+    align-items: center;
+}
+
+.cheetos-product-macncheese-box-text{
+    width: 50%;
+    text-align: left;
+}
+
+.cheetos-product-macncheese-box-text p{
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.cheetos-product-macncheese-box-text sup{
+    font-size: 65% !important;
+}
+
+.cheetos-product-macncheese-box-text h4{
+    line-height: 1em;
+    font-size: 60px;
+    margin-bottom: 20px;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-product-macncheese-box-text h4 a{
+    color: #FFFFFF;
+    display: block;
+}
+
+.cheetos-btn-yellow{
+    width: 160px;
+    display: block;
+    padding: 12px 10px;
+    font-size: 24px !important;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Kapra-Bold',sans-serif;
+    text-transform: uppercase;
+    color: #000000 !important;
+    background-color: #FECE1C;
+}
+
+.cheetos-product-macncheese-box:nth-child(2) .cheetos-product-macncheese-img{
+    order: 2;
+}
+
+.cheetos-product-macncheese-box:nth-child(2) .cheetos-product-macncheese-box-text{
+    order: 1;
+}
+
+/**********************************
+         Featured product
+***********************************/
+
+.cheetos-featured-product--container-bg-desktop{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-feature-yellow-background-product.png");
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cheetos-featured-product--container-bg-desktop h2 {
+    font-size: 72px !important;
+    text-align: center;
+    color: #000000;
+    padding: 60px 0 30px 0;
+    font-family: 'Kapra-Bold',sans-serif;
+    text-transform: uppercase;
+}
+
+.cheetos-featured-product--container-bg-desktop {
+    padding-top: 0;
+}
+
+.cheetos-featured-product--container-bg-desktop .cheetos-coupon--text{
+    background-color: #FE9F30;
+}
+
+.cheetos-coupon--container{
+    display: flex;
+    width: 78%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 90px 50px 150px 50px;
+}
+
+.cheetos-featured--container{
+    display: flex;
+    width: 78%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 50px 80px 50px;
+}
+
+.cheetos-coupon--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cheetos-coupon--leftcol img {
+    width: 100%;
+    display: flex;
+}
+
+.cheetos-coupon--leftcol a {
+    display: block;
+}
+
+.cheetos-feature--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EC7323;
+    position: relative;
+}
+
+.cheetos-feature--leftcol img {
+    width: 100%;
+}
+
+.cheetos-feature--leftcol a {
+    display: block;
+}
+
+.cheetos-featured-product--container-bg-desktop .cheetos-coupon--text {
+    color: #FFFFFF;
+}
+
+.cheetos-coupon--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: #000000;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+}
+
+.cheetos-coupon--text h3 {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 40px;
+    line-height: 1em;
+}
+
+.cheetos-banner_slide--text {
+    width: 100%;
+}
+
+.cheetos-coupon--text .product-title {
+    display: block;
+    font-size: 40px;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-product-description {
+    margin-top: 15px;
+}
+
+.cheetos-product-description p {
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.cheetos-coupon--text a {
+     width: 160px;
+     display: block;
+     padding: 10px;
+     font-size: 24px;
+     margin: 0 auto;
+     text-align: center;
+     font-family: 'Axe-Handel',sans-serif;
+     text-transform: uppercase;
+     color: #000000;
+     background-color: #FEC530;
+ }
+
+
+/**********************************
+              Coupon
+***********************************/
+
+.cheetos-coupon--container-bg-desktop {
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-feature-yellow-background-product.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cheetos-coupon-disclaimer {
+    font-size: 12px;
+    padding-top: 10px;
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+/**********************************
+           Recipe slider
+***********************************/
+
+.cheetos-content-background-container-homepage {
+    position: relative;
+    background-color: #000000;
+}
+
+.cheetos-section-container {
+    max-width: 1600px;
+    padding: 60px 0px 20px 0px;
+    margin: 0 auto;
+}
+
+.cheetos-recipe-block .cheetos-section-recipe-container h2{
+    font-size: 70px !important;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1em;
+    color: #000000;
+    padding-top: 60px;
+    text-transform: inherit;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-recipe-block .cheetos-section-recipe-container h2 sup{
+    font-size: 60% !important;
+}
+
+.cheetos-recipe-block .cheetos-section-recipe-container p {
+    color: #000000;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+.cheetos-section-recipe-container{
+    max-width: 1600px;
+    padding: 60px 0px 20px 0px;
+    margin: 0 auto;
+}
+
+.cheetos-section-product-container{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 50px 0 50px;
+}
+
+.cheetos-section-recipe-container{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 50px 0 50px;
+}
+
+.cheetos-section-container h2 {
+    font-size: 72px !important;
+    color: #FEC530;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1em;
+}
+
+.cheetos-filters-container h2{
+    font-size: 72px !important;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.cheetos-btn-container-yellow a {
+    border: 2px solid #F3C530;
+    background-color: #FEC530;
+    color: #004179;
+}
+
+.cheetos-section-container .slick-prev {
+    left: -53px !important;
+}
+
+.cheetos-section-container .slick-next {
+    right: -45px !important;
+}
+
+.cheetos-carousel-container{
+    width: 100%;
+    margin: 0 auto 30px;
+    padding: 0 40px;
+}
+
+.cheetos-carousel-box {
+    margin: 20px;
+    text-align: center;
+}
+
+.cheetos-carousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 1px;
+    height: 300px;
+}
+
+.cheetos-carousel-box .img-carousel-fix {
+    position: absolute;
+    width: 1000px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.cheetos-carousel-box .img img {
+    position: absolute;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.cheetos-carousel-box h3, .cheetos-carousel-box h4 {
+    min-height: 50px;
+}
+
+.cheetos-section-container h3 {
+    font-size: 1.375em;
+    height: 75px;
+    font-weight: bold;
+}
+
+.cheetos-section-container h3, .cheetos-section-container h4 {
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-section-container a {
+    color: #FFFFFF;
+    font-size: 25px;
+    font-family: 'Axe-Handel', sans-serif;
+}
+
+.cheetos-carousel-box h3 a {
+    color: inherit;
+    display: block;
+    font-size: 28px;
+    font-weight: inherit;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-coupon-disclaimer{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/**********************************
+           Rules page
+***********************************/
+
+
+.cheetos-officialrules-paragraph {
+  text-align: left;
+}
+
+.cheetos-officialrules-banner{
+  background-image: url('/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg');
+}
+
+
+.cheetos-officialrules-paragraph p{
+  color:#000;
+}
+
+.cheetos-officialrules-paragraph {
+  text-align: left;
+  color:#000;
+}
+
+
+#brands_navigation > ul > li:nth-child(5) {
+  position: absolute;
+  left: 58%;
+  z-index: 9;
+}
+/**********************************
+        Product description
+***********************************/
+
+.cheetos-product-block{
+    position: relative;
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 60px 0;
+    color: #FFF;
+}
+
+.cheetos-product-block .container{
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.cheetos-product-block .product-image{
+    display: flex;
+    align-items: center;
+}
+
+.cheetos-product-block .product-image-wrap{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.cheetos-product-block .product-image-wrap img{
+    width: 55%;
+}
+
+.cheetos-product-block .product-image-wrap img[alt~="FRITO-LAY®"]{
+    width: 80%;
+}
+
+.cheetos-detail__product--block{
+    width: 90%;
+    padding: 50px 25px;
+    background-color: #FED430;
+}
+
+.cheetos-detail__product--block h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #000000;
+    text-transform: inherit;
+    font-weight: bold;
+    font-family: "Open Sans", sans-serif;
+}
+
+.cheetos-detail__product--block .product-field-detail {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.3em;
+}
+
+.cheetos-detail__product--block p{
+    font-family: "Raleway-Regular", sans-serif;
+    font-size: 16px;
+    color: #000000;
+    line-height: 1.3em;
+}
+
+.cheetos-product-social-icons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.cheetos-product-social-icons p {
+    font-size: 24px;
+    padding-right: 25px;
+    font-family: "Raleway-Bold", sans-serif;
+}
+
+.cheetos-product-nutrition {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FED430;
+    margin-top: 50px;
+}
+
+.cheetos-product-nutrition p{
+    font-family: "Raleway-Regular", sans-serif;
+    font-size: 16px;
+    color: #000000;
+    line-height: 1.5em;
+    padding-bottom: 20px;
+}
+
+.cheetos-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.cheetos-product-nutrition .linkeable {
+    font-size: 50px;
+    padding: 30px 0px;
+    line-height: 1.5em;
+    font-weight: bold;
+    color: #000000;
+}
+
+.cheetos-productdetails-nutrition-table {
+    width: 100%;
+    color: #000000;
+    padding-bottom: 40px;
+}
+
+.product-mobile-nutrition img{
+    display: none !important;
+}
+
+.cheetos-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.cheetos-productdetails-nutrition-row {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.cheetos-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.cheetos-productdetails-nutrition-cell:first-child{
+    text-align: left !important;
+}
+
+.cheetos-productdetails-nutrition-cell:last-child{
+    text-align: right;
+}
+
+.cheetos-productdetails-nutrition-cell {
+    padding: 6px 2px;
+    font-size: 0.875em;
+    font-weight: normal;
+    width: 180px;
+    text-align: center;
+}
+
+.cheetos-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(254,183,48);
+}
+
+/*.cheetos-productdetails-nutrition-row:nth-child(4),*/
+/*.cheetos-productdetails-nutrition-row:nth-child(5),*/
+/*.cheetos-productdetails-nutrition-row:nth-child(9),*/
+/*.cheetos-productdetails-nutrition-row:nth-child(10) {*/
+/*    padding-left: 25px;*/
+/*}*/
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(5) > div:nth-child(1) {
+  padding-left: 25px;
+}
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(4) > div {
+    padding-left:25px
+}
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(9) > div {
+    padding-left:25px
+}
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(10) > div {
+    padding-left:25px
+}
+
+.cheetos-product-nutrition .product-ingredients {
+    padding: 0 15px;
+}
+
+.cheetos-product-nutrition .product-ingredients-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cheetos-product-nutrition .product-nutrition, .cheetos-product-nutrition .product-ingredients {
+    width: 100%;
+}
+
+/**********************************
+              Recipe
+***********************************/
+
+.cheetos-related-block{
+    background-color: #000000;
+}
+
+.cheetos-banner-nocarousel {
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-recipe-banner.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+}
+
+.cheetos-banner-nocarousel h1 {
+    font-family: 'Archer',Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 125px 20px;
+    z-index: 2;
+}
+
+.cheetos-content-background-container-recipes {
+    background-repeat: no-repeat;
+    background-position: top;
+    position: relative;
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg");
+    background-size: 100% 100%;
+    padding-top: 40px;
+}
+
+.cheetos-carousel-block{
+    padding-top: 40px;
+}
+
+.cheetos-filters-container #recipesFilterDropdowns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.cheetos-filters-container #recipesFilterDropdowns .custom-select-container, .cheetos-filters-container #recipesFilterDropdowns button {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 3px solid #FEC530;
+    color: #FEC530;
+    min-width: 200px;
+    background-color: #000000;
+}
+
+.custom-select-container {
+    position: relative;
+}
+
+.custom-select-container select {
+    display: none;
+}
+
+.select-items div, .select-selected {
+    color: #FEC530;
+    padding: 12px 24px 12px 16px;
+    cursor: pointer;
+    background-color: #000000;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 18px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #FEC530 transparent transparent transparent;
+}
+
+.select-items {
+    position: absolute;
+    background-color: transparent;
+    top: 100%;
+    left: -3px;
+    right: -3px;
+    z-index: 99;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:first-of-type {
+    border-top: 3px solid #fec530;
+}
+
+.select-items div {
+    border: 3px solid #fec530;
+    border-top: none;
+}
+
+.cheetos-unevencarousel-container {
+    position: relative;
+    right: 0.5%;
+}
+
+.cheetos-unevencarousel-box-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    padding: 20px;
+    min-height: 500px;
+    margin-bottom: 50px;
+}
+
+.cheetos-unevencarousel-box-left {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.cheetos-unevencarousel-box-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cheetos-unevencarousel-box-img img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.cheetos-unevencarousel-box-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 20px 30px;
+    background-color: #FEC530;
+    position: relative;
+    min-height: 300px;
+}
+
+.cheetos-unevencarousel-container h2 {
+    color: #000000;
+}
+
+.cheetos-unevencarousel-box-right .cheetos-stars {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.cheetos-stars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.cheetos-stars span {
+    color: #ccc;
+    font-size: 30px;
+}
+
+.cheetos-stars span.checked {
+    color: #F68223;
+}
+
+.cheetos-stars span:before {
+    content: "★ ";
+}
+
+.cheetos-nocarousel-container {
+    width: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.cheetos-nocarousel-box {
+    width: 25%;
+    margin: 20px 2% 5% 2%;
+    text-align: center;
+    position: relative;
+}
+
+.cheetos-nocarousel-box .cheetos-btn-yellow{
+    margin: auto;
+    font-family: 'Axe-Handel',sans-serif !important;
+}
+
+.cheetos-nocarousel-box a{
+    color: #000000;
+    font-size: 28px;
+    display: block;
+    text-transform: capitalize;
+    line-height: 1em;
+    font-family: 'Kapra-Bold',sans-serif;
+}
+
+.cheetos-nocarousel-box a sup{
+    font-size: 55% !important;
+}
+
+.cheetos-nocarousel-box .cheetos-btn-white a{
+    color: #FFFFFF;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: "Axe-Handel", sans-serif;
+}
+
+.cheetos-nocarousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 1px;
+    height: 220px;
+}
+
+.cheetos-nocarousel-box .img img{
+    width: 100%;
+}
+
+.view-more-alt .cheetos-btn-yellow{
+    background-color: #FEC530;
+    color: #000000;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.view-more-alt{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.cheetos-nocarousel-box .products-category-title {
+    min-height: 50px;
+}
+
+.products-category-title a{
+    color: #FFFFFF;
+}
+
+.recipe-category-title a{
+    color: #000000;
+}
+
+/**********************************
+          Recipe-detail
+***********************************/
+
+.cheetos-content-background-container-recipesdetails {
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cheetos-content-background-container-recipesdetails .cheetos-section-container {
+    margin-bottom: 0;
+    padding-bottom: 60px;
+}
+
+.cheetos-subtitle-container {
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 800px;
+}
+
+/*.cheetos-stars.reverse-order {*/
+/*    -webkit-box-orient: horizontal;*/
+/*    -webkit-box-direction: reverse;*/
+/*    -ms-flex-direction: row-reverse;*/
+/*    flex-direction: row-reverse;*/
+/*}*/
+
+.cheetos-stars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.cheetos-stars input:checked ~ label {
+    color: #F68223;
+}
+
+.cheetos-stars label {
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 30px;
+}
+
+.cheetos-stars label::before {
+    content: "★ ";
+}
+
+.cheetos-stars input {
+    display: none;
+}
+
+.cheetos-recipe-intro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.cheetos-recipe-icons-full {
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.cheetos-recipe-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    margin: auto 0;
+    width: 100%;
+    background-color: #FED430;
+    padding: 40px 0;
+    margin: 30px 25px 20px 25px;
+}
+
+.cheetos-recipe-packshot-made{
+    display: flex;
+    justify-content: center;
+}
+
+.cheetos-recipe-packshot-made img{
+    width: 150px;
+    margin: 25px;
+}
+
+.cheetos-recipe-packshot-wrap{
+    display: flex;
+    align-items: center;
+}
+
+.cheetos-recipe-packshot-wrap p{
+    width: 100% !important;
+}
+
+.cheetos-recipe-icons-box-wrap{
+    display: flex;
+}
+
+.cheetos-recipe-icons-box {
+    text-align: center;
+    /*width: 23%;*/
+    margin: 15px !important;
+    max-width: 140px;
+    margin: auto;
+}
+
+.cheetos-recipe-icons-box h4{
+    font-family: 'Open Sans', sans-serif;
+    color: #000000;
+    text-transform: inherit;
+}
+
+.cheetos-recipe-icons-box p{
+    width: auto !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cheetos-recipe-icons-box-img {
+    margin-bottom: 10px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.cheetos-section-container h4 {
+    font-size: 1.125em;
+    font-weight: bold;
+}
+
+.cheetos-recipe-icons-box-img img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 70px;
+}
+
+.cheetos-recipe-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    justify-content: center;
+    margin: 40px 25px 40px 25px;
+    background-color: #FED430;
+}
+
+.cheetos-recipe-info-ingredients, .cheetos-recipe-info-instructions {
+    padding: 40px;
+    width: 50%;
+    background-color: #FED430;
+}
+
+.cheetos-recipe-info-ingredients h3, .cheetos-recipe-info-instructions h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 25px;
+    text-transform: inherit;
+    height: auto;
+}
+
+.cheetos-recipe-info-ingredients ul li {
+    color: #000000;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cheetos-recipe-info-ingredients .cheetos-yellow{
+    font-weight: bold;
+}
+
+.cheetos-recipe-info-instructions ol {
+    list-style: revert;
+    margin-left: 15px;
+}
+
+.cheetos-recipe-info-instructions ol li {
+    counter-increment: instructions-counter;
+    color: #000000;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cheetos-recipe-block .cheetos-section-container p{
+    color: #000000;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+.cheetos-socials-recipes{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.cheetos-socials-recipes p {
+    margin: 0 10px 0 0 !important;
+    color: #FFFFFF !important;
+    width: auto !important;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cheetos-social-link {
+    margin-right: 5px;
+}
+
+.cheetos-social-link img{
+    width: 80%;
+}
+
+.cheetos-nocarousel-block{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-orange-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cheetos-nocarousel-block h2{
+    color: #000000;
+    font-size: 40px !important;
+    font-family: 'Kapra-Bold',sans-serif;
+    text-transform: inherit;
+}
+
+/**********************************
+              About
+***********************************/
+
+.cheetos-about-us-top-banner{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-about-banner.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    height: 520px;
+}
+
+.cheetos-about-us{
+    background-image: url("/themes/brandstheme/src/images/cheetos/cheetos-feature-yellow-background-product.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.cheetos-about-us-paragraph{
+    text-align: center;
+    padding: 50px 50px 0px 50px;
+}
+
+.cheetos-about-us-paragraph p{
+    color: #000000;
+}
+
+.cheetos-about-us-paragraph h2{
+    font-size: 72px !important;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+
+/**********************************
+            Responsive
+***********************************/
+
+@media screen and (max-width: 1600px) {
+    .cheetos-product-banner-block, .cheetos-banner-nocarousel, .cheetos-about-us-top-banner{
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .cheetos-product-banner-block, .cheetos-banner-nocarousel, .cheetos-about-us-top-banner{
+        height: 370px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cheetos-product-box{
+        margin: 25px 58px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+  .cheetos-logo{
+    width: 80px;
+    position: relative;
+    padding: 8px 10px 4px;
+  }
+
+  .cheetos-navbar__vertical-align {
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 992px) {
+
+    .cheetos-carousel-box .img-carousel-fix {
+        height: 200px;
+    }
+
+    .cheetos-navbar__vertical-align .brands-navbar__center-align{
+        width: 100%;
+    }
+
+    .cheetos-navbar__vertical-align .brands-navbar_accounts-mbl{
+        width: 100%;
+    }
+
+    .cheetos-navbar__vertical-align{
+        padding: 0;
+    }
+
+    .cheetos-product-box{
+        margin: 25px 20px;
+    }
+
+    .cheetos-section-container {
+        max-width: 1100px;
+    }
+
+    .cheetos-recipe-icons-box{
+        width: 30%;
+    }
+
+    .cheetos-stars label{
+        font-size: 25px;
+    }
+
+  #brands_navigation > ul > li:nth-child(5) {
+    position: inherit;
+  }
+}
+
+@media only screen
+and (min-device-width: 1024px)
+and (max-device-width: 1366px) {
+  .cheetos .brands-navbar__ul a {
+    font-size: 22px;
+  }
+
+  #brands_navigation > ul > li:nth-child(5) {
+    left: 59%;
+
+  }
+}
+
+
+
+  @media (max-width: 768px) {
+
+    .cheetos-product-macncheese-banner-block{
+        display: none;
+    }
+
+    .cheetos-product-macncheese-banner-block-mobile{
+        display: block;
+        width: 100%;
+    }
+
+    .cheetos-product-macncheese-box:nth-child(2) .cheetos-product-macncheese-img {
+        order: 1;
+    }
+
+    .cheetos-product-macncheese-box:nth-child(2) .cheetos-product-macncheese-box-text{
+        order: 2;
+    }
+
+    .cheetos-product-macncheese-box-text {
+        width: auto;
+    }
+
+    .cheetos-product-macncheese-img{
+        width: auto;
+    }
+
+    .cheetos-product-macncheese-box{
+        flex-direction: column;
+    }
+
+    .cheetos-product-block .product-image-wrap img[alt~="FRITO-LAY® Variety Pack Classic Mix"], .cheetos-product-block .product-image-wrap img[alt~="FRITO-LAY® Variety Pack Flavour Mix"], .cheetos-product-block .product-image-wrap img[alt~="Frito Lay Variety Pack Bold Mix"]{
+        width: 100%;
+    }
+
+    .cheetos-recipe-block .cheetos-section-recipe-container h2{
+        font-size: 50px !important;
+    }
+
+    .cheetos-section-recipe-container{
+        padding: 0;
+    }
+
+    .cheetos-featured--container{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cheetos-featured-product--container-bg-desktop{
+        background-size: cover;
+    }
+
+    .cheetos-featured-product--container-bg-desktop h2{
+        padding: 60px 15px 30px 15px;
+        line-height: 1em;
+    }
+
+    .product-mobile-ingredient img{
+        display: none !important;
+    }
+
+    .product-mobile-nutrition img{
+        display: block !important;
+    }
+
+    .cheetos-recipe-packshot-wrap{
+        flex-direction: column;
+    }
+
+    .cheetos-recipe-icons{
+        flex-direction: column;
+        padding: 40px 0 20px 0;
+        margin: 30px 0px 0px 0px;
+    }
+
+    .cheetos-recipe-icons-box-wrap{
+        justify-content: center;
+    }
+
+    .cheetos-nocarousel-box h3{
+        width: 100% !important;
+    }
+
+    .cheetos-unevencarousel-box-content{
+        flex-direction: column;
+    }
+
+    .cheetos-unevencarousel-box-img img{
+        position: relative;
+        top: auto;
+        left: auto;
+        height: 220px;
+        transform: inherit;
+    }
+
+    .cheetos-related-product .products-category-title{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .cheetos-about-us{
+        background-size: auto;
+    }
+
+    .cheetos-coupon--container{
+        padding: 90px 0px 150px 0px;
+    }
+
+    .cheetos-carousel-box{
+        margin: 20px 0;
+    }
+
+    .cheetos-product-category{
+        justify-content: center;
+    }
+
+    .cheetos-coupon--container {
+        flex-direction: column;
+    }
+
+    .cheetos-coupon--text {
+        padding: 40px 15px;
+    }
+
+    .cheetos-product-block .product-image{
+        flex-direction: column;
+    }
+
+    .cheetos-product-block .product-image-wrap img{
+        width: 100%;
+    }
+
+    .cheetos-detail__product--block{
+        width: 100%;
+    }
+
+    .cheetos-product-nutrition{
+        flex-direction: column;
+    }
+
+    .cheetos-nocarousel-container{
+        flex-direction: column;
+    }
+
+    .cheetos-nocarousel-box{
+        width: 98%;
+    }
+
+    .cheetos-recipe-info{
+        flex-direction: column;
+        margin: 40px 0px 40px 0px;
+    }
+
+    .cheetos-recipe-info-ingredients, .cheetos-recipe-info-instructions{
+        width: 100%;
+        margin: 0;
+        padding: 25px;
+    }
+
+    .cheetos-section-container{
+        max-width: 500px;
+        padding: 20px;
+    }
+
+    .cheetos-nocarousel-box .img img{
+        height: auto;
+        width: 100%;
+    }
+
+    .js-recipe-carousel.cheetos-carousel-container .slick-slide{
+        width: 100% !important;
+    }
+
+    .cheetos-section-container h3{
+        width: 100%;
+        margin: auto;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .cheetos-product-block .product-image-wrap{
+        width: 90%;
+        padding: 15px;
+    }
+
+    .cheetos-section-container a{
+        font-size: 18px;
+    }
+
+    .cheetos-product-social-icons {
+        display: inline-block;
+    }
+
+    .cheetos-product-social-icons p {
+        margin-bottom: 10px;
+    }
+
+    .cheetos section#banner .banner-mobile span.h1{
+        font-family: 'Axe-Handel', sans-serif;
+        text-transform: uppercase;
+    }
+
+    .cheetos-carousel-box .img{
+        margin-bottom: 0;
+    }
+
+  .cheetos-product-macncheese-box-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cheetos-officialrules-paragraph {
+    padding: 20px;
+  }
+}
+
+.modal-body p {
+  color: #000;
+  margin-bottom: 0;
+}
+
+
+.buynow_cheetos {
+    margin-top: 20px;
+    margin-left: 0;
+    border-radius: 30px;
+    border:2px solid #db1d2c;
+    background-color: #db1d2c !important;
+    padding: 12px 30px;
+    color: white !important;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px !important;
+    outline: none !important;
+    font-family: 'Open Sans', sans-serif;
+    min-width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(9) > div {
+  padding-left: 0 !important;
+}
+
+#product > div > div.cheetos-product-nutrition > div.performance-facts > div > div.nutrition-copy-js > div > div:nth-child(10) > div {
+  padding-left: 0 !important;
+}
+
+/* Button Background */
+a.btn_carousel {
+  background-color: #FEC530 !important;
+  color:#000 !important;
+}
+
+.cheetos-btn-black {
+  text-align: center;
+}
+
+/*BuyNow Popup*/
+
+.cheetos-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+/*Buynow Modal*/
+
+.cheetos-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#cheetosModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#cheetosModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+ text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #cheetosModal {
+    padding:0 !important;
+  }
+}

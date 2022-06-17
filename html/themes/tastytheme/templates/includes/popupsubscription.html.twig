@@ -1,0 +1,195 @@
+{# <span class="hidden  js-show-popup">{{doShowPopup}}</span> #}
+{% if not  logged_in %}
+
+	{% if language == 'en-us' or language == 'es-us' %}
+		{# PUT the USA code here #}
+		<div class="popup-main-wrapper hidden popup-usa">
+			<div class="modal">
+				<div class="popup-wrapper-left">
+					<button class="modal_close-button jsModalSignUpClose popup-close-button">
+						<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+					</button>
+					<p class="popup-title">{{"Subscribe now to stay up <br> to date on coupons,<br> sweepstakes & more!"|t}}</p>
+{#					<p class="popup-sub-title">{{"Access Coupons, Sweepstakes & More!"|t}}</p>#}
+
+					<form id="popup-subscribe">
+						<div class="popup-email-wrapper">
+							{# <input class="popup-email" id="popup-email" type="text" placeholder="Email" /> #}
+
+							<label for="popup-email" class="visuallyhidden">Email</label>
+							<input class="popup-email" type="text" name="popup-email" id="popup-email" placeholder={{"Email"|t}}>
+							<span class="popup-error-message hidden">{{"Please enter a valid email"|t}}</span>
+						</div>
+
+						<div class="popup-checkbox-wrapper">
+							<label for="popup-optin" class="visuallyhidden">checkbox</label>
+							<input type="checkbox" name='popup-optin' id ='popup-optin' value="1" >
+							<p>{{ "Yes! Sign me up to receive email from PepsiCo Tasty Rewards, PepsiCo and its brands so I never miss out on exciting updates, offers or sweepstakes." |t }}</p>
+						</div>
+						<div class="popup-checkbox-wrapper">
+							<label for="popup-optin3" class="visuallyhidden">checkbox</label>
+							<input type="checkbox" name='popup-optin3' id ='popup-optin3' value="1" >
+							<p>{{ "Signup for the latest news & offers from Snacks.com, PepsiCo and its brands" |t }}</p>
+						</div>
+						{# <button class="submit js-register">{{"Continue To Sign-Up"|t}}</button> #}
+						<button class="submit js-register">{{"Subscribe & Create your account"|t}}</button>
+						<a href="javascript:void(0)" class="js-hide-forever" >{{ "Do not show this pop-up again"| t }}</a>
+					</form>
+				</div>
+				<div class="popup-wrapper-right-desktop" data-src="/themes/tastytheme/src/images/packshots-us-v2.png" data-class="pop-up-packshots-desktop-us">
+					{# <img class="pop-up-packshots-desktop-us" src="/themes/tastytheme/src/images/packshots-us-v2.png" alt="Subscribe now"> #}
+				</div>
+				<div class="popup-wrapper-right-mobile" data-src="/themes/tastytheme/src/images/packshots-us-mobile-v2.png" data-class="pop-up-packshots-mobile-us">
+					{# <img class="pop-up-packshots-mobile-us" src="/themes/tastytheme/src/images/packshots-us-mobile-v2.png" alt="Subscribe now"> #}
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="popup-main-wrapper hidden">
+			<div class="modal">
+				<div class="popup-wrapper-left">
+					<button class="modal_close-button jsModalSignUpClose popup-close-button">
+						<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+					</button>
+					<p class="popup-title">{{"Join Tasty Rewards<sup>TM </sup> Now"|t}}</p>
+					<p class="popup-sub-title">{{"Access Coupons, Contests & More!"|t}}</p>
+
+					<form id="popup-subscribe">
+						<div class="popup-email-wrapper">
+							{# <input class="popup-email " id="popup-email" type="text" placeholder={{"Email"|t}} /> #}
+
+							<label for="popup-email" class="visuallyhidden">Email</label>
+							<input class="popup-email" type="text" name="popup-email" id="popup-email" placeholder={{"Email"|t}}>
+							<span class="popup-error-message hidden">{{"Please enter a valid email"|t}}</span>
+						</div>
+
+						<div class="popup-checkbox-wrapper">
+							<label for="popup-optin" class="visuallyhidden">checkbox</label>
+							<input type='checkbox' name='popup-optin' id='popup-optin' value="1" >
+							<p>{{ "Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time)." |t }}</p>
+						</div>
+						<button class="submit js-register">{{"Continue to Sign-Up"|t}}</button>
+						<a href="javascript:void(0)" class="js-hide-forever" >{{ "Do not show this pop-up again"| t }}</a>
+						<p class="popup-disclaimer">{{ "Contacting Us:<br>
+							PepsiCo Canada<br>
+							2095 Matheson Boulevard East<br>
+							Mississauga, ON L4W 0G2<br>
+							www.tastyrewards.ca" | t}}
+						</p>
+					</form>
+				</div>
+				{% set lang = (language == 'fr-ca' or language == 'fr')? 'fr' : 'en' %}
+
+
+				<div class="popup-wrapper-right-desktop" data-class="pop-up-packshots-desktop-{{lang}}" data-src="/themes/tastytheme/src/images/packshots-{{lang}}.png" >
+				{% if lang == 'fr' %}
+					{# <img class="pop-up-packshots-desktop-fr" src="/themes/tastytheme/src/images/packshots-fr.png" alt="packshots"> #}
+				{% else %}
+					{# <img class="pop-up-packshots-desktop-en" src="/themes/tastytheme/src/images/packshots-en.png" alt="packshots"> #}
+				{% endif %}
+				</div>
+				<div class="popup-wrapper-right-mobile" data-class="pop-up-packshots-mobile-{{lang}}" data-src="/themes/tastytheme/src/images/packshots-mobile-{{lang}}.png">
+				{% if lang == 'fr' %}
+					{# <img class="pop-up-packshots-mobile-fr" src="/themes/tastytheme/src/images/packshots-mobile-fr.png" alt="packshots"> #}
+				{% else %}
+					{# <img class="pop-up-packshots-mobile-en" src="/themes/tastytheme/src/images/packshots-mobile-en.png" alt="packshots"> #}
+				{% endif %}
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+{% else %}
+	{% if language == 'en-us' or language == 'es-us' %}
+		<section class="popup-existing-member">
+			<div class="popup-main-wrapper hidden popup-usa">
+				<div class="modal">
+					{# Put the code for the other template here #}
+					<div class="popup-wrapper-left">
+						<button class="modal_close-button jsModalSignUpClose popup-close-button">
+							<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+						</button>
+
+						<p class="popup-title">
+              <span class="js-firstname"></span>, <br> {{"Don't miss out!<br> Subscribe to get our <br> latest & tastier offers."|t}}
+{#							<span class="js-firstname"></span>, <br> {{"Did you hear about our latest<br> PepsiCo Tasty Rewards offers?"|t}}#}
+						</p>
+						{# <p class="popup-sub-title">{{"Exclusive contest and coupons, <br>straight to your box"|t}}</p> #}
+
+						<form id="popup-subscribe">
+							{# <input class="popup-email" id="popup-email" type="text" placeholder="email" /> #}
+							<div class="popup-checkbox-wrapper">
+								<label for="popup-optin" class="visuallyhidden">checkbox</label>
+								<input type="checkbox" name='popup-optin' id ='popup-optin' value="1" >
+								<label for="" class="modal_optin">{{ 'Yes! Sign me up to Tasty Rewards by email so I never miss out on exciting updates, offers or sweepstakes (option to unsubscribe at any time).'|t }}   </label>
+							</div>
+							<div class="popup-checkbox-wrapper">
+								<label for="popup-optin3" class="visuallyhidden">checkbox</label>
+								<input type="checkbox" name='popup-optin3' id ='popup-optin3' value="1" >
+								<label for="" class="modal_optin">{{ 'Signup for the latest news & offers from Snacks.com, PepsiCo and its brands'|t }}   </label>
+							</div>
+							<button class="submit js-subscribe">{{"Subscribe Now"|t}}</button>
+							<a href="javascript:void(0)" class="js-hide-forever" >{{ "Do not show this pop-up again"| t }}</a>
+						</form>
+
+					</div>
+					<div class="popup-wrapper-right-desktop" data-class="pop-up-packshots-desktop-us" data-src="/themes/tastytheme/src/images/packshots-us-existant-v2.png">
+						<img class="pop-up-packshots-desktop-us" src="/themes/tastytheme/src/images/packshots-us-existant-v2.png" alt="Subscribe now">
+					</div>
+					<div class="popup-wrapper-right-mobile" data-class="pop-up-packshots-mobile-us" data-src="/themes/tastytheme/src/images/packshots-us-mobile-v2.png">
+						{# <img class="pop-up-packshots-mobile-us" src="/themes/tastytheme/src/images/packshots-us-mobile-v2.png" alt="Subscribe now"> #}
+					</div>
+				</div>
+			</div>
+		</section>
+	{% else %}
+		<section class="popup-existing-member">
+			<div class="popup-main-wrapper hidden">
+				<div class="modal">
+					{# Put the code for the other template here #}
+					<div class="popup-wrapper-left">
+						<button class="modal_close-button jsModalSignUpClose popup-close-button">
+							<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+						</button>
+
+						<p class="popup-title">
+							<span class="js-firstname"></span>, <br> {{"Did you hear about our latest<br> Tasty Rewards<sup>TM</sup> offers hello?"|t}}
+						</p>
+						<p class="popup-sub-title">{{"Exclusive contest and coupons, <br>straight to your box"|t}}</p>
+
+						<form id="popup-subscribe">
+							{# <input class="popup-email" id="popup-email" type="text" placeholder="email" /> #}
+							<div class="popup-checkbox-wrapper">
+								<label for="popup-optin" class="visuallyhidden">checkbox</label>
+								<input type="checkbox" name='popup-optin' id='popup-optin' value="1" >
+								<label for="" class="modal_optin">{{ 'Yes! Sign me up to Tasty Rewards by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'|t }}   </label>
+							</div>
+							<button class="submit js-subscribe">{{"Continue To Subscribe Now"|t}}</button>
+							<a href="javascript:void(0)" class="js-hide-forever" >{{ "Do not show this pop-up again"| t }}</a>
+							<p class="popup-disclaimer">{{ "Contacting Us:<br>
+							PepsiCo Canada<br>
+							2095 Matheson Boulevard East<br>
+							Mississauga, ON L4W 0G2<br>
+							www.tastyrewards.ca" | t}}
+							</p>
+						</form>
+
+					</div>
+					{% set lang = (language == 'fr-ca' or language == 'fr')? 'fr' : 'en' %}
+
+
+					<div class="popup-wrapper-right-desktop" data-class="pop-up-packshots-desktop-{{lang}}" data-src="/themes/tastytheme/src/images/packshot-en-existant-member-{{lang}}.png" >
+					{% if lang == 'fr' %}
+						{# <img class="pop-up-packshots-desktop-fr" src="/themes/tastytheme/src/images/packshot-en-existant-member-fr.png" alt="packshots"> #}
+					{% else %}
+						{# <img class="pop-up-packshots-desktop-en" src="/themes/tastytheme/src/images/packshot-en-existant-member-en.png" alt="packshots"> #}
+					{% endif %}
+					</div>
+					<div class="popup-wrapper-right-mobile" data-class="pop-up-packshots-mobile-{{lang}}" data-src="/themes/tastytheme/src/images/packshots-mobile-{{lang}}.png">
+
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endif %}

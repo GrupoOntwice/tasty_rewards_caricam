@@ -1,0 +1,6 @@
+ssoconfig_us.admin_settings_form:
+  title: 'SSO module Configuration - US'
+  route_name: ssoconfig_us.admin_settings_form
+  description: 'SSO Config - US'
+  parent: system.admin_config_system
+  weight: 100

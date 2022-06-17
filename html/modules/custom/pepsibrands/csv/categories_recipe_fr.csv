@@ -1,0 +1,28 @@
+ID,Title,Parent_Category,Description,Image
+11111,Recettes heures des repas,0,"Que vous cuisiniez en petite quantité ou pour toute une armée, nous avons les recettes parfaites pour tous les types de repas.",Home-Page_Meal-Time.jpg
+11112,Recettes pour le déjeuner et le brunch,11111,Impossible de passer une mauvaise journée lorsqu’on la commence en savourant des recettes de cette qualité.,MealTime_Breakfast.jpg
+11113,Recettes pour le lunch,11111,Fatigué de croquer tous les jours dans les mêmes sandwichs? Saupoudrez un peu de nouveauté dans votre menu avec ces savoureuses recettes pour le lunch.,MealTime_Lunch.jpg
+11114,Recettes pour le souper,11111,"Avec ces recettes d’une simplicité désarmante, plus besoin de vous soucier du menu du souper. ",MealTime_Dinner.jpg
+11115,Recettes d’entrées et de salades,11111,Nul besoin de préparer d’imposants plats principaux avec des entrées et des plats d’accompagnement aussi somptueux.,MealTime_Appetizer.jpg
+11116,Recettes de desserts et friandises,11111,"Pour terminer votre repas en beauté, faites le bonheur de vos convives en servant l’une de ces délicieuses recettes sucrées.",Meal-Time_Dessert.jpg
+11118,Recettes de collations,0,Vous avez une petite fringale? C’est ce qu’on croyait. Ces collations gourmandes sauront certainement vous rassasier.,Home-Page_Snack.jpg
+11119,Recettes salées,11118,Ces plats aromatiques et alléchants embaumeront votre cuisine et sauront vous régaler. Vous nous en gardez un peu?,Snacks_Savory.jpg
+11120,Recettes sucrées,11118,Ces succulentes créations feront le bonheur de toutes les dents sucrées.,Snacks_Sweet.jpg
+11121,Recettes de trempettes,11118,"Que la fête commence! Servez l’une de ces trempettes exquises à vos convives, mais ne vous surprenez pas si elles disparaissent en un clin d’œil!",Snacks_Dip.jpg
+11122,Recettes épicées,11118,Ces recettes ne font pas dans la douceur! Comblez vos envies de piquant avec l’une de ces recettes bien épicées.,Snacks_Spicy.jpg
+11123,Recettes fromagées,11118,"Amateurs de fromage, vous serez conquis par chacune de ces recettes délicieusement fromagées.",Snacks_Cheesy.jpg
+11124,Recettes de bouchées,11118,"Dans les petits pots, les meilleurs onguents! Ces créations de petite taille ne manquent définitivement pas de saveur!",Snacks_Bite-Size.jpg
+11125,Recettes pour les fêtes et occasions spéciales,0,Nous avons la recette qu’il vous faut pour chacune de vos occasions spéciales!,Holiday_Special-Occasion.jpg
+11126,Recettes pour les jours de match,11125,"Dans la victoire ou la défaite, ces recettes réussiront sans aucun doute à gagner le cœur de tous les amateurs de sports.",Holiday_Game-Day.jpg
+11127,Recettes pour le printemps et Pâques,11125,Fêtez Pâques et l’arrivée du printemps en concoctant l’une de ces exquises recettes.,Holiday_Spring.jpg
+11128,Recettes pour l’Halloween,11125,Célébrez l’Halloween en famille en dégustant l’une de ces recettes au goût absolument envoûtant! ,Holiday_Halloween.jpg
+11129,Recettes pour l’Action de grâce,11125,Ces succulentes recettes deviendront sans contredit des mets classiques de toutes vos célébrations de l’Action de grâce.  ,Holiday_Thanksgiving.jpg
+11130,Recettes pour les fêtes,11125,Ces créations festives vous donneront le goût de célébrer en plongeant vos papilles dans l’esprit des fêtes. ,Holiday_Festive.jpg
+11131,Recettes pour les occasions spéciales,11125,"Peu importe l’occasion que vous souhaitez souligner, ces recettes sauront donner un caractère unique à toutes vos festivités.",Holiday_Special-Occasion.jpg
+11132,Recettes selon le type de plat,0,Envie d’une recette en particulier? Parcourez chacune de nos catégories de plat pour trouver celle que vous recherchez.,Home-Page_Recipes-by-Ingredient.jpg
+11133,Recettes de biscuits,11132,Nous ne pouvons vous assurer que ces biscuits auront le temps de refroidir avant d’être dévorés. Il vous faudra peut-être en préparer plus d’une fournée!,DishType_Cookies.jpg
+11134,Recettes de nachos,11132,Difficile de résister à un savoureux plat de nachos… et nous avons quelques secrets bien gardés qui rendront les vôtres encore plus alléchants.,DishType_Nachos.jpg
+11135,Recettes de trempettes,11132,"Que la fête commence! Servez l’une de ces trempettes exquises à vos convives, mais ne vous surprenez pas si elles disparaissent en un clin d’œil!",DishType_Dips.jpg
+11136,Recettes de gruau préparé la veille,11132,Difficile de ne pas sortir du lit avec le sourire en sachant qu’un délicieux gruau préparé la veille vous attend dans la cuisine.,DishType_Oats.jpg
+11137,Recettes fromagées,11132,Rien de plus réconfortant qu’un savoureux plat en casserole! Chacune de ces recettes saura plaire à toute la famille.,DishType_Casserole.jpg
+11138,Recettes de salades,11132,"Regorgeant de fraîcheur, de saveur et de bons ingrédients, nos salades font fureur à toutes les tables où elles sont servies!",DishType_Salad.jpg

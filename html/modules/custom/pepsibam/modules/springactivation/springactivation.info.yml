@@ -1,0 +1,13 @@
+name: Spring activation Module
+type: module
+description: Tastyrewards Spring activation recipes landing page
+#core: 8.x
+package: Custom
+dependencies:
+  - pepsibam
+
+# Information added by Drupal.org packaging script on 2016-04-30
+version: '8.x-1.0'
+# core: '8.x'
+core_version_requirement: ^8.8 || ^9
+project: 'pepsibam'

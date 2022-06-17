@@ -1,0 +1,695 @@
+<?php
+
+/**
+ * @file
+ * Contains pepsicontest.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use CSD\Marketo\Client;
+use Drupal\Core\Link;
+use Symfony\Component\BrowserKit\Cookie;
+use Drupal\pepsicontest\ContestWinnerPicker;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
+
+/**
+ * Implements hook_help().
+ */
+function pepsicontest_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the pepsibam module.
+    case 'help.page.pepsibam':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Test of Marketo connection') . '</p>';
+      return $output;
+
+    default:
+  }
+
+}
+
+
+
+//template collection
+function pepsicontest_theme(array $existing, $type, $theme, $path) {
+  return array(
+    'pepsicontest_landing_template' => array(
+      'template' => 'contestlanding',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'survey_contest_rules' => array(
+      'template' => 'survey_rules',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'contest_all_entries' => array(
+      'template' => 'contest_entries',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'sourceid_report' => array(
+      'template' => 'sourceid_report',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    'contest_draw' => array(
+      'template' => 'contest_draw',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'contest_stats' => array(
+      'template' => 'contest_stats',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'contest_admin' => array(
+      'template' => 'contest_admin',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    'pepsicontest_signup_template' => array(
+      'template' => 'contestsignup',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsicontest_register_template' => array(
+      'template' => 'contestregister',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsicontest_rules_template' => array(
+      'template' => 'contestrules',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsicontest_reporting_template' => array(
+      'template' => 'reporting',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsicontest_processed_template' => array(
+      'template' => 'processed',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsicontest_thanks_template' => array(
+      'template' => 'contestthanks',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+
+
+  );
+}
+
+
+// Function to create CreateCsrfToken
+function CreateCsrfToken() {
+        $session = \Drupal::service('session');
+        //$csrfToken = openssl_random_pseudo_bytes(100);
+        $csrfToken = uniqid() . uniqid() . uniqid() . uniqid() . uniqid() . uniqid();
+        $session->set('csrfToken',$csrfToken);
+
+        return $csrfToken;
+
+}
+
+function getNextPrizeTitle($contest_node, $skip_next = false, $always_english = false){
+    if ($always_english)
+        $langcode = "en";
+    else
+        $langcode =  \Drupal::languageManager()->getcurrentLanguage()->getId();
+
+    $prize_node = getNextPrize($contest_node, $skip_next);
+    $prize_title = $prize_node->getTranslation($langcode)->field_subtitle->value;
+    $prize_title = str_replace(",", ";", $prize_title);
+    return $prize_title;
+}
+
+function getNextPrize($contest_node, $skip_next = false){
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    try{
+        $contest_prizes = $contest_node->getTranslation($langcode)->field_contest_prizes->referencedEntities();
+        $prizes = [];
+        foreach ($contest_prizes as $key => $node) {
+            $prize_type = $node->get('field_prize_type')->value;
+            if ($prize_type == 'instant_prize')
+                $prizes[] = $node;
+        }
+        if (count($prizes) < 2)
+            return false;
+
+        // Alternate between both types of prizes
+        $previous_winners = $contest_node->get('field_winners')->value;
+        $nb_winners = substr_count($previous_winners, ',');
+        if ($skip_next)
+            $nb_winners -= 1;
+        if($nb_winners % 2 == 0 && count($prizes) > 1 ){
+            return $prizes[1];
+        }
+        return $prizes[0];
+    } catch(\Exception $e){
+        \Drupal::logger('general')->info("Error: No prizes associated with the contest", []);
+        return false;
+    }
+}
+
+function ContestWinnerFieldsSFMC($account, $contest_name, $prize_title) {
+
+    $lead_array = array( 0 => array(
+        'keys' => array(),
+        'values' => array(),
+        )
+    );
+
+    $keys = array();
+    $now = date('m/d/Y h:i:s a', time());
+
+    $keys['EmailAddress']   = $account->get('mail')->value;
+    $keys['ContestDate']   = $now;
+    $keys['ContestName'] = $contest_name;
+
+    $lead['FirstName']    = $account->get('field_firstname')->value;
+    $lead['LastName']     = $account->get('field_lastname')->value;
+    $lead['Language']     = $account->get('preferred_langcode')->value;
+    $lead['Prize']        = $prize_title;
+
+
+    $lead_array[0]['keys'] = $keys;
+    $lead_array[0]['values'] = $lead;
+
+    return $lead_array;
+}
+
+
+function sfmcservices_save_winner($account, $contest_node, $prize_node){
+    // return ;
+
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    $langcode = \Drupal::languageManager()->getcurrentLanguage()->getId();
+    // $prize_node = getNextPrize($contest_node);
+    // $prize_title = $prize_node->getTranslation($langcode)->field_subtitle->value;
+    $prize_title = $prize_node->field_subtitle->value;
+    try{
+        $contestName = $contest_node->getTranslation($langcode)->field_contest_uri->value;
+        $lead = ContestWinnerFieldsSFMC($account, $contestName, $prize_title);  // maps the fields with the SF object
+        $country_code = get_user_country_code($account);
+    } catch (\Exception $e){
+        $message = "Error: Contest does not exist " . $e->getMessage();
+        \Drupal::logger('general')->info($message, []);
+        return false;
+    }
+
+    $SFMC_Service->init_api($country_code);
+    $leadresponse = $SFMC_Service->syncContestWinners($lead, $country_code); // this is where the request is sent to SF
+
+
+    // if ($leadresponse->getError()){
+    if (isset($leadresponse->message) && isset($leadresponse->errorcode) ) {
+        $channel = "general";
+        $message = $leadresponse->message . "\n reponse object: \n";
+        $message .= print_r($leadresponse, true);
+
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    } else {
+        return true;
+    }
+
+
+    return false;
+}
+
+
+function get_province_code($province){
+    $province_codes = [
+        strtolower(t("Alberta")) => 'AB',
+        strtolower(t("British Columbia")) => 'BC',
+        strtolower(t("Manitoba")) => 'MB',
+        strtolower(t("New Brunswick")) => 'NB',
+        strtolower(t("Newfoundland and Labrador")) => 'NL',
+        strtolower(t("Nova Scotia")) => 'NS',
+        strtolower(t("Ontario")) => 'ON',
+        strtolower(t("Prince Edward Island")) => 'PE',
+        strtolower(t("Quebec")) => 'QC',
+        strtolower(t("Saskatchewan")) => 'SK',
+        strtolower(t("Northwest Territories")) => 'NT',
+        strtolower(t("Nunavut")) => 'NU',
+        strtolower(t("Yukon")) => 'YT'
+    ];
+
+    if (!$province_codes[$province])
+        return null;
+
+    return $province_codes[$province];
+}
+
+
+function export_winners_csv($limit = null){
+    $winner_picker = new ContestWinnerPicker();
+    $winner_picker->export_winners_claim($limit);
+    // $winner_picker->update_csv_winners_flag();
+}
+
+function flag_fraudulent_entries(){
+    $obj = new ContestWinnerPicker();
+    $obj->find_custom_contest_fraud();
+
+    // $nids = \Drupal::entityQuery('node')
+    //             ->condition('type','contest')
+    //             ->condition('field_contest_type','grabsnack')
+    //             ->execute();
+
+    // foreach ($nids as $key => $contest_id) {
+    //     // @TODO: skip contests that don't have prize claiming page
+    //   $obj->check_fraudulant_entries($contest_id);
+    // }
+}
+
+function reset_weekly_entries($param = []) {
+    ContestWinnerPicker::instance()->resetWeeklyContestEntries();
+}
+
+function send_contest_optin_report(){
+    $yesterday = date('Y-m-d',strtotime("-1 days"));
+    // $yesterday = "2021-06-27";
+
+    $report = get_report_by_date($yesterday);
+
+    $to = ["rotsy@bamstrategy.com", "nicole@bamstrategy.com", "sara.trivisonno@bamstrategy.com", "bettara@bamstrategy.com"];
+    // $to = ["rotsy@bamstrategy.com"];
+
+    $content = "<div>";
+    foreach ($report as $key => $val) {
+        $contest_name = $val['contest'];
+        $optin = $val['nb_optin'];
+        $total = $val['total'];
+        $unique = $val['unique'];
+        $country = $val['country'];
+        $content .= "<p> $contest_name ($country) : total entries ($total) , unique entries ($unique), optin ($optin) </p>"; 
+    }
+    $content .= "</div>";
+
+    $env =  \Drupal\Core\Site\Settings::get("environment");
+    $platform = ($env == "prod")? "Production" : "Staging";
+
+    pepsicontest_send_email($to, "$platform - Contest optin report ($yesterday)", $content);
+
+   // debug_var($report, 3);
+
+    
+
+
+}
+
+
+function get_report_by_date($enterdate){
+    $sql_total_entries = "SELECT count(email) as total, count(DISTINCT email) as uniq,  contest_id from pepsicontest_reg_contest WHERE 
+    enterdate = '$enterdate' GROUP BY  contest_id ";
+
+    $query1 = \Drupal::database()->query($sql_total_entries);
+    $res = $query1->fetchAll();
+    $total = [];
+    $unique = [];
+    foreach ($res as $key => $value) {
+        $total[$value->contest_id] = $value->total;
+        $unique[$value->contest_id] = $value->uniq;
+    }
+
+
+
+    $sql = "SELECT MAX(contest_name) as contest, contest_id, MAX(enterdate) as enterdate, MIN(LANGUAGE) as lang, COUNT(DISTINCT email) AS nb_optin  FROM `pepsicontest_reg_contest`  
+               WHERE 1
+                AND contest_optin = 1
+               AND enterdate = '$enterdate'
+               GROUP BY  contest_id ";
+
+    $query = \Drupal::database()->query($sql);
+    $results = $query->fetchAll();
+
+    $optins = [];
+    foreach ($results as $key => $obj) {
+        $optins[$obj->contest_id] = $obj->nb_optin;
+    }
+
+
+    $report = [];
+    foreach ($res as $key => $value) {
+        $contest_node = \Drupal\node\Entity\Node::load($value->contest_id);
+        $report[$value->contest_id] = [
+            'contest' => $contest_node->field_contest_uri->value,
+            'contest_id' => $value->contest_id,
+            'enterdate' => $enterdate,
+            // 'lang' => $result->lang,
+            'country' => $contest_node->hasTranslation('en-us')? 'USA':'Canada' ,
+            'total' => $total[$value->contest_id],
+            'unique' => $unique[$value->contest_id],
+            'nb_optin' => isset($optins[$value->contest_id]) ? $optins[$value->contest_id] : 0,
+        ];
+
+    }
+
+    // foreach ($results as $key => $result) {
+    //     $report[$result->contest_id] = [
+    //         'contest' => $result->contest,
+    //         'contest_id' => $result->contest_id,
+    //         'enterdate' => $result->enterdate,
+    //         'lang' => $result->lang,
+    //         'country' => in_array($result->lang, ['en-us', 'es-us'])? 'USA':'Canada' ,
+    //         'total' => $total[$result->contest_id],
+    //         'unique' => $unique[$result->contest_id],
+    //         'nb_optin' => $result->nb_optin,
+    //     ];
+    // }
+    return $report;
+}
+
+function pepsicontest_send_email($recipients, $subject, $content ){
+    $credentials = get_email_credentials();
+    // $recipient = 'rotsy@bamstrategy.com';
+
+
+
+    if (empty($credentials)){
+        log_var("", "SMTP credentials missing ");
+        return false;
+    }
+
+    $subject = utf8_decode( $subject );
+
+    $mail = new PHPMailer(true);
+
+    $slash = DIRECTORY_SEPARATOR;
+
+    $current_dir = dirname(dirname(dirname(__DIR__)));
+
+
+    $mail->SMTPDebug = 0;
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name
+    $mail->Host = "email-smtp.us-east-1.amazonaws.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;
+    //Provide username and password
+    $mail->Username = $credentials['username'];
+    $mail->Password = $credentials['password'];
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+
+    $mail->From = "contest@tastyrewards.ca";
+    $mail->FromName = "Tasty Rewards Contest";
+    foreach ($recipients as $recipient) {
+        $mail->addAddress($recipient, "BAM ");
+    }
+
+    $mail->isHTML(true);
+
+    $mail->Subject = $subject;
+    $mail_content = $content;
+
+    $mail->Body = $mail_content;
+
+
+    $mail->AltBody = strip_tags($mail_content);
+
+    try {
+        $mail->send();
+
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+}
+
+function get_email_credentials(){
+    $credentials = [];
+    $config =  \Drupal::config('sfmcservices.adminsettings');
+    if ($config->get('smtp_username') && $config->get('smtp_username')){
+        $credentials['username'] = $config->get('smtp_username');
+        $credentials['password'] = $config->get('smtp_password');
+    }
+    return $credentials;
+}
+
+function send_contest_email($email, $claim_url, $firstname, $prize, $contest_type = 'grabsnack' ){
+    $credentials = get_email_credentials();
+    $langcode = 'en-ca';
+    $email_logo_img = 'email-logo.png';
+    $header_image = 'email-header.jpeg';
+    if (strpos($claim_url, 'fr-ca/') !== false ){
+        $langcode = 'fr-ca';
+         $header_image = 'email-header-FR.jpeg';
+    }
+
+    if (empty($credentials)){
+        log_var("", "SMTP credentials missing ");
+        return false;
+    }
+
+    $subject = '';
+    $content = '';
+    if ($contest_type == 'grabsnack'){
+        $subject = t("Grab Snacks Win Swag Contest: Potential Instant Win Prize Claim Details!");
+        $subject = utf8_decode( $subject );
+        $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                    <div style = 'width: 80%; margin: auto; text-align: left; font-size: 18px'>".
+                    t("Hello") . " $firstname, <br><br>" .
+                    t("Congratulations &ndash; You&rsquo;ve been selected as a potential instant prize winner in the Grab Snacks Win Swag Contest!") . "<br><br>" .
+                    t("The prize you&rsquo;ve been selected as a potential winner of is") . " $prize. <br> <br> " .
+
+            t("Before we can declare you an official winner, you will need to complete the prize claim process.<br><br>
+            Click the link below to get started. <br><br>") .
+
+            "<a href='$claim_url'>". t("CLAIM PRIZE") . "</a> <br> <br> <br> <br>
+            <div style='font-size: 16px'>" .
+
+            t("This message was sent to you because you participated in the &ldquo;Grab Snacks Win Swag Contest&rdquo;,run by PepsiCo Canada. We can be contacted at 5550 Explorer Drive, 8 th Floor, Mississauga, Ontario,L4W 0C3 or www.pepsico.ca. Unless you have previously opted in, your email address has not been added to any email marketing lists by participating in this contest.") . "</div> </div> </div>";
+
+    } elseif($contest_type == 'cheetos'){
+        $header_image = 'cheetos-contest-email-hero.png';
+        $email_logo_img = 'cheetos-email-logo.png';
+
+        if (strpos($claim_url, 'fr-ca/') !== false ){
+            $langcode = 'fr-ca';
+             $header_image = 'cheetos-contest-email-hero-fr.png';
+        }
+        $subject = t("Cheetos Carnival Contest: Potential Instant Win Prize Claim Details!");
+        $subject = utf8_decode( $subject );
+        $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                    <div style = 'width: 80%; margin: auto; text-align: left; font-size: 18px'>".
+                    t("Hello") . " $firstname, <br><br>" .
+                    t("Can I get a super dramatic drum roll, please?") . "<br><br>" .
+                    t("Perfect.") . "<br>" .
+                    t("*clears throat*") . "<br>" .
+                    t("Congratulations: you've been selected as a potential instant prize winner in the Cheetos&reg; Carnival Contest!") . "<br>" .
+                    t("You came. You conquered. And now you get to claim your prize: one (1) Cheetos&reg; Free Product Coupon AND one (1) Cheetos&reg; Mac 'n Cheese Free Product Coupon!") . " <br> <br> " .
+
+            t("But, before we can declare you an official winner, you will need to complete the prize claim process.<br><br>") .
+            t("Click the button below to get started.<br>") .
+
+            "<a href='$claim_url'>". t("CLAIM PRIZE") . "</a> <br> <br> <br> <br>
+            <div style='font-size: 16px'>" .
+
+            t("This message was sent to you because you participated in the &quot;Cheetos&reg; Carnival Contest&quot;,
+            run by PepsiCo Canada. We can be contacted at 2095 Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 or www.pepsico.ca. Unless you have previously opted in, your email address has not been added to any email marketing lists by participating in this contest.") . "</div> </div> </div>";
+    } elseif($contest_type == 'hockey'){
+      $header_image = 'hockey-canada-email-banner-en.png';
+      if (strpos($claim_url, 'fr-ca/') !== false ){
+        $langcode = 'fr-ca';
+        $header_image = 'hockey-canada-email-banner-fr.png';
+      }
+        $subject = t("Quaker® Hockey Hungry Contest: Potential Instant Win Prize Claim Details!");
+        $subject = utf8_decode( $subject );
+        $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                    <div style = 'width: 80%; margin: auto; text-align: left; font-size: 18px; font-family: sans-serif;'>".
+                    t("Hello") . " $firstname, <br><br>" .
+                    t("Congratulations &ndash; You&rsquo;ve been selected as a potential instant prize winner in the Quaker<sup>&reg;</sup> Hockey Hungry Contest!") . "<br><br>" .
+                    t("The prize you&rsquo;ve been selected as a potential winner of is") . " $prize. <br> <br> " .
+
+            t("Before we can declare you an official winner, you will need to complete the prize claim process.<br><br>
+            Click the link below to get started. <br><br>") .
+
+            "<a href='$claim_url'>". t("CLAIM PRIZE") . "</a> <br> <br>
+            <div style='font-size: 16px'>" .
+
+            t("This message was sent to you because you participated in the &ldquo;Quaker<sup>&reg;</sup> Hockey Hungry Contest&rdquo;, run by PepsiCo Canada. We can be contacted at 2095 Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 or www.pepsico.ca. Unless you have previously opted in, your email address has not been added to any email marketing lists by participating in this contest.
+
+") . "</div> </div> </div>";
+    }
+
+
+    // debug_var($claim_url, 1);
+    $mail = new PHPMailer(true);
+
+    $slash = DIRECTORY_SEPARATOR;
+
+    $current_dir = dirname(dirname(dirname(__DIR__)));
+    $file = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $header_image;
+  $file2 = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $email_logo_img;
+    $mail->AddEmbeddedImage($file, 'header_img');
+  $mail->AddEmbeddedImage($file2, 'logo_img');
+
+    $mail->SMTPDebug = 0;
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name
+    $mail->Host = "email-smtp.us-east-1.amazonaws.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;
+    //Provide username and password
+    $mail->Username = $credentials['username'];
+    $mail->Password = $credentials['password'];
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+
+    $mail->From = "contest@tastyrewards.ca";
+    $mail->FromName = "Tasty Rewards Contest";
+
+    $mail->addAddress($email, "$firstname ");
+
+    $mail->isHTML(true);
+
+    $mail->Subject = $subject;
+    $mail_content = $content;
+
+    $mail->Body = $mail_content;
+
+
+    $mail->AltBody = strip_tags($mail_content);
+
+    try {
+        $mail->send();
+        // update_winners_table($email);
+        $query = \Drupal::database()->update('pepsicontest_winners');
+            $query->fields([
+                'email_sent' => 1,
+              ])
+              // ->condition('contest_id', $contest_id)
+              ->condition('enterdate', date('Y-m-d') )
+              ->condition('email', $email);
+             $success = $query->execute();
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+}
+
+
+function save_contest_settings($key, $value){
+    $config = \Drupal::service('config.factory')->getEditable("custom.contest.settings");
+    // $date_last_seeding = $config->get('time_last_seeding');
+    $config->set($key, $value);
+    $config->save();
+}
+
+function get_contest_settings($key){
+    $config = \Drupal::service('config.factory')->getEditable("custom.contest.settings");
+    return $config->get($key);
+}
+
+function remove_special_characters($str){
+    $utf8 = array(
+        '/[áàâãªä]/u'   =>   'a',
+        '/[ÁÀÂÃÄ]/u'    =>   'A',
+        '/[ÍÌÎÏ]/u'     =>   'I',
+        '/[íìîï]/u'     =>   'i',
+        '/[éèêë]/u'     =>   'e',
+        '/[ÉÈÊË]/u'     =>   'E',
+        '/[óòôõºö]/u'   =>   'o',
+        '/[ÓÒÔÕÖ]/u'    =>   'O',
+        '/[úùûü]/u'     =>   'u',
+        '/[ÚÙÛÜ]/u'     =>   'U',
+        '/ç/'           =>   'c',
+        '/Ç/'           =>   'C',
+        '/ñ/'           =>   'n',
+        '/Ñ/'           =>   'N',
+        '/–/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/[’‘‹›‚]/u'    =>   ' ', // Literally a single quote
+        '/[“”«»„]/u'    =>   ' ', // Double quote
+        '/ /'           =>   ' ', // nonbreaking space (equiv. to 0x160)
+    );
+    return preg_replace(array_keys($utf8), array_values($utf8), $str);
+
+}
+
+function add_missing_contesturi(){
+    $nids = \Drupal::entityQuery('node')->condition('type','contest')->execute();
+    $languages = ['en', 'fr', 'en-us', 'es-us'];
+    foreach ($nids as $key => $nid) {
+        $node = Node::load($nid);
+        $contesturi = $node->field_contest_uri->value;
+        foreach ($languages as $langcode) {
+            if ($node->hasTranslation($langcode)
+                && empty($node->getTranslation($langcode)->field_contest_uri->value)
+                )
+            {
+                $node->getTranslation($langcode)->field_contest_uri->value = $contesturi;
+                $node->save();
+            }
+        }
+    }
+}
+
+function contest_check_for_fraud($email, $contest_id){
+    $same_ip_limit = 10;
+    $today = date('Y-m-d');
+
+    // $ip_address =  '37.120.205.104';
+    $ip_address =  getIPaddress();
+
+    $sql = "SELECT count(*) as cnt from pepsicontest_reg_contest WHERE
+            user_ip = '$ip_address'
+            AND enterdate = '$today' and contest_id = $contest_id ";
+
+    $query = \Drupal::database()->query($sql);
+    $results = $query->fetchAll();
+    if (!empty($results)){
+        $nb_entries = $results[0]->cnt;
+        if ($nb_entries > $same_ip_limit){
+            return true;
+        }
+    }
+
+
+    return false;
+}

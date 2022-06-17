@@ -1,0 +1,79 @@
+{% include '@tastytheme/includes/footer.html.twig' %}
+{#
+<footer>
+  {% if not logged_in or 'administrator' in user.getroles or 'editor' in user.getroles %}
+    <div class="footer_row footer_row--top">
+
+      {% if page.footer_first.brandstheme_footerfirst %}
+        {{ page.footer_first.brandstheme_footerfirst }}
+      {% endif %}
+      {% if page.footer_first.brandstheme_footerfirstsecond %}
+        {{ page.footer_first.brandstheme_footerfirstsecond }}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="footer-middle footer_row--bottom padding-bottom-none">
+
+    <div class="center-align-dsk w-100">
+
+
+      <div class="footer_row--bottom--links">
+        {% if page.footer_second.brandstheme_footer %}
+          {{ page.footer_second.brandstheme_footer }}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-col tr-copyright">
+    <div class="">
+      {% if page.footer_second.brandstheme_footersecondtrademark %}
+        {{page.footer_second.brandstheme_footersecondtrademark}}
+      {% endif %}
+    </div>
+
+    {% if page.footer_second.brandstheme_footerthirdspacerblock %}
+      {{page.footer_second.brandstheme_footerthirdspacerblock}}
+    {% endif %}
+  </div>
+
+</footer>
+#}
+
+{# OLD FOOTER  #}
+{# <footer>
+          <div class="arrow-section-footer"></div>
+          {% if not logged_in or 'administrator' in user.getroles or 'editor' in user.getroles %}
+              <div class="footer_row footer_row--top">
+                  {% if page.footer_first.footerfirst %}
+                      {{page.footer_first.footerfirst}}
+                  {% endif %}
+                  {% if page.footer_first.footerfirstsecond %}
+                      {{page.footer_first.footerfirstsecond}}
+                  {% endif %}
+              </div>
+          {% endif %}
+
+          <div class="footer_row footer_row--bottom">
+              <div class="img_container">
+                  <img src="{{logofooterpath}}" />
+              </div>
+
+              <div class="footer_row--bottom--links">
+                  {% if page.footer_second.footer_2 %}
+                      {{page.footer_second.footer_2}}
+                  {% endif %}
+
+                  {% if page.footer_second.footersecondtrademark %}
+                      {{page.footer_second.footersecondtrademark}}
+                  {% endif %}
+              </div>
+
+              {% if page.footer_second.footerthirdspacerblock %}
+                  {{page.footer_second.footerthirdspacerblock}}
+              {% endif %}
+
+          </div>
+      </footer> #}

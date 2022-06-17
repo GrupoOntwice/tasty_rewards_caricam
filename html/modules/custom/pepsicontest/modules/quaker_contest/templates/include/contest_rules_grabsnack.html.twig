@@ -1,0 +1,51 @@
+<style>
+  @media (max-width: 992px) {
+    .container table {
+      width: 100%;
+    }
+
+    .container div {
+      margin-left:0 !important;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+window.popup_contest = 1;
+</script>
+{{ attach_library( 'quaker_contest/landing' ) }}
+{{ attach_library( 'quaker_contest/grabsnack' ) }}
+
+<section class = "grabsnack-rules">
+
+  <div class = "container-fluid">
+
+  <div class = "row grabsnack-rules-head">
+    <div class = "col-sm-6" style="margin: auto">
+      <h1 class = "color-lightblue montserrat-black text-uppercase text-center">{{'Contest Rules'|t}}</h1>
+    </div>
+
+
+      <div class = "col-sm-6">
+        <img class="mw-100" src = "/themes/tastytheme/src/images/grab-snack/Tiles-Prizes-3.png"/>
+        <div class = "prizes-not-as-shown text-right p-1">
+          <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+        </div>
+      </div>
+
+  </div>
+  </div>
+
+
+</section>
+
+
+<section id="contentBlocks" class="container grabsnack p-3">
+    <div class="col-xs-12">
+      <div class = "container">
+        {{ data.body | raw}}
+        <br>
+      </div>
+
+    </div>
+</section>

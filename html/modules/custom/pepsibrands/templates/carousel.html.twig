@@ -1,0 +1,77 @@
+<div class="carousel_fullwidth carousel_desktop js-main-carousel">
+   {% for slide in data.carousel %}
+
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+         <div class="banner-desktop {{slide.theme}}" role="img" aria-label="{{ slide.title|raw}}" style="background-image: url('{{slide.image_url}}');">
+            <div class="banner_slide--text {{class_pos}}">
+               {% if slide.title %}
+                  <h1> {{ slide.title|raw}}</h1>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a tabindex="0" class="{{ slide.link_title?'btn_red':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+         </div>
+        <div class="arrow-section-general"></div>
+      </div>
+   {% endfor %}
+</div>
+
+
+<div class="carousel_fullwidth carousel_mobile js-main-carousel">
+   {% for slide in data.carousel %}
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+         <div class="banner-mobile {{slide.theme_mobile}}" style="background-image: url('{{slide.mobile_image_url}}');">
+            <div class="banner_slide--text {{class_pos}}  {{slide.position_mobile}}">
+               {% if slide.title %}
+                  <h1> {{ slide.title|raw}}</h1>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_red':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+         </div>
+        <div class="arrow-section-general"></div>
+      </div>
+   {% endfor %}
+</div>

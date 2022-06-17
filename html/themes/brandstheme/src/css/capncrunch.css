@@ -1,0 +1,949 @@
+/*
+  open sans Regular
+*/
+@font-face {
+    font-family: 'OpenSans-Regular';
+    font-display: swap;
+    font-style: normal;
+    src: url('../fonts/open-sans/OpenSans-Regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/open-sans/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/open-sans/OpenSans-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/open-sans/OpenSans-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/open-sans/OpenSans-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/open-sans/OpenSans-Regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/*
+  open sans Bold
+*/
+@font-face {
+    font-family: 'OpenSans-Bold';
+    font-display: swap;
+    font-style: normal;
+    src: url('../fonts/open-sans/OpenSans-Bold.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/open-sans/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/open-sans/OpenSans-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/open-sans/OpenSans-Bold.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/open-sans/OpenSans-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/open-sans/OpenSans-Bold.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/*
+   DrukWide-Medium
+*/
+@font-face {
+    font-family: 'DrukWide-Medium';
+    font-display: swap;
+    font-style: normal;
+    src: url('../fonts/capncrunch/DrukWide-Medium.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/capncrunch/DrukWide-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/capncrunch/DrukWide-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/capncrunch/DrukWide-Medium.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/capncrunch/DrukWide-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/capncrunch/DrukWide-Medium.svg#DrukWide-Medium') format('svg'); /* Legacy iOS */
+}
+
+.btn_capncrunch{
+    background-color: #EB4134 !important;
+    padding: 16px 20px;
+    color: white !important;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none !important;
+    font-family: "DrukWide-Medium", Sans-Serif !important;
+    min-width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.capncrunch .slick-prev:before {
+    background: url("../images/arrows/capncrunch-left.svg") !important;
+}
+
+.capncrunch .slick-next:before {
+    background: url("../images/arrows/capncrunch-right.svg") !important;
+}
+
+.capncrunch section#banner .banner-desktop span.h1{
+    color: #1E5AA5 !important;
+    font-family: "DrukWide-Medium", Sans-Serif;
+    margin-bottom: 25px;
+}
+
+.capncrunch .btn_carousel  {
+    background-color: #EB4134 !important;
+    padding: 12px 30px;
+    color: white !important;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none !important;
+    font-family: "DrukWide-Medium", Sans-Serif;
+    font-weight: normal;
+    min-width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    border: 0;
+}
+
+.capncrunch .slick-dotted.slick-slider{
+    margin-bottom: -22px !important;
+}
+
+.capncrunch .brands-navbar__social{
+    visibility: hidden !important;
+}
+
+.capncrunch .header__logo{
+    z-index: 999999;
+    position: relative;
+}
+
+.capncrunch-hr{
+    width: 100px;
+    border: 0;
+    border-radius: 25px;
+    margin: 0 auto;
+    border-top: 5px solid #EB4134;
+}
+
+.capncrunch-section-recipe-container .capncrunch-hr{
+    margin: 0;
+}
+
+.capncrunch-recipe .capncrunch-hr{
+    margin: 20px auto 40px;
+}
+
+.capncrunch-about-text-wrapper .capncrunch-hr{
+    margin: 15px 0 30px 0;
+    border-top: 5px solid #FFD200;
+}
+
+.capncrunch h2, .capncrunch h3, .capncrunch h4{
+    font-family: "DrukWide-Medium", Sans-Serif;
+}
+
+.capncrunch p, .capncrunch a{
+    font-family: "OpenSans-Regular", Sans-Serif;
+}
+
+.capncrunch-yellow{
+    background-color: #FFD201;
+}
+
+.capncrunch-red{
+    background-color: #EB4134;
+}
+
+.capncrunch-navbar__vertical-align{
+    background-color: #0D7FC0;
+    padding: 0 32px;
+}
+
+.capncrunch-logo{
+    padding: 8px 0;
+    width: 120px;
+    max-width: 100%;
+    height: auto;
+}
+
+.capncrunch-navbar__vertical-align .brands-navbar__item-border a{
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.capncrunch-products h2{
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 54px !important;
+    color: #0D7FC0;
+}
+
+.capncrunch-products h3{
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.capncrunch-products h4{
+    font-size: 24px;
+}
+
+.capncrunch-title-adventure{
+    padding-bottom: 70px;
+}
+
+.capncrunch-title-adventure h2{
+    padding: 80px 0 20px 0;
+}
+
+.capncrunch-product-wrapper{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.capncrunch-product-wrapper img{
+    width: 45%;
+}
+
+.capncrunch-product-column-yellow{
+    display: flex;
+    flex-direction: column;
+    color: #0D7FC0;
+    width: 50%;
+}
+
+.capncrunch-product-column-yellow p{
+    color: #0D7FC0;
+    margin-bottom: 10px;
+}
+
+.capncrunch-product-column-red{
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    width: 50%;
+}
+
+.capncrunch-product-column-red h3, .capncrunch-product-column-red h4, .capncrunch-product-column-red p{
+    color: #FFFFFF;
+}
+
+
+.capncrunch .fa-nutrition, .capncrunch .fa-ingredients {
+    display: flex;
+    align-items: baseline;
+    padding: 16px 0 0;
+    border-bottom: 1px solid #0D7FC0;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.capncrunch .capncrunch-product-column-red .fa-nutrition, .capncrunch .capncrunch-product-column-red .fa-ingredients{
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.capncrunch-productdetails-nutrition-info h3, .capncrunch-productdetails-ingredients-info h3 {
+    padding: 24px 0 16px;
+}
+
+.capncrunch-productdetails-nutrition-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.capncrunch-productdetails-nutrition-info.active .dropdown-arrow {
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(
+            180deg
+    );
+    transform: rotate(
+            180deg
+    );
+    width: auto;
+    height: fit-content;
+}
+
+.capncrunch-productdetails-nutrition-info .dropdown-arrow {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(
+            0deg
+    );
+    transform: rotate(
+            0deg
+    );
+    width: auto;
+    height: fit-content;
+}
+
+.capncrunch-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.capncrunch .nutrition-copy, .capncrunch .ingredients-copy {
+    display: none;
+}
+
+.test{
+    background-color: #FFD201;
+}
+
+.test2{
+    background-color: #EB4134;
+}
+
+.test-relative{
+    position: relative;
+}
+
+.capncrunch-pattern-one{
+    width: 100%;
+    display: block;
+}
+
+/**********************************
+       Cap and Crunch Nutrition section
+***********************************/
+
+.capncrunch .nutrition-copy{
+    border: 8px solid #0D7FC0;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-bottom: 10px;
+    padding: 12px;
+    font-family: 'OpenSans-Regular';
+}
+
+.capncrunch-productdetails-nutrition-table {
+    width: 100%;
+}
+
+.capncrunch-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.capncrunch-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    font-family: 'OpenSans-Regular';
+    border-bottom: 1px solid #000000;
+}
+
+.capncrunch-productdetails-nutrition-row:first-child{
+    border-bottom: 5px solid #000000;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.capncrunch-productdetails-nutrition-row:last-child{
+    border-bottom: none;
+}
+
+.capncrunch-productdetails-nutrition-cell{
+    width: 180px;
+    text-align: center;
+    padding: 8px 2px;
+    font-size: 14px;
+}
+
+.capncrunch-productdetails-nutrition-cell span{
+    font-family: 'OpenSans-Bold';
+}
+
+.capncrunch-productdetails-nutrition-row  .capncrunch-productdetails-nutrition-cell:first-child {
+    text-align: left;
+    width: 160px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.capncrunch-productdetails-nutrition-cell:nth-child(1) {
+    font-size: 30px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.capncrunch-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.capncrunch-row-indented .lays-productdetails-nutrition-cell:first-of-type {
+    padding-left: 20px;
+}
+
+.capncrunch-product-nutrition .linkeable{
+    font-size: 40px;
+    padding: 30px 0px;
+    line-height: 1.3em;
+    font-weight: bold;
+}
+
+.capncrunch-detail__product--block h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-buy-now a{
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+    padding: 15px;
+    color: #FFFFFF;
+    display: block;
+    background-color: #D62F30;
+}
+
+.capncrunch-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.capncrunch-product-nutrition .performance-facts table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.capncrunch-product-nutrition .performance-facts thead {
+    border-bottom: 5px solid #000;
+    padding-bottom: 10px;
+}
+
+.capncrunch-product-nutrition .performance-facts tbody {
+    border-top: none;
+    padding: 0 15px;
+    display: block;
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr {
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr:nth-child(even) {
+    background-color:rgba(255,255,255, 0.1);
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr .blank-cell {
+    font-style: normal;
+    font-weight: 400;
+    width: 1rem;
+    border-top: 0;
+    padding-left: 30px;
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr td, .capncrunch-product-nutrition .performance-facts tbody > tr th {
+    border: 0;
+    width: 90%;
+    text-align: left;
+    white-space: nowrap;
+    padding: 5px 0;
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr td:last-child {
+    text-align: center;
+    width: 20%;
+}
+
+.capncrunch-product-nutrition .performance-facts tbody > tr td span, .performance-facts tbody > tr th span, .tr-light {
+    font-style: normal;
+    font-weight: 400;
+}
+
+/**********************************
+      About
+**********************************/
+
+.capncrunch-about{
+    background-color: #0D7FC0;
+    color: #FFFFFF;
+    padding: 0 0 80px 0;
+}
+
+.capncrunch-about-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.capncrunch-about-wrapper p{
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: "DrukWide-Medium", Sans-Serif !important;
+}
+
+.capncrunch-about-wrapper span{
+    font-weight: normal;
+    line-height: 1.4em;
+    font-family: 'OpenSans-Regular';
+}
+
+.capncrunch-about-text-wrapper{
+    width: 50%;
+}
+
+.capncrunch-about-wrapper img{
+    width: 42%;
+}
+
+/**********************************
+      Cap and Crunch recipe
+**********************************/
+
+.capncrunch-recipe{
+    background-color: #FFD201;
+    padding: 80px 0;
+}
+
+.capncrunch-recipe img{
+    width: 80%;
+}
+
+.capncrunch-recipe h2{
+    color: #0D7FC0;
+}
+
+.capncrunchs-featured-recipes-description h4{
+    color: #0D7FC0;
+    font-size: 24px;
+}
+
+.capncrunch-featured-recipe-img-col{
+    text-align: center;
+}
+
+.capncrunch-background-container-recipesdetails{
+    background-color: #FFD201;
+    color: #0D7FC0;
+}
+
+.capncrunch-recipe-wrapper-container{
+    display: flex;
+    padding: 60px 0;
+    justify-content: space-between;
+}
+
+.capncrunch-recipe-image-container{
+    width: 40%;
+    height: 65%;
+}
+
+.capncrunch-recipe-image-container img{
+    width: 100%;
+}
+
+.capncrunch-section-recipe-container{
+    width: 55%;
+}
+
+.capncrunchs-featured-recipes-description{
+    margin-top: 20px;
+}
+
+.capncrunch-recipe-view-product{
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: inherit;
+}
+
+
+
+.capncrunch-recipe-view-product img{
+    width: 180px;
+}
+
+.capncrunch-recipe-text-container{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.capncrunch-recipe-text-container p{
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+
+.capncrunch-section-recipe-container h2{
+    font-size: 40px !important;
+    margin-bottom: 10px;
+}
+
+.capncrunch-recipe-info h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.capncrunch-recipe-info-ingredients{
+    margin-bottom: 50px;
+}
+
+.capncrunch-recipe-info-ingredients ul li{
+    font-size: 18px;
+    font-family: 'OpenSans-Regular';
+    font-weight: bold;
+    line-height: 1.4em;
+}
+
+.capncrunch-recipe-info{
+    margin-top: 30px;
+}
+
+.capncrunch-recipe-info-instructions ol{
+    padding-left: 15px;
+}
+
+.capncrunch-recipe-info-instructions li{
+    list-style: number;
+    font-size: 18px;
+    font-family: 'OpenSans-Regular';
+    font-weight: bold;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+}
+
+.capncrunch-socials-recipes p{
+    font-family: "DrukWide-Medium", Sans-Serif;
+    color: #EB4134;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.capncrunch-socials{
+    display: flex;
+    margin-top: 50px;
+}
+
+.capncrunch-socials a img{
+    margin: 0 7px;
+}
+
+/**********************************
+      Cap and Crunch coupon
+**********************************/
+
+
+.capncrunch-coupon--container-background {
+    background-image: url("/themes/brandstheme/src/images/capncrunch/capncrunch-background-coupon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 55px;
+}
+
+.capncrunch-coupon--container {
+    display: flex;
+    width: 80%;
+    max-width: 1030px;
+    margin: 0 auto;
+    padding: 101px 0;
+}
+
+.capncrunch-coupon--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.capncrunch-coupon--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: white;
+    position: relative;
+    text-align: center;
+    padding: 15px 40px;
+}
+
+.capncrunch-coupon--text p{
+    color: #0D7FC0;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.capncrunch-coupon-disclaimer{
+    margin-bottom: 0 !important;
+    color: #000000 !important;
+}
+
+.capncrunch-coupon--text h3 {
+    color: #0D7FC0;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 40px;
+    line-height: 1em;
+    font-family: 'GTWalsheimBold', 'sans-serif';
+}
+
+.capncrunch-coupon--leftcol{
+    background-color: #FFD201;
+}
+
+.capncrunch-coupon--leftcol img{
+    padding: 60px 50px 40px;
+    width: 100%;
+}
+
+.capncrunch-coupon-disclaimer {
+    font-size: 12px;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width: 992px) {
+    .capncrunch .brands-navbar__social{
+        display: none !important;
+    }
+
+    .capncrunch-recipe-view-product{
+        justify-content: space-evenly;
+    }
+
+    .capncrunch-recipe-wrapper-container{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .capncrunch-recipe-image-container {
+        height: 54%;
+        width: 100%;
+        margin: auto;
+    }
+
+    .capncrunch-section-recipe-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .capncrunch-products h2{
+        font-size: 34px !important;
+    }
+
+    .capncrunch-yellow, .capncrunch-red{
+        padding: 0 20px;
+    }
+
+    .capncrunch-product-column-yellow, .capncrunch-product-column-red{
+        width: 100%;
+    }
+
+    .capncrunch-product-wrapper{
+        width: 100%;
+    }
+
+    .capncrunch-navbar__vertical-align .brands-navbar__item-border a{
+        color: #000000;
+    }
+
+    .capncrunch-navbar__vertical-align {
+        background-color: #FFFFFF;
+    }
+
+    .capncrunch-navbar__vertical-align  .brands-navbar__mobile-topnav {
+        top: 20px;
+    }
+
+    .capncrunch-logo{
+        width: 85px;
+    }
+
+    .capncrunch-navbar__vertical-align{
+        flex-direction: column;
+    }
+
+    .capncrunch-navbar__vertical-align .top-logo{
+        width: 100%;
+        padding: 8px 15px 3px;
+    }
+
+    .capncrunch-navbar__vertical-align{
+        padding: 0;
+    }
+
+    .capncrunch-product-wrapper {
+        flex-direction: column;
+    }
+
+    .capncrunch .dropdown-arrow{
+        margin: 0;
+    }
+
+    .capncrunch-product-wrapper img {
+        width: 50%;
+        margin: 0 auto 60px;
+    }
+
+    .capncrunch-products h3, .capncrunch-product-column-yellow p{
+        text-align: center;
+    }
+
+    .capncrunch-about-wrapper{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .capncrunch-about-text-wrapper{
+        width: 100%;
+        text-align: center;
+    }
+
+    .capncrunch-about-text-wrapper .capncrunch-hr{
+        margin: 15px auto 30px auto;
+    }
+
+    .capncrunch-about-wrapper img {
+        width: 80%;
+        margin: 40px auto 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .capncrunch section#banner .banner-mobile span.h1{
+        font-family: "DrukWide-Medium", Sans-Serif;
+    }
+
+    .capncrunch-section-recipe-container h2 {
+        font-size: 30px !important;
+    }
+
+    .capncrunch-recipe-view-product img {
+        width: 140px;
+    }
+
+    .capncrunch-recipe-wrapper-container{
+        padding: 60px 20px;
+    }
+
+    .capncrunch-product-wrapper img {
+        width: 80%;
+        margin: 60px auto 40px;
+    }
+
+    .capncrunch-featured-recipe-img-col{
+        margin-bottom: 30px;
+    }
+
+    .capncrunchs-featured-recipes-description h4{
+        margin-top: 20px;
+    }
+
+    .capncrunch-coupon--container{
+        flex-direction: column;
+    }
+
+    .capncrunch-coupon--text{
+        padding: 40px;
+    }
+
+    .capncrunch-section-recipe-container {
+        width: 100%;
+        margin-top: 40px;
+    }
+}
+
+/*Buynow Modal*/
+
+.capncrunch-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  position:fixed;
+}
+
+#capncrunchModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#capncrunchModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #capncrunchModal {
+    padding:0 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

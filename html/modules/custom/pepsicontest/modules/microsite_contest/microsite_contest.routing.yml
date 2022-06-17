@@ -1,0 +1,105 @@
+#SIGN UP    
+en-us.custom.contest.signup:
+  path: '/contestss/{contest}/signup'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+en-ca.custom.contest.signup:
+  path: '/contestss/{contest}/signup'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+    
+fr-ca.custom.contest.signup:
+  path: '/concour/{contest}/inscription'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+
+
+custom.contest.validate.upccode:
+  path: '/microsite/validate/upccode'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::isValidUPC'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+custom.contest.landing:
+  path: 'custom/contests'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.custom.contest.rules:
+  path: '/contests/custom/{contest}/rules'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::contestRules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE' 
+fr.custom.contest.rules:
+  path: '/concours/custom/{contest}/regles'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::contestRules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.custom.contest.thank-you.new:
+  path: '/contest/{contest}/thank-you/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE' 
+fr-ca.custom.contest.thank-you.new:
+  path: '/concour/{contest}/merci/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+    # 
+en-ca.custom.contest.sorry:
+  path: '/contests/{contest}/confirm/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::confirmation'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE' 
+fr-ca.custom.contest.sorry:
+  path: '/concours/{contest}/confirm/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::confirmation'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.custom.contest.winner:
+  path: '/contests/{contest}/winner/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::confirmation_winner'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE' 
+fr-ca.custom.contest.winner:
+  path: '/concours/{contest}/winner/reg'
+  defaults:
+    _controller: '\Drupal\microsite_contest\Controller\MicrositeContestController::confirmation_winner'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'

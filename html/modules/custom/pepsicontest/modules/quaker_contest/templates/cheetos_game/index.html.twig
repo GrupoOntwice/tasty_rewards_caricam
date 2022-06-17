@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
+
+	<title></title>
+
+<style  type="text/css" crossorigin="anonymous">
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body
+{
+	background-color: #000011;
+}
+
+canvas {
+height: (browser innerHeight)
+}
+
+@font-face {
+  font-family: "Ubuntu_Regular";
+  src: url("/themes/tastytheme/src/game/assets/fonts/Ubuntu_Regular.ttf");
+}
+
+</style>
+
+  {# url("/themes/tastytheme/src/fonts/"); #}
+
+</head>
+
+{{ attach_library( 'quaker_contest/cheetos_playgame' ) }}
+<body>
+
+	{# {{ attach_library('tastytheme/cheetos_game') }} #}
+
+
+	<div style="font-family:Ubuntu_Regular; position:absolute; left:-1000px; visibility:hidden;">.</div>
+
+   <div id = 'gamediv'></div>  <!-- gamediv is for canvas/game -->
+
+	
+  <script type="text/javascript" src="/themes/tastytheme/src/game/lib/phaser.min_3.22.0.js"></script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/objects/common.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/boot.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/preload.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/screen1_start.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/screen2_help.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/game.js"></script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/zoom.js"></script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/timeup.js"></script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/screen3_select.js"> </script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/screen5_letsdoit.js"> </script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/screen7_turn.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/win.js"> </script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/loose.js"> </script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/prize.js"> </script>
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/end.js"> </script>
+
+	<script type="text/javascript" src="/themes/tastytheme/src/game/js/main.js"></script>
+
+
+</body>
+</html>

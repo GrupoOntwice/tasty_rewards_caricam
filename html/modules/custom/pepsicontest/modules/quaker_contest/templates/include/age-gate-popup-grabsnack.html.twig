@@ -1,0 +1,53 @@
+<div class="grabsnack-popup popup-main-wrapper popup-contest hidden nintendo">
+	<div class="grabsnack-modal modal">
+		<div class="popup-wrapper-left">
+      <a class="js-popup-langswitcher grabsnack-french-link" href="{{data.trans_url}}">{{data.trans_lang}}</a>
+			<button class="modal_close-button jsModalSignUpClose popup-close-button hidden">
+				<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+			</button>
+
+
+			{% if data.contest_type == 'nintendo' %}
+				<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-blue.png" alt="Close button">
+			{% endif %}
+
+
+
+			<p class="popup-title montserrat-black">{{"Ready to enter?"|t}}</p>
+			<p class="popup-sub-title opensans-regular">{{"To enter the Grab Snacks. Win Swag Contest website, please enter your date of birth ."|t}}</p>
+			<form id="popup-subscribe" class="popup-eligibility">
+				{#
+                <div class="popup-email-wrapper {{province_class}}">
+                        <select class="province form-control modal__sign-up-select" name="province" id="province" >
+                        	{{ data.provinces_options| raw }}
+
+                        </select>
+				</div>
+                #}
+				<div class="grabsnack-date-dropdown date-dropdowns modal__sign-up-birth">
+                    <input type="hidden" id='bday' name='bday' class="form-control">
+                    <input type="hidden" id='contest' name='contest' class="form-control" value={{data.contesturi}}>
+                    <input type="hidden" id='contest_type' name='contest_type' class="form-control" value={{data.contest_type}}>
+
+                    <select class="day form-control modal__sign-up-select bday" name="bday_day" id="bday_day" >
+                        {{ data.bdaydropdown.dayoption | raw }}
+                    </select>
+                    <select class="day form-control modal__sign-up-select" name="bday_month" id="bday_month" >
+                        {{ data.bdaydropdown.monthoption | raw }}
+                    </select>
+
+                    <select class="day form-control modal__sign-up-select" name="bday_year" id="bday_year" >
+                        {{ data.bdaydropdown.yearoption | raw }}
+                    </select>
+                    {# @TODO: Replace this error message when the copydeck is available #}
+                    <span class="help-block has-error js-legal-error hidden">{{error_legal_message |t}}
+                    	<br>
+						{# {{'Visit tastyrewards.ca for coupons, contests and more! '|t}} #}
+                    </span>
+                    <span class="help-block has-error js-validate-error hidden">{{'All fields are required'|t}}</span>
+                </div>
+				<button class=" grabsnack-access-website submit  js-submit-eligibility text-uppercase opensans-regular ">{{"Access Website"|t}}</button>
+			</form>
+		</div>
+	</div>
+</div>

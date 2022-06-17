@@ -1,0 +1,28 @@
+<div class="view-filters">
+   <form class="views-exposed-form" data-drupal-selector="views-exposed-form-content-page-1" method="POST" id="views-exposed-form-content-page-1" accept-charset="UTF-8">
+      <div class="form--inline clearfix">
+         <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-type form-item-type">
+            <label for="edit-contestid">{{'Contest Name'|t}}</label>
+            <select data-drupal-selector="edit-contestid" id="edit-contestid" name="contestid" class="form-select" required>
+                  <option value="" {% if data.nofilter == 1 %} selected="selected" {% endif %} >- Any -</option>
+               {% for contest in data.all_contests %}
+                  <option value="{{contest.contest_id}}" {% if contest.contest_id == data.contestid %} selected="selected" {% endif %} >{{contest.contest_name}}</option>
+               {% endfor %}
+            </select>
+         </div>
+
+         <div class="js-form-item form-item js-form-type-date form-type-date js-form-item-field-opening-date-0-value-date form-item-field-opening-date-0-value-date form-no-label">
+            <label for="start_date" class="js-form-required">{{'Start Date'|t}}</label>
+
+            <input data-drupal-selector="edit-field-opening-date-0-value-date" title="Date (par ex. 2021-09-27)" type="date" min="1900-01-01" max="2050-12-31" data-drupal-date-format="Y-m-d" id="start_date" name="start_date" value="{{data.start_date}}" size="12" class="form-date"  aria-required="true">
+         </div>
+
+         <div class="js-form-item form-item js-form-type-date form-type-date js-form-item-field-closing-date-0-value-date form-item-field-closing-date-0-value-date form-no-label">
+            <label for="end_date" class="js-form-required">{{'End date'}}</label>
+            <input data-drupal-selector="edit-field-closing-date-0-value-date" title="Date (par ex. 2021-09-27)" type="date" min="1900-01-01" max="2050-12-31" data-drupal-date-format="Y-m-d" id="end_date" name="end_date" value="{{data.end_date}}" size="12" class="form-date" >
+         </div>
+
+         <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-content" type="submit" id="edit-submit-content" value="Show Stats" class="button js-form-submit form-submit"></div>
+      </div>
+   </form>
+</div>

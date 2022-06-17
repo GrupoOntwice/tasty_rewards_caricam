@@ -1,0 +1,13 @@
+<script type="text/javascript">
+	window.is_winner = {{data.is_winner}};
+	window.confirmation_url = '{{data.redirect}}';
+	window.landing_page_url = '{{data.landing_page}}';
+	window.for_fun = {{data.for_fun}};
+	window.langcode = '{{data.langcode}}';
+{% if data.is_winner and data.firstname %}
+	window.confirmation_url = '{{data.redirect}}' + '&firstname={{data.firstname}}'  ;
+{% endif %}
+</script>
+
+
+{% include '@quaker_contest/cheetos_game/index.html.twig' %}

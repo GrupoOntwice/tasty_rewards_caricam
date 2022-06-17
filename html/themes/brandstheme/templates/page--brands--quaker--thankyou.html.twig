@@ -1,0 +1,21 @@
+
+<div class="navbar-wrapper-tasty">
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+</div>
+
+
+<section class="quaker-confirmation">
+  <div class="quaker-banner-microsite thank-you">
+    <div class="banner_slide--text {{class_pos}} contest-banner-text">
+      <h1>{{ "Thank you for your submission!" | trans}}</h1>
+      <p>{{ "We’ve received your submission and you’ll receive an email from us soon confirming that your receipt has been verified.  Keep an eye on your inbox! " | trans}}</p>
+      <br>
+      <p>{{ "Thank you from Quaker<sup>®</sup> for supporting Food Banks Canada!" | trans}}</p>
+    </div>
+
+    <img class="quaker-product-image-microsite" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-packshot-group.png" alt="quaker packshot products" />
+  </div>
+</section>

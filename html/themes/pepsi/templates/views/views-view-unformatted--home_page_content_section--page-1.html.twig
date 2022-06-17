@@ -1,0 +1,139 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+{% set current_page = view.getCurrentPage() %}
+{% set rows_count = rows|length %}
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+     {% if language == "fr"%}
+        {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% endif %}
+    {% set nid = row.content["#row"]._entity.nid.getValue().0.value %}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+    
+    {% set type = row.content["#row"]._entity.type.getValue().0.target_id %}
+    
+    {% if type == "recipe" %}
+        {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_recipe_image.0.entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_recipe_image.getValue().0.alt %}
+        {% set video = row.content["#row"]._entity.getTranslation(language).field_recipe_video.getValue().0.value %}    
+    {% else %}    
+        {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_image.0.entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_image.getValue().0.alt %}
+        {% set video = row.content["#row"]._entity.getTranslation(language).field_article_video.getValue().0.value %}
+    {% endif %}
+    {% if video is not empty %}
+        {% set video_class = "video" %}
+    {% else %}
+        {% set video_class = "" %}
+    {% endif %}
+    
+    
+    {% if rows_count == 3 %}
+        {% if loop.index == 1 %}
+        <!-- block left -->
+        <div class="block blockleft">
+
+                    <!-- block 1 -->
+                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+        {% elseif loop.index == 2 %}
+                    <!-- block 2 -->
+                   {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+        </div><!-- /block left --> 
+
+        {% elseif loop.index == 3 %}
+            <!-- block right -->
+            <div class="block blockright">
+                    <!-- block 4 -->
+                    {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+
+
+            </div> <!-- /block right -->  
+
+        {% endif %}
+
+    {% else %}
+        {% if loop.index == 1 %}
+        <!-- block left -->
+        <div class="block blockleft">
+
+
+                {% if current_page == 0 %}
+                    <!-- block 1 : ADVERTISEMENT -->
+                    <div class="box size-1x1">
+                        <div class="boxinside" style="background-color:#eeeeee">
+                            <p>{{ drupal_view('advertisement', 'page_bigbox') }}</p>
+                        </div>
+                    </div>   
+                {% else %}   
+                    <!-- block 1 -->
+                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                {% endif %}            
+        {% elseif loop.index == 2 %}
+                    <!-- block 2 -->
+                   {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+        {% elseif loop.index == 3 %}        
+            <!-- block 3 -->
+            {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+                 
+            </div><!-- /block left --> 
+        {% elseif loop.index == 4 %}
+            <!-- block right -->
+            <div class="block blockright">
+                    <!-- block 4 -->
+                    {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+
+        {% elseif loop.index == 5 %}   
+                    {% if current_page == 0 %}
+                        <!-- coupon block  -->
+                        {{ drupal_view('coupon_block', 'page_2') }} {# template: views-view-unformatted--coupon_block--page_2.html.twig #}   
+                                      
+                    {% else %}   
+                        <!-- block 5 -->
+                        {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                    {% endif %}  
+
+        {% elseif loop.index == 6 %}        
+                    <!-- block 6 -->
+                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+
+            </div> <!-- /block right -->  
+    
+        {% endif %}
+    {% endif %}
+    
+{% endfor %}

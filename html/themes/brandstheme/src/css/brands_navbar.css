@@ -1,0 +1,1047 @@
+/*Navbar for TR on Brands Websites*/
+
+
+@media (min-width: 992px) {
+  #block-mainnavigation-2 .menu--main li{
+    width: 70px;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  #block-mainnavigation-2 .menu--main li a{
+    margin: 0;
+    padding: 0 !important;
+  }
+}
+
+header .menu a {
+  color: #000000;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s all;
+  margin: 0 30px;
+  padding: 10px 0 !important;
+  display: block;
+}
+
+header .menu_account a {
+  font-size: 16px;
+}
+
+.dropdown a {
+  margin: 0 !important;
+  padding: 0;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  z-index: 999999999;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  line-height: 45px;
+  text-align: left;
+  padding-left: 20px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-content a:hover {
+  background-color: #b81321;
+  color: #ffffff !important;
+  border: 1px solid #b81321;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#icon-brand-en, #icon-brand-fr {
+  width: 24px;
+}
+
+#icon-brand-en:hover {
+  content: url('/themes/brandstheme/src/images/lays/brands-hover.svg');
+  width: 55px;
+}
+
+#icon-brand-fr:hover {
+  content: url('/themes/brandstheme/src/images/lays/brand-fr.svg');
+  width: 55px;
+}
+
+#icon-coupon {
+  width: 30px;
+}
+
+#icon-coupon:hover {
+  content: url('/themes/brandstheme/src/images/lays/coupons-hover.svg');
+  width: 52px;
+}
+
+#icon-contest-en, #icon-contest-fr {
+  width: 20px;
+}
+
+#icon-contest-en:hover {
+  content: url('/themes/brandstheme/src/images/lays/contest-hover.svg');
+  width: 55px;
+}
+
+#icon-contest-fr:hover {
+  content: url('/themes/brandstheme/src/images/lays/contest-fr.svg');
+  width: 57px;
+}
+
+#icon-recipe-en, #icon-recipe-fr {
+  width: 25px;
+}
+
+#icon-recipe-en:hover {
+  content: url('/themes/brandstheme/src/images/lays/recipes-hover.svg');
+  width: 48px;
+}
+
+#icon-recipe-fr:hover {
+  content: url('/themes/brandstheme/src/images/lays/recipes-fr.svg');
+  width: 50px;
+}
+
+#icon-wheretobuy-en, #icon-wheretobuy-fr {
+  width: 23px;
+}
+
+#icon-wheretobuy-en:hover {
+  content: url('/themes/brandstheme/src/images/lays/wheretobuy-hover.svg');
+  width: 70px;
+}
+
+#icon-wheretobuy-fr:hover {
+  content: url('/themes/brandstheme/src/images/lays/wheretobuy-fr.svg');
+  width: 70px;
+}
+
+html:lang(en) .brand-navbar-icons.fr{
+  display: none;
+}
+
+html:lang(fr) .brand-navbar-icons.en{
+  display: none;
+}
+
+.navbar-default{
+  width: 100%;
+  max-width: 100% !important;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.header__logo-container{
+  display: flex;
+  padding: 8px 0;
+}
+
+.header__logo{
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+  position: initial;
+  margin-bottom: -32px;
+  left: 0;
+}
+
+.navbar-default a, .navbar-mbl-tr{
+  color: #000000;
+  padding: 0 15px !important;
+  font-family: 'GTWalsheimBold';
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar-default .sign_in{
+  color: #0e4caa;
+}
+
+.navbar-default .sign_in:hover{
+  text-decoration: underline !important;
+}
+
+.navbar-default a:hover{
+  text-decoration: underline !important;
+}
+
+.navbar-back-div{
+  padding: 16px !important;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.navbar-back {
+  max-width: 100%;
+  width: 8px;
+  font-weight: bold;
+  margin-left: -15px;
+}
+
+.mobile-menu-items{
+  width: 100%;
+  vertical-align: middle !important;
+}
+
+.menu--main a:hover{
+  background-color: transparent !important;
+  text-decoration: underline !important;
+}
+
+.menu_account{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lays-navbar__vertical-align {
+  background-color: #FECE1C !important;
+}
+
+/*Brands Navbar*/
+
+.hr-navbar{
+  margin: 0 !important;
+  border-top: 1px solid #e7e7e7 !important;
+  width: 100%;
+}
+
+.ham-active{
+  display: none;
+}
+
+.tostitos-logo {
+  width: 115px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.fritolay-logo {
+  width: 100px;
+  height: 60px;
+  max-width: 100%;
+}
+
+.bare-logo {
+  width: 125px;
+  max-width: 100%;
+  height: auto;
+}
+
+.flaminhot-logo {
+  width: 250px;
+  max-width: 100%;
+  height: auto;
+  transform: rotate(
+    10deg
+  );
+}
+
+.fr .flaminhot-logo {
+  width: 250px;
+  max-width: 100%;
+  height: auto;
+  transform: none;
+}
+
+.otep-logo {
+  width: 60px;
+  max-width: 100%;
+  height: auto;
+}
+
+.missvickies-logo {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
+.ruffles-logo {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
+.quaker-logo {
+  width: 75px;
+  max-width: 100%;
+  height: auto;
+}
+
+.stacys-logo {
+  width: 95px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.sunchips-logo {
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+}
+
+.lays-logo {
+  width: 65px;
+  max-width: 100%;
+  height: auto;
+}
+
+.doritos-logo {
+  width: 80px;
+  max-width: 100%;
+  height: auto;
+}
+
+.brands-navbar__ul a {
+  font-family: 'GTWalsheimBold';
+  font-style: normal;
+  text-align: center;
+  color: #000000;
+  transition: 0.3s all;
+}
+
+/*.nav>li>a:focus, .nav>li>a:hover {*/
+/*  background-color: transparent;*/
+/*}*/
+
+.brands-navbar__ul a:hover{
+
+}
+
+.brands-navbar__ul a:hover, .brands-navbar__ul a:focus, .brands-navbar__ul a:active {
+  color: #db1d2c !important;
+  text-decoration: underline !important;
+  background-color: transparent;
+}
+
+.brands-navbar__mobile-topnav {
+  display: none;
+}
+
+.brands-navbar__vertical-align, .fritolay-navbar__vertical-align, .bare-navbar__vertical-align, .lays-navbar__vertical-align, .otep-navbar__vertical-align, .cheetos-navbar__vertical-align, .missvickies-navbar__vertical-align, .crispyminis-navbar__vertical-align, .flaminhot-navbar__vertical-align, .ruffles-navbar__vertical-align, .doritos-navbar__vertical-align, .quaker-navbar__vertical-align, .smartfood-navbar__vertical-align, .stacys-navbar__vertical-align, .sunchips-navbar__vertical-align, .capncrunch-navbar__vertical-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  position: relative;
+}
+
+.missvickies-navbar__vertical-align, .missvickies .brands-navbar__fixed {
+  background: #EBE3D0 !important;
+}
+
+.stacys-navbar__vertical-align, .stacys .brands-navbar__fixed {
+  background: #191919 !important;
+}
+
+.ruffles-navbar__vertical-align {
+
+}
+
+/*.navbar-default .sign_in {*/
+/*  color: #000000;*/
+/*}*/
+
+/*.brands-navbar__vertical-align a, .fritolay-navbar__vertical-align a{*/
+/*  color: #4c4c4c;*/
+/*}*/
+
+.brands-navbar__right-align {
+  display: block;
+  text-align: right;
+  flex: 1;
+}
+
+.brands-navbar__left-align {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.brands-navbar__center-align {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.brands-navbar__fixed{
+  width: 100%;
+  background: #ffffff;
+  position: fixed !important;
+  z-index: 9999999;
+}
+
+.brand-navbar__move-top{
+  top: 0;
+  transition: all .2s;
+}
+
+.brands-navbar__social{
+  padding: 0 15px;
+}
+
+.brands-navbar__social-icons{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.brands-navbar__social-icons:nth-of-type(1){
+  padding-left: 0 !important;
+}
+
+/*Brands Navbar Social Icons*/
+
+
+.fa-navbar {
+  font-size: 16px !important;
+  color: #ffffff;
+  background: #001F5D;
+  padding: 7px 8px;
+  border-radius: 20px;
+}
+
+/*TR arrow*/
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/*Media Queries starts*/
+
+/*
+  Media Max Width classes
+*/
+
+@media only screen and (max-width: 576px) {
+
+  .otep-logo-mobile {
+    padding: 6px 15px 3px !important;
+  }
+
+  .missvickies-logo-mobile {
+    padding: 6px 15px 3px !important;
+  }
+
+  .ruffles-logo-mobile {
+    padding: 6px 15px 2px !important;
+  }
+
+  .quaker-logo-mobile {
+    padding: 6px 15px 2px !important;
+  }
+
+  .sunchips-logo-mobile {
+    padding: 6px 15px 6px !important;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+  header .menu a {
+    text-align: left;
+    margin: 0;
+    padding: 15px 15px !important;
+  }
+
+  .tostitos-logo {
+    width: 95px;
+  }
+
+  .fritolay-logo, .header__logo {
+    width: 70px;
+    height: auto;
+  }
+
+  .bare-logo {
+    width: 95px;
+  }
+
+  .otep-logo {
+    width: 40px;
+  }
+
+  .flaminhot-logo {
+    width: 92px;
+    transform: none;
+  }
+
+  .fr .flaminhot-logo {
+    width: 110px;
+  }
+
+  .otep-logo {
+    width: 40px;
+  }
+
+  .missvickies-logo {
+    width: 95px;
+  }
+
+  .ruffles-logo {
+    width: 78px;
+  }
+
+  .quaker-logo {
+    width: 42px;
+  }
+
+  .sunchips-logo {
+    width: 42px;
+  }
+
+  .stacys-logo {
+    width: 50px;
+  }
+
+  .header__logo-container {
+    padding: 16px 0 0 0 !important;
+  }
+
+  .menu_account{
+    display: none;
+  }
+
+  .last{
+    margin-bottom: 48px;
+  }
+
+  .navbar-default {
+    display: none;
+  }
+
+  .brands-navbar__mobile-topnav {
+    display: block;
+    position: absolute;
+    color: #333;
+    right: 15px;
+    top: 13px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 99999;
+  }
+
+  .brands-navbar__vertical-align, .fritolay-navbar__vertical-align, .bare-navbar__vertical-align, .otep-navbar__vertical-align, .missvickies-navbar__vertical-align, .flaminhot-navbar__vertical-align, .ruffles-navbar__vertical-align, .quaker-navbar__vertical-align, .smartfood-navbar__vertical-align, .stacys-navbar__vertical-align, .sunchips-navbar__vertical-align, .capncrunch-navbar__vertical-align{
+    display: block;
+    position: relative !important;
+  }
+
+  .brands-navbar__item-first-border, .brands-navbar__item-border, .menu--main a {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 15px !important;
+  }
+
+  .menu_account_mobile_only .btn_blue-navbar {
+    text-align: center;
+  }
+
+  .btn_blue-navbar, .btn_blue-navbar:hover, .btn_blue-navbar:active, .btn_blue-navbar:focus {
+    background-color: #1E5AA5 !important;
+    box-shadow: 0 3px 0 0 #1b3c94 !important;
+  }
+
+}
+
+@media only screen and (max-width: 992px) {
+
+  .noMobile {
+    display: none;
+  }
+
+  .noDesktop {
+    display: block;
+  }
+
+  /*Navbar Logos Start*/
+
+  .tostitos-logo-mobile {
+    padding: 10px 15px 8px;
+    width: 50%;
+  }
+
+  .stacys-logo-mobile {
+    padding: 10px 15px 8px;
+    width: 50%;
+  }
+
+  .fritolay-logo-mobile {
+    padding: 2px 15px;
+    width: 50%;
+  }
+
+  .bare-logo-mobile {
+    padding: 6px 15px;
+    width: 50%;
+  }
+
+  .flaminhot-logo-mobile {
+    padding: 0 10px;
+    width: 50%;
+  }
+
+  .otep-logo-mobile {
+    padding: 6px 15px;
+    width: 50%;
+  }
+
+  .missvickies-logo-mobile {
+    padding: 6px 15px;
+    width: 50%;
+  }
+
+  .ruffles-logo-mobile {
+    padding: 4px 15px;
+    width: 50%;
+  }
+
+  .quaker-logo-mobile {
+    padding: 6px 16px 4px;
+    width: 50%;
+  }
+
+  .sunchips-logo-mobile {
+    padding: 6px 16px 4px;
+    width: 50%;
+  }
+
+
+  /*Navbar Logos Ends*/
+  /* Start :- Brands Navbar Hamburger*/
+
+  /*.navbar-default {*/
+  /*  display: none;*/
+  /*}*/
+
+  .brands-navbar__vertical-align, .fritolay-navbar__vertical-align, .bare-navbar__vertical-align, .lays-navbar__vertical-align, .stacys-navbar__vertical-align, .sunchips-navbar__vertical-align, .capncrunch-navbar__vertical-align {
+    position: relative !important;
+  }
+
+  .header__logo {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .brands-navbar__top-bar, .brands-navbar__middle-bar, .brands-navbar__bottom-bar {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: #000000;
+    margin-bottom: 5px;
+    transition: all 0.2s;
+  }
+
+  .brands-navbar__mobile-topnav.ham-active .brands-navbar__top-bar  {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: 0;
+    position: relative;
+    top: 9px;
+  }
+
+  .brands-navbar__mobile-topnav.ham-active .brands-navbar__middle-bar {
+    display: none;
+  }
+
+  .brands-navbar__mobile-topnav.ham-active .brands-navbar__bottom-bar {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin: 0;
+    position: relative;
+    top: 4px;
+  }
+
+  .brands-navbar__fixed .brands-navbar__mobile-topnav{
+    top: 16px !important;
+  }
+
+  /* Ends :- Brands Navbar Hamburger*/
+
+  .brands-navbar__left-align, .brands-navbar__center-align{
+    display: none;
+  }
+
+  /*Navbar Accounts Options Start*/
+
+  .brands-navbar_accout-options{
+    display: flex;
+    align-items: center;
+  }
+
+  .brands-navbar_accout-options a{
+    color: #000000;
+  }
+
+  .choose-lang_fr{
+    display: block;
+  }
+
+  .choose-lang_fr, .brands-navbar_accout-options{
+    padding: 15px;
+    border-bottom: 1px solid #e7e7e7;
+    color: #000000;
+  }
+
+  .sign-in_left {
+    width: 33.33%;
+    text-align: left;
+  }
+
+  .sign-up_right, .sign-up_right:hover, .sign-up_right:active, .sign-up_right:focus{
+    text-align: center;
+    width: 33.33%;
+    background-color: #db1d2c;
+    color: white !important;
+    padding: 10px 8px 8px 8px;
+    box-shadow: 0 3px 0 0 #b81321;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 15px;
+  }
+
+  .btn_blue-navbar, .btn_blue-navbar:hover, .btn_blue-navbar:active, .btn_blue-navbar:focus{
+    text-align: center;
+    width: 33.33%;
+    min-width: 31%;
+    background-color: #1E5AA5;
+    color: white !important;
+    padding: 10px 8px 8px 8px;
+    box-shadow: 0 3px 0 0 #1b3c94;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 15px;
+    min-height: 34px;
+  }
+
+  /*Navbar Accounts Options Ends*/
+
+  /*Navbar TR Trigger Start*/
+
+  .tr-navbar-trigger-mobile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid #e7e7e7;
+    color: #000000;
+  }
+
+  .flex-1-center{
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  html:lang(fr) .brands-tr-navbar_image-mbl.en{
+    display: none;
+  }
+
+
+  html:lang(en) .brands-tr-navbar_image-mbl.fr{
+    display: none;
+  }
+
+  .brands-tr-navbar_image-mbl {
+    width: 60px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .brands-tr-navbar_copy-mbl {
+    padding-left: 15px;
+  }
+
+  .arrow-float_right{
+    text-align: right;
+  }
+
+
+  /*Navbar TR Trigger Ends*/
+
+}
+
+/*
+  Media Min Width classes
+*/
+
+@media only screen and (min-width: 992px) {
+
+  .tostitos-logo {
+    width: 140px;
+    height: 42px;
+  }
+
+  .navbar-mbl-tr {
+    display: none !important;
+  }
+
+  .bare .header__logo {
+    margin-left: -16px;
+  }
+
+  .navbar-default{
+    display: inline-flex;
+    padding: 4px 32px 4px 32px !important;
+  }
+
+  nav.menu .menu--main, nav.menu{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .brands-navbar__ul a {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .brands-navbar__vertical-align {
+    padding: 15px 32px;
+  }
+
+  .bare-navbar__vertical-align {
+    padding: 15px;
+    height: 75px;
+  }
+
+  .flaminhot-navbar__vertical-align {
+    padding: 15px 32px;
+    height: 75px;
+  }
+
+  .stacys-navbar__vertical-align {
+    padding: 15px 32px;
+    height: 75px;
+  }
+
+  .otep-navbar__vertical-align {
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+  }
+
+  .missvickies-navbar__vertical-align {
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+  }
+
+  .ruffles-navbar__vertical-align {
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+  }
+
+  .quaker-navbar__vertical-align {
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+  }
+
+  .sunchips-navbar__vertical-align {
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+  }
+
+  .fritolay-navbar__vertical-align {
+    padding: 10px 32px;
+  }
+
+  .lays-navbar__vertical-align {
+    padding: 5px 32px;
+    height: 75px;
+  }
+
+  .doritos-navbar__vertical-align {
+    padding: 0 32px;
+  }
+
+  .lays-navbar__vertical-align ul a{
+    color: #da252e;
+  }
+
+  .brands-navbar__item-border{
+    position: relative;
+  }
+
+  .brands-navbar__item-border a span{
+    position: absolute;
+    left: -9000px;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .brands-navbar__item-border a:hover span, .brands-navbar__item-border a:focus span, .brands-navbar__item-border a:active span{
+    display:block;
+    position:absolute;
+    top: 25px;
+    left: 0em;
+    width: max-content;
+    background-color:#ffffdd;
+    border: 1px solid #b7b7b7;
+    color:#000;
+    padding: 5px;
+    text-align: center;
+    text-transform: none;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+  .brands-navbar__item-border .brands-navbar__social-icons{
+    position: relative;
+  }
+
+  .brands-navbar__item-border .brands-navbar__social-icons span{
+    margin-left: -40px;
+    top: 35px !important;
+  }
+
+  .missvickies-logo {
+    height: 61px;
+  }
+
+
+  .quaker-logo {
+    height: 66px;
+  }
+
+  .sunchips-logo {
+    height: 79px;
+    margin-top: 16px;
+  }
+
+  .stacys-logo {
+    height: 56px;
+  }
+
+  .ruffles-logo {
+    height: 70px;
+  }
+
+  .bare-logo {
+    height: 47px;
+  }
+
+  .lays-logo {
+    height: 54px;
+  }
+
+  .brands-navbar_accounts-mbl{
+    display: none;
+  }
+
+  .brands-navbar__center-align{
+    display: flex !important;
+  }
+
+  .vr-contact-us{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .tostitos #brands_navigation .brands-navbar__ul  {
+    font-size: 0.8em;
+  }
+
+  .tostitos #brands_navigation .brands-navbar__ul a {
+    padding-right: 10px;
+  }
+}
+
+.tr-search-container {
+  position: relative;
+  /*display: inline-block;*/
+  display: none;
+}
+
+.tr-search-input {
+  border: 2px solid #eee;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px 25px 5px 5px; }
+.tr-search-input:focus {
+  outline: none; }
+
+.tr-search-icon {
+  color: #ffffff;
+  position: absolute;
+  background-color: #004179;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 18px;
+  padding: 0 9px 1px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s; }
+.tr-search-icon:hover {
+  background-color: #db1d2c;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s; }
+
+@media (max-width: 991px) {
+  .brands-navbar__social-icons span, .brands-navbar__item-border span{
+    display: none;
+  }
+
+  footer .footer_row--bottom--links ul li a:hover span, footer .footer_row--bottom--links ul li a:focus span, footer .footer_row--bottom--links ul li a:active span{
+    display: none;
+  }
+
+  .tr-search-container {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .tr-search-input {
+    width: 100%;
+  }
+
+  body.user-logged-in .brands-navbar_accout-options{
+    display: none;
+  }
+
+}
+
+.menu--main li.last {
+  margin-bottom: 0; }

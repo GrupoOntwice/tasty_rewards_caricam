@@ -1,0 +1,58 @@
+registration:
+  js:
+    js/registration.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+landing:
+  js:
+    js/contest_landing.js: {}
+  # css:
+  #   theme:
+  #     css/nintendo.css: {}
+  #     css/grabsnack.css: {}
+  #     css/cheetos.css: {}
+nintendo:
+  js:
+    js/nintendo.js: {}
+  css:
+    theme:
+      css/nintendo.css: {}
+
+fritolay:
+  css:
+    theme:
+      css/fritolay.css: {}
+
+grabsnack:
+  css:
+    theme:
+      css/grabsnack.css: {}
+      css/grabsnack-new.css: {}
+
+cheetos:
+  css:
+    theme:
+      css/cheetos.css: {}
+
+hockey:
+  css:
+    theme:
+      css/hockey-canada.css: {}
+
+cheetos_playgame:
+  js:
+    js/cheetos_game.js: {}
+  # dependencies:
+  #   - core/jquery
+  #   - core/drupal
+  #   - core/drupalSettings
+  #   - core/jquery.once  
+
+form:
+  css:
+    theme:
+      css/registration.css: {}

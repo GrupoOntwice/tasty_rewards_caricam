@@ -1,0 +1,33 @@
+.wrapper-nice-login {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 30px;
+  /*border: 1px solid #eee;*/
+  border-radius: 5px;
+}
+
+.wrapper-nice-login .user-login-form{
+  width: 500px;
+  margin: auto;
+}
+
+.user-login-form .control-label, .user-login-form .fbconnect{
+  display: none;
+}
+
+.user-login-form .form-group{
+  margin-bottom: 10px;
+}
+
+.nice-login-pass {
+  float: right;
+  display: none;
+}
+
+.nice-login-create {
+  display: inline-block;
+}
+
+.nice-login-login {
+  display: inline-block;
+}

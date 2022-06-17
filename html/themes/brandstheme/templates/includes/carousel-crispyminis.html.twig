@@ -1,0 +1,81 @@
+<div class="carousel_fullwidth crispyminis carousel_desktop js-main-carousel">
+   {% for slide in carousel %}
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+         <div class="banner-desktop {{slide.theme}}" style="background-image: url('{{slide.image_url}}');">
+            <div class="banner_slide--text {{class_pos}}">
+               {% if slide.title %}
+                  <span class="h1"> {{ slide.title|raw}}</span>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_carousel':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+            {% if not slide.is_signuplink %}
+              <p class="crispyminis-product-banner-suggest-serving"> {{'Suggested serving'|t}} </p>
+            {% endif %}
+         </div>
+      </div>
+   {% endfor %}
+</div>
+
+<div class="carousel_fullwidth carousel_mobile js-main-carousel">
+   {% for slide in carousel %}
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+         <div class="banner-mobile {{slide.theme_mobile}}" style="background-image: url('{{slide.mobile_image_url}}');">
+            <div class="banner_slide--text {{class_pos}}  {{slide.position_mobile}}">
+               {% if slide.title %}
+                  <span class="h1"> {{ slide.title|raw}}</span>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_carousel':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+
+             {% if not slide.is_signuplink %}
+                 <p class="crispyminis-product-banner-suggest-serving"> {{'Suggested serving'|t}} </p>
+             {% endif %}
+         </div>
+      </div>
+   {% endfor %}
+
+</div>

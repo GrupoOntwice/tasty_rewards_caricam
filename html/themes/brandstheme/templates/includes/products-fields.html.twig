@@ -1,0 +1,35 @@
+	{% set color = '' %}
+	{% for field in fields %}
+		{% if field.class == 'field-background-color' %}
+			{% set color = field.content %}
+		{% endif %}
+	{% endfor %}
+
+	<div class="product-image-background-wrapper" style="background-color:{{color}};">
+
+	{% for field in fields %}
+		{% if field.class == 'field-recipe-image' %}
+			<div class="product-image-title">
+				<span class="products-category-image">
+					{{ field.content }}
+				</span>
+		{% elseif field.class == 'field-subtitle' %}
+		{# <span class="oooooo hidden"> {{field.class}}</span>  #}
+			{% if color|length %}
+				<h3 class="products-title">
+			{% else %}
+				<h3 class="products-title">
+			{% endif %}
+					{{ field.content }}
+				</h3>
+			</div>
+		{% elseif field.class == 'view-node' %}
+			<div class="view-product-link">
+				<a href="{{ field.content }}"> {{'View Product'|t}}</a>
+	    		
+	    	</div>
+		{% endif %}
+
+	{% endfor %}
+
+	</div>

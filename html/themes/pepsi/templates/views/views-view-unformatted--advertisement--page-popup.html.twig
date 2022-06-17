@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set brand = row.content["#row"]._entity.getTranslation(language).field_brand.getValue().0.value %}
+   {# {% set nid = row.content["#row"]._entity.nid.getValue().0.value%}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}#}
+    
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_ads_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_ads_image.getValue().0.alt %}
+    
+    {% set link_uri = (row.content["#row"]._entity.getTranslation(language).field_ads_link.getValue().0.uri |replace({'internal:': ''})) %}
+    {% set link_title = row.content["#row"]._entity.getTranslation(language).field_ads_link.getValue().0.title %}
+    
+    {% set html_banner = row.content["#row"]._entity.getTranslation(language).field_html_banner.getValue().0.value %}
+     
+
+                {% if html_banner is not empty %}
+                    {{html_banner | raw}}
+                {% else %}
+                   <div id="nl_non_memebers" style="background: url('{{img}}');">
+                        <div class="nl_close">&nbsp;</div>
+                        <div class="clear">&nbsp;</div>
+                        <div class="nl_non_members_btn" id="nl_non_memebers_en_btn" onclick="window.location.href = '{{link_uri}}';">&nbsp;</div>
+                    </div>
+                {% endif%}
+
+
+{% endfor %}
+

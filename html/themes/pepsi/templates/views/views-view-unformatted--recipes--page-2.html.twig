@@ -1,0 +1,262 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{% set current_page = view.getCurrentPage() %}
+{% set type = "recipe" %}
+{% set elem_categ = "" %}
+{% set rows_count = rows|length %}
+
+{% if view.title == 'NotFound'%}
+    {% include directory ~ '/templates/custom/recipe_filter_block.html.twig' %}
+    {% include directory ~ '/templates/custom/notfound.html.twig' %}
+    
+{% else %}  
+    
+{% for row in rows %}
+
+     
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set nid = row.content["#row"]._entity.nid.getValue().0.value %}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+    
+    {#  RECIPE  category  #}
+    {# get category id and search the category name #}
+    {% set elem_categ = "" %}
+    {% set categ_arr = row.content["#row"]._entity.field_recipe_category.getValue() %} {# get all categories id #}
+    {% set categ_str = "" %}
+    {% for categ_item in categ_arr %}
+        
+        
+        {% set categ = categ_item.target_id %}
+        {# foreach category search the name and concat to show on the view #}
+        {% for key,item in categ_id %}
+            {% if item == categ %}
+                {% if elem_categ == "" %}
+                    {% set elem_categ = categ_name[key] %}
+                {% else %}
+                    {% set elem_categ = elem_categ ~ ", " ~ categ_name[key] %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+            
+    {% endfor %}
+    
+    {#  BRANDS category  #}
+    {# get category id and search the category name #}
+    {% set categ_arr = row.content["#row"]._entity.field_recipe_brands_category.getValue() %} {# get all categories id #}
+    {% set categ_str = "" %}
+    {% for categ_item in categ_arr %}
+            
+        {% set categ = categ_item.target_id %}
+        {# foreach category search the name and concat to show on the view #}
+        {% for key,item in categ_brand_id %}
+            {% if item == categ %}
+                {% if elem_categ == "" %}
+                    {% set elem_categ = categ_brand_name[key] %}
+                {% else %}
+                    {% set elem_categ = elem_categ ~ ", " ~ categ_brand_name[key] %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+            
+    {% endfor %}
+    
+    {#  OCCASIONS category  #}
+    {# get category id and search the category name #}
+    {% set categ_arr = row.content["#row"]._entity.field_recipe_occasions_category.getValue() %} {# get all categories id #}
+    {% set categ_str = "" %}
+    {% for categ_item in categ_arr %}
+            
+        {% set categ = categ_item.target_id %}
+        {# foreach category search the name and concat to show on the view #}
+        {% for key,item in categ_occasions_id %}
+            {% if item == categ %}
+                {% if elem_categ == "" %}
+                    {% set elem_categ = categ_occasions_name[key] %}
+                {% else %}
+                    {% set elem_categ = elem_categ ~ ", " ~ categ_occasions_name[key] %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+            
+    {% endfor %}
+    
+   
+ 
+    {% set img = file_url(row.content["#row"]._entity.field_recipe_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.field_recipe_image.getValue().0.alt %}
+    {% set video = row.content["#row"]._entity.field_recipe_video.getValue().0.value %}
+    
+    {% if video is not empty %}
+        {% set video_class = "video" %}
+    {% else %}
+        {% set video_class = "" %}
+    {% endif %}
+
+    {# use different template if there is the 1st page#}
+    {% if current_page == 0 %}
+        
+        {% set trackingpage = "recipes" %}
+        {% set trackinglang = language %}
+        {% include directory ~ '/templates/custom/doubleclick_tag.html.twig' %}
+                       {% if loop.index == 1 %}
+                           
+                           <!-- block left -->
+                             {% include directory ~ '/templates/custom/recipe_filter_block.html.twig' %}       
+                        
+                        <!-- block right -->
+                        <div id="topRight" class="size-1x1huge landing-categories-topRight-wrapper">
+                            <div class="clearfix">
+                                    <!-- block 1 -->
+                                    <div id="topFeatured">
+                                       
+                                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                                    </div>
+                                    <!--  promotion -->
+                                    <div id="topPromotion" class="size-1x1" onclick="promotionClickTracking(this);">
+                                        <div class="boxinside grid">
+                                            {{ drupal_view('home_page_image_content', 'page_promotion') }}
+                                        </div>
+                                    </div> 
+                            </div>
+                            {% if rows_count == 1%}   
+                                </div> <!-- /block right -->  
+                             {% endif %}  
+                        {% elseif loop.index == 2 %}            
+                                    <!-- block 2 -->
+                                    <div id="topSnacktivity">
+                                    {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+                                    </div>
+
+
+                        </div> <!-- /block right -->  
+                            
+                        {% elseif loop.index == 3 %} 
+         
+                        <!-- block left -->
+                            <div class="block">
+                                    <!-- block 1 : ADVERTISEMENT -->
+                                    <div class="box size-1x1">
+                                        <div class="boxinside" style="background-color:#eeeeee">
+                                            <p>{{ drupal_view('advertisement', 'page_bigbox') }}</p>
+                                        </div>
+                                    </div>   
+                                 
+                                    <!-- block 1 -->
+                                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                                {% if rows_count == 3%}   
+                                    </div> <!-- /block right -->  
+                                 {% endif %}      
+                        {% elseif loop.index == 4 %}
+                                    <!-- block 2 -->
+                                   {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+                                   </div><!-- /block left --> 
+
+                            
+                        {% elseif loop.index == 5 %}
+                            <!-- block right -->
+                            <div class="block">
+                                    <!-- block 4 -->
+                                    {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+                            {% if rows_count == 5%}   
+                                    </div> <!-- /block right -->  
+                            {% endif %}
+                        {% elseif loop.index == 6 %}   
+                                    <!-- coupon block  -->
+                                    {{ drupal_view('coupon_block', 'page_2') }} {# template: views-view-unformatted--coupon_block--page_2.html.twig #}   
+                                    <!-- block 6 -->
+                                    {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+
+                            </div> <!-- /block right -->  
+
+                        {% endif %}
+        
+    {% else %}    
+        
+        
+            {% if rows_count == 3 %}
+                    {% if loop.index == 1 %}
+                    <!-- block left -->
+                    <div class="block">
+  
+                                <!-- block 1 -->
+                                {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                                       
+                    {% elseif loop.index == 2 %}
+                                <!-- block 2 -->
+                               {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                               
+                    </div><!-- /block left --> 
+                    
+                    {% elseif loop.index == 3 %}
+                        <!-- block right -->
+                        <div class="block">
+                                <!-- block 4 -->
+                                {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+
+
+                        </div> <!-- /block right -->  
+
+                    {% endif %}
+                    
+            {% else %}
+
+                    {% if loop.index == 1 %}
+                    <!-- block left -->
+                    <div class="block">
+  
+                                <!-- block 1 -->
+                                {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+                                       
+                    {% elseif loop.index == 2 %}
+                                <!-- block 2 -->
+                               {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+                    {% elseif loop.index == 3 %}        
+                                <!-- block 3 -->
+                                {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+
+                        </div><!-- /block left --> 
+                    {% elseif loop.index == 4 %}
+                        <!-- block right -->
+                        <div class="block">
+                                <!-- block 4 -->
+                                {% include directory ~ '/templates/custom/block2x1.html.twig' %}
+
+                    {% elseif loop.index == 5 %}            
+                                <!-- block 5 -->
+                                {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+                    {% elseif loop.index == 6 %}        
+                                <!-- block 6 -->
+                                {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+
+                        </div> <!-- /block right -->  
+
+                    {% endif %}
+            {% endif %}        
+    {% endif %} 
+
+{% endfor %}
+
+{% endif %}

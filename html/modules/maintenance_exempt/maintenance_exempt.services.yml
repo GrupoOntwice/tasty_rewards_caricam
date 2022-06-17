@@ -1,0 +1,4 @@
+services:
+  maintenance_mode:
+    class: Drupal\maintenance_exempt\MaintenanceModeExempt
+    arguments: ['@state', '@request_stack']

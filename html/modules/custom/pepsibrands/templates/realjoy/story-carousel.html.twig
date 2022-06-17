@@ -1,0 +1,57 @@
+<div id="lays-story-carousel" class="custom-slick-arrow container">
+    {% for idx, story in data.stories %}
+        <div class="products-carousel-slide">
+            <div class="lays-featured-story-img-col lays-featured-prod-img-col-{{ idx }}">
+                <div class="lays-featured-story-border-col">
+                    <img class="img-responsive" src='{{story.image_url}}' alt="#LaysJoyStory">
+{#                    {{story.body|raw}}#}
+                </div>
+{#                <div class="lays-hastag-story">#}
+{#                    <img src="https://tastyrewards-stage.pepext.com/themes/brandstheme/src/images/lays/lays-logo.png" alt="lays logo" class="img-responsive">#}
+{#                    <p>#LaysJoyStory</p>#}
+{#                </div>#}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+{#<div id="quaker-featured-products-carousel" class="carousel slide" data-ride="carousel">#}
+{#    <div class="carousel-inner container">#}
+{#        <h3> {{"Stories that made us smile"|t}}</h3>#}
+
+{#        <ol class="carousel-indicators quaker-carousel-indicators">#}
+{#            {% for idx, product in featured_products %}#}
+{#                <li data-target="#quaker-featured-products-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>#}
+{#            {% endfor %}#}
+{#        </ol>#}
+
+{#        {% for idx, story in data.stories %}#}
+{#            <div class="row item carousel-item {{ idx==0 ? 'active' :'' }}">#}
+{#                <div class="lays-featured-story-img-col lays-featured-prod-img-col-{{ idx }}">#}
+{#                    <div class="lays-featured-story-border-col">#}
+{#                        <img class='' src='{{story.image_url}}' >#}
+{#                        {{story.body|raw}}#}
+{#                    </div>#}
+
+{#                    <div class="lays-hastag-story">#}
+{#                        <img src="/themes/brandstheme/src/images/lays/lays-logo.png?v=1" alt="lays logo">#}
+{#                        <p>#LaysJoyStory</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+
+{#    <a class="carousel-control-prev" href="#quaker-featured-products-carousel" role="button" data-slide="prev">#}
+{#        <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#    </a>#}
+{#    <a class="carousel-control-next" href="#quaker-featured-products-carousel" role="button" data-slide="next">#}
+{#        <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#    </a>#}
+
+{#</div>#}

@@ -1,0 +1,13 @@
+
+spookysnacklabLibrary:
+  css:
+    theme:
+      css/spookysnacklab.css: {}
+  js:
+    js/spookysnacklab.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+

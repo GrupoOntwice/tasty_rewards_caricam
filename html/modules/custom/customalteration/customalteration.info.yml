@@ -1,0 +1,7 @@
+name: Custom Alterations
+description: Include the custom alterations and alter in forms and blocks.
+# core: 8.x
+core_version_requirement: ^8.8 || ^9
+type: module
+dependencies:
+  - drupal:persistent_login

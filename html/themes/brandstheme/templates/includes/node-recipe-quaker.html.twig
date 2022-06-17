@@ -1,0 +1,506 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{% set order = node.field_order.value %}
+{% set serving = node.field_portion.value|raw %}
+{% set recipe_type = node.field_recipe_filter.value|raw %}
+
+{{ attach_library('brandstheme/quaker') }}
+{{ attach_library('brandstheme/recipe_script') }}
+{# <section id="banner" class="quaker-banner-nocarousel" style="background-image:url({{nodeimgurl}});padding:150px;"> #}
+{# #}{# <div class="quaker-banner-nocarousel-overlay"></div> #}
+{# <h1>{{subtitle}}</h1> #}
+{# </section> #}
+
+<section id="header-top" class="single-recipe-header-top" style="background-image:url({{ nodeimgurl }})">
+
+  <!-- SCHEMA.ORG -->
+  <meta itemprop="image" content="{{ nodeimgurl }}">
+  <meta itemprop="author" content="quaker.ca">
+  <meta itemprop="recipeCuisine" content="Canadian">
+  <meta itemprop="keywords" content="">
+</section>
+
+<section class="quaker-navigation-recipesdetails noMobile-md">
+  <div class="container-fluid padding-none">
+
+    <div class="row">
+
+      <div class="col-6">
+        {% if prev_recipe|length %}
+          <div class="prev-recipe">
+            <a href="{{ prev_recipe.link }}">
+              <div class="quaker-prev-recipe-img" style="background: url('{{ prev_recipe.image_url }}') center center no-repeat, transparent"></div>
+              <span class="quaker-navigation-recipe-arrow-prev">&#8249;</span> {{ 'Previous Recipe'|t }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col-6">
+        {% if next_recipe|length %}
+          <div class="next-recipe">
+            <a href="{{ next_recipe.link }}">
+              {{ 'Next Recipe'|t }} <span class="quaker-navigation-recipe-arrow-next">&#8250;</span>
+              <div class="quaker-next-recipe-img" style="background: url('{{ next_recipe.image_url }}') center center no-repeat, transparent"></div>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="quaker-top-banner-recipe-detail">
+  <img class="w-100" src="{{ nodeimgurl }}" alt="Quaker Recipes Banner">
+</section>
+
+
+<section class="quaker-navigation-recipesdetails-mbl noDesktop-md">
+  <div class="container padding-none">
+
+    <div class="row">
+
+      <div class="col-6">
+        {% if prev_recipe|length %}
+          <div class="prev-recipe-mbl">
+            <a href="{{ prev_recipe.link }}">
+              <i class="fa fa-angle-left"></i>
+              <span class="quaker-navigation-recipe-mbl-copy">{{ 'Previous Recipe'|t }}</span>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col-6">
+        {% if next_recipe|length %}
+          <div class="next-recipe-mbl">
+            <a href="{{ next_recipe.link }}">
+              <span class="quaker-navigation-recipe-mbl-copy">{{ 'Next Recipe'|t }}</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="quaker-recipe-detail-section">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-12 quaker-recipe-quick-info-block">
+
+        <div class="row center-align-grid-mbl">
+          <div class="col-md-4 quaker-recipe-type-col">
+
+            <div class="quaker-recipe-type noMobile-md">
+              <p>{{ 'Type'|t }}</p>
+            </div>
+
+            <div class="quaker-recipe-type-name noMobile-md">
+            {% if recipe_type %} 
+              <p>{{ recipe_type|t }}</p>
+            {% endif %}
+            </div>
+
+            {% if recipe_type == "Brunch" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-brunch-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% elseif recipe_type == "Breakfast" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-breakfast-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% elseif recipe_type == "Meal" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-meal-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% elseif recipe_type == "Snacks" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-snacks-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% elseif recipe_type == "Desserts" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-desserts-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% elseif recipe_type == "Baking" %}
+              <div class="quaker-recipe-type-icon">
+                <img class="w-recipe-type-icon" src="/themes/brandstheme/src/images/quaker/recipes-baking-icon.svg" alt="Quaker Recipe Print">
+              </div>
+            {% else %}
+
+            {% endif %}
+
+            <div class="quaker-recipe-type noDesktop-md">
+              <p>{{ 'Type'|t }}</p>
+            </div>
+
+            <div class="quaker-recipe-type-name noDesktop-md">
+              {% if recipe_type %} 
+                <p>{{ recipe_type|t }}</p>
+              {% endif %}
+            </div>
+
+
+          </div>
+
+          <div class="col-md-4 quaker-recipe-print-col">
+
+            <div class="center-align">
+              <div class="quaker-recipe-print">
+                <p>{{ 'Print'|t }}</p>
+              </div>
+
+              <div class="quaker-recipe-print-icon">
+                <a class="quaker-recipe-print-btn" onclick="window.print()" tabindex="0">
+                  <img class="w-recipe-print-icon" src="/themes/brandstheme/src/images/quaker/quaker-print-icon.svg" alt="Quaker Recipe Print">
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-md-4 quaker-recipe-detail-rating-col">
+
+            <img class="w-recipe-rating-icon" src="/themes/brandstheme/src/images/quaker/quaker-rating-star-icon.svg" alt="Quaker Recipe Print">
+
+            <p>{{ 'Rating'|t }}</p>
+
+            {% set rating = avg_rating %}
+
+            <div class="quaker-stars recipe-stars" data-nid="{{ nid }}">
+              {% for i in 1..5 %}
+                <span {% if i <= rating %}class="checked"{% endif %} data-star="{{ i }}"></span>
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 text-center quaker-recipe-detail-heading">
+        <h1>
+          {{ subtitle|raw }}
+        </h1>
+      </div>
+
+      <div class="col-md-12 hr-quaker-recipe noMobile-md">
+        <hr>
+      </div>
+
+      <div class="col-md-12 center-align-md-dsk quaker-recipe-cooking-info center-align-grid-mbl">
+
+        {% if prep_time is not empty %}
+          <div class="col-md-4 quaker-recipe-prep-time">
+
+            <div class="center-align">
+              <img class="w-prep-time-icon" src="/themes/brandstheme/src/images/quaker/quaker-prep-time-icon.svg" alt="Quaker Recipe Prep Time">
+
+              <p>
+                <strong>
+                  {{ 'Prep Time'|t }}:
+                </strong>
+              </p>
+
+              <p>
+                <time datetime="PT20M" itemprop="prepTime">{{ prep_time }}</time>
+              </p>
+            </div>
+
+          </div>
+        {% endif %}
+
+        {% if cook_time is not empty %}
+          <div class="col-md-4 center-align quaker-recipe-cook-time">
+
+            <div class="center-align">
+              <img class="w-cook-time-icon" src="/themes/brandstheme/src/images/quaker/quaker-cook-time-icon.svg" alt="Quaker Recipe Cook Time">
+
+              <p>
+                <strong>
+                  {{ 'Cook Time'|t }}:
+                </strong>
+              </p>
+
+              <p>
+                <time datetime="PT20M" itemprop="cookTime">{{ cook_time }}</time>
+              </p>
+            </div>
+
+          </div>
+        {% endif %}
+
+        {% if serving is not empty %}
+          <div class="col-md-4 quaker-recipe-servings">
+
+            <div class="center-align">
+              <img class="w-serving-icons" src="/themes/brandstheme/src/images/quaker/quaker-servings-icon.svg" alt="Quaker Recipe Servings">
+
+              <p>
+                <strong>
+                  {{ 'Servings'|t }}:
+                </strong>
+              </p>
+
+              <p class="quaker-serve-copy">
+                <time datetime="PT20M" itemprop="Servings">{{ serving }}</time>
+              </p>
+            </div>
+
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="recipe" class="quaker-recipe-details-main-block">
+
+  <div class="container quaker-recipe-details-main-container">
+    <div class="row">
+
+      {% if node.body.0.value|striptags is not empty %}
+        <div class="col-md-12 quaker-recipe-detail-subtitle">
+          <p class="">
+            {{ node.body.0.value | raw }}
+          </p>
+        </div>
+      {% endif %}
+
+      <div class="col-md-4 col-lg-3 quaker-recipe-ingredients-col">
+
+        <div class="quaker-recipe-info-ingredients">
+
+          <div class="quaker-recipe-ingredients-heading">
+            <h3>{{ 'Ingredients'|t }} </h3>
+          </div>
+
+          {# <ul> #}
+          {# #}{# Example how list should be #}
+          {# <li class="quaker-recipe-list"> #}
+          {# <span class="quaker-recipe-label">1/4 cup</span> #}
+          {# <span class="quaker-recipe-text">Unsweetened shredded coconut</span> #}
+          {# </li> #}
+          {# </ul> #}
+
+          {{ ingredients|raw }}
+        </div>
+
+
+      </div>
+
+
+      <div class="col-md-8 col-lg-9 quaker-recipe-how-to-make-block">
+
+        {# {% if video|length %} #}
+        {% if video_key|length %}
+          {# 
+          <div class="quaker-video-box">
+            <div class="quaker-video-iframe-container">
+              <iframe allowfullscreen frameborder="0" src="{{ video }}"></iframe>
+            </div>
+          </div>
+           #}
+
+                <div class="quaker-video-box">
+                    <div class="quaker-video-preimg">
+                        <a href="#" data-key="{{video_key}}" class="activate-video" aria-label="video">
+                          <img src="https://img.youtube.com/vi/{{video_key}}/maxresdefault.jpg" alt=" quaker video"/>
+                        </a>
+                    </div>
+                </div>
+
+
+        {% endif %}
+
+        <div class="quaker-recipe-how-to-make-details">
+          <h3>{{ 'How to make it'|t }}</h3>
+
+          {{ how_to_make|raw }}
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="quaker-recipe-pattern-dsk">
+      <img class="w-50" src="/themes/brandstheme/src/images/quaker/product-detail-pattern.png" alt="product detail pattern">
+    </div>
+
+  </div>
+
+  <div class="quaker-recipe-pattern-mbl">
+    <img class="w-75" src="/themes/brandstheme/src/images/quaker/quaker-recipe-pattern-mbl.png" alt="product detail pattern">
+  </div>
+
+</section>
+
+{% if related_products is not empty %}
+  <section class="quaker-related-product-block">
+
+    <div id="quaker-carousel-Related-Products" class="carousel slide container" data-ride="carousel" data-interval="false">
+
+      <ol class="carousel-indicators quaker-carousel-indicators">
+        {% for idx, product in related_products %}
+          <li data-target="#quaker-carousel-Related-Products" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+        {% endfor %}
+      </ol>
+
+      <div class="carousel-inner row">
+        {% for idx, product in related_products %}
+          <div class="carousel-item col-md-12 {{ idx==0 ? 'active' :'' }}">
+
+            <div class="row center-align-md-dsk">
+
+              <div class="col-md-1 noMobile"></div>
+
+              <div class="col-md-6 col-lg-5 quaker-related-prod-img-col">
+
+                <div class="quaker-related-prod-img-div">
+
+                  <div class="quaker-related-prod-img">
+                    <a class="center-align" href="{{ product.link }}">
+                      <img class="w-" src="{{ product.image_url }}" alt="Quaker Related Product">
+                    </a>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-6 col-lg-5 quaker-related-product-copy">
+
+                <h4> {{ 'Related Products'|t }} </h4>
+
+                <a href="{{ product.link }}" hreflang="en">
+                  <h3 class="recipe-related-product-title">
+                    {{ product.title|raw }}
+                  </h3>
+                </a>
+
+                <div class="quaker-btn">
+                  <a class="btn_quaker" href="{{ product.link }}">{{ 'View Product'|t }}</a>
+                </div>
+
+              </div>
+
+              <div class="col-md-1 noMobile"></div>
+
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+      <a class="carousel-control-prev" href="#quaker-carousel-Related-Products" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#quaker-carousel-Related-Products" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+
+  </section>
+
+{% endif %}
+
+<section id="our-recipes" class="quaker-recipes-block">
+
+  <div class="quaker-featured-recipes-bg-left">
+    <img class="" src="/themes/brandstheme/src/images/quaker/quaker-featured-recipes-bg-left.png" alt="Quaker Recipes block background">
+  </div>
+
+  {% include '@brandstheme/includes/featured/featured-recipes-quaker.html.twig' %}
+
+  <div class="quaker-featured-recipes-bg-right">
+    <img class="" src="/themes/brandstheme/src/images/quaker/quaker-featured-recipes-bg-right.png" alt="Quaker Recipes block background">
+  </div>
+
+</section>
+
+<section id="coupon" class="quaker-coupon-block">
+  {{ coupon_block|t|raw }}
+</section>

@@ -1,0 +1,2039 @@
+@font-face {
+  font-family: "Brothers";
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Brothers-Bold.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Brothers-Bold.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/Brothers-Bold.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/Brothers-Bold.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/Brothers-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Semibold.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Semibold.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Semibold.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Semibold.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Bold.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Bold.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Bold.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Bold.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Regular.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Regular.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Regular.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Regular.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'Panton';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Bold.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Bold.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Bold.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Bold.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'Panton';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Black.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Black.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Black.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Black.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'Panton';
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-ExtraBold.eot");
+  src: url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-ExtraBold.eot?#iefix") format("embedded-opentype"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-ExtraBold.woff2") format("woff2"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-ExtraBold.woff") format("woff"), url("/themes/tastytheme/src/fonts/contest-cheetos/Panton-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap; }
+
+@media (min-width: 769px) {
+  .cheetos-hide-desktop {
+    display: none !important; } }
+
+@media (max-width: 768px) {
+  .cheetos-hide-mobile {
+    display: none !important; } }
+
+section.cheetos {
+  overflow: hidden; }
+
+.cheetos h1, .cheetos h3 {
+  font-family: 'Brothers', sans-serif;
+  font-weight: 700;
+  line-height: 1; }
+
+.cheetos h1 sup {
+  top: -1.5vw; }
+  @media (max-width: 768px) {
+    .cheetos h1 sup {
+      top: -3vw; } }
+
+.cheetos p {
+  font-family: 'Panton', sans-serif;
+  font-weight: 700; }
+
+.cheetos .coupon-container {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/coupon-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 80%; }
+  .cheetos .coupon-container span {
+    display: inline-block;
+    color: #0075BF; }
+
+.cheetos input, .cheetos select {
+  font-family: 'OpenSans', sans-serif;
+  font-weight: 600;
+  color: #000000;
+  border: 1px solid #C5C5C5;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 10px;
+  padding: 12px 8px;
+  outline: none;
+  color: #000000; }
+
+.cheetos select {
+  display: block;
+  width: 100%;
+  border: 1px solid #C5C5C5 !important;
+  background-color: #ffffff;
+  opacity: 1;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  height: auto; }
+
+.cheetos .checkbox-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex; }
+
+.cheetos ::-webkit-input-placeholder {
+  /* Edge */
+  color: #000000; }
+
+.cheetos :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #000000; }
+
+.cheetos ::-moz-placeholder {
+  color: #000000; }
+
+.cheetos ::-ms-input-placeholder {
+  color: #000000; }
+
+.cheetos ::placeholder {
+  color: #000000; }
+
+.star-before:before {
+  content: "\2605";
+  color: #CE171E; }
+  @media (max-width: 768px) {
+    .star-before:before {
+      content: none; } }
+
+.star-after:after {
+  content: "\2605";
+  color: #CE171E; }
+  @media (max-width: 768px) {
+    .star-after:after {
+      content: none; } }
+
+.star-title-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%; }
+  .star-title-container:before, .star-title-container:after {
+    font-size: 3.5vw;
+    margin-right: 0.5vw;
+    margin-left: 0.5vw; }
+
+.img-container img {
+  width: 100%; }
+
+@media (min-width: 769px) {
+  .cheetos-hide-desktop {
+    display: none !important; } }
+
+@media (max-width: 768px) {
+  .cheetos-hide-mobile {
+    display: none !important; } }
+
+html:lang(en) .cheetos-hide-fr {
+  display: none !important; }
+
+html:lang(fr) .cheetos-hide-en {
+  display: none !important; }
+
+.cheetos-btn {
+  display: inline-block;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  min-width: 150px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: 'Brothers', sans-serif;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  font-size: 20px; }
+  .cheetos-btn:focus {
+    color: #ffffff !important; }
+  .cheetos-btn:not(:last-of-type) {
+    margin-right: 10px; }
+  .cheetos-btn:hover {
+    text-decoration: none; }
+  .cheetos-btn-red {
+    background-color: #F30522 !important;
+    border: 2px solid #F30522 !important; }
+    .cheetos-btn-red:not([disabled]):hover {
+      background-color: #ffffff !important;
+      color: #F30522 !important; }
+  .cheetos-btn-orange {
+    background-color: #F36A10 !important;
+    border: 2px solid #F36A10 !important; }
+    .cheetos-btn-orange:not([disabled]):hover {
+      background-color: #ffffff !important;
+      color: #F36A10 !important; }
+  .cheetos-btn-fullwidth {
+    margin-right: 0;
+    width: 100%; }
+
+.cheetos .carnival-boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  @media (max-width: 768px) {
+    .cheetos .carnival-boxes {
+      display: block; } }
+
+.cheetos .carnival-box {
+  max-width: 31%;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s; }
+  .cheetos .carnival-box:first-of-type {
+    margin-right: 2%; }
+  .cheetos .carnival-box:last-of-type {
+    margin-left: 2%; }
+  .cheetos .carnival-box img {
+    width: 100%; }
+  @media (min-width: 993px) {
+    .cheetos .carnival-box:hover {
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1); } }
+  @media (max-width: 992px) {
+    .cheetos .carnival-box {
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1); } }
+  @media (max-width: 768px) {
+    .cheetos .carnival-box {
+      max-width: 300px;
+      margin: 0 auto 40px; } }
+  @media (max-width: 768px) {
+    .cheetos .carnival-box {
+      max-width: 500px;
+      width: 80%; }
+      .cheetos .carnival-box:first-of-type, .cheetos .carnival-box:last-of-type {
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer; } }
+
+.cheetos.popup-main-wrapper.popup-contest:not(.hidden) ~ section.cheetos,
+section.cheetos.noprovince {
+  -webkit-filter: blur(8px);
+  filter: blur(8px); }
+
+section.cheetos.noprovince .cheetos-roc,
+section.cheetos.noprovince .cheetos-qc {
+  display: none; }
+
+#cheetos-prize-claim-popup-form p.popup-title {
+  color: #0075BF !important; }
+
+#cheetos-prize-claim-popup-form p.popup-title, #cheetos-prize-claim-popup-form button.submit {
+  font-family: 'Brothers', sans-serif !important;
+  font-weight: 700 !important; }
+
+#cheetos-prize-claim-popup-form p.popup-subtitle {
+  font-family: 'OpenSans', sans-serif !important;
+  font-weight: 600; }
+
+.select-custom-arrow-container {
+  position: relative; }
+  .select-custom-arrow-container:after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    -ms-transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
+    height: 7px;
+    width: 7px;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black; }
+
+/* **************** */
+/* DISCLAIMER START */
+/* **************** */
+.cheetos-disclaimer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.875em;
+  max-width: 1200px;
+  margin: 0 auto; }
+  .cheetos-disclaimer sup {
+    font-size: 12px;
+    top: -7px; }
+  .cheetos-disclaimer-controls {
+    margin-top: 20px; }
+    .cheetos-disclaimer-controls a {
+      min-width: 220px; }
+    @media (max-width: 540px) {
+      .cheetos-disclaimer-controls {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -js-display: flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .cheetos-disclaimer-controls a {
+          margin: 0 auto 10px !important; } }
+
+/* ************** */
+/* DISCLAIMER END */
+/* ************** */
+/* ******************** */
+/* GENERAL BANNER START */
+/* ******************** */
+.cheetos-banner {
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .cheetos-banner-content {
+    width: 80%;
+    padding: 20px 20px 0;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    color: #ffffff;
+    line-height: 1.3; }
+    .cheetos-banner-content h1 {
+      font-size: 4em;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-transform: uppercase; }
+    .cheetos-banner-content h3.cheetos-banner-subtitle {
+      font-family: 'Panton', sans-serif;
+      font-weight: 700;
+      font-size: 2em;
+      margin-bottom: 10px; }
+      @media (max-width: 768px) {
+        .cheetos-banner-content h3.cheetos-banner-subtitle {
+          font-size: 1.25em; } }
+    .cheetos-banner-content p {
+      font-size: 1.5em;
+      color: #ffffff; }
+
+.cheetos-bottom-border {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -3vw;
+  min-width: 1179px; }
+
+/* ****************** */
+/* GENERAL BANNER END */
+/* ****************** */
+/* ********* */
+/* FAQ START */
+/* ********* */
+html:lang(fr) #cheetos-faq .cheetos-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-fr.png"); }
+  @media (max-width: 768px) {
+    html:lang(fr) #cheetos-faq .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-mobile-fr.png"); } }
+
+#cheetos-faq .cheetos-banner {
+  background-color: #FD9F08;
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2.png");
+  background-size: cover;
+  background-position: top;
+  min-height: 38vw; }
+  #cheetos-faq .cheetos-banner h1 {
+    font-family: 'Brothers', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 30px; }
+    @media (max-width: 992px) {
+      #cheetos-faq .cheetos-banner h1 {
+        font-size: 3em; } }
+  #cheetos-faq .cheetos-banner p {
+    font-family: 'Panton', sans-serif;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #ffffff; }
+  #cheetos-faq .cheetos-banner-content {
+    display: block;
+    text-shadow: 0px 5px 20px #000000;
+    max-width: 45vw;
+    margin: 10vw auto 10vw 5vw; }
+  @media (max-width: 768px) {
+    #cheetos-faq .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-mobile.png");
+      min-height: 170vw;
+      display: block; }
+      #cheetos-faq .cheetos-banner-content {
+        width: 100%;
+        max-width: 95vw;
+        display: block;
+        margin: 0 auto; }
+      #cheetos-faq .cheetos-banner h1 {
+        max-width: 100%;
+        text-align: center;
+        margin-top: 35vw;
+        font-size: 10vw; }
+      #cheetos-faq .cheetos-banner p {
+        text-align: center;
+        font-size: 3.5vw; } }
+
+#cheetos-faq .cheetos-faq-back {
+  color: #000000; }
+  #cheetos-faq .cheetos-faq-back a {
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer; }
+    #cheetos-faq .cheetos-faq-back a:hover {
+      text-decoration: underline; }
+
+#cheetos-faq .cheetos-faq-container {
+  position: relative;
+  margin-bottom: 4vw;
+  background-color: #FD9F08; }
+
+#cheetos-faq .cheetos-faq-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative; }
+  #cheetos-faq .cheetos-faq-body p, #cheetos-faq .cheetos-faq-body li {
+    font-family: 'OpenSans', sans-serif; }
+
+#cheetos-faq .faq-questions-container {
+  padding: 20px; }
+
+#cheetos-faq .faq-question {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 20px 35px 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E89107;
+  position: relative;
+  font-weight: 600; }
+  #cheetos-faq .faq-question.active:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  #cheetos-faq .faq-question:after {
+    content: "";
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    height: 0;
+    padding: 4px;
+    position: absolute;
+    right: 15px;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+    margin-left: 30px; }
+
+#cheetos-faq .faq-answer {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  display: none;
+  font-weight: 400; }
+  #cheetos-faq .faq-answer li {
+    margin-bottom: 10px; }
+
+/* ******* */
+/* FAQ END */
+/* ******* */
+/* ***************** */
+/* COMING SOON START */
+/* ***************** */
+#cheetos-coming-soon .coming-soon-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-banner.png");
+  background-position: top center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  min-height: 49vw;
+  position: relative;
+  z-index: 2; }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .coming-soon-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-banner-background-mobile.png");
+      min-height: 180vw; } }
+  @media (max-width: 540px) {
+    #cheetos-coming-soon .coming-soon-banner {
+      min-height: 188vw; } }
+
+#cheetos-coming-soon .star-row {
+  width: 90%;
+  font-size: 2.3vw;
+  max-width: 30.4vw;
+  position: absolute;
+  left: 53vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #F6DB4E; }
+  #cheetos-coming-soon .star-row-top {
+    top: 8.9vw; }
+  #cheetos-coming-soon .star-row-bottom {
+    top: 22.5vw; }
+  @media (max-width: 992px) {
+    #cheetos-coming-soon .star-row {
+      max-width: 29.4vw; } }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .star-row {
+      font-size: 7vw;
+      max-width: 72vw;
+      left: 13vw; }
+      #cheetos-coming-soon .star-row-top {
+        top: 89vw; }
+      #cheetos-coming-soon .star-row-bottom {
+        top: 119vw; } }
+  @media (max-width: 540px) {
+    #cheetos-coming-soon .star-row-top {
+      top: 89vw; }
+    #cheetos-coming-soon .star-row-bottom {
+      top: 119vw; } }
+
+#cheetos-coming-soon .coming-soon-timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  top: 12.6vw;
+  left: 50.6vw;
+  width: 34vw; }
+  @media (max-width: 992px) {
+    #cheetos-coming-soon .coming-soon-timer {
+      top: 12.8vw; } }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .coming-soon-timer {
+      left: 9.7vw;
+      top: 98.2vw;
+      width: 79.4vw; } }
+
+#cheetos-coming-soon .time-segment {
+  padding: 1vw;
+  width: 25%; }
+
+#cheetos-coming-soon .time-digit, #cheetos-coming-soon .time-label {
+  text-align: center;
+  display: block;
+  font-weight: bold; }
+
+#cheetos-coming-soon .time-digit {
+  color: #0075BF;
+  font-size: 5.6vw;
+  font-family: 'Panton', sans-serif;
+  font-weight: 900; }
+  @media (max-width: 992px) {
+    #cheetos-coming-soon .time-digit {
+      font-size: 5.3vw; } }
+
+#cheetos-coming-soon .time-label {
+  text-transform: uppercase;
+  color: #F36A10;
+  font-size: 1.5vw;
+  font-family: 'Panton', sans-serif;
+  font-weight: 700; }
+
+@media (max-width: 768px) {
+  #cheetos-coming-soon .time-digit {
+    font-size: 13vw; }
+  #cheetos-coming-soon .time-label {
+    font-size: 3.5vw; } }
+
+#cheetos-coming-soon .coming-soon-description {
+  position: absolute;
+  top: 28vw;
+  left: 52vw;
+  width: 33vw; }
+  #cheetos-coming-soon .coming-soon-description img {
+    width: 100%; }
+  #cheetos-coming-soon .coming-soon-description p {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #0075BF;
+    padding: 1vw; }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .coming-soon-description {
+      top: 150vw;
+      left: 6vw;
+      width: 88vw; }
+      #cheetos-coming-soon .coming-soon-description p {
+        padding: 2vw; } }
+  #cheetos-coming-soon .coming-soon-description .coming-soon-small {
+    display: block;
+    font-size: 1.2vw; }
+  #cheetos-coming-soon .coming-soon-description .coming-soon-medium {
+    display: block;
+    font-size: 1.68vw; }
+  #cheetos-coming-soon .coming-soon-description .coming-soon-big {
+    display: block;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2vw; }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .coming-soon-description .coming-soon-small {
+      font-size: 3.2vw; }
+    #cheetos-coming-soon .coming-soon-description .coming-soon-medium {
+      font-size: 4.5vw; }
+    #cheetos-coming-soon .coming-soon-description .coming-soon-big {
+      font-size: 5.4vw;
+      margin-top: 2px; } }
+
+#cheetos-coming-soon .coming-soon-body {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-body-background-revised.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  top: -5vw;
+  margin-bottom: -3vw;
+  z-index: 1;
+  padding-bottom: 200px; }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon .coming-soon-body {
+      background-size: auto 150%;
+      padding-top: 15vw; } }
+
+#cheetos-coming-soon .coming-soon-red-banner {
+  position: relative;
+  margin-bottom: 4%; }
+  #cheetos-coming-soon .coming-soon-red-banner img {
+    display: block;
+    max-width: 50vw;
+    margin: 0 auto; }
+  #cheetos-coming-soon .coming-soon-red-banner h1 {
+    color: #ffffff;
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 3vw;
+    top: 6vw;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  #cheetos-coming-soon .coming-soon-red-banner-header h1 {
+    left: 12.5vw;
+    top: 118.4vw;
+    font-size: 6vw;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none; }
+    @media (max-width: 540px) {
+      #cheetos-coming-soon .coming-soon-red-banner-header h1 {
+        top: 118.2vw; } }
+
+#cheetos-coming-soon .star-title-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%; }
+  #cheetos-coming-soon .star-title-container:before, #cheetos-coming-soon .star-title-container:after {
+    font-size: 3.5vw;
+    margin-right: 0.5vw;
+    margin-left: 0.5vw; }
+
+#cheetos-coming-soon h2 {
+  font-family: 'Brothers', sans-serif;
+  color: #0075BF;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-bottom: 40px; }
+  @media (max-width: 768px) {
+    #cheetos-coming-soon h2 {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 8.5vw; } }
+
+.test-boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .test-boxes .img-container {
+    margin-bottom: 10%; }
+
+.test-box {
+  width: 31%;
+  position: relative; }
+  .test-box > img {
+    width: 100%; }
+
+.test-content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 80%; }
+  .test-content img {
+    max-width: 70%; }
+  .test-content h3 {
+    color: #0075BF;
+    font-size: 2.5em; }
+    .test-content h3.smaller {
+      font-size: 2em; }
+  .test-content p {
+    color: #F36A10;
+    font-size: 0.875em; }
+
+.test-text {
+  margin-bottom: 10%; }
+
+.box-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.cbox {
+  width: 31%; }
+  .cbox:first-of-type {
+    margin-right: 2%; }
+  .cbox:last-of-type {
+    margin-left: 2%; }
+  .cbox img {
+    width: 100%; }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-banner-fr-revised.png"); }
+  @media (max-width: 768px) {
+    html:lang(fr) #cheetos-coming-soon .coming-soon-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-banner-background-mobile-fr.png"); } }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-description p {
+  padding: 1.3vw 1vw; }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-small {
+  display: block;
+  font-size: 1vw; }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-medium {
+  display: block;
+  font-size: 1.68vw; }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-big {
+  display: block;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.75vw; }
+
+@media (max-width: 768px) {
+  html:lang(fr) #cheetos-coming-soon .coming-soon-description p {
+    padding: 3vw 1vw; }
+  html:lang(fr) #cheetos-coming-soon .coming-soon-small {
+    font-size: 2.7vw; }
+  html:lang(fr) #cheetos-coming-soon .coming-soon-medium {
+    font-size: 4.5vw; }
+  html:lang(fr) #cheetos-coming-soon .coming-soon-big {
+    font-size: 4.7vw;
+    margin-top: 2px; } }
+
+html:lang(fr) #cheetos-coming-soon .coming-soon-red-banner-header h1 {
+  left: 18.7vw; }
+
+/* *************** */
+/* COMING SOON END */
+/* *************** */
+/* **************** */
+/* SKILL TEST START */
+/* **************** */
+#cheetos-skilltest {
+  position: relative;
+  overflow: hidden; }
+  #cheetos-skilltest .game-background {
+    background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-top: 280px;
+    padding-bottom: 12vw;
+    margin-bottom: 60px;
+    position: relative; }
+    @media (min-width: 1920px) {
+      #cheetos-skilltest .game-background {
+        padding-top: 13vw; } }
+    #cheetos-skilltest .game-background h1, #cheetos-skilltest .game-background p {
+      color: #ffffff; }
+    #cheetos-skilltest .game-background .cheetos-bottom-border {
+      bottom: -58px; }
+    @media (max-width: 768px) {
+      #cheetos-skilltest .game-background {
+        background-size: auto 880px;
+        padding-bottom: 0;
+        padding-top: 140px; }
+        #cheetos-skilltest .game-background .container {
+          width: 100%;
+          max-width: 100%; } }
+  #cheetos-skilltest .cheetos-skilltest-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    color: #ffffff; }
+    @media (max-width: 992px) {
+      #cheetos-skilltest .cheetos-skilltest-container {
+        display: block; } }
+  #cheetos-skilltest .cheetos-skilltest-content {
+    width: 50%;
+    padding: 20px; }
+    #cheetos-skilltest .cheetos-skilltest-content h1 {
+      font-size: 2.25em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      text-shadow: 0px 5px 10px #000000; }
+    #cheetos-skilltest .cheetos-skilltest-content p {
+      text-shadow: 0px 5px 10px #000000;
+      margin-bottom: 20px; }
+  #cheetos-skilltest .cheetos-skilltest-form-container {
+    width: 50%;
+    padding: 20px; }
+    @media (max-width: 768px) {
+      #cheetos-skilltest .cheetos-skilltest-form-container {
+        background-color: #F36A10; } }
+  @media (max-width: 992px) {
+    #cheetos-skilltest .cheetos-skilltest-content, #cheetos-skilltest .cheetos-skilltest-form-container {
+      width: 100%; }
+    #cheetos-skilltest .cheetos-skilltest-form {
+      padding: 20px; }
+    #cheetos-skilltest .cheetos-skilltest-content {
+      margin-bottom: 20px; }
+      #cheetos-skilltest .cheetos-skilltest-content h1, #cheetos-skilltest .cheetos-skilltest-content h2 {
+        text-align: center; }
+    #cheetos-skilltest .cheetos-skilltest-controls {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 100%; } }
+  @media (max-width: 768px) {
+    #cheetos-skilltest .cheetos-skilltest-form {
+      background-color: #ffffff; }
+    #cheetos-skilltest .cheetos-skilltest-content p {
+      font-size: 16px; }
+    #cheetos-skilltest .cheetos-skilltest-controls {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      #cheetos-skilltest .cheetos-skilltest-controls .cheetos-btn {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 10px; } }
+  #cheetos-skilltest .cheetos-skilltest-time {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    color: #F30522;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 0 auto 10px;
+    max-width: 500px; }
+    #cheetos-skilltest .cheetos-skilltest-time span {
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 600; }
+    #cheetos-skilltest .cheetos-skilltest-time-label {
+      display: inline-block;
+      margin-right: 10px; }
+    @media (max-width: 768px) {
+      #cheetos-skilltest .cheetos-skilltest-time {
+        max-width: 100%;
+        width: 100%;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center; } }
+  #cheetos-skilltest .cheetos-skilltest-question-container {
+    max-width: 500px;
+    margin: 0 auto; }
+    #cheetos-skilltest .cheetos-skilltest-question-container p {
+      margin-bottom: 5px; }
+    @media (max-width: 768px) {
+      #cheetos-skilltest .cheetos-skilltest-question-container p {
+        color: #000000; } }
+  #cheetos-skilltest .cheetos-skilltest-result {
+    margin-top: 20px; }
+    #cheetos-skilltest .cheetos-skilltest-result-title {
+      font-family: 'OpenSans';
+      font-weight: 700; }
+  #cheetos-skilltest .cheetos-skilltest-address {
+    max-width: 500px;
+    margin: 20px auto; }
+    #cheetos-skilltest .cheetos-skilltest-address p {
+      margin-bottom: 10px; }
+      @media (max-width: 768px) {
+        #cheetos-skilltest .cheetos-skilltest-address p {
+          color: #000000; } }
+    #cheetos-skilltest .cheetos-skilltest-address .input-1col input {
+      width: 100%; }
+    #cheetos-skilltest .cheetos-skilltest-address .input-2col {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      #cheetos-skilltest .cheetos-skilltest-address .input-2col > div {
+        width: 49%;
+        margin-bottom: 6px; }
+      #cheetos-skilltest .cheetos-skilltest-address .input-2col select, #cheetos-skilltest .cheetos-skilltest-address .input-2col input {
+        width: 100%;
+        margin-bottom: 3px;
+        height: auto;
+        padding-top: 12px; }
+    #cheetos-skilltest .cheetos-skilltest-address input[type=submit] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      width: 100%;
+      color: #ffffff;
+      font-family: 'Brothers', sans-serif;
+      font-weight: 700; }
+    #cheetos-skilltest .cheetos-skilltest-address select {
+      height: auto !important; }
+    #cheetos-skilltest .cheetos-skilltest-address #postalcode {
+      padding-top: 12px !important; }
+    #cheetos-skilltest .cheetos-skilltest-address span.help-block {
+      color: #F30522 !important; }
+    #cheetos-skilltest .cheetos-skilltest-address .select-custom-arrow-container:after {
+      top: 20px;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg); }
+  #cheetos-skilltest-answer, #cheetos-skilltest #challenge {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 8px;
+    outline: none; }
+  #cheetos-skilltest .cheetos-btn.js-challenge-submit {
+    margin-top: 1rem; }
+
+#cheetos-skilltest-question {
+  display: none; }
+
+#cheetos-skilltest-address-section {
+  display: none; }
+
+html:lang(fr) #cheetos-skilltest .game-background {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background-fr.png"); }
+
+/* ************** */
+/* SKILL TEST END */
+/* ************** */
+/* ******************* */
+/* CONTEST RULES START */
+/* ******************* */
+#cheetos-contestrules {
+  margin-bottom: 6vw;
+  counter-reset: contestSection; }
+  #cheetos-contestrules .cheetos-banner {
+    background-color: #FD9F08;
+    background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2.png");
+    background-size: cover;
+    background-position: top;
+    min-height: 38vw; }
+    #cheetos-contestrules .cheetos-banner h1 {
+      font-family: 'Brothers', sans-serif;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-top: 30px;
+      max-width: 50%; }
+      @media (max-width: 992px) {
+        #cheetos-contestrules .cheetos-banner h1 {
+          font-size: 3em; } }
+    @media (max-width: 768px) {
+      #cheetos-contestrules .cheetos-banner {
+        background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-mobile.png");
+        min-height: 170vw;
+        display: block; }
+        #cheetos-contestrules .cheetos-banner-content {
+          width: 100%;
+          display: block; }
+        #cheetos-contestrules .cheetos-banner h1 {
+          max-width: 100%;
+          text-align: center;
+          margin-top: 50vw;
+          font-size: 10vw; } }
+  #cheetos-contestrules .cheetos-contestrules-back {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; }
+    #cheetos-contestrules .cheetos-contestrules-back a {
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer; }
+      #cheetos-contestrules .cheetos-contestrules-back a:hover {
+        text-decoration: underline; }
+  #cheetos-contestrules .cheetos-contestrules-body {
+    position: relative;
+    padding: 20px;
+    background-color: #FD9F08;
+    margin-bottom: 3vw; }
+    #cheetos-contestrules .cheetos-contestrules-body h2 {
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 20px; }
+    #cheetos-contestrules .cheetos-contestrules-body a, #cheetos-contestrules .cheetos-contestrules-body p, #cheetos-contestrules .cheetos-contestrules-body li, #cheetos-contestrules .cheetos-contestrules-body td {
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 400;
+      font-size: 1.125em; }
+    #cheetos-contestrules .cheetos-contestrules-body li > ul > li, #cheetos-contestrules .cheetos-contestrules-body li > ul > li > p, #cheetos-contestrules .cheetos-contestrules-body li > p {
+      font-size: 1em; }
+  #cheetos-contestrules .cheetos-contestrules-text-container {
+    padding-bottom: 5vw; }
+  #cheetos-contestrules .cheetos-contestrules-text {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; }
+    #cheetos-contestrules .cheetos-contestrules-text p {
+      padding-bottom: 20px; }
+    #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-body-header {
+      font-size: 2em;
+      margin-top: 40px; }
+    #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table {
+      margin: 20px 25% 40px; }
+      #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table table, #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table th, #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table td {
+        border: 1px solid black;
+        padding: 3px;
+        font-family: 'OpenSans', sans-serif; }
+      #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table th {
+        font-weight: 700; }
+      #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table td {
+        font-weight: 400; }
+      @media (max-width: 992px) {
+        #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table {
+          margin: 20px;
+          max-width: 600px; } }
+      @media (max-width: 768px) {
+        #cheetos-contestrules .cheetos-contestrules-text .cheetos-contestrules-howtoenter-table {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          -js-display: flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          width: 100%;
+          margin: 20px auto;
+          max-width: 100%; } }
+    #cheetos-contestrules .cheetos-contestrules-text a {
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer; }
+      #cheetos-contestrules .cheetos-contestrules-text a:hover {
+        text-decoration: underline; }
+  #cheetos-contestrules .cheetos-contestrules-list {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; }
+    #cheetos-contestrules .cheetos-contestrules-list ul {
+      list-style: disc;
+      margin-bottom: 20px; }
+    #cheetos-contestrules .cheetos-contestrules-list li {
+      margin-left: 45px; }
+      #cheetos-contestrules .cheetos-contestrules-list li p {
+        margin-bottom: 20px; }
+  #cheetos-contestrules .cheetos-contestrules-section {
+    position: relative;
+    padding-left: 30px; }
+    #cheetos-contestrules .cheetos-contestrules-section:before {
+      position: absolute;
+      counter-increment: contestSection;
+      content: counter(contestSection) ".";
+      top: 0;
+      left: 0; }
+  #cheetos-contestrules .custom-roman-lower {
+    counter-reset: romanSection;
+    list-style: none; }
+    #cheetos-contestrules .custom-roman-lower > li {
+      position: relative;
+      list-style: none;
+      margin-left: 40px !important;
+      margin-bottom: 20px;
+      line-height: 1.3; }
+      #cheetos-contestrules .custom-roman-lower > li:before {
+        position: absolute;
+        counter-increment: romanSection;
+        content: "(" counter(romanSection, lower-roman) ")";
+        left: -25px;
+        top: 0px; }
+  #cheetos-contestrules .custom-alpha-lower {
+    counter-reset: alphaSection;
+    list-style: none; }
+    #cheetos-contestrules .custom-alpha-lower > li {
+      position: relative;
+      list-style: none;
+      margin-left: 40px !important;
+      margin-bottom: 20px;
+      line-height: 1.3; }
+      #cheetos-contestrules .custom-alpha-lower > li:before {
+        position: absolute;
+        counter-increment: alphaSection;
+        content: "(" counter(alphaSection, lower-alpha) ")";
+        left: -25px;
+        top: 0px; }
+  @media (max-width: 768px) {
+    #cheetos-contestrules .cheetos-contestrules-back, #cheetos-contestrules .cheetos-contestrules-text, #cheetos-contestrules .cheetos-contestrules-list {
+      width: 100%; }
+    #cheetos-contestrules .cheetos-contestrules-list li {
+      margin-left: 20px; }
+    #cheetos-contestrules .cheetos-bottom-border {
+      bottom: -5vw; }
+    #cheetos-contestrules .cheetos-disclaimer {
+      margin-top: 5vw; } }
+
+html:lang(fr) #cheetos-contestrules .cheetos-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-fr.png"); }
+  @media (max-width: 768px) {
+    html:lang(fr) #cheetos-contestrules .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-2-mobile-fr.png"); } }
+
+/* ******************* */
+/*  CONTEST RULES END  */
+/* ******************* */
+/* ******************* */
+/* ENTRY/LANDING START */
+/* ******************* */
+#cheetos-entry .cheetos-banner, #cheetos-landing .cheetos-banner {
+  min-height: 47vw;
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-entry.png");
+  position: relative;
+  z-index: 2; }
+  #cheetos-entry .cheetos-banner .cheetos-banner-subtitle, #cheetos-landing .cheetos-banner .cheetos-banner-subtitle {
+    text-transform: uppercase; }
+  @media (max-width: 768px) {
+    #cheetos-entry .cheetos-banner, #cheetos-landing .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner-mobile-revised.png");
+      background-repeat: no-repeat;
+      background-size: 100%; } }
+  @media (max-width: 540px) {
+    #cheetos-entry .cheetos-banner, #cheetos-landing .cheetos-banner {
+      background-size: 100%; } }
+  #cheetos-entry .cheetos-banner-content, #cheetos-landing .cheetos-banner-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 230px auto 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    #cheetos-entry .cheetos-banner-content h1, #cheetos-landing .cheetos-banner-content h1 {
+      font-size: 3em; }
+    #cheetos-entry .cheetos-banner-content p, #cheetos-landing .cheetos-banner-content p {
+      font-size: 1.25em;
+      margin-bottom: 10px; }
+    #cheetos-entry .cheetos-banner-content .cheetos-btn, #cheetos-landing .cheetos-banner-content .cheetos-btn {
+      margin-bottom: 10px; }
+    @media (max-width: 1240px) {
+      #cheetos-entry .cheetos-banner-content, #cheetos-landing .cheetos-banner-content {
+        margin: 180px auto 0; } }
+    @media (max-width: 992px) {
+      #cheetos-entry .cheetos-banner-content, #cheetos-landing .cheetos-banner-content {
+        display: block;
+        margin: 10vw auto 0; } }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner-content, #cheetos-landing .cheetos-banner-content {
+        width: 100%;
+        padding: 0;
+        margin-top: 0; } }
+  #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+    max-width: 500px;
+    width: 100%;
+    margin: 5vw 5vw 5vw 2vw; }
+    #cheetos-entry .cheetos-banner-text h1, #cheetos-entry .cheetos-banner-text p, #cheetos-landing .cheetos-banner-text h1, #cheetos-landing .cheetos-banner-text p {
+      color: #ffffff;
+      text-shadow: 0px 5px 20px #000000; }
+    @media (max-width: 1400px) {
+      #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+        max-width: 400px; } }
+    @media (max-width: 1240px) {
+      #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+        max-width: 400px; }
+        #cheetos-entry .cheetos-banner-text h1, #cheetos-landing .cheetos-banner-text h1 {
+          font-size: 2em; }
+        #cheetos-entry .cheetos-banner-text h3.cheetos-banner-subtitle, #cheetos-landing .cheetos-banner-text h3.cheetos-banner-subtitle {
+          font-size: 1.5em; }
+        #cheetos-entry .cheetos-banner-text p, #cheetos-landing .cheetos-banner-text p {
+          font-size: 1em; } }
+    @media (max-width: 992px) {
+      #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-top: 230px; } }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+        margin-top: 38vw;
+        padding: 0 10px;
+        max-width: 500px; } }
+    @media (max-width: 540px) {
+      #cheetos-entry .cheetos-banner-text, #cheetos-landing .cheetos-banner-text {
+        margin-bottom: 37vw; } }
+  #cheetos-entry .cheetos-banner .cheetos-entry-form, #cheetos-landing .cheetos-banner .cheetos-entry-form {
+    min-width: 515px;
+    width: 515px;
+    height: 604px;
+    padding: 46px;
+    margin-left: 5vw;
+    margin-right: 2vw;
+    margin-bottom: 1vw;
+    background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-entry-form-background.png");
+    background-size: 100%;
+    background-repeat: no-repeat; }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun {
+        text-align: center; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun p, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun p {
+          text-align: center; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun .cheetos-btn, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-form-playforfun .cheetos-btn {
+          width: 100%; } }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form form, #cheetos-landing .cheetos-banner .cheetos-entry-form form {
+      width: 100%;
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 5px; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form p, #cheetos-landing .cheetos-banner .cheetos-entry-form p {
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 3px;
+      margin-top: 2px;
+      color: #000000;
+      font-size: 12px; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .input-1col input, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-1col input {
+      width: 100%; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .input-2col, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-2col {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .input-2col > div, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-2col > div {
+        width: 48%; }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .input-2col input, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-2col input {
+        width: 100%; }
+      @media (max-width: 540px) {
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .input-2col, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-2col {
+          display: block; }
+          #cheetos-entry .cheetos-banner .cheetos-entry-form .input-2col > div, #cheetos-landing .cheetos-banner .cheetos-entry-form .input-2col > div {
+            width: 100%; } }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .help-block, #cheetos-landing .cheetos-banner .cheetos-entry-form .help-block {
+      margin: 0 0 3px; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container {
+      color: #000000;
+      font-size: 0.625em;
+      display: block;
+      position: relative;
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 600;
+      padding-left: 20px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container .checkmark, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 15px;
+        width: 15px;
+        border-radius: 3px;
+        border: 2px solid #F30522;
+        cursor: pointer; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container .checkmark:after, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 3px;
+          top: 0px;
+          width: 5px;
+          height: 9px;
+          border: solid #F30522;
+          border-width: 0 2px 2px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container input, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0; }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container input:checked ~ .checkmark:after, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container input:checked ~ .checkmark:after {
+        display: block; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form input, #cheetos-entry .cheetos-banner .cheetos-entry-form select, #cheetos-landing .cheetos-banner .cheetos-entry-form input, #cheetos-landing .cheetos-banner .cheetos-entry-form select {
+      padding: 10px 6px;
+      margin-bottom: 6px;
+      font-size: 0.75em; }
+      #cheetos-entry .cheetos-banner .cheetos-entry-form input[type=submit], #cheetos-entry .cheetos-banner .cheetos-entry-form select[type=submit], #cheetos-landing .cheetos-banner .cheetos-entry-form input[type=submit], #cheetos-landing .cheetos-banner .cheetos-entry-form select[type=submit] {
+        margin-top: 4px; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form input[type=button].cheetos-btn.js-submit-contest,
+    #cheetos-entry .cheetos-banner .cheetos-entry-form input[type=submit].cheetos-btn, #cheetos-landing .cheetos-banner .cheetos-entry-form input[type=submit].cheetos-btn {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      width: 100%;
+      border-radius: 0;
+      color: #ffffff;
+      font-family: 'Brothers', sans-serif;
+      font-weight: 700;
+      font-size: 1.125em !important; }
+    @media (max-width: 1240px) and (min-width: 993px) {
+      #cheetos-entry .cheetos-banner .cheetos-entry-form, #cheetos-landing .cheetos-banner .cheetos-entry-form {
+        min-width: 0;
+        width: 378px;
+        height: 443px;
+        padding: 32px; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form p:first-of-type, #cheetos-landing .cheetos-banner .cheetos-entry-form p:first-of-type {
+          font-size: 10px; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form input, #cheetos-entry .cheetos-banner .cheetos-entry-form select, #cheetos-landing .cheetos-banner .cheetos-entry-form input, #cheetos-landing .cheetos-banner .cheetos-entry-form select {
+          font-size: 0.6em !important;
+          padding: 6px;
+          margin-bottom: 2px; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .checkbox-container, #cheetos-landing .cheetos-banner .cheetos-entry-form .checkbox-container {
+          font-size: 0.5em; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form span.help-block, #cheetos-landing .cheetos-banner .cheetos-entry-form span.help-block {
+          font-size: 10px;
+          margin: 0 0 2px; } }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile {
+      display: none; }
+    #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-entry-form-mobile-background, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-entry-form-mobile-background {
+      height: 100%; }
+    @media (max-width: 992px) {
+      #cheetos-entry .cheetos-banner .cheetos-entry-form, #cheetos-landing .cheetos-banner .cheetos-entry-form {
+        margin: 150px auto 3vw;
+        position: relative;
+        z-index: 2; } }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner .cheetos-entry-form, #cheetos-landing .cheetos-banner .cheetos-entry-form {
+        margin: 150px auto 0vw;
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        background-image: none;
+        padding: 0; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-entry-form-mobile-background, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-entry-form-mobile-background {
+          background-color: #F36A10;
+          padding: 20px;
+          position: relative;
+          z-index: 2; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile {
+          display: block;
+          z-index: 1;
+          bottom: auto;
+          width: 370px;
+          max-width: 370px;
+          top: -200px;
+          position: absolute;
+          left: 45%;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+          pointer-events: none; }
+          #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile img, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-banner-chester-mobile img {
+            width: 100%; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form form, #cheetos-landing .cheetos-banner .cheetos-entry-form form {
+          background-color: #ffffff;
+          padding: 20px; }
+        #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-btn-red, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-btn-red {
+          background-color: #F36A10 !important;
+          border-color: #F36A10 !important; }
+          #cheetos-entry .cheetos-banner .cheetos-entry-form .cheetos-btn-red:hover, #cheetos-landing .cheetos-banner .cheetos-entry-form .cheetos-btn-red:hover {
+            border-color: #F36A10 !important;
+            background-color: #ffffff !important;
+            color: #F36A10 !important; } }
+    @media (max-width: 540px) {
+      #cheetos-entry .cheetos-banner .cheetos-entry-form, #cheetos-landing .cheetos-banner .cheetos-entry-form {
+        margin: 47vw ​auto 0vw; } }
+  #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translateX(-55%);
+    -ms-transform: translateX(-55%);
+    transform: translateX(-55%);
+    z-index: 2;
+    max-width: 40vw;
+    pointer-events: none; }
+    #cheetos-entry .cheetos-banner-chester img, #cheetos-landing .cheetos-banner-chester img {
+      width: 100%; }
+    @media (min-width: 1600px) {
+      #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+        max-width: 640px; } }
+    @media (max-width: 1400px) and (min-width: 1241px) {
+      #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+        max-width: 47vw;
+        left: 43%; } }
+    @media (max-width: 1240px) {
+      #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+        display: none; } }
+    @media (max-width: 992px) {
+      #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+        display: block;
+        z-index: 1;
+        bottom: 500px;
+        width: 300px;
+        max-width: 300px; } }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner-chester, #cheetos-landing .cheetos-banner-chester {
+        display: none; } }
+  #cheetos-entry .cheetos-banner .cheetos-bottom-border, #cheetos-landing .cheetos-banner .cheetos-bottom-border {
+    z-index: 3;
+    bottom: -4.9vw; }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-banner .cheetos-bottom-border, #cheetos-landing .cheetos-banner .cheetos-bottom-border {
+        bottom: -58px; } }
+
+#cheetos-entry .cheetos-entry-body, #cheetos-landing .cheetos-entry-body {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-body-background-revised.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 200px;
+  padding-top: 6vw;
+  margin-bottom: 3vw; }
+  @media (max-width: 1920px) {
+    #cheetos-entry .cheetos-entry-body, #cheetos-landing .cheetos-entry-body {
+      background-size: auto 150%; } }
+  @media (max-width: 768px) {
+    #cheetos-entry .cheetos-entry-body, #cheetos-landing .cheetos-entry-body {
+      padding-top: 15vw; } }
+
+#cheetos-entry .cheetos-entry-row, #cheetos-landing .cheetos-entry-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px; }
+  #cheetos-entry .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-row-text {
+    width: 48%;
+    margin-right: 2%;
+    padding: 20px; }
+    #cheetos-entry .cheetos-entry-row-text h2, #cheetos-landing .cheetos-entry-row-text h2 {
+      color: #0075BF;
+      font-size: 3.2em;
+      font-family: 'Brothers', sans-serif;
+      font-weight: 700;
+      margin-bottom: 5px;
+      line-height: 1; }
+      @media (max-width: 992px) {
+        #cheetos-entry .cheetos-entry-row-text h2, #cheetos-landing .cheetos-entry-row-text h2 {
+          font-size: 2.8em !important; } }
+    #cheetos-entry .cheetos-entry-row-text p, #cheetos-landing .cheetos-entry-row-text p {
+      color: #000000;
+      margin-bottom: 20px; }
+    #cheetos-entry .cheetos-entry-row-text-disclaimer, #cheetos-landing .cheetos-entry-row-text-disclaimer {
+      font-size: 0.8em; }
+    #cheetos-entry .cheetos-entry-row-text .cheetos-btn, #cheetos-landing .cheetos-entry-row-text .cheetos-btn {
+      min-width: 180px; }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-row-text {
+        padding: 20px 0; }
+        #cheetos-entry .cheetos-entry-row-text .cheetos-btn, #cheetos-landing .cheetos-entry-row-text .cheetos-btn {
+          width: 80%; } }
+  #cheetos-entry .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-row-image {
+    width: 48%;
+    margin-left: 2%; }
+    #cheetos-entry .cheetos-entry-row-image img, #cheetos-landing .cheetos-entry-row-image img {
+      width: 100%; }
+  @media (max-width: 768px) {
+    #cheetos-entry .cheetos-entry-row, #cheetos-landing .cheetos-entry-row {
+      display: block;
+      padding: 0 20px; }
+      #cheetos-entry .cheetos-entry-row-first, #cheetos-landing .cheetos-entry-row-first {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -js-display: flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse; }
+      #cheetos-entry .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-row-text {
+        text-align: center; }
+      #cheetos-entry .cheetos-entry-row-text, #cheetos-entry .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-row-image {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto; }
+      #cheetos-entry .cheetos-entry-row.image-right, #cheetos-landing .cheetos-entry-row.image-right {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -js-display: flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse; } }
+
+#cheetos-entry .cheetos-entry-findupc, #cheetos-landing .cheetos-entry-findupc {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-ticket-transparent.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 1140px;
+  height: 435px; }
+  #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto; }
+    #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-image, #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-text {
+      width: 50%;
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start; }
+    #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-image {
+      margin-left: 0;
+      position: relative;
+      top: 3px;
+      left: 3px; }
+    @media (max-width: 1140px) {
+      #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-image {
+        top: 2px; } }
+    @media (max-width: 768px) {
+      #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row {
+        padding: 0; }
+        #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-image, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-image {
+          width: 100%;
+          height: auto;
+          display: block;
+          padding: 20px 20px 0 0; }
+        #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-text, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-text {
+          width: 100%;
+          height: auto;
+          display: block; }
+          #cheetos-entry .cheetos-entry-findupc .cheetos-entry-row-text h2, #cheetos-landing .cheetos-entry-findupc .cheetos-entry-row-text h2 {
+            font-size: 2.25em !important; } }
+  @media (max-width: 1140px) {
+    #cheetos-entry .cheetos-entry-findupc, #cheetos-landing .cheetos-entry-findupc {
+      width: 960px;
+      height: 366px; } }
+  @media (max-width: 992px) {
+    #cheetos-entry .cheetos-entry-findupc, #cheetos-landing .cheetos-entry-findupc {
+      width: 720px;
+      height: 275px; } }
+  @media (max-width: 768px) {
+    #cheetos-entry .cheetos-entry-findupc, #cheetos-landing .cheetos-entry-findupc {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-ticket-transparent-vertical.png");
+      width: 290px;
+      height: 514px;
+      margin-bottom: 50px; } }
+
+html:lang(fr) #cheetos-entry .cheetos-banner, html:lang(fr) #cheetos-landing .cheetos-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-banner-entry-fr.png"); }
+  @media (max-width: 768px) {
+    html:lang(fr) #cheetos-entry .cheetos-banner, html:lang(fr) #cheetos-landing .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner-mobile-fr-revised.png"); } }
+
+/* ***************** */
+/* ENTRY/LANDING END */
+/* ***************** */
+/* ************* */
+/* AGEGATE START */
+/* ************* */
+#cheetos-agegate .agegate-languageswitcher {
+  font-size: 0.875em;
+  color: #F30522;
+  text-decoration: underline;
+  position: absolute;
+  top: -5px;
+  right: -3px; }
+  @media (max-width: 768px) {
+    #cheetos-agegate .agegate-languageswitcher {
+      top: -7px;
+      right: -5px; } }
+
+#cheetos-agegate .modal {
+  width: 477px;
+  padding: 0 !important;
+  height: auto !important;
+  background-color: transparent; }
+  #cheetos-agegate .modal-container {
+    width: 100%;
+    border: 20px solid transparent;
+    border-image-source: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-agegate-border-v2.png");
+    border-image-slice: 50;
+    border-image-repeat: repeat;
+    z-index: 2;
+    position: relative;
+    background-color: #ffffff; }
+    @media (max-width: 768px) {
+      #cheetos-agegate .modal-container {
+        border-width: 20px;
+        border-image-source: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-agegate-border-mobile.png");
+        border-image-slice: 20; } }
+  #cheetos-agegate .modal-carnival-arrow {
+    position: absolute;
+    width: 713px;
+    bottom: -181px;
+    left: -132px;
+    z-index: 1;
+    pointer-events: none; }
+  #cheetos-agegate .modal-chester {
+    position: absolute;
+    width: 550px;
+    top: -260px;
+    left: -60px;
+    z-index: 1; }
+  #cheetos-agegate .modal .cheetos-modal-content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px 0; }
+  #cheetos-agegate .modal form {
+    width: 0;
+    height: 0;
+    visibility: hidden; }
+  @media (max-width: 992px) {
+    #cheetos-agegate .modal-chester {
+      width: 400px;
+      top: -205px;
+      left: 10px; } }
+  @media (max-width: 768px) {
+    #cheetos-agegate .modal {
+      max-width: 400px;
+      width: 94% !important;
+      margin: 0 auto; }
+      #cheetos-agegate .modal-carnival-arrow {
+        display: none; }
+      #cheetos-agegate .modal-chester {
+        left: 50%;
+        -webkit-transform: translateX(-55%);
+        -ms-transform: translateX(-55%);
+        transform: translateX(-55%); } }
+  @media (max-width: 540px) {
+    #cheetos-agegate .modal-chester {
+      width: 280px;
+      top: -130px; } }
+
+#cheetos-agegate h2 {
+  font-family: 'Brothers', sans-serif;
+  font-weight: 700;
+  color: #0075BF;
+  font-size: 2.5em !important;
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1 !important; }
+  @media (max-width: 992px) {
+    #cheetos-agegate h2 {
+      font-size: 2em; } }
+
+#cheetos-agegate p {
+  text-align: center;
+  margin-bottom: 10px; }
+
+#cheetos-agegate button {
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 100%;
+  font-size: 1.25em; }
+
+#cheetos-agegate .dob-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  #cheetos-agegate .dob-select-container {
+    width: 31%;
+    position: relative; }
+    #cheetos-agegate .dob-select-container:after {
+      content: "";
+      position: absolute;
+      top: 40%;
+      right: 10px;
+      -webkit-transform: translateY(-50%) rotate(45deg);
+      -ms-transform: translateY(-50%) rotate(45deg);
+      transform: translateY(-50%) rotate(45deg);
+      height: 7px;
+      width: 7px;
+      border-bottom: 2px solid black;
+      border-right: 2px solid black; }
+  #cheetos-agegate .dob-select select {
+    width: 100%;
+    padding-right: 25px; }
+  @media (max-width: 768px) {
+    #cheetos-agegate .dob-select {
+      display: block; }
+      #cheetos-agegate .dob-select-container {
+        width: 100%; } }
+
+#cheetos-agegate .cheetos-agegate-mobile-bottom {
+  width: 100%; }
+  #cheetos-agegate .cheetos-agegate-mobile-bottom img {
+    width: 100%; }
+
+#cheetos-agegate.underage .dob-select-container:after, #cheetos-agegate.underage .select-custom-arrow-container:after {
+  content: none !important;
+  display: none !important; }
+
+#cheetos-agegate.underage p.js-age-gate-hide, #cheetos-agegate.underage .dob-select, #cheetos-agegate.underage .select-custom-arrow-container {
+  display: none; }
+
+#cheetos-agegate input, #cheetos-agegate select {
+  line-height: 1.2; }
+
+html:lang(fr) #cheetos-agegate p {
+  font-size: 16px; }
+
+/* *********** */
+/* AGEGATE END */
+/* *********** */
+/* ************** */
+/* POSTGAME START */
+/* ************** */
+#cheetos-postgame .cheetos-banner {
+  min-height: 47vw;
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background.png");
+  background-size: cover;
+  background-position: top;
+  position: relative; }
+  @media (max-width: 768px) {
+    #cheetos-postgame .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background-mobile.png"); } }
+  #cheetos-postgame .cheetos-banner.cheetos-postgame-winner-banner {
+    background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner.png"); }
+    @media (max-width: 768px) {
+      #cheetos-postgame .cheetos-banner.cheetos-postgame-winner-banner {
+        background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner-mobile-revised.png"); } }
+  #cheetos-postgame .cheetos-banner p {
+    font-family: 'Panton', sans-serif;
+    font-weight: 700; }
+  #cheetos-postgame .cheetos-banner-content {
+    width: 90%;
+    margin: 12vw auto 0;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    @media (max-width: 992px) {
+      #cheetos-postgame .cheetos-banner-content {
+        margin: 20vw auto 0; } }
+    @media (max-width: 768px) {
+      #cheetos-postgame .cheetos-banner-content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 20px 0 0; } }
+  #cheetos-postgame .cheetos-banner-text {
+    max-width: 500px;
+    width: 50%;
+    color: #ffffff;
+    margin-bottom: 5vw;
+    margin-top: 2vw; }
+    #cheetos-postgame .cheetos-banner-text h1 {
+      font-size: 3em;
+      margin-bottom: 2px; }
+    #cheetos-postgame .cheetos-banner-text p {
+      font-size: 1.125em;
+      margin-bottom: 30px; }
+    @media (max-width: 992px) {
+      #cheetos-postgame .cheetos-banner-text h1 {
+        font-size: 2em; }
+      #cheetos-postgame .cheetos-banner-text p {
+        font-size: 1em; } }
+    @media (max-width: 768px) {
+      #cheetos-postgame .cheetos-banner-text {
+        text-align: center;
+        width: 100%;
+        max-width: 350px;
+        margin-top: 16vw;
+        margin-bottom: 0; } }
+  @media (max-width: 768px) {
+    #cheetos-postgame .cheetos-banner .cheetos-postgame-winner .cheetos-banner-chester {
+      position: relative;
+      left: 0;
+      width: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      #cheetos-postgame .cheetos-banner .cheetos-postgame-winner .cheetos-banner-chester .cheetos-btn {
+        width: 100%;
+        max-width: 380px; }
+      #cheetos-postgame .cheetos-banner .cheetos-postgame-winner .cheetos-banner-chester img {
+        position: relative;
+        left: 23px; } }
+  @media (max-width: 768px) {
+    #cheetos-postgame .cheetos-banner .cheetos-postgame-nonwinner .cheetos-banner-chester {
+      left: 5vw; } }
+  #cheetos-postgame .cheetos-banner-chester {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    left: 50%;
+    bottom: 0;
+    width: 50%; }
+    #cheetos-postgame .cheetos-banner-chester img {
+      width: 100%; }
+    @media (max-width: 768px) {
+      #cheetos-postgame .cheetos-banner-chester {
+        position: relative;
+        width: 100%; } }
+  #cheetos-postgame .cheetos-banner .cheetos-break-paragraph {
+    max-width: 500px;
+    width: 100%;
+    color: #ffffff; }
+    @media (max-width: 768px) {
+      #cheetos-postgame .cheetos-banner .cheetos-break-paragraph {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -js-display: flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-left: 25vw;
+        margin-right: 25vw;
+        text-align: center;
+        padding-bottom: 50px; }
+        #cheetos-postgame .cheetos-banner .cheetos-break-paragraph p {
+          margin-top: 5%;
+          font-size: 1em; } }
+
+#cheetos-postgame .cheetos-postgame-body {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-body-background.png");
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  padding-bottom: 9vw; }
+  #cheetos-postgame .cheetos-postgame-body-topbanner img {
+    width: 100%; }
+  #cheetos-postgame .cheetos-postgame-body-text {
+    margin-bottom: 3vw;
+    margin-top: 3vw; }
+    #cheetos-postgame .cheetos-postgame-body-text h2 {
+      font-family: 'Brothers', sans-serif;
+      color: #0075BF;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 3.5vw; }
+      #cheetos-postgame .cheetos-postgame-body-text h2:before, #cheetos-postgame .cheetos-postgame-body-text h2:after {
+        position: relative;
+        top: -1vw; }
+      @media (max-width: 768px) {
+        #cheetos-postgame .cheetos-postgame-body-text h2 {
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          font-size: 3em;
+          margin-top: 30px;
+          margin-bottom: 30px; } }
+      @media (max-width: 540px) {
+        #cheetos-postgame .cheetos-postgame-body-text h2 {
+          font-size: 2em; } }
+  @media (max-width: 768px) {
+    #cheetos-postgame .cheetos-postgame-body {
+      padding-bottom: 20vw; } }
+
+#cheetos-postgame.cheetos-thankyou .cheetos-banner-text h1 {
+  margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+  #cheetos-postgame.cheetos-thankyou .cheetos-banner-chester {
+    left: 0; } }
+
+html:lang(fr) #cheetos-postgame .cheetos-banner {
+  background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background-fr.png"); }
+  @media (max-width: 768px) {
+    html:lang(fr) #cheetos-postgame .cheetos-banner {
+      background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-game-background-mobile-fr.png"); } }
+  html:lang(fr) #cheetos-postgame .cheetos-banner.cheetos-postgame-winner-banner {
+    background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner-fr.png"); }
+    @media (max-width: 768px) {
+      html:lang(fr) #cheetos-postgame .cheetos-banner.cheetos-postgame-winner-banner {
+        background-image: url("/themes/tastytheme/src/images/contest-cheetos/final-cheetos-background-winner-mobile-fr-revised.png"); } }
+
+/* ************ */
+/* POSTGAME END */
+/* ************ */

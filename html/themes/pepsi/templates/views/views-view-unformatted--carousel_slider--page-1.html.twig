@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'item',
+    ]
+  %}
+  <div class="item">
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+
+    <ol class="carousel-indicators">
+        {% for row in rows %}
+        <li data-target="#topCarousel" data-slide-to="{{loop.index-1}}" class="{% if loop.index-1 == 0 %}active{% endif %}"></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+
+{% for row in rows %}
+    {% set link_text = row.content["#row"]._entity.field_carousel_link.getValue().0.title %}
+    {% set link_url = row.content["#row"]._entity.getTranslation(language).field_carousel_link.getValue().0.uri |replace({'internal:': ''})%}
+    {% set title = row.content["#row"]._entity.title.getValue().0.value %}
+    {% set brand = row.content["#row"]._entity.field_brand.getValue().0.value %}
+    {% set descrip = row.content["#row"]._entity.body.getValue().0.value %}
+    {% set img_title = row.content["#row"]._entity.field_carousel_image.getValue().0.title %}
+    {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_carousel_image.getValue().0.alt %}
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_carousel_image.0.entity.uri.value) %}
+    {% set active_class = "" %}
+    {% if loop.index == 1  %}
+        {% set active_class = "active" %}
+    {% endif%}    
+    
+    
+    <div class="item dont-remove-class {{active_class}}">
+        <a href="{{link_url}}" >
+            <img class="homepage_carousel second-slide" src="{{img}}" alt="{{brand}}-{{img_alt}}" onclick="promotionClickTracking(this);">
+        </a>
+        {#<div class="container">
+            <div class="carousel-caption">
+                <h1>{{title}}</h1>
+                <p>{{descrip}}</p>
+                <p><a class="btn btn-lg btn-primary" href="{{link_url}}" role="button">{{link_text}}</a></p>
+            </div>
+        </div>#}
+    </div>
+
+{% endfor %}
+ </div>

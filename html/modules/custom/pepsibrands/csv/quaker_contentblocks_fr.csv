@@ -1,0 +1,31 @@
+Block Type,Description
+about-us,"Depuis plus de 100 ans, la marque Quaker<sup>®</sup> est un symbole de qualité, de bon goût et d’aliments nutritifs. Nous offrons toutes les qualités nutritives de l’avoine à grains entiers dans une gamme nourrissante de produits populaires allant du gruau aux céréales en passant par les barres-collation. Que vous dégustiez du gruau à coupe épointée, à cuisson rapide ou instantané, nos produits sont tous faits avec de l’avoine à 100 % de grains entiers, sont faibles en gras saturés, ne contiennent aucun gras trans et font partie d’un régime alimentaire nutritif.
+
+À travers l’histoire, voyez les moments marquants de la marque Quaker<sup>®</sup>."
+coupon,"<div class=""container container-coupon "">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left animate__animated "" style=""background: #FFFFFF"">
+<div class=""main-coupon-centered-img""><a class=""flaminhot-link"" href=""/coupons"" target=""_self""><img alt=""flaminhot Pack"" src=""/themes/brandstheme/src/images/quaker/quaker-standard-oats.png"" /> </a></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading"">Coupon Quaker<sup>®</sup><br />
+disponible!</h1>
+<a class=""btn_quaker-white margin-top"" href=""/coupons"" target=""_self"">Obtenez votre coupon*</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons offerts jusqu’à épuisement des stocks</p>
+</div>
+</div>
+</div>
+
+<div class=""row quaker-coupon-social"">
+<div class=""col-md-12 center-align-md-dsk"">
+<div class=""quaker-coupon-message"">
+<h4>Want more? Connect with us.</h4>
+</div>
+
+<div class=""quaker-coupon-social-icons"">&nbsp;</div>
+</div>
+</div>
+</div>"

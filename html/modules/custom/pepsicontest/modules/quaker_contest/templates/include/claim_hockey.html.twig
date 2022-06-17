@@ -1,0 +1,166 @@
+{# Headline about contests  #}
+    {# {% include '@quaker_contest/include/custom-contest-headlines.html.twig' %} #}
+{% if not data.submitted %}
+  {% include '@quaker_contest/include/custom-contest-popup-prize-form.html.twig' %}
+{% endif %}
+{# headline about prizes  #}
+
+<section class="quaker-hockey-contest-form-wrapper claim">
+
+  <div class="quaker-hockey-claim-banner-text">
+    <h1> {{'Ready?'|t }}</h1>
+    <p> {{'The first step in claiming your prize is providing the correct response to a mathematical skill-testing question. <br><br>
+
+      If you would prefer to continue with answering the mathematical skill-testing question over a phone call instead, please reach out to <a href="mailto:contest@tastyrewards.ca">contest@tastyrewards.ca</a>.<br><br>
+
+      You will have 3 minutes to submit the correct answer once you click on the “start” button.<br><br>
+
+      You only get one chance to answer correctly.<br><br>
+
+      Note: If you provide an incorrect answer or if you run out of time, you will forfeit your prize. Please be prepared before you start.<br><br>
+
+      Click “Start” to continue or press “Cancel” to come back later.
+      '| t | raw}}
+    </p>
+    <div class = "start-cancel-button">
+      <button class="quaker-hockey-contest-claim-button js-start">{{'Start'|t}} </button>
+      <button class="quaker-hockey-contest-claim-button js-cancel">{{'Cancel'|t}} </button>
+    </div>
+  </div>
+
+  <div class="quaker-hockey-contest-form">
+    <form class="hockey-contest-form form-disabled" data-toggle="validator" enctype="multipart/form-data" role="form" id='prize-claim' method="POST" autocomplete="off" data-nid="{{data.contest_id}}">
+      <div class="skill-timer-container" style="display: none;">
+        <p class="time-remain">
+          {{ 'Time remaining' | t }}
+        </p>
+        <p id="skill-timer"></p>
+      </div>
+      <input type="hidden" name="newregister"  value="{{newregister}}">
+      <div class="contest-detail__quacker-input skill-test">
+        <p class="question"> {{'Please correctly answer the following question unaided:'|t}}</p>
+        <label class="skill-test-question" style="display: none;">{{data.challenge_question}}</label><br>
+        <input type="text" class="contest-detail__input " name="challenge" id="challenge" placeholder="{{ 'My answer is:'|t }}" value="{{data.challenge?:''}}" disabled="disabled" >
+        <span class="help-block err challenge">{{data.error.challenge?:''}}</span>
+        <input type="text" class="contest-detail__input hidden " name="challenge_id" id="challenge_id" value="{{data.challenge_id}}" disabled="disabled" >
+
+        <button class="quaker-hockey-contest-claim-button grey js-challenge-submit disabled" disabled="disabled">{{'Submit'|t}} </button>
+
+        <p class="hidden js-challenge-success"><strong style="display:block;">{{"Congratulations! Your answer is correct."|t}}</strong><br>{{"The last step in the prize claim process is to complete the form below and accept the terms of the Prize Claim Release form so we can ship your prize."|t}}</p>
+        <p class="hidden js-challenge-error">{{"Unfortunately, your answer to the mathematical skill-testing question is incorrect and in accordance with the Official Rules, you are no longer eligible to win the prize."|t}}</p>
+        <p class="hidden js-challenge-timeout">{{"Sorry, you did not provide a response to the question in time, and in accordance with the Official Rules, you are no longer eligible to win the prize."|t}}</p>
+      </div>
+
+      <h4 class="show-on-correct shipping hidden">{{'Shipping Address'|t}}</h4>
+      <p class="show-on-correct form-required-fields-indicator hidden">* {{ 'Required fields' | t }}</p>
+
+            <!-- User data -->
+    <div class="show-on-correct hidden">
+
+
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+          <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email *'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+          <span class="help-block err_email email">{{data.error.email| raw?:''  }}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+          <input type="text" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="firstname"  placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+          <span class="help-block err_firstname firstname">{{data.error.firstname?:''}}</span>
+        </div>
+
+        <div class="contest-detail__quacker-input-col">
+          <input type="text" id="lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+          <span class="help-block err_lastname lastname">{{data.error.lastname?:''}}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col" style = "width: 100% !important;">
+          <input type="text" class="contest-detail__input " name="address1" id="address1" placeholder="{{ 'Address 1 *'|t }}" value="{{data.address1?:''}}" disabled="disabled">
+          <span class="help-block err address1">{{data.error.address1?:''}}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col " style = "width: 100% !important;">
+          <input type="text" id="address2" class="contest-detail__input {{data.error.address2?'has-error':''}}" name="address2" placeholder="{{ 'Address 2'|t }}" value="{{data.address2?:''}}" disabled="disabled">
+          <span class="help-block err address2">{{data.error.address2?:''}}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col " style = "width: 100% !important;">
+          <input type="text" id="city" class="contest-detail__input {{data.error.city?'has-error':''}}" name="city" placeholder="{{ 'City'|t }}" value="{{data.city?:''}}" disabled="disabled">
+          <span class="help-block err city">{{data.error.city?:''}}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col " style = "width: 100% !important;">
+          <input type="text" id="phone" class="contest-detail__input {{data.error.phone?'has-error':''}}" name="phone" placeholder="{{ 'Phone'|t }}" value="{{data.phone?:''}}" disabled="disabled" required>
+          <span class="help-block err phone">{{data.error.phone?:''}}</span>
+        </div>
+      </div>
+
+
+
+      <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+          <select class="province form-control" name="province" id="province">
+            {{ data.provinces_options| raw }}
+          </select>
+          <span class="help-block err_province">{{data.error.province?:''}}</span>
+        </div>
+
+        <div class="contest-detail__quacker-input-col">
+          <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+          <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+        </div>
+      </div>
+
+      <div class="contest-detail__sign-up-select-checkbox">
+
+        <div class="contest-detail__checkboxes-wrap">
+          <label for="optin"></label>
+
+          <p class="contest-detail__checkbox-text">{{'By submitting this form, you agree to the terms of the Prize Claim Release form.'| t }}</p>
+
+          <a class="prize-pdf" href="{{data.pdf_url}}"> {{"Download Prize Claim Release Form"|t}}</a>
+          <p class="contest-detail__checkbox-text">{{'If you need assistance, please contact contest@tastyrewards.ca'| t }}</p>
+        </div>
+
+      </div>
+
+      <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+
+      <div class="contest-detail__submit">
+                <input id="submitclaim"  class="btn_red contest-detail__sign-up-button js-submit-claim button-style disabled" type="button" disabled value="{{'Submit'|t}}">
+              </div>
+
+
+      <div class="">
+        <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+      </div>
+
+    </div>
+    </form>
+  </div>
+
+</section>
+
+<div class="quaker-hockey-official-rules">
+  <div class="container">
+    {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+    <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+    <div class="quaker-hockey-official-rules-links">
+      <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+      <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+      <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+    </div>
+  </div>
+</div>

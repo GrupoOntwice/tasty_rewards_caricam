@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="lays-joy-form-block">
+            <div class="lays-joy-form-block-title">
+                <p>{{ "A little joy goes a long way! Tell us how Lay's<sup>®</sup> potato chips have brought a little joy to your life for a chance to have your Lay's<sup>®</sup> Joy Story featured here or on our social channels."|t }}</p>
+            </div>
+
+            <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+                <input type="hidden" name="newregister"  value="{{newregister}}">
+                {# {% if data.language != 'en-us' and data.language != 'es-us' %} #}
+                    {# <p class="modal__inquiry">{{ "* Indicates required field."|t }}</p> #}
+                {# {% endif %} #}
+
+                <div class="realjoy-form-col-wrapper">
+                    <div class="realjoy-form-col">
+                      <span style = "font-size: 14px">{{ '*Required Fields'|t}}</span>
+                        <div  class="realjoy-story-input-half">
+                            <div class="realjoy-story-input-half-col">
+                                <label for="contest-firstname" class="visuallyhidden"> First Name </label>
+                                <input type="text" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="*{{ 'First Name'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                                <span style="color: red !important;" class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                            </div>
+
+                            <div class="realjoy-story-input-half-col">
+                                <label for="contest-lastname" class="visuallyhidden"> Last Name </label>
+                                <input type="text" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="*{{ 'Last Name'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+                                <span style="color: red !important;" class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                            </div>
+                        </div>
+
+                        <div class="realjoy-story-input-col">
+                            <label for="contest-email" class="visuallyhidden"> Email </label>
+                            <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="*{{ 'Email'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+                            <span style="color: red !important;" class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                        </div>
+
+                        <div class="realjoy-story-input-col">
+                                <select class="contest-detail__input" name="province" id="province" >
+                                        {{ data.provinces_options| raw }}
+                                </select>
+                                <span style="color: red !important;" class="help-block err_province">{{data.error.province?:''}}</span>
+                        </div>
+
+                        <div class="realjoy-story-input">
+                                <label class="upload-lays-label" for="uploadImg">
+                                    <img src="/themes/brandstheme/src/images/lays/upload-image.png" alt="lays logo">
+                                    {{"Click or drag an image to this area to upload.<br>JPG/PNG are acceptable / Max 150MB"|t}}
+                                </label>
+                                <span class="help-block toupload"></span>
+                                <span style="color: red !important;" class="help-block err_recipe">{{data.error.uploadImg| raw?:''  }}</span>
+                                <br>
+
+                                <input type="file" name="uploadImg" id="uploadImg" onchange="window.fileChanged(this)" value="test" accept=".jpg,.png">
+
+                                <span style="color: red !important;" class="help-block err_password">{{data.error.password?:''}}</span>
+                        </div>
+                    </div>
+
+                    <div class="realjoy-form-col">
+                        <div class="realjoy-story-input-col">
+                             <label for="story" class="visuallyhidden"> Comment </label>
+                             <input type="textarea" name="story" class="contest-detail__input lays-story-placeholder" id="story" style="padding-bottom: 235px;" placeholder="{{'My Lay’s® Joy Story (maximum 500 characters)'|t}}">
+                        </div>
+
+
+                        <div class="realjoy-story-input-checkmark-wrapper">
+                            <input style = "width: 70px; height: 20px" type="checkbox" class="contest-detail__checkboxes-color majcheck" id="optin" name='optin'  {{ data.optin==1?'checked' }}/>
+
+                            <label for="optin" class="visuallyhidden">Checkbox</label>
+                            <span style="color: red !important;" class="help-block err_optin">{{data.error.optin?:''}}</span>
+
+                            <p class="contest-detail__checkbox-text optin">{{"By submitting my Lay's<sup>&reg;</sup> Joy Story. I confirm that I am the age of majority or older in my province/ territory of residence, and that I have read, understood and agree to the Lays's <sup>&reg;</sup> Joy Story <a target='_blank' href='/en-ca/brands/lays/joystory/terms'>Terms & Conditions.</a> "| t }}</p>
+
+                        </div>
+
+                        <div class="lays-submit-wrapper-microsite">
+                            <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                            <input id="submitform" class="js-submit-receipt btn_lays" type="submit" value="{{'Submit' | t}}">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

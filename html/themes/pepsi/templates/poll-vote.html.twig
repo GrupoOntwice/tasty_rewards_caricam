@@ -1,0 +1,26 @@
+{#
+/**
+ */
+#}
+{{ form.messages }}
+
+{% set imgobj = form['#entity'].field_choice_image.value %}
+{% set animated = '' %}
+{% if imgobj is not empty%}
+{% set animated = 'animated' %}
+{% endif %}
+
+{# kint(animated) #}
+
+<div class="poll white signika {{ animated }}">
+  <div class="vote-form">
+{#    {% if show_question %}#}
+      <h3 class="poll-question white signika" >{{ question }}</h3>
+{#    {% endif %}#}
+
+    {{ form.choice }}
+
+    {{ form.actions }}
+  </div>
+{{ form|without('actions', 'choice', 'messages', 'question') }}
+</div>

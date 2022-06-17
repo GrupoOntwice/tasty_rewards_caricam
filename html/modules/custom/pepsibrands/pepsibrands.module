@@ -1,0 +1,2252 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\pepsibrands\BrandsContentImport;
+use Drupal\pepsibrands\BrandsContentFilters;
+use Drupal\pepsibrands\BrandsThemeResolver;
+
+use Drupal\pepsibrands\BatchContentUpdate;
+use Drupal\taxonomy\Entity\Term;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
+//template collection
+function pepsibrands_theme(array $existing, $type, $theme, $path) {
+  return array(
+    'pepsibrands_quaker_thankyou' => array(
+      'template' => 'quaker_thankyou',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_quaker_landing' => array(
+      'template' => 'quaker_landing',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+	'pepsibrands_quaker_entries' => array(
+      'template' => 'quaker_receipts_entries',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_realjoy_entries' => array(
+      'template' => 'realjoy_entries',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_realjoy_landing' => array(
+      'template' => 'realjoy_landing',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_stacys_rise' => array(
+      'template' => 'stacys_rise',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    'pepsibrands_homepage_tostitos_template' => array(
+      'template' => 'homepage_tostitos',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_videos_template' => array(
+      'template' => 'videos',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_our_brands_template' => array(
+      'template' => 'our_brands',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_products_tostitos_template' => array(
+      'template' => 'products_tostitos',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_recipes_tostitos_template' => array(
+      'template' => 'brands_recipes',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_occasions_template' => array(
+      'template' => 'occasions',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_about_us_template' => array(
+      'template' => 'about_us',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_dropthehint_template' => array(
+      'template' => 'dropthehint',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_tostitos_product_categories' => array(
+      'template' => 'product_categories_tostitos_chips',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_homepage_fritolay_template' => array(
+      'template' => 'homepage_fritolay',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_homepage_bare_template' => array(
+      'template' => 'homepage_bare',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_homepage_otep_template' => array(
+      'template' => 'homepage_otep',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_homepage_lays_template' => array(
+      'template' => 'homepage_lays',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibrands_homepage_flaminhot_template' => array(
+      'template' => 'homepage_flaminhot',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+
+
+
+
+  );
+}
+
+
+function brands_content_population($brand = 'tostitos', $content_type = 'recipe', $lang = 'en'){
+  $config = \Drupal::service('config.factory')->getEditable('pepsibrand_content_import.settings');
+  $config->set('status', 1)
+    ->save();
+  $uri = "public://2018-10/rec1.jpg";
+  // $lang = "fr";
+  // debug_var(dirname(__FILE__));
+  $slash = DIRECTORY_SEPARATOR;
+  $current_dir = dirname(__FILE__);
+  $base_dir = getcwd(); // C:\wamp\www\pepsi-tastyrewards\new-tastyrewards
+  $images_dir = $base_dir . $slash . "sites" . $slash ."default" . $slash ."files" . $slash . "2020-10";
+
+  $csv_file = $current_dir . $slash . "csv" .$slash . $brand . "_" .$content_type . "_" . $lang . ".csv";
+
+  \Drupal::logger("drush")->info(" importing $csv_file -- FUNC  " . 'create_' . $brand . '_' . $content_type, []);
+  $obj_import = new BrandsContentImport();
+  $obj_import->set_brand($brand);
+  $obj_import->import_content_csv($csv_file, 'create_' . $brand . '_' . $content_type, $lang);
+  // create_tostitos_product
+
+  $config->set('status', 0)
+    ->save();
+}
+
+
+
+function pepsibrands_form_alter(array &$form,\Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form'){
+   /**
+    * This is to fix the bug that Bernie and Sara saw on the content list in the CMS
+    * whenever a content is updated, it disappears from the list
+    * this is due to the content being assigned uid = 0 in the node_field_data table
+    * This script is to update the uid back to uid = 1 when the user goes to the content list
+    *
+    * This only happens on staging, so I think we should be able to deactivate this on
+    * production
+    *
+    */
+    $current_path = \Drupal::service('path.current')->getPath();
+    $langcode = get_current_langcode();
+    if ($current_path == '/admin/content'){
+      $sql = "UPDATE node_field_data set uid = 1 WHERE uid = 0";
+      try{
+        $result = \Drupal::database()->query($sql);
+        return $result;
+      } catch (\Exception $e) {
+          \Drupal::logger("sql")->info("node_field_data table update could not be performed ", []);
+          return;
+      }
+
+    }
+  }
+}
+
+function getConsumerBanner($brand){
+  $special_brands = [
+    "fritolay" => "fritolayvarietypacks"
+  ];
+  if ($brand == "fritolay"){
+    $brand = $special_brands[$brand];
+  }
+  $nid = find_alert_banner($brand);
+  $banner = [];
+  if (!empty($nid)){
+    $ad_node =  \Drupal\node\Entity\Node::load($nid);
+    if (!empty($ad_node)){
+      try{
+          $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+          $langcode = get_current_langcode();
+          $host = \Drupal::request()->getSchemeAndHttpHost();
+          $ad_img_url = "";
+          if (!empty($ad_node->field_ads_image->target_id)){
+            $img = \Drupal\file\Entity\File::load($ad_node->field_ads_image->target_id);
+            $ad_img_url = file_create_url( $img->getFileUri() );
+          }
+
+          $link = $ad_node->getTranslation($current_language)->field_ads_link->uri;
+          $description = $ad_node->getTranslation($current_language)->field_html_banner->value;
+          // internal:/brands/lays/recall
+          if (strpos($link, "internal:/") !== false){
+            $link = $host . "/$langcode" . str_replace("internal:", "", $link);
+          }
+
+          $banner['image_url'] = $ad_img_url;
+          $banner['link'] = $link;
+          $banner['description'] = $description;
+          $banner['title'] = str_replace(' ', '-', strtolower($ad_node->getTranslation($current_language)->getTitle()));
+
+      } catch( \Exception $e){
+          $message = "Exception:  %error";
+          $context = ['%error' => $e->getMessage()];
+          \Drupal::logger('general')->info($message, $context);
+      }
+    }
+
+  }
+  return $banner;
+}
+
+function get_translated_image_url($node,$field_name, $langcode){
+  try{
+    // if ($entity->get('name')->getFieldDefinition()->isTranslatable()) {
+    if ( $node->hasTranslation($langcode) && !empty($node->getTranslation($langcode)->{$field_name}->target_id)){
+       $img = \Drupal\file\Entity\File::load($node->getTranslation($langcode)->{$field_name}->target_id);
+    } else {
+        if (empty($node->getTranslation('en')->{$field_name}->target_id))
+          return '';
+        $img = \Drupal\file\Entity\File::load($node->getTranslation('en')->{$field_name}->target_id);
+    }
+    $img_url = empty($img) ? "" : file_create_url( $img->getFileUri());
+    return $img_url;
+
+  }catch(\Exception $e){
+    return '';
+  }
+}
+
+function get_translated_image_alt($node,$field_name, $langcode){
+  // if ($entity->get('name')->getFieldDefinition()->isTranslatable()) {
+  if ( $node->hasTranslation($langcode) && !empty($node->getTranslation($langcode)->{$field_name}->alt)){
+     $alt = $node->getTranslation($langcode)->{$field_name}->alt;
+  } else {
+      if (empty($node->getTranslation('en')->{$field_name}->alt))
+        return '';
+      $alt = $node->getTranslation('en')->{$field_name}->alt;
+  }
+  return $alt;
+}
+
+
+function find_alert_banner($brand){
+    $brand = brand_strcase($brand);
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', 'advertisement');
+    $query->condition('field_brand', $brand);
+    $query->condition('status', 1);
+
+    $date = gmdate('Y-m-d\TH:i:s');
+    $valid_opendate = $query->orConditionGroup()
+          ->condition('field_opening_date', $date, '<=')
+          ->condition('field_opening_date', NULL, '=')
+          ->notExists('field_opening_date');
+    $query->condition($valid_opendate);
+
+    $valid_closedate = $query->orConditionGroup()
+          ->condition('field_closing_date', $date, '>=')
+          ->condition('field_closing_date', NULL, '=')
+          ->notExists('field_closing_date');
+    $query->condition($valid_closedate);
+
+
+    // Get taxonomy ID : First Create the
+    $term = taxonomy_term_load_multiple_by_name('ConsumerAlert','ads_category');
+    if(empty($term) ){
+        $message = "the taxonomy term 'ConsumerAlert' does not exist in the ads_category vocabulary ";
+        \Drupal::logger('General')->info($message, []);
+        return false;
+    }
+    $tid = key($term);
+    $query->condition('field_ads_type', $tid);
+    $entity_ids = $query->execute();
+
+    if(empty($entity_ids) ){
+        $channel = 'General';
+        $message = "No Ads of type 'ConsumerAlert' has been created or published ";
+        $context = [];
+        // \Drupal::logger($channel)->info($message, $context);
+        return false;
+    }
+
+
+    if (count($entity_ids) > 0){
+        $nid = array_values($entity_ids)[0];
+        return $nid;
+    }
+
+    return false;
+}
+
+
+
+function get_brand_basepath(){
+  $current_path = \Drupal::service('path.current')->getPath();
+  $langcode = get_current_langcode();
+  $path_items = explode("/", $current_path);
+  $brand_basepath = "";
+  if (count($path_items) >= 3 && $path_items[1] == 'brands'){
+    // $path items is of form [0] => [1] => brands [2] => tostitos [3] => home-page
+    $brand = $path_items[2];
+    $brand_basepath = "/" . $langcode . "/brands/" . $brand;
+  } elseif(get_current_brand() !== 'tastyrewards'){
+    $brand_basepath = "/" . $langcode . "/brands/" . get_current_brand();
+  }
+
+  if (strpos($brand_basepath, 'stacys') !== false &&
+      strpos($brand_basepath, 'stacyssnacks') === false)
+  {
+    $brand_basepath = str_replace('stacys', 'stacyssnacks', $brand_basepath);
+  }
+
+  return $brand_basepath;
+}
+
+/**
+ * Generates a number based on a string.
+ * @param  [type] $string [description]
+ * @return number
+ */
+function custom_hash($string, $min_val = 0){
+     $hash = 5381;
+     $width = 25000;
+     $min_val = empty($min_val)? 10000 : $min_val;
+
+    for ($i = 0; $i < strlen($string); $i++){
+        $hash = ord($string[$i]) + (($hash << 5)  + $hash);
+    }
+
+    return $min_val + ( abs($hash) % $width);
+}
+
+function get_current_brand(){
+  $current_path = \Drupal::service('path.current')->getPath();
+  $langcode = get_current_langcode();
+  $path_items = explode("/", $current_path);
+  $brand = "tastyrewards";
+  if (count($path_items) >= 3 && ( in_array($path_items[1], ['brands', 'marques']) ) ){
+    // $path items is of form [0] => [1] => brands [2] => tostitos [3] => home-page
+    $brand = $path_items[2];
+    if ($brand == 'fritolayvarietypacks' || $brand == 'produitsassortisfritolay'
+         || $brand == 'fritolayproduitsassortis'){
+      $brand = 'fritolay';
+    }
+    if ($brand == 'enflamme'){
+      $brand = 'flaminhot';
+    }
+
+    if ($brand == 'capitainecrounche'){
+      $brand = 'capncrunch';
+    }
+
+	if ($brand == 'offtheeatenpathsnacks' || $brand == 'collationsofftheeatenpath'){
+      $brand = 'otep';
+    }
+
+  if ($brand == 'smartfoodpopcorn' || $brand == 'maissoufflesmartfood'){
+      $brand = 'smartfood';
+    }
+
+  if ($brand == 'stacyssnacks'){
+      $brand = 'stacys';
+  }
+
+
+
+  } elseif(strpos($current_path, "/node/") !== false){
+    $nid = basename($current_path);
+    $node_brand = BrandsThemeResolver::instance()->get_node_brand($nid);
+    if ($node_brand != 'Tastyrewards' && !empty($node_brand)){
+      return strtolower($node_brand);
+    }
+  } elseif(BrandsThemeResolver::instance()->is_taxonomy_path($current_path)){
+    $entity_id = basename($current_path);
+    $brand = BrandsThemeResolver::instance()->get_taxonomy_brand($entity_id);
+    if ($brand != 'Tastyrewards' && !empty($brand)){
+      return strtolower($brand);
+    }
+  }
+
+  return $brand;
+}
+
+ function recipe_avg_rating($node){
+    if ($node->getType() != 'recipe')
+      return null;
+
+    $total = intval($node->field_total_rating->value);
+    $nb_voters = intval($node->field_rating_voters->value);
+    if (empty($nb_voters))
+      return 0;
+    return round($total/$nb_voters);
+  }
+
+
+  function truncateRichText( $text, $max_count = 100) {
+    // $max_count = 100;
+    if (strlen($text) < $max_count) return $text;
+    $last_character = $text[$max_count];
+    $result = "";
+
+
+    if ($last_character != ' ') {
+      // If the last character is part of a word, cut from the space before that word
+      $words = explode(" ", $text);
+      array_pop($words);
+      $result = implode(" ", $words);
+    } else {
+      $result = substr($text, 0, $max_count);
+    }
+    return closetags($result) . "...";
+  }
+
+  function closetags($html) {
+    preg_match_all('#<(?!meta|img|br|hr|input\b)\b([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
+    $openedtags = $result[1];
+    preg_match_all('#</([a-z]+)>#iU', $html, $result);
+    $closedtags = $result[1];
+    $len_opened = count($openedtags);
+    if (count($closedtags) == $len_opened) {
+        return $html;
+    }
+    $openedtags = array_reverse($openedtags);
+    for ($i=0; $i < $len_opened; $i++) {
+        if (!in_array($openedtags[$i], $closedtags)) {
+            $html .= '</'.$openedtags[$i].'>';
+        } else {
+            unset($closedtags[array_search($openedtags[$i], $closedtags)]);
+        }
+    }
+    return $html;
+  }
+
+function get_block_content($brand, $block_type=null, $nb_items= 1){
+
+  $langcode = get_current_langcode($with_prefix = false);
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', 1);
+  $query->condition('type', 'content_block');
+  $query->condition('field_brand', $brand);
+  if (!empty($block_type))
+    $query->condition('field_block_type', $block_type);
+
+  $query->sort('field_block_weight', 'ASC');
+  $entity_ids = $query->execute();
+  if (empty($entity_ids))
+    return '';
+
+
+  $nids = array_values($entity_ids);
+  if ($nb_items > 0 && count($nids) >= $nb_items ){
+    $node = \Drupal\node\Entity\Node::load($nids[$nb_items - 1]);
+  } else {
+    return '';
+  }
+  $body = '';
+
+  if ($node->hasTranslation($langcode)){
+    $node_translated = $node->getTranslation($langcode);
+
+    if ($node_translated->isPublished()){
+      $body = $node_translated->body->value;
+    }
+  } else {
+    // $body = $node->body->value;
+  }
+  return $body;
+}
+
+function get_socialblock($type){
+    $langcode = get_current_langcode($with_prefix = false);
+    $lang_prefix = get_current_langcode($with_prefix = true);
+    $contents = [];
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', 'social_block');
+    $query->condition('status', 1);
+    $query->condition('field_socialblock_type', $type);
+
+
+    $entity_ids = $query->execute();
+    if (empty($entity_ids))
+      return [];
+
+
+    $nids = array_values($entity_ids);
+    $nid = $nids[0];
+
+    $node = \Drupal\node\Entity\Node::load($nid); 
+    $entity = [];
+
+    $node_en = $node;
+    if ($langcode != 'en'){
+      if (!$node->hasTranslation($langcode))
+        // continue;
+        return [];
+      $node = $node->getTranslation($langcode);
+    }
+
+    $video_file = get_translated_image_url($node,'field_social_video', $langcode);
+
+    if (!empty($node->field_home_page_link->getValue())){
+      $link = $node->field_home_page_link->getValue()[0]['uri'];
+      if (strpos($link, "internal:/") !== false){
+         $link = str_replace("internal:", "", $link);
+      }
+      $entity['link'] = $link;
+      $entity['link_title'] = $node->field_home_page_link->getValue()[0]['title'];
+    } 
+    
+    $entity['body'] =  $node->body->value;
+    $entity['video'] =  $video_file; 
+    $entity['nid'] = $node->id();
+
+    $contents = $entity;
+    return $contents;
+  }
+
+function get_couponblock_fields($brand, $nb_items = 1){
+  $langcode = get_current_langcode($with_prefix = false);
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', 1);
+  $query->condition('type', 'coupon_block');
+  $query->condition('field_brand', $brand);
+  // if (!empty($block_type))
+    // $query->condition('field_block_type', $block_type);
+
+  $query->range(0, $nb_items);
+  $query->sort('created', 'DESC');
+  $entity_ids = $query->execute();
+  if (empty($entity_ids))
+    return '';
+
+
+  $nids = array_values($entity_ids);
+  $contents = [];
+
+  foreach ($nids as $nid) {
+    $node = \Drupal\node\Entity\Node::load($nid);
+    if ($node->hasTranslation($langcode)){
+        $node = $node->getTranslation($langcode);
+    }
+
+    $arr = [];
+    $arr['title'] = $node->field_subtitle->value;
+    $arr['body'] = $node->body->value;
+
+    $img_url = '';
+    $background_img_url = '';
+    $extra_img_url = '';
+    if (!empty($node->field_coupon_image->target_id)){
+      $img_url = get_translated_image_url($node,"field_coupon_image", $langcode);
+      $arr['image_alt'] = get_translated_image_alt($node,"field_coupon_image", $langcode);
+    } 
+
+    if (!empty($node->field_extra_image1->target_id)){
+      $extra_img_url = get_translated_image_url($node,"field_extra_image1", $langcode);
+      $arr['extra_image_alt'] = get_translated_image_alt($node,"field_extra_image1", $langcode);
+    }
+    if (!empty($node->field_background_image->target_id)){
+      $background_img_url = get_translated_image_url($node,"field_background_image", $langcode);
+      $arr['bg_image_alt'] = get_translated_image_alt($node,"field_background_image", $langcode);
+    }
+
+    if (!empty($node->field_coupon_link->getValue())){
+      $link = $node->field_coupon_link->getValue()[0]['uri'];
+      if (strpos($link, "internal:/") !== false){
+         $link = str_replace("internal:", "", $link);
+      }
+      $arr['link'] = $link;
+      $arr['link_title'] = $node->field_coupon_link->getValue()[0]['title'];
+    } 
+    
+    $arr['footer'] = $node->field_block_footer->value;
+    $arr['image_url'] = $img_url;
+    $arr['bg_image_url'] = $background_img_url;
+    $arr['extra_image_url'] = $extra_img_url;
+    $contents[] = $arr;
+
+  }
+
+  return $contents;
+
+}
+
+
+function get_content_sponsors($node){
+  $langcode = get_current_langcode($prefix = false);
+  $refs = $node->getTranslation($langcode)->field_article_sponsor->referencedEntities();
+  $brand_imgs = [];
+  foreach($refs as $key => $node_brand){
+    $current_brand = [];
+    $current_brand['img_url'] = get_translated_image_url($node_brand,'field_brand_image', $langcode);
+    $current_brand['title'] = $node_brand->getTitle();
+    $brand_imgs[] = $current_brand;
+    if( count($brand_imgs) == 2) 
+      // We don't show more than 2 brands
+      break;
+  }
+  return $brand_imgs;
+
+}
+function get_block_content_fields($brand, $block_type=null, $nb_items= 1){
+
+  $langcode = get_current_langcode($with_prefix = false);
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', 1);
+  $query->condition('type', 'content_block');
+  $query->condition('field_brand', $brand);
+  if (!empty($block_type))
+    $query->condition('field_block_type', $block_type);
+
+  $query->range(0, $nb_items);
+  $query->sort('field_block_weight', 'ASC');
+  $entity_ids = $query->execute();
+  if (empty($entity_ids))
+    return '';
+
+
+  $nids = array_values($entity_ids);
+  $contents = [];
+
+  foreach ($nids as $nid) {
+    $node = \Drupal\node\Entity\Node::load($nid);
+    if ($node->hasTranslation($langcode)){
+        $node = $node->getTranslation($langcode);
+    }
+
+    $arr = [];
+    $arr['title'] = $node->field_subtitle->value;
+    $arr['body'] = $node->body->value;
+
+    $img_url = '';
+    if (!empty($node->field_image->target_id)){
+      $img_url = get_translated_image_url($node,"field_image", $langcode);
+    } 
+    
+    $arr['image_url'] = $img_url;
+    $contents[] = $arr;
+
+  }
+
+  return $contents;
+}
+
+
+function duplicate_recall_block($brand, $brand_to_duplicate){
+  $brand = brand_strcase($brand);
+  $langcode = get_current_langcode($with_prefix = false);
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'content_block');
+    $query->condition('field_brand', $brand_to_duplicate);
+    $query->condition('field_block_type', "alert");
+
+    $query->sort('field_block_weight', 'ASC');
+    $entity_ids = $query->execute();
+      if (empty($entity_ids))
+        return ;
+
+      $nids = array_values($entity_ids);
+      if (count($nids) >= 1 ){
+        $node = \Drupal\node\Entity\Node::load($nids[0]);
+      } else {
+        return ;
+      }
+    $cloned_node = $node->createDuplicate();
+    $cloned_node->field_brand->value = $brand;
+    $cloned_node->title->value = $brand . " - Recall page  ";
+    $cloned_node->save();
+
+}
+
+function get_alert_pdf($brand){
+
+  $special_brands = [
+    "fritolay" => "fritolayvarietypacks",
+    "otep" => "offtheeatenpath",
+  ];
+  if (isset($special_brands[$brand])){
+    $brand = $special_brands[$brand];
+  }
+
+  $brand = brand_strcase($brand);
+  $langcode = get_current_langcode($with_prefix = false);
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', 1);
+  $query->condition('type', 'content_block');
+  $query->condition('field_brand', $brand);
+  $query->condition('field_block_type', 'alert');
+
+  $query->sort('field_block_weight', 'ASC');
+  $entity_ids = $query->execute();
+
+  if (empty($entity_ids))
+    return '';
+
+
+  $nids = array_values($entity_ids);
+  $node = \Drupal\node\Entity\Node::load($nids[0]);
+  $pdf = '';
+
+  if ($node->hasTranslation($langcode)){
+    $node = $node->getTranslation($langcode);
+  }
+
+  if ($node->isPublished() && !empty($node->field_pdf->getValue() ) ){
+    try{
+      $file_id = $node->getTranslation($langcode)->field_pdf->getValue()[0]['target_id'];
+      $file = \Drupal\file\Entity\File::load($file_id);
+      $pdf = $file->createFileUrl();
+    } catch (\Exception $e){
+      log_var($e, " ConsumerAlert PDF could not be retrieved  ");
+    }
+  }
+  return $pdf;
+}
+
+function pepsibrands_preprocess_menu(&$variables){
+  if (isset($variables['menu_name']) && $variables['menu_name'] == "main") {
+      $current_url = $_SERVER['REQUEST_URI'];
+      $langcode = get_current_langcode($with_prefix = true);
+      $translated_lang = $langcode === 'fr-ca'? 'en-ca': 'fr-ca';
+
+      $variables["translated_url"] = str_replace($langcode, $translated_lang, $current_url);
+   }
+
+}
+
+function pepsibrands_form_node_form_alter(&$form, &$form_state, $form_id) {
+  /* @var Drupal\Core\Entity\FieldableEntityInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+
+  if ($node->getType() == 'product') {
+    $form['#attached']['library'][] = 'pepsibrands/pepsibrands';
+  }
+}
+
+
+function pepsibrand_display_recipe($nid){
+  $fields = [];
+  $node = \Drupal\node\Entity\Node::load(intval($nid) );
+
+  $img = \Drupal\file\Entity\File::load($node->field_recipe_image_detail->target_id);
+
+  $lang_prefix = get_current_langcode();
+  $langcode = get_current_langcode(false);
+
+  $node_translated = $node;
+  if ($node->hasTranslation($langcode)){
+    $node_translated = $node->getTranslation($langcode);
+  } else {
+    return null;
+  }
+
+  $fields['title'] =  $node_translated->field_recipe_subtitle->value;
+
+  $fields['rating'] =  $node->field_total_rating->value;
+  $fields['image_url'] = file_create_url( $img->getFileUri() );
+  // $fields['link'] = "/node/" . $nid;
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, $langcode);
+  $fields['link'] = "/$lang_prefix" . $alias;
+  return $fields;
+
+}
+
+function batch_update_content($brand){
+  BatchContentUpdate::instance()->batch_update($brand);
+}
+
+function add_sup_tag($text, $strip_tags = true){
+    if ($strip_tags)
+      $text = strip_tags($text);
+    else {
+      $text = str_replace(array("<script>","</script>"), "", $text);
+    }
+    $text = str_replace("®", "<sup>®</sup>", $text);
+    $text = str_replace("™", "<sup>TM</sup>", $text);
+    $text = str_replace("??", "<sup>MC</sup>", $text);
+    $text = str_replace("&reg;", "<sup>®</sup>", $text);
+    $text = str_replace("&amp;reg;", "<sup>®</sup>", $text);
+    return $text;
+}
+
+function fetch_product_categories($brand, $group_tid = 0){
+  $categories = BrandsContentFilters::instance()->get_product_categories($brand, $group_tid);
+  return $categories;
+}
+
+function fetch_product_groups($brand){
+  $groups = BrandsContentFilters::instance()->get_product_group($brand);
+  return $groups;
+}
+
+
+function fetch_brand_occasions($brand, $nb = null){
+  $occasions = BrandsContentFilters::instance()->fetch_occasions($brand, $is_featured = 0, $nb);
+  return $occasions;
+}
+
+
+function get_previous_recipe($brand, $node, $with_image = false){
+  $recipe = BrandsContentFilters::instance()->get_adjacent_recipe($brand, $node, $offset = -1);
+  if ($with_image){
+    return $recipe;
+  }
+  return $recipe['link'];
+}
+
+function get_next_recipe($brand, $node, $with_image = false){
+  $recipe = BrandsContentFilters::instance()->get_adjacent_recipe($brand, $node, $offset = +1);
+  if ($with_image){
+    return $recipe;
+  }
+  return $recipe['link'];
+}
+
+function fetch_brand_recipes($brand, $number, $offset = 0, $langcode){
+  $recipes = [];
+
+  $recipes = BrandsContentFilters::instance()->fetch_recipes($brand, $number, $offset, $langcode);
+
+  return $recipes;
+}
+
+function get_brand_iframe_url($brand){
+  if ($brand == 'Fritolayvarietypacks'){
+    $brand = 'fritolay';
+  }
+
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'brand');
+  $query->condition('status', 1);
+  $query->condition('field_machinename', strtolower($brand));
+  $entity_ids = $query->execute();
+  $entity_ids = array_values($entity_ids);
+  if (!empty($entity_ids)){
+    $lang = get_current_langcode($prefix = false);
+    $nid = $entity_ids[0];
+    $node = \Drupal\node\Entity\Node::load($nid);
+    $iframe = $node->getTranslation($lang)->field_brand_iframe_url->value;
+    return $iframe;
+  }
+
+  return '';
+}
+
+function get_ingredients_options($brand){
+  $ingredients = BrandsContentFilters::instance()->get_ingredients_by_brands($brand);
+  return $ingredients;
+}
+
+function get_brands_occasions($brand){
+  $occasions = BrandsContentFilters::instance()->fetch_brands_occasions($brand);
+  return $occasions;
+}
+
+function get_recipe_time_options($brand){
+  $time_options = BrandsContentFilters::instance()->get_time_options($brand);
+  return $time_options;
+
+}
+
+function get_recipes_with_videos($brand, $nb_videos = 0){
+  $recipe_videos = BrandsContentFilters::instance()->get_recipe_videos($brand, $nb_videos);
+  return $recipe_videos;
+
+}
+
+function get_recipe_video_key($node){
+  // field_recipe_video
+  $youtube_link = $node->field_recipe_video->value;
+  $embed_link = BrandsContentFilters::instance()->embed_video($youtube_link);
+
+  $key = str_replace("https://www.youtube.com/embed/", "", $embed_link);
+  // embed_video
+  return $key;
+
+}
+
+function get_brand_videos($brand, $nb_videos = 0){
+  return get_recipes_with_videos($brand, $nb_videos);
+
+}
+
+function get_related_products($brand, $product_id, $nb = 3){
+  return  BrandsContentFilters::instance()->fetch_related_products($brand, $product_id, $nb);
+}
+
+function get_occasions_by_recipe($brand, $nid){
+  return  BrandsContentFilters::instance()->fetch_occasions_by_recipe($brand, $nid);
+}
+
+function get_related_recipes_by_recipe($nid, $brand_recipe = true){
+  return  BrandsContentFilters::instance()->get_related_recipes_entity_reference($nid, $brand_recipe);
+}
+function get_related_products_by_recipe($nid){
+  return  BrandsContentFilters::instance()->get_related_products_entity_reference($nid);
+}
+
+
+function get_related_recipes($brand, $image_detail = true){
+  return  BrandsContentFilters::instance()->get_tastyrewards_recipes($brand, $image_detail);
+
+}
+
+function get_recipes_by_brand($brand, $nb = 3, $image_detail = true){
+  return  BrandsContentFilters::instance()->get_brands_recipes($brand, $image_detail, $nb);
+
+}
+
+/**
+ * Get N related recipes from a brand and exclude the current NID
+ * @param  [type] $brand       [description]
+ * @param  [type] $nb          [description]
+ * @param  [type] $current_nid [description]
+ * @return [type]              [description]
+ */
+function get_random_related_recipes($brand, $nb, $current_nid){
+  $recipes =  BrandsContentFilters::instance()->get_brands_recipes($brand, $image_detail = 0, $nb + 1);
+  $has_duplicate = false;
+  foreach ($recipes as $key => $recipe) {
+    if ($recipe['nid'] == $current_nid){
+      unset($recipes[$key]);
+      $has_duplicate = true;
+    }
+  }
+
+  if (!$has_duplicate && $nb < count($recipes) )
+    // remove the last recipe if no duplicate are found
+    unset($recipes[$nb]);
+    $recipes = array_values($recipes);
+  return $recipes;
+
+}
+
+
+
+function get_featured_occasions($brand){
+  return BrandsContentFilters::instance()->fetch_occasions($brand, $is_featured = 1);
+}
+
+function get_quaker_recipes_by_type($category, $lang){
+  return BrandsContentFilters::instance()->fetch_recipes_by_category('quaker', $category, $lang);
+}
+
+
+function get_featured_recipes($brand, $image_detail = 1){
+  $recipes = BrandsContentFilters::instance()->fetch_featured_recipes($brand, $image_detail);
+  return $recipes;
+}
+
+function get_featured_content($brand, $content_type, $filter, $image_detail = 1){
+  if ($content_type == 'recipe'){
+    $recipes = BrandsContentFilters::instance()->fetch_featured_recipes($brand, $image_detail, $filter);
+    return $recipes;
+  } elseif($content_type == 'product'){
+    $products = BrandsContentFilters::instance()->fetch_featured_products($brand, null, $filter);
+    return $products;
+  }
+
+  return [];
+}
+
+function get_featured_videos($brand, $number = 1){
+  $videos = BrandsContentFilters::instance()->fetch_featured_videos($brand, $number);
+  return $videos;
+}
+
+function get_custom_content($brand, $type){
+  $content = BrandsContentFilters::instance()->fetch_custom_content($brand, $type);
+  return $content;
+
+}
+
+
+function get_carousel_entities($brand, $carousel_type){
+  return BrandsContentFilters::instance()->fetch_carousel_entities($brand, $carousel_type);
+}
+
+
+function get_featured_products_custom($brand){
+  $products = BrandsContentFilters::instance()->fetch_carousel_product($brand, 'featured');
+  return $products;
+}
+
+
+function get_featured_products($brand, $product_category){
+  $products = BrandsContentFilters::instance()->fetch_featured_products($brand, $product_category);
+  return $products;
+
+}
+
+function get_products_dropthehint($brand){
+  $products = BrandsContentFilters::instance()->fetch_products_dropthehint($brand);
+  return $products;
+
+}
+
+/**
+ * Fetch product and categorize them by shape
+ * @param  [type] $brand [description]
+ * @param  [type] $shape can be 'round', 'triangle', 'salsa'
+ * @return [type]        [description]
+ */
+function get_products_by_shape($brand, $shape, $product_category_id){
+  $products = BrandsContentFilters::instance()->fetch_products_by_shape($brand, $shape, $product_category_id);
+  return $products;
+
+}
+
+
+function get_homepage_slides($brand){
+  $slides = BrandsContentFilters::instance()->fetch_brand_slides($brand);
+  return $slides;
+
+}
+
+
+function get_homepage_products($brand, $product_category_id = 0){
+  $products = BrandsContentFilters::instance()->fetch_onepage_products($brand, $product_category_id);
+  return $products;
+
+}
+
+
+
+function get_product_category_background($brand, $path){
+  $banner_url = BrandsContentFilters::instance()->get_product_category_image($brand, $path, $img_type = 'background');
+  return $banner_url;
+}
+
+function get_product_category_banner($brand, $path){
+  $banner_url = BrandsContentFilters::instance()->get_product_category_image($brand, $path, $img_type = 'banner');
+  return $banner_url;
+}
+
+function get_product_category_mobile_banner($brand, $path){
+  $banner_url = BrandsContentFilters::instance()->get_product_category_image($brand, $path, $img_type = 'mobile');
+  return $banner_url;
+}
+function get_product_category_title($brand, $path){
+  $title = BrandsContentFilters::instance()->get_product_category_title($brand, $path);
+  return $title;
+}
+
+function get_recipe_avg_rating($node){
+  return BrandsContentFilters::instance()->compute_avg_rating( $node);
+
+}
+
+function is_signature_product($node){
+  $term = find_product_category_by_url("/miss-vickies-signatures");
+  if (empty($term))
+    return false;
+
+  if($term->id() == $node->field_product_category->target_id )
+    return true;
+
+  return false;
+
+}
+
+function find_product_category_by_url($path, $brand = ""){
+  $tid = BrandsContentFilters::instance()->get_product_category_by_url( $path, $brand);
+  if ($tid)
+    return Term::load($tid);
+
+  return null;
+
+}
+
+function get_contest_banner($type){
+  $slides = BrandsContentFilters::instance()->fetch_brand_slides($brand = null, $type);
+  return $slides;
+}
+
+
+function get_brands_landingpage_slides(){
+  $slides = BrandsContentFilters::instance()->fetch_brand_slides($brand = "Tastyrewards", $type = "landingpage");
+  return $slides;
+
+}
+
+function is_home_page($brand){
+  switch ($brand) {
+    case 'flaminhot':
+      $brand_fr = "enflamme";
+      break;
+    default:
+      $brand_fr = $brand;
+      break;
+  }
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ($current_path == "/brands/$brand" || $current_path == "/marques/$brand_fr"){
+      return true;
+   }
+   return false;
+}
+
+function pepsibrands_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+  if (is_quaker_landing()){
+    unset($css['themes/tastytheme/src/css/carousel.css']);
+    unset($css['themes/tastytheme/src/css/style.css']);
+  }
+}
+
+
+function is_recipes_page($brand){
+  // $current_path = \Drupal::service('path.current')->getPath();
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, ".pepsibrands.recipes") !== false ){
+      return true;
+   }
+   return false;
+}
+
+function is_cheetos_rules_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, ".cheetos.rules") !== false ){
+      return true;
+   }
+   return false;
+}
+
+function is_quaker_landing(){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, ".pepsibrands.quaker.landing") !== false
+    ||  strpos($route_name, ".pepsibrands.realjoy.landing") !== false
+     ){
+      return true;
+   }
+   return false;
+}
+
+
+function is_occasions_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  // pepsibrands.products.group
+  if (strpos($route_name, ".pepsibrands.occasions") !== false
+      || strpos($route_name, ".pepsibrands.collections") !== false
+   )
+    return true;
+
+  return false;
+}
+
+function is_about_us_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, ".pepsibrands.about-us") !== false )
+    return true;
+
+  return false;
+}
+
+function is_product_group_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  // pepsibrands.products.group
+  if (strpos($route_name, "pepsibrands.products.group") !== false )
+    return true;
+
+  return false;
+}
+
+function is_brand_homepage($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, ".pepsibrands.homepage") !== false ){
+      return true;
+   }
+   return false;
+}
+
+function is_dropthehint_page($brand){
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, "/brands/$brand/dropthehint") !== false
+      || strpos($current_path, "/marques/$brand/mettezunsoupcon") !== false ){
+      return true;
+   }
+   return false;
+}
+
+function is_findyourflavour_page(){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, "pepsibrands.missvickies.flavour") !== false ){
+    return true;
+  }
+
+  return false;
+}
+
+function is_product_category_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, "pepsibrands.products.categories") !== false ){
+    return true;
+  }
+
+
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, "/brands/$brand/products-categories/") !== false
+      || strpos($current_path, "/marques/$brand/products-categories") !== false
+      || strpos($current_path, "/marques/$brand/produits-categories") !== false
+    ){
+    return true;
+  }
+  return false;
+}
+
+function is_product_page($brand){
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, "/brands/$brand/products") !== false
+      || strpos($current_path, "/marques/$brand/products") !== false
+      || strpos($current_path, "/marques/$brand/produits") !== false
+    ){
+    return true;
+  }
+  return false;
+}
+
+function is_brand_product_page($brand){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $langcode =  get_current_langcode(true);
+  if ($route_name === $langcode . ".pepsibrands.products"){
+    return true;
+  } 
+  return false;
+}
+
+
+function get_shapes_options(){
+  $entityManager = \Drupal::service('entity_field.manager');
+  $fields = $entityManager->getFieldStorageDefinitions('node', 'product');
+  $options = options_allowed_values($fields['field_shape']);
+  // We want the array to be ordered as follows:  scoops , triangles, rounds
+  if (array_key_exists('rounds', $options)){
+    $options = ['rounds' => $options['rounds']] + $options;
+  }
+
+  if (array_key_exists('triangle', $options)){
+    $options = ['triangle' => $options['triangle']] + $options;
+  }
+
+  if (array_key_exists('scoops', $options)){
+    $options = ['scoops' => $options['scoops']] + $options;
+  }
+  return $options;
+}
+
+function node_has_translation($node, $langcode){
+  $translated_lang = $langcode == 'fr' ? 'en' : 'fr';
+  return $node->hasTranslation($translated_lang);
+}
+
+function get_translated_node_url($nid){
+  $langcode = get_current_langcode($with_prefix = false);
+  $lang_prefix = get_current_langcode();
+  if ($lang_prefix != 'fr-ca'){
+      $alias = "/fr-ca" . \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, 'fr');
+  } else {
+      $alias ="/en-ca". \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, 'en');
+  }
+
+  return  $alias;
+
+}
+
+/**
+ * Returns the actual value of the brand name as
+ * stored in the database
+ * example: Missvickies or missvickies would become MissVickies
+ * @param  [type] $brand [description]
+ * @return [type]        [description]
+ */
+function brand_strcase($brand_name){
+// @TODO: link back this function to
+// the function strcase_brand() which is available in a different branch
+  $entityManager = \Drupal::service('entity_field.manager');
+  $fields = $entityManager->getFieldStorageDefinitions('node', 'product');
+  $options = options_allowed_values($fields['field_brand']);
+  $keys_options = array_keys($options);
+  foreach ($keys_options as $key => $option) {
+    if (strtolower($option) == strtolower($brand_name) )
+      return $option;
+  }
+  return "";
+}
+
+function has_active_date_range($node){
+  $is_active = false;
+  if (empty($node) || $node->getType() !== 'home_page_carousel2'){
+    return null;
+  }
+  $start_date = $node->field_activation_startdate->getValue();
+  $end_date = $node->field_activation_enddate->getValue();
+  // field_activation_startdate  field_activation_enddate
+  if (empty($start_date) && empty($end_date) ) {
+    return true;
+  } else{
+    if (!empty($end_date)){
+      // $phpDateTime = $node->field_activation_enddate->date->getPhpDateTime();
+      // $now = get_date_with_site_timezone($phpDateTime);
+      $now = get_date_with_site_timezone($node->field_activation_enddate);
+
+      $date = date_create($end_date[0]['value']);
+      $str_enddate = date_format($date, "Y-m-d H:i:s");
+      if ($str_enddate > $now){
+        $is_active = true;
+      } else {
+        return false;
+      }
+    }
+    if (!empty($start_date)){
+      $now = get_date_with_site_timezone($node->field_activation_startdate);
+      $date = date_create($start_date[0]['value']);
+      $str_startdate = date_format($date, "Y-m-d H:i:s");
+      if ($str_startdate < $now){
+        $is_active = true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  return $is_active;
+}
+
+function get_date_with_site_timezone($date_field){
+  $date_string = $date_field->date->__toString();
+  // $date_string has the following format  2021-01-30 23:38:18 UTC
+  $arr = preg_split('/\s+/', $date_string);
+  $timezone = array_pop($arr);
+
+  // $timezone = "UTC";
+  $date = new DateTime("now", new DateTimeZone($timezone) );
+  return  $date->format('Y-m-d H:i:s');
+}
+
+function get_active_carousels($brand, $type){
+  if (!is_valid_carousel_type($type)){
+    return [];
+  }
+
+  $slides = BrandsContentFilters::instance()->fetch_brand_slides($brand, $type);
+
+  return $slides;
+}
+
+function is_valid_carousel_type($type){
+  $entityManager = \Drupal::service('entity_field.manager');
+  $fields = $entityManager->getFieldStorageDefinitions('node', 'home_page_carousel2');
+  $options = options_allowed_values($fields['field_carousel_type']);
+  $keys = array_keys($options);
+  if (in_array($type, $keys)){
+    return true;
+  }
+  return false;
+}
+
+
+function convert_title_to_url($title){
+    $title = str_replace(" ", "-", strip_tags($title));
+    $title = preg_replace("/[^A-Za-z0-9 -]/", '', $title);
+    return strtolower($title);
+}
+
+function get_product_group_id($brand ,$group_name){
+  $tid = BrandsContentFilters::instance()->find_product_group_id($brand, $group_name);
+  return $tid;
+}
+
+function _product_category_title($term){
+  $langcode = get_current_langcode($with_prefix = false);
+  if ($langcode != 'en'){
+    if ($term->hasTranslation('fr')){
+      $term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $langcode);
+    }
+  }
+  return $term->field_subtitle->value;
+
+}
+function _product_category_body($term){
+  $langcode = get_current_langcode($with_prefix = false);
+  if ($langcode != 'en'){
+    if ($term->hasTranslation('fr')){
+      $term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $langcode);
+    }
+  }
+  return $term->getDescription();
+
+}
+
+function get_product_img_url($node){
+  $langcode = get_current_langcode($with_prefix = false);
+  // We always want to return the English version of the image
+  if ($langcode != 'en'){
+      $node = $node->getTranslation('en');
+  }
+
+// field_extra_image2
+  $target_id = $node->field_recipe_image->target_id;
+  if (!empty($node->field_extra_image2->target_id)){
+      $target_id = $node->field_extra_image2->target_id;
+  }
+  $img = \Drupal\file\Entity\File::load($target_id);
+
+  if (empty($img))
+    return '';
+  return file_create_url( $img->getFileUri());
+}
+
+
+function log_variable($var, $message, $log_type = "debug"){
+  \Drupal::logger($log_type)->info($message . " " . (gettype($var) == "string"? $var: print_r($var, 1) ) ,[]);
+}
+
+function log_var($var, $message, $log_type = "debug"){
+  log_variable($var, $message, $log_type);
+}
+
+function append_log($message, $log_type = "info", $filename = 'drupal_logs'){
+
+  $date = date("Y-m");
+
+  $filepath = "../logs/" . $filename . "_$date.log";
+
+  try{
+    $content = date("Y-m-d H:i:s") . " \t $log_type \t" . $message . "\n";
+    file_put_contents($filepath, $content, FILE_APPEND);
+  } catch(\Exception $e){
+    log_var($e, "Could not write to $filepath");
+  }
+}
+
+function generate_csv_tostitos_recipes(){
+  $langcode = get_current_langcode($with_prefix = false);
+    $recipes = [];
+    $brand = "tostitos";
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', 'recipe');
+    $empty_category = $query->orConditionGroup()
+        ->notExists('field_search_category')
+        ->condition('field_search_category.entity:taxonomy_term.tid',NULL,'=');
+    $query->condition($empty_category);
+    // $query->condition('field_brand', ucfirst($brand) );
+    // $query->condition('field_brand_website', 'Tostitos' );
+    $query->sort('field_recipe_subtitle', 'ASC');
+    $entity_ids = $query->execute();
+    if (empty($entity_ids))
+      return [];
+
+    $data = 'nid, title,langcode,status'.PHP_EOL;
+    $filename = "recipes_$langcode.csv";
+    $fp = fopen($filename, 'w');
+    fwrite($fp, $data);
+
+
+    $nids = array_values($entity_ids);
+    foreach ($nids as $nid) {
+      $node = \Drupal\node\Entity\Node::load($nid);
+      $entity = [];
+      $lang_prefix = get_current_langcode();
+
+      if ($langcode != 'en'){
+        if (!$node->hasTranslation($langcode))
+          continue;
+        $node = $node->getTranslation($langcode);
+      }
+
+        $entity['original_link'] =  $node->field_original_link->value;
+        $original_link =  $node->field_original_link->value;
+        $entity['nid'] = $node->id();
+        $title = str_replace(",", "",  $node->title->value);
+        $status = $node->status->value;
+        if ($status == 0)
+          continue;
+        // $entity['link'] = '/node/' . $node->id();
+        $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, $langcode);
+        // $entity['link'] = '/node/' . $node->id();
+        // $entity['link'] = $alias;
+        $hostname = "https://tastyrewards-stage.pepext.com";
+        $entity['link'] = $hostname . "/$lang_prefix" . $alias;
+        $link = $entity['link'];
+        $recipes[] = $entity;
+
+        // Write to file
+        $data = "$nid,$title, $langcode, $status".PHP_EOL;
+        $fp = fopen($filename, 'a');
+        fwrite($fp, $data);
+    }
+    return $recipes;
+}
+
+
+function export_brand_urls_redirect($brand){
+  $langcode = get_current_langcode($with_prefix = false);
+    $recipes = [];
+    $content_type = "recipe";
+    // $brand = "missvickies";
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', $content_type);
+    // $query->condition('field_brand', ucfirst($brand) );
+    $query->condition('field_brand_website', ucfirst($brand) );
+    $query->sort('field_subtitle', 'ASC');
+    $entity_ids = $query->execute();
+    if (empty($entity_ids))
+      return [];
+
+    $data = 'Tastyrewards_url, brand_url'.PHP_EOL;
+    $filename = $content_type . "_" . $brand . "_$langcode.csv";
+    $fp = fopen($filename, 'w');
+    fwrite($fp, $data);
+
+
+    $nids = array_values($entity_ids);
+    foreach ($nids as $nid) {
+      $node = \Drupal\node\Entity\Node::load($nid);
+      $entity = [];
+      $lang_prefix = get_current_langcode();
+
+      if ($langcode != 'en'){
+        if (!$node->hasTranslation('fr'))
+          continue;
+        $node = $node->getTranslation('fr');
+      }
+
+        $entity['original_link'] =  $node->field_old_link->value;
+        $original_link =  $node->field_old_link->value;
+        $entity['nid'] = $node->id();
+        // $entity['link'] = '/node/' . $node->id();
+        $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, $langcode);
+
+        // $entity['link'] = '/node/' . $node->id();
+        // $entity['link'] = $alias;
+        $hostname = "https://tastyrewards-stage.pepext.com";
+        $entity['link'] = $hostname . "/$lang_prefix" . $alias;
+        $link = $entity['link'];
+        $recipes[] = $entity;
+
+        $_brand = $langcode == "en" ? "brands" : "marques";
+        $link = $hostname . "/$lang_prefix/" . $_brand . "/$brand" . "/$content_type/" . basename($alias);
+
+        // Write to file
+        $data = "$link,$original_link".PHP_EOL;
+        $fp = fopen($filename, 'a');
+        fwrite($fp, $data);
+    }
+    return $recipes;
+}
+
+
+function es_content_population(){
+  /*
+  $str = <<<'EOD'
+  Calienta el horno a 190 ?C. En un taz?n grande, bate la margarina y los az?cares hasta que est?n cremosos. Agrega el huevo y la vainilla; mezcla bien. Agrega la harina combinada, el bicarbonato de sodio, la canela, la sal y la nuez moscada; mezcla bien, a?ade la avena y mezcla de nuevo para incorporar todos los ingredientes.
+  Coloca la masa por cucharadas redondeadas en una bandeja para hornear sin engrasar.
+  Hornea de 8 a 9 minutos para una galleta blandita o de 10 a 11 minutos si la quieres crujiente. D?jalas enfriar durante 1 minuto en bandejas para galletas; retira del horno y cambia a una rejilla de alambre. D?jalas enfriar por completo. Gu?rdalas en un recipiente bien tapado.
+
+
+  Notas de cocci?n
+  AJUSTE PARA LUGARES ALTOS: aumenta la cantidad de harina a 1-3/4 de taza y hornea como se indica.
+
+  Variaciones
+  BARRAS DE GALLETA: presiona la masa contra el fondo de un molde para hornear de 30 x 22 cm sin engrasar. Hornea de 25 a 30 minutos o hasta que est? ligeramente dorada. Deja enfriar por completo en el molde sobre una rejilla. Corta la mezcla en barras y almac?nalas bien tapadas.
+  24 VARIACIONES DE BARRAS: agrega 1 taza de pasas o nueces picadas. Omite las especias y agrega 1 taza de chispas de chocolate semidulces, chispas de caramelo o chispas con sabor a mantequilla de man?.
+  EOD;
+  echo $str;
+  //$exporter = new BrandsContentImport();
+  //$str = BrandsContentImport::instance()->format_body_add_p($str);
+  $str = BrandsContentImport::instance()->format_body_add_li($str);
+  echo $str;
+  var_dump("Hello");
+  */
+  $sql = "SELECT * from tmp_recipes_es";
+
+
+  $select = \Drupal::database()->query($sql);
+  $result = $select->fetchAll();
+
+  $sourceLanguageKey = 'en-us';
+  $translationLanguageKey = 'es-us';
+
+
+  foreach ($result as $key => $item) {
+    $nid = $item->nid;
+    echo $nid . "<br>";
+    $title = $item->title;
+    $field_recipe_subtitle_value = $item->field_recipe_subtitle_value;
+    $body_value = "<p>".$item->body_value."</p>";
+    $body_value = str_replace("Dato curioso:", "</p><p>Dato curioso:<br>", $item->body_value);
+    $field_recipe_ingredients_value = BrandsContentImport::instance()->format_body_add_li($item->field_recipe_ingredients_value,'ul');
+    $field_recipe_how_to_make_value = BrandsContentImport::instance()->format_body_add_li($item->field_recipe_how_to_make_value,'ol');
+    $url = $item->url;
+
+    $node = Node::load($nid);
+
+    $source_translation = $node->getTranslation($sourceLanguageKey);
+
+    $target_translation = $node->addTranslation($translationLanguageKey, $source_translation->toArray());
+
+    // Make sure we do not inherit the affected status from the source values.
+    if ($node->getEntityType()->isRevisionable()) {
+      $target_translation->setRevisionTranslationAffected(NULL);
+    }
+    $translationManager = \Drupal::getContainer()->get('content_translation.manager');
+    $metadata = $translationManager->getTranslationMetadata($target_translation);
+    $metadata->setSource($sourceLanguageKey);
+
+    $target_translation->title->value = $title;
+
+    $target_translation->field_recipe_subtitle->value =  BrandsContentImport::instance()->add_sup_tag($title);
+
+    $target_translation->body->format = 'full_html';
+    $target_translation->body->value = BrandsContentImport::instance()->add_sup_tag($body_value, $strip_tags = false);
+
+
+
+    $target_translation->field_recipe_ingredients->value = $field_recipe_ingredients_value;
+    $target_translation->field_recipe_how_to_make->value = $field_recipe_how_to_make_value;
+    $target_translation->field_recipe_image->alt = $title;
+    $target_translation->field_recipe_image->title = $title;
+
+    $target_translation->field_recipe_image_detail->alt = $title;
+    $target_translation->field_recipe_image_detail->title = $title;
+
+
+    \Drupal::service('path.alias_storage')->save("/node/" . $nid, $url, $translationLanguageKey);
+    //updating value
+    //dd($target_translation);
+    $node->save();
+
+  }
+
+
+}
+
+function es_content_article_population(){
+  $sql = "SELECT * from tmp_articles_es";
+
+  $select = \Drupal::database()->query($sql);
+  $result = $select->fetchAll();
+
+  $sourceLanguageKey = 'en-us';
+  $translationLanguageKey = 'es-us';
+
+
+  foreach ($result as $key => $item) {
+    $nid = $item->nid;
+    echo $nid . "<br>";
+    $title = $item->title;
+    $field_article_subtitle_value = $item->field_article_subtitle_value;
+    $body_value = $item->body_value;
+    $url = $item->url;
+
+    $node = node_load($nid);
+
+    $source_translation = $node->getTranslation($sourceLanguageKey);
+    $target_translation = $node->addTranslation($translationLanguageKey, $source_translation->toArray());
+
+    // Make sure we do not inherit the affected status from the source values.
+    if ($node->getEntityType()->isRevisionable()) {
+      $target_translation->setRevisionTranslationAffected(NULL);
+    }
+    $translationManager = \Drupal::getContainer()->get('content_translation.manager');
+    $metadata = $translationManager->getTranslationMetadata($target_translation);
+    $metadata->setSource($sourceLanguageKey);
+
+    $target_translation->title->value = $title;
+
+    $target_translation->field_article_subtitle->value =  BrandsContentImport::instance()->add_sup_tag($field_article_subtitle_value);
+
+    $target_translation->body->format = 'full_html';
+    $target_translation->body->value = BrandsContentImport::instance()->add_sup_tag($body_value, $strip_tags = false);
+
+
+
+    \Drupal::service('path.alias_storage')->save("/node/" . $nid, $url, $translationLanguageKey);
+    //updating value
+    //dd($target_translation);
+    $node->save();
+
+  }
+
+
+}
+
+
+
+/**
+ * Returns the actual value of the brand name as
+ * stored in the database by applying the correct case
+ * example: Missvickies or missvickies would become MissVickies
+ * @param  [type] $brand [description]
+ * @return [type]        [description]
+ */
+function strcase_brand($brand_name){
+  $entityManager = \Drupal::service('entity_field.manager');
+  $fields = $entityManager->getFieldStorageDefinitions('node', 'product');
+  $options = options_allowed_values($fields['field_brand']);
+  $keys_options = array_keys($options);
+  foreach ($keys_options as $key => $option) {
+    if (strtolower($option) == strtolower($brand_name) )
+      return $option;
+  }
+  return "";
+}
+
+function create_content_blocks($brand, $brand_to_duplicate = 'lays', $block_type = ''){
+  $brand = strcase_brand($brand);
+  // $brand_to_duplicate = "lays";
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'content_block');
+  if (!empty($block_type)){
+    $query->condition('field_block_type', $block_type);
+  }
+  $query->condition('field_brand', $brand_to_duplicate);
+  $entity_ids = $query->execute();
+
+  if (empty($entity_ids))
+      return [];
+
+  foreach ($entity_ids as $nid) {
+      $node = \Drupal\node\Entity\Node::load($nid);
+      // $node = $node->getTranslation('en-ca');
+
+      $cloned_node = $node->createDuplicate();
+      $cloned_node->field_brand->value = $brand;
+      $cloned_node->save();
+
+      // $cloned_node = \Drupal\node\Entity\Node::load($cloned_node->id());
+
+      $cloned_node->title->value = "$brand - " . ucfirst($cloned_node->field_block_type->value) . " Block ";
+      $cloned_node->save();
+      if ($cloned_node->hasTranslation('fr')){
+        $cloned_node = $cloned_node->getTranslation('fr');
+        $cloned_node->field_brand->value = $brand;
+        $cloned_node->save();
+        // $cloned_node = \Drupal\node\Entity\Node::load($cloned_node->id());
+        $cloned_node = $cloned_node->getTranslation('fr');
+         $cloned_node->title->value = "$brand - " . ucfirst($cloned_node->field_block_type->value) . " Block FR";
+        $cloned_node->save();
+      }
+  }
+}
+
+
+function update_brand_coupon_content($brand){
+  $brand = strcase_brand($brand);
+  // $brand_to_duplicate = "lays";
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'content_block');
+  $query->condition('field_block_type', 'coupon');
+  $query->condition('field_brand', $brand);
+  $entity_ids = $query->execute();
+
+  if (empty($entity_ids))
+      return [];
+
+  foreach ($entity_ids as $nid) {
+      $node = \Drupal\node\Entity\Node::load($nid);
+      $coupon_body = $node->body->value; 
+      if ( strpos($coupon_body, '<img loading="lazy" ') !== false ){
+        echo "$brand already updated \n";
+        continue;
+      }
+      $node->body->value = str_replace('<img ', '<img loading="lazy" ', $coupon_body);
+      $node->save();
+      if ($node->hasTranslation('fr')){
+        $node_fr = $node->getTranslation('fr');
+        $node_fr->body->value = str_replace('<img ', '<img loading="lazy" ', $node_fr->body->value);
+        $node_fr->save();
+
+      }
+
+      // $node = $node->getTranslation('en-ca');
+
+  }
+}
+
+
+function pepsi_validate_email($email, $allow_plus_sign = true){
+
+  $contains_plus_sign = strpos($email, "+") !== false;
+
+  if (!$allow_plus_sign && $contains_plus_sign){
+     return false;
+  }
+
+
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strpos($email, '|') !== false || strpos($email, ' ') !== false)
+      return false;
+  // Invalidate spammy emails
+  $bam_ip = '70.35.213.98';
+  $blocked_ips = ['67.68.59.221', '70.53.255.24', '70.53.255.24'];
+  if ( strpos($email, "@commuccast.com") !== false ||
+       strpos($email, "@distromtl.com") !== false ||
+       strpos($email, "@ispqc.com") !== false ||
+       strpos($email, "@xferdirect.com") !== false ||
+       in_array(getIPaddress(), $blocked_ips)
+  ){
+      return false;
+  }
+
+
+  return true;
+}
+
+
+function get_receipt_form_errors(){
+  $session = \Drupal::request()->getSession();
+  $data = $session->get('quaker_receipt');
+
+  if (!empty($data)){
+    $session->remove('quaker_receipt');
+  }
+  return $data;
+}
+
+
+function drupal_email_credentials(){
+    $credentials = [];
+    $config =  \Drupal::config('sfmcservices.adminsettings');
+    if ($config->get('smtp_username') && $config->get('smtp_username')){
+        $credentials['username'] = $config->get('smtp_username');
+        $credentials['password'] = $config->get('smtp_password');
+    }
+    return $credentials;
+}
+
+function get_quaker_email_content($verified, $language, $email){
+    $subject = '';
+    $subject_en = '';
+    $content = '';
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    $lang = get_current_langcode(false);
+
+   if ($verified){
+      $header_image = 'quaker_verified.png';
+
+      if ($language == 'fr'){
+        $header_image = 'quaker-verified-fr.png';
+      }
+
+      $coupon_id = get_next_quaker_coupon($language);
+      update_coupon_table($coupon_id, $email, $language);
+      $websaver_url = "https://coupons.websaver.ca/$lang/Quaker2021?ul=";
+      $coupon_link = $websaver_url . $coupon_id;
+
+      $subject_en = "Quaker and Food Banks Canada Offer - Receipt Verified.";
+      if ($language == 'en' || $language == 'en-ca'){
+        $subject = t("Quaker and Food Banks Canada Offer - Receipt Verified.");
+        $subject = utf8_decode( $subject );
+        $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                    <div style = 'width: 80%; margin: auto; text-align: center; font-size: 18px'>".
+                    t("Thank you for submitting your receipt. It's been verified — and as a result, Quaker<sup>&reg;</sup> will donate $2 to Food Banks Canada.") . "<br><br>" .
+                    t("Here's your link to a $2 Off coupon for your next purchase:")."<br> <br> " .
+            "<a style='text-decoration: none; background-color: #db1d2c; border:2px solid #db1d2c; padding: 8px; padding-left: 15px; padding-right: 15px; border-radius: 25px; color: #fff' href='$coupon_link'>". t("GET COUPON") . "</a> <br> <br>
+            <div style='font-size: 16px'>" .
+
+            t("On behalf of Quaker<sup>&reg;</sup> and Food Banks Canada, thank you for supporting our Pack The Goodness program. Your contribution will directly help food-insecure Canadians put meals on the table.<br><br>") .
+
+            t("To learn more about this important cause, you can visit FoodBanksCanada.ca.<br><br>") .
+
+          "<div style='font-size: 15px; text-align: left'>".
+            t('This message was sent to you because you participated in the "Quaker<sup>&reg;</sup> Pack The Goodness Program" run by PepsiCo Canada. We can be contacted at 2095 Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 or www.pepsico.ca. Unless you have previously opted in, your email address has not been added to any email marketing lists by participating in this offer.') . "</div> </div> </div> </div>";
+
+          } elseif($language == 'fr' || $language == 'fr-ca'){
+            $subject = "Offre de Quaker et Banques alimentaires Canada : Vérification du reçu complétée";
+            $subject = utf8_decode( $subject );
+            $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                    <div style = 'width: 80%; margin: auto; text-align: center; font-size: 18px'>".
+                    "Merci de nous avoir fait parvenir votre re&ccedil;u. Nous en avons compl&eacute;t&eacute; la v&eacute;rification et, par cons&eacute;quent, Quaker<sup>&reg;</sup> remettra 2$ &agrave; Banques alimentaires Canada." . "<br><br>" .
+                    "Voici le lien vous permettant d'obtenir un bon de 2$ applicable sur votre prochain achat :"."<br> <br> " .
+            "<a style='text-decoration: none; background-color: #db1d2c; border:2px solid #db1d2c; padding: 8px; padding-left: 15px; padding-right: 15px; border-radius: 25px; color: #fff' href='$coupon_link'>". "OBTENIR MON BON" . "</a> <br> <br>
+            <div style='font-size: 16px'>" .
+
+            "Nous vous remercions, au nom de Quaker<sup>&reg;</sup>  et de Banques alimentaires Canada, de votre soutien envers notre programme Faites le plein de d&eacute;lices. Votre contribution aidera directement des Canadiens en situation d'ins&eacute;curit&eacute; alimentaire &agrave; se nourrir.<br><br>" .
+
+           "Pour en conna&icirc;tre davantage sur cette cause importante, visitez BanquesalimentairesCanada.ca.<br><br> ".
+
+          "<div style='font-size: 15px; text-align: left'>".
+            "Vous recevez ce message &agrave; la suite de votre participation au programme &laquo;Faites le plein de d&eacute;lices &raquo; de Quaker<sup>&reg;</sup> , dirig&eacute; par PepsiCo Canada. Vous pouvez nous rejoindre au 2095, Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 ou au www.pepsico.ca. &Agrave; moins que vous ne vous soyez inscrit pr&eacute;alablement, votre participation &agrave; cette offre n&#39;a pas pour effet d&#39;ajouter votre adresse &agrave; une liste de marketing par courriel." . "</div> </div> </div> </div>";
+
+          }
+
+    } else {
+
+        $subject_en = "Quaker and Foods Banks Canada Receipt Not Verified";
+
+        if ($language == 'en' || $language == 'en-ca'){
+            $subject = t("Quaker and Foods Banks Canada � Receipt Not Verified");
+            $subject = utf8_decode( $subject );
+            $content = "<div style = 'text-align: center'>
+                        <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                        <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                        <div style = 'width: 80%; margin: auto; text-align: center; font-size: 18px'>".
+                        t("Thank you for your submission. <br><br> Unfortunately, your receipt could not be verified.") . "<br><br>" .
+                        t('Please review the "How It Works" section at www.QuakerFeedCanada.ca to review the program details') . "<br> <br>" .
+
+                t("You can try to upload a new receipt again with the purchase of 2 participating products until October 31, 2021 or while supplies last.<br><br>") .
+
+                t("Thanks again!<br><br>").
+
+
+                "<div style='font-size: 15px; text-align: left'>".
+              t('This message was sent to you because you participated in the "Quaker<sup>&reg;</sup> Pack The Goodness Program" run by PepsiCo Canada. We can be contacted at 2095 Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 or www.pepsico.ca. Unless you have previously opted in, your email address has not been added to any email marketing lists by participating in this offer.') . " </div> </div> </div> </div>";
+
+        } elseif($language == 'fr' || $language == 'fr-ca'){
+              $subject = "Quaker et Banques alimentaires Canada : échec de la vérification du reçu";
+            $subject = utf8_decode( $subject );
+            $content = "<div style = 'text-align: center'>
+                        <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                        <img style = 'width: 80%' src = 'cid:header_img'/><br><br>
+                        <div style = 'width: 80%; margin: auto; text-align: center; font-size: 18px'>".
+                        "Merci de votre participation.<br><br>La v&eacute;rification de votre re&ccedil;u a malheureusement &eacute;chou&eacute;. " . "<br><br>" .
+                        "Veuillez consulter la section &laquo;Marche &agrave; suivre &raquo; au www.QuakerNourrirLeCanada.ca pour revoir les d&eacute;tails du programme." . "<br> <br>" .
+
+                "D&#39;ici le 31 octobre 2021 ou jusqu&#39;&agrave; &eacute;puisement des stocks, il vous sera possible d&#39;essayer &agrave; nouveau de t&eacute;l&eacute;verser la photo d&#39;un re&ccedil;u apr&egrave;s avoir fait l&#39;achat de 2 produits participants.<br><br>" .
+
+                "Merci encore!<br><br>".
+
+
+                "<div style='font-size: 15px; text-align: left'>".
+              "Vous recevez ce message &agrave; la suite de votre participation au programme &laquo;Faites le plein de d&eacute;lices &raquo; de Quaker<sup>&reg;</sup> , dirig&eacute; par PepsiCo Canada. Vous pouvez nous rejoindre au 2095, Matheson Boulevard East, Mississauga, Ontario, L4W 0G2 ou au www.pepsico.ca. &Agrave; moins que vous ne vous soyez inscrit pr&eacute;alablement, votre participation &agrave; cette offre n&#39;a pas pour effet d&#39;ajouter votre adresse &agrave; une liste de marketing par courriel." . " </div> </div> </div> </div>";
+        }
+
+
+
+    }
+
+    $email_copy = [];
+    $email_copy['subject'] = $subject;
+    $email_copy['subject_en'] = $subject_en;
+    $email_copy['content'] = $content;
+
+    return $email_copy;
+}
+
+function send_email_receipt($email,  $verified = true, $language = 'en', $firstname = ''){
+
+    //@TODO: French translation still doesn't work when being called
+    //from the callback API
+    $credentials = drupal_email_credentials();
+    $email_logo_img = 'email-logo.png';
+    $header_image = 'quaker_unverified.png';
+//    $header_image = 'quaker_verified.png';
+
+
+
+    if (empty($credentials)){
+        log_var("", "SMTP credentials missing ");
+        return false;
+    }
+
+    $subject = '';
+    $content = '';
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    $lang = get_current_langcode(false);
+
+    $email_copy = get_quaker_email_content($verified, $language, $email);
+    $subject_en = $email_copy['subject_en'];
+
+
+    // $coupon_link = $host . "/en-ca/coupons";
+    // $verified = false;
+    if ($verified){
+      $header_image = 'quaker_verified.png';
+
+      if ($language == 'fr'){
+        $header_image = 'quaker-verified-fr.png';
+      }
+
+      // $coupon_id = get_next_quaker_coupon($lang);
+      // update_coupon_table($coupon_id, $email, $lang);
+      // $websaver_url = "https://coupons.websaver.ca/$lang/Quaker2021?ul=";
+      // $coupon_link = $websaver_url . $coupon_id;
+
+        $subject = $email_copy['subject'];
+        $content = $email_copy['content'];
+    } else {
+      $subject = $email_copy['subject'];
+        $content = $email_copy['content'];
+
+    }
+
+
+
+    // debug_var($claim_url, 1);
+    $mail = new PHPMailer(true);
+
+    $slash = DIRECTORY_SEPARATOR;
+
+    $current_dir = dirname(dirname(dirname(__DIR__)));
+    $file = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $header_image;
+  $file2 = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $email_logo_img;
+  // $file3 = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $verified_image;
+    $mail->AddEmbeddedImage($file, 'header_img');
+  $mail->AddEmbeddedImage($file2, 'logo_img');
+  // $mail->AddEmbeddedImage($file3, 'verified_img');
+
+    $mail->SMTPDebug = 0;
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name
+    $mail->Host = "email-smtp.us-east-1.amazonaws.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;
+    //Provide username and password
+    $mail->Username = $credentials['username'];
+    $mail->Password = $credentials['password'];
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+
+    $mail->From = "contest@tastyrewards.ca";
+    $mail->FromName = "Tasty Rewards Contest";
+
+    $mail->addAddress($email, "$firstname ");
+
+    $mail->isHTML(true);
+
+    $mail->Subject = $subject;
+    $mail_content = $content;
+
+    $mail->Body = $mail_content;
+
+
+    $mail->AltBody = strip_tags($mail_content);
+
+    try {
+        $mail->send();
+
+
+        $connection = \Drupal\Core\Database\Database::getConnection();
+
+        if (\Drupal::database()->schema()->tableExists('pepsi_email_logs')) {
+          $email_type = ($firstname == 'test_admin3889') ? 'quaker_test' : 'quaker_receipt';
+          $connection->insert('pepsi_email_logs')
+              ->fields([
+                'subject' => $subject_en,
+                'recepient' => $email,
+                'email_type' => $email_type,
+                'language' => $language,
+                'enterdate' => date("Y-m-d"),
+                'regdate' => date("Y-m-d H:i:s"),
+              ])
+              ->execute();
+        }
+
+
+
+        // update_winners_table($email);
+        // $query = \Drupal::database()->update('pepsicontest_winners');
+            // $query->fields([
+            //     'email_sent' => 1,
+            //   ])
+            //   // ->condition('contest_id', $contest_id)
+            //   ->condition('enterdate', date('Y-m-d') )
+            //   ->condition('email', $email);
+            //  $success = $query->execute();
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+}
+
+
+function get_next_quaker_coupon($language){
+  $sql = "SELECT * from pepsi_coupons  WHERE  email = '' AND enterdate = '' and language = '$language' limit 1  " ;
+    $select = \Drupal::database()->query($sql);
+    $result = $select->fetchAll();
+    if (empty($result)){
+        return '';
+    }
+
+    return $result[0]->coupon;
+}
+
+function update_coupon_table($coupon, $email, $language){
+    \Drupal::database()->update('pepsi_coupons')
+        ->fields([
+            'enterdate' => date('Y-m-d H:i:s'),
+            'email' => $email,
+        ])
+        ->condition('coupon',$coupon)
+        // Comment out the language condition if the pair (coupon_id, lang) should
+        // be unique to users
+        // ->condition('language',$language)
+        ->execute();
+}
+
+
+function fetch_receipt_entry($filename){
+    $filename = trim($filename);
+    $sql = "SELECT * from pepsi_receipts_entries WHERE filename like '$filename' ";
+
+    $query = \Drupal::database()->query($sql);
+    $result = $query->fetchAll();
+    if (empty($result) ){
+        return false;
+    }
+    return $result[0];
+
+}
+
+function update_receipt_entry($entry){
+  $values = [
+    'status' => $entry['status'],
+    'store' => $entry['store'],
+    'decline_reason' => $entry['decline_reason'],
+    'amount' => $entry['amount'],
+    'uuid' => $entry['uuid'],
+    'nb_email_sent' => $entry['nb_email_sent'],
+    'products' => serialize($entry['products']),
+    'api_date' => date('Y-m-d H:i:s'),
+  ];
+
+
+    \Drupal::database()->update('pepsi_receipts_entries')
+            ->fields($values)
+            ->condition('filename',$entry['filename'])
+            ->condition('email',$entry['email'])
+            ->execute();
+}
+
+function get_total_quaker_products($products){
+  $quantity = 0;
+  if (is_array($products) && !empty($products)){
+    foreach ($products as $product) {
+      $quantity += intval($product['quantity']);
+    }
+  } 
+
+  return $quantity;
+}
+
+
+function send_realjoy_email($email, $story, $filepath ){
+    $credentials = get_email_credentials();
+    $langcode = 'en-ca';
+    $email_logo_img = 'email-logo.png';
+    $header_image = 'email-header.jpeg';
+    $bam_recipient = 'nicole@bamstrategy.com';
+
+
+
+    if (empty($credentials)){
+        log_var("", "SMTP credentials missing ");
+        return false;
+    }
+
+    $subject = '';
+    $content = '';
+    $subject = t("Real Joy Story Image");
+    $subject = utf8_decode( $subject );
+    $content = "<div style = 'text-align: center'>
+                    <img class='email-img' style = 'width: 120px' src = 'cid:logo_img'/><br><br>
+
+                    $story
+
+                    </div>";
+
+
+
+    // debug_var($claim_url, 1);
+    $mail = new PHPMailer(true);
+
+    // $image_path = $file->getPathname();
+
+    $slash = DIRECTORY_SEPARATOR;
+
+    $current_dir = dirname(dirname(dirname(__DIR__)));
+    // $file = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $header_image;
+  // $file2 = $current_dir . $slash  .  "themes" . $slash  . "tastytheme" . $slash  . "src" . $slash  . "images" . $slash  . "grab-snack" . $slash  . $email_logo_img;
+    // $mail->AddEmbeddedImage($file, 'header_img');
+  $mail->AddEmbeddedImage($filepath, 'logo_img');
+
+    $mail->SMTPDebug = 0;
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name
+    $mail->Host = "email-smtp.us-east-1.amazonaws.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;
+    //Provide username and password
+    $mail->Username = $credentials['username'];
+    $mail->Password = $credentials['password'];
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+
+    $mail->From = "contest@tastyrewards.ca";
+    $mail->FromName = "Tasty Rewards Contest";
+
+    $mail->addAddress($bam_recipient, "BAM ");
+
+    $mail->isHTML(true);
+
+    $mail->Subject = $subject;
+    $mail_content = $content;
+
+    $mail->Body = $mail_content;
+
+
+    $mail->AltBody = strip_tags($mail_content);
+
+    try {
+        $mail->send();
+
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+}

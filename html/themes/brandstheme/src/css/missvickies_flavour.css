@@ -1,0 +1,444 @@
+/*missvickies_flavour.css*/
+
+.right {
+  -webkit-transform: none;
+}
+
+#bannerCarousel {
+  height: 650px;
+}
+
+.carousel-control {
+  background:none !important;
+  z-index: 99999999 !important;
+}
+
+.play img {
+  width: 95px;
+}
+
+.play {
+  position: absolute;
+  top:45%;
+  left: 48%;
+  z-index: 10;
+  cursor:pointer;
+  transition: 0.5s;
+}
+
+#banner {
+  position: relative;
+}
+
+.missvickies-video-modal{
+  position: fixed;
+  width: 100vw;
+  background-color: rgba(130,130,130,0.8);
+}
+
+.missvickies-video-modal-header {
+  border-bottom: none;
+  position: absolute;
+  z-index: 99999;
+  right: -11px;
+  top: -16px;
+}
+
+.missvickies-video-modal-content {
+  width: 70vw !important;
+}
+
+.close {
+  right: 1.6rem !important;
+}
+
+.modal-dialog {
+  margin-top: -20px;
+}
+
+.index {
+  z-index: 99999999 !important;
+}
+
+.missvickies-product-img a img {
+  width: 42%;
+  height: auto;
+}
+
+input#sweet_salty {
+  width: 50%;
+  margin-bottom: 40px;
+}
+
+
+.slidecontainer p {
+  margin-bottom: 15px;
+}
+
+
+input#tangy_spicy {
+  width: 50%;
+}
+
+.slidecontainer.col-md-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/**********input [type=range] ***************/
+
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#sweet_salty::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-image: url('/themes/brandstheme/src/images/missvickies/findyourflavour/chips-slider.png');
+  background-size:30px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin-top:-18px;
+}
+
+#tangy_spicy::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-image: url('/themes/brandstheme/src/images/missvickies/findyourflavour/chips-slider.png');
+  background-size:30px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin-top:-18px;
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #fff;
+  border-radius: 1.3px;
+  border: 1px solid #F31322;
+}
+
+section#missvickies-signatures-block p {
+  color: #fff !important;
+}
+
+.missvickies-product-box h3 {
+  width:80%;
+  margin: 30px auto;
+}
+
+.missvickies-product-category {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.missvickies-featured-product-img a img {
+  width: 70%;
+  margin: auto;
+  height: 364px;
+}
+
+.featured-products {
+  margin-top: 5rem;
+}
+
+a.missvickies-red-button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  width: 160px;
+  font-size: 16px;
+}
+
+.buynow-btn {
+  padding: 13px 20px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  width: 160px;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+#missvickies-signatures-block {
+  position: relative;
+}
+
+.top-right {
+  width: 300px;
+  position: absolute;
+  right: -109px;
+}
+
+.top-left{
+  width: 260px;
+  position: absolute;
+  top: 30%;
+  left: -106px;
+}
+
+.missvickies-video-block {
+  background: transparent !important;
+  margin-top: 5rem;
+}
+
+.bottom-right {
+  width: 300px;
+  position: absolute;
+  right: -85px;
+  bottom:-7rem
+}
+
+.missvickies-product-img a img {
+  width: 50%;
+}
+
+.main-coupon-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-coupon-copy .btn_missvickies {
+  width: 200px !important;
+  margin: 20px auto;
+}
+
+.missvickies .video-section .video-title h1 {
+  color:#fff !important;
+
+}
+
+.carousel-inner .item img {
+  height:650px;
+}
+
+.missvickies-coupon-block {
+  background: url('/themes/brandstheme/src/images/missvickies/findyourflavour/missvickies-coupon-bg.png') !important;
+  background-size: cover !important;
+}
+
+#coupon .right {
+  width: 500px;
+  position: absolute;
+  left: -10rem;
+  bottom: 0;
+}
+
+#coupon .left {
+  position: absolute;
+  width: 500px;
+  right: -40px;
+  bottom: 0;
+}
+
+.main-coupon-left {
+  background: url('/themes/brandstheme/src/images/missvickies/findyourflavour/coupon-packshot-bg.png') !important;
+}
+
+.modal-margin {
+  margin-top:-12rem;
+}
+
+.view-all-btn {
+  width: 100%;
+  margin-top: 55px;
+}
+
+.banner-text {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+
+.banner-text h2, .banner-text p {
+  color:#fff !important;
+}
+
+.missvickies-video-modal {
+  z-index: -1 !important;
+}
+
+.index {
+  z-index: 99999 !important
+}
+
+.less-index {
+  z-index:-1 !important;
+}
+
+.noMobile {
+  display: flex;
+}
+
+.nav-index {
+  z-index: 1;
+}
+
+.item img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+ul.slick-dots {
+  display: none !important;
+}
+
+.banner-text p {
+  width:85%
+}
+
+@media only screen
+and (max-device-width: 768px) {
+
+  .missvickies-product-img {
+    margin-top: 60px;
+  }
+
+  .carousel-inner .item img, #bannerCarousel {
+    height: 560px;
+  }
+
+  .banner-text p, .banner-text h2 {
+    width:90%;
+    margin: auto;
+  }
+
+
+
+  .play {
+    left:40%;
+  }
+
+  p.text-white.missvickies-signatures-intro br {
+    display:none;
+  }
+
+  input#tangy_spicy, input#sweet_salty {
+    margin-top: 20px;
+  }
+
+  html:lang(en) .banner-text h2 {
+    font-size: 30px !important;
+  }
+
+  html:lang(fr) .banner-text h2{
+    font-size: 28px !important;
+  }
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 992px) {
+  .carousel-inner .item img, #bannerCarousel {
+    height:780px;
+  }
+
+  .banner-text p, .banner-text h2 {
+    margin: 20px auto;
+  }
+}
+
+@media only screen
+and (max-device-width: 992px) {
+  .top-left, .top-right, .bottom-right, .right, .left {
+    display: none;
+  }
+  .noMobile {
+    display: none !important;
+  }
+
+  .left-btn {
+      display: block !important;
+  }
+
+  .right-btn {
+    display: block !important;
+  }
+
+  .banner-text {
+    left: 0;
+    top:39%;
+    display: flex;
+    justify-content: center;
+
+  }
+
+
+
+}
+
+@media only screen
+and (min-device-width: 2000px) {
+  .missvickies-video-modal-content {
+    margin-top: 120px !important;
+  }
+}
+
+
+.missvickies .slick-prev, .missvickies .slick-next {
+  display: inline-block !important;
+}
+
+.missvickies .slick-prev:before {
+  content: '<' !important;
+}
+
+.missvickies .slick-next:before {
+  content: '>' !important;
+  color:#000 !important;
+}
+
+.slick-next:before, .slick-prev:before {
+  font-size: 9px !important;
+}
+
+.slick-prev:before {
+  left:2px !important;
+}
+
+@media only screen
+and (min-device-width: 1550px) {
+  .banner-text {
+    top:32%;
+    left:17%;
+  }
+}
+
+
+
+

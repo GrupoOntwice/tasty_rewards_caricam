@@ -1,0 +1,26 @@
+Block Type,Description
+about-us,"SunChips® multigrain snacks aren’t just any snack. They are the square, wavy, tasty, made with 100% whole grains that take snacking from ho hum to oh yeah. They are a snack that you feel good about sharing, but secretly wish you had all to yourself.
+
+SunChips® multigrain snacks are an entirely different kind of snack and when you look closely, you can see it’s what’s inside those unique waves that make SunChips® one-of-a-kind. They are made with 100% whole grains with flavours inspired by fresh, real ingredients. Made with no artificial flavours, colours or preservatives!
+
+At SunChips®, being different is kind of our thing and we like it that way. So wave goodbye to ordinary—and say hello to a wholesome snacking experience!
+
+Where Wholesome Meets Awesome!"
+coupon,"<div class=""container container-coupon center-align-md-dsk"">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left animate__animated "" style=""background: url('/themes/brandstheme/src/images/sunchips/sunchips-coupon-bags-bg.png')"">
+<div class=""main-coupon-centered-img""><img alt=""SunChips Pack"" src=""/themes/brandstheme/src/images/sunchips/sunchips-coupon-chips-bags.png"" /></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading center-align"">SunChips<br />
+Coupon Available!</h1>
+<a class=""btn_sunchips margin-top"" href=""/coupons"" target=""_self"">Get my coupon</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons available while quantities last</p>
+</div>
+</div>
+</div>
+</div>
+"

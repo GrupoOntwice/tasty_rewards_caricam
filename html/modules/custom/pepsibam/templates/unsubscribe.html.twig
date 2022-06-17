@@ -1,0 +1,57 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}'
+//-->
+</script>
+
+{% set trackingpage = "unsubscribe" %}
+{% set trackinglang = data.language %}
+{% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+
+{{ attach_library( 'pepsibam/pepsiunsubscribelibrary' ) }}
+
+
+    <section id="contest">
+        <div class="contest__detail-wrapper">
+            <h2>{{ 'unsubscribe - removal request'|t }}</h2>
+            <p class="contest__detail-about">
+                {{'If you no longer wish to receive e-mail updates from Tasty Rewards<sup>TM</sup>, <br>please enter your email address below and click on the "Submit" button'|t}}
+            </p>
+
+
+            <div class="contest-detail__form">
+                <form data-toggle="validator" role="form" id='unsubscribe-form'>
+                    <div class="contest-detail__user-name">
+                        <div class="col-sm-12 form-group pink">
+                            <label for="email" class="hidden">email</label>
+                            <input type="email" name='email' id='email' aria-label="email" placeholder="{{ 'Email Address'|t }}" class="contest-detail__input">
+                            <span class="help-block err_email"></span>
+                        </div>	
+                    </div>        
+                    <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+                    <button type="button" class="btn btn_red btnregister unsubscribe-space">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+
+                    <div class="contest-detail__user-name">
+                        <div class="col-sm-12 form-group">
+                            <div id='form'>
+                                <span class="help-block err_form"></span>
+                            </div>
+                        </div>	
+                    </div>        
+                </form> 
+            </div>
+        </div>
+    </section>
+
+{#    <section id="contest">#}
+
+{#        <section id="coupons">#}
+{#            {{ drupal_block('secondsectionblock') }}#}
+{#        </section>#}
+
+
+{#        <!--brand carousel -->#}
+{#        {% include '@tastytheme/includes/brands.html.twig' %}#}
+{#        <!--brand carousel end -->#}
+{#    </section>#}

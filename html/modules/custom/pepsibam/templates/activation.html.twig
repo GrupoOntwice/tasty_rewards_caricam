@@ -1,0 +1,49 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}';
+//-->
+</script>
+{{ attach_library( 'pepsibam/pepsiactivationlibrary' ) }}
+<section id="contentBlocks" class="container-fluid">
+<form data-toggle="validator" role="form" id='activation-form'>
+    
+    <div class="col-xs-12 pink text-center">
+    <h1 class="pink signika">{{ 'Activation'|t }}</h1>
+        
+       <div class="row">
+           <div class="col-sm-3 "></div>
+            <div class="col-sm-6 form-group">
+                <label>{{ 'Email address'|t }}</label>
+                <input type="email" name='email' id='email' placeholder="{{ 'Enter Email Address Here.'|t }}" class="form-control">
+                <span class="help-block err_email"></span>
+            </div>
+           <div class="col-sm-3 "></div>
+        </div>        
+
+        
+        <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+        <button type="button" class="btn btn-primary btnregister">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+        
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div id='form'>
+                <span class="help-block err_form"></span>
+                </div>
+            </div>	
+        </div>        
+        
+    </div>
+</form> 
+</section>
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section> 

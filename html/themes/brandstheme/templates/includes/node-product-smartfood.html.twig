@@ -1,0 +1,249 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/smartfood') }}
+
+{% if is_signature %}
+  {# SIGNATURE #}
+  {% include '@brandstheme/includes/node-product-smartfood-signatures.html.twig' %}
+{% else %}
+  {# NOT SIGNATURE #}
+
+
+  <section id="product" class="smartfood-product-block">
+
+    <div class="container">
+      <div class="row">
+        <div class="product-image">
+
+          <div class="product-image-wrap">
+            <img class="w-100" itemprop="image" src="{{ nodeimgurl }}" alt="{{ nodeimgalt }}">
+          </div>
+
+          <div class="smartfood-detail__product--block">
+            <h1 class="banner_slide_recipe-h1">
+              {% if title1 %}
+                <span>{{ title1|raw }}</span>
+                <br>
+                {# {{title2|raw}} #}
+                {{ title2|raw|trim(" \t\n\r\0\x0B\xC2\xA0") }}
+              {% else %}
+                {{ subtitle|raw }}
+              {% endif %}
+            </h1>
+
+            <div class="wrapper-column">
+              {% if node.body.0.value|striptags is not empty %}
+                {{ node.body.0.value | raw }}
+              {% endif %}
+              <div class="mv-wine-pairing">
+                {% if node.field_pairing.0.value is not empty %}
+                  <h3 class="wine-pairing-heading">{{ 'Wine Pairing'|t }}:</h3>
+                  <p>{{ node.field_pairing.0.value | raw }}</p>
+                {% endif %}
+
+                <div class="product-buy-now">
+                  {#						<h4 class="linkeable">{{'Buy Now'|t }}</h4>#}
+                  <div class="product-field-detail">
+                  {% if show_product_buynow %} 
+                    <button class = "smartfood_product_btn js-buynow" id = "smartfood-buy" data-target="#smartfoodModal" data-toggle="modal">
+                      {{'Buy Now'|t|raw}}
+                    </button>
+                  {% endif %}
+                  </div>
+
+                  <div class="modal bootstrap-modal bg-transparent smartfood-buynow-modal" id="smartfoodModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <button type="button" class="close" id = "closeModal" data-dismiss="modal">×</button>
+                          {# <p>Content goes here</p> #}
+                          {% if iframe_url %}
+                            <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+            {# <div class="padding-top"> #}
+            {# <a class="btn_smartfood" href=""> {{ 'Buy now'|t }} </a> #}
+            {# </div> #}
+          </div>
+        </div>
+
+        {% if noderecipeingredients is not empty and nutrition is not empty %}
+
+          <div class="smartfood-product-nutrition">
+            <div class="performance-facts">
+              <h4 class="smartfood-title-nutrition">{{ 'Nutrition'|t }}</h4>
+              <div class="product-field-detail">
+                <div class="nutrition-copy-js">
+                  <div class="smartfood-productdetails-nutrition-table">
+                    <div class="smartfood-productdetails-nutrition-header-row">
+                      <div class="smartfood-productdetails-nutrition-cell smartfood-productdetails-headercell">
+                        {% if 'amount' not in portion|lower %}
+                          {{ 'Amount'|t }}
+                        {% endif %}
+                        {{ portion }}
+                      </div>
+                      <div class="smartfood-productdetails-nutrition-cell smartfood-productdetails-headercell">
+                        {{ '% Daily Value'|t }}
+                      </div>
+                    </div>
+                    {{ nutrition | raw }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-ingredients">
+              <h4 class="smartfood-title-nutrition">{{ 'Ingredients'|t }}</h4>
+              <div class="product-field-detail">
+                {{ noderecipeingredients | raw }}
+              </div>
+            </div>
+
+          </div>
+
+        {% endif %}
+      </div>
+    </div>
+
+  </section>
+
+
+
+  {% if related_products %}
+
+    <div id="smartfood-related-products-carousel" class="carousel slide" data-ride="carousel">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 featured-prod-heading text-center">
+              <h2> {{ 'OTHER PRODUCTS'|t }} </h2>
+            </div>
+
+        <ol class="carousel-indicators smartfood-carousel-indicators">
+          {% for idx, product in related_products %}
+            <li data-target="#smartfood-related-products-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+          {% endfor %}
+
+        </ol>
+        <div class="carousel-inner container">
+          {% for idx, product in related_products %}
+            <div class="row carousel-item {{ idx==0 ? 'active' :'' }}">
+              <div class="col-md-4 smartfood-featured-prod-img-col smartfood-featured-prod-img-col-{{ idx }}">
+
+                <a href="{{ product.link }}" hreflang="en">
+                  <img class="" src="{{ product.image_url }}" alt="{{ product.title | raw }}">
+                </a>
+
+                <div class="smartfood-featured-product-description">
+                  <h4>
+                    <a href="{{ product.link }}" hreflang="en">{{ product.title|raw }}</a>
+                  </h4>
+                </div>
+
+                <div class="smartfood-view-featured-products">
+                  <a class="smartfood-button" href="{{ product.link }}" title="{{ product.title | raw }}">
+                    {{ 'View Product'|t }}
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+          {% endfor %}
+        </div>
+
+        <a class="carousel-control-prev" href="#smartfood-related-products-carousel" role="button" data-slide="prev" aria-label="toggle arrow">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#smartfood-related-products-carousel" role="button" data-slide="next" aria-label="toggle arrow">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+        </div>
+      </div>
+
+    </div>
+
+  {% endif %}
+
+
+  <section id='coupon' class="smartfood-coupon-block">
+    {{ coupon_block|t|raw }}
+  </section>
+
+{% endif %}

@@ -1,0 +1,340 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    window.form_processed = {{data.submitted}};
+
+</script>
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{# <div class="navbar-wrapper-tasty"> #}
+  {{ attach_library('brandstheme/framework') }}
+  {# {{ attach_library('brandstheme/global-styling') }} #}
+  {{ attach_library('brandstheme/quaker_feed_canada') }}
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/brands_carousel') }}
+  {{ attach_library('brandstheme/slickLibrary') }}
+  {% set language = data.language %}
+  {% set brand_basepath = data.brand_basepath %}
+  {% set is_quaker_landing = 1 %}
+
+  {% set brand = 'quaker' %}
+  {% set tasty_logopath = data.tasty_logopath %}
+  {% set logofooterpath = data.logofooterpath %}
+  {% set shoplink = data.shoplink %}
+  {% set user_firstname = data.user_firstname %}
+
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-quaker.html.twig' %}
+  
+{# </div> #}
+
+{% if data.is_snackperk_user == 1 %}
+    {% set form_field_status = "disabled" %}
+{% else %}
+    {% set form_field_status = "" %}
+{% endif %}
+
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+{{ data.tag | raw }}
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library('brandstheme/quaker-landing') }}
+
+
+<div class="quaker-microsite-main-wrapper quaker-feed-canada">
+    <div class="quaker-banner-microsite">
+        <div class="banner_slide--text {{class_pos}} contest-banner-text">
+            <h1>{{ "Quaker<sup>®</sup> Pack the Goodness Program <br> Help us support Food Banks Canada!" | trans}}</h1>
+            <p>{{ "Buy 2 participating<sup>†</sup> products, upload your receipt and Quaker<sup>®</sup> will donate $2<sup>††</sup> to Food Banks Canada.  Plus you’ll get a $2 Off coupon by email for your next purchase." | trans}}</p>
+            <br>
+            <span>{{ "<sup>†</sup> See below for list of participating products." | trans}}</span><br>
+            <span>{{ "<sup>††</sup> To a maximum of $100,000.  Offer expires October 31, 2021 or while supplies last. Limit four (4) offers per email address." | trans}}</span>
+
+            <a class="btn_quaker-white js-upload-receipt" href="javascript:void(0);">{{'Upload Receipt'|t}}</a>
+        </div>
+
+        <img class="quaker-product-image-microsite en" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner.png" alt="quaker products" />
+        <img class="quaker-product-image-microsite fr" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner-fr.png" alt="quaker products" />
+    </div>
+
+    <div class="quaker-steps-microsite container">
+        <h2>{{ "How it works" | trans}}</h2>
+
+        <div class="contest-quaker-steps-wrapper">
+            <div class="contest-quaker-steps">
+                <img src="/themes/brandstheme/src/images/quaker/quaker-microsite/buy-step.png" alt="Logo of Tasty Rewards" />
+                <p class='bold'>{{ "Step 1: BUY" | trans}}</p>
+                <span>{{ "Purchase two (2) participating<sup>†</sup> products in the same transaction.  See below for the full list!" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <img src="/themes/brandstheme/src/images/quaker/quaker-microsite/upload-step.png" alt="Logo of Tasty Rewards" />
+                <p class='bold'>{{ "Step 2: UPLOAD" | trans}}</p>
+                <span>{{ "Upload your receipt by October 31, 2021 & once it’s verified, the Quaker<sup>®</sup> brand will donate $2 to Food Banks Canada." | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <img src="/themes/brandstheme/src/images/quaker/quaker-microsite/save-step.png" alt="Logo of Tasty Rewards" />
+                <p class='bold'>{{ "Step 3: SAVE" | trans}}</p>
+                <span>{{ "Then, we’ll email you a $2 Off coupon to use on your next purchase! " | trans}}</span>
+            </div>
+
+        </div>
+
+        <div class="quaker-microsite-participate-wrapper">
+            <div class="quaker-steps-microsite-participate">{{"Participating Products"|t}}</div>
+
+            <img src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-packshot-group.png" alt="Logo of Tasty Rewards" />
+
+            <span>{{"<sup>†</sup> Participating products (any flavour/variety): Quaker<sup>®</sup> Overnight Oats Chilled Cereal (2 x 69 g/2 x 74 g), Quaker<sup>®</sup> Instant Oatmeal/Instant Hot Cereal (232 g – 625 g), Quaker<sup>®</sup> Instant Oatmeal Cups (43 g – 48 g), Quaker<sup>®</sup> Standard Oats (900 g – 2.5 kg), Quaker<sup>®</sup> Baking Mixes (900 g), Quaker Chewy<sup>®</sup> Granola Bars (120 g – 960 g), Quaker<sup>®</sup> Yogurt Granola Bars (175 g – 1.05 kg), Quaker<sup>®</sup> Dipps<sup>®</sup> Granola Bars (150 g – 935 g), Quaker<sup>®</sup> Harvest Crunch<sup>®</sup> Granola Cereal (400 g –1.4 kg), Quaker<sup>®</sup> Life<sup>®</sup> Cereal (425 g – 455 g), Crispy Minis<sup>®</sup> Rice Snacks (90 g – 199 g), Quaker<sup>®</sup> Squares cereal (375 g – 500 g), Cap’n Crunch<sup>®</sup> Cereal (288 g – 360 g), Quaker<sup>®</sup> Oat Flour (700 g), Aunt Jemima<sup>®</sup> Mixes (905 g), Aunt Jemima<sup>®</sup> Syrup (750 mL), Pearl Milling Company™ Mixes (905 g), Pearl Milling Company™ Syrup (710 mL )." | t}}</span>
+        </div>
+    </div>
+
+    <div class="quaker-banner-microsite-upload">
+
+        <div class="container">
+            <div class="row">
+                <div class="quaker-flex-microsite">
+                    <div class="quaker-receipt-image-wrapper">
+                        <img src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-receipt-microsite.png" alt="receipt quaker" />
+                        <h2>{{ "Upload your receipt!"|t }}</h2>
+                        <p>{{ "Ready to turn your purchase into a donation + future savings?  Take a clear photo of your full receipt showing the purchase of two (2) participating products and upload the image when prompted below."|t }}</p>
+                    </div>
+                    <div class="contest-detail__form-quacker container">
+
+                            <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+                                <input type="hidden" name="newregister"  value="{{newregister}}">
+                                {% if data.language != 'en-us' and data.language != 'es-us' %}
+                                    <p class="modal__inquiry">{{ "* Indicates required field."|t }}</p>
+                                {% endif %}
+
+                                <div class="contest-detail__quacker-input">
+                                    <div class="contest-detail__quacker-input-col">
+                                        <label for="contest-email" class="visuallyhidden"> Email </label>
+                                        <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="*{{ 'Email'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+                                        <span style="color: #FFF !important;" class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                                    </div>
+
+                                    <p class="quaker-microsite__confirmation-text">{{ "You will receive a confirmation email once your receipt has been verified within 2-3 business days."|t }}</p>
+
+                                </div>
+
+                                <div class="contest-detail__quacker-input-half">
+                                    <div class="contest-detail__quacker-input-half-col">
+                                        <label for="contest-firstname" class="visuallyhidden"> First Name </label>
+                                        <input type="text" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="*{{ 'First Name'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                                        <span style="color: #FFF !important;" class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                                    </div>
+
+                                    <div class="contest-detail__quacker-input-half-col">
+                                        <label for="contest-lastname" class="visuallyhidden"> Last Name </label>
+                                        <input type="text" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="*{{ 'Last Name'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+                                        <span style="color: #FFF !important;" class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="contest-detail__quacker-input">
+                                    <div class="contest-detail__quacker-input-col">
+                                        <label for="postalcode" class="visuallyhidden"> Postal Code </label>
+                                        <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="*{{ 'Postal Code'|t }}" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+                                        <span style="color: #FFF !important;" class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="contest-detail__quacker-input">
+                                    <div class="contest-detail__quacker-input-col">
+                                        <label class="upload-quacker-label" for="uploadImg">{{"*Upload your receipt photo"|t}}</label>
+                                        <span style="color: #FFF !important;" class="help-block toupload">{{'Receipt to upload' | t}}</span>
+                                        <span style="color: #FFF !important;" class="help-block err_recipe">{{data.error.uploadImg| raw?:''  }}</span>
+                                        <br>
+                                        <p class="contest-detail__quacker-upload-text">{{'(Maximum file size 10MB) <br> Only JPG and PNG formats are accepted.<br><br>By submitting your receipt, you agree to participate in the offer subject to the Offer Terms & Conditions stated below.'| t}}</p>
+
+                                        <input type="file" name="uploadImg" id="uploadImg" onchange="fileChanged(this)" value="test" accept=".jpg,.png">
+
+                                        <span style="color: #FFF !important;" class="help-block err_password">{{data.error.password?:''}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="quaker-submit-wrapper-microsite">
+                                    <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                                    <input id="submitform" class="js-submit-receipt grey quaker-button-microsite" type="submit" disabled value="{{'Submit' | t}}">
+                                </div>
+                            </form>
+                    </div>
+                </div>
+
+                <div class="quaker-participate-rules">
+                    {{ "<span>OFFER TERMS & CONDITIONS:</span> Limit four (4) offers per email address, while supplies last. Receipts for product purchases must be uploaded by October 31, 2021 to qualify for the donation to Food Banks Canada or until the maximum donation amount has been met ($100 000 CAD), whichever occurs first. Only images of official cash register receipt(s) showing the purchase date, purchase location, products purchased and purchase price from the eligible package sizes and participating brands will be accepted. Cash register receipt, UPCs and/or product description subject to verification. No responsibility is assumed by PepsiCo Canada ULC for incomplete requests or website technical issues. Ineligible or incomplete requests will be followed up by email with explanation. Offer available to individual consumers only. PepsiCo Canada ULC reserves the right to cancel this offer at any time. Offer valid in Canada only. Not valid with any other offer. Void where prohibited. Not all products are available in all stores. Coupon is subject to its stated terms. See coupon for details. While supplies last. <br><br>
+                    All information collected will be used solely for the purpose of validating and processing your request or to contact you should there be an issue with your submission. To view PepsiCo Canada’s Privacy Policy, please visit <a target='_blank' href='https://www.pepsico.ca/'>www.pepsico.ca</a>. <br><br>
+                    <span>INQUIRIES:</span> For Help or to contact us, please review our Frequently Asked Questions at <a href='#quaker-participate-faq-arrow'>www.QuakerFeedCanada.ca</a> Please allow 2 business days to receive and respond to inquiries." | t}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="quaker-participate-microsite container">
+
+        <!--brand carousel -->
+        {% include '@tastytheme/includes/brands.html.twig' %}
+        <!--brand carousel end -->
+
+        <div class="quaker-food-banks-microsite">
+            <div class="food-bank-canada-img">
+                <img class="food-bank-canada-en" src="/themes/brandstheme/src/images/quaker/quaker-microsite/food-bank-image.png" alt="food bank canada" />
+                <img class="food-bank-canada-fr" src="/themes/brandstheme/src/images/quaker/quaker-microsite/food-bank-image-fr.png" alt="food bank canada" />
+            </div>
+            <div class="food-bank-canada-about">
+                <h2>{{"Food Banks Canada"|t}}</h2>
+                <p>{{ "Food Banks Canada provides national leadership to relieve hunger today and prevent hunger tomorrow in collaboration with the food bank network in Canada.<br><br>
+                   Food Banks Canada is a national charitable organization dedicated to helping Canadians living with food insecurity.<br><br> We support a network of Provincial Associations, affiliate food banks, and food agencies that work at the community level to relieve hunger.<br><br> Our work is focused on maximizing collective impact, strengthening local capacity, and reducing the need for food banks." | t}}
+                </p>
+
+                <a class="btn_quaker-white" target="_blank" href="https://www.foodbankscanada.ca/">{{"Learn More"|t}}</a>
+            </div>
+        </div>
+
+
+        <div class="quaker-participate-faq-microsite" id="quaker-participate-faq-arrow">
+            <h3>
+                {{ "Have a question about the offer? Take a look through our list of frequently asked questions for answers.
+                Can’t find the answer you’re looking for? <a target='_blank' href='https://contact.pepsico.com/quakerca'>Click here</a> to contact us directly! We’ll be happy to take care of you. " | t}}
+            </h3>
+
+            <div class="col-sm-12">
+                <div class="panel-group faq-border" id="accordion1">
+                    <div class="panel panel-default">
+                        <div class="faq-panel">
+                            <h4 class="panel-title faq-title">
+                                <a class="collapsed faq-plus-minus" data-target="#collapseOne" data-toggle="collapse" href="#collapseOne">
+                                    {{ "1. What are the participating products that are part of this offer?" | t}}
+                                </a>
+                            </h4>
+
+                            <div class="panel-collapse collapse" id="collapseOne">
+                                <div class="panel-body faq-body">
+                                    <p class="faq-paragraph">
+                                        {{ "The participating products for this offer include: <br><br>
+
+                                        Quaker<sup>®</sup> Overnight Oats Chilled Cereal (2 x 69 g/2 x 74 g)<br>
+                                        Quaker<sup>®</sup> Instant Oatmeal/Instant Hot Cereal Super Grains (232 g – 774 g)<br>
+                                        Quaker<sup>®</sup> Instant Oatmeal Cups (43 g – 48 g)<br>
+                                        Quaker<sup>®</sup> Standard Oats (900 g – 2.5 kg  )<br>
+                                        Quaker<sup>®</sup> Baking Mixes (900 g)<br>
+                                        Quaker<sup>®</sup> Chewy<sup>®</sup> Granola Bars (120 g – 960 g )<br>
+                                        Quaker<sup>®</sup> Yogurt Granola Bars (175 g – 1.05 kg)<br>
+                                        Quaker<sup>®</sup> Dipps<sup>®</sup> Granola Bars (150 g – 935 g)<br>
+                                        Quaker<sup>®</sup> Harvest Crunch® Granola Cereal (400 g –1.4 kg)<br>
+                                        Quaker<sup>®</sup> Life<sup>®</sup> Cereal (425 g – 455 g)<br>
+                                        Crispy Minis<sup>®</sup> Rice Snacks (90 g – 199 g  )<br>
+                                        Quaker<sup>®</sup> Squares<br>
+                                        Cap’n Crunch® Cereal (288 g – 360 g)<br>
+                                        Quaker<sup>®</sup> Oat Flour (700 g)<br>
+                                        Aunt Jemima<sup>®</sup> Mixes (905 g)<br>
+                                        Aunt Jemima<sup>®</sup> Syrup (750 mL)<br>
+                                        Pearl Milling<sup>®</sup> Mixes (905 g)<br>
+                                        Pearl Milling<sup>®</sup> Syrup (710 mL )" | t}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group faq-border" id="accordion2">
+                    <div class="panel panel-default">
+                        <div class="faq-panel">
+                            <h4 class="panel-title faq-title"><a class="collapsed faq-plus-minus" data-target="#collapseTwo" data-toggle="collapse" href="#collapseTwo">{{ "2. What do I need to do to participate in this offer?" | t}}</a></h4>
+
+                            <div class="panel-collapse collapse" id="collapseTwo">
+                                <div class="panel-body faq-body">
+                                    <p class="faq-paragraph">
+                                        {{ "To participate in the offer, purchase two (2) participating products in the same transaction and upload your receipt at <a href='http://www.quakerfeedcanada'>www.QuakerFeedCanada</a>.  Once verified the Quaker<sup>®</sup> brand will donate $2 to Food Banks Canada plus you’ll receive a $2 savings coupon by email for your next purchase.  Full offer details are above.
+                                        " | t}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group faq-border" id="accordion3">
+                    <div class="panel panel-default">
+                        <div class="faq-panel">
+                            <h4 class="panel-title faq-title">
+                                <a class="collapsed faq-plus-minus" data-target="#collapseThree" data-toggle="collapse" href="#collapseThree">
+                                    {{ "3. How many times can I participate in this offer?" | t}}
+                                </a>
+                            </h4>
+
+                            <div class="panel-collapse collapse" id="collapseThree">
+                                <div class="panel-body faq-body">
+                                    <p class="faq-paragraph">
+                                        {{ "Limit four (4) offers per email address, while supplies last." | t}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group faq-border" id="accordion4">
+                    <div class="panel panel-default">
+                        <div class="faq-panel">
+                            <h4 class="panel-title faq-title">
+                                <a class="collapsed faq-plus-minus" data-target="#collapseFour" data-toggle="collapse" href="#collapseFour">
+                                    {{ "4. I don’t have a computer and/or internet access. How can I participate?" | t}}
+                                </a>
+                            </h4>
+
+                            <div class="panel-collapse collapse" id="collapseFour">
+                                <div class="panel-body faq-body">
+                                    <p class="faq-paragraph">
+                                        {{ "The Quaker<sup>®</sup>️ Pack The Goodness offer can be accessed from any public computer with internet access, such as those available for use at the library or an internet café." | t}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group faq-border" id="accordion5">
+                    <div class="panel panel-default">
+                        <div class="faq-panel">
+                            <h4 class="panel-title faq-title">
+                                <a class="collapsed faq-plus-minus" data-target="#collapseFive" data-toggle="collapse" href="#collapseFive">
+                                    {{ "5. How will you use and/or share my information?" | t}}
+                                </a>
+                            </h4>
+
+                            <div class="panel-collapse collapse" id="collapseFive">
+                                <p class="faq-paragraph">
+                                    {{ "To view PepsiCo Canada’s Privacy Policy, please visit <a target='_blank' href='http://pepsico.ca/en/Privacy-Policy.html'>http://pepsico.ca</a> " | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.querySelector(".toupload").innerText = "";
+    function fileChanged(input) {
+        let fileName = document.querySelector('#uploadImg');
+        fileName.textContent = input.files[0]['name'];
+        if (fileName.textContent > ''){
+            document.querySelector(".toupload").innerText = fileName.textContent;
+        }
+        else{
+            document.querySelector(".toupload").innerText = "";
+        }
+    }
+</script>

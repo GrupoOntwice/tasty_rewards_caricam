@@ -1,0 +1,552 @@
+{# { kint(data) } #}
+{# { form} #}
+<style>
+    .d-block {
+        display: block;
+    }
+
+    .subscriptions_checkbox {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .margin-left {
+        margin-left: 10px;
+    }
+
+    #email {
+        width: 98%;
+    }
+
+    select#state_adr{
+        width: 98%;
+    }
+
+    .blue {
+        color:#0e4caa;
+    }
+</style>
+<script type="text/javascript">
+  language = '{{ data.language }}';
+</script>
+
+{% set trackingpage = "myaccount" %}
+{% set trackinglang = data.language %}
+{% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+
+{{ attach_library( 'pepsibam/pepsiupdprofilelibrary' ) }}
+{{ attach_library( 'pepsibam/pepsi.gmaps' ) }}
+<section id="contentBlocks" class="container-fluid padding-top">
+    <div class="row">
+        <div id="" class="container">
+            {% if (data.loggedin == "1") %}
+                <form data-toggle="validator" role="form" id='update-form'>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-12 pink">
+                        <h1 class="pink signika spacing-top myaccount-details-page-heading">{{ 'Please find your account details below.'|t }}</h1>
+
+                        <p class="pink signika">{{ 'My personal Information'|t }}</p>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for='firstname' class="visually-hidden">{{ 'First Name'|t }}
+                                *</label>
+                                <input type="text" name='firstname' id='firstname' class="form-control" value="{{ data.firstname?:'' }}" placeholder="{{ 'First Name'|t }}*">
+                                <span class="help-block err_firstname"></span>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for='lastname' class="visually-hidden">{{ 'Last Name'|t }}
+                                *</label>
+                                <input type="text" name='lastname' id='lastname' class="form-control" value="{{ data.lastname?:'' }}" placeholder="{{ 'Last Name'|t }}*">
+                                <span class="help-block err_lastname"></span>
+                            </div>
+                        </div>
+
+                        {% if data.language == 'en-us' or data.language == 'es-us' %}
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label class="my-account-lang-toggle-heading blue" for="email">{{ 'Email Address'|t }}</label>
+                                
+                                <input type="text" name='email' id='email' class="form-control" value="{{ data.email?:'' }}" disabled>
+                                <span class="help-block err_email"></span>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label class="my-account-lang-toggle-heading blue" for="gender">{{ 'Gender'|t }}</label>
+                                <select id="gender" placeholder="Gender" name="gender" class="form-control modal__sign-up-select-gender">
+                                    <option value=''>{{ 'Gender'|t }}</option>
+                                    <option value='M' {{ data.gender == 'M'?'selected':'' }}>{{ 'Male'|t }}</option>
+                                    <option value='F' {{ data.gender == 'F'?'selected':'' }}>{{ 'Female'|t }}</option>
+                                    <option value='O' {{ data.gender == 'O'?'selected':'' }}>{{ 'Other'|t }}</option>
+                                </select>                                
+                                <span class="help-block err_gender"></span>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="contest-detail__sign-up-birth {{data.error.bday?'has-error':''}}">
+                            <label for = "bday"> {{ 'Date of birth'|t }} </label>
+                                <input type="hidden" name='bday' id="bday" class="form-control"  >
+                                <input type="hidden" name='allow_bday_entry' id="allow_bday_entry" class="form-control" value="{{ data.allow_bday_entry?:'0' }}" >
+                            <div class = "birthday-select">
+                            <label for = "bday_month" class = "visuallyhidden"> Month </label>
+                                <select id = "bday_month" class="contest-detail__sign-up-select form-control" name="bday_month" {% if (data.allow_bday_entry == '0') %} {{'disabled'}} {% endif %}  >
+                                        {{ data.bdaydropdown.monthoption | raw }}
+                                </select>
+                            <label for = "bday_day" class = "visuallyhidden"> Day </label>
+                                <select id = "bday_day" class="contest-detail__sign-up-select form-control" name="bday_day" {% if (data.allow_bday_entry == '0') %} {{'disabled'}} {% endif %} >
+                                        {{ data.bdaydropdown.dayoption | raw }}
+                                </select>
+                            <label for = "bday_year" class = "visuallyhidden"> Year </label>
+                                <select id = "bday_year" class="contest-detail__sign-up-select form-control" name="bday_year" {% if (data.allow_bday_entry == '0') %} {{'disabled'}} {% endif %} >
+                                    {{ data.bdaydropdown.yearoption | raw }}
+                                </select>
+                            </div>
+                            </div>
+
+
+                            <span class="help-block err_bday">{{data.error.bday| raw?:''  }}</span>
+                        </div>
+                        {% endif %}
+
+                        <div class="row">
+                            {% if data.language != 'en-us' and data.language != 'es-us' %}
+                            <div class="col-12 col-sm-6 form-group">
+                                <label for='postalcode' class="visually-hidden">{{ 'Postal Code'|t }}
+                                *</label>
+                                <p>{{ 'Postal Code'|t }}</p>
+                                <input type="text" name='postalcode' id='postalcode' class="form-control w-col-98" value="{{ data.postalcode?:'' }}">
+                                <span class="help-block err_postalcode"></span>
+                            </div>
+                            {% endif %}
+                            <input type="hidden" name="language" value="{{ data.language }}" class="js-language">
+                            {% if data.language == 'en-us' or data.language == 'es-us' %}
+
+                                <div class="col-12 col-sm-6 form-group">
+                                    <label for='postalcode' class="visually-hidden">{{ 'Postal Code'|t }}
+                                    *</label>
+                                    <p>{{ 'Postal Code'|t }}</p>
+                                    <input type="text" name='postalcode' id='postalcode' class="form-control w-col-98" value="{{ data.postalcode?:'' }}">
+                                    <span class="help-block err_postalcode"></span>
+                                </div>
+                                <div class="text-center col-md-6 lang-toggle-col">
+                                <label class="my-account-lang-toggle-heading" for="langToggle">{{ 'Language Preference'|t }}</label>
+                                <div class="custom-select">
+                                    <select class="js-language-select" id="langToggle">
+                                    <option value="0" selected="selected">Select Language</option>
+                                    <option value="en-us" {% if data.language_preference == 'en-us' %} selected="selected" {% endif %}>{{ 'English'|t }}</option>
+                                    <option value="es-us" {% if data.language_preference == 'es-us' %} selected="selected" {% endif %}>{{ 'Spanish'|t }}</option>
+                                    </select>
+                                </div>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+
+
+                        <div class="row">
+                            {% if data.language != 'en-us' and data.language != 'es-us' %}
+                                <div class = "col-sm-12 padding-bottom padding-top">
+                                    <h3>{{ 'Email Subscriptions'|t }}</h3>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <label for='optin' class="visually-hidden">{{ 'Opt in'|t }}
+                                    *</label>
+                                    <div class = "subscriptions_checkbox">
+                                        <input type="checkbox" name='optin' id='optin' {{ data.optin? 'checked="checked"' }}>
+                                        <div class = "margin-left">
+                                            <span class="casl modal__checkbox-text legal-copy">
+                                            {{ 'Yes! Sign me up to Tasty Rewards <sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'|raw|t }}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class = "subscriptions_checkbox">
+                                        <input type="checkbox" name='optin2' id='optin2' {{ data.optin2? 'checked="checked"' }}>
+                                        <div class = "margin-left">
+                                            <span class="casl modal__checkbox-text legal-copy">
+                                            {{ 'Tailored Ads: Tasty Rewards <sup>TM</sup> keeps members up-to-date with ads tailored to their interests. You can opt-out by unchecking this box.'|raw|t }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block err_optin"></span>
+                                    <p class = "email-confirmation-alert">{{ 'By checking the box you will receive email from PepsiCo and its brands. By unchecking, you will be unsubscribed from communications.'|raw|t }}</p>
+                                </div>
+                            {% else %}
+                                <div style="display: none" > {# removed temporarily#}
+                                    <div class = "col-sm-12 padding-bottom padding-top">
+                                        <h3>{{ 'Email Subscriptions'|t }}</h3>
+                                    </div>
+                                    <div class="col-sm-12 form-group">
+                                        <p>{{ 'Select the brand you would like to receive exclusive offers, coupons, sweepstakes, news and event information from (check all that apply):' |t }}</p>
+                                        <br>
+                                        <label for='optin' class="visually-hidden">{{ 'Opt in'|t }}
+                                        *</label>
+                                        <div class = "subscriptions_checkbox">
+                                            <input type="checkbox" name='optin' id='optin' {{ data.optin? 'checked="checked"' }}>
+                                            <div class = "margin-left">
+                                                <span class="casl modal__checkbox-text legal-copy">
+                                                {{ 'PepsiCo Tasty Rewards – Your source for fun surprises, exclusive perks & more from your favorite PepsiCo brands!'|raw|t }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class = "subscriptions_checkbox">
+                                            <label class = "visually-hidden" for = "optin3"> Sign Up </label>
+                                            <input type="checkbox" name='optin3' id='optin3' {{ data.optin3? 'checked="checked"' }}>
+                                            <div class = "margin-left">
+                                                <span class="casl modal__checkbox-text legal-copy">
+                                                {{ 'Snacks.com - Sign up for the latest news & offers from Snacks.com, your one-stop shop for all your Frito-Lay® faves! '|raw|t }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class = "subscriptions_checkbox">
+                                            <label class = "visually-hidden" for = "optin4"> Join </label>
+                                            <input type="checkbox" name='optin4' id='optin4' {{ data.optin4? 'checked="checked"' }}>
+                                            <div class = "margin-left">
+                                                <span class="casl modal__checkbox-text legal-copy">
+                                                {{ 'PepsiCo Tasty Makers - Join our exclusive squad to take surveys, try new products, provide feedback on our snacks and drinks, help us to decide what we launch in the future and more!'|raw|t }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class = "subscriptions_checkbox">
+                                            <label class = "visually-hidden" for = "optin5"> Newsletter </label>
+                                            <input type="checkbox" name='optin5' id='optin5' {{ data.optin5? 'checked="checked"' }}>
+                                            <div class = "margin-left">
+                                                <span class="casl modal__checkbox-text legal-copy">
+                                                {{ 'Pepsi&reg; Newsletter - Get access to Pepsi® news, music, sports, videos, sweepstakes and more!'|raw|t }}
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class = "subscriptions_checkbox">
+                                            <label class = "visually-hidden" for = "optin6"> Dewsletter</label>
+                                            <input type="checkbox" name='optin6' id='optin6' {{ data.optin6? 'checked="checked"' }}>
+                                            <div class = "margin-left">
+                                                <span class="casl modal__checkbox-text legal-copy">
+                                                {{ 'MTN DEW&reg; Dewsletter – The latest info on sweepstakes, products, games, DEW® events and more - pretty much everything you could ever want.'|raw|t }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span class="help-block err_optin"></span>
+                                        <p class = "email-confirmation-alert">{{ 'By checking the box you will receive email from PepsiCo and its brands. By unchecking, you will be unsubscribed from communications.'|raw|t }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <input type="hidden" name='csrfToken' id='csrfToken' value="{{ data.csrfToken?:'' }}">
+                        </div>
+                    </div>
+
+
+                </form>
+                <!-- Addresses only for USA - BEGIN-->
+                {% if data.language == 'en-us' or data.language == 'es-us' %}
+                    {% set ndr = 0%}
+                    {% for address in data.accountAddress %}
+                        {% if address.addressType == "SHIPPING_ADDRESS"%}
+                            {% set ndr = ndr + 1 %}
+                            <div class="address-container upd-addr-{{ndr}} pink col-sm-12 form-group">
+                                <p class = "shipping_heading margin-bottom text-bold">{{'Shipping Addresses' |t}}</p>
+                                {% set names = address.name |split(' ') %}
+                                <p class = "shipping_heading">{{ 'Shipping Address'|t }} {{ndr}} </p>
+                                <div class="address-display  col-sm-12">
+                                        <h4>{{ address.name }}</h4>
+                                        <p>{{ address.addressLine1 }}, {{ address.addressLine2 }}, {{ address.city }}, {{ address.state }}, {{ address.zip }}</p>
+                                        <input class="primary-address-js" data-idx="{{ndr}}" type="radio" name='primaryAddr' id='primaryAddr' {{ address.primaryAddr? 'checked="checked"' }}>
+                                        <label for='primaryAddr' >{{ 'Primary shipping address'|t }}</label>
+                                    <div class="row">
+                                            <span><a href="#" class="edit-address-js btn_red edit-address" data-idx="{{ndr}}">{{ 'EDIT SHIPPING ADDRESS'|t }}</a></span>
+                                        {% if address.primaryAddr == false %}
+                                        &nbsp&nbsp<span><a class = "delete-address btn_red" href="#" data-idx="{{ndr}}">{{ 'DELETE'|t }}</a></span>
+                                        <div class="delete-content fadeIn">
+                                            <div class="close-btn close">
+                                            &#10006
+                                            </div>
+                                            <div class = "heading">
+                                                <h3>{{ 'Delete Address?'|t }}</h3>
+                                            </div>
+                                            <div class = "body">
+                                                <p>{{ 'Are you sure you want to delete this address?'|t }}</p>
+                                            </div>
+                                            <div class = "delete-address-btns">
+                                                <a class = "delete-address-confirm-btn delete-address-cancel-js" data-idx="{{ndr}}" href = "#">{{ 'Cancel'|t }}</a>
+                                                <a href="#" class="delete-address-js delete-address-confirm-btn" data-idx="{{ndr}}">{{ 'Delete'|t }}</a>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                {% if loop.last and ndr < 6 %}
+                                    &nbsp&nbsp<span><a href="#" class="add-address-js add-address-btn btn_red">{{'ADD SHIPPING ADDRESS'|t}}</a></span>
+                                {% endif %}
+                                </div>
+                                <div class="address-edit">
+                                <form data-toggle="validator" role="form" class='edit-adr-form edit-adr-form-{{ndr}}' id="form-edit-{{ndr}}" >
+                                    <input id="address-id" name="address-id" type="hidden" value="{{ address.id }}" >
+                                    <input id="primaryAddr_adr" name="primaryAddr_adr" type="hidden" value="" >
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label aria-labelledby ='firstname_adr' class="visually-hidden">{{ 'First Name'|t }} *</label>
+                                            <input type="text" name='firstname_adr' id='firstname_adr' class="form-control" value="{{ names.0 }}" placeholder="{{ 'First Name'|t }}*">
+                                            <span class="help-block err_firstname_adr"></span>
+                                        </div>
+
+                                        <div class="col-sm-6 form-group">
+                                            <label aria-labelledby ='lastname_adr' class="visually-hidden">{{ 'Last Name'|t }} *</label>
+                                            <input type="text" name='lastname_adr' id='lastname_adr' class="form-control" value="{{ names.1 }}" placeholder="{{ 'Last Name'|t }}*">
+                                            <span class="help-block err_lastname_adr"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="row w-100">
+                                        <div class="col-sm-6 form-group">
+                                            <label aria-labelledby ='address1_adr' class="visually-hidden">{{ 'Address Line 1'|t }} *</label>
+                                            <input type="text" name='address1_adr' id='address1_adr' data-ndr="{{ndr}}" class="form-control autocomplete" value="{{ address.addressLine1 }}" placeholder="{{ 'Address Line 1'|t }}*">
+                                            <span class="help-block err_address1_adr"></span>
+                                        </div>
+
+                                        <div class="col-sm-6 form-group">
+                                            <label aria-labelledby='address2_adr' class="visually-hidden">{{ 'Address Line 2'|t }} *</label>
+                                            <input type="text" name='address2_adr' id='address2_adr' class="form-control" value="{{ address.addressLine2 }}" placeholder="{{ 'Address Line 1'|t }}*">
+                                            <span class="help-block err_address2_adr"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row w-100">
+                                        <div class="col-sm-4 form-group">
+                                            <label aria-labelledby='city_adr' class="visually-hidden">{{ 'City'|t }} *</label>
+                                            <input type="text" name='city_adr' id='city_adr' class="form-control" value="{{ address.city }}" placeholder="{{ 'City'|t }}*">
+                                            <span class="help-block err_city_adr"></span>
+                                        </div>
+
+
+                                        <div class="col-sm-4 form-group">
+                                            <label aria-labelledby='state_adr' class="visually-hidden">{{ 'State'|t }} *</label>
+                                            <select id="state_adr" placeholder="{{ 'State'|t }}*" name="state_adr" class="form-control">
+                                                {% for key , state in data.states %}
+                                                    <option value="{{ key }}" {% if address.state == key %}selected="selected" {% endif %}>{{ state }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <span class="help-block err_state_adr"></span>
+                                        </div>
+
+                                        <div class="col-sm-4 form-group">
+                                            <label aria-labelledby='zip_adr' class="visually-hidden">{{ 'Zip'|t }} *</label>
+                                            <input type="text" name='zip_adr' id='zip_adr' class="form-control" value="{{ address.zip }}" placeholder="{{ 'Zip'|t }}*">
+                                            <span class="help-block err_zip_adr"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row w-100">
+                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-3 form-group">
+                                            <span><a href="#" class="cancel-address-js">{{ 'Cancel'|t }}</a></span>
+                                            &nbsp|&nbsp<span><a href="#" class="save-address-js" data-idx="{{ndr}}">{{ 'Save'|t }}</a></span>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                </div>
+
+
+
+
+                            </div>
+                        {% endif %}
+
+                        <br>
+                    {% endfor %}
+                    
+
+                    <div class="new-address-label pink col-sm-12 ">
+                        {% if data.accountAddress is empty %}
+                            <div class="address-display  col-sm-12">
+                                <p class = "shipping_heading margin-bottom text-bold">{{'Shipping Addresses' |t}}</p>
+                                <div class="row">
+                                    <span><a href="#" class="add-address-js add-address-btn btn_red">{{ 'ADD SHIPPING ADDRESS'|t }}</a></span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% set ndr = ndr + 1 %}
+                    <div class="address-container pink col-sm-12 ">
+                        <div class="new-address-edit pink col-sm-12 ">
+                            <p class = "margin-bottom shipping_heading">{{ 'Shipping Address'|t }} {{ ndr }}</p>
+                            <form data-toggle="validator" role="form" class='edit-adr-form'  id="form-edit-{{ndr}}">
+                                <input id="address-id" name="address-id" type="hidden" value="new">
+                                <input id="primaryAddr_adr" name="primaryAddr_adr" type="hidden" value="">
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <label for='firstname_adr' class="visually-hidden">*{{ 'First Name'|t }}
+                                        </label>
+                                        <input type="text" name='firstname_adr' id='firstname_adr' class="form-control" value="{{ names.0 }}" placeholder="*{{ 'First Name'|t }}">
+                                        <span class="help-block err_firstname_adr"></span>
+                                    </div>
+
+                                    <div class="col-sm-6 form-group">
+                                        <label for='lastname_adr' class="visually-hidden">*{{ 'Last Name'|t }}
+                                        </label>
+                                        <input type="text" name='lastname_adr' id='lastname_adr' class="form-control" value="{{ names.1 }}" placeholder="*{{ 'Last Name'|t }}">
+                                        <span class="help-block err_lastname_adr"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <label for='address1_adr' class="visually-hidden">*{{ 'Address Line 1'|t }}
+                                        </label>
+                                        <input type="text" name='address1_adr' id='address1_adr' data-ndr="{{ndr}}" class="form-control autocomplete" value="{{ address.addressLine1 }}" placeholder="*{{ 'Address Line 1'|t }}">
+                                        <span class="help-block err_address1_adr"></span>
+                                    </div>
+
+                                    <div class="col-sm-6 form-group">
+                                        <label for='address2_adr' class="visually-hidden">*{{ 'Address Line 2'|t }}
+                                        </label>
+                                        <input type="text" name='address2_adr' id='address2_adr' class="form-control" value="{{ address.addressLine2 }}" placeholder="{{ 'Address Line 2'|t }}">
+                                        <span class="help-block err_address2_adr"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 form-group">
+                                        <label for='city_adr' class="visually-hidden">{{ 'City'|t }}
+                                        *</label>
+                                        <input type="text" name='city_adr' id='city_adr' class="form-control" value="{{ address.city }}" placeholder="*{{ 'City'|t }}">
+                                        <span class="help-block err_city_adr"></span>
+                                    </div>
+
+                                    <div class="col-sm-4 form-group state-group">
+                                        <label for='state_adr' class="visually-hidden">{{ 'State'|t }}
+                                        *</label>
+                                        <select id="state_adr" placeholder="*{{ 'State'|t }}" name="state_adr" class="form-control">
+                                            <option value="">*{{ 'State'|t }}</option>
+                                            {% for key , state in data.states %}
+                                            <option value="{{ key }}">{{ state }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="help-block err_state_adr"></span>
+                                    </div>
+
+                                    <div class="col-sm-4 form-group">
+                                        <label for='zip_adr' class="visually-hidden">*{{ 'Zip'|t }}
+                                        </label>
+                                        <input type="text" name='zip_adr' id='zip_adr' class="form-control" value="{{ address.zip }}" placeholder="*{{ 'Zip'|t }}">
+                                        <span class="help-block err_zip_adr"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <div class="col-sm-3 form-group">
+                                            <span>
+                                            <a href="#" class="cancel-address-new-js">{{ 'Cancel'|t }}</a>
+                                            </span>
+                                            &nbsp|&nbsp<span>
+                                            <a href="#" class="save-address-js">{{ 'Save'|t }}</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="address-container pink col-sm-12 " >
+                        <div class="row">
+                        <div><p class="general_error"></p></div>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- Addresses only for USA - END-->
+
+                <div class="pink col-sm-12 form-group">
+                    <div class="row personal_information">
+                        <div class="col-sm-12 form-group">
+                            <p class="">{{ 'Your personal information will be used in accordance with our '|t }}
+                            <a href="{{ " http://pepsico.ca/en/privacy-policy.html"|t }}"="http://pepsico.ca/en/Privacy-Policy.html" |t="|t" }}""="}}""" class="pink" target="_blank">{{ 'Privacy Policy'|t }}</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-us my-profile">
+                            <br>
+                            <span>{{ 'Contacting Us:'|t }}
+                            </span>
+                            <br>
+                            {{ 'PepsiCo Canada <br> 2095 Matheson Boulevard East<br>Mississauga, ON L4W 0G2 <br> www.tastyrewards.ca'|raw|t }}
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+
+            {% else %}
+                <br>
+                <br>
+                {% if data.loggedin == "0" %}
+                    <script>
+                        var showloginpopup = true;
+                    </script>
+                {% else %}
+                    <script>
+                        var showloginpopup = false;
+                    </script>
+                {% endif %}
+            {% endif %}
+        </div> <!-- container -->
+    </div>
+
+  {% if logged_in  %}
+  <div class="row account_btns d-block w-100">
+    <div class="col-sm-12 text-center form-group">
+      {# <hr class="bg-grey" /> #}
+      <button type="button" class="btn text-center btnregister btn_red">{{ 'Save my information'|t }}
+        <span class="glyphicon glyphicon-spin"></span></button>
+        <div id='form'>
+         <span class="help-block err_form"></span>
+        </div>
+    </div>
+    <div class="col-sm-12 text-center form-group">
+        <p>
+          <a id="delete-account" href="{{url("pepsibam.deleteprofile")}}"="pepsibam.deleteprofile" )}}""=")}}""">{{"Delete my account"|t}}</a>
+        </p>
+        <br>
+        <br>
+    </div>
+  </div>
+  {% else %}
+    {% if data.loggedin == "2" %} {# if it come from snacks site#}
+        <div class="row account_btns">
+            <div class="col-sm-12 text-center form-group">
+            <p style="font-size: 80px;color: #0e4caa;">{{"Wait a moment..."|t}}</p>
+            </div>    
+        </div>
+    {% else %}
+        <div class="row account_btns">
+            <div class="col-sm-12 text-center form-group">
+            <h1 class="pink signika">{{"Sorry."|t}}</h1>
+            <p>{{"You are not authorized to access this page."|t}}</p>
+            {{"Take me back to the "|t}} <a href="{{ url('<front>') }}">{{"home page"|t}}</a>
+            </div>    
+        </div>
+
+    {% endif %}
+  {% endif %}
+
+</section>
+
+<section id="contest">
+
+    <section id="coupons">
+    {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>

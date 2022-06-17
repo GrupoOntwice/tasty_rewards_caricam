@@ -1,0 +1,4 @@
+/** CSS for custom form **/
+form#bulkmarketocsv-settings-form .control-label {
+    color: #e91c2e !important;
+}

@@ -1,0 +1,36 @@
+global-styling:
+  css:
+    theme:
+      css/overrides.min.css: {}
+      css/pepsico.css: {}
+      css/header.css: {}
+      css/grid.css: {}
+      css/socialpic.css: {}
+      css/article.css: {}
+      css/recipe.css: {}
+      css/starrr.css: {}
+      //maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css: {type: external, integrity: sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS, crossorigin: anonymous}
+  js:
+#    //code.jquery.com/jquery-1.12.4.min.js: {type: external}
+#    //maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js: {type: external}
+    js/jquery-mobile.js: {}
+    js/jquery.cookie.js: {}
+    js/jquery.bpopup.min.js: {}
+    js/bpopup_newsletter.js: {}
+    js/classie.js: {}
+    js/search.js: {}
+    js/resize.js: {}
+    js/topbarshrink.js: {}
+    js/navigation.js: {}
+    js/socialpic.js: {}
+    js/starrr.js: {}
+    js/script.js: {}
+
+
+fonts:
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300': { type: external }
+      '//fonts.googleapis.com/css?family=Signika:400,700,600,300': { type: external }
+      '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css': { type: external }
+

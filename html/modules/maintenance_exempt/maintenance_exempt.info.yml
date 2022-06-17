@@ -1,0 +1,11 @@
+name: Maintenance Exempt
+description: Allow exemption of maintenance mode based on either certain set IP addresses or matching a set query string value.
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: admin/config/development/maintenance
+
+# Information added by Drupal.org packaging script on 2020-05-13
+version: '8.x-1.2'
+project: 'maintenance_exempt'
+datestamp: 1589374472

@@ -1,0 +1,181 @@
+{% set elements = data.contestopened|length %}
+{% for contest in  data.contestopened %}
+
+<section id="topBlocks" class="contest container-fluid topBlockContest">
+    <div class="row">
+        <a name="{{ contest.title|upper|replace({'#': '', ' ': '_'}) }}" id="{{ contest.title|upper|replace({'#': '', ' ': '_'}) }}" ></a>
+        <div id="topLeft" class="col-xs-12 col-sm-6 ">
+
+            <img src="{{ file_url(contest.image) }}" alt="{{contest.title}}" class="socialpic {% if (contest.opened == 2) or (contest.opened == 3) %}inactive{% endif  %}" style="height:auto;width:100%;" />
+        </div>
+        <div id="topRight" class="col-xs-12 col-sm-6 text-center">
+            <div class="clearfix">
+                {% if loop.index0 == 0 %}
+                <meta property="og:image" content="{{ file_url(contest.image) }}" />
+                <link rel="image_src" href="{{ file_url(contest.image) }}"/>
+                <meta property="og:title" content="{{contest.title}}: {{'Enter Now!'|t}}" />
+                <input type="hidden" name='node_url' id='node_url' value="{{ url('pepsicontest.landing') }}?id={{contest.uricontest}}">
+                <input type="hidden" name='node_title' id='node_title' value="{{contest.title}}: {{'Enter Now!'|t}}">
+                <input type="hidden" name='node_image' id='node_image' value="{{ file_url(contest.image) }}">
+                <input type="hidden" name='node_mailto' id='node_mailto' value="{{ mailto}}">
+                {% endif %}
+                
+                
+                
+                
+                {% if contest.opened == 1 %}  {# opened#} 
+                    <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                    {{ contest.description | raw }}
+                    {% if not logged_in  %}
+                        {#
+                        <a class="btn btn-primary" href="{{ path('user.login') }}"> {{'Login to enter contest' | t }} </a>
+                        <br>
+                        <br>
+                        <span class="blue"><strong>{{ 'Not already a member? Click'|t }} <a href="{{ path('pepsibam.register') }}" target="_blank" >{{'here'|t}}</a> {{'to sign up now'|t}}.</strong></span>
+                        #}
+                        <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                    {% else  %}
+                        {% if contest.registered  %}
+
+                                {% if contest.contesttype == '2' %} 
+                                    {% if contest.registeragain == true %} 
+                                        <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                                    {%else%}
+                                        <h3 class="blue signika bold">{{'Good news!' | t }}</h3>                                        
+                                        <h4 class="pink signika"> {{ 'You have already entered this contest today. You may only participate once per day. ' | t  }} </h4>
+                                    {% endif %}
+                                {% else %}    
+                                    <h3 class="blue signika bold">{{'Good news!' | t }}</h3>
+                                    <h4 class="pink signika"> {{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }} </h4>
+                                {% endif %}
+                                
+                        {% else  %}
+                            <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                        {% endif  %}                                                
+                    {% endif  %}
+                            <br><br><small> {{ contest.footer| raw }} </small>       
+                {% elseif contest.opened == 2 %} {# commin soon #}
+                    <div class="contestdescription">
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika"> {{ 'COMING SOON! This contest is not available at the moment. Please check back soon.' | t  }} </h4>
+                    </div>
+                {% elseif contest.opened == 3 %} {# clossed #}
+                    <div class="contestdescription">                            
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika"> {{ 'Thank you for your interest. The contest is now closed.' | t  }} </h4>
+                    {% if contest.winners is not empty  %}
+                        <div class="winners">
+                        {{ contest.winners | raw }}
+                            
+                        </div>
+                    {% endif  %}  
+                    </div>     
+                {% else %}
+                    <div class="contestdescription">
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika">{{ 'There are no contests available at the moment. Please check back soon.' | t  }}</h4>
+                        <a class="btn btn-primary" href="{{ url('<front>') }}">{{ 'Return to homepage' | t }}</a>
+                    </div>
+                {% endif  %} 
+            </div>
+        </div>
+    </div>  
+</section>
+{% if elements != loop.index %}
+    <hr class="bg-pink"/>
+{% endif %}
+
+{% endfor %}
+
+{{ drupal_view('contests', 'page_1') }}   {# template: views-view-unformatted--contests.html #}
+
+
+<h1 class="signika blue uppercase text-center bold">{{"Closed Tasty Rewards Contest"|t}}</h1>
+
+{% set elements = data.contestclosed|length %}
+{% for contest in  data.contestclosed %}
+
+<section id="topBlocks" class="contest container-fluid topBlockContest">
+    <div class="row">
+        <a name="{{ contest.title|upper|replace({'#': '', ' ': '_'}) }}" id="{{ contest.title|upper|replace({'#': '', ' ': '_'}) }}" ></a>
+        <div id="topLeft" class="col-xs-12 col-sm-6 ">
+
+            <img src="{{ file_url(contest.image) }}" alt="{{contest.title}}" class="socialpic {% if (contest.opened == 2) or (contest.opened == 3) %}inactive{% endif  %}" style="height:auto;width:100%;" />
+        </div>
+        <div id="topRight" class="col-xs-12 col-sm-6 text-center">
+            <div class="clearfix">
+                
+                {% if contest.opened == 1 %}  {# opened#} 
+                    <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                    {{ contest.description | raw }}
+                    {% if not logged_in  %}
+                        {#
+                        <a class="btn btn-primary" href="{{ path('user.login') }}"> {{'Login to enter contest' | t }} </a>
+                        <br>
+                        <br>
+                        <span class="blue"><strong>{{ 'Not already a member? Click'|t }} <a href="{{ path('pepsibam.register') }}" target="_blank" >{{'here'|t}}</a> {{'to sign up now'|t}}.</strong></span>
+                        #}
+                        <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                    {% else  %}
+                        {% if contest.registered  %}
+
+                                {% if contest.contesttype == '2' %} 
+                                    {% if contest.registeragain == true %} 
+                                        <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                                    {%else%}
+                                        <h3 class="blue signika bold">{{'Good news!' | t }}</h3>                                        
+                                        <h4 class="pink signika"> {{ 'You have already entered this contest today. You may only participate once per day. ' | t  }} </h4>
+                                    {% endif %}
+                                {% else %}    
+                                    <h3 class="blue signika bold">{{'Good news!' | t }}</h3>
+                                    <h4 class="pink signika"> {{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }} </h4>
+                                {% endif %}
+                                
+                        {% else  %}
+                            <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsicontest.contest.signup', {'contest': contest.uricontest}) }}"> {{'Enter Contest'|t }} </a>
+                        {% endif  %}                                                
+                    {% endif  %}
+                            <br><br><small> {{ contest.footer| raw }} </small>       
+                {% elseif contest.opened == 2 %} {# commin soon #}
+                    <div class="contestdescription">
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika"> {{ 'COMING SOON! This contest is not available at the moment. Please check back soon.' | t  }} </h4>
+                    </div>
+                {% elseif contest.opened == 3 %} {# clossed #}
+                    <div class="contestdescription">                            
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika"> {{ 'Thank you for your interest. The contest is now closed.' | t  }} </h4>
+                    {% if contest.winners is not empty  %}
+                        <div class="winners">
+                        {{ contest.winners | raw }}
+                            
+                        </div>
+                    {% endif  %}  
+                    </div>     
+                {% else %}
+                    <div class="contestdescription">
+                        <h1 class="pink signika">{{ contest.title|upper }}</h1>
+                        <h4 class="pink signika">{{ 'There are no contests available at the moment. Please check back soon.' | t  }}</h4>
+                        <a class="btn btn-primary" href="{{ url('<front>') }}">{{ 'Return to homepage' | t }}</a>
+                    </div>
+                {% endif  %} 
+            </div>
+        </div>
+    </div>  
+</section>
+{% if elements != loop.index %}
+    <hr class="bg-pink"/>
+{% endif %}
+
+{% endfor %}
+
+<hr class="bg-grey"/>  
+ <div id="morecomingbottom" class="row">
+        <div id="feed" class="col-sm-12">
+            <div class=" grid bg-white">
+                <h1 class="signika blue uppercase text-center">{{"Stay tuned, more<br>contests coming soon!"|t}}</h1>
+            </div>
+        </div>  
+ </div>  
+ 
+ 

@@ -1,0 +1,1747 @@
+/*
+  ChunkFive - Quaker
+*/
+
+@font-face {
+    font-family: 'ChunkFive-Regular';
+    font-style: normal;
+    font-display: swap;
+    src: url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.woff') format('woff'), /* Modern Browsers */
+    url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/themes/brandstheme/src/fonts/quaker/ChunkFive-Regular.svg#ChunkFive-Regular') format('svg'); /* Legacy iOS */
+}
+
+.font-chuckfive {
+  font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+.font-open-semibold {
+  font-family: "OpenSans-semibold", Sans-Serif !important;
+}
+
+.font-red {
+  color: #D01C34;
+
+}
+
+.quaker-hockey-contest-button{
+    background-color: #222222;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 0;
+    margin-top: 20px;
+    text-align: center;
+    min-width: 150px;
+    text-transform: uppercase;
+    font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+.quaker-hockey-contest-button:hover{
+    background-color: #0e0e0e;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.quaker-hockey-contest-rules-button{
+    background-color: #D01C34;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 30px;
+    min-width: 150px;
+    text-align: center;
+    margin: 30px 25px 0;
+    font-family: 'ChunkFive-Regular', sans-serif;
+    transition: all 0.2s;
+}
+
+.quaker-hockey-contest-rules-button:hover{
+    background-color: #b81321;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.quaker-hockey-contest-claim-button{
+    background-color: #D01C34;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 30px;
+    min-width: 150px;
+    text-align: center;
+    font-family: 'ChunkFive-Regular', sans-serif;
+    transition: all 0.2s;
+    border: none;
+}
+
+.show-on-correct span.help-block {
+  color:red !important;
+}
+
+.quaker-hockey-contest-claim-button.grey{
+    background-color: #d1d1d1;
+}
+
+.contest-detail__quacker-input .quaker-hockey-contest-claim-button{
+    width: 100%;
+}
+
+.quaker-hockey-banner, section#hockey-contest-lose-section {
+  background-color: #000;
+}
+
+/*.quaker-hockey-contest-claim-button:hover{*/
+/*    background-color: #b81321;*/
+/*    color: #FFFFFF;*/
+/*    text-decoration: none;*/
+/*}*/
+
+
+/****************************
+      Quaker hockey form
+****************************/
+
+#hockey-faq .faq-title {
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#hockey-faq .faq-border{
+    border-bottom: 1px solid #000000;
+}
+
+#hockey-faq .faq-border:last-child{
+    border-bottom: 0;
+}
+
+#hockey-faq .faq-title a:hover, #hockey-faq .faq-title a:focus{
+    color: #000000;
+    text-decoration: none;
+}
+
+#hockey-faq  .faq-plus-minus:before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    right: 20px;
+}
+
+.contest-back-btn {
+    color: #000000;
+    margin-top: 40px;
+    display: block;
+    width: max-content;
+}
+
+.contest-back-btn:before {
+    content: '';
+    color: #000000;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(
+            135deg
+    );
+    -webkit-transform: rotate(
+            135deg
+    );
+}
+
+/****************************
+           Video
+****************************/
+
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 5%;
+    color: #fff;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+#quaker-hockey-video.custom-slick-arrow .slick-prev.slick-arrow {
+    left: -50px !important;
+    right: 100%;
+}
+
+#quaker-hockey-video.custom-slick-arrow .slick-next.slick-arrow {
+    right: 25px !important;
+    left: 100%;
+}
+
+.quaker-hockey-video{
+    background-color: #D81D37;
+}
+
+.quaker-hockey-video img{
+    width: 100%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 15%;
+}
+
+.carousel-control-prev {
+    left: 0;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+#quaker-hockey-video .carousel-control-prev-icon {
+    content: "";
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: url("/themes/brandstheme/src/images/arrows/white-left-chevron.svg") !important;
+    background-repeat: no-repeat !important;
+}
+
+#quaker-hockey-video .carousel-control-next-icon {
+    content: "";
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url("/themes/brandstheme/src/images/arrows/white-right-chevron.svg") !important;
+    background-repeat: no-repeat !important;
+}
+
+.quaker-video-box {
+    width: 100%;
+    text-align: center;
+}
+
+.quaker-video-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-bottom: 20px;
+}
+
+.quaker-video-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.quaker-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.quaker-video-preimg:after{
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-image: url('/themes/brandstheme/src/images/quaker/quaker-play-icon.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none;
+}
+
+.quaker-hockey-prize-title{
+    color: #FFFFFF;
+    font-family: sans-serif;
+    margin-top: 30px;
+    padding: 0 60px;
+}
+
+.quaker-hockey-banner sup{
+    font-size: 60% !important;
+}
+
+.quaker-hockey-banner h1{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: normal;
+    line-height: 0.85em;
+}
+
+.quaker-hockey-banner h2{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: normal;
+    line-height: 1em;
+    font-size: 42px !important;
+    margin-top: 10px;
+}
+
+.quaker-hockey-banner.sorry p{
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.quaker-hockey-banner.sorry span{
+    font-size: 18px;
+    color: #D01C34;
+}
+
+.hockey-hungry{
+    margin-bottom: 20px;
+    width: 55% !important;
+}
+
+.quaker-campbell-barcode {
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    justify-content: space-between;
+}
+
+.quaker-barcode-text-wrap{
+    color: #FFFFFF;
+    width: 40%;
+    text-align: left;
+}
+
+.quaker-barcode-text-wrap h3{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    font-size: 42px;
+    line-height: 1em;
+    margin-bottom: 20px;
+}
+
+.quaker-barcode-text-wrap p{
+    color: #FFFFFF;
+}
+
+.quaker-barcode-text-wrap a{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.quaker-barcode-text-wrap a:hover{
+    color: #CCCCCC;
+}
+
+.quaker-barcode-text-wrap h3 sup{
+  font-size: 26px;
+  top: -18px;
+}
+
+.quaker-hockey-banner.win{
+    background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/arena.jpg") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 60px 0;
+}
+
+.quaker-hockey-banner p{
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 20px 0 30px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+.prize-confirmation{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 1;
+}
+
+.hockey-prize{
+    color: #FF0000 !important;
+}
+
+.quaker-hockey-banner span{
+    color: #FFFFFF;
+    font-family: sans-serif;
+    line-height: 1.2em;
+}
+
+#quaker-hockey-contest .quaker-hockey-block-container h2{
+    color: #FFFFFF;
+    font-family: 'ChunkFive-Regular', sans-serif;
+    text-transform: uppercase;
+}
+
+.quaker-hockey-block-container .contest-back-btn{
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    margin-top: 0;
+}
+
+.quaker-oatmeal-custom{
+    width: 40% !important;
+}
+
+.quaker-oatmeal-free{
+    width: 76% !important;
+}
+
+.quaker-hockey-block-container .contest-back-btn:before{
+    content: '';
+    color: #FFFFFF;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(
+            135deg
+    );
+    -webkit-transform: rotate(
+            135deg
+    );
+}
+
+#quaker-hockey-video{
+    padding: 80px 0 60px;
+    background-color: #D81D37;
+}
+
+.quaker-hockey-banner .contest-banner-text{
+    padding-left: 5%;
+  position: absolute;
+  top: 30%;
+  left: 4%;
+  width: 50%;
+}
+
+#quaker-hockey-contest .quaker-hockey-block-container{
+    background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/hockey-step-background.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-color: #D81D37;
+    margin: auto;
+    text-align: center;
+    padding: 60px 0;
+    background-position: bottom;
+}
+
+#quaker-hockey-contest .quaker-hockey-block-container sup{
+    font-size: 0.6em;
+}
+
+#quaker-hockey-contest .contest-quaker-steps-wrapper{
+    display: flex;
+    margin-top: 50px;
+}
+
+#quaker-hockey-contest .contest-quaker-steps-wrapper img{
+    margin-bottom: 50px;
+}
+
+#quaker-hockey-contest .contest-quaker-steps{
+    width: 30%;
+    margin: 0 20px;
+}
+
+#quaker-hockey-contest .contest-quaker-steps p {
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+#quaker-hockey-contest .contest-quaker-steps span {
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 1.3em;
+}
+
+.quaker-campbell-enter-contest{
+    padding: 60px 15px;
+    background-color: #032953;
+    text-align: center;
+}
+
+.quaker-campbell-enter-contest h3{
+    color: #FFFFFF;
+    font-size: 48px;
+    line-height: inherit;
+    margin-bottom: 30px;
+}
+
+.quaker-campbell-enter-contest p{
+    color: #FFFFFF;
+}
+
+.quaker-campbell-enter-contest sup{
+    font-size: 55% !important;
+    top: -15px !important;
+}
+
+.quaker-featured-recipes{
+    background-color: #E9EAEB;
+}
+
+.quaker-hockey-block-wrapper{
+    background-color: #D81D37;
+}
+
+.quaker-hockey-block{
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    justify-content: space-between;
+}
+
+.quaker-hockey-block img{
+    width: 45%;
+}
+
+#where-to-find-upc{
+    padding-top: 60px;
+}
+
+.quaker-recipe-coupon{
+    background-color: #D81D37;
+    padding: 0 15px;
+    position: relative;
+}
+
+.quaker-recipe-coupon h2{
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.quaker-recipe-coupon-goalie{
+    background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/quaker-goal.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    height: 555px;
+    display: flex;
+}
+
+.quaker-recipe-coupon-goalie-prize{
+    background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/quaker-goal-prize.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    display: flex;
+    background-position: bottom;
+}
+
+.quaker-recipe-coupon-goalie-prize-sub{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+.quaker-recipe-coupon img{
+    width: 100%;
+}
+
+.quaker-recipe-coupon-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 555px;
+    margin-top: 30px;
+  width: 555px;
+}
+
+.quaker-recipe-coupon-col .quaker-hockey-link{
+    color: #FFFFFF;
+    text-decoration: underline !important;
+}
+
+.quaker-recipe-coupon-col .quaker-hockey-link:hover{
+    color: #CCCCCC;
+}
+
+.quaker-recipe-coupon-col h3{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    color: #FFFFFF;
+    font-size: 32px;
+}
+
+.quaker-recipe-coupon-col p{
+    color: #FFFFFF;
+    margin: 15px 0 20px;
+}
+
+.quaker-recipe-coupon-col:first-child{
+    padding: 0 60px 0 100px;
+}
+
+.quaker-recipe-coupon-col:last-child{
+    padding: 0 100px 0 60px;
+}
+
+.quaker-hockey-official-rules{
+    background-color: #032953;
+    color: #FFFFFF;
+    padding: 60px 15px 100px;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.quaker-hockey-official-rules-links{
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.quaker-recipe-coupon.sign-up .quaker-recipe-coupon-col:last-child{
+    text-align: left;
+    align-items: baseline;
+}
+
+.hockey-canada-faq-text {
+  width: 45% !important;
+}
+
+#prizes-text {
+  height:5em
+}
+
+.quaker-hockey-banner.win {
+  display:flex;
+  justify-content: space-evenly;
+}
+
+/****************************
+      Quaker hockey form
+****************************/
+
+.quaker-hockey-contest-form-wrapper{
+    background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/banner-enter-form.jpg") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0 50px;
+}
+
+.quaker-hockey-contest-form-wrapper h1{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    text-transform: uppercase;
+    line-height: 1em;
+    font-size: 48px;
+}
+
+.quaker-hockey-contest-form-wrapper h1 sup{
+    font-size: .6em;
+    top: -15px;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__quacker-input {
+    display: flex;
+}
+
+#prize-claim .btn_red {
+    border: none;
+}
+
+.contest-detail__sign-up-hockey-button{
+    justify-content: center;
+    display: flex;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__quacker-input-col {
+    width: 100% !important;
+    padding: 0 10px;
+    height: 60px;
+}
+
+.quaker-hockey-contest-form-wrapper .province {
+    border-radius: 0;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__input {
+    background-color: #FFFFFF !important;
+    border: none !important;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 12px;
+    text-indent: 10px;
+    outline: none;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-banner-text{
+    width: 50%;
+    color: #FFFFFF;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-banner-text p{
+    color: #FFFFFF;
+    margin: 15px 0 30px;
+}
+
+form.hockey-contest-form{
+    width: 80%;
+    /*margin: auto;*/
+}
+
+.quaker-hockey-contest-form{
+    width: 30%;
+    margin: auto;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkboxes-color {
+    display: none;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkboxes-color + label:before {
+    border: 2px solid #FFFFFF;
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkboxes-color + label:before {
+    border: 2px solid #FFFFFF;
+    display: flex;
+    transition-duration: 0.3s;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 10px;
+    content: "";
+    padding: 2px;
+    /* box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%); */
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkboxes-color:checked + label:before {
+    background-color: #d80a1e;
+    box-shadow: inset 0px 0px 0px 2px white;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkbox-text {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #FFFFFF;
+}
+
+.quaker-hockey-contest-form-wrapper .modal__inquiry{
+    padding: 0;
+    color: #FFFFFF;
+    margin: auto 10px 10px;
+    width: 95%;
+}
+
+input#submitclaim {
+  border:25px
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__checkboxes-wrap{
+    display: flex;
+    padding: 0 10px;
+}
+
+#prize-claim .contest-detail__checkboxes-wrap{
+    flex-direction: column;
+}
+
+#prize-claim .contest-detail__sign-up-button{
+    padding: 0 10px;
+}
+
+.quaker-hockey-contest-form-wrapper .contest-detail__sign-up-button {
+    border-radius: 0;
+    box-shadow: none;
+    margin: 10px auto;
+    min-width: 95%;
+    background-color: #b81321;
+    border: none !important;
+    color: white !important;
+    transition: all 0.2s;
+    font-weight: bold;
+    font-size: 16px !important;
+    outline: none !important;
+    min-height: 40px;
+}
+
+/*.quaker-hockey-contest-form-wrapper .contest-detail__sign-up-button:hover {*/
+/*    background-color: #b81321;*/
+/*    transition: all 0.2s;*/
+/*}*/
+
+.contest-detail__sign-up-hockey-button .contest-detail__sign-up-button.grey {
+    background-color: #d1d1d1;
+}
+
+.quaker-hockey-contest-form-wrapper.claim h1{
+    margin-bottom: 20px;
+}
+
+.quaker-hockey-claim-banner-text{
+    padding-left: 10%;
+    width: 50%
+}
+
+.quaker-hockey-claim-banner-text, .quaker-hockey-claim-banner-text p{
+    color: #FFFFFF;
+}
+
+.quaker-hockey-claim-banner-text .start-cancel-button .js-start {
+    margin-right: 20px;
+}
+
+.quaker-hockey-claim-banner-text .start-cancel-button{
+   margin-top: 30px;
+}
+
+.quaker-hockey-contest-form .question{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.quaker-hockey-contest-form .skill-test{
+    align-items: baseline;
+    padding: 0 10px;
+    flex-direction: column;
+}
+
+.quaker-hockey-contest-form p{
+    color: #FFFFFF;
+}
+
+.skill-timer-container p{
+    color: #FFFFFF;
+    padding: 5px 10px;
+}
+
+.time-remain{
+    color: #D01C34 !important;
+    font-weight: bold;
+}
+
+.skill-test-question{
+    color: #FFFFFF;
+    padding-top: 10px;
+}
+
+.show-on-correct.shipping{
+    color: #FFFFFF;
+    padding: 30px 10px 5px;
+}
+
+.show-on-correct.form-required-fields-indicator{
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+/****************************
+        Popup Section
+****************************/
+
+.hockey-modal{
+    padding: 60px 35px 40px !important;
+    width: 30%;
+}
+
+.hockey-modal .popup-title{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    color: #D01C34 !important;
+    text-transform: uppercase;
+    font-size: 2em !important;
+    font-weight: lighter;
+}
+
+.hockey-modal .required-fields{
+    text-align: left;
+}
+
+.hockey-modal sup{
+    top: -6px !important;
+    font-size: 0.7em !important;
+
+}
+
+.popup-main-wrapper.hockey-popup{
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(9px);
+}
+
+.hockey-modal .js-popup-langswitcher{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-decoration: underline;
+    font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.hockey-contest-birth-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hockey-modal .popup-sub-text{
+    font-weight: lighter;
+    font-family: sans-serif;
+    margin: 20px 0;
+}
+
+.hockey-modal .date-dropdowns .day {
+    width: 30%;
+}
+
+.hockey-modal .province {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.popup-email-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hockey-contest select.province {
+    width: 100%;
+    margin-bottom: 0px !important;
+}
+
+.hockey-access-website {
+    background-color: #D01C34;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+    border: none;
+    font-family: 'ChunkFive-Regular', sans-serif;
+    font-weight: normal;
+    min-width: 150px;
+    transition: all 0.2s;
+}
+
+.hockey-access-website:hover {
+    background-color: #b81321;
+}
+
+
+.hockey-modal .contest-detail__quacker-input-col input{
+    width: 100%;
+}
+
+.hockey-modal .contest-detail__quacker-input.modal-form-row-2col{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hockey-modal .contest-detail__quacker-input.modal-form-row-2col .contest-detail__quacker-input-col{
+    width: 49%;
+}
+
+/****************************
+        Official rules
+****************************/
+
+.hockey-official-rules{
+    padding: 60px 0;
+}
+
+.winner-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 1600px) {
+    form.hockey-contest-form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .hockey-modal {
+        width: 40%;
+    }
+
+    /*.quaker-hockey-banner h1 {*/
+    /*    font-size: 42px !important;*/
+    /*}*/
+
+    .quaker-hockey-banner h2 {
+        font-size: 32px !important;
+    }
+
+    .quaker-hockey-contest-form-wrapper h1{
+        font-size: 42px;
+    }
+
+    .quaker-hockey-contest-form {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    /*.quaker-hockey-banner img {*/
+    /*    width: 80%;*/
+    /*    right: 90px;*/
+    /*    position: relative;*/
+    /*}*/
+
+    /*.quaker-hockey-banner h1 {*/
+    /*    font-size: 36px !important;*/
+    /*}*/
+
+    .quaker-hockey-banner h2 {
+        font-size: 26px !important;
+    }
+
+    .quaker-hockey-claim-banner-text .start-cancel-button .js-start{
+        margin-right: auto;
+    }
+
+    .quaker-hockey-contest-form-wrapper .contest-claim-form {
+        padding-top: 3rem !important;
+    }
+
+    .quaker-hockey-claim-banner-text{
+        padding-left: 0;
+    }
+
+    .quaker-hockey-claim-banner-text .start-cancel-button{
+        justify-content: center;
+        width: 100%;
+    }
+
+    #hockey-faq .faq-plus-minus:before{
+        right: -11px;
+    }
+
+    #hockey-faq .panel-group .faq-plus-minus:after {
+        font-size: 29px;
+    }
+
+    .quaker-recipe-coupon.sign-up .quaker-recipe-coupon-col:last-child {
+        text-align: center;
+        align-items: center;
+    }
+
+    .quaker-hockey-contest-form{
+        padding: 20px 0 0 0;
+    }
+
+    form.hockey-contest-form{
+        width: 100%;
+    }
+
+    .quaker-hockey-contest-form-wrapper .contest-detail__sign-up-button{
+        min-width: 97%;
+        margin-top: 30px;
+    }
+
+    .quaker-hockey-contest-form{
+        width: 100%;
+    }
+
+    .quaker-hockey-contest-form-wrapper .contest-banner-text{
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .quaker-hockey-contest-form-wrapper{
+        flex-direction: column;
+        height: auto;
+        padding: 60px 15px 50px 15px;
+        text-align: center;
+    }
+
+    .hockey-hungry {
+        right: 0% !important;
+        width: 60% !important;
+    }
+
+    .quaker-hockey-banner{
+        overflow: hidden;
+    }
+
+
+
+    .hockey-canada-banner-logo {
+      display:none;
+}
+    .hockey-canada-banner-logo-img {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .quaker-hockey-banner img{
+        right: 0px;
+        width: 100%;
+    }
+
+    .hockey-rules-banner-img, .hockey-banner-faq-img{
+        max-width: 100% !important;
+    }
+
+    .quaker-hockey-banner h1 {
+        font-size: 26px !important;
+    }
+
+    .quaker-hockey-banner.win{
+        background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/banner-mobile.jpg") !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .winner-desktop{
+        display: none;
+    }
+
+    .winner-mobile{
+        display: block;
+        margin: auto;
+        width: 95% !important;
+        right: 0 !important;
+    }
+
+    .quaker-hockey-contest-form-wrapper h1{
+        font-size: 32px;
+    }
+
+    .quaker-hockey-contest-claim-button{
+        margin: auto;
+    }
+
+    .quaker-hockey-contest-form-wrapper .modal__inquiry{
+        text-align: left;
+    }
+
+    #quaker-hockey-contest .contest-quaker-steps-wrapper img{
+        margin-bottom: 20px;
+    }
+
+    .quaker-hockey-prize-title{
+        padding: 30px 15px;
+    }
+
+    .hockey-contest-birth-wrapper{
+        flex-direction: column;
+    }
+
+    .hockey-modal .date-dropdowns .day {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .prize-confirmation{
+        right: auto;
+        left: auto;
+        bottom: auto;
+        display: contents;
+    }
+
+    .popup-main-wrapper.hockey-popup{
+        padding: 0 15px;
+    }
+
+
+    #quaker-hockey-contest .contest-quaker-steps-wrapper {
+        flex-direction: column;
+    }
+
+    #quaker-hockey-contest .contest-quaker-steps {
+        width: auto;
+        margin: 0 15px 30px;
+    }
+
+    .quaker-recipe-coupon-goalie{
+        flex-direction: column;
+        background-image: none !important;
+    }
+
+    .quaker-recipe-coupon-goalie-prize{
+        flex-direction: column;
+        background-image: none !important;
+    }
+
+    .quaker-recipe-coupon-goalie-prize-sub{
+        bottom: 35px;
+    }
+
+    .quaker-hockey-block{
+        flex-direction: column;
+      padding: 0 20px !important;
+    }
+
+    .quaker-hockey-block img {
+        width: 100%;
+        order: 1;
+        margin-bottom: 20px;
+    }
+
+    .quaker-barcode-text-wrap {
+        width: 100%;
+        order: 2;
+        text-align: center !important;
+    }
+
+    .quaker-recipe-coupon-col:first-child, .quaker-recipe-coupon-col:last-child  {
+        padding: 0;
+    }
+
+    .quaker-recipe-coupon-goalie{
+        height: auto;
+    }
+
+    .quaker-recipe-coupon-col{
+        height: auto;
+    }
+
+    .quaker-recipe-coupon {
+        padding: 25px 15px;
+    }
+
+    .quaker-recipe-coupon-col h3{
+        margin-bottom: 30px;
+    }
+
+    .quaker-recipe-coupon h2 {
+        margin-bottom: 0px;
+    }
+
+    .quaker-hockey-official-rules-links{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .quaker-hockey-contest-rules-button {
+        margin: 7px 0;
+        font-size: 20px;
+    }
+
+  .quaker-hockey-banner {
+    flex-direction: column;
+  }
+
+  .hockey-product-img, .hockey-banner {
+    max-width: 100% !important;
+    transform: scale(1.5);
+  }
+
+  .quaker-find-upc {
+    width: 100% !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .quaker-barcode-col {
+    margin-left: 0 !important;
+  }
+
+
+  .noMobile-sm {
+    display: none;
+  }
+
+  .noDesktop-sm {
+    display: block !important;
+  }
+
+  .rules-mobile-banner-text {
+    display: flex;
+    justify-content: center;
+  }
+  .rules-mobile-banner-text h1 {
+    position: absolute;
+    top: 35%;
+    color: #fff;
+    font-size: 40px;
+  }
+
+  .contest-back-btn {
+    margin-left: 20px;
+  }
+
+  .quaker-hockey-claim-banner-text {
+    width: 80%;
+  }
+
+  body > div.dialog-off-canvas-main-canvas > div.navbar-wrapper-tasty > section > div > section.quaker-hockey-contest-form-wrapper.claim > div.quaker-hockey-claim-banner-text > div > button.quaker-hockey-contest-claim-button.js-start {
+    margin-bottom: 20px;
+  }
+
+  img.hockey-banner-lose.hockey-banner.fr {
+    height: 200px;
+  }
+
+  input#claim_email::placeholder, input#claim_firstname::placeholder, input#claim_lastname::placeholder {
+    font-size: 9px;
+  }
+
+  .hockey-rules {
+    text-align: center;
+  }
+
+  .upc-tooltip {
+    width: 25px !important;
+  }
+
+  .quaker-recipe-coupon-col  {
+    max-width: 100% !important;
+  }
+
+  .contest-quaker-steps-wrapper {
+    padding-bottom: 20px !important;
+  }
+
+  #quaker-hockey-contest .quaker-hockey-block-container {
+    padding-bottom: 0 !important;
+  }
+
+  .quaker-hockey-video img{
+    padding: 0 20px 20px 20px;
+  }
+
+  .quaker-recipe-coupon-col {
+    width: 100% !important;
+  }
+
+  .hockey-banner-lose {
+    width:100%;
+    margin-top: -16px ;
+
+  }
+
+  img.hockey-banner-lose.fr {
+    transform: scale(1.2);
+  }
+
+  .banner_slide--text.lose-banner-text-mb {
+    padding: 50px 10px;
+    text-align: center;
+  }
+
+  .quaker-recipe-coupon-col {
+    margin-top: 0 !important;
+  }
+
+  .contest-banner-text-win {
+    width: 100% !important;
+    padding-left: 0 !important;
+    text-align: center;
+  }
+
+  .quaker-hockey-banner.win {
+    padding: 60px 10px 5px 10px !important;
+  }
+
+  .quaker-hockey-banner .contest-banner-text {
+    padding: 50px 20px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .quaker-find-upc div {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+
+
+
+
+  }
+
+@media screen and (max-width: 992px) {
+
+  .quaker-hockey-banner .contest-banner-text {
+    background-color:#000;
+    position: initial;
+    width: 100% !important;
+  }
+
+  .quaker-hockey-banner img {
+    margin-top: -10px;
+  }
+
+  img.hockey-banner-faq-img.en {
+    margin-top: -35px !important;
+  }
+
+  body > div.dialog-off-canvas-main-canvas > div.navbar-wrapper-tasty > section > div > div.noDesktop-sm.hockey-banner-mobile > div > h1 {
+    text-align: center;
+  }
+
+  .panel.panel-default {
+    padding: 0 15px !important;
+  }
+
+
+
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px) {
+  input#claim_email::placeholder, input#claim_firstname::placeholder, input#claim_lastname::placeholder  {
+    font-size: 12px;
+  }
+  .quaker-hockey-banner .contest-banner-text {
+    padding: 50px 20px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .quaker-barcode-col img {
+    width: 75% !important;
+  }
+
+  .quaker-hockey-banner .contest-banner-text {
+    top: 0 !important;
+  }
+
+  .quaker-hockey-banner h1 {
+    font-size: 3em !important;
+  }
+
+  .quaker-hockey-banner p {
+    font-size: 25px !important;
+  }
+
+  #quaker-hockey-contest > div.quaker-recipe-coupon > div > div > div:nth-child(2) > h3 {
+    height: 3em;
+  }
+
+
+
+
+}
+
+  @media screen and (max-width: 560px) {
+
+    #hockey-faq .faq-plus-minus:before, #hockey-faq .panel-group .faq-plus-minus:after {
+        display: none;
+    }
+
+    .quaker-barcode-col img {
+      max-width: 100% !important;
+    }
+
+
+    .lose-recipe-coupon {
+      margin-top: 80px !important;
+    }
+
+  }
+
+.quaker-barcode-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  text-align: center;
+  margin-left: -4em;
+}
+
+.quaker-barcode-col img {
+  max-width: 60%;
+}
+
+.coming-soon-text {
+  top: 25% !important;
+}
+
+
+.quaker-find-upc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  width:80%;
+  margin-left:-30px;
+  font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+.quaker-find-upc div {
+  width: 80%;
+  margin-right: 4em;
+
+}
+
+.quaker-find-upc h3{
+    font-family: 'ChunkFive-Regular', sans-serif;
+    font-size: 42px;
+    line-height: 1em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.quaker-find-upc p{
+    font-family: sans-serif;
+}
+
+.quaker-hockey-link {
+  color: #fff;
+}
+
+.quaker-hockey-upc-link{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.quaker-hockey-upc-link:hover{
+    color: #CCCCCC;
+}
+
+.learn-more{
+    color: #dd2f3d;
+    text-decoration: underline;
+    padding-top: 10px;
+    display: block;
+}
+
+.learn-more:hover{
+    color: #b81321;
+}
+
+.official-rules-comingsoon {
+    padding: 60px 15px 100px !important;
+}
+
+/*Hockey banner*/
+
+.hockey-canada-banner-logo-img {
+  position: absolute !important;
+  top: 0 !important;
+  right: 30px !important;
+  width: 180px !important;
+  margin-top: 20px;
+}
+.quaker-hockey-banner {
+  position:relative;
+}
+
+.hockey-product-img {
+  max-width: 100%;
+}
+
+
+html:lang(en) .fr {
+  display: none;
+}
+
+
+html:lang(fr) .en {
+  display: none;
+}
+
+.banner-enter-now {
+  margin-top: 25px;
+}
+.banner-enter-now a {
+  border: 2px solid #D01C34;
+  padding: 8px 27px;
+  padding-top: 12px;
+  text-align: center;
+  background-color: #D01C34;
+  border-radius: 25px;
+  font-family: 'ChunkFive-Regular', sans-serif;
+}
+
+.banner-enter-now a:hover {
+ color:#fff;
+  text-decoration: none;
+}
+
+
+/*Rules page*/
+
+.hockey-rules-banner-img, .hockey-banner-faq-img {
+  max-width: 100%;
+}
+
+.hockey-banner-item.prize {
+  max-width: 100%;
+}
+
+.prizes-banner-text {
+  top:50% !important;
+  left: 5% !important;
+}
+
+.hockey-banner-lose {
+  max-width: 100% ;
+}
+
+.noDesktop-sm{
+  display: none;
+}
+
+.hockey-banner-mobile {
+  background-image: url("/themes/brandstheme/src/images/quaker/hockey-contest/hockey-mobile-background.png");
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+}
+
+#quaker-hockey-contest > div.quaker-recipe-coupon > div > div > div:nth-child(1) > h3 > sup {
+  font-size: 1em;
+}
+
+input::placeholder, #province {
+  font-family: "OpenSans-bold", Sans-Serif;
+  color:#000
+}
+
+body > div.dialog-off-canvas-main-canvas > div.navbar-wrapper-tasty > section > div > section > div > div.quaker-recipe-coupon > div > div > div:nth-child(1) > h3, body > div.dialog-off-canvas-main-canvas > div.navbar-wrapper-tasty > section > div > section > div > div.quaker-recipe-coupon > div > div > div:nth-child(2) > h3 {
+  margin-bottom: 20px;
+}
+
+a.prize-pdf {
+  color:#fff;
+  text-decoration: underline;
+  margin: 10px 0;
+}
+
+#hockey-claim-modal {
+  width: 530px !important;
+}
+
+.hockey-rules h2 {
+  font-family: "OpenSans-bold", Sans-Serif !important;
+}
+
+.upc-tooltip {
+  width: 25px;
+}
+
+.free-product-text {
+  width: 100%;
+}
+
+.lose-banner-text {
+  position:absolute;
+  top:20%;
+  left:5%;
+  width: 40%;
+}
+
+#hockey-contest-lose-section {
+  position: relative;
+}
+
+.prizes-not-as-shown-text {
+  color: #fff;
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+}
+
+.lose-cpntainer h2 {
+  height: 70px !important;
+  margin-top: 60px ;
+}
+
+.contest-banner-text-win {
+  width:40%;
+  padding-left: 4em;
+}
+
+.lose-banner-text-mb {
+  background-color: #000;
+}
+
+#quaker-hockey-contest > div.quaker-recipe-coupon > div > p {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+#quaker-hockey-contest > div.quaker-hockey-block-wrapper > div > div > p > a:hover {
+  color:inherit;
+}
+
+
+/****** Accessibility *******/
+
+.sr-only{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.container.hockey-rules {
+  text-align: center;
+}
+
+input#optin {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

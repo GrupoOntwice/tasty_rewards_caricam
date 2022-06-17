@@ -1,0 +1,127 @@
+{# {% set class_align = 'product-align-left' %}
+
+        {% if loop.index % 2 == 0 %}
+          {% set class_align = 'product-align-right' %}
+        {% endif %}
+         #}
+
+ {# class should be either products-item-image or products-item-text #}
+{% set iframe_url = 'https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare' %}
+
+{% if row.index % 2 == 0 %}
+  <div class="col-lg-6 product-img-col bare-align-left animate__animated ">
+    {% for field in fields %}
+      {# {% if fields.align == ''%} #}
+      {# {% endif %} #}
+
+      {% if field.class == 'field-recipe-image' %}
+        <div class="products-recipe-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image1' %}
+        <div class="products-extra-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image2' %}
+        <div class="products-extra-image2">
+          {{ field.content }}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+{% endif %}
+
+  <div class="col-lg-6 product-copy-col text-center ">
+    <div class="text-left d-inline-block">
+
+      {% for field in fields %}
+        {# {% if field.class == 'title' %} #}
+        {% if field.class == 'field-html-title' %}
+          <div class="products-title bare-fave-title html-title">
+            {{ field.content|raw }}
+          </div>
+        {% elseif field.class == 'field-subtitle' %}
+          <div class="products-title bare-fave-subtitle padding-top">
+            {{ field.content|raw }}
+          </div>
+        {% elseif field.class == 'body' %}
+          <div class="products-body bare-fave-body padding-top">
+            {{ field.content|raw }}
+            <div class = "product-buy-now">
+            <button class = "btn_bare product-bare-buynow js-buynow" data-target="#bareModal" data-toggle="modal">
+                  {{'Buy Now' | raw}}
+                </button>
+              </div>
+
+              <div class="modal bootstrap-modal bg-transparent" id="bareModal" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      {# <p>Content goes here</p> #}
+                      {% if iframe_url %}
+                        <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+        {% elseif field.class == 'field-nutrition' %}
+          <div class="products-nutrition">
+            <div class="fa-nutrition">
+              <div class="">
+                <h3>{{'Nutrition'|t}}</h3>
+              </div>
+              <div class="fa-nutrition-icon">
+                <i class="fa-swap fa fa-plus"></i>
+              </div>
+            </div>
+            <div class="nutrition-copy animate__animated">
+              {{ field.content }}
+            </div>
+          </div>
+        {% elseif field.class == 'field-recipe-ingredients' %}
+          <div class="products-ingredients">
+            <h3>{{'Ingredients'|t}}</h3>
+            {{ field.content }}
+          </div>
+        {% elseif field.class == 'field-buy-now' %}
+          <div class="products-buy-now">
+            {{ field.content }}
+          </div>
+
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+
+{% if row.index % 2 == 1 %}
+  <div class="col-lg-6 product-img-col bare-align-right animate__animated ">
+    {% for field in fields %}
+      {# {% if fields.align == ''%} #}
+      {# {% endif %} #}
+
+      {% if field.class == 'field-recipe-image' %}
+        <div class="products-recipe-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image1' %}
+        <div class="products-extra-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image2' %}
+        <div class="products-extra-image2">
+          {{ field.content }}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+{% endif %}
+

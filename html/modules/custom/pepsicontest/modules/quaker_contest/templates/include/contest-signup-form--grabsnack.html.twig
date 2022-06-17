@@ -1,0 +1,108 @@
+{{ attach_library( 'quaker_contest/grabsnack' ) }}
+<form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off" class="grabsnack-contest-form">
+
+    <input type="hidden" name="newregister"  value="{{newregister}}">
+    {% if data.language != 'en-us' and data.language != 'es-us' %}
+        <p class="modal__inquiry">{{ "*Required fields."|t }}</p>
+    {% endif %}
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" class="contest-detail__input {{data.error.upccode?'has-error':''}}" name='upccode' id="contest-upccode" disabled="disabled"  placeholder="{{ 'Code *'|t }}" value="{{data.upccode?:''}}"  {{data.upccode?form_field_status:''}}>
+            <span class="help-block err_upccode">{{data.error.upccode?:''}}</span>
+        </div>
+    </div>
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" disabled="disabled" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+            <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+        </div>
+
+        <div class="contest-detail__quacker-input-col">
+
+            <input type="text" disabled="disabled" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+            <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+        </div>
+    </div>
+
+
+
+    <div class="contest-detail__quacker-input form-col">
+        <div class="contest-detail__quacker-input-col ">
+            <input type="text" disabled="disabled" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email *'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+            <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+        </div>
+
+      <div class="contest-detail__quacker-input-col ">
+      <select class="province form-control modal__sign-up-select" name="province" id="province" style = "width: 100%; color: black; border:1px solid #adadad" >
+        {{ data.provinces_options| raw }}
+      </select>
+      <span class="help-block err_province">{{data.error.province?:''}}</span>
+      </div>
+
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" disabled="disabled" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+            <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+        </div>
+    </div>
+
+
+
+    <div class="contest-detail__sign-up-select-checkbox layssummertime-checkbox">
+
+            <div class="contest-detail__checkboxes-wrap">
+                <input style = "width: 44px; height: 15px" type="checkbox" class="contest-detail__checkboxes-color signup-check" id="optin" name='optin'  {{ data.optin==1?'checked' }}/>
+                <label for="optin"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'| t }}</p>
+            </div>
+            <br/>
+            <p> {{'*Please select the option that applies:'|t}}</p>
+          <div style = "padding-left: 20px">
+            <span style = "margin: 0" class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span>
+          </div>
+            <br/>
+
+            <div class="contest-detail__checkboxes-wrap">
+                <input style = "width: 22px; height: 15px" type="checkbox" class="contest-detail__checkboxes-color majcheck" id="optin_maj" name='optin_maj'  {{ data.optin_maj==1?'checked' }}/>
+
+                <label for="optin_maj"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'I am the age of majority in my province/territory of residence.'| t }}</p>
+
+
+            </div>
+      <div style = "padding-left: 20px">
+        {# <span class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span> #}
+      </div>
+
+            <br/>
+
+            <div class="contest-detail__checkboxes-wrap">
+                <input style = "width: 42px; height: 15px" type="checkbox" class="contest-detail__checkboxes-color signup-check" id="optin_maj2" name='optin_maj2'  {{ data.optin_maj2==1?'checked' }}/>
+
+                <label for="optin_maj2"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'I am between the age of 16 and the age of majority in my province/territory of residence, and have parental permission to participate.'| t }}</p>
+            </div>
+      <div style = "padding-left: 20px">
+        <span class="help-block err_optin_maj2">{{data.error.optin_maj2| raw?:''  }}</span>
+      </div>
+            <br/>
+
+            <div>
+                <p class="contest-detail__checkbox-text-rules">{{ 'By submitting my entry, I confirm that I am eligible to participate according to the <a href="/contest/%s/officialrules" target="_blank">Official Rules</a>.' |format(data.contesturi)| t }}</p>
+            </div>
+    </div>
+
+
+
+    <div class="contest-detail__sign-up-select-button">
+        <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+        <input id="submitcontest" class="contest-detail__sign-up-button js-submit-contest {{submit_status}}" {{submit_status}} type="button" value="{{'Submit' | t}}">
+    </div>
+    <div class="contest-detail__sign-up-select-button">
+        <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+    </div>
+</form>

@@ -1,0 +1,130 @@
+<nav id="brands_navigation" class="brands-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="https://www.tostitos.ca" class="tostitos-logo-mobile top-logo noDesktop">
+    <img class="tostitos-logo" src="/themes/brandstheme/src/images/tostitos/tostitos-logo.png?v=1" alt="Tostitos.ca logo">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-center">
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/recipes" id="recipes-submenu">{{'Recipes'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/occasions" id="occasions-submenu">{{'Occasions'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{'https://contact.pepsico.com/fritolayca'|t}}" target="_blank" id="about-us-submenu">
+        {{'Contact Us'|t}}
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+    </li>
+    {# <li class="brands-navbar__item-border"> #}
+      {# <a href="{{ brand_basepath }}/dropthehint" id="drop-the-hint">{{'Drop The Hint '|t}}</a> #}
+    {# </li> #}
+    {# <li class="brands-navbar__item-border">
+      <a href="http://www.tostitos.ca/#newsletter_signup" id="http://www.tostitos.ca/#newsletter_signup-submenu">Tasty Rewards</a>
+    </li> #}
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ brand_basepath }}" class="logo noMobile">
+    <img class="tostitos-logo" src="/themes/brandstheme/src/images/tostitos/tostitos-logo.png?v=1" alt="Tostitos.ca logo">
+  </a>
+
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+    <a class="brands-navbar__social-icons" aria-label="twitter link" href="https://twitter.com/tostitoscanada" id="nav-twitter" target="_blank">
+      <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" aria-label="instagram link" href="https://www.instagram.com/tostitoscanada/" id="nav-instagram" target="_blank">
+      <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" aria-label="facebook link" href="https://www.facebook.com/tostitoscanada" id="nav-facebook" target="_blank">
+      <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" aria-label="youtube link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" id="nav-youtube" target="_blank">
+      <i class="fa fa-youtube-play fa-navbar" title="youtube icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" aria-label="pinterest link" href="https://www.pinterest.ca/tostitoscanada/_created/" id="nav-pinterest" target="_blank">
+      <i class="fa fa-pinterest fa-navbar" title="pinterest icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+  </div>
+
+{#  <div class="tostitos-socials">#}
+{#    <a class="tostitos-social-link" href="https://twitter.com/tostitoscanada" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/tostitos/social/twitter-blue.png">#}
+{#    </a>#}
+{#    <a class="tostitos-social-link" href="https://www.instagram.com/tostitoscanada/" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/tostitos/social/instagram-blue.png">#}
+{#    </a>#}
+{#    <a class="tostitos-social-link" href="https://www.facebook.com/tostitoscanada" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/tostitos/social/facebook-blue.png">#}
+{#    </a>#}
+{#    <a class="tostitos-social-link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/tostitos/social/youtube-blue.png">#}
+{#    </a>#}
+{#    <a class="tostitos-social-link" href="https://www.pinterest.ca/tostitoscanada/_created/" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/tostitos/social/pinterest-blue.png">#}
+{#    </a>#}
+{#  </div>#}
+
+  <!-- TO SEARCH POPOVER -->
+{#   <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__search justify-center brands-navbar__item-border">
+    <input type="text" id="to-open-close-search-popover-input" title="Search...">
+    <a class="brands-navbar__search-copy" href="#" id="to-open-close-search-popover-button">
+      <span class="srt">Search</span>
+    </a>
+  </div> #}
+
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+    <a href="javascript:void(0);" id="" class="choose-lang_fr js-translation">
+      {{'FR'|t}}
+    </a>
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/signin-signup.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/{{'logo-en.png'|t}}" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

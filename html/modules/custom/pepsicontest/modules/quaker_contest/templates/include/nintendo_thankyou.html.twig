@@ -1,0 +1,164 @@
+{% if  data.langcode == 'fr' %}
+    {% include '@quaker_contest/include/nintendo_thankyou-fr.html.twig' %}
+{% else %}
+
+<section class = "thankyou-page">
+  <div class="nintendo-contest-confirm">
+    <div class="nintendo-contest-confirm-text-banner">
+        {{ attach_library( 'quaker_contest/landing' ) }}
+        {{ attach_library( 'quaker_contest/nintendo' ) }}
+        <h1>{{ "Thanks for entering!" |t }}</h1>
+        <div class="contest-description">
+            <p>
+                {{ "You’ve been successfully entered into the contest. <br> <br>
+                The product UPC you provided has earned you"|t}} {{data.nb_entries}} {{ data.nb_entries > 1? 'entries' : 'entry' }} {{" into the contest!<br><br>
+
+                Draws will take place as outlined in the <a href='/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a>.  We’ll be contacting potential winners by email, so make sure you keep a watch out (including that junk folder).<br><br>"|t}}
+            </p>
+        {% if data.code != '' %}
+
+            <p>
+                {{ "BONUS!<br>
+                Your entry has unlocked a one-time unique code redeemable for 100 My Nintendo<sup>TM</sup> Platinum Points*! Find your unique code below. These points can be redeemed towards My Nintendo rewards like digital wallpapers or physical goods (while supplies last).<br><br>
+
+                Tip: take a screenshot of this page to access your unique code."|t }}
+            </p>
+
+            <!--Hardcode for now-->
+            <div class="code-number">
+                {{data.code }}
+            </div>
+
+            <p>
+                {{ "Redeem this unique code on the My Nintendo website (<a href = 'https://my.nintendo.com/?lang=en-CA?cid=C1031-09-1'>https://my.nintendo.com/?lang=en-CA?cid=C1031-09-1</a>).
+                The unique bonus code is valid for 100 Platinum Points!<br><br>
+
+                How to redeem your Platinum Points: <br><br>
+
+                1. Log in to my.nintendo.com with your Nintendo Account (or create a new one).<br>
+                2. Click on Menu, then select “Redeem a point code”.<br>
+                3. Enter the 12-digit point code (plus hyphens) when prompted and hit submit. "|t}}
+            </p>
+
+        {% endif %}
+        <br>
+        <p class = "text-white" style = "font-size: 14px; margin-left: 15px"><a href="{{data.back_button}}"> Enter another UPC</a> ?{{ 'As a reminder, you can get a maximum of 3 entries per day.' |t }}</p>
+
+{#          <br>#}
+{#            <p>#}
+{#                {% if data.code != '' %}#}
+{#                    {{"As a bonus for entering, here is your code for 100 My Nintendo<sup>TM</sup> Platinum Points. These points can be redeemed towards My Nintendo rewards like digital wallpapers or physical goods (while supplies last)."|t|raw}}#}
+{#                {% endif %}#}
+{#            </p><br>#}
+{#
+
+        {% if data.code != '' %}
+            <span class="contest-code">{{data.code }}</span>
+            <p>{{' Redeem this code on the My Nintendo website <a target="_blank" href="https://my.nintendo.com/?lang=en-CA?cid=C1031-03-1">(https://my.nintendo.com/?lang=en-CA?cid=C1031-03-1)</a> and receive Platinum Points you can redeem to get some cool rewards. Each point code will give you 100 Platinum Points!
+                <br><br>
+                Follow these steps to redeem your point code:<br><br>
+
+                1. Log in to my.nintendo.com with your Nintendo Account (or create a new one).<br>
+                2. Click on Menu, then select “Redeem a point code”.<br>
+                3. Enter the 16-digit point code when prompted and hit submit.<br>
+                '|t}}
+            </p>
+            <br>
+            <p style="font-size: 14px;">
+                {{ "This My Nintendo Point Code can only be redeemed for Platinum Points once and must be redeemed by 09/12/2021.
+                 A Nintendo Account is required to redeem the point code and receive points. By creating a Nintendo Account, the user is automatically enrolled in the My Nintendo rewards program.
+                  Platinum Points expire if not used within 6 months of receipt. Point Codes have no cash value. <br><br>"|t}}
+
+            </p>
+        {% endif %}
+#}
+
+{#            <p style="font-size: 14px;">#}
+{#                {{"My Nintendo Rewards Programs Terms of Services apply: <a target='_blank' href='https://accounts.nintendo.com/term_point'>https://accounts.nintendo.com/term_point</a><br>#}
+{#                Nintendo trademarks and copyrights are properties of Nintendo.#}
+{#                "|t}}#}
+{#            </p><br>#}
+
+
+        </div>
+    </div>
+
+    <div class = "thankyou-img-container">
+
+    <img class="nintendo-fritolay-img en desktop" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt="nintendo-switch">
+    <img class="nintendo-fritolay-img fr desktop" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt="nintendo-switch">
+    <a class = "btn_nintendo" href = "/en-ca/contest/fritolayquakercontest/landing">{{ 'Homepage' |t }}</a>
+
+
+
+    </div>
+  </div>
+
+{#    <img class="nintendo-fritolay-img en mobile" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-v1.png" alt="nintendo-switch">#}
+{#    <img class="nintendo-fritolay-img fr mobile" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-fr-v1.png" alt="nintendo-switch">#}
+{% if data.code != '' %}
+  <p class = "thankyou-legal">{{ "* This My Nintendo Point Code can only be redeemed for Platinum Points once and must be redeemed by 06/15/2022. A Nintendo Account is required to redeem the point code and receive points. By creating a Nintendo Account, the user is automatically enrolled in the My Nintendo rewards program. Platinum Points expire if not used within 6 months of receipt. Point Codes have no cash value.
+<br>My Nintendo Rewards Programs Terms of Services apply: <a href = 'https://accounts.nintendo.com/term_point'> https://accounts.nintendo.com/term_point </a>
+"|t }}</p>
+{% endif %}
+
+
+</section>
+
+<section class="nintendo-landing-contest-rules">
+
+  <img class = "logo-nintendo" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/rules-logo.png" alt = "logo">
+
+  <div class="container">
+    <div class="margin-bottom margin-top">
+      {{data.legal_footer|raw}}
+    </div>
+    {#		<span class="rules">#}
+    {#			<a href="{{data.rules_link}}">{{'Read our complete rules'|t}}</a>#}
+    {#		</span>#}
+    <div class="nintendo-landing-contest-rules-text-wrap">
+      <a class="btn_nintendo rules_btn" href="{{ '/en-ca/contest/fritolayquakercontest/officialrules' |t }}">{{'Official Rules'|t}}</a><br>
+      <a class="btn_nintendo" href="{{ '/en-ca/contest/fritolayquakercontest/faq' |t }}">{{'FAQ'|t }}</a>
+      <br>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+{#<section class="block__intro negative_margin menu_buffer">#}
+{#        <div class="contest_page_content_block">#}
+{#            <div class="intro_img_container">#}
+{#                <img src="/themes/tastytheme/src/images/contest/img_description_v3.png" alt="" />#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="description contest_page_content_block other animated-text-block">#}
+{#                {{ attach_library( 'quaker_contest/landing' ) }}#}
+{#                <h2>{{ "Thanks for entering!" |t }}</h2>#}
+{#                <div class="contest-description">#}
+{#                    <p>#}
+{#                        {{ "You’ve been successfully entered into the contest. #}
+{#                        <br>#}
+{#                        Winners will be drawn weekly, so make sure to keep an eye on your email (including that junk folder) so you don’t miss your chance to take home a Nintendo Switch™ bundle!#}
+{#                        <br>#}
+{#                        As a bonus for entering, here is your code for 100 My Nintendo<sup>TM</sup> Platinum Points. These points can be redeemed towards My Nintendo rewards like digital wallpapers or physical goods (while supplies last). "|t|raw }} #}
+{#                    </p>#}
+{#                    <span class="contest-code">{{data.code }}</span>#}
+{#                    <p>{{' Redeem this code on the My Nintendo website (https://my.nintendo.com/?lang=en-CA?cid=C1031-03-1) and receive Platinum Points you can redeem to get some cool rewards. Each point code will give you 100 Platinum Points! #}
+{# #}
+{#Follow these steps to redeem your point code: #}
+
+{#Log in to my.nintendo.com with your Nintendo Account (or create a new one). #}
+{#Click on Menu, then select “Redeem a point code”. #}
+{#Enter the 16-digit point code when prompted and hit submit.#}
+{#'|t}}#}
+{#                    </p>#}
+{#                </div>#}
+
+{#        </div>#}
+{#    </section>#}
+
+
+{% endif %}

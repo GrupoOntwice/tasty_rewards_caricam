@@ -1,0 +1,18 @@
+{# Recipe category template #}
+<script type="text/javascript"><!--
+	window.langcode = '{{ data.langcode }}';
+	window.langprefix = '{{ data.langprefix }}';
+	window.category_id = '{{ data.subcategory_id }}';
+	document.title = '{{data.category_title}}';
+	{# 
+	window.subcategory_id = '{{ data.subcategory_id }}';
+	#} 
+</script>
+{# {% set test_var = "MY test variable" %} #}
+{{ attach_library( 'pepsibam/pepsirecipecategories' ) }} 
+{% include '@pepsibam/includes/recipe-filters.html.twig' %}
+
+{# Add category name and description here #}
+{% include '@pepsibam/includes/recipe-container.html.twig' %}
+
+

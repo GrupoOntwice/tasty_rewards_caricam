@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+
+
+<div id="bottom-logo"></div>
+
+<div id="bottom-links">
+    {% for item in items %}
+        <a class="primary" href="{{ item.url.toString()|t }}" target="{{item.url.external?'_blank'}}"  >{{ item.title|t }}</a>
+    {% endfor %}
+    {# Languaje switcher link #}
+    {% set link_title = "Français" %}
+    {% set link_url = "/fr" %}
+
+    <a href="{{link_url|t}}" class="lang-switcher">{{link_title|t}}</a>
+</div>
+<!-- /#bottom-links -->
+
+<div id="copyrights">
+    <div>{{"All trademarks and logos are property of their registered owner."|t}}</div>
+    <div>{{"© PepsiCo Canada ULC, "|t}} {{ "now"|date("Y") }}</div>
+</div>

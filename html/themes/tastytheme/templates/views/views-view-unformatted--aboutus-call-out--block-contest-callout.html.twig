@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{% for row in rows %}
+
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_landing_image.0.entity.uri.value) %}
+    {% set description = row.content["#row"]._entity.getTranslation(language).field_contest_description.getValue().0.value  %}
+    {% set subtitle = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set contesturi = row.content["#row"]._entity.getTranslation(language).field_contest_uri.getValue().0.value %}
+    
+    {% set summary = description|render %}
+    {% set trimmed_body = summary|length > 100 ? summary|slice(0, 100) ~ '...' : summary %}
+    {% set trimmed_body = truncateText(trimmed_body)  %}
+        
+    {% set prefixlanguage = language=='en' %}
+    {% if language == 'en' %}
+        {% set prefixlanguage = 'en-ca' %}
+    {% else %}
+        {% if language == 'fr' %}
+            {% set prefixlanguage = 'fr-ca' %}
+        {% endif %}            
+    {% endif %}
+    {% set basepath = url('<front>')  %}
+    {% set pathcontest =   "/contests/" ~ contesturi ~ "/signup" %}
+    {% if prefixlanguage == 'fr-ca' %}
+        {% set pathcontest = "/concours/" ~ contesturi ~ "/inscription" %}
+    {% endif %}        
+
+{#    <img class="recipe__menu-detail-section-image" src="{{img}}">#}
+{#    <h3 class="recipe__menu-detail-wrapper-title">{{subtitle}}</h3>#}
+{#    <p>{{description}}</p>#}
+
+{#    <div class="recipe__btn-wrapper">#}
+{#        <a href="{{pathcontest}}" class="recipe__btn_red">{{'Show Contest'|t}}</a>#}
+{#    </div>#}
+
+
+
+        <div class="background-zoom__parent">
+            <a href="{{basepath}}{{pathcontest}}" class="img-recipe">
+                <img class="background-zoom__child recipe__menu-detail-section-image" src="{{img}}" alt="{{subtitle|raw}}"/>
+            </a>
+        </div>
+
+        <div class="recipe__menu-detail-sub-wrapper">
+            <div class="recipe__menu-detail-sub-wrapper-height">
+                <a href="{{basepath}}{{pathcontest}}" class="img-recipe">
+                    <h3 class="recipe__menu-detail-wrapper-title">{{subtitle|raw}}</h3>
+                </a>
+                <div class="truncate_text">
+                    {{summary|raw}}
+                </div>
+                {# <p>{{trimmed_body | raw}}</p> #}
+            </div>
+
+            <div class="recipe__btn-wrapper">
+                <a href="{{basepath}}{{pathcontest}}" class="recipe__btn_red">{{'Show Contest' | t }}</a>
+            </div>
+        </div>
+
+{% endfor %}
+

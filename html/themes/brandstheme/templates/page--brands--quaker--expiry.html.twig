@@ -1,0 +1,26 @@
+
+<div class="navbar-wrapper-tasty">
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+</div>
+
+
+<section class="quaker-confirmation">
+  <div class="quaker-banner-microsite">
+    <div class="banner_slide--text {{class_pos}} contest-banner-text">
+      <h1>{{ "Mission Accomplished!" | trans}}</h1>
+      <p>{{ "You helped us raise $68,264 in support of Food Banks Canada" | trans}}.</p>
+      <br>
+      <p>{{ "Way to go! On behalf of Quaker<sup>®</sup> and Food Banks Canada, thank you for all the outstanding support.  We’ve officially ended our Pack the Goodness program for the year — but not before you helped us raise $68,264" | trans}}.</p>
+      <br>
+      <p>{{ "Your contributions will directly help food-insecure Canadians put meals on the table. Stay tuned for more updates + opportunities to help!" | trans}}</p>
+      <br>
+      <p>{{ "You can also visit the <a target='_blank' href='https://www.foodbankscanada.ca/'>Food Banks Canada website</a> to get involved today." | trans}}</p>
+    </div>
+
+    <img class="quaker-product-image-microsite en" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner.png" alt="quaker products" />
+    <img class="quaker-product-image-microsite fr" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner-fr.png" alt="quaker products" />
+  </div>
+</section>

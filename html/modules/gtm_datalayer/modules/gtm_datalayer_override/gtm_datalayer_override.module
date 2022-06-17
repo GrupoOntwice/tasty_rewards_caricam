@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Code for the Google Tag Manager dataLayer Override module.
+ */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function gtm_datalayer_override_entity_type_alter(array &$entity_types) {
+  foreach ($entity_types as $entity_type_id => $entity_type) {
+    if (strpos($entity_type_id, 'gtm_datalayer') === FALSE && $entity_type->hasLinkTemplate('canonical') || $entity_type->hasLinkTemplate('edit-form')) {
+      $entity_type->setLinkTemplate('gtm-datalayer-override', "/admin/structure/datalayers/overrides/$entity_type_id/{{$entity_type_id}}/edit");
+    }
+  }
+}

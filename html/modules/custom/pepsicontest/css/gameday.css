@@ -1,0 +1,635 @@
+@font-face {
+  font-family: 'somerton_denseregular';
+  src: url('/themes/brandstheme/src/fonts/somerton_dense-webfont.woff2') format('woff2'),
+  url('/themes/brandstheme/src/fonts/somerton_dense-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('/themes/brandstheme/src/fonts/opensans-regular-webfont.woff2') format('woff2'),
+  url('/themes/brandstheme/src/fonts/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/themes/brandstheme/src/fonts/OpenSans-Bold.woff2') format('woff2'),
+  url('/themes/brandstheme/src/fonts/OpenSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.noMobile-sm {
+  display: block;
+}
+
+.noDesktop-sm {
+  display: none;
+}
+
+html:lang(en) .es {
+  display: none;
+}
+
+html:lang(es) .en {
+  display: none;
+}
+
+.opensans-regular {
+  font-family: 'open_sansregular';
+}
+.opensans-bold {
+  font-family: 'Open Sans';
+}
+.somerton-regular {
+  font-family: 'somerton_denseregular';
+}
+
+
+.heading-text {
+  color:#1D2331 !important;
+}
+
+.yellow {
+  color: #FFD200;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+section#contest {
+  background-image: url("/themes/brandstheme/src/images/gameday/blue-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -100px;
+}
+
+.gameday-btn {
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+.gameday-btn:hover {
+  text-decoration: none;
+}
+
+
+.gameday-btn-yellow {
+  background-color: #FFD201 !important;
+  color: #1D2331 !important;
+}
+
+.gameday-btn-black {
+  background-color: #1D2331;
+}
+
+.gameday_submit_btn{
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #FFD201;
+}
+
+section#contest .contest-detail__sign-up-select-checkbox {
+  border-bottom: none !important;
+}
+
+#gameday-contest-detail > h2 > span {
+  color: #F9C516;
+}
+
+#gameday-contest-detail > h2 {
+  letter-spacing: 2px;
+}
+
+#gameday-contest-detail > p {
+  width: 90%;
+}
+
+#contestsignup-form > div.contest-detail__sign-up-select-checkbox > div {
+  display: block;
+}
+
+#contestsignup-form > div.contest-detail__sign-up-select-checkbox > div > div {
+  display: flex;
+}
+
+
+
+/*Recipe Section*/
+
+
+section#gameday-recipes{
+  background-image: url("/themes/brandstheme/src/images/gameday/recipe-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.gameday-nocarousel-container {
+  width: 100%;
+}
+
+
+.top-left {
+  position: absolute;
+  width: 120px;
+  left: 20px;
+  top: 0;
+}
+
+.gameday-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+}
+
+.top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+}
+
+.gameday-recipe-title {
+  padding-bottom: 24px;
+  height: 145px;
+}
+
+.gameday-video-preimg {
+  margin: 10px;
+}
+
+.gameday-video-preimg img{
+  max-width: 100%;
+}
+
+.gameday-recipe-img {
+  height: 320px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.gameday-nocarousel-box {
+  padding: 0 20px;
+}
+
+
+section#gameday-videos {
+  background-image: url(/themes/brandstheme/src/images/gameday/coupon-bg.png);
+background-repeat: no-repeat;
+  background-size: cover;
+  text-align:center;
+  padding: 30px;
+}
+
+.one-video {
+  max-width: 70% !important;
+  height: auto !important;
+}
+
+.play-video-iframe {
+  width: 55% !important;
+  margin:auto;
+}
+
+html:lang(es) #gameday-videos {
+  display: none;
+}
+
+
+/*Featured Section*/
+
+.gameday-featured-recipe-img {
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: auto;
+  background-position: center;
+}
+
+.gameday-featured-recipe-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gameday-featured-recipe-side-description-col {
+  background-color: #F9C515 !important;
+  display: flex;
+  align-items: center;
+}
+
+.gameday-recipe-block-row {
+  padding: 50px !important;
+}
+
+.gameday-video-title {
+  margin-top: 10px;
+  font-size: 1.7rem;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.gameday-btn-black:hover {
+  color: #FFD200;
+}
+
+#coupons > div > div > div.coupon--text > h3 > sup {
+  top: -14px;
+}
+
+.gameday-recipe-title h3 {
+  font-size: 1.7rem;
+}
+
+.footer-rules p {
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.gameday-form-submit {
+  position: absolute;
+  width: 100%;
+  height: 380px;
+  left: 0;
+  background-image: url('/themes/brandstheme/src/images/gameday/blue-background.png');
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.gameday-form-submit-img img {
+  width: 100%;
+
+}
+.gameday-form-submit-img {
+  text-align: center;
+  margin: auto;
+}
+
+#gameday-submit {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#gameday-submit div {
+  width: 70%;
+}
+
+#gameday-submit-form {
+  display: flex;
+  justify-content: center;
+}
+
+#gameday-submit-form div {
+  width: 50%;
+}
+
+
+#gameday-submit h3 {
+  font-size: 3rem;
+}
+
+
+
+  /*Recipe page*/
+
+#gameday-recipe {
+  background-image: url("/themes/brandstheme/src/images/gameday/recipe-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.gameday-recipe-info ul, .gameday-recipe-info-instructions ol {
+  color: #fff;
+}
+
+.gameday-subtitle-container p {
+  color: #fff;
+}
+
+.gameday-rating-img {
+  width: 29%;
+}
+
+.cook-time-img {
+  width: 42%;
+}
+
+.gameday-recipe-icons {
+  margin-left: -32px;
+}
+
+
+.prep-time-img {
+  width: 40%;
+}
+
+.featured-title {
+  font-size: 40px !important;
+}
+
+.gameday-recipe-info ul li a, .gameday-recipe-info-instructions ol li a, .gameday-recipe-info-instructions ol li::marker {
+  color: #FFD200;
+}
+
+.gameday-recipe-info-instructions ol {
+  list-style: auto !important;
+}
+
+.gameday-recipe-info-instructions {
+  padding-left: 45px !important;
+}
+
+.gameday-recipe-info-instructions ol li, .gameday-recipe-info ul li {
+  margin-bottom: 5px;
+}
+.gameday-recipe-info ul, .gameday-recipe-info-instructions ol {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "open_sansregular";
+}
+
+.gameday-subtitle-container {
+  text-align: left;
+}
+
+.gameday-back-btn {
+  background-color: #FFD201;
+  color: #184896;
+  border-radius: 25px;
+  padding: 12px 25px;
+}
+
+.gameday-back-btn:hover, .gameday-back-btn:focus {
+  color: #184896;
+  text-decoration: none;
+}
+
+.gameday-recipe-back-btn {
+  position: absolute !important;
+  top: 3%;
+  left: 0;
+}
+
+.gameday-related-img{
+  height: 240px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.gameday-related-recipes {
+  padding: 0 20px !important;
+}
+
+.products-category-title {
+  height: 110px;
+}
+
+
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+
+.slick-track {
+  display: flex !important;
+}
+.slick-slide img{
+  width:100%;
+  height: 265px;
+  margin: auto;
+}
+.wrapper .slick-dots li button:before {
+  font-size:20px;
+  color:white;
+}
+
+.gameday-recipe-info-ingredients p, .gameday-recipe-info-instructions p {
+  color: #fff;
+}
+
+.gameday-recipe-info-ingredients span, .gameday-recipe-info-instructions span {
+  color: #fff;
+}
+
+.shop-now-snacks {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.shop-now-snacks p {
+  padding-right: 8px;
+}
+
+.shop-now-snacks img {
+  width: 100px;
+}
+
+
+/*gameday rules */
+
+.gameday-rules-banner {
+  position: relative;
+}
+
+.gameday-rules-banner h1 {
+  position: absolute;
+  top: 45%;
+  left: 120px;
+}
+
+.rules-back-btn a {
+  color: #000 !important;
+}
+
+.rules-back-btn {
+  padding-top: 2rem;
+  padding-left: 6rem;
+}
+
+#contentBlocks > div {
+  text-align: left !important;
+}
+
+#contentBlocks {
+  padding: 0 !important;
+}
+
+
+
+
+/*Coupon Section*/
+
+
+.gameday-coupon-btn {
+  background-color: #004179;
+  color: #fff;
+}
+
+.gameday-coupon-btn:hover {
+  color: #fff;
+}
+
+.coupon--leftcol img {
+  width: 100% !important;
+}
+
+/*video section*/
+
+.gameday-video-iframe-container, .gameday-video-iframe-container iframe {
+  width: 100%;
+  height: 275px;
+}
+
+
+  /*Recipe video*/
+
+  .gameday-recipe-video {
+  height: 250px;
+  position: relative;
+    top:32px
+  }
+
+
+  /*-----*/
+
+.contest-detail__about {
+  font-size: 44px !important;
+}
+
+/*Media Queries*/
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px) {
+  .slick-slide img {
+    height: 175px !important;
+  }
+
+  .gameday-video-iframe-container, .gameday-video-iframe-container iframe {
+    height: 185px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .noDesktop-sm {
+    display: block;
+  }
+
+  .noMobile-sm {
+    display: none;
+  }
+  .gameday-form-submit {
+    height: 450px !important;
+  }
+}
+
+
+@media only screen and (min-width: 769px) {
+    .gameday-d-md-flex {
+      display: flex;
+    }
+
+}
+
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px) {
+
+  .gameday-recipe-block-row {
+    padding:15px !important;
+  }
+
+  .gameday-featured-recipe-description {
+    padding: 45px ;
+  }
+
+  section#gameday-recipe {
+    padding: 15px;
+  }
+
+  .gameday-recipe-info-instructions {
+    padding-left: 15px !important;
+  }
+
+  .gameday-form-submit-img img {
+    width: 50%;
+  }
+
+  section#contest {
+    padding: 24px;
+  }
+
+  #gameday-submit {
+    margin-top: 0;
+
+  }
+
+  .gameday-form-submit {
+    flex-direction: column;
+  }
+
+  .one-video {
+    max-width: 100% !important;
+  }
+
+  .gameday-video-preimg {
+    margin: 0 !important;
+  }
+
+  .play-video-iframe {
+    width: 100% !important;
+}
+
+
+  }
+
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+ {
+
+  .gameday-featured-recipe-description {
+    padding: 0 ;
+  }
+
+  .gameday-form-submit-img img {
+    width: 65%;
+  }
+
+  .gameday-form-submit {
+    flex-direction: row;
+  }
+
+  #gameday-submit {
+    margin-left: 20px !important;
+
+  }
+
+  .one-video {
+    max-width: 100% !important;
+  }
+
+  }
+

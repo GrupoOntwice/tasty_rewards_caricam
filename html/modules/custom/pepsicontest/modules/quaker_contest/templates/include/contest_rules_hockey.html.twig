@@ -1,0 +1,50 @@
+
+
+<script type="text/javascript">
+window.popup_contest = 1;
+</script>
+{{ attach_library( 'quaker_contest/landing' ) }}
+{{ attach_library( 'quaker_contest/hockey' ) }}
+
+
+<div class="noDesktop-sm hockey-banner-mobile">
+  <div class="banner_slide--text {{class_pos}} contest-banner-text rules-mobile-banner-text ">
+    <h1>{{ "Contest Rules" |t }}</h1>
+
+  </div>
+</div>
+
+
+<div class="noMobile-sm quaker-hockey-banner ">
+  <div class="banner_slide--text {{class_pos}} contest-banner-text prizes-banner-text ">
+{#    <img class="hockey-hungry" src="/themes/brandstheme/src/images/quaker/hockey-contest/hockey-hungry.png" alt="hockey hungry logo tag" />#}
+    <h1>{{ "Contest Rules" |t }}</h1>
+
+  </div>
+  <img class = "hockey-rules-banner-img hockey-banner en" src="/themes/brandstheme/src/images/quaker/hockey-contest/Top-Banner-Small_ENG.png" alt="quaker products" />
+  <img class = "hockey-rules-banner-img hockey-banner fr" src="/themes/brandstheme/src/images/quaker/hockey-contest/Top-Banner-Small_FR.png" alt="quaker products" />
+</div>
+
+
+<section id="contentBlocks" class="container hockey-official-rules">
+    <div class="col-xs-12">
+      <div class = "container hockey-rules">
+        {{ data.body | raw}}
+        <br>
+      </div>
+
+    </div>
+</section>
+
+<div class="quaker-hockey-official-rules">
+  <div class="container">
+    {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+    <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+    <div class="quaker-hockey-official-rules-links">
+      <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+      <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+      <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+    </div>
+  </div>
+</div>

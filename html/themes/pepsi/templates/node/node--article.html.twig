@@ -1,0 +1,212 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{% set trackingpage = "article-content" %}
+{% set trackinglang = language %}
+{% include directory ~ '/templates/custom/doubleclick_tag.html.twig' %}
+
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+
+
+{# variables to integrate on the sections #}
+
+{%  set title =  node.label %}
+{%  set subtitle =  content.field_article_subtitle[0] %}
+{%  set description =  content.body[0] %}
+
+{%  set image =  content.field_image[0] %}
+
+{%  set img =  file_url(content.field_image.0["#item"].entity.uri.value) %}
+{%  set img_alt = content.field_image.0["#item"].value.alt %}
+
+{%  set video =  content.field_article_video[0] %}
+{%  set extra_content =  content.field_article_extra_content[0]["#text"] %}
+
+
+{%  set category =  content.field_article_category %}
+{%  set mailto = "mailto:?subject=" ~ title ~ "&body=" ~  url("<current>")["#markup"]  %}
+
+
+{#<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    <footer>
+      {{ author_picture }}
+      <div{{ author_attributes.addClass('author') }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+
+  <div{{ content_attributes.addClass('content') }}>
+    {{ content }}
+  </div>
+
+</article>#}
+
+<!-- NEED TO ADD THIS CSS :  -->
+<!-- <link rel="stylesheet" type="text/css" href="css/article.css" /> -->
+
+<!-- SHARING -->
+    <div id="sideShare" class="bg-pink hite social-share">
+        <a href="#" id="mk-article-fb" ><span class="fa fa-lg fa-facebook"></span></a>
+        <a href="#" id="mk-article-tw" ><span class="fa fa-lg fa-twitter" ></span></a>
+        <a href="#" id="mk-article-pin" ><span class="fa fa-lg fa-pinterest" ></span></a>
+        <a href="#" id="mk-article-email" ><span class="fa fa-lg fa-envelope" ></span></a>
+        <a href="#" id="mk-article-print"><span class="fa fa-lg fa-print" ></span></a>
+    </div>
+    <div id="mobileShareToggle" class="signika uppercase white bg-pink bold">{{"Share"|t}}<span class="toggleIconMobile glyphicon glyphicon-plus"></span></div>
+    <div id="mobileShare" class="bg-pink-08 social-share">
+        <a href="#" id="mk-article-fb-mobile" ><span class="fa fa-lg fa-facebook"  ></span></a>
+        <a href="#" id="mk-article-tw-mobile" ><span class="fa fa-lg fa-twitter" ></span></a>
+        <a href="#" id="mk-article-pin-mobile"><span class="fa fa-lg fa-pinterest" ></span></a>
+        <a href="#" id="mk-article-email-mobile"><span class="fa fa-lg fa-envelope" ></span></a>
+        <a href="#" id="mk-article-print-mobile"><span class="fa fa-lg fa-print" ></span></a>
+    </div>
+        <!-- TOP SECTION - left picture and right quick description  -->
+        <section id="topBlocks" class="container-fluid article">
+            <div class="row">
+                <div id="topLeft" class="col-xs-12 col-sm-6">
+                    <img src="{{img}}" class="socialpic" alt="{{img_alt}}" style="height:auto;width:100%;" />
+                </div>
+                <div id="topRight" class="col-xs-12 col-sm-6">
+                    <div class="clearfix">
+                            <input type="hidden" name='node_url' id='node_url' value="{{ url("<current>")["#markup"] }}">
+                            <input type="hidden" name='node_title' id='node_title' value="{{ title }}">
+                            <input type="hidden" name='node_image' id='node_image' value="{{ img}}">
+                            <input type="hidden" name='node_mailto' id='node_mailto' value="{{ mailto}}">
+                            <!-- recipe title -->
+                            <h1 class="pink signika">{{ title | raw }}</h1>
+                            <!-- {{ subtitle }} -->
+                            <!-- sponsor -->
+                           
+                                {{ drupal_view('related_brands', 'article_related_brands') }}   {# template: views-view-unformatted--related_brands--article_related_brands.html #}
+                            
+                           
+                            <!-- description -->
+                            <div class="description"> 
+                                {{ description }}
+                            </div>
+
+                            <div class="inline-share text-center col-xs-12 social-share" >
+                                <a href="" class="pink" id="mk-article-fb-main"><span class="fa fa-lg fa-facebook "></span><br>{{"Share"|t}}</a>
+                                <a href="#" class="pink" id="mk-article-tw-main"><span class="fa fa-lg fa-twitter"></span><br>{{"Share"|t}}</a>
+                                <a href="#" class="pink" id="mk-article-pin-main"><span class="fa fa-lg fa-pinterest"></span><br>{{"Pin it"|t}}</a>
+                            </div>
+
+
+                           {# <div class="categories">
+                                {% for item in category %}
+                                  {% if item['#title'] %}
+                                    <div class="field-item"><em class="grey">{{ item['#title']  }}</em></div>
+                                  {% endif %}
+                                {% endfor %}
+                            </div>#}
+                           
+                    </div>
+                </div>
+            </div>  
+        </section>
+        <section id="articleBlocks" class="container-fluid">
+            <div class="row">
+                <div id="" class="col-xs-12 col-sm-12">
+                    {% if video %}
+                    <div class="video size-2x1" id="mk-article-video">
+                        {{ video }}
+                    </div>
+                    {% endif %}
+                    {{extra_content|raw}}
+                    {{ drupal_view('related_top_content', 'page_1') }} {# template: views-view-unformatted--related_top_content--page-1.html.twig #}
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="extraBlocks">
+            {{ drupal_view('related_recipes', 'article_related_recipes') }}  {# template: views-view-unformatted--related_recipes--article_related_recipes.html.twig #}
+            {{ drupal_view('coupon_block', 'page_1') }} {# template: views-view-unformatted--coupon_block--page-1.html.twig #}
+            
+        </section>
+
+
+        {{ drupal_view('related_articles', 'page_1') }}  {# template: views-view-unformatted--related_articles--page-1.html #} 

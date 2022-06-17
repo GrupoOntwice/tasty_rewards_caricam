@@ -1,0 +1,5 @@
+epsilon:
+  client_id: BAM
+  client_secret: 1b4e6f7c-aac9-44fd-978b-e028481b6eae
+  endpoint_dev:  https://wsc-uat.peps.epsilon.com
+  endpoint_prod:  https://wsc.peps.epsilon.com

@@ -1,0 +1,186 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px; // also set margin on body tag, in global file
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 2;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .header__logo {
+    width: 70%;
+    position: relative;
+    top: 10px;
+
+    @media (max-width: $break-mobile) {
+      max-width: 200px;
+    }
+  }
+
+  .header__logo-container a {
+    display: block;
+  }
+
+  .header__mobile-topnav {
+    display: none;
+  }
+
+  .mobile-menu-items {
+    display: flex;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-left: 20px;
+    margin-right: 20px;
+    // width: 100%;
+    max-width: 800px;
+    align-items: center;
+
+    a {
+      text-align: center;
+      color: $grey;
+      font-weight: bold;
+      font-size: $font-size * 0.825;
+      // width: 25%;
+      padding-left: 30px;
+      padding-right: 30px;
+      transition: 0.3s all;
+
+      &:hover {
+        color: $blue;
+        transition: 0.3s all;
+      }
+    }
+  }
+
+  .menu_account {
+    font-size: $font-size * 0.825;
+
+    .sign_in {
+      color: $blue;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    .sign_up {
+      margin: 10px 10px;
+    }
+  }
+
+  @media screen and (max-width: $break-mobile) {
+    display: block;
+    padding-bottom: 0;
+    height: auto;
+
+    .mobile-menu-items {
+      margin-top: 15px;
+    }
+
+    .modal__wrapper-js {
+      display: none;
+    }
+
+    .header__logo-container {
+      max-width: 240px;
+
+      .header__logo {
+        width: 40%;
+        margin: 10px;
+        bottom: 0px;
+      }
+    }
+
+    .header__mobile-topnav {
+      display: block;
+      position: absolute;
+      color: $grey;
+      right: 80px;
+      top: 30px;
+      font-size: $font-size * 2;
+      cursor: pointer;
+
+      .header__mobile-topnav {
+        right: 170px;
+      }
+
+      .top-bar,
+      .middle-bar,
+      .bottom-bar {
+        display: block;
+        width: 28px;
+        height: 5px;
+        background-color: $blue;
+        margin-bottom: 5px;
+        transition: all 0.2s;
+      }
+
+      &.menu-open {
+        .top-bar {
+          transform: rotate(45deg);
+          margin: 0;
+          position: relative;
+          top: 9px;
+        }
+
+        .middle-bar {
+          display: none;
+        }
+
+        .bottom-bar {
+          transform: rotate(-45deg);
+          margin: 0;
+          position: relative;
+          top: 4px;
+        }
+      }
+    }
+
+    .menu {
+      display: none;
+      margin-left: 0;
+      border-bottom: none;
+      flex: 1;
+
+      a {
+        display: block;
+        border: none;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 15%;
+      }
+    }
+
+    .menu_account {
+      display: none;
+      position: relative;
+      right: 50px;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .header__mobile-topnav {
+      right: 70px;
+    }
+
+    .menu_account {
+      right: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .sign_in {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,25 @@
+{#
+
+block used on the content section size-2x1
+
+#}
+{% if type == "recipe"%}
+    {% set header_title = "Recipes"|t %}
+    {% set color_class = "blue" %}
+    {% set link = "view.recipes.page_1" %}
+{% elseif type == "article"%}
+    {% set header_title = "Articles"|t %}
+    {% set color_class = "pink" %}
+    {% set link = "view.articles.page_1" %}
+{% endif %}
+
+<div class="box size-2x1">
+    <div class="boxinside grid" id="notfound">
+        <div>
+                <h1 class="{{color_class}} signika">{{ header_title }}</h1>
+                <hr class="bg-{{color_class}}">
+                <p>{{ 'Sorry, no results were found.' | t }}</p>
+                <a class="btn btn-primary" href="{{path(link)| t}}" >{{ 'RESET' | t }}</a>
+        </div>
+    </div>
+</div>

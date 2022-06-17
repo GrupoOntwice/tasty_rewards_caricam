@@ -1,0 +1,6 @@
+name: SSO Configuration US - Pepsi - Okta
+type: module
+description: Manage all setting for US - OKTA integration
+# core: 8.x
+core_version_requirement: ^8.8 || ^9
+package: Custom

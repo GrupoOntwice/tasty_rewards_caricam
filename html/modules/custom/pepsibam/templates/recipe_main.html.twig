@@ -1,0 +1,27 @@
+{# Recipe category template #}
+<script type="text/javascript"><!--
+	window.langcode = '{{ data.langcode }}';
+	window.langprefix = '{{ data.langprefix }}';
+	window.category_id = 0;
+</script>
+{# {% set test_var = "MY test variable" %} #}
+{{ attach_library( 'pepsibam/pepsirecipecategories' ) }} 
+<div class="subcategory-filters">
+	{% for subcategory in data.categories %}
+		<div class="subcategory-item">
+			<a href="{{subcategory.link}}">
+				<img src="{{subcategory.img_url}}" alt="{{subcategory.title}}"/>
+			</a>
+			<p class="title">
+				{{subcategory.title}}
+			</p>
+		</div>
+	{% endfor %}
+</div>
+
+{% include '@pepsibam/includes/recipe-filters.html.twig' %}
+
+
+{% include '@pepsibam/includes/recipe-container.html.twig' %}
+
+

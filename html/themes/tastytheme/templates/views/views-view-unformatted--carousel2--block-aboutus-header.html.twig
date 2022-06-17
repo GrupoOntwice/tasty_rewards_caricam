@@ -1,0 +1,107 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  {# <h3>{{ title }}</h3> #}
+{% endif %}
+{% for row in rows %}
+  {% set theme = row.content["#row"]._entity.getTranslation(language).field_color_theme.getValue().0.value %}
+  {% set thememobile = row.content["#row"]._entity.getTranslation(language).field_mobile_color_theme.getValue().0.value %}   
+  {% set end_date = row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value %}
+  {% set start_date = row.content["#row"]._entity.getTranslation(language).field_activation_startdate.getValue().0.value %}
+
+  {% if (date(end_date) > date('now') and date(start_date) < date('now')) or (end_date is empty and start_date is empty ) %}
+  
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+
+      {% set link_url = row.content["#row"]._entity.getTranslation(language).field_cta_text.0.url %}
+      {% set link_title = row.content["#row"]._entity.getTranslation(language).field_cta_text.0.title %}
+
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_carousel_image.0.entity.uri.value) %}
+    {% set mobileimg = file_url(row.content["#row"]._entity.getTranslation(language).field_mobile_image.0.entity.uri.value) %}
+    {% set description = row.content["#row"]._entity.getTranslation(language).body.getValue().0.value %}
+    {% set position = row.content["#row"]._entity.getTranslation(language).field_cta_position.getValue().0.value %}
+    {% set subtitle = row.content["#row"]._entity.getTranslation(language).field_subtitle.getValue().0.value %}
+    {% if position == 'C' %}
+      {% set class_pos = 'slide-center' %}
+    {% elseif position == 'R' %}
+      {% set class_pos = 'slide-right' %}
+    {% elseif position == 'L' %}
+      {% set class_pos = 'slide-left' %}
+    {% else %}
+      {% set class_pos = 'slide-center' %}
+    {% endif %}
+    {# {{row.content}} #}
+    <div class="banner_slide">
+      <div class="banner-desktop {{theme}}"  style="background-image: url('{{img}}');">
+        <div class="banner_slide--text {{class_pos}}">
+      {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+          {% if subtitle %}
+            <h1> {{ subtitle | raw }}</h1>
+          {% endif %}
+
+          {% if description %}
+              <p>
+                {{description|raw}}
+              </p>
+           {% endif %}
+
+           {% if link_url %}
+            <a class="btn_red" href="{{link_url}}">
+              {{ link_title }}
+            </a>
+
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="banner-mobile {{thememobile}}"  style="background-image: url('{{mobileimg}}');">
+        <div class="banner_slide--text {{class_pos}}">
+          {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+          {% if subtitle %}
+            <h1> {{ subtitle | raw }}</h1>
+          {% endif %}
+
+          {% if description %}
+            <p>
+              {{description|raw}}
+            </p>
+          {% endif %}
+
+          {% if link_url %}
+            <a class="btn_red" href="{{link_url}}">
+              {{ link_title }}
+            </a>
+
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="arrow-section-general"></div>
+    </div>
+
+        
+  {% endif %}
+
+{% endfor %}

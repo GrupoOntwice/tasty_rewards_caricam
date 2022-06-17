@@ -1,0 +1,175 @@
+<div class="navbar-wrapper-tasty">
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/socialfeed') }}
+  {{ attach_library('brandstheme/slickLibrary') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+</div>
+
+<section class="quaker-power-oats">
+  <h1>{{ 'The Power of Oats'|t|raw }}</h1>
+</section>
+<section class="quaker-power-oats-banana" style="background-image: url('/themes/brandstheme/src/images/quaker/power-of-oats-bananas-bg.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-4 quaker-power-oats-banana-copy">
+        <h2>{{ 'Oats seem pretty simple, right? They’re actually kind of extraordinary.'|raw|t }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quaker-power-box-wrapper">
+  <div class="container">
+    {% for content in custom_content %}
+      <div class="quaker-box">
+        <div class="img">
+          <img src="{{ content.image_url }}" alt="{{ content.title|raw }}"/>
+        </div>
+        <div class="quaker-box-content">
+          <div class="quaker-box-content-wrap">
+            <div class="quaker-box-content-title">
+              <img src="{{ content.extra_image2_url }}" alt="{{ content.title|raw }}">
+              <h3>
+                {{ content.title|raw }}
+              </h3>
+            </div>
+            <div class="quaker-body">
+              {{ content.body|raw }}
+            </div>
+          </div>
+          <div class="quaker-portion">
+            {{ content.portion|raw }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+<section class="quaker-power-oats-caorusel-section">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 quaker-power-oats-heading text-center">
+        <h1> {{ 'Differences between&nbsp;our&nbsp;Oats'|t }} </h1>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div id="quaker-power-of-oats-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators quaker-carousel-indicators">
+      {% for idx, product in oats_products %}
+        <li data-target="#quaker-power-of-oats-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+      {% endfor %}
+    </ol>
+
+    <div class="carousel-inner container">
+      {% for idx, product in oats_products %}
+        <div class="row carousel-item {{ idx==0 ? 'active' :'' }}">
+          <div class="col-md-4 quaker-featured-prod-img-col quaker-featured-prod-img-col-{{ idx }}">
+            <a  href="{{ product.link }}">
+              <img class="w-power-oats" src="{{ product.image_url }}" alt="Quaker Power of Oats">
+            </a>
+
+            <div class="quakers-featured-product-description">
+
+              <h4>
+                {{ product.title|raw }}
+              </h4>
+
+{#              {% set trimmed_body = truncateText(product.extra_description|raw, 70) %}#}
+
+                <div class="product-description">
+                  {{product.extra_description|raw}}
+                </div>
+
+            </div>
+
+            <div class="quaker-view-featured-products">
+
+              <a class="btn_quaker" href="{{ product.link }}" title="{{ product.title | raw }}">
+                {% if product.type == 'product' %}
+                  {{ 'View Product'|t }}
+                {% elseif product.type == 'product_categories' %}
+                  {{ 'View Products'|t }}
+                {% endif %}
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+
+    <a class="carousel-control-prev" href="#quaker-power-of-oats-carousel" role="button" data-slide="prev" aria-label="toggle arrow">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#quaker-power-of-oats-carousel" role="button" data-slide="next" aria-label="toggle arrow">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div>
+
+
+</section>
+
+
+{# <section id="products" > #}
+  {# <h3> {{'The differences between our oats'|t}} </h3> #}
+  {# #}{# {% include '@brandstheme/includes/featured/featured-products-quaker.html.twig' %} #}
+  {# <div class="carousel_fullwidth carousel_desktop js-main-carousel-quaker"> #}
+  {# {% for product in oats_products %} #}
+  {# <div class="banner_slide home_slide" data-entityID="{{product.entity_id}}"> #}
+  {# <div class="banner-desktop"> #}
+  {# <div class="quaker-featured--container"> #}
+  {# <div class="quaker-feature--display"> #}
+  {# <div class="quaker-feature--leftcol"> #}
+  {# <img class="product-image" src="{{product.image_url}}"> #}
+  {# </div> #}
+  {# </div> #}
+  {# <div class="quaker-coupon--text"> #}
+  {# <div class="quaker-banner_slide--text"> #}
+  {# <span class="product-title"> {{product.title|raw}}</span> #}
+  {# {% set trimmed_body = truncateText(product.extra_description|raw, 20) %} #}
+  {# #}{# <span class="quaker-product-description"> {{product.body|raw}}</span> #}
+  {# <br> #}
+  {# <div class="quaker-btn"> #}
+  {# <a href="{{product.link}}" title ="{{ product.title | raw}}"> #}
+  {# {% if product.type == 'product' %} #}
+  {# {{'View Product'|t}} #}
+  {# {% elseif product.type == 'product_categories' %} #}
+  {# {{'View Products'|t}} #}
+  {# {% endif %} #}
+
+  {# </a> #}
+  {# </div> #}
+  {# </div> #}
+  {# </div> #}
+  {# </div> #}
+  {# </div> #}
+
+  {# </div> #}
+  {# {% endfor %} #}
+  {# </div> #}
+  {# </section> #}
+
+
+<section id="coupon" class="quaker-coupon-block">
+  <div class="quaker-coupon--container-bg-desktop">
+    {{ coupon_block|t|raw }}
+  </div>
+</section>
+
+
+
+
+

@@ -1,0 +1,160 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/capncrunch') }}
+{{ attach_library('brandstheme/recipe_script') }}
+
+{# @TODO get the madewith image from the brandstheme.theme file  #}
+{% set img_madewith = file_url(content.field_extra_image1['#items'].entity.uri.value)  ?: '' %}
+{# {% set img_madewith2 = file_url(content.field_extra_image2['#items'].entity.uri.value)  ?: '' %} #}
+
+<script type="text/javascript">
+    window.is_recipe_page = 1;
+</script>
+
+{% set home_url = '/en-ca/brands/capncrunch#products' %}
+
+{% if language == 'fr' %}
+    {% set home_url = '/fr-ca/brands/capncrunch#products' %}
+{% endif %}
+
+<div class="capncrunch-background-container-recipesdetails " >
+    <div class="container">
+        <div class="row">
+            <div class="capncrunch-recipe-wrapper-container" >
+                <div class="capncrunch-recipe-image-container" style="background-color:{{background_color}}">
+                    <img src="{{nodeimgurl}}" alt="{{subtitle|raw}}">
+                    <div class="capncrunch-recipe-view-product">
+                        <img src="{{img_madewith}}" alt="{{subtitle|raw}}">
+
+                        <div class="capncrunch-recipe-text-container">
+                            {% if 'mason' in subtitle|lower %}
+                                <p>{{"Made With Cap’n Crunch<sup>®</sup> Original cereal"|t}}</p>
+                            {% else %}
+                                <p>{{"Made With Cap'n Crunch's Crunch Berries<sup>TM</sup>"|t}}</p>
+                            {% endif %}
+                            <a class="btn_capncrunch" href="{{home_url}}">{{"View Product"|t}}</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="capncrunch-section-recipe-container">
+                    <h2>{{subtitle|raw}}</h2>
+                    <hr class="capncrunch-hr">
+
+                    <div class="capncrunch-recipe-info">
+                      <div class="capncrunch-recipe-info-ingredients">
+
+                        <h3>{{'Ingredients'|t}} </h3>
+                          {{ingredients|raw}}
+                      </div>
+
+                      <div class="capncrunch-recipe-info-instructions">
+
+                        <h3>{{'Directions'|t}}</h3>
+                        {{how_to_make|raw}}
+                      </div>
+                    </div>
+
+                    <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+                    <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+                    <input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+                    <div class="capncrunch-socials capncrunch-socials-recipes">
+                        <p>
+                        {{ 'Share this recipe'|t }}
+                        </p>
+
+                        <a class="capncrunch-social-link social-share-trigger" data-platform="twitter">
+                            <img src="/themes/brandstheme/src/images/capncrunch/twitter.png" alt="twitter">
+                        </a>
+
+                        <a class="capncrunch-social-link social-share-trigger" data-platform="pinterest">
+                            <img src="/themes/brandstheme/src/images/capncrunch/pinterest.png" alt="pinterest">
+                        </a>
+
+                        <a class="capncrunch-social-link social-share-trigger" data-platform="facebook">
+                            <img src="/themes/brandstheme/src/images/capncrunch/facebook.png" alt="facebook">
+                        </a>
+
+                        <a class="capncrunch-social-link" href="mailto:?subject={{subtitle|raw}}&body={{ current_uri }}">
+                            <img src="/themes/brandstheme/src/images/capncrunch/email.png" alt="mail">
+                        </a>
+
+                        <a class="capncrunch-social-link" href="javascript:window.print()">
+                            <img src="/themes/brandstheme/src/images/capncrunch/print.png" alt="print">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="coupon-block" class="coupon capncrunch-coupon--container-background">
+        {{ coupon_block|t|raw }}
+</section>

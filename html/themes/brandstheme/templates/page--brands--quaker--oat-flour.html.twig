@@ -1,0 +1,155 @@
+
+<div class="navbar-wrapper-tasty">
+	{{ attach_library('brandstheme/quaker') }}
+    {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+
+    <section class="quaker-oat-flour-banner">
+            <img class="quaker-oat-flour-en" src="/themes/brandstheme/src/images/quaker/banner-quaker-oat-flour.jpg" alt="banner quaker oat flour"/>
+            <img class="quaker-oat-flour-fr" src="/themes/brandstheme/src/images/quaker/banner-quaker-oat-flour-fr.jpg" alt="bannière quaker farine d'avoine"/>
+            <div class="quaker-oat-flour-banner-pattern">
+                <div class="container">
+                    {% if language == 'en' %}
+                        <p>Introducing Quaker<sup>®</sup> Oat Flour, a new whole grain flour made with 100% Canadian Oats. Use Quaker<sup>®</sup> Oat Flour to add the wholesome goodness of whole grain oats to your day.</p>
+                    {% else %}
+                        <p>Voici la farine d’avoine Quaker<sup>®</sup>, une nouvelle farine à grains entiers faite avec de l’avoine 100 % canadienne. Utilisez la farine d’avoine Quaker<sup>®</sup>  dans vos recettes pour intégrer le bon goût de l’avoine à grains entiers nourrissante à votre journée. </p>
+                    {% endif %}
+                </div>
+            </div>
+    </section>
+
+    <section id="recipes" class="quaker-oat-flour-recipe">
+        <div class="container">
+
+            {% if language == 'en' %}
+                <h2>Discover Recipes With Quaker<sup>®</sup> Oat Flour</h2>
+                <p class="padding-bottom">Great for baking, batters, and much more!</p>
+            {% else %}
+                <h2>Découvrez des recettes préparées avec de la farine d’avoine Quaker<sup>®</sup></h2>
+                <p class="padding-bottom">Parfaite pour préparer des desserts, de la pâte et plus encore!</p>
+            {% endif %}
+
+            <div class="quaker-nocarousel-container">
+                {% if flour_recipes %}
+                    {% for recipe in flour_recipes %}
+                        <div class="quaker-nocarousel-box" data-nid="{{recipe.nid}}">
+                            <div class="img">
+                                <a href="{{recipe.link}}"><img src="{{recipe.image_url}}" alt="{{recipe.title|raw}}"/></a>
+                            </div>
+
+                            <h3>
+                                <a href="{{recipe.link}}">{{recipe.title|raw}}</a>
+                            </h3>
+
+                            {{recipe.description}}
+
+                            <a class="btn_quaker" href="{{recipe.link}}" class="quaker-btn quaker-btn-yellow">
+                                {{'View Recipe'|t}}
+                            </a>
+                        </div>
+                    {% endfor %}
+                    <a class="quaker-oat-flour-view-more" href="/{{lang_prefix}}/brands/quaker/recipes" class="viewmorelink">
+                        {{'View More Recipes'|t}}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="quaker-oat-flour-brand-main-wrapper">
+        <div class="container quaker-oat-flour-brand-flex">
+            <img class="quaker-oat-flour-en" src="/themes/brandstheme/src/images/quaker/quaker-oat-flour.png" alt="quaker oat flour"/>
+            <img class="quaker-oat-flour-fr" src="/themes/brandstheme/src/images/quaker/quaker-oat-flour-fr.png" alt="quaker farine d'avoine"/>
+
+            <div class="quaker-oat-flour-brand-wrap">
+                {% if language == 'en' %}
+                    <h3>Why Use Quaker<sup>®</sup> Oat Flour?</h3>
+                {% else %}
+                    <h3>Pourquoi utiliser la farine d’avoine Quaker<sup>®</sup>?</h3>
+                {% endif %}
+
+                <div class="quaker-oat-flour-brand-block-wrapper">
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-maple.png" alt="brand maple">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>Made in Canada</h4>
+                                <p>Made in Canada from domestic and imported ingredients.</p>
+                            {% else %}
+                                <h4>Fabriqué au Canada</h4>
+                                <p>Fabriqué au Canada à partir d’ingrédients canadiens et importés.</p>
+                            {% endif %}
+                        </div>
+                    </span>
+
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-grain.png" alt="brand grain">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>Made with Only 1 Ingredient: 100% Whole Grain Canadian Oats</h4>
+                            {% else %}
+                                <h4>Faite avec un seul ingrédient : de l’avoine à grains entiers 100 % canadienne</h4>
+                            {% endif %}
+                        </div>
+                    </span>
+
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-fibre.png" alt="brand fibre">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>Source of Fibre</h4>
+                            {% else %}
+                                <h4>Source de fibres</h4>
+                            {% endif %}
+                        </div>
+                    </span>
+
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-checkmark.png" alt="brand checkmark">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>Non-GMO Project Verified</h4>
+                            {% else %}
+                                <h4>Projet sans OGM vérifié</h4>
+                            {% endif %}
+                        </div>
+                    </span>
+
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-no-artificial.png" alt="brand artificial">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>No Artificial Flavours or Colours</h4>
+                            {% else %}
+                                <h4>Sans arômes ni colorants artificiels</h4>
+                            {% endif %}
+                        </div>
+                    </span>
+
+                    <span class="quaker-oat-flour-brand-row">
+                        <img src="/themes/brandstheme/src/images/quaker/brand-heart.png" alt="brand heart">
+                        <div class="quaker-oat-flour-brand-content">
+                            {% if language == 'en' %}
+                                <h4>Part of Heart-Healthy Diet</h4>
+                                <p>A healthy diet low in saturated and trans fats may reduce the risk of heart disease. Quaker<sup>®</sup> Oat Flour is low in saturated and trans fats.</p>
+                            {% else %}
+                                <h4>Fait partie intégrante d’un régime alimentaire sain pour le cœur</h4>
+                                <p>Une alimentation saine pauvre en graisses saturées et en graisses trans peut réduire le risque de maladie du cœur. La farine d’avoine Quaker<sup>®</sup> est pauvre en graisses saturées et en graisses trans.</p>
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+
+                <p class="quaker-oat-flour-brand-italic">
+                    {% if language == 'en' %}
+                        Safe Handling Instructions: Raw oat flour must be baked or cooked before eating to prevent illness. Do not eat or play with raw flour; wash hands, utensils, and surfaces after handling.
+                    {% else %}
+                        Consignes de manipulation sécuritaire : Il faut faire cuire la farine d’avoine crue avant de la consommer pour éviter d’être malade. Ne jouez pas avec la farine crue ou ne la mangez pas. Lavez les ustensiles, les surfaces et vos mains après l’avoir manipulée.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>

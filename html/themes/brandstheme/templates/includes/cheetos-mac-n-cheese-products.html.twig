@@ -1,0 +1,47 @@
+{#<section id="banner" class="cheetos-product-macncheese-banner-block en"></section>#}
+
+{#<section id="banner" class="cheetos-product-macncheese-banner-block fr"></section>#}
+
+    <section id="banner">
+        <img class="cheetos-product-macncheese-banner-block en" src="/themes/brandstheme/src/images/cheetos/cheetos-macncheese-desktop-banner.webp"  alt="cheetos banner mac and cheese">
+        <img class="cheetos-product-macncheese-banner-block-mobile en" src="/themes/brandstheme/src/images/cheetos/cheetos-macncheese-mobile-banner.png"  alt="cheetos banner mac and cheese">
+
+        <img class="cheetos-product-macncheese-banner-block fr" src="/themes/brandstheme/src/images/cheetos/cheetos-macncheese-desktop-banner-fr.webp"  alt="cheetos banner mac and cheese">
+        <img class="cheetos-product-macncheese-banner-block-mobile fr" src="/themes/brandstheme/src/images/cheetos/cheetos-macncheese-mobile-banner-fr.png"  alt="cheetos banner mac and cheese">
+    </section>
+
+  <section id="product-categories" class="cheetos-products-macncheese {{product_category_title}}">
+    {# <div class="js-product-carousel"> #}
+        {# {{ drupal_view('product_categories', 'block_cheetos_product_categories') }} #}
+
+
+      <div class="container">
+          <div class="cheetos-product-macncheese-page">
+            {% for category in products %}
+              <div class="cheetos-product-macncheese-box">
+                    <div class="cheetos-product-macncheese-img">
+                          <a href="{{category.link}}" hreflang="en">
+                            <img src="{{category.image_url}}" alt="cheetos Chips">
+                          </a>
+                    </div>
+                    <div class="cheetos-product-macncheese-box-text">
+                          <h4>
+                            {# <a href="/en-ca/taxonomy/term/81" hreflang="en">cheetos - cheetos® Chips</a> #}
+                            <a href="{{category.link}}" hreflang="en">{{category.title|raw}}</a>
+                          </h4>
+                          <p>{{category.body|raw}}</p>
+
+                          <a class="cheetos-btn-yellow" href="{{category.link}}">{{'View Product'|t}}</a>
+                    </div>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+    {# </div> #}
+  </section>
+
+    <section id="coupon" class="cheetos-coupon-block">
+        <div class="cheetos-coupon--container-bg-desktop">
+            {{ coupon_block|t|raw }}
+        </div>
+    </section>

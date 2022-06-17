@@ -1,0 +1,743 @@
+/*img {*/
+/*  width: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+
+@font-face {
+  font-family: 'Open Sans-regular';
+  src: url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Regular.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-bold';
+  src: url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Bold.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Taurunum SC';
+  src: url('/themes/tastytheme/src/fonts/TaurunumSC-Regular.woff2') format('woff2'),
+  url('/themes/tastytheme/src/fonts/TaurunumSC-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Transat Standard';
+  src: url('/themes/tastytheme/src/fonts/TransatBold.woff2') format('woff2'),
+  url('/themes/tastytheme/src/fonts/TransatBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.noMobile-sm {
+  display: block;
+}
+
+.noDesktop-sm {
+  display: none;
+}
+
+.font-25 {
+  font-size: 25px
+}
+
+.opensans-regular {
+  font-family: 'Open Sans-regular';
+}
+
+.opensans-bold {
+  font-family: 'Open Sans-bold';
+}
+
+.taurunum-font {
+  font-family: 'Taurunum SC';
+}
+
+.transat-font {
+  font-family: 'Transat Standard';
+}
+
+.yellow {
+  color: #F9C515
+}
+
+
+.text-purple {
+  color: #471B42 !important;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.spooky-orange-btn {
+  background-color: #E95813 !important;
+}
+
+.spooky-orange-btn:active {
+  background-color: #E95813 !important;
+  color: #fff;
+}
+
+.btn-textsize {
+  font-size: 0.8rem;
+}
+
+
+.spooky-yellow-btn {
+  background-color: #F9C515 !important;
+
+}
+
+.spooky-orange-btn:hover, .spooky-yellow-btn:hover {
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
+
+.spooky-orange-btn:active, .spooky-yellow-btn:active {
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
+
+.cook-time-img {
+  width: 52%;
+  height: auto;
+}
+
+.spookysnacklab-btn, .spookysnacklab-back-btn {
+  padding: 12px 30px;
+  border-radius: 25px;
+  color: #ffffff;
+  width: auto;
+}
+
+.spookysnacklab-back-btn {
+  width: 110px;
+  min-width: 100px;
+}
+
+.spookysnacklab-recipe-header {
+  z-index: -1;
+}
+
+.spooky-snack-lab-btn:hover, .spookysnacklab-back-btn:hover {
+  background-color: #b81321;
+  transition: all 0.2s;
+  color: white;
+  text-decoration: none;
+}
+
+.spookysnacklab-related-recipes {
+  padding-top: 32px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.spookysnacklab-recipes, .spookysnacklab-recipe-info, .spookysnacklab-coupon-padding, .spookysnacklab-recipe-header {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.spookysnacklab-snacks {
+  background-image: url("/themes/tastytheme/src/images/spooky-snack-lab/fav-snack-bg.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: -100px;
+
+}
+
+.h3-fav-snack {
+  font-size: 25px;
+  color: white;
+  line-height: 1;
+}
+
+.spring-recipes {
+  position: relative;
+  display: flex;
+}
+
+.spookysnacklab-nocarousel-container, #coupons {
+  z-index: 99;
+}
+
+.spooky-snack-lab-heading-div {
+  height: 75px;
+}
+
+.chips-top-left {
+  position: absolute;
+  left: 0;
+  text-align: left;
+  top: 50%;
+
+}
+
+.chips-top-left img {
+  width: 75px;
+}
+
+.chips-top-left img:nth-child(2) {
+  position: relative;
+  top: 70px;
+  right: 30px;
+
+}
+
+.chips-top-right {
+  position: relative;
+  right: 0;
+  top: 30px;
+  text-align: right;
+  padding-top: 30px;
+
+}
+
+.chips-top-right img {
+  width: 45px;
+}
+
+.chips-top-right img:nth-child(1) {
+  position: absolute;
+  top: 210px;
+  right: 0;
+}
+
+.chips-top-right img:nth-child(2) {
+  position: absolute;
+  top: 95px;
+  right: 68px;
+}
+
+.chips-top-right img:nth-child(3) {
+  position: absolute;
+  top: 125px;
+  width: 65px;
+}
+
+.chips-top-right img:nth-child(4) {
+  position: relative;
+  right: 20px;
+  width: 65px;
+}
+
+.chips-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 50%;
+  text-align: right;
+}
+
+.chips-bottom-right img {
+  width: 75px;
+}
+
+.chips-bottom-right img:nth-child(1) {
+  position: relative;
+  top: 70px;
+  left: 30px;
+}
+
+.chips-bottom-left {
+  position: relative;
+  left: 0;
+  bottom: 1%;
+  text-align: left;
+}
+
+.chips-bottom-left img {
+  width: 50px;
+}
+
+.chips-bottom-left img:nth-child(1) {
+  position: absolute;
+  bottom: 190px;
+  width: 72px;
+}
+
+.chips-bottom-left img:nth-child(2) {
+  position: absolute;
+  bottom: 123px;
+  left: 60px;
+}
+
+.chips-bottom-left img:nth-child(3) {
+  position: relative;
+  left: 30px;
+}
+
+.chips-bottom-left img:nth-child(4) {
+  position: absolute;
+  bottom: 50px;
+  left: 114px;
+  width: 78px;
+}
+
+
+.bg-chips-img {
+  width: 75%;
+  height: auto;
+}
+
+.coupon--text {
+  background-image: url("/themes/tastytheme/src/images/spooky-snack-lab/coupon-text-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px !important;
+
+}
+
+.coupon--display {
+  background-image: url("/themes/tastytheme/src/images/spooky-snack-lab/coupon-display-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+section#coupons .coupon--display {
+  flex: 1 !important;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+section#coupons .coupon--text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: white;
+  position: relative;
+}
+
+section#coupons .coupon--leftcol #spooky-coupons {
+  max-width: 75%;
+  transform: scale(1.2);
+}
+
+section#coupons .coupon--leftcol {
+  padding: 20px 0;
+}
+
+.spookysnackrecipe-rating {
+  width: 30%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+}
+
+.spookysnacklab-container p {
+  padding-bottom: 25px;
+}
+
+#coupons {
+  background-image: url("/themes/tastytheme/src/images/spooky-snack-lab/Coupon.png");
+
+}
+
+section#banner {
+  position: relative;
+  z-index: 999;
+}
+
+
+.spookysnacklab-recipe-title h3 {
+  height: 92px;
+  font-size: 28px;
+}
+
+.spooky-snack-lab-recipe-btn a:focus {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/*Featured Recipe Section*/
+
+.spookysnacklab-featured-recipe-img {
+  height: 420px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.spookysnacklab-recipe-block-row {
+  margin: 60px 0;
+}
+
+.spookysnacklab-featured-recipe-side-description-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/themes/tastytheme/src/images/spooky-snack-lab/coupon-text-bg.png");
+}
+
+.spookysnacklab-featured-recipe-description a:hover {
+  text-decoration: none;
+}
+
+
+/*Recipe Page*/
+
+.spookysnacklab-recipe-back-btn {
+  position: absolute !important;
+  left: 0;
+  text-align: left;
+  margin-top: 35px !important;
+}
+
+.spookysnacklab-recipe-info-instructions ol, .spookysnacklab-recipe-info-instructions ul {
+  list-style: decimal !important;
+  padding-left: 16px;
+}
+
+.spookysnacklab-subtitle-container {
+  padding-right: 30px;
+}
+
+.spookysnacklab-subtitle-container p {
+  color: #ffffff;
+}
+
+.spookysnacklab-recipe-info-ingredients li, .spookysnacklab-recipe-info-instructions li {
+  padding-bottom: 8px;
+}
+
+.spookysnacklab-recipe-info-ingredients li:last-of-type, .spookysnacklab-recipe-info-instructions li:last-of-type {
+  padding-bottom: 0;
+}
+
+.spookysnacklab-recipe-block {
+  background-image: url(/themes/tastytheme/src/images/spooky-snack-lab/BG-Recipe.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.spookysnacklab-recipe-header {
+  margin-top: 40px;
+  z-index: 9;
+}
+
+.spookysnacklab-icons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.spookysnacklab-recipe-info-ingredients, .spookysnacklab-recipe-info-instructions {
+  color: #fff;
+}
+
+.spookysnacklab-recipe-info-instructions ol li, .spookysnacklab-recipe-info-ingredients ul li {
+  line-height: 1.3;
+}
+
+.spookysnacklab-recipe-info-instructions ol li a, .spookysnacklab-recipe-info-ingredients ul li a {
+  color: #F9C515 !important;
+}
+
+.spookysnacklab-recipe-info-instructions ol li::marker {
+  color: #F9C515;
+  font-weight: bold;
+}
+
+
+.spookysnacklab_recipetitle {
+  font-size: 24px !important;
+}
+
+.spookysnacklab_recipetitle:hover {
+  text-decoration: none;
+}
+
+.icon-cooktime img {
+  width: 70px;
+}
+
+.spookysnacklab-prep-recipe {
+  width: 58%;
+}
+
+.spookysnacklab-recipe-info-instructions {
+  padding-left: 50px !important;
+}
+
+.spookysnacklab-recipe-info-instructions ol, .spookysnacklab-recipe-info-ingredients ul {
+  font-family: 'Open Sans-regular' !important;
+}
+
+
+.spookysnacklab-recipe-img {
+  overflow: hidden;
+  height: 330px;
+  background-size: 100% 100% !important;
+}
+
+
+.spookysnacklab-recipe-icons-box-img {
+  overflow: hidden;
+  height: 80px;
+}
+
+.spookysnacklab-recipe-icons-box-img img, .spookysnacklab-recipe-icons-box-img img, .spookysnacklab-rating-img {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-origin: border-box;
+}
+
+.icon-cooktime img {
+  width: 70% !important;
+}
+
+.sprookysnacklab-recipe-icons-box-img {
+  overflow: hidden;
+  height: 80px;
+}
+
+.spookysnacklab-recipe-icons {
+  width: 80%;
+  margin-left: 30px;
+}
+
+.spookysnacklab-recipe-info-instructions p {
+  color: #fff !important;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.row {
+  width: 100%;
+}
+
+.spookysnacklab-recipe-container {
+  padding-top: 52px;
+}
+
+.spookysnacklab-subtitle-container a {
+  color: #F9C515;
+}
+
+.spookysnacklab-view-content {
+  display: flex;
+  align-items: center;
+}
+
+.banner_slide--spookysnacklab {
+  width: 40%;
+  margin-left: 10px;
+}
+
+.products-category-title {
+  height: 115px;
+}
+
+.spookysnacklab-view-content .separator {
+  margin-left: -55px;
+  margin-right: 15px;
+}
+
+.related-recipe-img {
+  height: 320px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.spooky-related-recipe a:hover {
+  color: #F9C515 !important;
+  text-decoration: none !important;
+}
+
+.spookysnacklab-recipe-back-btn a:focus {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+#spookysnacklab-recipe-video {
+  height: 250px;
+  position: relative;
+  top: 25px;
+}
+
+a:focus {
+  outline: 0 !important;
+  border: none !important;
+  -moz-outline-style: none !important;
+  text-decoration: none;
+}
+
+/*Sweepstakes Banner*/
+
+.sweepstakes-banner img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sweepstakes-banner {
+  display: none;
+}
+
+/*
+  Media Queries
+*/
+
+@media only screen and (max-width: 767px) {
+
+  .noMobile-sm {
+    display: none;
+  }
+
+  .noDesktop-sm {
+    display: block;
+  }
+
+  .spookysnacklab-recipe-back-btn {
+    margin-top: 8px;
+  }
+
+
+  .bg-chips-img {
+    width: 50%;
+  }
+
+  .chips-bottom-right, .chips-bottom-left {
+    display: none;
+  }
+
+  .spookysnacklab-recipe-info-instructions {
+    padding-top: 16px;
+  }
+
+  .spookysnacklab-video {
+    padding-left: 15px;
+    padding-right: 5px;
+  }
+
+  .recipe-heading {
+    padding: 0 10px !important;
+  }
+
+  .favsnack-container {
+    padding: 0 20px !important;
+  }
+
+  .fav-snack-copy {
+    padding: 20px 0 !important;
+  }
+
+  #coupons {
+    padding: 20px;
+  }
+
+  .coupon--text {
+    padding: 20px !important;
+  }
+
+  .spookysnacklab-recipe-info-instructions {
+    padding-left: 0 !important;
+  }
+
+  .snacklab-share {
+    margin-bottom: 10px;
+  }
+
+
+  .spookysnacklab-featured-recipe-description {
+    padding: 30px;
+  }
+
+  #spookysnacklab-recipe-video {
+    height: 400px;
+    position: relative;
+    top: 0 !important;
+  }
+
+  .spookysnacklab-icons {
+    justify-content: center;
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+  .chips-bottom-right, .chips-bottom-left {
+    bottom: -5px !important;
+  }
+
+  .spookysnacklab-coupon-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .chips-top-right, .chips-top-left, .chips-bottom-left, .chips-bottom-right {
+    display: none;
+  }
+
+  .spookysnacklab-recipe-icons {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .spookysnacklab-recipe-container {
+    padding-top: 110px !important;
+  }
+
+  .spookysnacklab-featured-recipe-img {
+    height: 250px !important;
+  }
+
+  .related-recipe-img {
+    height: 275px;
+  }
+
+
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 991px) {
+  #spookysnacklab-recipe-video {
+    height: 375px;
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+
+
+  .spookysnacklab-recipe-info-ingredients {
+    padding-right: 8px;
+  }
+
+  .spookysnacklab-recipe-info-instructions {
+    padding-left: 8px;
+  }
+
+
+}
+
+
+@media only screen and (min-width: 769px) {
+
+  .spookysnacklab-d-md-flex {
+    display: flex;
+  }
+
+}

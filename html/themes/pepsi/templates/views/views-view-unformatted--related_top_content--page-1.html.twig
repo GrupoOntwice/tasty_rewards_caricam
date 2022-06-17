@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).title.getValue().0.value %}
+    {% set descrip = row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).body.getValue().0.value %}
+
+    {% set img = file_url(row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).field_atc_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).field_atc_image.getValue().0.alt %} 
+    
+    {% set link_text = row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).field_atc_link.getValue().0.title %}
+    {% set link_url = row.content["#row"]._relationship_entities.field_article_top_content.getTranslation(language).field_atc_link.getValue().0.uri |replace({'internal:': ''})%}
+    {% set target = "_blank" %}
+    {% if ("tastyrewards.ca" in link_url) %}
+        {% set target = "" %}
+    {% endif %}
+    
+    <div class="top10-item row">
+        <div class="col-xs-6 top10-photo" style="background-image:url('{{img}}')"></div>
+        <div class="col-xs-6 top10-content-wrapper">
+            <div class="top10-content">
+                {% if link_url is not empty %}
+                    <a href="{{link_url}}" target="{{target}}"><h1 class="pink signika">{{title | raw}}</h1></a>
+                {% else %}
+                <h1 class="pink signika">{{title|raw}}</h1>
+                {% endif %}
+                <p>{{descrip|raw}}</p>
+            </div>
+        </div>
+        <div class="top10-number"><h1 class="uber-huge pink signika">{{loop.index}}</h1></div>
+    </div>
+{% endfor %}

@@ -1,0 +1,130 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}';
+//-->
+</script>
+{{ attach_library( 'pepsibam/pepsiupdprofilelibrary' ) }}
+<section id="contentBlocks" class="container-fluid">
+    <div class="row">
+        <div id="" class="container">
+            <form data-toggle="validator" role="form" id='delete-form'>
+
+                <div class="col-sm-12 pink">
+
+                    <h2 class="pink signika">{{ 'We’re sad to see you go. Please confirm that you wish to delete your account. You will also be unsubscribed from our email list.'|t }}</h2>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label><input type = "checkbox" name='optin' id ='optin' value="1" >
+                                <span class="casl">
+                                    {{ 'Yes, I would like to delete my account.'|t }}
+                                </span>
+                            </label>
+                            <span class="help-block err_optin"></span>
+                        </div>	
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <div id='form'>
+                            <span class="help-block err_form"></span>
+                            </div>
+                        </div>	
+                    </div> 
+                    <input type="hidden" name='casl' id='casl'>
+                    <input type="hidden" name='user_id' id='user_id' value="{{data.uid}}">
+                    <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+                    <div class="row">
+                        <div class="col-sm-12 text-center form-group">
+                             <hr class="bg-grey" />
+                            <button type="button" class="btn btn-primary text-center btndeleteprofile">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+                            <br><br>
+                        </div> 
+                    </div> 
+
+                </div>
+            </form> 
+        </div> 
+    </div>
+</section>
+                            
+<section id="contentBlocks1" class="container-fluid">
+    <div class="row">
+        <div id="" class="container">
+            <form data-toggle="validator" role="form" id='delete-form-reasons'>
+
+                   <div class="col-sm-12 pink hidden" id="deleteprofilereasons" >
+
+                                <h2 class="pink signika">{{ 'Your account has been successfully deleted. If you have a moment, please let us know why you deleted your account. '|t }}</h2>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label><input type = "checkbox" name='optionEmail' id ='optionEmail' value="1" >
+                                            <span class="casl">
+                                                {{ 'I no longer wanted to receive email.'|t }}
+                                            </span>
+                                        </label>
+                                        <span class="help-block err_optin"></span>
+                                    </div>	
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label><input type = "checkbox" name='optionRelevant' id ='optionRelevant' value="1" >
+                                            <span class="casl">
+                                                {{ 'The content was not relevant to me.'|t }}
+                                            </span>
+                                        </label>
+                                        <span class="help-block err_optin"></span>
+                                    </div>	
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label><input type = "checkbox" name='optionWant' id ='optionWant' value="1" >
+                                            <span class="casl">
+                                                {{ 'I no longer wanted to be a Tasty Rewards member  :( .'|t }}
+                                            </span>
+                                        </label>
+                                        <span class="help-block err_optin"></span>
+                                    </div>	
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-sm-6 form-group">
+                                        <label><input type = "checkbox" name='optionOther' id ='optionOther' value="1" >
+                                            <span class="casl">
+                                                {{ 'Other:'|t }}
+                                            </span>
+                                        </label>
+                                        <input type="text" name='other-reason' id='other-reason' placeholder="{{ 'Enter the other reason here...'|t }}" class="form-control" value="">
+                                        <span class="help-block err_optin"></span>
+                                    </div>	
+                                </div>
+                                {#<div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <div id='form'>
+                                        <span class="help-block err_form"></span>
+                                        </div>
+                                    </div>	
+                                </div>#} 
+                                <input type="hidden" name='reasons' id='reasons' value="">
+                                <input type="hidden" name='user_id' id='user_id' value="{{data.uid}}">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center form-group">
+                                         <hr class="bg-grey" />
+                                        <button type="button" class="btn btn-primary text-center btndeleteprofilereasons">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+                                        <br><br>
+                                    </div> 
+                                </div> 
+                </div>
+            </form> 
+        </div> 
+    </div>
+</section>
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section> 

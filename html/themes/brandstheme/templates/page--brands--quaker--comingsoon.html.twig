@@ -1,0 +1,18 @@
+
+<div class="navbar-wrapper-tasty">
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+</div>
+
+<section class="quaker-confirmation">
+      <div class="quaker-banner-microsite">
+            <div class="banner_slide--text {{class_pos}} contest-banner-text">
+                  <h1>{{ "Quaker<sup>®</sup> Pack the Goodness <br>Program coming July 19th" | trans}}</h1>
+            </div>
+
+            <img class="quaker-product-image-microsite en" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner.png" alt="quaker products" />
+            <img class="quaker-product-image-microsite fr" src="/themes/brandstheme/src/images/quaker/quaker-microsite/quaker-product-banner-fr.png" alt="quaker products" />
+      </div>
+</section>

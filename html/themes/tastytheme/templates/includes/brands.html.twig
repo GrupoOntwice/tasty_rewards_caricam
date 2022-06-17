@@ -1,0 +1,20 @@
+<section id="brands">
+
+    {% if language == 'en-us' or language == 'es-us'%}
+        {{ attach_library('tastytheme/slickLibrary') }}
+        <h2>{{ "Our Brands" | trans }} </h2>
+        <p>
+            {{ "We’ve got you covered from breakfast ‘till your favourite evening snack!" | trans }}
+        </p>
+
+        <div class="brands_carousel--container">
+{#            <div class="img_container">#}
+{#                <img src="" />#}
+{#            </div>#}
+            <div class="brands_carousel">
+                {# this will be loaded via Ajax #}
+                {{ drupal_view('brands', 'page_1') }}
+            </div>
+        </div>
+    {% endif %}
+</section>

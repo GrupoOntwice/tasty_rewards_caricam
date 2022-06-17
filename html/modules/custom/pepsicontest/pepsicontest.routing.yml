@@ -1,0 +1,441 @@
+#pepsicontest.test:
+#  path: '/pepsicontest/test'
+#  defaults:
+#    _controller: '\Drupal\pepsicontest\Controller\ReportingController::getReportContestParticipationData'
+#    _title: ''
+#  requirements:
+#    _access: 'TRUE'
+pepsicontest.reporting:
+  path: '/contests/reportingtool'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ReportingController::index'
+    _title: 'Reporting'
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+pepsicontest.pickwinner:
+  path: '/contests/pickwinner'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ReportingController::pickwinner'
+    _title: 'Pick a winner'
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+   
+pepsicontest.reporting.chart:
+  path: '/contests/reportingtool/datachart'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ReportingController::ajax_chart'
+    _title: 'Reporting'
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+
+pepsicontest.reporting.sourceid:
+  path: '/admin/users/source-id'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ReportingController::reportSourceID'
+    _title: 'Reporting'
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+    
+
+
+pepsicontest.string.translation:
+  path: '/contests/string/translation'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::translate'
+    _title: 'Translation'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'    
+    
+    
+    
+    
+pepsicontest.landing:
+  path: '/contests'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+
+pepsicontest.current:
+  path: '/contests-current'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::activeContests'
+    _title: 'Active Contest'
+  requirements:
+    _access: 'TRUE'
+
+pepsicontest.admin.links:
+  path: '/admin/contests'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::contestAdmin'
+    _title: 'contest Admin'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+pepsicontest.admin.entries:
+  path: '/admin/contests/entries'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::allEntries'
+    _title: 'contest entries'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+
+pepsicontest.admin.stats:
+  path: '/admin/contests/stats'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::contestStats'
+    _title: 'contest Stats'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+
+pepsicontest.admin.random.draw:
+  path: '/admin/contests/draw-winner'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::drawWinner'
+    _title: 'contest Winners'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+
+pepsicontest.admin.export.winners:
+  path: '/admin/contests/export/winners'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::contestExportWinners'
+    _title: 'contest Winners'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+en-ca.survey.contest.rules:
+  path: '/survey-contest-rules'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::surveyRules'
+    _title: 'Official Rules'
+  requirements:
+    _access: 'TRUE' 
+ 
+#SIGN UP    
+en.pepsicontest.contest.signup:
+  path: '/contests/{contest}/signup'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+en-ca.pepsicontest.contest.signup:
+  path: '/contests/{contest}/signup'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+fr.pepsicontest.contest.signup:
+  path: '/concours/{contest}/inscription'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+
+fr-ca.pepsicontest.contest.signup:
+  path: '/concours/{contest}/inscription'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    
+    
+en-us.pepsicontest.contest.signup:
+  path: '/contests/{contest}/signup'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+es-us.pepsicontest.contest.signup:
+  path: '/sorteos-concursos/{contest}/registro'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+   
+    
+    
+    
+
+
+en.pepsicontest.contest.thank-you:
+  path: '/contests/{contest}/thank-you'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+en-us.pepsicontest.contest.thank-you:
+  path: '/contests/{contest}/thank-you'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+es-us.pepsicontest.contest.thank-you:
+  path: '/sorteos-concursos/{contest}/gracias'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+fr.pepsicontest.contest.thank-you:
+  path: '/concours/{contest}/merci'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+    
+en.pepsicontest.contest.thank-you.new:
+  path: '/contests/{contest}/thank-you/reg'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE' 
+en-us.pepsicontest.contest.thank-you.new:
+  path: '/contests/{contest}/thank-you/reg'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'    
+es-us.pepsicontest.contest.thank-you.new:
+  path: '/sorteos-concursos/{contest}/gracias/reg'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'    
+fr.pepsicontest.contest.thank-you.new:
+  path: '/concours/{contest}/merci/reg'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::thankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    # _user_is_logged_in: 'FALSE'
+
+
+pepsicontest.gameday.favorite.team:
+  path: '/admin/contests/gameday/team'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::favoriteTeam'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'  
+
+
+
+
+en.pepsicontest.contest.officialrules:
+  path: '/contests/{contest}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+en-us.pepsicontest.contest.officialrules:
+  path: '/contests/{contest}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+es-us.pepsicontest.contest.officialrules:
+  path: '/sorteos-concursos/{contest}/reglamentos-oficiales'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+fr.pepsicontest.contest.officialrules:
+  path: '/concours/{contest}/reglementsofficiels'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+    
+    
+    
+en.pepsicontest.contest.processed.notlogged:
+  path: '/contests/{contest}/notlogged'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+en-us.pepsicontest.contest.processed.notlogged:
+  path: '/contests/{contest}/notlogged'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'     
+es-us.pepsicontest.contest.processed.notlogged:
+  path: '/sorteos-concursos/{contest}/no-registrado'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'   
+fr.pepsicontest.contest.processed.notlogged:
+  path: '/concours/{contest}/notlogged'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'     
+
+
+en.pepsicontest.contest.processed.notfound:
+  path: '/contests/{contest}/notfound'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsicontest.contest.processed.notfound:
+  path: '/contests/{contest}/notfound'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsicontest.contest.processed.notfound:
+  path: '/sorteos-concursos/{contest}/no-encontrado'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+fr.pepsicontest.contest.processed.notfound:
+  path: '/concours/{contest}/nontrouve'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+
+en.pepsicontest.contest.processed.closed:
+  path: '/contests/{contest}/closed'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsicontest.contest.processed.closed:
+  path: '/contests/{contest}/closed'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsicontest.contest.processed.closed:
+  path: '/sorteos-concursos/{contest}/cerrado'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+fr.pepsicontest.contest.processed.closed:
+  path: '/concours/{contest}/ferme'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+
+
+en.pepsicontest.contest.processed.comingsoon:
+  path: '/contests/{contest}/comingsoon'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsicontest.contest.processed.comingsoon:
+  path: '/contests/{contest}/comingsoon'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsicontest.contest.processed.comingsoon:
+  path: '/sorteos-concursos/{contest}/muy-pronto'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+fr.pepsicontest.contest.processed.comingsoon:
+  path: '/concours/{contest}/arrivebientot'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+    
+en.pepsicontest.contest.processed.alreadyregistered:
+  path: '/contests/{contest}/alreadyregistered'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsicontest.contest.processed.alreadyregistered:
+  path: '/contests/{contest}/alreadyregistered'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsicontest.contest.processed.alreadyregistered:
+  path: '/sorteos-concursos/{contest}/ya-registrado'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+fr.pepsicontest.contest.processed.alreadyregistered:
+  path: '/concours/{contest}/dejaenregistre'
+  defaults:
+    _controller: '\Drupal\pepsicontest\Controller\ProcessedController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    

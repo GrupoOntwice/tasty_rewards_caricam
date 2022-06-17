@@ -1,0 +1,9 @@
+name: Postal code DB
+type: module
+description: 'Postal code database, only used to find Postal Code, Province, and City'
+package: Custom
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2016-05-30
+version: '1.0'
+core_version_requirement: ^8.8 || ^9

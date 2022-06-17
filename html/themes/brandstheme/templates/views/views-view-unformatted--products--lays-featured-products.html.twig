@@ -1,0 +1,185 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  {# <h3>{{ title }}</h3> #}
+{% endif %}
+
+<div class="carousel_fullwidth carousel_desktop js-main-carousel-lays">
+  {% for row in rows %}
+    {% set continue = 0 %}
+    {% set subtitle = row.content["#row"]._entity.getTranslation(language).field_subtitle.getValue().0.value %}
+    {% set background_color = row.content["#row"]._entity.getTranslation(language).field_background_color.getValue().0.value %}
+
+      {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+      {# {% set nid = row._entity.id  %} #}
+      {% set nid = row.content['#row']._entity.nid.value  %}
+      {% set max_length = 150 %}
+      {# {% set link_url = 'node/' ~ nid %} #}
+      {% set description = row.content["#row"]._entity.getTranslation(language).body.getValue().0.value %}
+
+      {% set summary = description|render %}
+      {% set trimmed_body = summary|length > max_length ? summary|slice(0, max_length) ~ '...' : summary %}
+      {% set trimmed_body = truncateText(trimmed_body, max_length)  %}
+      {# {% set short_desctiption = truncateText(description) %} #}
+
+      {% set product_img = file_url(row.content["#row"]._entity.getTranslation(language).field_recipe_image.0.entity.uri.value) %}
+      {% set slider_img = file_url(row.content["#row"]._entity.getTranslation(language).field_extra_image1.0.entity.uri.value) %}
+        {% set class_pos = 'slide-center' %}
+
+      {# {% if position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %} #}
+      {# {{row.content}} #}
+
+      {# For Daud you can use this {{background_color}} variable to adjust the color #}
+      <div class="banner_slide home_slide" data-nid="{{nid}}" data-backgroundcolor="{{background_color}}">
+          <div class="banner-desktop">
+
+              <div class="lays-featured-product--container-bg-desktop">
+                  <h3>{{'Featured Products'|t}}</h3>
+                  <div class="lays-coupon--container">
+                      <div class="lays-coupon--display">
+                          <div class="lays-coupon--leftcol">
+                              <img class="product-image" src="{{slider_img}}" alt="{{ subtitle | raw}}">
+                          </div>
+                      </div>
+                      <div class="lays-coupon--text" style="background-color: {{background_color}}">
+                          {#                            <h3>Let the spooky savings begin</h3>#}
+
+                          {#                            <a class="btn_red" href="/en-ca/coupons">Get My Coupon*</a>#}
+                          {#                            <p class="lays-coupon-disclaimer">*Coupons available while quantities last</p>#}
+
+
+                          <div class="lays-banner_slide--text {{class_pos}}">
+
+
+                              {% if subtitle %}
+                                  <span class="h1 product-title"> {{ subtitle | raw}}</span>
+                              {% endif %}
+                              <span class="lays-product-description"> {{ trimmed_body | raw}}</span>
+
+                              <br>
+                              <a class="'btn_lays" href="/node/{{nid}}" role="link" title ="{{ subtitle | raw}}">
+                                  {{'View Product'|t}}
+                              </a>
+
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+
+
+{#      <div class="banner_slide home_slide" data-nid="{{nid}}">#}
+{#        <div class="banner-desktop"  >#}
+{#          <img class="product-image" src="{{product_img}}">#}
+
+{#          <div class="banner_slide--text {{class_pos}}">#}
+{#            #}{# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+{#            #}{# <span class="end_date"> {{ end_date }}</span> #}
+
+
+{#            {% if subtitle %}#}
+{#              #}{# <h1> {{ subtitle }}</h1> #}
+{#              <span class="h1 product-title"> {{ subtitle | raw}}</span>#}
+{#            {% endif %}#}
+{#              <span class="product-description"> {{ description | raw}}</span>#}
+
+
+{#              <a class="'btn_lays" href="/node/{{nid}}" title ="{{ subtitle | raw}}">#}
+{#                {{'View Product'|t}}#}
+{#              </a>#}
+
+
+{#          </div>#}
+{#        </div>#}
+{#        <div class="arrow-section-general"></div>#}
+{#      </div>#}
+
+
+
+
+  {% endfor %}
+
+</div>
+
+{#<div class="carousel_fullwidth carousel_mobile js-main-carousel">#}
+{#    {% for row in rows %}#}
+{#    {% set continue = 0 %}#}
+{#    {% set subtitle = row.content["#row"]._entity.getTranslation(language).field_subtitle.getValue().0.value %}#}
+
+{#      {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}#}
+{#      #}{# {% set nid = row._entity.id  %} #}
+{#      {% set nid = row.content['#row']._entity.nid.value  %}#}
+
+{#      #}{# {% set link_url = 'node/' ~ nid %} #}
+
+{#      {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_recipe_image.0.entity.uri.value) %}#}
+{#        {% set class_pos = 'slide-center' %}#}
+
+{#      #}{# {% if position == 'C' %}#}
+{#        {% set class_pos = 'slide-center' %}#}
+{#      {% elseif position == 'R' %}#}
+{#        {% set class_pos = 'slide-right' %}#}
+{#      {% elseif position == 'L' %}#}
+{#        {% set class_pos = 'slide-left' %}#}
+{#      {% else %}#}
+{#        {% set class_pos = 'slide-center' %}#}
+{#      {% endif %} #}
+{#      #}{# {{row.content}} #}
+{#      <div class="banner_slide home_slide" >#}
+{#        <div class="banner-mobile"  style="background: url('{{img}}');">#}
+{#          <div class="banner_slide--text {{class_pos}}">#}
+{#            #}{# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+{#            #}{# <span class="end_date"> {{ end_date }}</span> #}
+
+
+{#            {% if subtitle %}#}
+{#              #}{# <h1> {{ subtitle }}</h1> #}
+{#              <span class="h1"> {{ subtitle | raw}}</span>#}
+{#            {% endif %}#}
+
+
+{#              <a class="'btn_lays" href="/node/{{nid}}" title ="{{ subtitle | raw}}">#}
+{#                {{'View Product'|t}}#}
+{#              </a>#}
+
+
+{#          </div>#}
+{#        </div>#}
+{#        <div class="arrow-section-general"></div>#}
+{#      </div>#}
+
+
+
+
+{#  {% endfor %}#}
+{#</div>#}
+

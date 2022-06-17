@@ -1,0 +1,16 @@
+name: 'CoreViewsFacets Views Test'
+type: module
+description: 'Support module for CoreViewsFacets Views tests'
+package: Testing
+dependencies:
+  - facets:facets
+  - drupal:views
+  - drupal:node
+  - drupal:field
+hidden: true
+core_version_requirement: ^8 || ^9
+
+# Information added by Drupal.org packaging script on 2020-08-22
+version: '8.x-1.2'
+project: 'core_views_facets'
+datestamp: 1598099256

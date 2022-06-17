@@ -1,0 +1,19 @@
+administer marketocsv_generation:
+  title: 'Administer marketocsv generation'
+  description: 'Access the views to adminster marketocsv generation.'
+  restrict access: true
+
+access marketocsv_access:
+  title: 'Authenticated user access marketocsv generation'
+  description: 'Access the views to authenticated users on marketocsv generation.'
+  restrict access: false
+
+administer marketocsv_settings_form:
+  title: 'Administer user marketocsv settings form'
+  description: 'Access the views administration to users on marketocsv settings form.'
+  restrict access: true
+
+access marketocsv_settings_form:
+  title: 'Authenticated user marketocsv settings form'
+  description: 'Access the views to authenticated users on marketocsv settings form.'
+  restrict access: false

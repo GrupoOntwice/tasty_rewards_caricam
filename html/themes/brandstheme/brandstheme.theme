@@ -1,0 +1,1024 @@
+<?php
+
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+use  Drupal\Core\Theme\ThemeManager;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\pepsibrands\BrandsContentFilters;
+
+
+function brandstheme_preprocess_html(&$variables) {
+  $theme = \Drupal::theme()->getActiveTheme();
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  // Add adminimal class to the body.
+  //if (\Drupal::currentUser()->isAnonymous()) {
+  // This loads the modal.js script in the original theme folder
+   $variables['#attached']['library'][] = 'tastytheme/my_customscripts';
+  //}
+
+  $current_brand = get_current_brand();
+  $variables['brand'] = $current_brand;
+  // $variables['attributes']['class'][] = 'tastythemed8';
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['uid'] = \Drupal::currentUser()->id();
+
+  $variables['tasty_logopath'] =  '/' .  $theme->getPath() . rtrim(base_path(), '/')  . '/src/images/logo-' . $current_language . '.png';
+  $variables['logofooterpath'] = '/' . $theme->getPath() . rtrim(base_path(), '/') . '/src/images/logofooter-' . $current_language . '.png';
+  $variables['shoplink'] = getShopLink();
+  $userCurrent = \Drupal::currentUser();
+  if ($userCurrent->isAuthenticated()) {
+    $variables['username'] = $userCurrent->getAccountName();
+  }
+  else{
+    $variables['username'] = "NA";
+  }
+  $session = \Drupal::request()->getSession();
+  $variables['socialsource'] = $session->get('socialsource');
+
+  if (strtolower($current_brand) == 'quaker'){
+    $variables['has_floodlight_global'] = 1;
+  }
+}
+
+function getShopLink(){
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if ($language == 'en-us' || $language == 'es-us') return \Drupal::config('ssoconfig_us.adminsettings')->get('snack_url');
+  return \Drupal::config('ssoconfig.adminsettings')->get('snack_url');
+}
+
+function init_brands_variables($variables){
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $current_brand = get_current_brand();
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $variables['brand'] = $current_brand;
+  $variables['brand_basepath'] = get_brand_basepath();
+  $current_path = \Drupal::service('path.current')->getPath();
+  $langcode = get_current_langcode();
+  $variables['shoplink'] = getShopLink();
+  $variables['carousel'] = get_homepage_slides(strcase_brand($current_brand));
+  $variables['coupon_block'] = get_block_content(strcase_brand($current_brand), 'coupon');
+  if (is_about_us_page($current_brand)){
+    $variables['about_us'] = get_block_content($current_brand, 'about-us');
+  }
+
+  if (strpos($route_name, "pepsibrands.brand.videos") !== false){
+     $variables['brand_videos'] = get_recipes_with_videos($current_brand);
+  }
+
+  switch ($current_brand) {
+
+
+    case 'tostitos':
+      $variables['block_video'] = get_block_content('Tostitos', 'video');
+      $variables['occasions_banner'] = get_block_content('Tostitos', 'banner');
+      $variables['social_block'] = get_block_content('Tostitos', 'social');
+      $variables['coupon_block'] = get_block_content('Tostitos', 'coupon');
+      $variables['videos_page'] = $langcode == 'en-ca'? "/en-ca/brands/tostitos/videos":"/fr-ca/marques/tostitos/videos";
+      $variables['product_category'] = str_replace("-", "_", basename($current_path));
+      $variables['current_uri'] = $_SERVER['REQUEST_SCHEME'] . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      break;
+
+    case 'lays':
+      $variables['block_video'] = get_block_content('Lays', 'video');
+      $variables['coupon_block'] = get_block_content('Lays', 'coupon');
+      $variables['social_block'] = get_block_content('Lays', 'social');
+      $variables['product_category'] = str_replace("-", "_", basename($current_path));
+      $variables['current_uri'] = $_SERVER['REQUEST_SCHEME'] . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      break;
+    case 'crispyminis':
+    case 'missvickies':
+      $variables['coupon_block'] = get_block_content(strcase_brand($current_brand), 'coupon');
+      break;
+
+    default:
+      $variables['block_video'] = get_block_content($current_brand, 'video');
+      $variables['coupon_block'] = get_block_content($current_brand, 'coupon');
+      $variables['social_block'] = get_block_content($current_brand, 'social');
+      $variables['product_category'] = str_replace("-", "_", basename($current_path));
+      $variables['current_uri'] = $_SERVER['REQUEST_SCHEME'] . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      break;
+  }
+  $variables['shoplink'] = getShopLink();
+  return $variables;
+}
+
+
+function brandstheme_preprocess_taxonomy_term(&$variables) {
+  $variables = init_brands_variables($variables);
+  if  ( in_array($variables['brand'], ['tostitos', 'stacys'])
+    && !empty($variables['content']['field_occasion_recipes']) ){
+    $tid = $variables['term']->id();
+    $target_id = $variables['term']->get('field_occasion_image')->target_id;
+    $subtitle = $variables['term']->get('field_subtitle')->value;
+    $body = $variables['term']->get('description')->value;
+    if (!empty($target_id)){
+      $img = \Drupal\file\Entity\File::load($target_id);
+      $img_url = file_create_url( $img->getFileUri() );
+    } else {
+      $img_url = '';
+    }
+    $variables['tid'] = $tid;
+    $variables['subtitle'] = $subtitle;
+    $variables['body'] = $body;
+    $variables['image_url'] = $img_url;
+    $variables['recipes'] = [];
+    $term = Term::load($tid);
+    $references = $term->field_occasion_recipes->referencedEntities();
+    foreach ($references as $key => $node) {
+      $occasion_recipe = pepsibrand_display_recipe($node->id());
+      if (empty($occasion_recipe) )
+        continue;
+      $variables['recipes'][$key] = $occasion_recipe;
+    }
+    // foreach ($variables['content']['field_occasion_recipes'] as $key => $value) {
+    //   if (is_numeric($key)){
+    //     // $variables['recipes'][$key] = pepsibrand_display_recipe($value['#plain_text']);
+    //   }
+    // }
+  }
+  // debug_var($variables['content']['field_occasion_recipes'][0], 1);
+}
+
+
+function brandstheme_preprocess_node(&$variables) {
+  $variables = init_brands_variables($variables);
+  $brand = $variables['brand'];
+  $langcode = get_current_langcode($prefix = false);
+  $current_path = \Drupal::service('path.current')->getPath();
+  $nid = basename($current_path);
+  $variables['nid'] = $nid;
+  $node = \Drupal\node\Entity\Node::load($nid);
+  $claims = [];
+  $variables['translated_url'] = get_translated_node_url($nid);
+
+  if ($node->getType() == 'product'){
+    $iframe_brand = $node->field_iframe_brand->value;
+    if (!empty($iframe_brand)){
+      $variables['iframe_url'] = get_brand_iframe_url($iframe_brand);
+    } else {
+      $variables['iframe_url'] = get_brand_iframe_url($brand);
+    }
+  }
+  
+  $variables['has_translation'] = node_has_translation($node, $langcode);
+  switch ($brand ) {
+    case 'tostitos':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      if ($node->getType() == 'product'){
+        $variables['related_recipes'] = get_related_recipes($brand, false);
+        foreach ($node->field_claim->getValue() as $key => $claim) {
+          $claims[] = $claim['value'];
+        }
+        $variables['claims'] = $claims;
+        $variables['product_img'] = get_product_img_url($node);
+        // 
+      }
+
+      if ($node->getType() == 'recipe'){
+         // $variables['related_recipes'] = get_related_recipes($brand);
+        $variables['related_recipes'] = get_related_recipes_by_recipe($nid);
+        $variables['featured_on'] = get_occasions_by_recipe($brand, $nid);
+        $variables['nid'] = $nid;
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+
+      }
+
+
+      break;
+    case 'lays':
+      $nid = basename($current_path);
+      $node = \Drupal\node\Entity\Node::load($nid);
+      // make sure the node is of type product
+      if ($node->getType() == 'product'){
+        // set the related recipes and related products
+        $nutrition = strip_tags($node->field_nutrition->value);
+        $variables['has_nutrition'] = strlen($nutrition);
+        $variables['related_recipes'] = get_related_recipes($brand, false);
+        $variables['related_products'] = get_related_products($brand, $nid);
+        foreach ($node->field_claim->getValue() as $key => $claim) {
+          $claims[] = $claim['value'];
+        }
+        $variables['claims'] = $claims;
+        // Get url of translated product 
+        $variables['translated_url'] = get_translated_node_url($nid);
+        $langcode = get_current_langcode($with_prefix = false);
+        $lang_prefix = get_current_langcode();
+        $alias ="/$lang_prefix". \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid, $langcode);
+        $variables['current_url'] = $alias;
+      }
+      break;
+    case 'missvickies':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      if ($node->getType() == 'product'){
+         $variables['is_signature'] = 0;
+         $variables['product_img'] = get_product_img_url($node);
+          $variables['featured_products'] = get_featured_products($brand, null); 
+        if (is_signature_product($node)){
+           $variables['is_signature'] = 1;
+           // $variables['featured_products'] = get_featured_products($brand, "miss-vickies-signatures"); 
+        } else {
+           // $variables['featured_products'] = get_featured_products($brand, "miss-vickies"); 
+         }
+
+         $subtitle = $node->getTranslation($langcode)->field_subtitle->value;
+         $arr = explode("</sup>", $subtitle);
+         if (count($arr) > 1) {
+            $variables['title2'] = end($arr);
+            $variables['title1'] = str_replace($variables['title2'], "", $subtitle);
+         }
+      }
+      break;
+
+    case 'quaker':
+      $variables['featured_recipes'] = get_featured_recipes($brand);
+      if ($node->getType() == 'product'){
+        $variables['related_products'] = get_related_products($brand, $nid, 4);
+        $nutrition = strip_tags($node->field_nutrition->value);
+        $variables['has_nutrition'] = strlen($nutrition);
+      }
+      if ($node->getType() == 'recipe'){
+        $variables['prev_recipe'] = get_previous_recipe($brand, $node, $with_image = true);
+        $variables['next_recipe'] = get_next_recipe($brand, $node, $with_image = true);
+        $variables['related_products'] = get_related_products_by_recipe($node->id());
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+        $video_keys = get_recipe_video_key($node);
+        $variables['video_key'] = get_recipe_video_key($node);
+
+      }
+      
+      break;
+    case 'doritos':
+      if ($node->getType() == 'product'){
+        $variables['featured_products'] = get_featured_products($brand, null);
+        $nutrition = strip_tags($node->field_nutrition->value);
+        $variables['show_shoplink'] = false;
+        // $node->get($field)->referencedEntities(); 
+        $product_categories = $node->get('field_product_category')->referencedEntities(); 
+        if (isset($product_categories[0]) ){
+          $category = $product_categories[0];
+          if (strpos(strtolower($category->field_subtitle->value), "dips") !== False ){
+            $variables['show_shoplink'] = true;
+            $variables['link_shop'] = "https://shop.tastyrewards.ca/productlist#categoryMain";
+          }
+        }  
+        $variables['has_nutrition'] = strlen($nutrition);
+      }
+      break;
+    case 'ruffles':
+      if ($node->getType() == 'product'){
+        $variables['featured_products'] = get_featured_products($brand, null);
+        $nutrition = strip_tags($node->field_nutrition->value);
+        $variables['has_nutrition'] = strlen($nutrition);
+      }
+      break;
+    case 'sunchips':
+      if ($node->getType() == 'product'){
+        $variables['related_products'] = get_related_products($brand, $nid, 4);
+        $variables['large_img_url'] = get_translated_image_url($node,'field_extra_image1', 'en');
+        foreach ($node->field_claim->getValue() as $key => $claim) {
+          $claims[] = $claim['value'];
+        }
+        $variables['claims'] = $claims;
+      }
+      break;
+    case 'smartfood':
+      if ($node->getType() == 'product'){
+        $variables['related_products'] = get_related_products($brand, $nid, 4);
+      }
+      break;
+    case 'stacys':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      $variables['is_product_page'] = 0;
+      if ($node->getType() == 'recipe'){
+        $variables['prev_recipe'] = get_previous_recipe($brand, $node);
+        $variables['next_recipe'] = get_next_recipe($brand, $node);
+        $variables['related_recipes'] = get_related_recipes($brand);
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+        $variables['related_products'] = get_related_products_by_recipe($node->id());
+      }
+      if ($node->getType() == 'product'){
+        $variables['is_product_page'] = 1;
+        $variables['featured_recipes'] = get_featured_recipes($brand);
+      }
+      break;
+    case 'crispyminis':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      if ($node->getType() == 'recipe'){
+        $variables['prev_recipe'] = get_previous_recipe($brand, $node);
+        $variables['next_recipe'] = get_next_recipe($brand, $node);
+        $variables['related_recipes'] = get_related_recipes($brand);
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+      }
+      if ($node->getType() == 'product'){
+         $variables['featured_products'] = get_featured_products($brand, null);
+         // On Crispyminis product page, the title needs to be split in 2 parts
+         // For instance, the following title
+         // "Quaker<sup>®</sup>Croustilles de riz brun Crispy Minis<sup>®</sup>Saveur Maïs soufflé au beurre"
+         // has to be split into :
+         // -  title1: "Quaker<sup>®</sup>Croustilles de riz brun Crispy Minis<sup>®</sup>" 
+         // -  title2: "Saveur Maïs soufflé au beurre"
+         // Based on the csv, we can assume that the title always has 2 "<sup>®</sup>" 
+         // The code below takes care of that.
+         
+         $subtitle = $node->getTranslation($langcode)->field_subtitle->value;
+         $arr = explode("</sup>", $subtitle);
+         if (count($arr) > 2) {
+            $variables['title2'] = end($arr);
+            $variables['title1'] = str_replace($variables['title2'], "", $subtitle);
+         }
+
+         $variables['large_img_url'] = get_translated_image_url($node,'field_extra_image1', 'en');
+
+      }
+
+
+      break;
+    case 'cheetos':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      $nid = basename($current_path);
+      $node = \Drupal\node\Entity\Node::load($nid);
+      // make sure the node is of type product
+      if ($node->getType() == 'product'){
+        $variables['related_recipes'] = get_recipes_by_brand($brand, 3, false);
+        foreach ($node->field_claim->getValue() as $key => $claim) {
+          $claims[] = $claim['value'];
+        }
+        $variables['claims'] = $claims;
+        $variables['product_img'] = get_product_img_url($node);
+        $variables['coupon_block'] = get_block_content('Cheetos', 'coupon');
+        //@TODO: uncomment this when the images are ready
+        // $variables['product_img'] = get_product_img_url($node);
+      }
+
+      if ($node->getType() == 'recipe'){
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+        // $variables['related_recipes'] = get_related_recipes($brand);
+        $variables['related_recipes'] = get_random_related_recipes($brand, 3, $node->id());
+        $variables['img_madewith'] = "";
+        $variables['product_madewith'] = "javascript:void(0);";
+        $variables['img_madewith2'] = "";
+        $variables['product_madewith2'] = "javascript:void(0);";
+        $lang = get_current_langcode(false);
+        $link = $node->getTranslation($lang)->field_original_link->value;
+        $linked_products = explode("|", $link);
+        if (!empty($node->field_extra_image1->target_id)){
+          $img = \Drupal\file\Entity\File::load($node->field_extra_image1->target_id);
+          $variables['img_madewith'] = file_create_url( $img->getFileUri());
+          if (!empty($linked_products[0]))
+            $variables['product_madewith'] = $linked_products[0];
+        }
+
+        if (!empty($node->field_extra_image2->target_id)){
+          $img = \Drupal\file\Entity\File::load($node->field_extra_image2->target_id);
+          $variables['img_madewith2'] = file_create_url( $img->getFileUri());
+          if (count($linked_products) > 1){
+            $variables['product_madewith2'] = $linked_products[1];
+          }
+        }
+        // $variables['related_recipes'] = get_related_recipes_by_recipe($nid);
+        // $variables['featured_on'] = get_occasions_by_recipe($brand, $nid);
+        // $variables['nid'] = $nid;
+        // $variables['avg_rating'] = get_recipe_avg_rating($node);
+
+      }
+      break;
+
+    case 'flaminhot':
+      $variables['translated_url'] = get_translated_node_url($nid);
+      $nid = basename($current_path);
+      $node = \Drupal\node\Entity\Node::load($nid);
+      // make sure the node is of type product
+      if ($node->getType() == 'product'){
+        $variables['related_recipes'] = get_recipes_by_brand($brand, 3, false);
+        foreach ($node->field_claim->getValue() as $key => $claim) {
+          $claims[] = $claim['value'];
+        }
+        $variables['claims'] = $claims;
+        $variables['product_img'] = get_product_img_url($node);
+        $variables['coupon_block'] = get_block_content('Cheetos', 'coupon');
+        //@TODO: uncomment this when the images are ready
+        // $variables['product_img'] = get_product_img_url($node);
+      }
+
+      if ($node->getType() == 'recipe'){
+        $variables['avg_rating'] = get_recipe_avg_rating($node);
+        // $variables['related_recipes'] = get_related_recipes($brand);
+        // $variables['related_recipes'] = get_random_related_recipes($brand, 3, $node->id());
+        $variables['related_recipes'] = get_related_recipes_by_recipe($node->id(), $is_brandtheme = 1);
+        $variables['img_madewith'] = "";
+        $variables['product_madewith'] = "javascript:void(0);";
+        $variables['img_madewith2'] = "";
+        $variables['product_madewith2'] = "javascript:void(0);";
+        $lang = get_current_langcode(false);
+        $link = $node->getTranslation($lang)->field_original_link->value;
+        $linked_products = explode("|", $link);
+        if (!empty($node->field_extra_image1->target_id)){
+          $img = \Drupal\file\Entity\File::load($node->field_extra_image1->target_id);
+          $variables['img_madewith'] = file_create_url( $img->getFileUri());
+          if (!empty($linked_products[0]))
+            $variables['product_madewith'] = $linked_products[0];
+        }
+
+        if (!empty($node->field_extra_image2->target_id)){
+          $img = \Drupal\file\Entity\File::load($node->field_extra_image2->target_id);
+          $variables['img_madewith2'] = file_create_url( $img->getFileUri());
+          if (count($linked_products) > 1){
+            $variables['product_madewith2'] = $linked_products[1];
+          }
+        }
+        $prds = $node->get('field_related_products')->referencedEntities();
+        $variables['related_products'] = [];
+        foreach ($prds as $prd) {
+          $product = \Drupal\node\Entity\Node::load($prd->id());
+          $translated_product = $product->getTranslation($lang);
+          $related_product_title = $translated_product->field_subtitle->value;
+          $related_product_image = $translated_product->get('field_recipe_image')->entity->uri->value;
+          $related_product_link  = $translated_product->get('field_brand_page_link')->uri;
+          $variables['related_products'][] = ['related_product_title'=>$related_product_title, 'related_product_image'=>$related_product_image,'related_product_link'=>$related_product_link  ];
+        }
+        $variables['home_recipes'] = fetch_brand_recipes('Flaminhot', $number = 3, 0, $langcode);
+        $variables['video_key'] = get_video_key($node->field_recipe_video->value);
+      }
+      break;
+
+    default:
+      break;
+  }
+  $variables['shoplink'] = getShopLink();
+
+}
+
+function update_user_cache_context(&$variables){
+  if (isset($variables['#cache']) && isset($variables['#cache']['contexts']) ){
+    foreach ($variables['#cache']['contexts'] as $key => $context) {
+      // if context starts with "user."
+      if (strpos($context, "user.") === 0 || $context == 'user'){
+        unset($variables['#cache']['contexts'][$key]);
+      }
+    }
+    $variables['#cache']['contexts'][] = 'user';
+  }
+  return $variables;
+}
+
+function brandstheme_preprocess_page(&$variables) {
+  $variables = update_user_cache_context($variables);
+
+	$theme = \Drupal::theme()->getActiveTheme();
+  $variables = init_brands_variables($variables);
+	$current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  $variables['is_quaker_landing'] = 0;
+  if (strpos($route_name, 'pepsibrands.quaker.landing') !== false){
+    $variables['is_quaker_landing'] = 1;
+    $form_errors = get_receipt_form_errors();
+    $variables['data'] = [];
+    if (!empty($form_errors)){
+      $variables['data'] = $form_errors;
+    } 
+  }
+
+
+  if (strpos($route_name, 'pepsibrands.realjoy.terms') !== false){
+    $variables['is_quaker_landing'] = 1;
+  }
+
+  $variables['language'] = $current_language;
+  $variables['lang_prefix'] = get_current_langcode($with_prefix = true);
+
+
+  $variables['active_lang'] = get_current_langcode($with_prefix = false);
+  $variables['inactive_lang'] = $variables['active_lang'] == 'en'? 'fr' : 'en';
+	$variables['tasty_logopath'] =  '/' .  $theme->getPath() . rtrim(base_path(), '/')  . '/src/images/logo-' . $current_language . '.png';
+  $variables['logofooterpath'] = '/' . $theme->getPath() . rtrim(base_path(), '/') . '/src/images/logofooter-' . $current_language . '.png';
+
+  // If brands equals Tostitos??
+  $current_brand = get_current_brand();
+  $variables['brand'] = $current_brand;
+  $variables['brand_basepath'] = get_brand_basepath();
+  $user = getCurrentUser();
+  $variables["user_firstname"] = $user->field_firstname->value;
+  //\Doctrine\Common\Util\Debug::dump($variables["user_firstname"]);
+  $variables['shoplink'] = getShopLink();
+
+  $current_path = \Drupal::service('path.current')->getPath();
+  $langcode = get_current_langcode();
+	$variables['lang_prefix'] = $langcode;
+  $consumer_alert = getConsumerBanner($current_brand);
+  if (!empty($consumer_alert)){
+    $variables['ad_banner_img'] = $consumer_alert['image_url'];
+    $variables['ad_banner_link'] = $consumer_alert['link'];
+    $variables['ad_banner_name'] = $consumer_alert['title'];
+    $variables['ad_banner_description'] = $consumer_alert['description'];
+    $variables['block_alert'] = get_block_content($current_brand, 'alert');
+    $variables['alert_pdf'] = get_alert_pdf($current_brand);
+
+  }
+  $basename = basename($current_path);
+  // $variables = ;
+
+  switch ($current_brand) {
+    case 'flaminhot':
+      $variables['coupon_block'] = get_block_content($current_brand, 'coupon');
+      $variables['home_recipes'] = fetch_brand_recipes('Flaminhot', $number = 3, 0, $langcode);
+      $variables['carousel'] = get_homepage_slides('Flaminhot');
+      $variables['ishome'] = is_home_page($current_brand);
+      $variables['products'] = get_homepage_products($current_brand );
+      $variables['iframe_url'] = get_brand_iframe_url($current_brand);
+      if (is_recipes_page($current_brand)){
+        $variables['recipes'] = fetch_brand_recipes('Flaminhot', $number = 12, 0, $langcode);
+        $variables['recipe_count'] = count($variables['recipes']);
+        // $variables['occasions'] = get_brands_occasions('tostitos');
+        //$variables['recipe_time'] = get_recipe_time_options('tostitos');
+        $variables['featured_recipes'] = [];
+        $featured_recipes = get_featured_recipes($current_brand, $image_detail = 0);
+        if (count($featured_recipes) > 0){
+          // We do not want a carousel, only one featured recipe
+          $variables['featured_recipes'] = array_slice($featured_recipes, 0 , 1);
+        }
+        $variables['ingredients_options'] = get_ingredients_options($current_brand);
+      }      
+      break;
+
+      
+    case 'fritolay':
+      $variables['block_alert'] = get_block_content("Fritolayvarietypacks", 'alert');
+      $variables['block_video'] = get_block_content('Fritolayvarietypacks', 'video');
+      $variables['social_block'] = get_block_content('Fritolayvarietypacks', 'social');
+      $variables['products'] = get_homepage_products('Fritolayvarietypacks' );
+      break;
+
+    case 'cheetos':
+      if (is_about_us_page($current_brand)){
+        $variables['about_us'] = get_block_content($current_brand, 'about-us');
+      }
+
+      $variables['coupon_block'] = get_block_content('Cheetos', 'coupon');
+      if (is_brand_homepage($current_brand)){
+        $variables['featured_products'] = get_featured_products($current_brand, null);
+        $variables['home_recipes'] = fetch_brand_recipes('cheetos', $number = 3, 0, $langcode);
+        $variables['carousel'] = get_homepage_slides('cheetos');
+      }
+
+      if (is_recipes_page($current_brand)){
+        $variables['recipes'] = fetch_brand_recipes('cheetos', $number = 12, 0, $langcode);
+        $variables['recipe_count'] = count($variables['recipes']);
+        // $variables['occasions'] = get_brands_occasions('tostitos');
+        $variables['recipe_time'] = get_recipe_time_options('tostitos');
+        $variables['featured_recipes'] = [];
+        $featured_recipes = get_featured_recipes($current_brand, $image_detail = 0);
+        if (count($featured_recipes) > 0){
+          // We do not want a carousel, only one featured recipe
+          $variables['featured_recipes'] = array_slice($featured_recipes, 0 , 1);
+        }
+        $variables['ingredients_options'] = get_ingredients_options($current_brand);
+      }
+
+      if (is_product_page($current_brand)){
+        $variables['products'] = get_products_by_shape('cheetos', null, null);
+        // debug_var($variables['products'], 1);
+        // $variables['background_img'] = get_product_category_background('Lays', $current_path);
+        // $variables['banner_img'] = get_product_category_banner('Lays', $current_path);
+        // $variables['banner_mobile_img'] = get_product_category_mobile_banner('Lays', $current_path);
+        // $variables['background_color'] = $term->field_background_color->value;
+
+      }
+
+      if (is_cheetos_rules_page($current_brand)){
+        $variables['terms'] = get_block_content('cheetos', 'terms');
+      }
+
+      // $variables['products'] = get_products_by_shape('cheetos', $shape = null, $tid = 0);
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename, $current_brand);
+        $variables['product_category_title'] = remove_space($term->field_subtitle->value);
+        $variables['basename'] = $basename;
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_name'] = $term->getTranslation($current_language)->field_subtitle->value;
+        }
+        $variables['featured_products'] = get_featured_products($brand, $basename);
+      }
+      break;
+    case 'missvickies':
+      $basename = basename($current_path);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      $variables['coupon_block'] = get_block_content('missvickies', 'coupon');
+      $variables['block_video'] = get_block_content('missvickies', 'video');
+      $variables['carousel'] = BrandsContentFilters::instance()->fetch_brand_slides('missvickies', 'main');
+
+      if (is_findyourflavour_page()){
+        $slides = BrandsContentFilters::instance()->fetch_brand_slides('missvickies', 'missvickiesFlavour');
+        $variables['coupon_block'] = get_block_content('missvickies', 'coupon_landing_page');
+        $variables['carousel'] = $slides;
+        $variables['featured_products'] = get_featured_products_custom('missvickies');
+        $variables['iframe_url'] = get_brand_iframe_url($current_brand);
+        $products = get_products_by_shape('missvickies', null, null);
+        $variables['default_product'] =  (count($products) > 1)? $products[1]: [];
+      }        
+
+
+      if (is_product_page($current_brand)){
+        $variables['products'] = get_products_by_shape('missvickies', null, null);
+
+      }
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($current_path);
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+        }
+        $variables['is_signature'] = 0;
+        if (strpos($basename, "signature") !== false){
+          $variables['is_signature'] = 1;
+        }
+        // $variables['featured_products'] = get_featured_products($brand, $basename);
+
+      }
+      $variables['about_us'] = get_block_content('missvickies', 'about-us');
+
+      if (strpos($basename, "signatures") !== false){
+          $term = find_product_category_by_url("/miss-vickies-signatures");
+          if (!empty($term)){
+            $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          }
+      }
+
+
+      break;
+
+
+    case 'tostitos':
+      $variables['block_video'] = get_block_content('Tostitos', 'video');
+      $variables['occasions_banner'] = get_block_content('Tostitos', 'banner');
+      $variables['social_block'] = get_block_content('Tostitos', 'social');
+      $variables['product_category'] = str_replace("-", "_", basename($current_path));
+      $variables['coupon_block'] = get_block_content('Tostitos', 'coupon');
+      $variables['videos_page'] = $langcode == 'en-ca'? "/en-ca/brands/tostitos/videos":"/fr-ca/marques/tostitos/videos";
+      // $about_us =  get_block_content('Tostitos', 'about-us');
+      // $variables['about_us_content'] =  remove_tags(['p'], $about_us);
+
+      $variables['home_recipes'] = fetch_brand_recipes('tostitos', $number = 3, 0, $langcode);
+      $variables['home_occasions'] = fetch_brand_occasions('tostitos', 4);
+
+      $variables['product_categories'] = fetch_product_categories('tostitos');
+      if (is_recipes_page($current_brand)){
+        $variables['recipes'] = fetch_brand_recipes('tostitos', $number = 12, 0, $langcode);
+        $variables['recipe_count'] = count($variables['recipes']);
+        $variables['occasions'] = get_brands_occasions('tostitos');
+        $variables['recipe_time'] = get_recipe_time_options('tostitos');
+        $variables['featured_recipes'] = get_featured_recipes($current_brand);
+        $variables['ingredients_options'] = get_ingredients_options($current_brand);
+      }
+      // if ($current_path == '/brands/tostitos/occasions'){
+      if (is_occasions_page($current_brand)){
+        $variables['node_occasions'] = fetch_brand_occasions('tostitos');
+        $variables['featured_occasions'] = get_featured_occasions($current_brand);
+
+      }
+
+      // if ($current_path == '/brands/tostitos/dropthehint'){
+      if (is_dropthehint_page($current_brand)){
+        $variables['products_dropthehint'] = get_products_dropthehint('tostitos');
+      }
+
+      // if (strpos($current_path, '/brands/tostitos/products-categories/') !== false){
+      if (is_product_category_page('tostitos') ){
+        $basename = basename($current_path);
+        // rounds, triangle, scoops,...
+        $shape_options =  get_shapes_options();
+        $term = find_product_category_by_url($current_path);
+        if (!empty($term)){
+          $variables['product_category_title'] = _product_category_title($term);
+            // $term->field_subtitle->value;
+          $variables['product_category_description'] = _product_category_body($term);
+           // $term->getDescription();
+          foreach ($shape_options as $key => $value) {
+            unset($shape_options[$key]);
+            $shape_options[$value] = get_products_by_shape('tostitos', $key, $term->id());
+          }
+          $variables['shapes'] = $shape_options;
+          $variables['no_shapes'] = get_products_by_shape('tostitos', null, $term->id());
+
+        }
+        // This should be filtered by current category
+        $variables['featured_products'] = get_featured_products($current_brand, $basename);
+      }
+      // if ($current_path == '/brands/tostitos/videos'){
+      if (strpos($current_path, "/tostitos/videos") !== false){
+        $variables['recipe_videos'] = get_recipes_with_videos('tostitos');
+
+      }
+      break;
+    
+    case 'quaker':
+      $route_name = \Drupal::routeMatch()->getRouteName();
+      $brand = strcase_brand($current_brand);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      $variables['featured_recipes'] = get_featured_recipes($current_brand);
+      $variables['featured_content_recipes'] = get_featured_content($current_brand, 'recipe', 'quaker_hockey');
+      $variables['videos_landing'] = get_recipes_with_videos('quaker_hockey', 2);
+      if (is_brand_product_page($current_brand)){
+        $variables['product_groups'] = fetch_product_groups($current_brand);
+      }
+
+
+      if (is_brand_homepage($current_brand)){
+        $variables['videos'] = get_recipes_with_videos($brand, 10);
+      }
+      // $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_group_page($current_brand) ){
+        $group_name= basename($current_path);
+        $group_tid = get_product_group_id($current_brand ,$group_name);
+        $term = Term::load($group_tid);
+        $lang = get_current_langcode(false);
+        $variables['group_name'] = $term->getTranslation($lang)->field_subtitle->value;
+        $variables['product_categories'] = fetch_product_categories($current_brand, $group_tid);
+
+      }
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename, $brand);
+
+        if ($term){
+          $lang = get_current_langcode(false);
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_title'] = $term->getTranslation($lang)->field_subtitle->value;
+        }
+      }
+
+      if (is_recipes_page($current_brand)){
+        $variables['recipes'] = fetch_brand_recipes($current_brand, $number = 12, 0, $langcode);
+        $featured_recipes = get_featured_recipes($current_brand);
+        $variables['top_featured_recipes'] = !empty($featured_recipes)? array_slice($featured_recipes, 0, 1): [];
+      }
+
+      if (strpos($route_name, "pepsibrands.about-us") !== false){
+        $variables['moments'] = get_custom_content($current_brand, "moments");
+      }
+      if (strpos($route_name, "pepsibrands.oat-flour") !== false){
+          $flour_recipes = get_quaker_recipes_by_type('oat-flour', $langcode);
+          $variables['flour_recipes'] = array_slice($flour_recipes, 0, 3);
+      }
+      if (strpos($route_name, "pepsibrands.power-of-oats") !== false){
+          $variables['custom_content'] = get_custom_content($current_brand, "oats");
+          $variables['oats_products'] = get_carousel_entities($current_brand, 'power_of_oats');
+      }
+
+      if( is_about_us_page($current_brand)){
+        $variables['about_us'] = get_block_content('quaker', 'about-us');
+      }
+
+      break;
+    case 'crispyminis':
+      $brand = strcase_brand($current_brand);
+      $basename = basename($current_path);
+      $variables['carousel'] = get_homepage_slides($current_brand);
+      $variables['featured_recipes'] = get_featured_recipes($current_brand);
+      $variables['featured_videos'] = get_featured_videos($current_brand, $nb = 1);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      if (is_recipes_page($current_brand)){
+        if ( count($variables['featured_recipes']) ){
+          $first_featured_recipe[] = $variables['featured_recipes'][0];
+        }
+        // only one featured recipe should be shown
+        $variables['featured_recipes'] = $first_featured_recipe;
+        $variables['recipes'] = fetch_brand_recipes('crispyminis', $number = 12, 0, $langcode);
+        // $variables['recipe_count'] = count($variables['recipes']);
+      }
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename);
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+        }
+        $variables['featured_products'] = get_featured_products($brand, $basename);
+
+      }
+      $variables['about_us'] = get_block_content('crispyminis', 'about-us');
+      $variables['rules'] = get_block_content('crispyminis', 'rules');
+      $variables['flavourful'] = get_block_content('crispyminis', 'flavourful');
+      $variables['coupon_block'] = get_block_content('crispyminis', 'coupon');
+      $variables['recipe_videos'] = get_recipes_with_videos($brand, 2);
+      break;
+
+      
+    case 'pearlmilling':
+      $variables['carousel'] = get_homepage_slides('pearlmilling');
+      $variables['coupon_block'] = get_block_content('pearlmilling', 'coupon');
+      $variables['products'] = get_homepage_products('pearlmilling' );
+      $variables['moments'] = get_custom_content('pearlmilling', "history");
+      break;
+
+    case 'capncrunch':
+      $variables['carousel'] = get_homepage_slides('capncrunch');
+      $variables['coupon_block'] = get_block_content('capncrunch', 'coupon');
+      $variables['products'] = get_homepage_products('capncrunch' );
+      $variables['recipes'] = fetch_brand_recipes('capncrunch', $number = 12, 0, $langcode);
+      $variables['iframe_url'] = get_brand_iframe_url($current_brand);
+      if (is_recipes_page($current_brand)){
+        $variables['recipe_count'] = count($variables['recipes']);
+        $variables['featured_recipes'] = [];
+        $featured_recipes = get_featured_recipes($current_brand, $image_detail = 0);
+        if (count($featured_recipes) > 0){
+          // We do not want a carousel, only one featured recipe
+          $variables['featured_recipes'] = array_slice($featured_recipes, 0 , 1);
+        }
+        // $variables['ingredients_options'] = get_ingredients_options($current_brand);
+      }
+      break;
+
+
+    case 'otep':
+      $variables['coupon_block'] = get_block_content('Otep', 'coupon');
+      $variables['social_block1'] = get_block_content('Bare', 'social');
+      $variables['social_block2'] = get_block_content('Bare', 'social', 2);
+      $variables['products'] = get_homepage_products('otep' );
+      $variables['carousel'] = get_homepage_slides('otep');
+      $variables['iframe_url'] = get_brand_iframe_url($current_brand);
+
+      break;
+
+    case 'popcorners':
+      $variables['carousel'] = get_homepage_slides('popcorners');
+      $variables['products'] = get_homepage_products('popcorners' );
+      $variables['coupon_block'] = get_block_content('popcorners', 'coupon');
+      break;
+      
+    case 'bare':
+      $variables['products'] = get_homepage_products('bare' );
+      $variables['iframe_url'] = get_brand_iframe_url('bare');
+      // log_var($variables['iframe_url'], "BARE iframe url");
+      $variables['coupon_block'] = get_block_content('Bare', 'coupon');
+      $variables['social_block1'] = get_block_content('Bare', 'social');
+      $variables['social_block2'] = get_block_content('Bare', 'social', 2);
+      break;
+    case 'stacys':
+      $brand = strcase_brand($current_brand);
+      $variables['about_us'] = get_block_content($brand, 'about-us');
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      $variables['featured_recipes'] = get_featured_recipes($current_brand);
+      $variables['is_product_page'] = 0;
+      if (is_product_category_page($current_brand) ){
+        $variables['is_product_page'] = 1;
+        $term = find_product_category_by_url($basename, $brand);
+        $variables['basename'] = $basename;
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_title'] = $term->getTranslation($current_language)->field_subtitle->value;
+        }
+        $variables['featured_products'] = get_featured_products($brand, $basename);
+
+      }
+      // $videos = get_brand_videos($brand, 1);
+      // if (!empty($videos)){
+      //   $variables['video'] = $videos[0];
+      // }
+
+      if (is_recipes_page($current_brand)){
+        $variables['recipes'] = fetch_brand_recipes($current_brand, $number = 12, 0, $langcode);
+        $featured_recipes = get_featured_recipes($current_brand);
+        $variables['top_featured_recipes'] = !empty($featured_recipes)? array_slice($featured_recipes, 0, 1): [];
+      }
+
+      if (is_occasions_page($current_brand)){
+        $variables['node_occasions'] = fetch_brand_occasions('stacys');
+        $variables['featured_occasions'] = get_featured_occasions($current_brand);
+
+      }
+      break;
+    case 'sunchips':
+      $brand = strcase_brand($current_brand);
+      $variables['products'] = get_products_by_shape($current_brand, null, $_tid = 0);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      break;
+    case 'smartfood':
+      $brand = strcase_brand($current_brand);
+      $variables['videos'] = get_recipes_with_videos($brand, 1);
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename, $brand);
+        $variables['basename'] = $basename;
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_title'] = $term->getTranslation($current_language)->field_subtitle->value;
+        }
+        // $variables['featured_products'] = get_featured_products($brand, $basename);
+
+      }
+      break;
+    case 'ruffles':
+      $basename = basename($current_path);
+      $brand = strcase_brand($current_brand);
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      $variables['about_us'] = get_block_content($brand, 'about-us');
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename, $brand);
+        $variables['basename'] = $basename;
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_title'] = $term->getTranslation($current_language)->field_subtitle->value;
+          $variables['is_doublecrunch'] = strpos(strtolower($variables['category_title']), "double") !== false ? 1: 0; 
+          if ($current_language == 'fr'){
+            $variables['is_doublecrunch'] = strpos(strtolower($variables['category_title']), "ultracroquante") !== false ? 1: 0; 
+          }
+          $variables['is_dips'] = strpos(strtolower($variables['category_title']), "dips") !== false ? 1: 0; 
+          if ($current_language == 'fr'){
+            $variables['is_dips'] = strpos(strtolower($variables['category_title']), "trempette") !== false ? 1: 0; 
+          }
+        }
+        $variables['featured_products'] = get_featured_products($brand, $basename);
+      }
+      break;
+    case 'doritos':
+      $brand = strcase_brand($current_brand);
+      $basename = basename($current_path);
+      $variables['block_video'] = get_block_content('Doritos', 'video');
+      $variables['about_us'] = get_block_content('Doritos', 'about-us');
+      $variables['coupon_block'] = get_block_content('Doritos', 'coupon');
+      $variables['featured_products'] = get_featured_products($current_brand, null);
+      $variables['featured_videos'] = get_brand_videos($current_brand, $nb = 2);
+      $variables['product_categories'] = fetch_product_categories($current_brand);
+      if (is_product_category_page($current_brand) ){
+        $term = find_product_category_by_url($basename, $current_brand);
+        $variables['basename'] = $basename;
+        if ($term){
+          $variables['products'] = get_products_by_shape($current_brand, null, $term->id());
+          $variables['category_name'] = $term->getTranslation($current_language)->field_subtitle->value;
+        }
+        $variables['featured_products'] = get_featured_products($brand, $basename);
+      }
+
+      break;
+    case 'lays':
+      $basename = basename($current_path);
+      $variables['block_video'] = get_block_content('Lays', 'video');
+      $variables['social_block'] = get_block_content('Lays', 'social');
+      $variables['about_us'] = get_block_content('Lays', 'about-us');
+      $variables['coupon_block'] = get_block_content('Lays', 'coupon');
+      $variables['terms'] = get_block_content('Lays', 'terms');
+      $variables['product_category'] = str_replace("-", "_", basename($current_path));
+      $variables['product_categories'] = fetch_product_categories('lays');
+      if (is_product_category_page('lays')){
+        // $term = find_product_category_by_url($current_path);
+        $term = find_product_category_by_url($basename, $current_brand);
+        // /marques/lays/produits-categories/wavy-lays
+        $variables['products'] = get_products_by_shape('lays', null, $term->id());
+        // debug_var($variables['products'], 1);
+        $variables['background_img'] = get_product_category_background('Lays', $current_path);
+        $variables['banner_img'] = get_product_category_banner('Lays', $current_path);
+        $variables['banner_mobile_img'] = get_product_category_mobile_banner('Lays', $current_path);
+        // $variables['product_category_title'] = get_product_category_title('Lays', $current_path);
+        $variables['product_category_title'] = _product_category_title($term);
+        $variables['background_color'] = $term->field_background_color->value;
+
+      }
+
+      if (strpos($current_path, "/lays/videos") !== false){
+        $variables['recipe_videos'] = get_recipes_with_videos('lays');
+
+      }
+      break;
+
+    default:
+      break;
+  }
+
+
+}
+
+function brandstheme_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+  if ($hook == 'page' & !empty($variables['element']['#id'])) {
+    $suggestions[] = 'page__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+
+  if ($hook == 'form' & !empty($variables['element']['#id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+
+ return $suggestions;
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function brandstheme_page_attachments_alter(array &$attachments) {
+  // Remove the default favicon.
+  unset($attachments['#attached']['html_head_link'][0]);
+  // add new favicon.
+  $attachments['#attached']['html_head_link'][][] = array(
+    'rel' => 'shortcut icon',
+    'href' => '/themes/tastytheme/favicon.ico',
+    'type' => 'image/vnd.microsoft.icon',
+  );
+}

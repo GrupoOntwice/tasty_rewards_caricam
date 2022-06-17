@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name: block_product_fritolay
+ *
+ */
+ #}
+{% set featured_class = "" %}
+{% for field in fields %}
+	{# This does NOT work if debug twig is enabled #}
+	{% if field.class == 'field-is-featured' and field.content|length %}
+		{% set featured_class = "featured-occasion" %}
+	{% endif %}
+{% endfor %}
+{# <div class="occasion-item {{featured_class}}"> #}
+<div class="tostitos-nocarousel-box {{featured_class}}">
+	{% for field in fields %}
+		{# {{ kint(field.element_type) }} #}
+		{% if field.class == 'field-subtitle' %}
+			<div class="occasion-item-title occassions">
+				<h3 class="item-title">
+					{{ field.content }}
+				</h3>
+			</div>
+		{% elseif field.class == 'field-occasion-image' %}
+			<div class="occasion-item-image img">
+				{# <a target="_blank" rel="noopener noreferrer" href="javascript:void(0)"> #}
+					{{ field.content }}
+				{# </a> #}
+			</div>
+		{% elseif field.class == 'field-is-featured' %}
+			<span class="occasion-is-featured hidden">
+				{{ field.content }}
+			</span>
+
+		{% else %}
+			<div class="occasion-item-link tostitos-btn-container tostitos-btn-container-yellow">
+				{# View Occasion Link #}
+				{{ field.content }}
+			</div>
+		{% endif %}
+
+	{% endfor %}
+</div>

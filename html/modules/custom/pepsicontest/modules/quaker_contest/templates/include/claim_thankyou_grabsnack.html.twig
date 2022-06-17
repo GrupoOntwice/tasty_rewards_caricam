@@ -1,0 +1,162 @@
+<style>
+
+  @font-face {
+    font-family: 'Montserrat-black';
+    src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff2') format('woff2'),
+    url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat-semibold';
+    src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+    url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+    .contest-description, .description h2 {
+        height: 150px;
+    }
+
+    .block__intro {
+      background-image: url("/themes/tastytheme/src/images/grab-snack/thankyou-background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+
+    .thankyou-header h2 {
+      padding-bottom: 20px !important;
+    }
+
+    .montserrat-black {
+      font-family: Montserrat-black;
+    }
+
+    .span-font {
+      font-size: 12px;
+    }
+
+    .mw-100 {
+      max-width: 100%;
+    }
+
+    .montserrat-black {
+      font-family: Montserrat-black;
+    }
+
+    .span-font {
+      font-size: 12px;
+    }
+
+    .montserrat-semibold {
+      font-family: 'Montserrat-semibold';
+    }
+
+
+    .opensans-semibold {
+      font-family: 'OpenSans-semibold';
+    }
+
+    .p-3 {
+      padding: 3rem;
+    }
+
+    .blue-font {
+      color:#0C6EA8;
+    }
+    .color-lightblue {
+      color:#17B3F1
+    }
+
+    .text-uppercase {
+      text-transform: uppercase;
+    }
+
+    .description h2 {
+      height:85px
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .m-auto {
+      margin: auto !important;
+    }
+
+    .description {
+      width: 85%;
+    }
+
+    .prizes-not-as-shown span {
+      font-weight: bold;
+    }
+
+    @media (max-width: 967px) {
+      .thankyou-column{
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      .thankyou-text-contain {
+        padding-left: 0!important;
+        margin-top: 2rem;
+
+      }
+
+      .thankyou-text-contain {
+        padding: 0 !important;
+      }
+
+      .description h2 {
+        height: 60px !important;
+      }
+
+      .description h2, .description p {
+        text-align: center;
+
+      }
+
+      .description br {
+        display: none;
+      }
+
+      .prizes-not-as-shown {
+        text-align: center;
+      }
+
+      .prizes-not-as-shown span {
+        font-weight: bold;
+      }
+    }
+
+</style>
+
+
+<section class="block__intro negative_margin menu_buffer thankyou-banner">
+   <div class = "container-fluid">
+     <div class = "row p-3 thankyou-text-contain">
+       <div class = "col-lg-6 m-auto thankyou-column">
+    <div class="description contest_page_content_block other animated-text-block thankyou-header">
+
+            <h2 class = "text-uppercase montserrat-black color-lightblue text-left">{{ "Thank you" |t }}!</h2>
+            <p class = "opensans-semibold">  {{"You should receive your prize within 4 – 6 weeks. "|t}}
+            </p>
+    </div>
+       </div>
+       <div class = "col-lg-6">
+         <img class = "mw-100" src = "/themes/tastytheme/src/images/grab-snack/Tiles-Prizes-3.png" alt = "Prizes"/>
+         <div class = "text-right p-1 prizes-not-as-shown">
+           <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+         </div>
+
+       </div>
+     </div>
+   </div>
+</section>

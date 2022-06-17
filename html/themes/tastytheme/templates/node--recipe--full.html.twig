@@ -1,0 +1,417 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{% set classes = [
+  node.bundle|clean_class,
+  node.isPromoted() ? 'is-promoted',
+  node.isSticky() ? 'is-sticky',
+  not node.isPublished() ? 'is-unpublished',
+  view_mode ? view_mode|clean_class,
+  'clearfix',
+] %}
+
+{% set banner_image = '/themes/tastytheme/src/images/recipe.jpg' %}
+
+{% set nodeimgurl = file_url(content.field_recipe_image_detail['#items'].entity.uri.value)  ?: '' %}
+{% set nodeimgsquare_url = file_url(content.field_recipe_image['#items'].entity.uri.value)  ?: '' %}
+{% set nodeimgalt = node.field_recipe_image.alt ?: label %}
+{% set nodetitle = node.label ?: '' %}
+{% set subtitle = node.field_recipe_subtitle.value ?: node.title.value?: '' %}
+{% set nodeprepartiontime = content.field_recipe_prep_time.0 ?: '' %}
+{% set nodecookingtime = content.field_recipe_cook_time.0 ?: '' %}
+{% set noderecipeingredients = node.field_recipe_ingredients.value|raw ?: '' %}
+{% set nodehowtomake = node.field_recipe_how_to_make.value|raw ?: '' %}
+
+{% set total_rating = content.field_total_rating.0|render|render %}
+{% set total_voters = content.field_rating_voters.0|render|render?:1 %}
+{% set avg_rating = (total_rating / total_voters) |round %}
+{% set carousel = node.field_recipe_carousel %}
+{% set ncarousel_items = carousel.getValue %}
+{% set shopbutton = content.field_shop_button.0 ?1: 0 %}
+
+{# {% set springactivation = node.field_spring_activation.value %} #}
+{% set springactivation = node.field_sub_brand.value == 'springactivation'? 1 : 0 %}
+{% set fieldbrandwebsite = node.field_brand_website.value %}
+
+{% set show_button = ( iframe_url is not null and iframe_url is not empty) ? 1 : 0  %}
+
+<script type="text/javascript">
+    window.langcode = "{{langcode}}";
+</script>
+{#
+{{ kint(ncarousel_items) }}
+#}
+{{ attach_library('tastytheme/html5gallery') }}
+{{ attach_library('tastytheme/slickLibrary') }}
+  {{ attach_library('tastytheme/lifestyleLibrary') }}
+{{ attach_library('brandstheme/products') }}
+
+{# We deactivate spring activation template #}
+{# {% set springactivation = 0 %} #}
+
+{% set brand = node.field_brand_website.value %}
+
+{% if springactivation == 1 and langcode == 'en-us' %}
+	{% include '@tastytheme/includes/node-recipe-springactivation.html.twig' %}
+{% elseif brand == 'gameday' %}
+  {% include '@tastytheme/includes/node-recipe-gameday.html.twig' %}
+{% elseif fieldbrandwebsite == 'spookysnacklab' and langcode == 'en-us' %}
+  {% include '@tastytheme/includes/node-recipe-spookysnacklab.html.twig' %}
+{% else %}
+	<article{{ attributes.addClass(classes) }}>
+
+	<input type="hidden" name='node_title' id='node_title' value="{{ title }}">
+	<input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl}}">
+	<input type="hidden" name='node_url' id='node_url' value="{{ url("<current>")["#markup"] }}">
+
+
+	{{ title_prefix }}
+	  {% if not page %}
+	    <h2{{ title_attributes }}>
+	      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+	    </h2>
+	  {% endif %}
+	{{ title_suffix }}
+
+	<section id="banner">
+
+		<input type="hidden" id="node-id" value={{node.id}}>
+		{% if nodeimgurl|trim('/') is not null and nodeimgurl|trim('/') is not empty %}
+	        <div class="banner_slide recipe-desktop" style="background-image: url('{{nodeimgurl}}');">
+	    {% else %}
+	        <div class="banner_slide recipe-desktop" style="background-image: url('{{ banner_image }}');">
+	    {% endif %}
+
+			{# <div class="banner_slide" style="background-image: url('{{nodeimgurl}}');"> #}
+				<div class="banner_slide_recipe--text">
+
+	                                <!--
+					<p class="banner_slide--ads">
+						Brought to you by <img class="banner_slide--lays" src="/src/images/logo_lays.png" />
+					</p>
+	                                -->
+
+	            </div>
+				<div class="arrow-section-general"></div>
+			</div>
+			<div class="banner_slide recipe-mobile" style="background-image: url('{{ nodeimgsquare_url }}');">
+
+				<div class="banner_slide_recipe--text">
+
+	            </div>
+				<div class="arrow-section-general"></div>
+			</div>
+	</section>
+
+	<section id="recipes">
+	<div class="arrow-section-body"></div>
+			<div class="recipe-detail__cook">
+				<h1 class="banner_slide_recipe-h1">
+	                            {{subtitle|raw}}
+							</h1>
+			    {# template: views-view-unformatted--related_brands--page-1.html #}
+			    {% if langcode == 'en-us' %}
+				    <div class="view-content">
+					   <p class="banner_slide--ads">{{ "Brought to you by" |t }}
+					   	{% for image_url in recipe_sponsor %}
+						      {% if loop.index > 1  and loop.length == 2 %}
+						      {# We are assuming the rows cannot have more than 2 items #}
+                    <span class="separator"> {{"and"|t}} </span>
+                  {% endif %}
+						     <img class="banner_slide--lays"  src="{{image_url}}" alt=""/>
+					   	{% endfor %}
+					   </p>
+					</div>
+			    {% else %}
+			    	{{ drupal_view('related_brands', 'page_1') }}
+			    {% endif %}
+
+      <div class="wrapper-instructions center-align-md-dsk">
+        <div class="recipe-detail__description-column">
+          {% set url_shop_lang  = 'shopping'|t %}
+          {% set url_shop  = language.id=='fr'?'/fr-ca/'~ url_shop_lang : '/en-ca/'~ url_shop_lang %}
+        {% if langcode == 'en-us' or langcode == 'es-us' %}
+          {% include '@tastytheme/includes/snack-com-button.html.twig' %}
+        {% else %}
+          {# @TODO: Remove this when time to push the Canada updates #}
+          {% set show_button = 1 %}
+
+          {% if node.body.0.value|striptags is not empty %}
+            <p class="recipe-detail__cook-instruction">
+              {{ node.body.0.value | raw }}
+              <br>
+              {# {% if shopbutton %} #}
+              {% if show_button %}
+                <span class="shop_now">
+						    {# <a href="{{ url_shop }}" class="btn_red">{{ 'Buy Now'|t }}</a> #}
+                  <a class="btn_red js-buynow" data-toggle="modal" data-target="#buyNowModal">
+                    {{ 'Buy Now'|t }}
+                  </a>
+						    </span>
+              {% endif %}
+            </p>
+            <!-- Modal -->
+            <div class="modal bootstrap-modal bg-transparent recipe-modal" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="buyNowModal" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered recipe-modal-dialog" role="document">
+                <div class="modal-content recipe-modal-content">
+                  <div class="modal-body recipe-modal-body">
+                    <button type="button" class="close recipe-close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {# <p>Content goes here</p> #}
+                    {% if show_button %}
+                      <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <p class="recipe-detail__cook-instruction">
+              {# No content is available #}
+              {# {% if shopbutton %} #}
+              {% if show_button %}
+                <span class="shop_now">
+						{# <a href="{{ url_shop }}" class="btn_red">{{ 'Buy Now'|t }}</a> #}
+                  <a class="btn_red js-buynow" data-toggle="modal" data-target="#buyNowModal">
+                    {{ 'Buy Now'|t }}
+                  </a>
+						    </span>
+              {% endif %}
+            </p>
+
+            <!-- Modal -->
+            <div class="modal bootstrap-modal bg-transparent recipe-modal" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="buyNowModal" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered recipe-modal-dialog" role="document">
+                <div class="modal-content recipe-modal-content">
+                  <div class="modal-body recipe-modal-body">
+                    <button type="button" class="close recipe-close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {# <p>Content goes here</p> #}
+                    {% if show_button %}
+                      <iframe id="snack-shop"  src="{{iframe_url}}"></iframe>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
+          {% if ncarousel_items|length > 0 %}
+            <div class="recipe-detail__cook-preparation">
+              <!--brand cook-preparation -->
+              {% include '@tastytheme/includes/cook-preparation.html.twig' %}
+              <!--brand cook-preparation end -->
+            </div>
+          {% endif %}
+
+
+        </div>
+        <div class="recipe-detail__cook-preparation">
+          {% if ncarousel_items|length > 0 %}
+
+
+            <div class="html5gallery" data-thumbtitleheight="0" data-showplaybutton="false" data-showfullscreenbutton="false" data-showtitle="false" data-lightbox="false" data-responsive="true" data-skin="gallery" data-showimagetoolbox="always" data-thumbwidth="140" data-thumbheight="85" data-width="480" data-height="272" data-resizemode="fill" data-autoplayvideo="false" data-playvideoonclick="false" style="display:none;">
+
+              <!-- Add images to Gallery -->
+              {% for item in node.field_recipe_carousel %}
+
+                {% set car_image = file_url(item.entity.fileuri ?:'') %}
+
+                {# kint(car_image) #}
+
+                {% set car_image_alt = item.alt ?:'' %}
+                {% set car_video = item.title ?: '' %}
+                {# kint(item.entity.getTranslation(language).field_image.0.entity) #}
+
+                {% if car_video is empty %}
+                  <a href="{{ car_image }}"><img src="{{ car_image }}" alt="{{ car_image_alt }}"></a>
+                {% else %}
+                  <a href="{{ car_video }}"><img src="{{ car_image }}" alt="{{ car_image_alt }}"></a>
+                {% endif %}
+
+              {% endfor %}
+            </div>
+          {% else %}
+            <!--brand cook-preparation -->
+            {% include '@tastytheme/includes/cook-preparation.html.twig' %}
+            <!--brand cook-preparation end -->
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="recipe-detail__ingredients">
+      <div class="recipe-detail__instructions">
+        <h3 class="recipe-detail__h3">
+          {{ 'Ingredients' | trans }}:
+        </h3>
+        <p>
+          {{ noderecipeingredients | raw }}
+        </p>
+      </div>
+
+      <div class="recipe-detail__instructions">
+        <h3 class="recipe-detail__h3">
+          {{ 'How to make it' | trans }}:
+        </h3>
+        <p>
+          {{ nodehowtomake| raw }}
+        </p>
+
+        <div class="recipe-detail__social-media social-share">
+          <p class="recipe-detail__social-media-wrap-paragraph">{{ 'Share Recipe'|t }}&nbsp;</p>
+
+            <a href="#" id="mk-recipe-fb" aria-label="icon facebook">
+                <span class="fa fa-lg fa-facebook" title="Share on facebook icon"></span>
+            </a>
+            <a href="#" id="mk-recipe-tw" aria-label="icon twitter">
+                <span class="fa fa-lg fa-twitter" title="Share on twitter icon"></span>
+            </a>
+            <a href="#" id="mk-recipe-pin" aria-label="icon pinterest">
+                <span class="fa fa-lg fa-pinterest" title="Share on pinterest icon"></span>
+            </a>
+            <a href="#" id="mk-recipe-print" aria-label="icon print">
+                <span class="fa-lg fa-print" title="Print icon"></span>
+            </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coupons">
+    {# {{ drupal_block('couponblockcallout') }} #}
+    {# {{ coupon_block|t|raw }} #}
+     {% include '@tastytheme/includes/coupon_block.html.twig' %}
+  </section>
+
+  {% if rp_rows is not empty and rp_rows|length >= 3 %}
+    <section id="recipes">
+      <div class="recipe__menu related-recipes">
+        <h2>
+          {{ 'Even more tasty recipes to discover' | trans }}
+        </h2>
+        <p>
+          {{ 'Discover a new world of flavours!' | trans }}
+        </p>
+        <div class="recipe__filter-wrapper">
+          <div class="recipe__menu-detail-wrapper">
+            {% for rp_row in rp_rows %}
+              {# Limit results to three #}
+              {% if loop.index < 4 %}
+
+                {% set summary = rp_row.body|render %}
+                {% set trimmed_body = summary|length > 100 ? summary|slice(0, 100) ~ '...' : summary %}
+                {% set trimmed_body = truncateText(trimmed_body) %}
+                <div class="recipe__menu-detail-section">
+                  <div class="background-zoom__parent">
+                    <a href="{{ recipelink }}" class="img-recipe">
+                      <img class="background-zoom__child recipe__menu-detail-section-image" src="{{ rp_row.recipe_imageurl }}" alt="{{ rp_row.recipe_imagealt | trim }}"/>
+                    </a>
+                  </div>
+
+                  <h3 class="recipe__menu-detail-wrapper-title">{{ rp_row.title|raw }}</h3>
+                  <p>{{ trimmed_body|raw }}</p>
+
+                  <div class="recipe__btn-wrapper">
+                    <a href="{{ rp_row.nodeurl }}" class="recipe__btn_red">{{ 'Show Recipe' | trans }}</a>
+                    <div class="recipe__star-wrapper">
+                      <div class="recipe__star-block">
+                        <span>{{ rp_row.prepare_time }}</span>
+                        <img src="/themes/tastytheme/src/images/recipes_icon1.jpg" alt="time"/>
+                      </div>
+                      <div class="recipe__star-block">
+                        <span>4/5</span>
+                        <img src="/themes/tastytheme/src/images/recipes_icon2.jpg" alt="time"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <section id="lifestyle" class="">
+    {{ drupal_view('carousel2', 'page_article') }}   {# page_article display #}
+  </section>
+
+  <!--brand carousel -->
+  {% include '@tastytheme/includes/brands.html.twig' %}
+  <!--brand carousel end -->
+
+
+</article>
+
+{% endif %}

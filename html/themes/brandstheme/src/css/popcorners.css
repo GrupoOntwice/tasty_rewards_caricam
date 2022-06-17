@@ -1,0 +1,1170 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Veneer Two';
+  src: url('../fonts/popcorners/VeneerTwo-Italic.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerTwo-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer Two';
+  src: url('../fonts/popcorners/VeneerTwo.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerTwo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer Three';
+  src: url('../fonts/popcorners/VeneerThree-Italic.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerThree-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer Three';
+  src: url('../fonts/popcorners/VeneerThree.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerThree.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer';
+  src: url('../fonts/popcorners/Veneer-Italic.woff2') format('woff2'),
+  url('../fonts/popcorners/Veneer-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer Extras';
+  src: url('../fonts/popcorners/VeneerExtras-Italic.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerExtras-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer Extras';
+  src: url('../fonts/popcorners/VeneerExtras.woff2') format('woff2'),
+  url('../fonts/popcorners/VeneerExtras.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Veneer';
+  src: url('../fonts/popcorners/Veneer.woff2') format('woff2'),
+  url('../fonts/popcorners/Veneer.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.veneer-font {
+  font-family: 'Veneer';
+  font-weight: normal;
+}
+
+.opensans-font {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.text-white {
+  color: #fff;
+}
+
+.margin-right {
+  margin-right: 50px;
+}
+
+.product-claim-font {
+  font-size: 1.3rem;
+}
+
+.p-absolute {
+  position:absolute;
+}
+
+.noDesktop-sm {
+  display: none;
+}
+
+.noMobile-sm {
+  display: block;
+}
+
+/**********************************
+   Fonts
+**********************************/
+
+
+
+/**********************************
+   Menu
+**********************************/
+ul.popcorners_menu {
+  height: 75px;
+  padding: 0 30px;
+}
+
+.popcorners-logo {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**********************************
+   Remove
+**********************************/
+
+/*section#banner {*/
+/*  background-image: url('/themes/brandstheme/src/images/popcorners/popcorners-header-dsk.jpg');*/
+/*  height: 580px;*/
+/*  background-size: cover;*/
+/*}*/
+
+
+
+/**********************************
+  Header Bottom
+**********************************/
+
+.header-bottom {
+  background-color:#31414A;
+  padding-bottom: 60px;
+  text-align: center;
+  padding-top: 30px;
+  margin-top: -20px
+}
+
+.header-bottom .container {
+  position: relative;
+}
+
+.header-bottom .container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-bottom .container p {
+  font-family: open-sans, sans-serif;
+  margin-bottom: 40px;
+}
+
+ div.bottom-header-heading > svg:nth-child(1) {
+   position: relative;
+   left: -10px;
+   top: -5px;
+ }
+
+
+div.bottom-header-heading > svg:nth-child(3) {
+  position: relative;
+  left: 10px;
+  top: -10px
+}
+
+div.header-bottom > div.container > img:nth-child(1) {
+  width: 120px;
+  left: 85%;
+  top: 50%;
+}
+
+div.header-bottom > div.container > img:nth-child(2) {
+  width: 120px;
+  right: 95%;
+}
+
+div.header-bottom > div.container > img:nth-child(3) {
+  width: 120px;
+  right: 85%;
+  top: 60%
+}
+
+div.header-bottom > div.container > img:nth-child(4) {
+  width: 120px;
+  left: 95%;
+}
+/**********************************
+   Products Section
+**********************************/
+
+.product-copy-popcorners {
+  font-family: 'Open Sans', sans-serif;
+  margin-top:3rem;
+}
+
+.products-nutrition h3, .products-ingredients h3 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fa-nutrition, .fa-ingredients {
+  display: flex;
+}
+
+.popcorners-nutrition-title, .popcorners-ingredients-title {
+  padding-left: 20px;
+}
+
+.popcorners-nutrition-title h3, .popcorners-ingredients-title h3 {
+  text-decoration: underline;
+  font-size: 1.2em;
+}
+
+.fa-swap, .fa-ingredients-swap {
+  cursor: pointer;
+}
+
+.products-ingredients {
+  padding: 15px 0;
+}
+
+.red {
+  background-color:#E53838;
+}
+
+.light-green {
+  background-color: #43D8C4;
+}
+
+.light-blue {
+  background-color: #41B1F8;
+}
+
+
+.orange {
+  background-color: #FFA43A;
+}
+
+.dark-green {
+  background-color: #015D37;
+}
+
+.popcorners-product-container {
+  display: flex;
+  position: relative;
+}
+
+.products-recipe-image {
+  display: flex;
+  justify-content: center;
+}
+.part-popcorn-bg-top img, .part-popcorn-bg-bottom img {
+  max-width: 100%;
+  width: 100%;
+  transform: translate(10px, 10px);
+  position: relative;
+}
+
+.part-popcorn-text-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+div.part-popcorn-text-container > svg:nth-child(1) {
+  position: relative;
+  left: -10px;
+  top:-8px
+}
+
+
+div.part-popcorn-text-container > svg:nth-child(3) {
+  position: relative;
+  left:10px;
+  top:-13px
+}
+
+.popcorners-product-claims {
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 9rem;
+}
+
+.popcorners-product-claim-img {
+  height: 100px;
+}
+
+ .red-bg-arrow-img {
+   left: -28%;
+   top: 35%;
+   -webkit-transition: all .4s ease-in-out;
+}
+
+
+.red-bg-arrow-img img {
+  width: 80%;
+}
+ .red-bg-triangle-img {
+  top:20%;
+   left:0;
+   -webkit-transition: all .4s ease-in-out;
+ }
+
+.red-bg-triangle-img img {
+  width: 85%;
+}
+.red-bg-popcorn-img {
+  left: 72%;
+  top: 20%;
+  -webkit-transition: all .4s ease-in-out;
+}
+
+.red-bg-popcorn-img img {
+  width:95%
+}
+.red-bg-airpopped-img{
+  top:60%;
+  left:70%;
+}
+
+.red-bg-airpopped-img img {
+  width: 90%;
+}
+
+.lightgreen-img-2 img {
+  width: 85%;
+}
+
+.lightgreen-arrow-img {
+  top: 17%;
+  left: 76%;
+}
+
+.lightgreen-img-1 {
+  top:50%;
+  left: 75%;
+}
+
+.lightgreen-img-2 {
+  top: 50%;
+  left:-2%;
+}
+
+.lightgreen-img-3 {
+  top:15%;
+  left: 0;
+}
+
+div.light-green > div.popcorners-product-container >  div.product-copy-popcorners > div {
+  margin-left: 7rem;
+}
+
+.lightblue-bg-img-one {
+  top: 10%;
+  left: 3%;
+}
+
+.lightblue-bg-img-one img {
+  width: 80%;
+}
+
+
+.lightblue-bg-img-arrow {
+  top:30%;
+  left: -25%;
+
+}
+
+.lightblue-bg-img-three img, .lightblue-bg-img-two img {
+  width: 75%;
+}
+
+.lightblue-bg-img-two {
+  top:60%;
+}
+
+.lightblue-bg-img-three {
+  top:30%;
+  left: 75%;
+}
+
+
+.orange-bg-arrow{
+  top:5%;
+  left: 75%;
+}
+
+.orange-bg-one {
+  top:25%;
+  left: 70%;
+}
+
+orange-bg-one img{
+  width: 95%;
+}
+
+.orange-bg-two {
+  top:55%;
+  left: 80%;
+}
+
+.orange-bg-two img {
+  width:165px;
+}
+.orange-bg-three {
+  top: 30%;
+}
+
+.orange-bg-three img {
+  width: 80%;
+}
+
+div.orange > div.popcorners-product-container >  div.product-copy-popcorners > div {
+  margin-left: 7rem;
+  color: #fff;
+}
+
+.darkgreen-bg-one {
+  top: 15%;
+  left: 0
+}
+
+.darkgreen-bg-one img {
+  width: 63%;
+}
+
+.darkgreen-bg-arrow {
+  top:45%;
+  left: -20%;
+}
+
+.darkgreen-bg-two {
+  left: 76%;
+  top:30%
+}
+
+.darkgreen-bg-three {
+  left: 74%;
+  top:60%
+}
+
+.darkgreen-bg-three img {
+  width:85%;
+}
+
+
+
+.product-copy-popcorners > div {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.products-body.popcorners-fave-body p {
+  color: inherit;
+}
+
+div.products-title.popcorners-fave-subtitle > span:nth-child(2) {
+  display: block;
+  font-size: 3rem;
+  font-family: Veneer;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+div.products-title.popcorners-fave-subtitle >span:nth-child(1) {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.products-title.popcorners-fave-subtitle {
+  font-family: open-sans, sans-serif;
+}
+
+.products-disclaimer p {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.3em;
+  width: 85%;
+  font-family: open-sans, sans-serif;
+  color: inherit;
+  width:100%;
+}
+
+.ingredients-copy p {
+  color: inherit;
+}
+
+.ingredients-copy {
+  margin-top: 10px;
+}
+
+.products-body p {
+  font-size: 16px;
+  font-family: open-sans, sans-serif;
+}
+
+.lightgreen-img-1 img {
+  width: 80%;
+}
+
+.light-green, .dark-green {
+  padding-bottom: 25px;
+}
+
+.orange > div > div.col-lg-6.product-copy-col.text-center.product-copy-popcorners > div > div.products-ingredients > div.fa-ingredients > div.fa-ingredients-icon.fa-ingredients-swap.noMobile > svg > g > path {
+  fill: #fff !important;
+}
+.orange > div > div.col-lg-6.product-copy-col.text-center.product-copy-popcorners > div > div.products-nutrition > div.fa-nutrition > div.fa-nutrition-icon.fa-swap > svg > g > path {
+  fill:#fff;
+}
+
+.product-img-col {
+  max-height: 500px;
+}
+
+
+
+
+/**********************************
+  Nutrition Table
+**********************************/
+
+.nutrition_popcorners {
+  padding:20px;
+  margin-top: 20px;
+}
+
+table.performance-facts__table tr {
+  border-bottom: 2px solid #FFF;
+  text-align: left;
+}
+
+.light-green table.performance-facts__table tr {
+  border-bottom: 2px solid #333;
+  text-align: left;
+}
+
+table.performance-facts__table tr td {
+  padding: 8px;
+}
+ th {
+   padding: 0 8px 8px 8px;
+ }
+
+div.performance-facts > table > thead > tr:nth-child(2) {
+  border-bottom: 2px solid #000;
+  padding:8px;
+}
+
+#nutrition-facts > div.performance-facts > table > thead > tr:nth-child(1) {
+  border:none;
+}
+
+.nutrition-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: open-sans, sans-serif;
+}
+
+td {
+  font-family: open-sans, sans-serif;
+}
+
+table {
+  width: 100%;
+}
+
+/*.bold-border{*/
+/*  border-bottom: 4px solid #000 !important;*/
+/*}*/
+
+.nutrition-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+div#nutrition-facts {
+  color:#FFF
+}
+
+.light-green #nutrition-facts {
+  color:#333
+}
+
+
+  /*Coupon Block*/
+
+.popcorners-coupon--container {
+  display:flex;
+  justify-content: center;
+  background-color: #31414A;
+  padding: 70px;
+}
+
+.popcorners-coupon--text {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.popcorners-coupon--text h3 {
+  font-size: 39px;
+  width: 70%;
+  font-family: 'Veneer';
+}
+.popcorners-coupon--leftcol {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #43D8C4;
+  text-align: center;
+}
+
+.popcorners-coupon--leftcol img {
+  width:90%;
+}
+
+.arrow-section-footer-white {
+  display: none;
+}
+
+.btn_popcorners {
+  border-radius: 25px;
+  width: auto;
+  display: block;
+  padding: 15px 20px;
+  margin: 0 auto;
+  font-family: 'Raleway',sans-serif;
+  text-align: center;
+  background-color: #43D8C4;
+  color: #fff;
+  margin-bottom:30px;
+  font-family: 'Veneer';
+  margin-top: 10px;
+}
+
+.btn_popcorners:hover, .btn_popcorners:focus {
+  color:#fff;
+}
+
+.popcorners-coupon-disclaimer {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+#coupon-block > div > div.popcorners-coupon--text > span {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.aboutus-content {
+  margin-top: 8rem;
+}
+
+
+/**********************************
+          Responsive 767 992 1024
+**********************************/
+
+@media only screen
+and (max-device-width: 767px) {
+
+  .noMobile {
+    display: none !important;
+  }
+
+  .noMobile-sm {
+    display: none;
+  }
+
+  .noDesktop-sm {
+    display: block;
+  }
+
+  div.header-bottom > div.container > img:nth-child(1) {
+    left: 60%;
+    width: 90px;
+    top: 65%;
+  }
+
+  div.header-bottom > div.container > img:nth-child(2) {
+    width: 90px;
+    right: 70%;
+    top: -25%;
+  }
+
+  div.header-bottom > div.container > img:nth-child(3) {
+    width: 90px;
+    right: 70%;
+    top: 65%;
+  }
+
+  div.header-bottom > div.container > img:nth-child(4) {
+    width: 90px;
+    left: 70%;
+    top: -25%;
+  }
+
+  .header-bottom .container p {
+    margin-bottom: 8rem;
+  }
+
+  div.bottom-header-heading > svg:nth-child(3) {
+    left: -44px;
+    top: -10px;
+  }
+
+  div.bottom-header-heading > svg:nth-child(1) {
+    left: 55px;
+  }
+
+  .product-copy-popcorners {
+    order: 2;
+  }
+
+  .red-bg-arrow-img, div.light-green > div.popcorners-product-container > div.product-img-col > div:nth-child(1), div.light-blue > div.popcorners-product-container > div.product-img-col > div:nth-child(2) {
+    display: none;
+  }
+
+  .div.orange > div.popcorners-product-container > div.product-img-col > div:nth-child(1), div.dark-green > div.popcorners-product-container > div.product-img-col > div:nth-child(2), div.orange > div.popcorners-product-container > div.product-img-col > div:nth-child(1) {
+    display: none;
+  }
+
+  .popcorners-product-container {
+    flex-direction: column;
+  }
+
+  .red-bg-triangle-img {
+    left: 1%;
+  }
+
+  .red-bg-popcorn-img {
+    left: 73%;
+    top: 25%;
+  }
+
+  .fa-nutrition, .fa-ingredients {
+    justify-content: center;
+  }
+
+  .product-copy-popcorners > div {
+    text-align: center;
+    width: 100%;
+    padding: 0 25px 25px 25px;
+  }
+
+  div.light-green > div.popcorners-product-container > div.product-copy-popcorners > div, div.orange > div.popcorners-product-container > div.product-copy-popcorners > div {
+    margin-left: 0;
+  }
+
+  .popcorners-product-claim-img {
+    width: 80px;
+  }
+
+  .popcorners-product-claims {
+    flex-wrap: wrap
+  }
+
+  .margin-right {
+    margin-right: 0;
+  }
+
+  .popcorners-product-claim-container {
+    width: 50%;
+  }
+
+  div.popcorners-coupon--display > div > a > img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .popcorners-coupon--text {
+    padding: 20px 20px;
+    height: auto;
+  }
+
+  .popcorners-coupon--container {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .popcorners-coupon--text h3 {
+    font-size: 31px;
+  }
+
+  .header-bottom {
+    margin-top: -1rem;
+    padding-top: 5rem;
+  }
+
+  .products-recipe-image img {
+    max-width: 75%;
+  }
+
+  .products-recipe-image {
+    margin-top: 30px;
+  }
+
+  .red-bg-triangle-img img {
+    width: 65%;
+  }
+
+  .red-bg-airpopped-img img {
+    width: 80%;
+  }
+
+  .products-disclaimer p {
+    text-align: center;
+  }
+
+  .lightgreen-img-1 img {
+    width: 75%;
+  }
+
+  .lightgreen-img-2 img {
+    width: 65%;
+  }
+
+  .lightgreen-img-3 img {
+    width: 70%;
+  }
+
+  .part-popcorn-bg-bottom, .part-popcorn-bg-top {
+    height: 80px !important;
+  }
+
+  div.part-popcorn-text-container > svg:nth-child(3) {
+    left: -10px;
+  }
+
+  div.part-popcorn-text-container > svg:nth-child(1) {
+    left: 10px;
+  }
+
+  .popcorners-product-claims {
+    margin-bottom: 3rem;
+  }
+
+  .aboutus-content {
+    margin-top: 5rem;
+  }
+
+  .part-popcorn-bg-top img, .part-popcorn-bg-bottom img {
+    transform: scale(1.2) !important;
+    left: 12px
+  }
+
+  .popcorners-navbar__vertical-align {
+    flex-direction: column;
+    padding-top: 10px;
+  }
+
+  .popcorners-mobile-topnav {
+    padding-top: 10px;
+  }
+
+  .logo-mobile {
+    text-align: center;
+  }
+
+  div#to-open-close-search-popover-container {
+    display: none !important;
+  }
+
+  ul.popcorners_menu {
+    padding: 0;
+  }
+
+  .lightblue-bg-img-one img {
+    width: 55%;
+  }
+
+  .lightblue-bg-img-one img {
+    width: 50%
+  }
+
+  .popcorners-coupon--leftcol img {
+    margin: 20px 0;
+  }
+
+  div.part-popcorn-bg-top > img:nth-child(1) {
+    top: 50% !important;
+    left: 0 !important;
+  }
+
+  div.part-popcorn-bg-top > img:nth-child(2) {
+    top: 52% !important;
+  }
+
+  div.part-popcorn-bg-top > img:nth-child(3) {
+    top: 60% !important;
+    left: 15px !important;
+  }
+
+  div.part-popcorn-bg-bottom > img:nth-child(1) {
+    left: 0 !important;
+  }
+
+  .products-disclaimer p {
+    margin-top: 40px;
+  }
+
+  div.part-popcorn-bg-bottom > img:nth-child(2) {
+    left: 0 !important;
+  }
+
+  .product-copy-popcorners {
+    margin-top: 0;
+  }
+
+  .orange-bg-three img {
+    width: 55%
+  }
+
+  .orange-bg-one img {
+    width: 80%;
+  }
+
+  .orange-bg-two img {
+    width: 95%;
+  }
+
+  .light-green, .dark-green {
+    padding-bottom: 0 !important;
+  }
+
+  .product-copy-popcorners > div {
+    padding-bottom: 0 !important;
+  }
+  .arrow-up{
+    background-image: url("/themes/brandstheme/src/images/popcorners/arrow-down.svg");
+    height: 54px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .arrow-down {
+    background-image: url("/themes/brandstheme/src/images/popcorners/up-arrow.svg");
+  }
+
+  .banner-mobile {
+    background-size: 100% 100% !important;
+  }
+}
+
+
+  @media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 992px) {
+    .arrow-up{
+      background-image: url("/themes/brandstheme/src/images/popcorners/arrow-down.svg");
+      height: 54px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .arrow-down {
+      background-image: url("/themes/brandstheme/src/images/popcorners/up-arrow.svg");
+    }
+
+    .part-popcorn-bg-top, .part-popcorn-bg-bottom {
+      height:150px !important;
+    }
+
+    .noMobile {
+      display: none !important;
+    }
+
+    .banner-mobile {
+      background-size: unset !important;
+    }
+
+    .noMobile-sm {
+      display: none;
+    }
+
+    .popcorners-navbar__vertical-align {
+      flex-direction: column;
+      padding-top: 10px;
+    }
+
+    ul.popcorners_menu{
+      padding-left: 0 !important;
+    }
+
+    .logo-mobile{
+      margin-left: 15px;
+    }
+
+    .popcorners-product-claims {
+      margin-bottom: 4rem;
+    }
+    .part-popcorn-bg-top img, .part-popcorn-bg-bottom img {
+      transform: scale(1.1) !important;
+      left: 25px !important;
+    }
+    .product-copy-popcorners {
+      margin-top:0;
+    }
+
+
+
+  }
+
+@media only screen
+and (min-device-width:992px)
+and (max-device-width: 1900px) {
+
+  div.part-popcorn-bg-bottom > img:nth-child(2) {
+    transform: scale(1) !important;
+  }
+
+}
+
+@media screen and (min-width: 1900px) {
+  .part-popcorn-bg-top, .part-popcorn-bg-bottom {
+    height:400px !important;
+  }
+  .part-popcorn-bg-top img{
+    transform: scale(0.8);
+    top:-60%;
+  }
+
+  .part-popcorn-bg-bottom img {
+    bottom:55% !important;
+    transform: scale(0.8) !important;
+  }
+
+
+}
+
+
+.part-popcorn-bg-top {
+  background-image: url("/themes/brandstheme/src/images/popcorners/aboutus-top-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.part-popcorn-bg-bottom {
+  background-image: url("/themes/brandstheme/src/images/popcorners/aboutus-bottom-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.aboutus-chips-top, .aboutus-chips-bottom {
+  width: 30% !important;
+}
+
+div.part-popcorn-bg-top > img:nth-child(1) {
+  top:10%
+}
+
+div.part-popcorn-bg-top > img:nth-child(2) {
+  top: 20%;
+  left: 5%;
+}
+
+div.part-popcorn-bg-top > img:nth-child(3) {
+  top: 25%;
+  left: 10%;
+}
+
+div.part-popcorn-bg-bottom > img:nth-child(1) {
+  bottom: 60%;
+  left: -50px;
+}
+
+div.part-popcorn-bg-bottom > img:nth-child(2) {
+  width: 30%;
+  bottom: 45%;
+  left:-20px;
+  transform: rotate(
+    66deg) scale(0.8);
+}
+
+div.part-popcorn-bg-bottom > img:nth-child(3) {
+  bottom: 45%;
+}
+
+.slick-next:before {
+  background-image: url('/themes/brandstheme/src/images/popcorners/arrow-prev.svg') !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+}
+
+.slick-next {
+  left: 90% !important;
+}
+
+.slick-prev:before {
+  background-image: url('/themes/brandstheme/src/images/popcorners/arrow-prev.svg') !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.products-recipe-image img {
+  -webkit-transition: all .4s ease-in-out;
+}
+
+.scale {
+  transform: scale(1.2);
+  margin-top:3rem;
+}
+
+section#banner .slick-dots li.slick-active button {
+  background-color: #43D8C4 !important;
+}
+
+.flavourful-img {
+  width:120px;
+}
+
+.banner_slide--text.slide-left .h1 {
+  font-family: 'Veneer';
+  color: #333 !important;
+}
+
+a.btn_carousel.sign-up-link {
+font-family: 'Veneer';
+border-radius: 25px;
+    width: auto;
+    display: block;
+    padding: 15px 20px;
+    font-family: 'Raleway',sans-serif;
+    text-align: center;
+    background-color: #43D8C4;
+    color: #fff;
+    margin-bottom: 30px;
+    font-family: 'Veneer';
+    margin-top: 10px;
+    border: 1px solid #43D8C4;
+}
+
+
+
+
+
+
+
+
+

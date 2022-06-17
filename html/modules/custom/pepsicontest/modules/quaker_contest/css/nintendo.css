@@ -1,0 +1,2206 @@
+/*custom_contest.css*/
+
+@font-face {
+    font-family: 'RobofanSpark-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.woff') format('woff'), /* Modern Browsers */
+    url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/themes/tastytheme/src/fonts/RobofanSpark-Bold.svg#RobofanSpark-Bold') format('svg'); /* Legacy iOS */
+}
+
+.nintendo .js-popup-langswitcher{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-decoration: underline;
+    font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.nintendo-contest-text-wrap .margin-bottom{
+    margin-bottom: 25px !important;
+}
+
+.nintendo-contest-text-wrap sup{
+    top: -20px;
+    font-size: 30px;
+    line-height: normal;
+}
+
+.nintendo-contest-text-wrap p sup{
+    top: -5px;
+    font-size: 17px;
+    line-height: normal;
+}
+
+.nintendo-code .nintendo-contest-text-wrap sup{
+    font-size: 15px;
+    top: -5px;
+}
+
+.nintendo-contest-text-wrap a:hover, .nintendo-contest-text-wrap a:focus{
+    color: #FFFFFF;
+}
+
+.btn_nintendo{
+    background-color: #0C76B5;
+    color: #FFFFFF;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    text-align: center;
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+  font-size: 16px;
+}
+
+.btn_nintendo_red{
+    background-color: #f30522;
+    color: #FFFFFF;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    text-align: center;
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+}
+
+.btn_nintendo:focus{
+    color: #FFFFFF;
+    outline: none;
+}
+
+.btn_nintendo:hover{
+    background-color: #0b5c8b;
+    color: #FFFFFF;
+}
+
+.nintendo-landing-contest-rules .btn_nintendo{
+    background-color: #f30522;
+    margin: inherit;
+}
+
+.nintendo-landing-contest-rules .btn_nintendo:hover {
+    background-color: #cb0820;
+    color: #FFFFFF;
+}
+
+.nintendo-switch .btn_nintendo:hover {
+    background-color: #cb0820;
+    color: #FFFFFF;
+}
+
+.popup-main-wrapper.nintendo{
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(9px);
+}
+
+.nintendo .nintendo__fritolay-logo-pop {
+    width: auto;
+    margin-bottom: 15px;
+}
+
+.nintendo-contest-banner {
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+.nintendo-contest-banner a{
+    display: flex;
+    width: 100%;
+}
+
+.nintendo-contest-banner a:focus{
+    outline: none;
+}
+
+.nintendo-contest-banner img{
+    width: 100%;
+}
+
+.nintendo-contest-fritolay-coupon-code{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-pink-a.png");
+    /*background-color: #E11955;*/
+    background-repeat: no-repeat;
+    background-position: bottom;
+    bottom: 155px;
+    position: relative;
+    z-index: 9;
+    background-size: cover;
+}
+
+.nintendo-contest-fritolay-coupon-code.prize-section{
+  background-image: url(/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-blue.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: relative;
+  bottom: 570px;
+  justify-content: center;
+  display: flex;
+  z-index: 7;
+  background-size: cover;
+}
+
+
+
+.nintendo-contest-unlock-wrap{
+    display: flex;
+    align-items: center;
+    padding: 200px 60px 140px;
+}
+
+.nintendo-contest-unlock-wrap.nintendo-code{
+    padding: 180px 80px 170px 80px;
+}
+
+.nintendo-contest-unlock-wrap img{
+    width: 50%;
+}
+
+.nintendo-contest-text-wrap{
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    align-items: baseline;
+  margin-left: 50px;
+  margin-right: -50px;
+}
+
+.nintendo-contest-text-wrap-sub{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nintendo-contest-text-wrap-sub sup{
+    top: -17px;
+}
+
+.nintendo-contest-text-wrap p{
+    color: #FFFFFF;
+    font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.nintendo-contest-text-wrap a{
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+
+.nintendo-contest-text-wrap h3{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    font-size: 53px;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+
+.nintendo-contest-participating{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-orange.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: relative;
+    z-index: 8;
+    bottom: 360px;
+    padding: 240px 60px 240px;
+    background-size: cover;
+}
+
+.nintendo-contest-participating.pick-game{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-pink-b.png");
+    bottom: 970px;
+    z-index: 5;
+  padding-top: 380px;
+}
+
+.nintendo-contest-participating h3{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    font-size: 53px;
+    line-height: 1em;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.nintendo-contest-participating.pick-game img{
+    width: 250px;
+  margin-right: 30px;
+}
+
+.nintendo-content-participating-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.nintendo-content-participating-img{
+    display: flex;
+    justify-content: center;
+}
+
+.nintendo-content-participating-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.nintendo-content-participating-div img{
+    width: 100%;
+}
+
+.nintendo-contest-unlock-switch{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-blue.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: relative;
+    bottom: 570px;
+    justify-content: center;
+    display: flex;
+    z-index: 7;
+    background-size: cover;
+}
+
+.nintendo-contest-unlock-switch.find-code{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-orange-b.png");
+    bottom: 1170px;
+    margin-bottom: -1170px;
+    z-index: 4;
+}
+
+.nintendo-contest-unlock-wrap img{
+    width: 100%;
+    max-width: 100%;
+}
+
+.nintendo-contest-text-description{
+    list-style: disc;
+    width: 50%;
+}
+
+.nintendo-contest-text-description li{
+    color: #FFFFFF;
+    font-size: 18px;
+    margin: 10px 0;
+    font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img{
+    width: 100%;
+}
+
+/*.nintendo-switch .nintendo-contest-unlock-img img{*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    top: -45px;*/
+/*}*/
+
+#nintendo-contest-code{
+    text-align: center;
+}
+
+.nintendo-landing-contest-rules{
+    text-align: center;
+    padding: 30px 0 50px 0;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.nintendo-landing-contest-rules-text-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nintendo-landing-contest-rules p{
+    padding: 0 15px;
+}
+
+.margin-bottom.nintendo-landing-contest-rules .rules a{
+    text-decoration: underline;
+}
+
+.nintendo-landing-contest-rules img{
+    display: block;
+    margin: auto;
+    width: 200px;
+}
+
+.nintendo-landing-contest-rules .rules{
+    margin-top: 5px;
+    display: block;
+}
+
+.nintendo-landing-contest-rules p{
+    line-height: 1.5em;
+    font-size: 14px !important;
+}
+
+.nintendo-sign-up .nintendo-fritolay-img{
+    width: auto;
+    padding: 0 0 15px 0;
+}
+
+/*.nintendo .date-dropdowns{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+.nintendo-birth-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nintendo .popup-title{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    color: #0076B5 !important;
+    font-size: 30px !important;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.nintendo .popup-title sup{
+    font-size: 20px;
+}
+
+.nintendo .popup-sub-title{
+    font-family: 'Open Sans', sans-serif;
+    color: #000000;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-top: 15px;
+    font-weight: normal;
+}
+
+.nintendo .modal__sign-up-birth{
+    margin-bottom: 20px;
+}
+
+.nintendo .date-dropdowns .day{
+    width: 30%;
+}
+
+.nintendo .submit{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #F30522 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.nintendo-sign-up{
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/microsite-background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+}
+
+.nintendo-sign-up-text-banner{
+    width: 40%;
+    color: #FFFFFF;
+}
+.nintendo-sign-up-text-banner h2 {
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+  text-transform: uppercase;
+}
+
+.nintendo-sign-up-text-banner h1{
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    text-transform: uppercase;
+    line-height: 1em;
+}
+
+.nintendo-sign-up-text-banner p{
+    color: #FFFFFF;
+}
+
+.nintendo-sign-up-text-banner span{
+    font-size: 12px;
+}
+
+.nintendo-sign-up #contest{
+    width: 30%;
+}
+
+.nintendo-sign-up .contest-detail__quacker-wrapper .contest-detail__input{
+    background-color: #FFFFFF !important;
+    border: none !important;
+    padding: 8px 0;
+}
+
+.nintendo-sign-up .contest-detail__form-quacker .contest-detail__quacker-input-col{
+    width: 100% !important;
+    padding: 0 10px;
+}
+
+.nintendo-sign-up .contest-detail__quacker-wrapper .modal__inquiry{
+    padding: 0;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.nintendo-sign-up span.error-blue,
+.nintendo-sign-up .contest-detail__quacker-input span[class*="err_"]{
+    color: #fff !important;
+}
+
+.nintendo select.province, .nintendo-sign-up select.province {
+    width: 100%;
+    margin-bottom: 4px !important;
+}
+
+.nintendo-sign-up .contest-detail__input{
+    border-radius: 0;
+}
+
+.nintendo-sign-up .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nintendo-sign-up .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox{
+    width: 100%;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkboxes-color + label:before{
+    border: 2px solid #FFFFFF  !important;
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.nintendo-sign-up section#contest .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap{
+    justify-content: normal;
+    padding: 0 10px;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkboxes-color:checked + label:before {
+    background-color: #d80a1e;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkbox-text{
+    color: #000000 !important;
+    padding-left: 0;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkbox-text a{
+    color: #000000 !important;
+    text-decoration: underline;
+}
+
+.nintendo-mario-text-position{
+    position: absolute;
+    bottom: 53%;
+    right: 10%;
+    color: #FFFFFF;
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    font-size: 14px;
+}
+
+.nintendo-comingsoon-img{
+    width: 45%;
+}
+
+.nintendo-coming-soon-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner{
+    width: 35%;
+}
+
+.nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner sup{
+    line-height: normal;
+}
+
+.nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner h1{
+    font-size: 3vw;
+}
+
+.nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner h1 p{
+    font-size: 35px;
+    margin-top: 25px;
+}
+
+.nintendo-sign-up section#contest .contest-detail__sign-up-button{
+    min-width: 95%;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #bbbbbb;
+}
+
+.nintendo-contest-rules {
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/rules-banner.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 350px;
+    padding: 0 15px;
+}
+
+.nintendo-coming-soon-disclaimer p{
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+}
+
+.esrb-container{
+    position: absolute;
+    right: -8em;
+}
+
+.nintendo-coming-soon-banner {
+    background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/microsite-background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    padding: 50px 15px 110px 15px;
+}
+
+.nintendo-contest-rules-text-banner{
+    width: 30%;
+    color: #FFFFFF;
+  margin-left: 50px;
+}
+
+.nintendo-contest-rules-text-banner h1 {
+    font-family: "RobofanSpark-Bold", Sans-Serif;
+    text-transform: uppercase;
+}
+
+.nintendo-rules h2{
+    font-family: 'Open Sans', sans-serif;
+    margin: 60px 0 40px 0;
+    font-weight: 700;
+    font-size: 44px !important;
+}
+
+.nintendo-rules h2, .nintendo-rules p{
+    color: #000000;
+}
+
+.nintendo-rules{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
+.nintendo-rules p{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
+.nintendo-contest-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* height: 800px; */
+    padding: 60px 10% 120px;
+}
+
+.thankyou-legal {
+  color: #fff;
+  width: 95%;
+  margin: auto;
+  font-size: 14px;
+  padding-bottom: 4rem;
+}
+
+.nintendo-contest-confirm a{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.code-number{
+    padding:10px;
+    border:1px solid #FFFFFF;
+    width: 60%;
+    font-size: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.thankyou-page {
+  background-image: url('/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/microsite-background.png');
+ background-repeat: no-repeat;
+ background-position: center;
+ position: relative;
+ background-size: cover;
+}
+
+.nintendo-contest-confirm a:hover, .nintendo-contest-confirm a:focus{
+color: #FFFFFF;
+}
+
+.nintendo-contest-confirm-wrap {
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+padding: 60px 0;
+}
+
+.nintendo-contest-confirm-text-banner {
+width: 50%;
+color: #FFFFFF;
+}
+
+.nintendo-contest-confirm img{
+width: 80%;
+}
+
+.thankyou-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thankyou-img-container a {
+  width: 200px;
+}
+
+.nintendo-contest-confirm-text-banner h1 {
+font-family: "RobofanSpark-Bold", Sans-Serif;
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+
+.nintendo-contest-confirm .contest-description{
+height: auto;
+}
+
+.nintendo-contest-confirm .contest-code{
+font-size: 30px;
+border: 1px solid #FFFFFF;
+margin: 20px 0 30px 0;
+text-align: center;
+width: 350px;
+padding: 15px;
+display: block;
+}
+
+.nintendo-contest-confirm .contest-description p{
+color: #FFFFFF;
+}
+
+.nintendo-contest-faq{
+background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/microsite-background.png");
+background-repeat: no-repeat;
+background-position: center;
+position: relative;
+background-size: cover;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+height: 500px;
+}
+
+.nintendo-contest-faq-text-banner{
+width: 30%;
+color: #FFFFFF;
+margin-left: 50px;
+}
+
+.nintendo-contest-faq-text-banner p{
+color: #FFFFFF;
+}
+
+.nintendo-contest-faq-text-banner p a{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+#nintendo-faq .panel-group .faq-plus-minus:after{
+content: '';
+border: solid black;
+border-width: 0 2px 2px 0;
+display: inline-block;
+padding: 5px;
+transform: rotate(45deg);
+-webkit-transform: rotate(45deg);
+position: relative;
+top: 10px;
+}
+
+#nintendo-faq .panel-group .faq-plus-minus.collapsed:after {
+content: '';
+border: solid black;
+border-width: 0 2px 2px 0;
+display: inline-block;
+padding: 5px;
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+position: relative;
+top: 10px;
+}
+
+#nintendo-faq .faq-plus-minus:before {
+content: '';
+border: 0;
+}
+
+#nintendo-faq .faq-title{
+color: #000000;
+font-family: 'Open Sans', sans-serif;
+}
+
+#nintendo-faq .faq-border{
+border-bottom: 1px solid #000000;
+}
+
+#nintendo-faq .panel-group a.faq-plus-minus:hover, #nintendo-faq .panel-group a.faq-plus-minus:focus {
+color: #000000;
+outline: none;
+}
+
+.contest-back-btn:before{
+content: '';
+color: #000000;
+border: solid black;
+border-width: 0 2px 2px 0;
+display: inline-block;
+padding: 5px;
+transform: rotate(135deg);
+-webkit-transform: rotate(135deg);
+}
+
+.nintendo-contest-rules-text-banner p{
+color: #FFFFFF;
+}
+
+.contest-back-btn{
+color: #000000;
+margin-top: 40px;
+display: block;
+width: max-content;
+}
+
+.contest-back-btn:hover{
+color: #000000;
+text-decoration: underline;
+}
+
+.nintendo.popup-main-wrapper .modal{
+justify-content: center;
+padding: 30px 30px;
+}
+
+.nintendo-landing-mobile{
+display: none;
+}
+
+.nintendo-fritolay-img.mobile{
+display: none;
+}
+
+.nintendo-sign-up .js-form-ready {
+background-color: #F40522 !important;
+border: 1px solid #F40522 !important;
+}
+
+.nintendo-sign-up #submitcontest:active {
+background-color: #F40522;
+border: 1px solid #F40522;
+}
+
+html:lang(en) .nintendo-landing-desktop.fr, html:lang(en) .nintendo-landing-mobile.fr, html:lang(en) .nintendo-fritolay-img.fr, html:lang(en) .nintendo__fritolay-logo-pop.fr{
+display: none;
+}
+
+html:lang(fr) .nintendo-landing-desktop.en, html:lang(fr) .nintendo-landing-mobile.en, html:lang(fr) .nintendo-fritolay-img.en, html:lang(fr) .nintendo__fritolay-logo-pop.en{
+display: none;
+}
+
+.rules_btn {
+margin-right: 30px !important;
+}
+
+@media only screen and (max-width: 1600px) {
+.nintendo-contest-text-wrap h3{
+    font-size: 40px;
+}
+
+.nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img {
+    width: 85%;
+}
+
+/*.nintendo-contest-unlock-wrap.nintendo-code {*/
+    /*    padding: 60px 80px 60px 80px;*/
+    /*}*/
+
+    .nintendo-contest-text-wrap sup {
+        top: -20px;
+    }
+
+    .nintendo-sign-up-text-banner h1{
+        font-size: 40px;
+    }
+
+    .nintendo-sign-up{
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .nintendo-comingsoon-img{
+        width: 95%;
+        order: 1;
+    }
+
+    .nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner{
+        order: 2;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nintendo-coming-soon-wrapper{
+        flex-direction: column;
+    }
+
+    .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img{
+        width: 70%;
+    }
+
+    #nintendo-faq .back-btn, #nintendo-faq .faq-border{
+        padding: 0 15px;
+    }
+
+    .nintendo-contest-faq{
+        flex-direction: column;
+        height: auto;
+        padding: 60px 15px;
+    }
+
+    .nintendo-contest-rules .nintendo-contest-rules-text-banner, .nintendo-contest-faq .nintendo-contest-faq-text-banner{
+        width: 100%;
+        text-align: center;
+        order: 2;
+    }
+
+    .nintendo-contest-rules .nintendo-fritolay-img, .nintendo-contest-faq .nintendo-fritolay-img{
+        order: 1;
+    }
+
+    .nintendo-contest-faq .nintendo-fritolay-img{
+        width: 30%;
+        margin-bottom: 30px;
+    }
+
+    .nintendo-contest-rules{
+        flex-direction: column;
+    }
+
+    .nintendo-fritolay-img.mobile{
+        display: block;
+        width: 50%;
+        margin-top: 30px;
+    }
+
+    .nintendo-contest-confirm .contest-code {
+        margin: 20px auto 30px auto;
+    }
+
+    .nintendo-contest-confirm-text-banner{
+        width: 100%;
+        text-align: center;
+    }
+
+    .nintendo-contest-confirm{
+        flex-direction: column;
+        padding: 60px 15px;
+    }
+
+    .nintendo-sign-up-text-banner{
+        width: 100%;
+        padding: 60px;
+        text-align: center;
+    }
+
+    .nintendo-sign-up .nintendo-fritolay-img {
+        width: 40%;
+    }
+
+    .nintendo-sign-up #contest{
+        width: 100%;
+    }
+
+    .nintendo-sign-up{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .nintendo-contest-unlock-wrap{
+        flex-direction: column;
+    }
+
+    .nintendo-contest-unlock-img{
+        width: 80%
+    }
+
+    .nintendo-contest-unlock-wrap img, .nintendo-contest-text-wrap {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn_nintendo {
+        margin: auto;
+    }
+
+    .nintendo-contest-unlock-img{
+        position: relative !important;
+        top: 0 !important;
+        order: 1;
+    }
+
+    .nintendo-contest-text-wrap{
+        order: 2;
+    }
+
+    .nintendo-contest-text-wrap h3{
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nintendo.popup-main-wrapper .modal {
+        width: 80%;
+    }
+
+    .nintendo-landing-contest-rules .btn_nintendo {
+        margin-top: 10px;
+    }
+
+    .nintendo-landing-contest-rules-text-wrap{
+        flex-direction: column;
+    }
+
+    .nintendo-contest-banner a {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nintendo-mario-text-position{
+        right: 0%;
+    }
+
+    .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img {
+        width: 100%;
+    }
+
+    .nintendo.popup-main-wrapper .modal{
+        height: auto;
+        margin: 0 20px !important;
+    }
+
+    #nintendo-faq .panel-group .faq-plus-minus.collapsed:after, #nintendo-faq .panel-group .faq-plus-minus:after{
+        border: none;
+    }
+
+    .nintendo-contest-rules-text-banner h1{
+        font-size: 40px;
+    }
+
+    .nintendo-sign-up-text-banner{
+        padding: 60px 15px 40px 15px;
+    }
+
+    .nintendo-contest-unlock-wrap.nintendo-switch, .nintendo-contest-unlock-wrap.nintendo-code, .nintendo-contest-unlock-wrap{
+        padding: 60px 15px;
+    }
+
+    .nintendo-contest-text-wrap h3 {
+        font-size: 30px;
+    }
+
+    .nintendo-landing-desktop{
+        display: none;
+    }
+
+    .nintendo-landing-mobile{
+        display: block;
+    }
+
+    .nintendo-contest-text-wrap sup {
+        top: -10px;
+    }
+
+    .nintendo-contest-text-wrap{
+        padding: 0;
+    }
+
+    .rules_btn {
+      margin-right: 0 !important;
+    }
+
+  .nintendo-contest-rules {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nintendo-contest-rules-text-banner {
+    margin-left: 0;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-code.row.container p {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  img.coin-bg {
+    display: none;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 1048px) {
+  .nintendo-contest-banner a {
+    display: initial;
+  }
+  .nintendo-contest-rules {
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .coin-bg {
+    display: none !important;
+  }
+
+  .top-btn {
+    top:40% !important;
+    left: 40% !important;
+  }
+
+  .top-btn p {
+    display: none;
+  }
+
+  .nintendo-contest-text-wrap p {
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .nintendo-content-participating-img img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .entries-subtext p {
+    font-size: 25px !important;
+  }
+
+  .nintendo-content-participating-div span {
+    font-size: 2rem !important;
+  }
+
+  .console-image {
+    display: none !important;
+  }
+
+  .nintendo-contest-participating.pick-game img {
+    width: 400px !important;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-switch {
+    padding-top: 100px !important;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img {
+    width: 100% !important;
+  }
+
+  }
+
+@media only screen and (max-width: 480px) {
+    .nintendo-mario-text-position {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .nintendo-mario-text-position{
+        display: none;
+    }
+}
+
+
+/********** Coming Soon Tickets *************/
+
+select {
+  text-align: center;
+}
+
+.comingsoon-logo {
+  width: 25% !important;
+}
+
+.container.nintendo-coming-soon-disclaimer p {
+  width: 90%;
+  margin: auto;
+}
+
+.prizes-text {
+  margin-right: 30px;
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+  font-size: 16px;
+}
+
+a.js-popup-langswitcher {
+  font-weight: normal !important;
+  font-size: 14px;
+}
+
+.popup-sub-title sup {
+  font-size: 0.8em !important;
+  top:-6px !important;
+}
+
+.reward-container {
+  width: 45%;
+}
+
+.prizes-not-as-shown {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 980px) {
+  .nintendo-birth-wrapper {
+    flex-direction: column;
+  }
+
+  .nintendo .date-dropdowns .day {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nintendo select.province, .nintendo-sign-up select.province {
+    margin-bottom: 0 !important;
+  }
+
+  .reward-container {
+    width: 100%;
+    order: 2;
+  }
+
+  .prizes-not-as-shown {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner h1 {
+    font-size: 36px;
+  }
+
+  .prizes-text {
+    margin-right: 0;
+    font-size: 12px;
+  }
+
+  .container.nintendo-coming-soon-disclaimer p {
+    text-align: left;
+    width: 95%;
+  }
+
+  .esrb-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+  .comingsoon-logo {
+    width:80% !important;
+  }
+
+  .esrb-container {
+    position: initial;
+  }
+
+  .mini-rules-container {
+    flex-direction: column;
+  }
+
+  .container.nintendo-coming-soon-disclaimer p {
+    width: 90% !important;
+  }
+
+  .nintendo-contest-rules-text-banner {
+    margin-bottom: 40px !important;
+  }
+
+  .prizes-not-as-shown {
+    width: 100% !important;
+  }
+
+  .nintendo-contest-fritolay-coupon-code {
+    bottom:0;
+  }
+
+  .mario-mb {
+    margin-bottom: -60px;
+  }
+
+  .nintendo-contest-text-wrap {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .nintendo-contest-text-wrap-sub {
+    margin: 10px auto;
+  }
+
+  .nintendo-contest-text-wrap {
+    padding-bottom: 50px;
+  }
+
+  .upc-text {
+    margin: 10px 0;
+  }
+
+  .nintendo-contest-participating {
+    padding-top: 23rem;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 150px;
+  }
+
+  .nintendo-contest-fritolay-coupon-code.prize-section {
+    padding-top: 6rem;
+    padding-bottom:30px
+
+  }
+
+  .star-bg , .dice-bg{
+    display: none;
+  }
+
+  .nintendo-content-participating-div img {
+    margin: auto !important;
+  }
+
+  .nintendo-contest-unlock-switch.find-code {
+    padding-top: 6rem;
+  }
+
+
+  }
+
+html:lang(fr) .en{
+  display: none;
+}
+
+html:lang(en) .fr{
+  display: none;
+}
+
+html:lang(fr).nintendo-coming-soon-wrapper .nintendo-contest-rules-text-banner h1 {
+  font-size: 40px;
+}
+
+
+
+.esrb-container p {
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+  text-align: center;
+  font-size: 14px;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.comeback-text {
+  font-size: 2vw;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container.nintendo-coming-soon-disclaimer p {
+    width: 70%;
+  }
+
+  .esrb-container {
+    right: -2em;
+  }
+}
+
+.nintendo-coming-soon-disclaimer {
+  display: flex;
+  flex-direction: column;
+}
+
+.reward-container {
+  position: relative;
+}
+
+.prizes-not-as-shown {
+  width: 50%;
+  position: absolute;
+  right: -2%;
+}
+
+/************** Landing Page *********************/
+
+.top-btn {
+  position: absolute;
+  top: 80%;
+  left: 13%;
+  text-align: center;
+  margin-top: 10px;
+  width: 20%;
+}
+
+.top-btn a {
+  display: initial;
+}
+
+.top-btn p {
+  color: #fff;
+  margin-top: 25px;
+  font-family: "OpenSans-semibold", Sans-Serif;
+  font-size: 16px;
+}
+
+.coin-bg {
+  position: absolute;
+  width: 175px;
+  top: 10%;
+  right: 5%;
+}
+
+.entries-subtext p {
+  font-size: 16px;
+  font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.nintendo-content-participating-img img {
+  height: 280px;
+}
+
+.open-font {
+  font-family: "OpenSans-semibold", Sans-Serif;
+}
+
+.nintendo-contest-unlock-img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.star-bg {
+  position: absolute;
+  bottom: -8%;
+  width: 200px;
+  height: auto;
+}
+
+.nintendo-content-participating-div span {
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+.dice-bg {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  bottom: -8%;
+  right: 2%;
+}
+
+.nintendo-contest-unlock-wrap.nintendo-switch {
+  padding-bottom: 58px;
+}
+
+.nintendo-contest-unlock-switch.nintendo-switch {
+  background-image: url('/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-blue-b.png');
+  bottom: 0;
+
+}
+
+.find-code-nintendo {
+  padding: 40px 0;
+}
+
+.find-code-text {
+  margin: 0;
+}
+
+.nintendo-landing-contest-rules > div > div > p > a{
+  color: #F30522 !important;
+  text-decoration: underline;
+}
+
+.logo-nintendo {
+  width: 350px !important;
+  margin-bottom: 20px;
+}
+
+
+.two-logos {
+  width:300px !important;
+}
+
+.nintendo-landing-contest-rules-text-wrap a {
+  width:195px
+}
+
+.banner-mb {
+  background-image: url('/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/nintendo-blue.png');
+  text-align: center;
+  padding-top: 30px;
+}
+
+.banner-mb p {
+  font-size: 25px;
+  margin-bottom:90px
+
+}
+
+.participate-text {
+  display: flex;
+  flex-direction: column;
+  width:250px;
+  margin:auto;
+}
+
+.participate-text a {
+  width:175px;
+  margin:auto;
+}
+
+.days-count {
+  display: flex;
+  flex-direction: row;
+}
+.mario-days-count {
+  width: 35% !important;
+}
+
+.days-text {
+  background-color:#EBEBEB;
+  border: 6px solid #ED1F24;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  padding: 10px 20px;
+}
+
+.days-to {
+  text-align: center;
+  color: #ED1F24;
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+}
+
+.days {
+  color:#0F89D0;
+  font-size: 85px !important;
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+}
+
+.rules a {
+  color:#fff;
+  text-decoration: underline;
+}
+
+.rules a:hover {
+  color:#fff;
+  text-decoration: underline;
+}
+
+.participating-contain {
+  padding-bottom: 135px !important;
+}
+
+.rules {
+ margin-top: 2rem;
+  font-size: 16px;
+}
+
+.description-text > span {
+  font-weight: bold;
+  font-family: 'GTWalsheimBold';
+}
+@media only screen and (min-width: 3000px) {
+
+  .nintendo-contest-fritolay-coupon-code.how-to-enter {
+    margin-top: -6rem;
+    padding-bottom: 7rem;
+    padding-top: 8rem;
+  }
+
+  .coin-bg {
+    top: 15%;
+  }
+
+  .nintendo-content-participating-img img {
+    height: 590px;
+  }
+
+  section.nintendo-contest-participating {
+    margin-top: -8rem;
+    padding-bottom: 350px !important;
+  }
+
+  section.nintendo-contest-fritolay-coupon-code.prize-section {
+    margin-top: -7rem;
+    padding-bottom: 10rem;
+    padding-top: 9rem;
+  }
+
+  section.nintendo-contest-participating.pick-game {
+    padding-top: 30rem;
+  }
+
+  section.nintendo-contest-unlock-switch.find-code {
+    margin-top: -8rem;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img {
+    width: 100%;
+  }
+
+  .nintendo-landing-contest-rules {
+    padding-bottom: 92px;
+  }
+
+  .nintendo-sign-up {
+    height:700px
+  }
+
+  }
+
+@media only screen and (min-width: 2100px) and (max-width: 3000px) {
+  section.nintendo-contest-fritolay-coupon-code.how-to-enter {
+    margin-top: -3rem;
+    padding-bottom: 4rem;
+  }
+
+  section.nintendo-contest-participating {
+    margin-top: -3rem;
+  }
+
+  section.nintendo-contest-fritolay-coupon-code.prize-section {
+    margin-top: -3rem;
+    padding-bottom: 3rem;
+  }
+
+  .nintendo-contest-unlock-switch.find-code {
+    margin-top: -4rem;
+  }
+
+.nintendo-contest-fritolay-coupon-code.how-to-enter {
+    padding-top: 6rem;
+  }
+
+  img.coin-bg {
+    top: 15%;
+  }
+
+  .nintendo-content-participating-img img {
+    height: 400px;
+  }
+
+  section.nintendo-contest-fritolay-coupon-code.prize-section {
+    padding-top: 5rem;
+  }
+
+  section.nintendo-contest-participating.pick-game {
+    padding-top: 450px;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-switch .nintendo-contest-unlock-img img {
+    width: 100%;
+  }
+
+  .nintendo-landing-contest-rules {
+    padding-bottom:92px
+  }
+
+  .nintendo-sign-up {
+    height:700px
+  }
+}
+
+/*************learn more**************/
+
+
+.description-text {
+  font-size: 16px;
+}
+
+.game-description-text {
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 30px !important;
+  height: 515px;
+}
+
+.kirby-description-text {
+  width: 50%;
+  padding: 16px;
+}
+
+.kirby-forgotten-land-description.game-description,.mario-party-superstar-description.game-description,
+.pokemon-description.game-description, .mario-kart-description.game-description {
+  margin: 4rem auto
+}
+
+.description-img {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.description-img.mario {
+  background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-party-description.png");
+  background-size:cover;
+}
+
+.description-img.kirby {
+  background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/kirby-img.png");
+  border-top-left-radius: 25px;
+  border-bottom-left-radius:25px;
+  background-size:cover;
+}
+
+.description-img.pokemon {
+  background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/pokemon.png");
+  border-top-left-radius: 25px;
+  border-bottom-left-radius:25px;
+  background-size:cover;
+}
+
+.description-img.mario-kart {
+  background-image: url("/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-kart.png");
+  border-top-left-radius: 25px;
+  border-bottom-left-radius:25px;
+  background-size:cover;
+}
+
+.game-description {
+  display: flex;
+  justify-content: center;
+}
+
+.game-description-text h2 {
+  font-size: 28px !important;
+  margin-bottom: 20px !important;
+}
+
+div.game-description-text > div > ul > li {
+  color:#fff;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: 'GTWalsheimBold';
+}
+
+.game-description-text> div > ul > li:nth-child(1) {
+  margin-top: 5px;
+}
+
+@media only screen and (min-width: 1040px) {
+  .left.carousel-control {
+    left:-40px !important;
+  }
+
+  .carousel-control.right {
+    right: -40px !important;
+  }
+}
+
+  @media only screen and (max-width: 768px) {
+
+  .game-description-text {
+    border: none;
+  }
+
+  .description-img {
+    width: 80%;
+    margin: auto;
+    height: 270px !important;
+  }
+
+
+  .nintendo-contest-faq-text-banner {
+    margin-left: 0;
+  }
+
+  .nintendo-contest-confirm img {
+    width:100%;
+  }
+
+  .top-btn {
+    top:62%;
+    left:20%;
+    width: 60%;
+  }
+
+  .game-description-text {
+    width: 100%;
+  }
+
+  .description-padding {
+    padding-bottom: 26rem;
+  }
+
+  .upc-text {
+    width: 80%;
+    margin: 20px auto 20px auto;
+  }
+
+  .nintendo-contest-participating h3 {
+    font-size: 43px;
+  }
+
+  .nintendo-content-participating-img img {
+    width: 70%;
+  }
+
+  .nintendo-contest-fritolay-coupon-code.prize-section {
+    padding-top: 9rem;
+    padding-bottom: 50px;
+  }
+
+  .nintendo-contest-unlock-wrap.nintendo-code.row.container p {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  section.nintendo-contest-participating.pick-game h3 {
+    font-size: 32px;
+  }
+
+  .left.carousel-control {
+    left:0 !important;
+  }
+
+  .carousel-control.right {
+    right: 0 !important;
+  }
+
+    #game-description-carousel{
+    height:650px;
+  }
+
+    .game-description-text {
+      justify-content: flex-start;
+    }
+
+    .game-description-text h2 {
+      margin-bottom: 20px;
+    }
+
+    .nintendo-content-participating-img img {
+      height: 220px;
+    }
+
+    .days-text {
+      flex-direction: column;
+      padding:0 15px;
+      margin-right: 10px;
+    }
+
+    h2.text-uppercase.days-to {
+      margin-top: -21px;
+    }
+
+    .nintendo-contest-unlock-img.days-count {
+      width: 80%;
+    }
+
+    .nintendo-contest-participating.pick-game img {
+      width: 225px;
+    }
+
+    .account {
+      font-size: 14px;
+    }
+
+    .nintendo-contest-unlock-wrap.nintendo-code .nintendo-contest-text-wrap br {
+      display: initial;
+    }
+
+    .nintendo-contest-text-wrap br {
+      display: none;
+    }
+
+    img.mario-days-count {
+      width: 44%;
+    }
+
+    .nintendo-contest-text-wrap.find-code-text {
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .nintendo-contest-text-wrap.find-code-text.col-lg-6 br {
+      display: none;
+    }
+
+    section#contentBlocks .container {
+      text-align: center;
+    }
+
+    .contest-detail__quacker-wrapper .contest-detail__quacker-input {
+      flex-direction: column;
+    }
+
+    .nintendo-sign-up-text-banner p {
+      margin-top: 20px;
+    }
+
+   .enter-img {
+     width:90% !important;
+   }
+
+    .enter-text {
+      width:90%;
+      margin:auto
+    }
+
+    .enter-heading {
+      font-size:41px !important;
+      margin-bottom: 15px !important;
+    }
+
+
+  }
+
+
+.carousel-control.left, .carousel-control.right {
+  background:none !important;
+}
+
+
+
+button.btn_nintendo {
+  width:200px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .game-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .description-img {
+    height: 337px;
+    width: 60%;
+  }
+
+  .game-description-text {
+    width: 100%;
+    border: none;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+
+  a.right.carousel-control,a.left.carousel-control {
+    margin-top:-5rem
+  }
+
+  .description-img {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  html:lang(fr) .top-btn {
+    width: 100%;
+    left: 0;
+    top: 60% !important;
+  }
+
+  html:lang(fr) .fr-days-text {
+    width:100% !important;
+    margin: auto !important;
+  }
+
+  html:lang(fr) .enter-img {
+    margin-top: 2rem;
+    margin-left: -65px
+  }
+}
+
+.robo-font {
+  font-family: "RobofanSpark-Bold", Sans-Serif;
+}
+
+.fa-angle-left:before, .glyphicon-chevron-left:before {
+  content: "\f104";
+  color: #fff !important;
+  font-size: 35px;
+}
+
+.fa-angle-right:before, .glyphicon-chevron-right:before {
+  content: "\f104";
+  color: #fff !important;
+  font-size: 35px;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  z-index:999;
+  position: relative;
+}
+
+.back-text {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+section#contest .contest-detail__sign-up-select-checkbox {
+  border-top:none !important;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkbox-text, .nintendo-sign-up section#contest .contest-detail__checkbox-text a {
+  color: #fff !important;
+}
+
+section#contest .contest-detail__checkboxes-color:checked + label:before {
+  box-shadow: inset 0px 0px 0px 4px white !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+/*rules table*/
+
+td, th {
+  border: 1px solid #dddddd !important;
+  text-align: left;
+  padding: 8px !important;
+}
+
+table {
+  margin: 20px 0 !important;
+}
+
+th span {
+  font-weight: bold;
+}
+
+section#contentBlocks .container p {
+  margin-top: 10px !important;
+  font-size: 16px;
+}
+
+p span {
+  font-weight: bold;
+}
+
+.nintendo-sign-up-text-banner p a {
+color:#fff;
+}
+
+.nintendo-sign-up-text-banner p a:hover {
+  color:#fff;
+}
+
+section#contest .contest-detail__checkbox-text.optin {
+  width: 100% !important;
+}
+
+html:lang(fr) .top-btn {
+  top:76%;
+}
+
+a:focus {
+  color:#fff !important;
+}
+
+.bonus-copy {
+  margin-top: 40px;
+}
+
+.margin-bottom-max {
+  margin-bottom: 30px !important;
+}
+
+html:lang(fr) .days-to {
+  margin-left:10px;
+}
+
+.btn_nintendo:hover {
+  background-color: #0b5c8b !important;
+  color:#fff !important;
+}
+
+.btn_nintendo_red:hover {
+  color:#fff !important;
+}
+
+html:lang(fr) .entries-subtext {
+  width:80%;
+  margin: auto;
+}
+
+html:lang(fr) .game-description-text {
+  height:525px;
+}
+
+html:lang(fr) .rules_btn {
+  width: 248px !important;
+}
+
+html:lang(fr) .fr-days-text {
+  width:90%
+}
+
+.thankyou-legal a {
+  color:#fff !important;
+}
+
+html:lang(fr) .thankyou-legal {
+  width:85%;
+}
+
+.nintendo-sign-up-text-banner p a {
+  text-decoration: underline;
+}
+
+.legal-copy {
+  font-size: 15px;
+}
+
+.thankyou-legal a {
+  text-decoration: underline;
+}
+
+html:lang(en) .days-to {
+  margin-left: 12px;
+  line-height: 1em;
+}
+
+.form-back::before {
+  color:#fff !important;
+  border-color: #fff !important;
+}
+
+.nintendo-sign-up-text-banner h2 {
+  margin-top: 40px;
+}
+
+.form-back:hover, .form-back:focus {
+  color:#fff !important;
+}
+
+.form-back:before {
+  content: '';
+  color: #fff;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
+
+html:lang(fr) .enter-img {
+  transform:scale(1.2);
+}
+
+.contest-back-btn:focus {
+  color:#000 !important;
+}
+
+#nintendo-faq .panel-group a.faq-plus-minus:hover, #nintendo-faq .panel-group a.faq-plus-minus:focus {
+  color:#000 !important;
+}
+
+.contest-detail__form-quacker .contest-detail__quacker-input-col {
+  height: 65px !important;
+}
+
+@media only screen and (min-width: 1020px) and (max-width: 1420px) {
+  .contest-detail__form-quacker .contest-detail__quacker-input-col {
+    height: 64px !important;
+  }
+
+  html:lang(fr) .nintendo-contest-participating.pick-game .container h3 {
+    width: 80%;
+    margin: 30px auto 0 auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  footer {
+    margin-top: 52rem !important;
+  }
+}
+
+@media only screen and (min-width: 1049px) and (max-width: 1316px) {
+  .top-btn p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1048px) {
+  .top-btn {
+    top:84% !important;
+    left:14% !important;
+  }
+  }
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .top-btn {
+    top:60% !important;
+  }
+}
+
+#participate {
+  display: flex;
+}
+
+.nintendo-sign-up section#contest .contest-detail__checkboxes-color + label:before {
+  height:15px !important;
+}
+
+@media (min-width: 2000px) {
+
+  .nintendo-content-participating-img img {
+    height: 370px;
+  }
+}

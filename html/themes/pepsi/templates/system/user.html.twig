@@ -1,0 +1,114 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ */
+#}
+<article{{ attributes }}>
+    <h1>Profile</h1>
+    {#{ kint(user.field_firstname) }#}
+  {% if content %}
+    
+<section id="contentBlocks" class="container-fluid">
+<form data-toggle="validator" role="form" id='update-form'>
+    
+    <div class="col-sm-12 pink text-center">
+    <h1 class="pink signika">{{ 'My Account'|t }}</h1>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                    <label>{{ 'First Name'|t }} </label>
+                    <input type="text" name='firstname' id='firstname' placeholder="{{ 'Enter First Name Here..'|t }}" class="form-control" value="{{ user.field_firstname.0.value}}">
+                    <span class="help-block err_firstname"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                    <label>{{ 'Last Name'|t }}</label>
+                    <input type="text" name='lastname' id='lastname' placeholder="{{ 'Enter Last Name Here..'|t }}" class="form-control" value="{{ user.field_lastname.0.value}}">
+                    <span class="help-block err_lastname"></span>
+            </div>
+        </div>
+        
+       <div class="row">
+            <div class="col-xs-12 col-sm-6 pink form-group">
+                <label>{{ 'Password'|t }}</label>
+                <input type="password" name='password' id='password' placeholder="{{ 'Enter your password here.'|t }}" class="form-control">
+                <span class="help-block err_password"></span>
+            </div>  
+            <div class="col-xs-12 col-sm-6 pink form-group">
+                <label>{{ 'Confirm Password'|t }}</label>
+                <input type="password" name='confirm_password' id='confirm_password' placeholder="{{ 'Confirm your password here.'|t }}" class="form-control">
+                <span class="help-block err_confirm_password"></span>
+            </div>  
+        </div>  
+
+        
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>{{ 'Birth Date'|t }}</label>
+                <input type="text" name='bday' id='bday'  placeholder="{{ 'Enter Birth Date Here..'|t }}" class="form-control"  value=""><i style="position: absolute;top: 35px;right: 30px;" class="fa fa-calendar" aria-hidden="true"></i>
+                <span class="help-block err_bday"></span>
+            </div>  
+            <div class="col-sm-6 form-group">
+                <label>{{ 'Postal Code'|t }}</label>
+                <input type="text" name='postalcode' id='postalcode' placeholder="{{ 'Enter Postal Code Here..'|t }}" class="form-control"  value="">
+                <span class="help-block err_postalcode"></span>
+            </div>              
+        </div>        
+        
+        
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <label>{{ 'Gender'|t }}</label>
+                <select id="gender" name="gender" class="input-xlarge">
+                   <option value=''>{{ 'Select a Gender'|t }}</option>
+                   <option value='M' >{{ 'Male'|t }}</option>
+                   <option value='F' >{{ 'Female'|t }}</option>
+                   <option value='O' >{{ 'Other / Prefer not to share'|t }}</option>
+                </select>
+                <span class="help-block err_gender"></span>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <label><input type = "checkbox" name='optin' id ='optin' value="1" >
+                    <span class="casl">
+                        {{ 'Yes! Keep me up to date on Tasty Rewards by email (and I have the option to unsubscribe at any time).'|t }}
+                    </span>
+                </label>
+                <span class="help-block err_optin"></span>
+            </div>  
+        </div>
+
+        
+        <button type="button" class="btn btn-primary btnregister">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+        
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div id='form'>
+                <span class="help-block err_form"></span>
+                </div>
+            </div>  
+        </div>        
+
+        
+        
+    </div>
+</form> 
+</section>
+
+
+     {{ user.field_firstname.1.value}}
+  {% endif %}
+</article>

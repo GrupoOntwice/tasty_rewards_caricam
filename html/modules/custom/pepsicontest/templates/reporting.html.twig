@@ -1,0 +1,166 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+{{ attach_library( 'pepsicontest/reporting' ) }}
+<script src="//cdn.jsdelivr.net/webshim/1.16.0/polyfiller.js"></script>
+<script type="text/javascript"><!--
+    language = '{{ data.language }}'
+    webshims.setOptions('forms-ext', {types: 'date', replaceUI: 'auto'});
+    webshims.polyfill('forms forms-ext');
+    //-->
+</script>
+
+
+<form data-toggle="validator" role="form" id='contestsignup-form' method="POST">
+
+    <section id="contentBlocks" class="container-fluid">
+
+        <div id="" class="container_signup">
+
+            <h1 id="signup_h1" class="pink signika text-center uppercase">{{ 'Contest Reporting Tool' }}</h1>
+            <hr class="signup_hr" class="bg-grey" />
+            <br>
+            <div class="clearfix" ></div>
+
+            <div class="row">
+
+                {% for contest in data.contests %}
+                    <div id="{{contest.nid}}" >
+                        {% for question in contest.questionid %}
+                            <input type="hidden" value="{{question}}">
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <div class="col-xs-12 col-sm-4 pink form-group">
+                    <label class="formlabel">{{ 'Contest'|t }} </label>
+                    <select class="form-control" name="contestname" id="contestname">
+                        <option value="">Select a contest</option>
+                        {% for contest in data.contests %}
+                            <option value="{{contest.nid}}">{{contest.contestname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-4 pink form-group">
+                    <label  class="formlabel">{{ 'StartDate'|t }}</label>
+                    <input type="date" name='startdate' id='startdate' class="form-control" value="{{ "now"|date("Y-m-d") }}" >
+                </div>
+                <div class="col-xs-12 col-sm-4 pink form-group ">
+                    <label  class="formlabel">{{ 'End Date'|t }}</label>
+                    <input type="date" name='enddate' id='enddate' class="form-control" value="{{ "now"|date("Y-m-d") }}">
+                </div>
+                <div class="col-xs-12 col-sm-4 pink form-group">
+                    <label  class="formlabel">{{ 'Get Contest Raw Data'|t }}</label>
+                    <input type="checkbox" name='raw_data' id='raw_data' class="form-control" value="1">
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-12 text-center form-group">
+                    <button type="button" class="btn btn-primary btnreporting">{{ 'Submit!'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+                    <div id='form'>
+                        <span class="help-block err_form"></span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row reports">
+                <div id="gendercontaineren" ></div>
+            </div>
+            <div class="row reports">
+                <div id="gendercontainerfr" ></div>
+            </div>
+            <div class="row reports">
+                <div id="provincecontaineren" ></div>
+            </div>
+            <div class="row reports">
+                <div id="provincecontainerfr" ></div>
+            </div>
+            <div class="row reports">
+                <div id="datecontaineren" ></div>
+            </div>
+            <div class="row reports">
+                <div id="datecontainerfr" ></div>
+            </div>
+            <div class="row reports">
+                <div id="locationcontaineren"></div>
+            </div>
+            <div class="row reports">
+                <div id="locationcontainerfr"></div>
+            </div>
+            <div class="row reports">
+                <div id="entry_age_and_gendercontaineren"></div>
+            </div>
+            <div class="row reports">
+                <div id="entry_age_and_gendercontainerfr"></div>
+            </div>
+            <div class="row reports">
+                <div id="participant_age_and_gendercontaineren"></div>
+            </div>
+            <div class="row reports">
+                <div id="participant_age_and_gendercontainerfr"></div>
+            </div>
+            <div class="row reports">
+                <div id="date2containeren" ></div>
+            </div>
+            <div class="row reports">
+                <div id="date2containerfr" ></div>
+            </div>
+            {% set langs_arr = ['en', 'fr'] %}
+            {% for contest in data.contests %}
+                {% for question in contest.questionid %}
+                    {% for lang  in langs_arr %}
+                        <div class="reports" >
+                            <div id="qcontainer_{{contest.nid}}_{{question}}_{{ lang }}" class="qcontainer" ></div>
+                        </div>
+                        <div class="row reports">
+                            <a href="" id="qcontainer_{{contest.nid}}_{{question}}_{{ lang }}_link">Get Question "{{question}}" language {{ lang }} CSV report</a>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+
+            <div class="row reports report1">
+                <a href="" id="PollAnswersGroupedByDay_link">Get PollAnswersGroupedByDay CSV Report</a>
+            </div>
+            <div class="row reports report1">
+                <a href="" id="ReportPollChoicesParticipationCount_link">Get PollChoicesParticipationCount CSV Report</a>
+            </div>
+            <div class="row reports report1">
+                <a href="" id="ReportContestsUniqueParticipationByDate_link">Get ContestsUniqueParticipationByDate CSV Report</a>
+            </div>
+            <div class="row reports report1">
+                <a href="" id="gender_link">Get Grouping by gender CSV report</a>
+            </div>
+            <div class="row reports report1">
+                <a href="" id="province_link">Get Grouping by province CSV report</a>
+            </div>
+            <div class="row reports report1">
+                <a href="" id="date_link">Get Grouping by dates CSV report</a>
+            </div>
+            <!--<div class="row reports">
+                <a href="" id="location_link">Get Grouping entries count by location CSV report</a>
+            </div>
+            <div class="row reports">
+                <a href="" id="entry_age_and_gender_link">Get Grouping entries count by age and gender CSV report</a>
+            </div>
+            <div class="row reports">
+                <a href="" id="participant_age_and_gender_link">Get Grouping participant entries count by age and gender CSV report</a>
+            </div>-->
+            <div class="row reports report1">
+                <a href="" id="date2_link">Get Grouping entries count by dates CSV report</a>
+            </div>
+            <div class="row reports report2">
+                <a href="" id="getReportContestParticipationData_link">Get Unique, Total and By Gender Contest Participations</a>
+            </div>
+            <div class="row">
+                <div id="answer1" ></div>
+            </div>
+            <div class="row reports">
+                <a href="" id="winners_link">Pick winners</a>
+            </div>
+        </div>
+    </section>
+</form> 

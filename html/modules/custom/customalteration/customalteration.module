@@ -1,0 +1,243 @@
+<?php
+
+/**
+ * @file
+ * Custom Alterations module file.
+ */
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Link;
+use Symfony\Component\BrowserKit\Cookie;
+use Drupal\views\Views;
+use Drupal\customalteration\BrandFilter;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+
+function customalteration_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+	if($form_id == 'fancy_login_user_login_form')
+	{
+		$form['#attached']['library'][] = 'pepsibam/pepsilibrary';
+                $form['#validate'][] = 'pepsibam_user_login_final_validate';
+		/** Adding the remember me option **/
+		$moduleHandler = \Drupal::service('module_handler');
+		if ($moduleHandler->moduleExists('persistent_login')){
+			_persistent_login_add_form_field($form, $form_state);
+		}
+		/** Adding the placeholders **/
+		$form['name']['#attributes']['placeholder'] = t('Email address');
+		$form['pass']['#attributes']['placeholder'] = t('Password');
+		/** Remove the title of the textfield **/
+		//unset($form['name']['#title']);
+		//unset($form['pass']['#title']);
+
+		$prefixes = \Drupal::config('language.negotiation')->get('url.prefixes');
+		$current_lang = \Drupal::languageManager()->getcurrentLanguage()->getId();
+
+		$form['#language']['langcode'] = $prefixes[$current_lang];
+
+		$form['add_button'] = array(
+                '#type' => 'button',
+                '#value' => t('Sign up with Facebook'),
+                '#attributes' => array(
+                  'onclick' => "return false;",
+                  'class' => ['fbconnect', 'modal__sign-in-fb', 'hidden'],  
+                ),
+       );
+
+		$current_path = \Drupal::service('path.current')->getPath();
+	
+		// if (strpos($current_path, "/login-action/") !== false ){
+		// 	$parts = explode("/", $current_path);
+		// 	$contest_name = $parts[3];
+		// 	$form['#submit'][] = 'customalteration_form_submit';
+		// 	$form['contest'] = array(
+		// 	    '#type' => 'value',
+		// 	    '#value' => $contest_name
+		// 	  );
+		// }	
+
+	} elseif ($form_id == 'views_exposed_form'){
+		// ini_set('xdebug.var_display_max_depth', '5');
+		// ini_set('xdebug.var_display_max_children', '256');
+		// ini_set('xdebug.var_display_max_data', '1024');
+
+		$current_path = \Drupal::service('path.current')->getPath();
+		$langcode = get_current_langcode();
+		if ($current_path == '/life' || $current_path == '/recipes'){
+			$content_type = $current_path == '/life'? 'article' : 'recipe';
+			foreach ($form['field_' . $content_type . '_brands_category_target_id']['#options'] as $key => $option) {
+				$form['field_' . $content_type . '_brands_category_target_id']['#options'][$key] = ucwords(strtolower($option)) . "®";
+			}
+
+			if ($current_path == '/recipes'){
+				// Remove the "Courses" and "Occasions" filter from the Recipe landing page
+				unset($form['field_recipe_category_target_id']);
+				unset($form['field_recipe_brands_category_target_id']);
+				unset($form['field_recipe_occasions_category_target_id']);
+				unset($form['combine']);
+				unset($form['actions']);
+			}
+			if ($current_path == '/life'){
+				$form['#info']['filter-combine']['label'] = 'Search';
+            	// $form['combine']['#prefix'] = '<label id="search_label" for="edit-combine--2" class="hidden">Search</label>';
+
+			}
+
+			$form['actions']['submit']['#value'] = t('Search');
+			$form['combine']['#attributes']['placeholder'] = t('Search');
+			// $form['combine']['#attributes']['aria-labelledby'] = t('search_label');
+			$brands_to_remove = [];
+			if ($langcode == 'en-us' || $langcode == 'es-us'){
+				$brands_to_remove = [ 'Funyuns®', 'Rold Gold®', 'Twistos®', 'Crispy Minis®', 'Cracker Jack®', 'Sunchips®', "Miss Vickie’s®"];
+				if ($current_path == '/life') {
+					// The following brands do not have article content for USA
+					$brands_to_remove = array_merge($brands_to_remove, 
+						['Cracker Jack®' , "Miss Vickie’s®",  'Sunchips®', "Stacy’s®"]
+						);
+				}
+			} else {
+				$brands_to_remove = ['Cracker Jack®', 'Funyuns®', 'Fritos®'];
+			}
+			filter_brands_by_country($form, $brands_to_remove, $content_type);
+
+		}
+
+		if (($langcode == 'en-us' || $langcode == 'es-us' ) && $current_path == '/life'){
+			if (($key = array_search('QUAKER', $form['field_article_brands_category_target_id']['#options'])) !== false) {
+			    unset($form['field_article_brands_category_target_id']['#options'][$key]);
+			}
+			if (($key = array_search('TWISTOS', $form['field_article_brands_category_target_id']['#options'])) !== false) {
+			    unset($form['field_article_brands_category_target_id']['#options'][$key]);
+			}
+			if (($key = array_search('SNACKATIVITES', $form['field_article_brands_category_target_id']['#options'])) !== false) {
+			    unset($form['field_article_brands_category_target_id']['#options'][$key]);
+			}
+		} 
+		
+
+		if (($langcode == 'en-ca' || $langcode == 'fr-ca') && $current_path == '/life'){
+			// Remove the categories filter for Canada (ONLY) landing page 
+			unset($form['field_article_category_target_id']);
+		}
+	}
+	
+}
+
+function customalteration_page_attachments_alter(array &$page) {
+	
+	if (isset($_SERVER['QUERY_STRING']) && strpos($_SERVER['QUERY_STRING'], "brands=") !== false ){
+		$brand_options = BrandFilter::instance()->get_brand_options();
+		$page['#attached']['drupalSettings']['customalteration'] = $brand_options;
+	}
+	$user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+	$name = $user->get('field_firstname')->value;
+	$page['#attached']['drupalSettings']['username'] = $name;
+	if (!empty($user)){
+		$page['#attached']['drupalSettings']['user']['optin'] = $user->get('field_optin')->value;
+	}
+	// $page['#attached']['drupalSettings']['showMemberPopup'] = doShowPopup();
+
+}
+
+function filter_brands_by_country(&$form, $brands_to_remove, $content_type){
+	foreach ($brands_to_remove as $brand) {
+		$brand_form = isset($form['field_' . $content_type . '_brands_category_target_id']['#options'])?$form['field_' . $content_type . '_brands_category_target_id']['#options']:null;
+		if ($brand_form && ($key = array_search($brand, $brand_form)) !== false) {
+		    unset($form['field_' . $content_type . '_brands_category_target_id']['#options'][$key]);
+		}			
+	}
+	if (isset($form['field_' . $content_type . '_brands_category_target_id']['#options'])){
+		BrandFilter::instance()->save_brand_options($form['field_' . $content_type . '_brands_category_target_id']['#options']);
+	}
+}
+
+
+function customalteration_form_submit(&$form, FormStateInterface $form_state) {
+	$contest_name = $form_state->getValues()['contest'];
+	$form_state->setRedirect('en.pepsicontest.contest.signup', array('contest' => $contest_name));
+}
+
+function customalteration_views_pre_render(\Drupal\views\ViewExecutable $view){
+	//aboutus_call_out
+	 // ini_set('xdebug.var_display_max_depth', '4');
+	 // ini_set('xdebug.var_display_max_children', '256');
+	 // ini_set('xdebug.var_display_max_data', '1024');
+        // $view_name = $view->element['#name'];
+        
+        $view_name = $view->id();
+
+	if ($view_name == 'aboutus_call_out'){
+		switch ($view->current_display) {
+			case 'block_recipe_callout':
+			 	// Get the carousels of type recipe
+				$recipe_id = get_node_from_carousel($type = 'recipe');
+				if (!empty($recipe_id)) $view->result[0]->_entity = Drupal\node\Entity\Node::load($recipe_id);
+				break;
+
+			case 'block_article_callout':
+				$article_id = get_node_from_carousel($type = 'article');
+				if (!empty($article_id)) $view->result[0]->_entity = Drupal\node\Entity\Node::load($article_id);
+				break;
+			
+			default:
+				// do nothing code...
+				break;
+		}
+	}
+}
+
+
+function get_node_from_carousel($type){
+
+	// type is either 'article' or 'recipes'
+	$view = Views::getView('carousel2');
+    $view->setDisplay('page_' . $type);
+    $view->execute();
+    $view_result = $view->result; 
+	if (!$view_result){
+		return null;
+	}
+	$nid = $view_result[0]->_entity->id();
+    $node = $view_result[0]->_entity;
+    $uri = $node->get('field_cta_text')->getValue()[0]['uri'];
+    try{
+		$params = Url::fromUri($uri)->getRouteParameters();
+    } catch(\Exception $e){
+    	return null;
+    }
+    if (!isset($params['node'])) return null;
+
+	$nid = $params['node'];
+	return $nid;
+}
+
+function replace_allowed_characters($str){
+    $utf8 = array(
+        '/[áàâãªä]/u'   =>   'a',
+        '/[ÁÀÂÃÄ]/u'    =>   'A',
+        '/[ÍÌÎÏ]/u'     =>   'I',
+        '/[íìîï]/u'     =>   'i',
+        '/[éèêë]/u'     =>   'e',
+        '/[ÉÈÊË]/u'     =>   'E',
+        '/[óòôõºö]/u'   =>   'o',
+        '/[ÓÒÔÕÖ]/u'    =>   'O',
+        '/[úùûü]/u'     =>   'u',
+        '/[ÚÙÛÜ]/u'     =>   'U',
+        '/ç/'           =>   'c',
+        '/Ç/'           =>   'C',
+        '/ñ/'           =>   'n',
+        '/Ñ/'           =>   'N',
+        '/–/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/[’‘‹›‚\']/u'  =>   ' ', // Literally a single quote
+        '/[“”«»„]/u'    =>   ' ', // Double quote
+        '/ /'           =>   ' ', // nonbreaking space (equiv. to 0x160)
+    );
+    return preg_replace(array_keys($utf8), array_values($utf8), $str);
+
+}

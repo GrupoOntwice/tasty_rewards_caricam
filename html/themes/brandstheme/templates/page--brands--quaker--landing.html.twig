@@ -1,0 +1,258 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    language = '{{ data.language }}';
+</script>
+
+{{ attach_library('brandstheme/quaker') }}
+    {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-quaker.html.twig' %}
+
+
+{% if logged_in %}
+    {% set newregister = 0 %}
+{% else %}
+    {% set newregister = 1 %}
+{% endif %}
+
+
+
+{% if data.is_snackperk_user == 1 %}
+    {% set form_field_status = "disabled" %}
+{% else %}
+    {% set form_field_status = "" %}
+{% endif %}
+
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+{{ data.tag | raw }}
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library('brandstheme/quaker-landing') }}
+
+
+<style>
+    .fb-hidden.contest-detail__form-social{
+        justify-content: center !important;
+    }
+</style>
+
+<section id="banner">
+<div class="banner_slide contest-register contest-quacker">
+    <div class="banner-desktop"  style="background-image: url('{{ file_url(data.headerimage) }}');">
+        <div class="banner_slide--text {{class_pos}} contest-banner-text">
+
+        </div>
+    </div>
+    {# <div class="banner-mobile"  style="background-image: url('{{mobileimg}}');"> #}
+    <div class="banner-mobile"  style="background-image: url('{{ file_url(data.headermobileimage) }}');">
+        <div class="banner_slide--text slide-left {{class_pos}}">
+
+
+
+        </div>
+    </div>
+    <div class="arrow-section-general"></div>
+</div>
+</section>
+
+<section id="contest" style="background-image: url('/themes/tastytheme/src/images/quacker-background-step.jpg'); background-position: bottom; background-repeat: no-repeat; background-size: cover;">
+    <div class="contest__detail-wrapper contest__detail-wrapper-step">
+        <h2>{{ "Quaker pack the goodness program help us support Food Banks Canada!" | trans}}</h2>
+
+
+        <h3>{{ "How it works" | trans}}</h3>
+
+        <div class="contest-quaker-steps-wrapper">
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-bowl.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Step 1: BUY" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-camera.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Step 2: UPLOAD" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-clip.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Step 3: SAVE" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-note.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Complete your<br> entry below" | trans}}</span>
+            </div>
+        </div>
+
+        <p>{{ "And voilà! It’s time to get creative!" | trans}}</p><br>
+
+        <p>{{ "<span class='bold'>You can enter one unique photo per day to up your chances of winning!</span> <br> It’s easy for Tasty Rewards™ members to enter — what are you waiting for? <br>See <a class='quaker-link' href='/en-ca/contests/getcreativewithquakercontest/officialrules'>Official Rules</a> for full details." | trans}}</p>
+
+    </div>
+</section>
+
+<section id="contest" style="background-image: url('/themes/tastytheme/src/images/quacker-background-form.jpg'); background-position: bottom; background-repeat: no-repeat; background-size: cover;">
+    <div class="contest-detail__wrapper contest-detail__quacker-wrapper">
+        {# <div class="contest-detail__view ">
+            <h1 class="show_mobile">{{ data.title | raw}}</h1>
+            <p class="contest-detail__about">
+                {{ data.description | raw }}
+            </p>
+        </div> #}
+        <div class="contest-detail__form-quacker">
+
+                <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+                    <input type="hidden" name="newregister"  value="{{newregister}}">
+                    {% if data.language != 'en-us' and data.language != 'es-us' %}
+                        <p class="modal__inquiry">{{ "* Indicates required field."|t }}</p>
+                    {% endif %}
+
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                            <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                        </div>
+
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email *'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+                            <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                        </div>
+                    </div>
+
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+                            <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                        </div>
+
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+                            <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+                        </div>
+                    </div>
+
+                    <div class="contest-detail__quacker-last-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <p class="contest-detail__quacker-upload-text">{{'Each entry must be a unique image. <br> Limit one (1) unique entry per person per day.'| t}}</p>
+
+                            <div class="contest-detail__quacker-upload-main-wrapper">
+                                <div class="contest-detail__quacker-upload-wrapper">
+
+                                    <label class="upload-quacker-label" for="uploadImg">{{"Upload my image"|t}}</label>
+                                    <span class="upload-quacker-fileName">{{"No file chosen"|t}}</span>
+                                    <input type="file" name="uploadImg" id="uploadImg" onchange="fileChanged(this)" value="test" accept=".jpg,.png">
+                                </div>
+                                <div class="contest-detail__quacker-upload-wrapper">
+                                    <p class="upload-quacker-file">{{ '[Files accepted: JPG or PNG <br>Maximum file size: 2MB]' | trans }}</p>
+                                </div>
+                            </div>
+
+                            <span class="help-block err_recipe">{{data.error.uploadImg| raw?:''  }}</span>
+                            <span class="help-block err_password">{{data.error.password?:''}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="contest-detail__sign-up-select-checkbox">
+
+                        <div class="contest-detail__checkboxes-wrap">
+                            <input type="checkbox" class="contest-detail__checkboxes-color" id="optin" name='optin'  {{ data.optin==1?'checked' }}/>
+                            <label for="optin"></label>
+                            
+                            <p class="contest-detail__checkbox-text optin">{{'Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'| t }}</p>
+                        </div>
+                        <br/>
+                        <div>
+                            <p class="contest-detail__checkbox-text-rules">{{ 'By submitting my entry, I confirm I am at least the age of majority in my province or territory of residence and I agree to participate according to the <a href="/contests/%s/officialrules" target="_blank">Official Rules</a>.' |format(data.contesturi)| t }}</p>
+                        </div>
+                    </div> 
+                            
+            
+
+
+                    <div class="contest-detail__sign-up-select-button">
+                        <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                        <input id="submitform" class="contest-detail__sign-up-button js-submit-receipt" type="submit" value="{{'Submit my Entry' | t}}">
+                    </div>
+                    <div class="contest-detail__sign-up-select-button">
+                        <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+                    </div>                    
+                {% if data.language != 'en-us' and data.language != 'es-us' %}
+                    <div class="contact-us">
+                        
+                       <span >{{ 'Contacting Us:'|t}} </span> 
+                        <br>
+                        {{'PepsiCo Canada <br> 5550 Explorer Drive, 8th Floor, Mississauga, ON L4W 0C3<br> www.tastyrewards.ca'|t}}
+                        <br>
+                        <br>
+                        {{ 'Your personal information will be collected and used in accordance with our <a class="privacy-policy" target="_blank" href="http://www.pepsico.ca/en/Privacy-Policy.html"> Privacy Policy</a>.'|t}} 
+
+                    </div>
+                {% else %}
+                        <br>
+                        <p style="align-content: center">
+                        {{"To learn more about how we use your information, please read PepsiCo's"|t}} <br><br>
+                            
+                       <a class="privacy-policy" target="_blank" href="https://www.pepsico.com/legal/privacy"> {{"Privacy Policy"|t}}</a>, 
+                       <a class="privacy-policy" target="_blank" href="https://www.pepsico.com/legal/terms-of-use">{{"Terms & Conditions"|t}}</a> 
+                       {{"and"|t}} <a class="privacy-policy" target="_blank" href="https://policy.pepsico.com/aboutads.htm">{{"About our Ads"|t}}</a>.
+                        </p>
+                
+                {% endif %}
+                </form>
+
+
+
+        </div>
+    </div>
+            
+</section>
+
+<section id="amazon">
+    <div class="banner-desktop white_white"  style="background-image: url('/themes/tastytheme/src/images/quacker-background-amazon.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat; height: 338px;">
+        <div class="banner_quacker-amazon {{class_pos}}">
+      {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+            <h3>
+                {{"Shop for your favourite <br>Quaker<sup class='quacker-amazon-sup'>®</sup> products on Amazon!"|t}}
+             </h3>
+
+              <p>
+                {# {{"Description"|t}} #}
+              </p>
+
+            <a class="btn_red" target="_blank" href={{"https://www.amazon.ca/stores/page/213FC30F-C3B6-467C-B53E-F9C1E99334AC?store_ref=SB_A10475021JNZ50VKHPW90&pf_rd_p=f190e936-3339-45fc-9bcd-7b3a3d3027e3&aaxitk=xi5Z9.Ymrm0o3YJahu06Yw&hsa_cr_id=6453851750401&lp_asins=B01F8YM2AS,B01F8YM2IU&lp_mat_key=quaker&lp_query=quaker&lp_slot=auto-sparkle-hsa-tetris&ref_=sb_s_sparkle"| t}}>
+                {{"Buy Now"|t}}
+            </a>
+
+
+        </div>
+      </div>
+</section>
+
+<section id="brands">
+
+    <p class="quacker-brands">{{"† No purchase necessary. Open to legal residents of Canada who are Tasty Rewards™ members and at least the age of majority in their province/territory of residence at the time of entry. Correctly answering a mathematical skill-testing question required to win. Contest Period: June 18, 2020 @ 9:00 am ET to August 9, 2020 @ 5:00 PM ET. One (1) prize available to be won (ARV $2,000; see prize details in Official Rules). Odds of winning depend on number of eligible entries received. Limit one (1) unique entry per person per day. Conditions/restrictions may apply. <a class='quaker-link' href='/en-ca/contests/getcreativewithquakercontest/officialrules' target='_blank'>Click here for Official Rules.</a>" | t}}</p>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->    
+
+</section>
+
+<script>
+    function fileChanged(input) {
+        let fileName = document.querySelector('.upload-quacker-fileName');
+        fileName.textContent = input.files[0]['name'];
+    }
+</script>

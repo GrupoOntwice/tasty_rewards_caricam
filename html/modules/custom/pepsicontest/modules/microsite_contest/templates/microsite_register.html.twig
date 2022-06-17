@@ -1,0 +1,26 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+
+// language = '{{ data.language }}'
+
+// {% if logged_in %}
+//     {% set newregister = 0 %}
+// {% else %}
+//     {% set newregister = 1 %}
+// {% endif %}
+
+</script>
+{{ attach_library( 'microsite_contest/registration' ) }}
+{% set newregister = data.is_loggedin %}
+
+<div class="tostitos-contest">
+    <p class="contest-title">Tostitos Register Contest</p>
+</div>
+
+<style>
+	div.tostitos-contest, form.tostitos-form{
+		padding-top: 50px;
+	}
+</style>
+

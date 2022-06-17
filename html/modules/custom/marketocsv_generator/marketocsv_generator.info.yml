@@ -1,0 +1,6 @@
+name: Marketo CSV Generator
+type: module
+description: Example module for batch process
+core: 8.x
+package: custom
+configure: marketocsv_generator.settings_form

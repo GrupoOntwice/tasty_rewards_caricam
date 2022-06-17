@@ -1,0 +1,391 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/flaminhot') }}
+{{ attach_library('brandstheme/recipe_script') }}
+<script type="text/javascript">
+  document.title = "{{ subtitle|striptags|raw }}";
+</script>
+<section class="flaminhot-recipe-details-top-banner" style="background: url('{{ nodeimgurl }}') center center no-repeat, transparent">
+</section>
+
+{# @TODO get the madewith image from the brandstheme.theme file #}
+{# {% set img_madewith = file_url(content.field_extra_image1['#items'].entity.uri.value)  ?: '' %} #}
+{# {% set img_madewith2 = file_url(content.field_extra_image2['#items'].entity.uri.value)  ?: '' %} #}
+
+<section id="header-top" class="single-recipe-header-top" style="background-image:url({{ nodeimgurl }})">
+
+  <!-- SCHEMA.ORG -->
+  <meta itemprop="image" content="{{ nodeimgurl }}">
+  <meta itemprop="author" content="flaminhot.ca">
+  <meta itemprop="recipeCuisine" content="Canadian">
+  <meta itemprop="keywords" content="">
+</section>
+
+<section class="flaminhot-recipe-details-block">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-12 flaminhot-recipe-detail-header text-center">
+        <h1 itemprop="name" class="p-name">{{ subtitle|raw }}</h1>
+
+        {% if node.body.0.value|striptags is not empty %}
+          {{ node.body.0.value | raw }}
+        {% endif %}
+
+      </div>
+
+    </div>
+
+    <div class="row flaminhot-recipe-made-with-row center-align-md-dsk">
+
+      {% if related_products is not empty %}
+        <div class="col-md-6">
+
+          <div id="flaminhot-made-with-carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <div class="carousel-inner">
+              {% for idx, product in related_products %}
+                <div class="carousel-item {{ idx==0 ? 'active' :'' }}">
+                  {% if product.related_product_link is not empty %}
+                    <a href="{{ product.related_product_link }}" target="_blank">
+                      <img class="w-100" src="{{ file_url(product.related_product_image) }}" alt="{{ product.related_product_title }}">
+                    </a>
+                  {% else %}
+                    <img class="w-100" src="{{ file_url(product.related_product_image) }}" alt="{{ product.related_product_title }}">
+                  {% endif %}
+                </div>
+              {% endfor %}
+
+
+            </div>
+            <a class="carousel-control-prev made-with-image-control-prev" href="#flaminhot-made-with-carousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next made-with-image-control-next" href="#flaminhot-made-with-carousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+      <div class="col-md-6 flaminhot-recipe-made-with text-center">
+        {% if related_products is not empty %}
+          <h2>
+            {{ 'Made With'|t }}:<br>
+
+            <div id="flaminhot-made-with-carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+              <div class="carousel-inner">
+                {% for idx, product in related_products %}
+                  <div class="carousel-item {{ idx==0 ? 'active' :'' }}">
+                    <span>
+                      {{ product.related_product_title | raw }}
+                    </span>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+          </h2>
+        {% endif %}
+
+        <div class="row flaminhot-recipe-icons-block center-align">
+
+          {% if prep_time is not empty %}
+            <div class="col-4 flaminhot-recipe-icons-col">
+              <div class="m-auto">
+                <img class="w-recipe-icons" src="/themes/brandstheme/src/images/flaminhot/recipes/prep_time.svg" alt="Flaminhot Preparation time icon">
+              </div>
+
+              <h4>{{ 'Prep Time'|t }}: </h4>
+
+              <p>
+                <time datetime="PT20M" itemprop="prepTime">{{ prep_time }}</time>
+              </p>
+            </div>
+          {% endif %}
+
+          {% if cook_time is not empty %}
+            <div class="col-4 flaminhot-recipe-icons-col">
+
+              <div class="m-auto">
+                <img class="w-recipe-icons" src="/themes/brandstheme/src/images/flaminhot/recipes/cook_time.svg" alt="Flaminhot Cook time icon">
+              </div>
+
+              <h4>{{ 'Cook Time'|t }}: </h4>
+
+              <p>
+                <time datetime="PT20M" itemprop="cookTime">{{ cook_time }}</time>
+              </p>
+            </div>
+          {% endif %}
+
+          <div class="col-4 flaminhot-recipe-icons-col">
+
+            <div class="m-auto">
+              <img class="w-recipe-icons" src="/themes/brandstheme/src/images/flaminhot/recipes/rating-stars.svg" alt="Flaminhot Rating Stars icon">
+            </div>
+
+            <h4>{{ 'Rating'|t }}</h4>
+            {% set rating = avg_rating %}
+
+            <div class="flaminhot-stars recipe-stars" data-nid="{{ nid }}">
+              {% for i in 1..5 %}
+                <span {% if i <= rating %}class="checked"{% endif %} data-star="{{ i }}"></span>
+                <input type="radio" id="star-{{ i }}" name="rate" value="{{ i }}" {% if i == avg_rating %}checked="checked"{% endif %}>
+                <label for="star-{{ i }}" title="text">{{ i }}</label>
+              {% endfor %}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    {% if video_key|length %}
+      <div class="row flaminhot-recipe-detail-video-block center-align-md-dsk">
+
+        <div class="col-md-8">
+
+          <div class="flaminhot-video-box">
+            <div class="flaminhot-video-preimg">
+              <a href="#" data-key="{{ video_key }}" class="activate-video">
+                <img src="https://img.youtube.com/vi/{{ video_key }}/maxresdefault.jpg"/>
+              </a>
+              {# {{ video }} #}
+              {# <a href="#" data-key="m63A-px6MNs" class="activate-video"> #}
+              {# <img src="https://img.youtube.com/vi/m63A-px6MNs/maxresdefault.jpg"/> #}
+              {# </a> #}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    {% endif %}
+
+    <div class="row flaminhot-recipe-details-info">
+
+      <div class="col-md-6 flaminhot-recipe-ingredients padding-right-dsk">
+        <h3>{{ 'Ingredients'|t }} </h3>
+        {{ ingredients|raw }}
+      </div>
+
+      <div class="col-md-6 flaminhot-recipe-how-to-make padding-left-dsk">
+        <h3 class="how-to-make-heading">{{ 'How to make it'|t }}</h3>
+        {{ how_to_make|raw }}
+      </div>
+
+    </div>
+
+    <div class="row flaminhot-recipe-share-block {% if related_recipes is not empty %} {% else %} flaminhot-recipe-share-block-pb {% endif %}">
+
+      <div class="col-md-12 text-center">
+
+        <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+        <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+        <input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+
+        <p class="padding-bottom">
+          {{ 'SHARE THIS RECIPE'|t }}
+        </p>
+
+        <div class="flaminhot-recipe-share-icons center-align">
+
+          <a class="flaminhot-social-link social-share-trigger" data-platform="twitter" aria-label="twitter">
+            <i class="fa fa-twitter fa-navbar"></i>
+          </a>
+
+          <a class="flaminhot-social-link social-share-trigger" data-platform="facebook" aria-label="facebook">
+            <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+            <span>{{'Opens in a new tab'|t}}</span>
+          </a>
+
+          <a class="flaminhot-social-link" href="mailto:?subject={{ subtitle|raw }}&body={{ current_uri }}" aria-label="mail">
+            <i class="fa fa-envelope fa-navbar"></i>
+          </a>
+
+          <a class="flaminhot-social-link" href="javascript:window.print()" aria-label="print">
+            <i class="fa fa-print fa-navbar"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% if related_recipes is not empty %}
+  <section id="related-recipes">
+    <img class="w-recipe-flames-top" src="/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-top.png" alt="Flaminhot Fire Pattern">
+
+    <div class="flaminhot-featured-recipes-block">
+      <div class="container-fluid flaminhot-featured-recipes-bg-container d-none">
+        <div class="row">
+          <div class="flaminhot-featured-recipes-bg" style="background: url('/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-top-large.png') center center no-repeat"></div>
+          <div class="flaminhot-featured-recipes-bg" style="background: url('/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-bottom.png') center center no-repeat"></div>
+        </div>
+      </div>
+
+      <div class="container flaminhot-featured-recipes-container featured-recipe-position">
+
+        <div class="row">
+
+          <div class="col-md-12 flaminhot-recipe-header">
+            <h1 class="flaminhot-more-recipes">
+              {{ 'Related Recipes'|t }}
+            </h1>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="flaminhot-related-recipe" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators featured-carousel-indicators">
+          {% for idx, recipe in related_recipes %}
+            <li data-target="#flaminhot-related-recipe" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+          {% endfor %}
+        </ol>
+
+        <div class="carousel-inner container">
+          {% for idx, recipe in related_recipes %}
+            <div class="row carousel-item {{ idx==0 ? 'active' :'' }}">
+              <div class="col-md-4 flaminhot-recipe-col">
+
+                <a href="{{ recipe.link }}" aria-label="{{ recipe.title }}" class="flaminhot-recipe-img-link">
+                  <div class="flaminhot-recipe-thumbnail" style="background: url('{{ recipe.image_url }}') center center no-repeat, transparent; content: attr({{ recipe.title }});"></div>
+                </a>
+
+                <div class="flaminhot-recipe-copy">
+
+                  <h3>
+                    {{ recipe.title|raw }}
+                  </h3>
+                </div>
+
+                <div class="flaminhot-recipe-btn">
+                  <a class="btn_flaminhot" href="{{ recipe.link }}">
+                    {{ 'View Recipe'|t }}
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+          {% endfor %}
+        </div>
+
+        <a class="carousel-control-prev" href="#flaminhot-related-recipe" role="button" data-slide="prev" aria-label="arrow toggle">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#flaminhot-related-recipe" role="button" data-slide="next" aria-label="arrow toggle">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+
+      </div>
+
+      <div class="container text-center">
+        <div class="row">
+
+          <div class="col-md-12 m-auto flaminhot-featured-recipes-view-more">
+            <a class="btn_flaminhot-view-more" href="{{ brand_basepath }}/recipes">
+              {{ 'View More Recipes'|t }}
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <img class="w-recipe-pattern-bottom" src="/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-bottom.png" alt="Flaminhot Fire Pattern">
+
+  </section>
+{% endif %}
+
+<section id="coupon-block" class="coupon flaminhot-coupon">
+  {{ coupon_block|t|raw }}
+</section>
+
+{# <section class="social-video">
+	{{block_video|raw}}
+</section> #}

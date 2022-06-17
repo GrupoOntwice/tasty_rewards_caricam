@@ -1,0 +1,9 @@
+{
+    "name": "drupal/fancy_login",
+    "type": "drupal-module",
+    "description": "Fancy Login adds JavaScript based, lightbox-style login functionality to your site.",
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/core": "^8 || ^9"
+    }
+}

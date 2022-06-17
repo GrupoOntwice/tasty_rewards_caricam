@@ -1,0 +1,378 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/tostitos') }}
+{{ attach_library('brandstheme/slickLibrary') }}
+
+
+
+<div class="tostitos-content-background-container-productdetails">
+  <section id="product" class="tostitos-productdetails-block">
+    <div class="tostitos-section-container">
+      <div class="tostitos-productdetails-intro">
+        <div class="tostitos-productdetails-intro-img">
+          <img itemprop="image" src="{{product_img}}" alt="{{nodeimgalt}}">
+        </div>
+
+        <div class="tostitos-productdetails-intro-text">
+          <h3>{{subtitle|raw}}</h3>
+
+          <p>
+            {% if node.body.0.value|striptags is not empty %}
+              {{node.body.0.value | raw}}
+            {% endif %}
+          </p>
+
+          {# <a href="" class="tostitos-btn tostitos-btn-yellow"> {{'Buy now'|t}} </a> #}
+
+          <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+          <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+          <input type="hidden" name='node_image' id='node_image' value="{{ product_img }}">
+          {% if show_product_buynow %} 
+            <button type="button" class="tostitos-btn tostitos-products-btn js-buynow" id = "tostitos-buy" data-toggle="modal" data-target="#tostitosModal">
+              {{'Buy Now' | raw}}
+            </button>
+          {% endif %}
+
+          </a>
+
+          <div class="modal bootstrap-modal bg-transparent tostitos-buynow-modal" id="tostitosModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-tostitos" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <button type="button" id = "closeModal" class="close" data-dismiss="modal">×</button>
+                  {# <p>Content goes here</p> #}
+                  {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+                  {% if iframe_url %}
+                    <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+{#        <div class="modal bootstrap-modal bg-transparent" id="tostitosModal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#          <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#            <div class="modal-content">#}
+{#              <div class="modal-body">#}
+{#                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                #}{# <p>Content goes here</p> #}
+{#                {% if iframe_url %}#}
+{#                      <iframe id="snack-shop" src="{{iframe_url}}"></iframe>#}
+{#                    {% endif %}#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+
+        <div class="tostitos-socials tostitos-socials-products">
+            <p>
+              {{ 'Share'|t }}
+            </p>
+
+            <a class="tostitos-social-link social-share-trigger" data-platform="twitter" href="#">
+              <img src="/themes/brandstheme/src/images/tostitos/social/twitter.png" alt="twitter icon">
+            </a>
+            {# <a class="tostitos-social-link" href="https://www.instagram.com/tostitoscanada/" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/instagram.png" alt="instgram icon">
+            </a> #}
+            <a class="tostitos-social-link social-share-trigger" data-platform="facebook" href="#">
+              <img src="/themes/brandstheme/src/images/tostitos/social/facebook.png" alt="facebook icon">
+            </a>
+            {# <a class="tostitos-social-link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/youtube.png" alt="youtube icon">
+            </a> #}
+            <a class="tostitos-social-link social-share-trigger" data-platform="pinterest" href="#">
+              <img src="/themes/brandstheme/src/images/tostitos/social/pinterest.png" alt="pinterest icon">
+            </a>
+            <a class="tostitos-social-link" href="mailto:?subject={{subtitle|raw}}&body={{ current_uri }}">
+              <img src="/themes/brandstheme/src/images/tostitos/social/email.png" alt="email icon">
+            </a>
+            <a class="tostitos-social-link" href="javascript:window.print()">
+              <img src="/themes/brandstheme/src/images/tostitos/social/print.png" alt="print icon">
+            </a>
+          </div>
+
+          {# <div class="tostitos-socials tostitos-socials-products">
+            <p>
+              {{ 'Share'|t }}
+            </p>
+
+            <a class="tostitos-social-link" href="https://twitter.com/tostitoscanada" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/twitter.png">
+            </a>
+            <a class="tostitos-social-link" href="https://www.instagram.com/tostitoscanada/" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/instagram.png">
+            </a>
+            <a class="tostitos-social-link" href="https://www.facebook.com/tostitoscanada" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/facebook.png">
+            </a>
+            <a class="tostitos-social-link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/youtube.png">
+            </a>
+            <a class="tostitos-social-link" href="https://www.pinterest.ca/tostitoscanada/_created/" target="_blank">
+              <img src="/themes/brandstheme/src/images/tostitos/social/pinterest.png">
+            </a>
+          </div> #}
+
+
+
+      </div>
+      </div>
+
+      <div class="tostitos-productdetails-nutrition">
+        <div class="tostitos-productdetails-nutrition-container">
+          <div class="tostitos-productdetails-nutrition-table-container">
+            <h2>{{'Nutrition'|t}}</h2>
+
+            <div class="tostitos-productdetails-nutrition-table">
+              <div class="tostitos-productdetails-nutrition-header-row">
+                    <div class="tostitos-productdetails-nutrition-cell tostitos-productdetails-headercell">
+                        {{portion}}
+                    </div>
+                    <div class="tostitos-productdetails-nutrition-cell tostitos-productdetails-headercell">
+                        {{'% Daily Value'|t}}
+                    </div>
+                </div>
+              {{nutrition | raw}}
+            </div>
+          </div>
+
+          <div class="tostitos-productdetails-nutrition-info">
+            <h2>{{'Ingredients'|t}}</h2>
+
+            <p>
+              {{noderecipeingredients | raw}}
+            </p>
+
+            <p class="product-alert">{{alert}}</p>
+
+            <div class="tostitos-productdetails-nutrition-icons">
+              {% if 'source_of_fibre' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container">
+                <a href="javascript:void(0)" title="{{ 'Source of Fibre'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-corn.png" alt="corn icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Source of Fibre'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'made_with_100%_whole_grains' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container">
+
+                <a href="javascript:void(0)" title="{{ 'Made With 100% Whole Grains'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-wheat.png" alt="wheat icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Made With 100% Whole Grains'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'no_artificial_colours_flavours_or_preservatives' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container">
+                <a href="javascript:void(0)" title="{{ 'No Artificial Colours, Flavours or Preservatives'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-nuts.png" alt="nuts icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'No Artificial Colours, Flavours or Preservatives'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'no_cholesterol' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container">
+                <a href="javascript:void(0)" title="{{ 'No Cholesterol'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-0mg.png" alt="0 mg icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'No Cholesterol'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'gluten_free' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container">
+                <a href="javascript:void(0)" title="{{ 'Gluten-Free'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-nowheat.png" alt="no wheat icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Gluten-Free'|t}}
+                </p>
+              </div>
+              {% endif %}
+
+
+              {% if 'gluten_free_large' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container icon-large">
+                <a href="javascript:void(0)" title="{{ 'Gluten-Free'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-nowheat2-lg-white.png" alt="no wheat white icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Gluten-Free'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'no_artificial_colours_flavours' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container icon-large">
+                <a href="javascript:void(0)" title="{{ 'No Artificial Colours or Flavours'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-noartificial2-lg.png" alt="no artificial icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'No Artificial Colours or Flavours'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'non_gmo_project_verified' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container icon-large">
+                <a href="javascript:void(0)" title="{{ 'NON GMO Project Verified'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-nongmo-lg.png" alt="no gmo icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'NON GMO Project Verified'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'canada_organic' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container icon-large">
+                <a href="javascript:void(0)" title="{{ 'Canada Organic'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-canadaorganic-lg.png" alt="canada organic icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Canada Organic'|t}}
+                </p>
+              </div>
+              {% endif %}
+              {% if 'certified_organic_oregon_tilth' in claims %}
+              <div class="tostitos-productdetails-nutrition-icons-container icon-large">
+                <a href="javascript:void(0)" title="{{ 'Certified Organic by: OREGON TILTH'|t}}" style="cursor: auto;">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-oregontilth-lg.png" alt="oregon tilth icon"/>
+                </a>
+                <p class="tostitos-productdetails-nutrition-icons-text">
+                  {{ 'Certified Organic by: OREGON TILTH'|t}}
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{% if related_recipes|length > 0 %}
+  <section class="tostitos-related-block tostitos-nocarousel-block">
+    <div class="tostitos-section-container">
+      {% if related_recipes|length %}
+        <h2> {{'Related Recipes'|t}} </h2>
+      {% endif %}
+
+      <div class="tostitos-related-product-wrapper tostitos-nocarousel-container">
+        {% for recipe in related_recipes %}
+          <div class="tostitos-related-product tostitos-nocarousel-box">
+            <a href="{{recipe.link}}" hreflang="en">
+              <div class="img">
+                <img src="{{recipe.image_url}}" alt={{recipe.title|raw}}>
+              </div>
+
+              <h3 class="products-category-title">
+                {{recipe.title|raw}}
+              </h3>
+            </a>
+
+            <a class="tostitos-btn tostitos-btn-yellow" href="{{recipe.link}}">{{'View Recipe'|t}}</a>
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+  {% endif %}
+
+  <section id="product-video" class="social-video tostitos-video-block">
+    <div class="tostitos-section-container">
+      <h2>{{'Videos'|t}}</h2>
+
+      <div class="tostitos-video-container">
+        {{ block_video|t|raw }}
+      </div>
+
+      <div class="tostitos-video-viewmore">
+        <a href="{{videos_page}}"  class="tostitos-btn tostitos-btn-white">{{'View More Videos'|t}}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="coupon" class="tostitos-coupon-block">
+    <div class="tostitos-section-container two-panel-block">
+      {{ coupon_block|t|raw }}
+    </div>
+  </section>
+</div>

@@ -1,0 +1,379 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/sunchips') }}
+
+{% if is_signature %}
+  {# SIGNATURE #}
+  {% include '@brandstheme/includes/node-product-sunchips-signatures.html.twig' %}
+{% else %}
+  {# NOT SIGNATURE #}
+  {% set product_img = nodeimgurl %}
+
+  <section id="sunchips-productdetails" class="sunchips-product-detail-intro-block">
+
+
+    <div class="pos-relative">
+
+      <div class="container-fluid sunchips-background-holder padding-none">
+
+        <div class="row">
+          <div class="col-md-6 sunchips-product-detail-img-bg" style="background: url('/themes/brandstheme/src/images/sunchips/sunchips-product-detail-bg-{{ background_color }}.png') center center no-repeat, transparent;">
+
+          </div>
+          <div class="col-md-6 sunchips-product-detail-copy-bg">
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+
+
+        <div class="row center-align-md-dsk sunchips-products-col-holder">
+
+          <div class="col-md-6">
+            <img class="w-100" itemprop="image" src="{{ large_img_url }}" alt="{{ nodeimgalt }}">
+          </div>
+
+          <div class="col-md-6 sunchips-product-intro-copy">
+            <h3 class="{{ background_color }}">
+              {% if title1 %}
+                <span>{{ title1|raw }}</span>
+                <br>
+                {# {{title2|raw}} #}
+                {{ title2|raw|trim(" \t\n\r\0\x0B\xC2\xA0") }}
+              {% else %}
+                {{ subtitle|raw }}
+              {% endif %}
+            </h3>
+
+            <div class="sunchips-product-subtitle-copy padding-top-half">
+              {% if node.body.0.value|striptags is not empty %}
+                {{ node.body.0.value | raw }}
+              {% endif %}
+              <div class="sunchips-wine-pairing">
+                {% if node.field_pairing.0.value is not empty %}
+                  <h3 class="wine-pairing-heading">{{ 'Wine Pairing'|t }}:</h3>
+                  <p>{{ node.field_pairing.0.value | raw }}</p>
+                {% endif %}
+
+              </div>
+            </div>
+          {% if show_product_buynow %} 
+            <button class = "btn_sunchips sunchips-products-btn js-buynow" id = "sunchips-buy" data-target="#sunchipsModal" data-toggle="modal">
+									{{'Buy Now'|t|raw}}
+								</button>
+          {% endif %}
+
+            <div class="modal bootstrap-modal bg-transparent sunchips-buynow-modal" id="sunchipsModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <button type="button" id = "closeModal" class="close" data-dismiss="modal">×</button>
+                    {# <p>Content goes here</p> #}
+                    {% if iframe_url %}
+                      <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+{% endif %}
+
+    {% if noderecipeingredients is not empty and nutrition is not empty %}
+
+<section id="sunchips-productdetails-info-block" class="">
+
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-md-6 sunchips-productdetails-nutrition-info">
+        <h3>{{ 'Nutrition'|t }}</h3>
+
+
+        <div class="sunchips-productdetails-nutrition-header-row">
+          <div class="sunchips-productdetails-nutrition-cell sunchips-productdetails-headercell bold">
+            {# {{ 'Amount'|t }} #}
+            {{ portion }}
+          </div>
+
+          <div class="sunchips-productdetails-nutrition-cell sunchips-productdetails-headercell bold">
+            {{ '% Daily Value'|t }}
+          </div>
+        </div>
+
+        {{ nutrition | raw }}
+
+      </div>
+
+
+      <div class="col-md-6 sunchips-productdetails-ingredients-info">
+
+        <h3>{{ 'Ingredients'|t }}</h3>
+
+        <p>
+          {{ noderecipeingredients | raw }}
+        </p>
+
+        <div class="row sunchips-product-nutrition-icons">
+           {% if 'source_of_fibre' in claims %}
+          <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+            <a href="javascript:void(0)" title="{{ 'Source of Fibre'|t }}">
+              <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-fibre.svg" alt="Source of Fibre"/>
+            </a>
+            <p class="padding-top-half small">
+              {{ 'Source of Fibre'|t }}
+            </p>
+          </div>
+          {% endif %}
+          {% if 'made_with_100%_whole_grains' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'Made With 100% Whole Grains'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-wheat.svg" alt="Made With 100% Whole Grains"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'Made With 100% Whole Grains'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'no_artificial_colours_flavours_or_preservatives' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'No Artificial Colours, Flavours or Preservatives'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-no-artificial-color.svg" alt="No Artificial Colours, Flavours or Preservatives"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'No Artificial Colours, Flavours or Preservatives'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'no_cholesterol' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'No Cholesterol'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-no-cholesterol.svg" alt="No Cholesterol"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'No Cholesterol'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'gluten_free' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'Gluten-Free'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-gluten-free.svg" alt="Gluten-Free"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'Gluten-Free'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'gluten_free_large' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'Gluten-Free'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/sunchips-icon-gluten-free.svg" alt="Gluten-Free"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'Gluten-Free'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'no_artificial_colours_flavours' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'No Artificial Colours or Flavours'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/icon-noartificial2.png" alt="No Artificial Colours or Flavours"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'No Artificial Colours or Flavours'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'non_gmo_project_verified' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'NON GMO Project Verified'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/icon-nongmo-lg.png" alt="NON GMO Project Verified"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'NON GMO Project Verified'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'canada_organic' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'Canada Organic'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/icon-canadaorganic-lg.png" alt="Canada Organic"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'Canada Organic'|t }}
+              </p>
+            </div>
+          {% endif %}
+          {% if 'certified_organic_oregon_tilth' in claims %}
+            <div class="col-3 sunchips-product-nutrition-icons-col text-center">
+              <a href="javascript:void(0)" title="{{ 'Certified Organic by: OREGON TILTH'|t }}">
+                <img class="w-50" src="/themes/brandstheme/src/images/sunchips/icons/icon-oregontilth-lg.png" alt="Certified Organic by: OREGON TILTH"/>
+              </a>
+              <p class="padding-top-half small">
+                {{ 'Certified Organic by: OREGON TILTH'|t }}
+              </p>
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% endif %}
+
+
+{% if related_products %}
+  <section class="sunchips-related-product-block">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 related-prod-heading text-center">
+          <h1> {{ 'Other Products'|t }} </h1>
+          <img class="w-sunchips-hr" src="/themes/brandstheme/src/images/sunchips/sunchips-hr.svg" alt="Sunchips Heading hr">
+        </div>
+
+      </div>
+
+
+      <div class="row sunchips-other-products-row">
+        {% for idx, product in related_products %}
+
+          <div class="col-md-4 sunchips-related-prod-img-col text-center">
+
+            <a href="{{ product.link }}" hreflang="en">
+              <img class="" src="{{ product.image_url }}" alt="{{ product.title | raw }}">
+            </a>
+
+            <div class="sunchips-related-product-description text-center">
+              <a href="{{ product.link }}" hreflang="en">
+                <h4 class="{{ product.background_color }}">
+                  {{ product.title|raw }}
+                </h4>
+              </a>
+            </div>
+
+            <div class="sunchips-view-featured-products text-center">
+              <a class="btn_sunchips" href="{{ product.link }}" title="{{ product.title | raw }}">
+                {{ 'View Product'|t }}
+              </a>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </section>
+
+{% endif %}
+
+
+<section id='coupon' class="sunchips-coupon-block">
+  <div class="sunchips-section-container two-panel-block">
+    {# {{ coupon_block|t|raw }} #}
+
+
+    <div class="container container-coupon center-align-md-dsk">
+      <div class="row w-100 center-align coupon-row">
+        <div class="col-md-6 main-coupon-left animate__animated " style="background: url('/themes/brandstheme/src/images/sunchips/sunchips-coupon-bags-bg.png')">
+          <div class="main-coupon-centered-img"><img alt="SunChips Pack" src="/themes/brandstheme/src/images/sunchips/sunchips-coupon-chips-bags.png"/></div>
+        </div>
+        <div class="col-md-6 bg-white main-coupon-right animate__animated ">
+          <div class="main-coupon-copy">
+            <h1 class="main-coupon-heading center-align">
+              SunChips<br/> Coupon Available!
+            </h1>
+            <a class="btn_sunchips margin-top" href="/coupons" target="_self">Get my coupon</a>
+            <p class="main-coupon-disclaimer">*Coupons available while quantities last</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

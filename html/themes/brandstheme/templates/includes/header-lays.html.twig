@@ -1,0 +1,110 @@
+<nav id="brands_navigation" class="lays-navbar__vertical-align" role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="/en-ca/brands/lays" class="tostitos-logo-mobile top-logo noDesktop">
+    <img class="{{brand}}-logo" src="/themes/brandstheme/src/images/{{brand}}/{{brand}}-logo.png?v=1" alt="Lays">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align">
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/videos" id="products-submenu">{{'Videos'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+        <a href="{{ brand_basepath }}/joystory" id="realjoy-submenu">{{'Joy Stories'|t}}</a>
+      </li>
+    {% if is_quaker_landing %}
+      <li class="brands-navbar__item-border">
+        {# <a href="{{ brand_basepath }}/realjoy/terms" id="realjoy-terms-submenu">{{'Terms & Conditions'|t}}</a> #}
+        <a href="{{ brand_basepath }}/joystory/terms" id="realjoy-terms-submenu">{{'Terms & Conditions'|t}}</a>
+      </li>
+    {% endif %}
+    <li class="brands-navbar__item-border">
+      <a href="https://contact.pepsico.com/fritolayca" target="_blank" id="occasions-submenu">
+        {{'Contact us'|t}}
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ brand_basepath }}" class="logo noMobile">
+    <img class="{{brand}}-logo" src="/themes/brandstheme/src/images/{{brand}}/{{brand}}-logo.png?v=1" alt="Lays logo">
+  </a>
+
+  <!-- TO SEARCH POPOVER -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+      <a class="brands-navbar__social-icons" href="https://twitter.com/layscanada" id="nav-twitter" target="_blank" aria-describedby="new-window-0" aria-label="twitter icon">
+        <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+        <div class="hidden">
+          <span id="new-window-0">Opens in a new tab</span>
+        </div>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.instagram.com/layscanada/" id="nav-instagram" target="_blank" aria-describedby="new-window-0" aria-label="instagram icon">
+        <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+        <div class="hidden">
+          <span id="new-window-0">Opens in a new tab</span>
+        </div>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.facebook.com/LaysCanada/" id="nav-facebook" target="_blank" aria-describedby="new-window-0" aria-label="facebook icon">
+        <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+        <div class="hidden">
+          <span id="new-window-0">Opens in a new tab</span>
+        </div>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.youtube.com/user/layscanada" id="nav-youtube" target="_blank" aria-describedby="new-window-0" aria-label="youtube icon">
+        <i class="fa fa-youtube-play fa-navbar" title="youtube icon"></i>
+        <div class="hidden">
+          <span id="new-window-0">Opens in a new tab</span>
+        </div>
+      </a>
+  </div>
+
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+    <a href="#" id="" class="choose-lang_fr js-translation">
+      {{'FR'|t}}
+    </a>
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/signin-signup.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl {{language}}" src="/themes/brandstheme/src/images/logo-{{language}}.png" alt="Tasty Rewards">
+
+        {# <img class="brands-tr-navbar_image-mbl fr" src="/themes/brandstheme/src/images/logo-fr.png" alt="Tasty Rewards"> #}
+
+        <span class="brands-tr-navbar_copy-mbl">
+           {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

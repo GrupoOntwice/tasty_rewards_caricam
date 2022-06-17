@@ -1,0 +1,314 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+
+// language = '{{ data.language }}'
+
+</script>
+
+{{ data.tag | raw }}
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+
+
+
+
+<section id="banner">
+<div class="banner_slide contest-quacker ">
+    <div class="banner-desktop"  style="background-image: url('{{ file_url(data.headerimage) }}');">
+        <div class="banner_slide--text {{class_pos}} contest-banner-text">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+{#                 <h1> {{ subtitle }}</h1>#}
+                 {# <h1 class="h1 {{color}}"> {{ subtitle | raw}}</h1> #}
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red {{is_signuplink? 'sign-up-link'}}" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+            {{data.body|raw}}
+
+
+        </div>
+    </div>
+    <div class="banner-mobile"  style="background-image: url('{{ file_url(data.headermobileimage) }}');">
+        <div class="banner_slide--text slide-left {{class_pos}}">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+                {# <h1> {{ subtitle }}</h1> #}
+                {# <span class="h1 {{mobileColor}} {{textPosition}}"> {{ subtitle | raw }} </span> #}
+                {# <h1 class="h1 {{color}}"> {{ subtitle | raw}}</h1> #}
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="arrow-section arrow-section-lightblue"></div>
+</div>
+</section>
+
+  <section id="contest" style="background-image: url('/themes/tastytheme/src/images/lays-summertime-contest.png'); background-position: top; background-repeat: no-repeat; background-size: cover; background-color: #ecf6fa">
+    <div class="contest__detail-wrapper contest__detail-wrapper-step">
+        <h2>{{ "The Lays's<sup style='font-size:0.5em;'>&reg;</sup> Summertime Contest" | trans}}</h2>
+
+        <p class="contest__detail-about">
+            {{ "<span class='bold'>Calling all Ontario residents!</span>  Lay’s<sup>®</sup> potato chips and summer go hand-in-hand. Upgrade your backyard experience with a chance to <span class='bold'>win<sup>†</sup> one of four $250 prizes</span>! Upgrade your patio furniture, splurge on your favourite snacks, or deck out your garden with new plants and flowers. The summer is yours!" | trans}}
+        </p>
+
+        <p>{{ "Brought to you by these Ontario Regional Banners: " | trans}}</p>
+
+        <div class="contest-lays-summertime-logo-wrapper">
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/lays_summertime_regional_1_transparent.png" alt="Big Bee Convenience">
+                </div>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/lays_summertime_regional_2_transparent.png" alt="Little Short Stop">
+                </div>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/lays_summertime_regional_3_transparent.png" alt="MacEwen Petroleum">
+                </div>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/lays_summertime_regional_4_transparent.png" alt="Rabba Fine Foods">
+                </div>
+            </div>
+        </div>
+
+        <p>{{ "<span class='bold'>You can enter once per day to up your chances of winning!</span> <br> <br>See <a target='_blank' class='quaker-link' href='/en-ca/contests/thelayssummertimecontest/officialrules'>Official Rules</a> for full details." | trans}}</p>
+
+    </div>
+</section>
+
+{% if logged_in %}
+    {% set newregister = 0 %}
+{% else %}
+    {% set newregister = 1 %}
+{% endif %}
+
+{# { dump(data) } #}
+
+<section id="contest">
+    <div class="contest-detail__wrapper contest-detail__quacker-wrapper nounderline">
+
+        {% if (data.geotargeting == true) %}
+            <div class="contest-detail__view_region">
+                <h2>{{ data.title | raw | t }}</h2>
+                <p class="contest-detail__about">
+                    {{ 'This contest is not available in your region' | t  }}
+                    <a class="btn btn-primary" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+                </p>
+            </div>
+        {% else %}
+            <div class="contest-detail__form-quacker">
+                <!-- Form -->
+                <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+
+                    <input type="hidden" name="newregister"  value="{{newregister}}">
+                    <!-- User data -->
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="firstname" id="firstname" placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}" disabled >
+                        </div>
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="lastname" id="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}" disabled>
+                        </div>
+                    </div>
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="email" id="email" placeholder="{{ 'Email *'|t }}" value="{{data.email?:''}}" disabled>
+                        </div>
+                        {# <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="postalcode" id="postalcode" placeholder="{{ 'Postal Code *'|t }}"  value="{{data.postalcode?:''}}" disabled>
+                        </div> #}
+
+                        <div class="contest-detail__quacker-input-col ">
+                            <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" disabled>
+                            <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+                        </div>
+                    </div>
+
+                    <div class="contest-detail__quacker-last-input">
+                        <p class="contest-banner-title">{{"Where did you hear about this contest?"|t}}</p>
+                        <div class="contest-detail__quacker-input-col">
+                            <div class="contest-detail__sign-up-banner">
+                                <select class="form-control contest-detail__sign-up-select-banner {{data.error.banner?'has-error':''}}" name="lays-banner" id="lays-banner">
+                                    <option value='' >{{ 'Select One Banner*'|t }}</option>
+                                    <option value='big_bee_convenience' {{ data.banner=='big_bee_convenience'?'selected':'' }}>{{ 'Big Bee Convenience'|t }}</option>
+                                    <option value='little_short_stop' {{ data.banner=='little_short_stop'?'selected':'' }}>{{ 'Little Short Stop'|t }}</option>
+                                    <option value='macewen_petroleum' {{ data.banner=='macewen_petroleum'?'selected':'' }}>{{ 'MacEwen Petroleum'|t }}</option>
+                                    <option value='rabba_fine_foods' {{ data.banner=='rabba_fine_foods'?'selected':'' }}>{{ 'Rabba Fine Foods'|t }}</option>
+                                    <option value='other' {{ data.banner=='other'?'selected':'' }}>{{ 'Other'|t }}</option>
+                                </select>
+                            </div>
+                            <span class="help-block err_email">{{data.error.gender| raw?:''  }}</span>
+                        </div>
+                    </div>
+
+                    <!-- User data end-->
+
+
+                    <!-- User Optin data -->
+                    <div class="contest-detail__sign-up-select-checkbox layssummertime-checkbox">
+                        <div class="contest-detail__checkboxes-wrap">
+                            {% if data.optin == "1" %}
+                                <input type="checkbox" class="contest-detail__checkboxes-color" id="check" />
+                                <label for="check" class="hidden"></label>
+                                <p class="contest-detail__checkbox-text">{{ "You are already subscribed to Tasty Rewards<sup>TM</sup> emails."|t }}</p>
+                            {% else %}
+                                <input type = "checkbox" class="contest-detail__checkboxes-color"  name='optin' id ='clipbox' value="1" >
+                                <label for="clipbox"></label>
+                                <p class="contest-detail__checkbox-text">{{ 'Yes! Sign me up to Tasty Rewards<sup>TM</sup> emails so I never miss out on exciting updates, offers or news (and I have the option to unsubscribe at any time)' | t }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- User Optin data end -->
+
+                    <!-- User question  -->
+
+
+                    <!-- User question end-->
+
+                    {% if (data.status == '4') %} {# already reguistered and can't participate today  #}
+                        <div class="row">
+                            <div class="">
+                                {% if (data.contestentry == '2') %}
+                                    <h4> {{ 'You have already entered this contest today. You may only participate once per day. ' | t  }} </h4>
+                                {% else %}
+                                    <h4>{{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }}</h4>
+                                {% endif %}
+                            </div>
+                            <div class="contest-detail__sign-up-select-button">
+                                <a class="contest-detail__sign-up-button" href="{{ url('pepsicontest.landing') }}">{{ 'Return to homepage' | t }}</a>
+                            </div>
+
+
+                        </div>
+                    {% else %}
+                        {% if (data.status != '1') %} {# already registererd but can participate today, and we don't need to show answers #}
+
+                            <!-- User Questions -->
+                            {% for question in data.questions %}
+                                {% set questionid = question.questionid %}
+                                <div class="contest-detail__checkboxes-flavour">
+
+                                    <div class="col-xs-12 form-group no-padding contest-detail__checkboxes-flavour-wrap{{attribute(data.error.q, questionid)?'has-error':''}}">
+                                        <p class="contest-detail__container-birth">{{ question.subject|raw }} *</p>
+                                        <input type="hidden" name="questiontype[{{questionid}}]" value ="{{question.type}}">
+                                        <input type="hidden" name="questionid[{{questionid}}]" value="{{questionid}}">
+                                        {% if question.type == 'SingleChoice' or question.type == 'TrueFalse'  %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="radio" class="contest-detail__checkboxes-color" id="checkbox{{ loop.index}}" name="answ[{{questionid}}][]"   value="{{ loop.index}}" />
+                                                        <label for="checkbox{{ loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% elseif question.type == 'MultipleChoice' %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="checkbox" class="contest-detail__checkboxes-color" id="checkbox1{{ loop.index}}" name="answ[{{questionid}}][{{ loop.index}}]"  />
+                                                        <label for="checkbox1{{loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+
+                                            {% endfor %}
+                                        {% endif %}
+                                        <span class="help-block err_q">{{  attribute(data.error.q, questionid) }}</span>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+
+                        <div class="contest-detail__sign-up-select-button">
+                            <h4 class="contest-detail__checkbox-text-rules">
+                                {{'By submitting my entry, I confirm that I am eligible to participate according to the'|t}} <a href="{{ path(data.language ~ '.pepsicontest.contest.officialrules', {'contest': data.contesturi }) }}" target="_blank" >{{ 'Official Rules'|t }}. </a>
+                            </h4>
+                        </div>
+
+                        <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+
+                        <div class="contest-detail__sign-up-select-button">
+                            <input class="contest-detail__sign-up-button" type="submit" value="{{ 'Enter Now'|t }}">
+                        </div>
+
+                    {% endif %}
+
+
+                </form>
+                <!-- Form -->
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+<section id="brands">
+    <p class="quacker-brands">{{"† No purchase necessary. Open to residents of Ontario who are age of majority or older at the time of entry. Correctly answering a mathematical skill-testing question required to win. Contest Period: July 13, 2020 @ 9:00 am ET to September 30, 2020 @ 5:00 PM ET. Four (4) prizes available to be won (ARV $250 each; see prize details in Official Rules). Odds of winning depend on number of eligible entries received. Limit one (1) entry per person per day. Conditions/restrictions may apply. <a class='quaker-link' href='/en-ca/contests/thelayssummertimecontest/officialrules' target='_blank'>Click here for Official Rules.</a>" | t}}</p>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+
+</section>
+
+<script>
+    function fileChanged(input) {
+        let fileName = document.querySelector('.upload-quacker-fileName');
+        fileName.textContent = input.files[0]['name'];
+    }
+</script>

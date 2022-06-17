@@ -1,0 +1,246 @@
+{{ attach_library( 'quaker_contest/landing' ) }}
+{{ attach_library( 'quaker_contest/hockey' ) }}
+
+
+<section class="block__intro negative_margin menu_buffer">
+    <div class="description contest_page_content_block other animated-text-block">
+
+
+        {# WINNERS Confirmation page #}
+        {# ----------------------------- #}
+        {% if data.is_winner == 1 %}
+            {% set page_contestwinner = 1 %}
+            {% include '@quaker_contest/tracking/pixel-tracking-hockey.html.twig' %}
+
+
+        <div class="quaker-hockey-banner win">
+            <div class="banner_slide--text {{class_pos}} contest-banner-text-win">
+                <h1>{{ "Congratulations!" |t }}</h1>
+                <p>{{ "Congratulations!  You’ve been selected as a potential instant prize winner of " | trans}} <span class="hockey-prize">{{data.prize|raw}}</span>!</p>
+
+                <img class="winner-mobile" src="{{data.prize_img}}" alt="prizes" />
+
+                <p>
+                    {{ "We’ll be sending you an email with instructions on how to claim your prize.  You have 3 days to claim it, so don’t wait too long or you’ll  forfeit your chance to win! Be sure to check your spam / junk folder  if you do not see it." | t }}
+                </p>
+
+                <span class="prize-confirmation">
+                    {{ "Prizes not exactly as shown." | t }}
+                </span>
+            </div>
+
+            {# <img class="winner-desktop" src="/themes/brandstheme/src/images/quaker/hockey-contest/banner-win.jpg" alt="quaker products" /> #}
+
+{#            <img class = "mw-100" src = "{{data.prize_img}}" alt = "prizes"/>#}
+
+            <img class = "winner-desktop" src = "{{data.prize_img}}" alt = "prizes"/>
+
+        </div>
+
+        <div class="quaker-hockey-official-rules">
+            <div class="container">
+              {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+              <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+
+                <div class="quaker-hockey-official-rules-links">
+                    <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+                    <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+                    <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{#        <div class = "row p-3 confirmation-text">#}
+{#          <div class = "col-lg-6 hockey-confirm">#}
+{#            {{ attach_library( 'quaker_contest/landing' ) }}#}
+{#            <h2 class = "montserrat-black text-uppercase color-lightblue">{{ "Congratulations!" |t }}</h2>#}
+{#            <div class="contest-description">#}
+{#                <p class = "opensans-semibold" style = "padding-bottom: 20px">#}
+{#                    {{ "Congratulations!  You’ve been selected as a potential instant prize winner of  "|t|raw }}#}
+{#                    <strong class = "color-lightblue montserrat-black">{{data.prize}}</strong>!#}
+{#                </p>#}
+{#                <span class="hidden js-prizename">{{data.prize}}</span>#}
+{#                <input type="hidden" name="winner_firstname" id="winner_firstname" value="{{data.firstname}}">#}
+{#                <input type="hidden" name="winner_email" id="winner_email" value="{{data.email}}">#}
+{#                <input type="hidden" name="claim_url" id="claim_url" value="{{data.claim_url}}">#}
+{#                <p class = "opensans-semibold">#}
+{#                    {{ "We’ll be sending you an email with instructions on how to claim your prize.  You have 3 days to claim it, so don’t wait too long or you’ll  forfeit your chance to win! Be sure to check your spam / junk folder  if you do not see it." | t }}#}
+{#                </p>#}
+{#                {% if data.contest_type == 'cheetos' %}#}
+{#                    <a class="btn_red" href="{{ data.claim_url}}"> {{'Claim Prize'|t}} </a>#}
+{#                    <button class="btn_red"> {{'Pkay Again'|t}} </button>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#          </div>#}
+
+
+{#            <div class  = "col-lg-6 won-prize">#}
+{#              #}{# <img class = "mw-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-tiles-Prizes.png" alt = "prizes"/> #}
+{#              <img class = "mw-100" src = "{{data.prize_img}}" alt = "prizes"/>#}
+{#              <div class = "text-right p-1 prizes-not-as-shown">#}
+{#                <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+
+
+{#        </div>#}
+
+{#        <div class = "row p-3">#}
+
+{#            <div class = "prizes-available-text" >#}
+{#              <h2 class = "text-uppercase blue-font montserrat-black ">{{ 'Hundreds of prizes  available each week!'|t }}</h2>#}
+{#              <p class = "mb-0 opensans-semibold">{{ 'Including branded hats, fanny packs, beach balls, wireless speakers, and other limited-edition gear to take your summer to the next level!'|t }}#}
+
+{#              </p>#}
+
+{#              <div class=" prizes-available-btn" style="margin-top: 10px">#}
+
+{#                <a class = "opensans-semibold color-link" href = "/en-ca/contest/hockeyswinswag/prizes">{{ 'Learn more about our Prizes.' |t }}</a> <br>#}
+{#                <button class = "button-style text-uppercase  js-entercontest opensans-semibold" data-link="{{data.signup_link}}">{{ 'Enter Now'|t }}</button>#}
+{#              </div>#}
+{#                #}
+{#            </div>#}
+
+{#        </div>#}
+
+
+        {# LOSER Confirmation page #}
+        {# ----------------------------- #}
+        {% else %}
+          {% set page_contestlost = 1 %}
+          {% include '@quaker_contest/tracking/pixel-tracking-hockey.html.twig' %}
+
+          <section id = "hockey-contest-lose-section" class = "noDesktop-sm">
+
+            <div class="banner_slide--text {{class_pos}} lose-banner-text-mb">
+              <h1 class = "font-chuckfive text-white">{{ "Sorry, you are not an instant winner this time." |t }}</h1>
+              <p class = "font-open-semibold text-white">{{ "But you could still score on your next shift! <br>Come back once you have another UPC and give it another shot." | trans}}</p>
+              <span class = "font-open-semibold font-red">{{ "Plus, you have been entered for a chance to win one of 10 Grand Prize Hockey Canada<sup>®</sup> prize packs" | trans}}</span>
+            </div>
+
+
+            <img class = "hockey-banner-lose  en" src="/themes/brandstheme/src/images/quaker/hockey-contest/banner-lose-mobile.png" alt="quaker products" />
+            <img class = "hockey-banner-lose  fr" src="/themes/brandstheme/src/images/quaker/hockey-contest/banner-lose-mobile-fr.png" alt="quaker products" />
+
+          </section>
+
+          <section id = "hockey-contest-lose-section" class = "noMobile-sm">
+
+            <div class="banner_slide--text {{class_pos}} lose-banner-text">
+              <h1 class = "font-chuckfive text-white">{{ "Sorry, you are not an instant winner this time." |t }}</h1>
+              <p class = "font-open-semibold text-white">{{ "But you could still score on your next shift! <br>Come back once you have another UPC and give it another shot." | trans}}</p>
+              <span class = "font-open-semibold font-red">{{ "Plus, you have been entered for a chance to win one of 10 Grand Prize Hockey Canada<sup>®</sup> prize packs" | trans}}</span>
+            </div>
+
+            <img class = "hockey-banner-lose hockey-banner  en" src="/themes/brandstheme/src/images/quaker/hockey-contest/quaker-hockey-lose-en.png" alt="quaker products" />
+            <img class = " hockey-banner-lose hockey-banner fr " src="/themes/brandstheme/src/images/quaker/hockey-contest/Top-Banner-Big_FR.png" alt="quaker products" />
+            <span class = "prizes-not-as-shown-text">{{ 'Prizes not exactly as shown' |t }}</span>
+          </section>
+
+{#          <div class="quaker-hockey-banner sorry">#}
+{#            <div class="banner_slide--text {{class_pos}} contest-banner-text">#}
+{#              <h1 class = "font-chuckfive">{{ "Sorry, you are not an instant winner this time." |t }}</h1>#}
+{#              <p class = "font-open-semibold">{{ "But you could still score on your next shift! <br>Come back once you have another UPC and give it another shot." | trans}}</p>#}
+{#              <span class = "font-open-semibold">{{ "Plus, you have been entered for a chance to win one of 10 Grand Prize Hockey Canada<sup>®</sup> prize packs" | trans}}</span>#}
+{#            </div>#}
+
+{#            <img class = "hockey-banner-lose hockey-banner  en" src="/themes/brandstheme/src/images/quaker/hockey-contest/quaker-hockey-loase-en.png" alt="quaker products" />#}
+{#            <img class = " hockey-banner fr " src="/themes/brandstheme/src/images/quaker/hockey-contest/quaker-hockey-lose-fr.png" alt="quaker products" />#}
+
+{#          </div>#}
+
+          <div class="quaker-recipe-coupon">
+            <div class="container lose-cpntainer">
+              <h2 class = "text-white font-chuckfive">{{'Check out our recipes & coupons!' |t}}</h2>
+              <div class="quaker-recipe-coupon-goalie">
+
+
+
+                <div class="quaker-recipe-coupon-col lose-recipe-coupon">
+                  <h3>{{'RECIPES'|t}}</h3>
+                  <img src="/themes/brandstheme/src/images/quaker/hockey-contest/contest-recipe.jpg" alt="Logo of Tasty Rewards" />
+                  <a class="quaker-hockey-contest-button" href="/{{data.lang_prefix}}/brands/quaker/recipes">{{'VIEW RECIPES'|t}}</a>
+                </div>
+                <div class="quaker-recipe-coupon-col">
+                  <h3>{{'COUPONS'|t}}</h3>
+
+                  <img src="/themes/brandstheme/src/images/quaker/hockey-contest/contest-coupon.jpg" alt="Logo of Tasty Rewards" />
+                  <a class="quaker-hockey-contest-button" href="/{{data.lang_prefix}}/coupons">{{'VIEW COUPONS'|t}}</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="quaker-hockey-official-rules">
+            <div class="container">
+              {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+              <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+
+              <div class="quaker-hockey-official-rules-links">
+                <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+                <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+                <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+              </div>
+            </div>
+          </div>
+
+{#          <div class = "row">#}
+{#            <div class="col-lg-6 loose-text">#}
+{#            <h2 class = "montserrat-black color-lightblue text-uppercase mb-3">{{ "Sorry, you are not an instant winner this time." |t }}</h2>#}
+{#            <p class = "opensans-semibold not-win-text">  {{"But there’s still plenty of swag up for grabs, so come back and try again soon!<br> <br> Before you go, don’t forget to sign-up to become a Tasty Rewards<sup>TM</sup> member.  It’s FREE and you will have access to exclusive"|t}}<a href='/{{data.lang_prefix}}/coupons' > {{'coupons'|t}} </a> {{"and offers!"|t}}#}
+{#            </p>#}
+{#            </div>#}
+{#            <div class="col-lg-6">#}
+{#              <div class = "text-right p-1 prizes-not-as-shown">#}
+{#                <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+
+{#          <div class = "row p-3 find-code-contain">#}
+
+
+{#            <div class = "col-lg-6 text-center lays-code-pack">#}
+
+{#              <div class = "brands">#}
+{#                #}{# <img class = " w-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-find-code.png" alt = "where-to-find-code"/> #}
+{#              </div>#}
+
+{#            </div>#}
+
+{#            <div class = "col-lg-6 summer-swag text-center">#}
+{#              <div class = "text-left m-auto">#}
+{#                <div class = "find-code-text">#}
+{#                  <h1 class = "text-uppercase montserrat-black blue-font montserrat-black mb-1 ">{{ 'Where to  <br> find my code'|t }}</h1>#}
+{#                  <p class = "mb-0 opensans-semibold mb-1">{{ 'Find your 9-digit code located below the “Guaranteed Fresh”<br> statement on the front of specially marked bags!'|t }}#}
+{#                  </p>#}
+{#                  <button  class = "button-style text-uppercase opensans-semibold js-entercontest" data-link="{{data.faq_link}}">#}
+{#                    {{'Have any questions?'|t  }}#}
+{#                  </button>#}
+{#                </div>#}
+{#              </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+
+        {% endif %}
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+

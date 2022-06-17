@@ -1,0 +1,89 @@
+{% set show_buynow = 1 %}
+
+
+<div class="views-element-container form-group">
+   <div class="view view-products view-id-products view-display-id-block_product_fritolay js-view-dom-id-03ded1b91b72f5e6e8e543afd4d4b04ad3bef7f87712d4f5ea7ec82d9109cfc9">
+      <div class="view-content">
+         <div id="vr-products" class="container">
+            <div class="products-title animate__animated  animate__fadeInUp" style="visibility: visible;">
+               <h3>{{'FRITO LAY<sup class="product-sup">®</sup> VARIETY PACKS'|t}}</h3>
+            </div>
+            <div class="products-items">
+            {% for product in products %}
+                {% set btn_class = '' %}
+                {% set img_class = '' %}
+                {% if product.brand_link is empty %}
+                  {% set btn_class = 'hidden' %}
+                  {% set img_class = 'not-clickable' %}
+                {% endif %}
+                {# Visibility visible for the first 2 #}
+                {% if loop.index % 2 == 1 %}
+
+                   <div class="products-item animate__animated product-align-left  animate__fadeInLeft" style="visibility: hidden;">
+                      <div class="products-item-text">
+                         <div class="products-item-text-title">
+                            {{ product.title|raw }}
+                            <div class="padding-top">
+                               <a class="btn_fritolay {{btn_class}}" target="_blank" rel="noopener noreferrer" href="{{product.brand_link}}">{{'View Product'|t}}</a>
+                               <button class="btn_fritolay product-fritolay-buynow js-buynow fritolay-buy {{show_buynow? '': 'hidden'}}" data-target="#fritolayModal" data-toggle="modal">
+                               {{'Buy Now'|t}}
+                               </button>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="products-item-image {{img_class}}">
+                         <a target="_blank" class="" rel="noopener noreferrer" href="{{product.brand_link}}">
+                         <img src="{{product.image_url}}" width="616" height="477" alt="{{product.title|raw}}" loading="lazy" typeof="foaf:Image" class="img-responsive">
+                         </a>
+                      </div>
+                      {# <span class="hidden fritolay-link"><a href="{{product.brand_link}}">{{product.brand_link}}</a> </span> #}
+                   </div>
+                {% else %}
+                   <div class="products-item animate__animated product-align-right  animate__fadeInRight" style="visibility: hidden;">
+                      <div class="products-item-image {{img_class}}">
+                         <a target="_blank" class="" rel="noopener noreferrer" href="{{product.brand_link}}">
+                         <img src="{{product.image_url}}" width="613" height="477" alt="{{product.title}}" loading="lazy" typeof="foaf:Image" class="img-responsive">
+                         </a>
+                      </div>
+                      <div class="products-item-text">
+                         <div class="products-item-text-title">
+                            {{ product.title|raw }}
+                            <div class="padding-top">
+                               <a class="btn_fritolay {{btn_class}}" target="_blank" rel="noopener noreferrer" href="{{product.brand_link}}">{{'View Product'|t}}</a>
+                               <button class="btn_fritolay product-fritolay-buynow js-buynow fritolay-buy {{show_buynow? '': 'hidden'}} " data-target="#fritolayModal" data-toggle="modal" >
+                               {{'Buy Now'|t}}
+                               </button>
+                            </div>
+                         </div>
+                      </div>
+                      {# <span class="hidden fritolay-link"><a href="{{product.brand_link}}"> {{product.brand_link}} </a> </span> #}
+                   </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+{% set iframe_url = 'https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=fritolay' %}
+
+{% if language == 'fr' or language == 'fr-ca' %}
+  {% set iframe_url = 'https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=fritolay&DEFLANG=2' %}
+{% endif %}
+
+<div class="modal bootstrap-modal bg-transparent fritolay-buynow-modal" id="fritolayModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fritolay" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close closeModal" data-dismiss="modal">×</button>
+        {% if iframe_url %}
+          <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

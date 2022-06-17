@@ -1,0 +1,374 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{% set background_img_url = file_url(content.field_extra_image2['#items'].entity.uri.value)  ?: '' %}
+
+
+{{ attach_library('brandstheme/lays') }}
+<section id="product" class="lays-product-block  nid-{{node.id}}" style="background-image: url('{{background_image}}');">
+<div class="arrow-section-body"></div>
+	<div class="container   font-{{font_color}}" style="background-color:{{background_color}}">
+		<div class="product-image">
+			<img itemprop="image" class="square" src="{{nodeimgurl}}" alt="{{nodeimgalt}}">
+
+			<div class="lays-detail__product--block">
+				<h1 class="banner_slide_recipe-h1">
+					{{subtitle|raw}}
+				</h1>
+
+				<div class="wrapper-column">
+					<div class="product-description">
+						{#					<h4 class="linkeable">{{'Description'|t}}</h4>#}
+						<div class="product-field-detail">
+							{% if node.body.0.value|striptags is not empty %}
+								{{node.body.0.value | raw}}
+							{% endif %}
+						</div>
+
+
+						<div class="product-buy-now">
+							{#						<h4 class="linkeable">{{'Buy Now'|t }}</h4>#}
+							<div class="product-field-detail">
+							{% if show_product_buynow %} 
+								<button class = "buynow_lays js-buynow" id = "lays-buy" data-target="#laysModal" data-toggle="modal">
+									{{'Buy Now'|t|raw}}
+								</button>
+							{% endif %}
+							</div>
+
+              <div class="modal bootstrap-modal bg-transparent lays-buynow-modal" id="laysModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <button type="button" id = "closeModal" class="close" data-dismiss="modal">×</button>
+                      {# <p>Content goes here</p> #}
+                      {% if iframe_url %}
+	                      <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+	                   {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+						</div>
+
+
+						<div class="product-claims">
+							{% if 'made_in_canada' in claims %}
+								<span class="product-claims-wrap">
+									<img src="/themes/brandstheme/src/images/lays/claim-made-canada.png" alt="claim made canada">
+									<p>{{'Made in Canada'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									<img src="/themes/brandstheme/src/images/lays/claim-made-canada-black.png" alt="claim made canada">
+									<p>{{'Made in Canada'|t}}</p>
+								</span>
+
+							{% endif %}
+
+							{% if 'gluten_free' in claims %}
+								<span class="product-claims-wrap">
+									<img src="/themes/brandstheme/src/images/lays/claim-gluten-free.png" alt="claim glutten free">
+									<p>{{'Gluten Free'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									<img src="/themes/brandstheme/src/images/lays/claim-gluten-free-black.png" alt="claim glutten free">
+									<p>{{'Gluten Free'|t}}</p>
+								</span>
+							{% endif %}
+
+							{% if 'kosher' in claims %}
+								<span class="product-claims-wrap">
+									{# <img src="/themes/brandstheme/src/images/lays/Kosher_Dairy_White.svg" alt="claim kosher"> #}
+									{# <img src="/themes/brandstheme/src/images/lays/Kosher_DE EL_White.svg" alt="claim kosher"> #}
+									<img src="/themes/brandstheme/src/images/lays/Kosher_White.svg" alt="claim kosher">
+									<p>{{'Kosher'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									{# <img src="/themes/brandstheme/src/images/lays/Kosher_Dairy_Black.svg" alt="claim kosher"> #}
+									{# <img src="/themes/brandstheme/src/images/lays/Kosher_DE EL_Black.svg" alt="claim kosher"> #}
+									<img src="/themes/brandstheme/src/images/lays/Kosher_Black.svg" alt="claim kosher">
+									<p>{{'Kosher'|t}}</p>
+								</span>
+							{% endif %}
+
+							{% if 'kosher_dairy' in claims %}
+								<span class="product-claims-wrap">
+									<img src="/themes/brandstheme/src/images/lays/Kosher_Dairy_White.svg" alt="claim kosher">
+									<p>{{'Kosher Dairy'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									<img src="/themes/brandstheme/src/images/lays/Kosher_Dairy_Black.svg" alt="claim kosher">
+									<p>{{'Kosher Dairy'|t}}</p>
+								</span>
+							{% endif %}
+
+							{% if 'kosher_de' in claims %}
+								<span class="product-claims-wrap">
+									<img src="/themes/brandstheme/src/images/lays/Kosher_DE EL_White.svg" alt="claim kosher">
+									<p>{{'Kosher DE'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									<img src="/themes/brandstheme/src/images/lays/Kosher_DE EL_Black.svg" alt="claim kosher">
+									<p>{{'Kosher DE'|t}}</p>
+								</span>
+							{% endif %}
+
+
+
+							{% if 'no_artifical_colours' in claims %}
+								<span class="product-claims-wrap">
+									<img src="/themes/brandstheme/src/images/lays/claim-no-artificial.png" alt="claim no artificial">
+									<p>{{'No artificial flavours or colours'|t}}</p>
+								</span>
+
+								<span class="product-claims-wrap product-claims-black">
+									<img src="/themes/brandstheme/src/images/lays/claim-no-artificial-black.png" alt="claim no artificial">
+									<p>{{'No artificial flavours or colours'|t}}</p>
+								</span>
+							{% endif %}
+
+						</div>
+
+						<input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+						<input type="hidden" name='node_title' id='node_title' value="{{ subtitle }}">
+						<input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+                        <div class="product-social-icons">
+                            <p>{{'Share'|t}}</p>
+
+                            <a class="brands-navbar__social-icons social-share-trigger" href="#" id="nav-facebook" data-platform="facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+									<title>Share on facebook icon</title>
+                                    <path id="facebook" data-name="facebook" d="M908,744a12,12,0,1,0-12,12c.07,0,.141,0,.211-.005v-9.337h-2.578v-3.005h2.578v-2.212a3.61,3.61,0,0,1,3.853-3.961,20.839,20.839,0,0,1,2.311.117v2.681H900.8c-1.242,0-1.486.591-1.486,1.458v1.912h2.977l-.389,3.005h-2.588v8.883A12,12,0,0,0,908,744Z" transform="translate(-884 -732)" fill="#fff"/>
+                                </svg>
+                            </a>
+
+                            <a class="brands-navbar__social-icons social-share-trigger" href="#" id="nav-twitter" data-platform="twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+									<title>Share on twitter icon</title>
+                                    <path id="twitter" data-name="twitter" d="M936,732a12,12,0,1,0,12,12A12,12,0,0,0,936,732Zm5.479,9.356c.005.118.008.237.008.356a7.783,7.783,0,0,1-7.837,7.837h0a7.8,7.8,0,0,1-4.222-1.237,5.718,5.718,0,0,0,.657.038,5.525,5.525,0,0,0,3.421-1.179,2.76,2.76,0,0,1-2.573-1.913,2.742,2.742,0,0,0,1.244-.047,2.757,2.757,0,0,1-2.21-2.7c0-.013,0-.024,0-.036a2.725,2.725,0,0,0,1.247.345,2.757,2.757,0,0,1-.852-3.677,7.824,7.824,0,0,0,5.677,2.878,2.755,2.755,0,0,1,4.693-2.512,5.51,5.51,0,0,0,1.749-.669,2.764,2.764,0,0,1-1.211,1.524,5.526,5.526,0,0,0,1.582-.434A5.6,5.6,0,0,1,941.479,741.356Z" transform="translate(-924 -732)" fill="#fff"/>
+                                </svg>
+                            </a>
+
+{#							<a class="brands-navbar__social-icons" href="https://www.youtube.com/user/layscanada" id="nav-twitter" target="_blank">#}
+{#								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">#}
+{#									<title>This is youtube icon</title>#}
+{#									<path id="youtube" data-name="youtube" d="M12,24A12,12,0,0,1,3.514,3.515,12,12,0,0,1,20.486,20.485,11.922,11.922,0,0,1,12,24ZM7.92,7.863A1.823,1.823,0,0,0,6.1,9.685v4.884A1.822,1.822,0,0,0,7.92,16.39h8.54a1.822,1.822,0,0,0,1.82-1.821V9.685a1.823,1.823,0,0,0-1.82-1.822Zm3.05,6.323V9.6l3.48,2.292-3.479,2.293Z" fill="#fff"/>#}
+{#								</svg>#}
+{#							</a>#}
+
+							<a class="brands-navbar__social-icons" href="#" id="nav-twitter" target="_blank">
+								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+									<title>Share on instagram icon</title>
+									<path id="instagram" data-name="instagram" d="M-1822-758a12,12,0,0,1,12-12,12,12,0,0,1,12,12,12,12,0,0,1-12,12A12,12,0,0,1-1822-758Zm9.159-6.849a5,5,0,0,0-1.67.32,3.348,3.348,0,0,0-1.22.8,3.36,3.36,0,0,0-.8,1.219,5,5,0,0,0-.319,1.673c-.031.735-.041.97-.041,2.841s.01,2.106.041,2.84a5,5,0,0,0,.319,1.673,3.363,3.363,0,0,0,.8,1.22,3.335,3.335,0,0,0,1.22.795,5.017,5.017,0,0,0,1.67.32c.731.034.97.041,2.84.041s2.11-.007,2.84-.041a5.018,5.018,0,0,0,1.67-.32,3.528,3.528,0,0,0,2.02-2.015,4.992,4.992,0,0,0,.32-1.673c.03-.734.041-.969.041-2.84s-.011-2.106-.041-2.841a5,5,0,0,0-.32-1.673,3.369,3.369,0,0,0-.8-1.219,3.348,3.348,0,0,0-1.22-.8,5,5,0,0,0-1.67-.32c-.73-.034-.969-.042-2.84-.042S-1812.109-764.883-1812.84-764.849Zm.06,12.459a3.746,3.746,0,0,1-1.28-.238,2.216,2.216,0,0,1-.8-.516,2.221,2.221,0,0,1-.51-.792,3.639,3.639,0,0,1-.239-1.28c-.031-.727-.041-.944-.041-2.784s.01-2.058.041-2.786a3.637,3.637,0,0,1,.239-1.279,2.24,2.24,0,0,1,.51-.793,2.226,2.226,0,0,1,.8-.515,3.755,3.755,0,0,1,1.28-.237c.72-.033.94-.04,2.78-.04s2.06.007,2.79.04a3.739,3.739,0,0,1,1.27.237,2.234,2.234,0,0,1,.8.515,2.131,2.131,0,0,1,.51.793,3.637,3.637,0,0,1,.239,1.279c.031.727.041.945.041,2.786s-.01,2.056-.041,2.784a3.639,3.639,0,0,1-.239,1.28,2.254,2.254,0,0,1-1.31,1.308,3.729,3.729,0,0,1-1.27.238c-.73.033-.95.041-2.79.041S-1812.06-752.357-1812.78-752.39Zm-.76-5.609a3.542,3.542,0,0,0,3.54,3.538,3.542,3.542,0,0,0,3.54-3.538,3.542,3.542,0,0,0-3.54-3.539A3.542,3.542,0,0,0-1813.54-758Zm6.39-3.679a.827.827,0,0,0,.83.827.827.827,0,0,0,.83-.827.828.828,0,0,0-.83-.827A.828.828,0,0,0-1807.15-761.678ZM-1812.3-758a2.3,2.3,0,0,1,2.3-2.3,2.3,2.3,0,0,1,2.3,2.3,2.3,2.3,0,0,1-2.3,2.3A2.3,2.3,0,0,1-1812.3-758Z" transform="translate(1822 770)" fill="#fff"/>
+								</svg>
+							</a>
+
+						</div>
+					</div>
+
+{#					<div class="product-weight">#}
+{#						<h4 class="linkeable">{{'Weight'|t }}</h4>#}
+{#						<div class="product-field-detail">#}
+{#							{{weight | raw}}#}
+{#						</div>#}
+{#					</div>#}
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="lays-product-nutrition">
+
+				<div class="performance-facts">
+
+				{% if has_nutrition  %}
+					<div class="product-field-detail">
+						<h4 class="linkeable">{{'Nutrition'|t}}</h4>
+						<div class="nutrition-copy-js">
+							<div class="lays-productdetails-nutrition-table">
+								<div class="lays-productdetails-nutrition-header-row">
+							        <div class="lays-productdetails-nutrition-cell lays-productdetails-headercell">
+							            {{portion}}
+							        </div>
+							        <div class="lays-productdetails-nutrition-cell lays-productdetails-headercell">
+							            {{'% Daily Value'|t}}
+							        </div>
+							    </div>
+								{{nutrition | raw}}
+							</div>
+							{# {{nutrition | raw}} #}
+						</div>
+					</div>
+				{% endif %}
+				</div>
+
+
+			<div class="product-ingredients">
+				{% if noderecipeingredients|length  %}
+					<div class="product-field-detail">
+						<h4 class="linkeable">{{'Ingredients'|t }}</h4>
+						{{noderecipeingredients | raw}}
+					</div>
+				{% endif %}
+				<p class="product-alert ">{{alert}}</p>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+<section id="home-video" class="social-video">
+	<div class="lays-social-video-main-wrapper">
+
+		<div class="lays-social-video-wrapper">
+			<img class="lays-onion" src="/themes/brandstheme/src/images/lays/lays-onion.png" alt="lays onion">
+			<div class="container-video">
+				{{ block_video|t|raw }}
+			</div>
+			<img class="lays-cream" src="/themes/brandstheme/src/images/lays/lays-cream.png" alt="lays cream">
+		</div>
+
+	</div>
+</section>
+
+
+{# For Rotsy #}
+
+<section id="lays-social-block" class="lays-related-block">
+	<img class="lays-chip-left" src="/themes/brandstheme/src/images/lays/lays-chip-left.png" alt="lays cream">
+
+	<div class="lays-section-container">
+		<h2> {{'Related Products'|t}} </h2>
+
+		<div class="lays-related-product-wrapper">
+			{% for product in related_products %}
+				{% if product.background_color|length %}
+					<div class="lays-related-product" style="background-color:{{product.background_color}};">
+				{% else %}
+					<div class="lays-related-product">
+				{% endif %}
+						<a href="{{product.link}}" hreflang="en">
+							<img src="{{product.image_url}}" alt="lays">
+
+							<h3 class="products-category-title">
+								{{product.title|raw}}
+							</h3>
+						</a>
+						<div class="view-products">
+							<a href="{{product.link}}">{{'View Products'|t}}</a>
+						</div>
+					</div>
+			{% endfor %}
+		</div>
+
+		<h2> {{'Related Recipes'|t}} </h2>
+
+		<div class="lays-related-product-wrapper">
+			{% for recipe in related_recipes %}
+				<div class="lays-related-product">
+					<a href="{{recipe.link}}" hreflang="en">
+						<img src="{{recipe.image_url}}" alt="lays">
+					</a>
+					<h3 class="products-category-title">
+						<a href="{{recipe.link}}" hreflang="en">{{recipe.title|raw}}</a>
+					</h3>
+					<div class="view-products">
+						<a href="{{recipe.link}}">{{'View Recipe'|t}}</a>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+	<img class="lays-pepper" src="/themes/brandstheme/src/images/lays/lays-pepper.png" alt="lays cream">
+	{#      <img class="lays-chip-right" src="/themes/brandstheme/src/images/lays/lays-chip-right.png" alt="lays cream">#}
+</section>
+
+
+
+<section id="coupon-block" class="coupon-block">
+	<div class="lays-coupon--container-bg-desktop">
+		{{ coupon_block|raw }}
+	</div>
+</section>
+
+

@@ -1,0 +1,86 @@
+{{ attach_library('brandstheme/slickLibrary') }}
+{{ attach_library('brandstheme/brands_carousel') }}
+
+{% set show_first_img = 1 %}
+<div class="carousel_fullwidth carousel_desktop js-main-carousel">
+   {% for slide in carousel %}
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+        {% if  loop.first and show_first_img %}
+         <div class="banner-desktop {{slide.theme}}" style="background-image: url('{{slide.image_url}}');">
+        {% else %}
+         <div class="banner-desktop {{slide.theme}} js-lazyloaded" role="img" aria-label="{{ slide.title|raw}}" data-style="url('{{slide.image_url}}')">
+        {% endif %}
+            <div class="banner_slide--text {{class_pos}}">
+               {% if slide.title %}
+                  <span class="h1"> {{ slide.title|raw}}</span>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_carousel':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.link_title }}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+         </div>
+      </div>
+   {% endfor %}
+</div>
+
+<div class="carousel_fullwidth carousel_mobile js-main-carousel">
+   {% for slide in carousel %}
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+      <div class="banner_slide home_slide">
+      {% if  loop.first and show_first_img %}
+         <div class="banner-mobile {{slide.theme_mobile}}" style="background-image: url('{{slide.mobile_image_url}}');">
+      {% else %}
+          <div class="banner-mobile {{slide.theme_mobile}} js-lazyloaded-mobile" role="img" aria-label="{{ slide.title|raw}}" data-style="url('{{slide.mobile_image_url}}')">
+      {% endif %}
+            <div class="banner_slide--text {{class_pos}}  {{slide.position_mobile}}">
+               {% if slide.title %}
+                  <span class="h1"> {{ slide.title|raw}}</span>
+               {% endif %}
+
+            {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+
+            {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_carousel':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+            {% endif %}
+            </div>
+         </div>
+      </div>
+   {% endfor %}
+
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/pepsibam",
+  "type": "drupal-module",
+  "description": "Pepsico Tastyreward by BAM",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/pepsibam",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/pepsibam",
+    "source": "http://cgit.drupalcode.org/pepsibam"
+  },
+  "require": { }
+}

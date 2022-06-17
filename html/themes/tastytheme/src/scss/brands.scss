@@ -1,0 +1,80 @@
+section#brands {
+  background-color: #ffffff;
+
+  h2 {
+    text-align: center;
+    color: $blue;
+    font-weight: bold;
+    font-size: $font-size * 2.25;
+    padding-bottom: 10px;
+    padding-top: 40px;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .brands_carousel--container {
+    padding-bottom: 40px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .img_container {
+      display: none;
+      visibility: hidden;
+    }
+
+    &.is_loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .img_container {
+        display: block;
+        visibility: visible;
+        width: 50px;
+        height: 50px;
+        max-width: 50px;
+        background-color: yellow;
+        margin-bottom: 50px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .brands_carousel {
+        display: none;
+        visibility: hidden;
+      }
+    }
+
+    .brand_slide {
+      max-width: 120px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block !important;
+
+      img {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .slick-prev,
+  .slick-next {
+    border: 1px solid #333;
+  }
+
+  .slick-prev {
+    left: 0 !important;
+  }
+
+  .slick-next {
+    right: 0 !important;
+  }
+}

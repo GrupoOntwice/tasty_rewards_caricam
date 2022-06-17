@@ -1,0 +1,42 @@
+   {{ attach_library('brandstheme/tostitos') }}
+  <section id="banner" class="tostitos-banner-nocarousel" style="background: url('{{image_url}}');">
+    <div class="tostitos-banner-nocarousel-overlay"></div>
+    <h1>{{'Occasions'|t}}</h1>
+  </section>
+
+<div class="tostitos-content-background-container-occasionsdetails">
+  <section class="tostitos-occasiondetails-block">
+    <div class="tostitos-section-container">
+      {# {{ content }} #}
+      <div class="occasion-title">
+        <h2>{{subtitle}}</h2>
+      </div>
+      <div class="occasion-description">
+          {{body|raw}}
+      </div>
+      <div class="tostitos-nocarousel-container" data-count="{{recipe_count}}">
+        {% for recipe in recipes %}
+          <div class="tostitos-nocarousel-box">
+              <div class="img">
+                  <a href="{{recipe.link}}" aria-label="{{recipe.title|raw}}"><img src="{{recipe.image_url}}" alt="{{recipe.title|raw}}"/></a>
+              </div>
+
+              <h3>
+                  <a href="{{recipe.link}}">{{recipe.title|raw}}</a>
+              </h3>
+
+              <a href="{{recipe.link}}" class="tostitos-btn tostitos-btn-yellow">
+                  {{'View recipe'|t}}
+              </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+  <section id="coupon" class="tostitos-coupon-block">
+    <div class="tostitos-section-container two-panel-block">
+      {{ coupon_block|t|raw }}
+    </div>
+  </section>

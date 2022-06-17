@@ -1,0 +1,105 @@
+{#
+
+block used on the content section size-2x1
+
+#}
+{% if (language == "en") %}
+    {% set view_name = "view.recipes.page_1" %}
+{% else %}
+    {% set view_name = "view.recipes.page_2" %}
+{% endif %}
+<div id="topLeft" class="size-1x1huge landing-categories-topLeft-wrapper" style="background-image:url('https://static.tastyrewards.ca/images/tasty-landing-bg-blue.jpg');">
+    <div class="landing-categories-content text-center">
+
+        <img src="https://static.tastyrewards.ca/images/tasty-landing-icon-blue.png">
+        <h1 class="blue signika uppercase" style="font-weight: 600;">{{"TASTY"|t}}</h1>
+        <h4 class="blue signika uppercase">{{"Make delicious happen"|t}}</h4>
+        <p>{{"Whether you’re snacking solo or entertaining a crowd, we’ve got you covered with all kinds of recipes from salty to sweet. New flavour sensations await."|t}}</p>
+        
+        
+        <em>
+            <div>
+            <input type="hidden" name='view_path' id='view_path' value="{{ path(view_name) }}">
+            {% set current_path = url("<current>")["#markup"]%}
+
+            {# categories #}
+
+            {% if path(view_name)~"/" in current_path %}
+                {% set active_class_all = "" %}
+            {% else %}
+                {% set active_class_all = "active" %}
+            {% endif %}
+            
+            <div class="row">
+                <div class="col-xs-6 col-lg-4">
+                    <select name="category-filters">
+                        <option value="" >{{"-- Courses --"|t}}</option>
+                        {% for item in categ_name %}
+
+
+                                {% set is_current_categ =  item|lower|replace({" ":"-"}) in current_path %}
+
+                                {% if is_current_categ %}
+                                    {% set active_class = "selected" %}
+                                {% else %}
+                                    {% set active_class = "" %}
+                                {% endif %}
+
+                                <option value="{{item}}" {{active_class}}>{{item}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-xs-6 col-lg-4">
+                    <select name="category-filters">
+                        <option value="" >{{"-- Brands --"|t}}</option>
+                        {% for item in categ_brand_name %}
+
+                                {% set is_current_categ =  item|lower|replace({" ":"-"}) in current_path|lower|replace({"%e2%80%99":"’"}) %}
+
+                                {% if is_current_categ %}
+                                    {% set active_class = "selected" %}
+                                {% else %}
+                                    {% set active_class = "" %}
+                                {% endif %}
+
+                                <option value="{{item}}" {{active_class}}>{{item|upper}}</option>
+                        {% endfor %}
+                    </select>
+                </div>                    
+                <div class="col-xs-6 col-lg-4">
+                    <select name="category-filters">
+                        <option value="" >{{"-- Occasions --"|t}}</option>
+                        {% for item in categ_occasions_name %}
+
+                                {% set is_current_categ =  item|lower|replace({" ":"-"}) in current_path|lower|replace({"%e2%80%99":"’"}) %}
+
+                                {% if is_current_categ %}
+                                    {% set active_class = "selected" %}
+                                {% else %}
+                                    {% set active_class = "" %}
+                                {% endif %}
+
+                                {# BBQ fix  #}
+                                {% set new_name = item%}
+                                {% if ( "Bbq" in item ) %}
+                                    {% set new_name =  item|replace({"Bbq":"BBQ"}) %}
+                                {% endif %}
+
+                                <option value="{{item}}" {{active_class}}>{{new_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+                    
+            <div class="row">
+                <div class="col-xs-12 col-lg-12">
+                    <a href="{{path(view_name)}}" class="{{active_class_all}}">{{"All"|t}}</a>&nbsp;&nbsp; 
+                    <a id="search_filter" href="" class="btn btn-primary">{{"Search"|t}}</a> 
+                </div>
+            </div>
+            </div>
+        </em>
+            
+    </div>
+
+</div>

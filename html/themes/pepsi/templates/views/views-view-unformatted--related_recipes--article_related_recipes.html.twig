@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._relationship_entities.field_article_related_recipes.getTranslation(language).title.getValue().0.value %}
+    {% set brand = row.content["#row"]._relationship_entities.field_article_related_recipes.getTranslation(language).field_brand.getValue().0.value %}
+    {% set nid = row.content["#row"]._relationship_entities.field_article_related_recipes.nid.getValue().0.value %}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+    
+    {% set img = file_url(row.content["#row"]._relationship_entities.field_article_related_recipes.getTranslation(language).get("field_recipe_image").entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._relationship_entities.field_article_related_recipes.getTranslation(language).get("field_recipe_image").getvalue().0.alt %}
+
+     <div id="featuredRecipe" class="box size-2x1 related_featured_recipe_tracking" onclick="promotionClickTracking(this);">
+         <input type="hidden" name="hidden_brand_title" value="{{brand}}-{{title}}" />
+        <div class="boxinside grid" style="background-image:url('{{img}}')">
+            <figure class="effect-lily">
+                <figcaption>
+                    <div class="recipe">
+                        <h2><span>{{"Featured Recipe"|t}}</span>{{title}}</h2>
+                    </div>
+                    <a href="{{link}}">{{"View more"|t}}</a>
+                </figcaption>           
+            </figure>
+        </div>
+    </div>
+    
+{% endfor %}

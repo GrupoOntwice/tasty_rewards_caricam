@@ -1,0 +1,115 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+
+</script>
+
+<style>
+  body {
+    margin-top: 0 @import "";
+  }
+
+  body.navbar-is-fixed-top {
+    margin-top: 0 !important;
+  }
+
+  @media only screen and (max-width: 991px) {
+    .navbar-default {
+      display: none !important;
+    }
+  }
+</style>
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+  {{ attach_library('brandstheme/slickLibrary') }}
+{# <div class="navbar-wrapper-tasty"> #}
+  {{ attach_library('brandstheme/framework') }}
+  {{ attach_library( 'pepsibrands/realjoy_landing' ) }}
+  {# {{ attach_library('brandstheme/global-styling') }} #}
+  {{ attach_library('brandstheme/lays') }}
+  {# {{ attach_library('brandstheme/quaker') }} #}
+  {% set language = data.language %}
+  {% set brand_basepath = data.brand_basepath %}
+  {% set is_quaker_landing = 1 %}
+
+  {% set brand = 'lays' %}
+  {% set tasty_logopath = data.tasty_logopath %}
+  {% set logofooterpath = data.logofooterpath %}
+  {% set shoplink = data.shoplink %}
+  {% set user_firstname = data.user_firstname %}
+
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-lays.html.twig' %}
+
+{# </div> #}
+
+{% if data.is_snackperk_user == 1 %}
+    {% set form_field_status = "disabled" %}
+{% else %}
+    {% set form_field_status = "" %}
+{% endif %}
+
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+{{ data.tag | raw }}
+{{ attach_library( 'pepsicontest/signup' ) }}
+{# {{ attach_library('brandstheme/quaker-landing') }} #}
+
+
+
+{% if data.thankyou == 1 %}
+  <section class="lays-joy-banner-block">
+    <div class="lays-joy-banner-content">
+      <img src="/themes/brandstheme/src/images/lays/lays-logo.png" alt="lays logo">
+      <h1 style = "font-size: 38px;">{{ "Thank you for your <br> joy story" | trans}}</h1>
+    </div>
+  </section>
+
+{#    <div class="lays-joy-wrapper">#}
+{#        <h2>{{ "Thank you for your joy story" | trans}}</h2>#}
+{#    </div>#}
+{% else %}
+
+  <section class="lays-joy-banner-block">
+    <div class="lays-joy-banner-content">
+      <img src="/themes/brandstheme/src/images/lays/lays-logo.png" alt="lays logo">
+      <h1>{{ "Tell us how Lay’s<sup>®</sup> potato chips have brought a little joy to your life for a chance to have your Lay’s<sup>®</sup> Joy Story featured here or on our social channels! " | trans}}</h1>
+      <a class="btn_lays js-share-story" href="javascript:void(0);">{{'Share Your Story'|t}}</a>
+    </div>
+  </section>
+
+<div class="lays-joy-wrapper">
+    <h2>{{ "Real Lay’s<sup>®</sup> Joy Stories from Across Canada" | trans}}</h2>
+    {% include '@pepsibrands/realjoy/video-carousels.html.twig' %}
+</div>
+
+<div class="lays-joy-form-wrapper">
+    <img class="lays-joy-form-top-pattern" src="/themes/brandstheme/src/images/lays/lay-joy-top-pattern-background.png" alt="circle top pattern">
+        {% include '@pepsibrands/realjoy/realjoy-form.html.twig' %}
+        {% include '@pepsibrands/realjoy/story-carousel.html.twig' %}
+    <img class="lays-joy-form-bottom-pattern" src="/themes/brandstheme/src/images/lays/lay-joy-bottom-pattern-background.png" alt="circle bottom pattern">
+</div>
+
+<div class="lays-joy-wrapper">
+    {% include '@pepsibrands/realjoy/product-carousel.html.twig' %}
+
+</div>
+
+{% endif %}
+
+<section id="coupon-block" class="coupon-block">
+  <div class="lays-coupon--container-bg-desktop">
+      {{ data.coupon_block|t|raw }}
+  </div>
+</section>
+
+
+<script>
+    function fileChanged(input) {
+        let fileName = document.querySelector('.upload-quacker-fileName');
+        fileName.textContent = input.files[0]['name'];
+    }
+</script>

@@ -1,0 +1,27 @@
+{% set source_mp4 = socialpollblock.video %}
+{% set social_body = socialpollblock.body %}
+
+{% set link_title = socialpollblock.link_title %}
+{% set link = socialpollblock.link %}
+
+
+{% if source_mp4 == '' %} 
+  <p>
+      {{social_body|raw|raw}}
+  </p>
+{% else %}
+  {% if link != '' %}
+    <a href="{{link}}" style="display:block;" class="js-socialblock-video" >
+  {% endif %}
+  <video width="100%" height="auto" autoplay muted loop playsinline style="pointer-events: none;">
+    <source src="{{source_mp4}}" type="video/mp4">
+    {% if source_ogg  %}
+      <source src="{{source_ogg}}" type="video/ogg">
+    {% endif %}
+    Your browser does not support the video tag.
+
+  </video> 
+  {% if link != '' %}
+    </a>
+  {% endif %}
+{% endif %}

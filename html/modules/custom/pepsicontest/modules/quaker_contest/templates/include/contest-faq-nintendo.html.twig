@@ -1,0 +1,264 @@
+{% if  data.langcode == 'fr' %}
+    {% include '@quaker_contest/include/contest-faq-nintendo-fr.html.twig' %}
+{% else %}
+
+
+<section id="nintendo-faq">
+    <section class="nintendo-contest-faq">
+        <div class="nintendo-contest-faq-text-banner">
+            <h1 class = "robo-font">{{ "FAQ" | t}}</h1>
+            <p class = "open-font">{{ "Have a question about the contest? Take a look through our list of frequently asked questions for answers. Can’t find the answer you’re looking for? <a target='_blank' href='https://contact.pepsico.com/tastyrewards'>Click here</a> to contact us directly! We’ll be happy to take care of you. " | t}}</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="col-md-12 back-btn">
+            <a class="contest-back-btn" href="{{data.back_button}}">
+                {{'Back'|t}}
+            </a>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="panel-group faq-border" id="accordion1">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title"><a class="collapsed faq-plus-minus" data-target="#collapseOne" data-toggle="collapse" href="#collapseOne">{{ "1. What is a valid UPC? Where can I find it on the packaging?" | t}}</a></h4>
+
+                        <div class="panel-collapse collapse" id="collapseOne">
+                            <div class="panel-body faq-body">
+                                <p>
+                                    {{ "You can find your 12-digit UPC located under the barcode of participating Frito-Lay<sup>®</sup> Variety Packs and Quaker<sup>®</sup> products." | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion2">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title"><a class="collapsed faq-plus-minus" data-target="#collapseTwo" data-toggle="collapse" href="#collapseTwo">{{ "2. What are the participating products that are part of this contest?" | t}}</a></h4>
+
+                        <div class="panel-collapse collapse" id="collapseTwo">
+                            <div class="panel-body faq-body">
+                                <p class="faq-paragraph">
+                                    {{ "Please see the <a href = '/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a> for a full list of participating products.
+                                    " | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion3">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title">
+                            <a class="collapsed faq-plus-minus" data-target="#collapseThree" data-toggle="collapse" href="#collapseThree">
+                                {{ "3. How many entries can I get each day?" | t}}
+                            </a>
+                        </h4>
+
+                        <div class="panel-collapse collapse" id="collapseThree">
+                            <div class="panel-body faq-body">
+                                <p class="faq-paragraph">
+                                    {{ "There is a maximum of three (3) entries per person per email per day as provided in the Official Rules. <br>
+                                        Please reference the participating products list in the <a href = '/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a> to see how many entries your UPC is worth. <br>
+                                        Note: while you can enter multiple UPCs daily— there is a maximum of 3 entries per person per email per day. " | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion4">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title">
+                            <a class="collapsed faq-plus-minus" data-target="#collapseFour" data-toggle="collapse" href="#collapseFour">
+                                {{ "4. When can I enter my UPC?" | t}}
+                            </a>
+                        </h4>
+
+                        <div class="panel-collapse collapse" id="collapseFour">
+                            <div class="panel-body faq-body">
+                                <p class="faq-paragraph">
+                                    {{ "The contest starts on March 21, 2022 at 12:00 pm ET, and ends on May 15, 2022 at 11:59:59 pm ET. Entries must be received during the contest period to be considered as eligible for a chance to win." | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion5">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title">
+                            <a class="collapsed faq-plus-minus" data-target="#collapseFive" data-toggle="collapse" href="#collapseFive">
+                                {{ "5. Do I have to purchase a product in order to participate in the contest?" | t}}
+                            </a>
+                        </h4>
+
+                        <div class="panel-collapse collapse" id="collapseFive">
+                            <p class="faq-paragraph">
+                                {{ "No purchase is necessary to enter this Contest. Please see the <a href = '/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a> for details on how to enter without purchase." | t}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion6">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title">
+                            <a class="collapsed faq-plus-minus" data-target="#collapseSix" data-toggle="collapse" href="#collapseSix">
+                                {{ "6. How many times can I enter a UPC?" | t}}
+                            </a>
+                        </h4>
+
+                        <div class="panel-collapse collapse" id="collapseSix">
+                            <div class="panel-body faq-body">
+                                <p class="faq-paragraph">
+                                    {{ "There is a maximum of 3 entries per person per email per day. Please check the participating products list in the <a href = '/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a> to determine how many entries your UPC is worth. " | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group faq-border" id="accordion7">
+                <div class="panel panel-default">
+                    <div class="faq-panel">
+                        <h4 class="panel-title faq-title">
+                            <a class="collapsed faq-plus-minus" data-target="#collapseSeven" data-toggle="collapse" href="#collapseEight">
+                                {{ "7. My UPC wasn’t accepted. What do I do?" | t}}
+                            </a>
+                        </h4>
+
+                        <div class="panel-collapse collapse" id="collapseSeven">
+                            <div class="panel-body faq-body">
+                                <p class="faq-paragraph">
+                                    {{ "Please double check that you’ve entered each digit correctly. If you’re still having difficulties with your UPC, please <a href = 'https://contact.pepsico.com/tastyrewards'> contact us </a> and describe the issue you are experiencing and provide the UPC that is not working. Please allow 2 business days to receive and respond to inquiries." | t}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <div class="panel-group faq-border" id="accordion8">
+            <div class="panel panel-default">
+              <div class="faq-panel">
+                <h4 class="panel-title faq-title">
+                  <a class="collapsed faq-plus-minus" data-target="#collapseEight" data-toggle="collapse" href="#collapseEight">
+                    {{ "8. If I am declared a winner of a prize, how long will it take for me to receive it?" | t}}
+                  </a>
+                </h4>
+
+                <div class="panel-collapse collapse" id="collapseEight">
+                  <div class="panel-body faq-body">
+                    <p class="faq-paragraph">
+                      {{ "Please allow up to 8 weeks for delivery of your prize once our fulfillment team confirms you are an official winner of a prize." | t}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-group faq-border" id="accordion9">
+            <div class="panel panel-default">
+              <div class="faq-panel">
+                <h4 class="panel-title faq-title">
+                  <a class="collapsed faq-plus-minus" data-target="#collapseNine" data-toggle="collapse" href="#collapseEight">
+                    {{ "9. I don’t have a computer and/or internet access. How can I participate?" | t}}
+                  </a>
+                </h4>
+
+                <div class="panel-collapse collapse" id="collapseNine">
+                  <div class="panel-body faq-body">
+                    <p class="faq-paragraph">
+                      {{ "Internet access is required to participate in this contest. You can access the contest website from any public computer with internet access, such as those available for use at the library or an internet café." | t}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-group faq-border" id="accordion10">
+            <div class="panel panel-default">
+              <div class="faq-panel">
+                <h4 class="panel-title faq-title">
+                  <a class="collapsed faq-plus-minus" data-target="#collapseTen" data-toggle="collapse" href="#collapseEight">
+                    {{ "10. Who do I contact for website or website related issues / questions?" | t}}
+                  </a>
+                </h4>
+
+                <div class="panel-collapse collapse" id="collapseTen">
+                  <div class="panel-body faq-body">
+                    <p class="faq-paragraph">
+                      {{ "Please click on the <a href = 'https://contact.pepsico.com/tastyrewards'> “Contact Us” </a> link and follow the directions to share your issue." | t}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-group faq-border" id="accordion11">
+            <div class="panel panel-default">
+              <div class="faq-panel">
+                <h4 class="panel-title faq-title">
+                  <a class="collapsed faq-plus-minus" data-target="#collapseEleven" data-toggle="collapse" href="#collapseEight">
+                    {{ "11. How will you use and/or share my information?" | t}}
+                  </a>
+                </h4>
+
+                <div class="panel-collapse collapse" id="collapseEleven">
+                  <div class="panel-body faq-body">
+                    <p class="faq-paragraph">
+                      {{ "To view PepsiCo Canada’s Privacy Policy, please <a href = 'https://www.pepsico.ca/'> visit www.pepsico.ca </a>." | t}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div id="mk-personalization">&nbsp;</div>
+
+            <div id="mk-personalization_signed">&nbsp;</div>
+        </div>
+    </div>
+
+</section>
+
+<section class="nintendo-landing-contest-rules">
+
+  <img class = "logo-nintendo two-logos" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/logo.png" alt = "logo">
+
+  <div class="container">
+    <div class="margin-bottom margin-top">
+      {{data.legal_footer|raw}}
+    </div>
+    {#		<span class="rules">#}
+    {#			<a href="{{data.rules_link}}">{{'Read our complete rules'|t}}</a>#}
+    {#		</span>#}
+    <div class="nintendo-landing-contest-rules-text-wrap">
+      <a class="btn_nintendo rules_btn" href="{{ '/en-ca/contest/fritolayquakercontest/officialrules' |t }}">{{'Official Rules'|t}}</a><br>
+      <a class="btn_nintendo" href="{{ '/en-ca/contest/fritolayquakercontest/faq' |t }}">{{'FAQ'|t }}</a>
+      <br>
+
+    </div>
+  </div>
+</section>
+
+
+{% endif %}

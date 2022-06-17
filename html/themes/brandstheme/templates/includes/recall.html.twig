@@ -1,0 +1,19 @@
+{{ attach_library('brandstheme/brand_recall') }}
+
+
+<section class="brand-recall">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 recall-paragraph">
+                {{block_alert|raw}}
+                <div class="view-recall-pdf">
+                    {% if alert_pdf %}
+                        <a target="_blank" class="btn btn-recall" href="{{alert_pdf}}" rel="noopener nofollow">
+                            {{'View PDF'|t}}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<script type="text/javascript">
+</script>
+
+{{ attach_library( 'pepsibrands/realjoy_export' ) }}
+
+<h2 class=""> {{data.title}} </h2>
+
+{% include '@pepsicontest/includes/admin_contest_filters.html.twig' %}
+
+<div class="container">
+
+	<table class="views-table views-view-table cols-9 responsive-enabled sticky-enabled">
+   <thead>
+      <tr>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Contest Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Email'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'First Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Last Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Date'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Optin'|t}}</th>
+      </tr>
+   </thead>
+   <tbody>
+	{% for entry in data.entries %}
+      <tr>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.contest_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.email}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.first_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.last_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.regdate}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.contest_optin}} </td>
+      </tr>
+	{% endfor %}
+   </tbody>
+</table>
+
+{# <input data-drupal-selector="edit-clear" type="submit" id="edit-download" name="op" value="Export Csv" class="button js-export-csv  form-submit" data-link="{{data.csv_link}}"> #}
+
+
+</div>

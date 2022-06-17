@@ -1,0 +1,9 @@
+services:
+  marketoservices.apicall:
+    class: Drupal\marketoservices\MarketoServices
+#  marketoservices_email.apicall:
+#    class: Drupal\marketoservices\MarketoServicesEmail
+  marketoservices_email_soap.apicall:
+    class: Drupal\marketoservices\MarketoServicesEmailSoap
+  marketoservices_custom_object.apicall:
+    class: Drupal\marketoservices\MarketoServicesCustomObject

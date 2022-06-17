@@ -1,0 +1,23 @@
+{{ attach_library( 'pepsibrands/pepsibrands_page' ) }}
+<section id="banner">
+    <div class="NOT-brands-hero">
+    {# {{ data.banner_block|t|raw }} #}
+    {% include '@pepsibrands/carousel.html.twig' %}
+  </div>
+</section>
+
+<section class="all-brands">
+	{{ drupal_view('brands', 'page_our_brands') }}
+</section>
+
+<section class="second-level-brands">
+	{{ drupal_view('brands', 'page_our_brands_second') }}
+</section>
+
+<section id="coupons">
+	{# Call the regular coupon block instead #}
+	{# {{ data.coupon_block|t|raw }} #}
+	{% set coupon_blocks = data.coupon_blocks %}
+	{% include '@tastytheme/includes/coupon_block.html.twig' %}
+	{# {{ drupal_block('couponblockcallout') }} #}
+</section>

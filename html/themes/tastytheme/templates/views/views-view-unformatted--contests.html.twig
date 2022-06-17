@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="contest__detail-wrapper">
+    <h2>{{"Check Out Our Other Brand Contests!"|t | raw }}</h2>
+</div>
+
+{% set elements = rows|length %}
+
+{% for row in rows %}
+    <div class="contest__detail-view">
+        {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+        {% set brand = row.content["#row"]._entity.getTranslation(language).field_brand.getValue().0.value %}
+        {% set body = row.content["#row"]._entity.getTranslation(language).body.getValue().0.value %}
+
+        {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_contest_image.0.entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_contest_image.getValue().0.alt %}
+
+        {% set link_uri = (row.content["#row"]._entity.getTranslation(language).field_contest_link.getValue().0.uri |replace({'internal:': ''})) %}
+        {% set link_title = row.content["#row"]._entity.getTranslation(language).field_contest_link.getValue().0.title %}
+
+
+        <a class="contest__detail-image-link" href="{{link_uri}}" target="_blank">
+            <img src="{{ img }}" alt="{{title|raw}}"/>
+        </a>
+        <div class="contest__detail-view-about">
+            <a class="contest__detail-title-link" href="{{link_uri}}" target="_blank">
+                <h3>{{title|raw}}</h3>
+            </a>
+            <div class="contest__detail-about">
+                <p>
+                {{body |striptags}}
+            </p>
+            </div>
+                <a class="btn_red" href="{{link_uri}}" target="_blank">
+                {{ link_title }}
+            </a>
+        </div>
+
+    </div>
+{% endfor %}

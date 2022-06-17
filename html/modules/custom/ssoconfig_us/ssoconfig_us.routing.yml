@@ -1,0 +1,10 @@
+ssoconfig_us.admin_settings_form:
+  path: '/admin/config/ssoconfig_us/adminsettings'
+  defaults:
+    _form: '\Drupal\ssoconfig_us\Form\SettingForm'
+    _title: 'SSO configuration - US'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

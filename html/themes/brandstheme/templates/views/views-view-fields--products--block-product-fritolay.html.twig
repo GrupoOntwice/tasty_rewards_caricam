@@ -1,0 +1,97 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name:
+ *
+ */
+ #}
+{% set iframe_url = 'https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=fritolay' %}
+ {% set show_buynow = 0 %}
+
+ {# class should be either products-item-image or products-item-text #}
+{% for field in fields %}
+  {# <span class="hidden element_type"> {{field.element_type}}</span> #}
+  {# <span class="hidden debug"> {{field.class}}</span> #}
+  {# {{ kint(field.element_type) }} #}
+  {# {% if field.class == 'field-subtitle' %} #}
+  {% if field.class == 'field-html-title' %}
+    <div class="products-item-text">
+      <div class="products-item-text-title">
+            {{ field.content }}
+
+        <div class="padding-top">
+          <a class="btn_fritolay" target="_blank" rel="noopener noreferrer" href="javascript:void(0)">{{'View Product'|t}}</a>
+            <button class = "btn_fritolay product-fritolay-buynow js-buynow fritolay-buy {{show_buynow? '': 'hidden'}}" data-target="#fritolayModal" data-toggle="modal">
+              {{'Buy Now' | raw}}
+            </button>
+
+        </div>
+{#        <div class="modal bootstrap-modal bg-transparent" id="fritolayModal" tabindex="-1" role="dialog"  aria-hidden="true">#}
+{#                <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#                  <div class="modal-content">#}
+{#                    <div class="modal-body">#}
+{#                      <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                      #}{# <p>Content goes here</p> #}
+{#                      {% if iframe_url %}#}
+{#                        <iframe id="snack-shop" src="{{iframe_url}}"></iframe>#}
+{#                      {% endif %}#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+
+      </div>
+    </div>
+  {% elseif field.class == 'field-recipe-image' %}
+    <div class="products-item-image">
+      <a target="_blank" rel="noopener noreferrer" href="javascript:void(0)">
+        {{ field.content }}
+      </a>
+    </div>
+  {% elseif field.class == 'field-brand-page-link' %}
+  {# The iframe problem maybe coming from here
+    @TODO: check if some contents have some special characters in the link
+   #}
+    <span class="hidden fritolay-link">{{ field.content}} </span>
+
+  {% endif %}
+
+{% endfor %}
+
+
+
+

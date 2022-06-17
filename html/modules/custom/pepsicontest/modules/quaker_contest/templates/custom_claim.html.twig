@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+  language = '{{ data.language }}';
+  window.contest_name = '{{data.contest_type}}';
+  window.contest_type = '{{data.contest_type}}';
+  window.langcode = '{{ data.langcode }}';
+  window.popup_contest = 1;
+  window.claim_submitted = {{data.submitted}};
+  window.language = '{{data.langprefix}}';
+</script>
+   {# window.contest_name = '{{data.contesturi}}'; #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library( 'quaker_contest/landing' ) }}
+{# {{ attach_library( 'quaker_contest/grabsnack' ) }} #}
+
+{# Banner  #}
+
+<section id="banner">
+  <div class="NOT-brands-hero">
+    {% include '@pepsibrands/carousel.html.twig' %}
+  </div>
+</section>
+
+<style type="text/css">
+  .contest-detail__submit{
+    height: 100px;
+  }
+</style>
+
+{% if data.contest_type == 'grabsnack' %}
+  {{ attach_library( 'quaker_contest/grabsnack' ) }}
+  {% include '@quaker_contest/include/claim_grabsnack.html.twig' %}
+{% elseif data.contest_type == 'cheetos' %}
+  {{ attach_library( 'quaker_contest/cheetos' ) }}
+  {% include '@quaker_contest/include/claim_cheetos.html.twig' %}
+{% elseif data.contest_type == 'hockey' %}
+  {{ attach_library( 'quaker_contest/hockey' ) }}
+  {% include '@quaker_contest/include/claim_hockey.html.twig' %}
+{% endif %}
+
+
+
+
+

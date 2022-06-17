@@ -1,0 +1,36 @@
+<div id="lays-videos-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+{#    <ol class="carousel-indicators lays-carousel-indicators">#}
+{#        {% for idx, video in data.videos %}#}
+{#            <li data-target="#lays-videos-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>#}
+{#        {% endfor %}#}
+{#    </ol>#}
+
+    <div class="carousel-inner container">
+      {% for idx, video in data.videos %}
+        <div class="row item {{ idx==0 ? 'active' :'' }}">
+            <div class="col-md-12 lays-video-col lays-video-col-{{ idx }}">
+                <div class="lays-video-box">
+                    <div class="lays-video-preimg">
+                        <a href="#" data-key="{{video.key}}" class="activate-video" aria-label="video">
+                          {# <img src="https://img.youtube.com/vi/{{video.key}}/maxresdefault.jpg" alt=" lays video"/> #}
+                          <img src="{{video.thumbnail}}" alt=" lays video"/>
+                        </a>
+
+{#                        <div class="lays-videos-description">#}
+{#                          <h3> {{video.title|raw}}</h3>#}
+{#                          <p>{{video.body|raw}}</p>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a class="carousel-control-prev" href="#lays-videos-carousel" role="button" data-slide="prev" aria-label="toggle arrow">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#lays-videos-carousel" role="button" data-slide="next" aria-label="toggle arrow">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>

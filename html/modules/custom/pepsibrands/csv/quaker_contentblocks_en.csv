@@ -1,0 +1,31 @@
+Block Type,Description
+about-us,"For over a century, the Quaker<sup>®</sup> brand has served as a symbol of quality, great taste and nutrition; providing the whole grain goodness of oats in a power-packed line of popular products from oatmeal to cereals and snack bars. Whether you are enjoying steel cut, quick or instant oats, they are made with 100% whole grain oats, low in saturated fat, contain 0 trans-fat and are part of a nutritious diet.
+
+Take a look through time at the moments that helped shape the Quaker<sup>®</sup> name into what it is today."
+coupon,"<div class=""container container-coupon "">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left animate__animated "" style=""background: #FFFFFF"">
+<div class=""main-coupon-centered-img""><a class=""flaminhot-link"" href=""/coupons"" target=""_self""><img alt=""flaminhot Pack"" src=""/themes/brandstheme/src/images/quaker/quaker-standard-oats.png"" /> </a></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading"">Quaker<sup>®</sup><br />
+Coupon Available!</h1>
+<a class=""btn_quaker-white margin-top"" href=""/coupons"" target=""_self"">Get my coupon*</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons available while quantities last</p>
+</div>
+</div>
+</div>
+
+<div class=""row quaker-coupon-social"">
+<div class=""col-md-12 center-align-md-dsk"">
+<div class=""quaker-coupon-message"">
+<h4>Want more? Connect with us.</h4>
+</div>
+
+<div class=""quaker-coupon-social-icons"">&nbsp;</div>
+</div>
+</div>
+</div>"

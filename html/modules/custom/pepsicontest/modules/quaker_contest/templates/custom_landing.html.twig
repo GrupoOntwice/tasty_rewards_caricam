@@ -1,0 +1,76 @@
+<script type="text/javascript">
+
+language = '{{ data.language }}';
+window.langcode = '{{ data.langcode }}';
+window.lang_prefix = '{{ data.lang_prefix }}';
+window.contest_name = '{{data.contest_type}}';
+window.contest_type = '{{data.contest_type}}';
+window.popup_contest = 1;
+window.show_age_popup = {{data.has_age_gate}};
+</script>
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library( 'quaker_contest/landing' ) }}
+{% include '@quaker_contest/include/custom-contest-popup-form.html.twig' %}
+
+{% if data.is_comingsoon == 1 %}
+	{% set page_comingsoon = 1 %}
+	{% if data.contest_type == 'nintendo' %}
+		{{ attach_library( 'quaker_contest/fritolay' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-fritolay.html.twig' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+	{% elseif data.contest_type == 'nintendo2' %}
+		{{ attach_library( 'quaker_contest/nintendo' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+	{% elseif data.contest_type == 'grabsnack' %}
+		{{ attach_library( 'quaker_contest/grabsnack' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-grabsnack.html.twig' %}
+	{% elseif data.contest_type == 'cheetos' %}
+		{{ attach_library( 'quaker_contest/cheetos' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-cheetos.html.twig' %}
+	{% elseif data.contest_type == 'hockey' %}
+		{{ attach_library( 'quaker_contest/hockey' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-hockey.html.twig' %}
+	{% endif %}
+{% else %}
+	{% set page_contestlanding = 1 %}
+
+	{# Banner  #}
+
+	<section id="banner">
+	    <div class="NOT-brands-hero">
+	    {% include '@pepsibrands/carousel.html.twig' %}
+	  </div>
+	</section>
+
+
+
+	{# Headline about contests  #}
+
+	{# headline about prizes  #}
+	<style type="text/css">
+	#contest-code, #contest-rules{
+		height: 100px;
+	}
+	</style>
+
+	{% if data.contest_type == 'nintendo' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+	    {% include '@quaker_contest/include/fritolay_landing.html.twig' %}
+	{% elseif data.contest_type == 'nintendo2' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo2.html.twig' %}
+	    {% include '@quaker_contest/include/nintendo_landing.html.twig' %}
+	{% elseif data.contest_type == 'grabsnack' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-grabsnack.html.twig' %}
+	    {% include '@quaker_contest/include/grabsnack_landing.html.twig' %}
+	{% elseif data.contest_type == 'cheetos' %}
+	    {% include '@quaker_contest/include/cheetos_landing.html.twig' %}
+	    {# {% include '@quaker_contest/include/custom-contest-headlines.html.twig' %} #}
+	{% elseif data.contest_type == 'hockey' %}
+	    {% include '@quaker_contest/include/hockey_landing.html.twig' %}
+	    {% include '@quaker_contest/tracking/floodlight-hockey.html.twig' %}
+	{% endif %}
+
+
+{% endif  %}

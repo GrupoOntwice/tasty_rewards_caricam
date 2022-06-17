@@ -1,0 +1,6 @@
+name: Register a maintenance Event Subscriber
+type: module
+description: 'Register an Event Subscriber to set 200 status code in maintenance mode'
+core: 8.x
+package: Custom
+version: '1.0'

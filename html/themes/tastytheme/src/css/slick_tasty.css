@@ -1,0 +1,79 @@
+.slick-next:before {
+  content: url("../images/arrow_lg_white_next_blue.png") !important;
+  right: 10px;
+}
+
+.slick-prev:before {
+  content: url("../images/arrow_lg_white_prev_blue.png") !important;
+}
+
+#brands .slick-next:before {
+  content: url("../images/arrow_lg_white_next_blue.png") !important;
+  right: 10px;
+}
+
+#brands .slick-prev:before {
+  content: url("../images/arrow_lg_white_prev_blue.png") !important;
+}
+
+.slick-next:before, .slick-prev:before {
+  font-weight: bold;
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px 16px;
+  line-height: 1.2 !important;
+}
+
+.slick-next:after, .slick-prev:after {
+
+  color: #000000 !important;
+  font-size: 30px;
+  position: absolute;
+}
+
+
+.slick-prev,
+.slick-next {
+  /*background-color: white;*/
+  background-color: transparent;
+  opacity: 1;
+  border-radius: 50%;
+  height: 50px !important;
+  width: 50px !important;
+  top: 42% !important;
+  transition: all 0.2s;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  transform: scale(1.2) translateY(-42%);
+  transition: all 0.2s;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  opacity: 1;
+  top: 0px;
+  color: #000000 !important;
+}
+
+.slick-prev {
+  left: 25px !important;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 25px !important;
+  z-index: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: .75;
+  color: transparent !important;
+  border: 2px solid red;
+  height: 10px;
+  width: 10px;
+  position: relative;
+  top: 2px;
+  border-radius: 10px;
+}

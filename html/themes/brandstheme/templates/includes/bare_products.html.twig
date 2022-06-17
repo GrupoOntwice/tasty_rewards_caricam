@@ -1,0 +1,201 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12 text-center products-title animate__animated ">
+        <h3>{{'A few of our faves'|t}}</h3>
+      <hr>
+
+    </div>
+
+    {# div.container > div.row > div.products-items col-md-12
+          foreach products
+              div.products-item w-100 d-md-flex
+              if TEXT RIGHT
+                div.col-lg-6 product-img-col bare-align-left animate__animated  animate__fadeInLeft
+
+
+                div.col-lg-6 product-copy-col text-center
+
+
+              else TEXT LEFT
+                 div.col-lg-6 product-copy-col text-center
+
+
+                 div.col-lg-6 product-img-col bare-align-right animate__animated
+
+
+     #}
+
+    <div class="products-items col-md-12">
+        {% for product in products %}
+          <div class="products-item w-100 d-lg-flex animate__animated  ">
+
+            {% if loop.index % 2 == 1 %}
+              {% set class_align = 'product-align-left' %}
+              <div class="col-lg-6 product-img-col bare-align-left animate__animated  animate__fadeInLeft">
+                <div class="products-recipe-image">
+                    <img src="{{product.image_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                </div>
+                <div class="products-extra-image">
+                  {% if product.extraimage1_url %}
+                    <img src="{{product.extraimage1_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                  {% endif %}
+                </div>
+                <div class="products-extra-image2">
+                  {% if product.extraimage2_url %}
+                    <img src="{{product.extraimage2_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                  {% endif %}
+                </div>
+
+              </div>
+              <div class="col-lg-6 product-copy-col text-center ">
+                <div class="text-left d-inline-block">
+                  {# all the other fields #}
+                    <div class="products-title bare-fave-title html-title">
+                      {{ product.html_title|raw }}
+                    </div>
+                    <div class="products-title bare-fave-subtitle padding-top">
+                    {{ product.title|raw }}
+                    </div>
+                    <div class="products-body bare-fave-body padding-top">
+                      {{ product.body|raw }}
+                      <div class = "product-buy-now">
+                          <button class = "btn_bare product-bare-buynow js-buynow bare-buy" data-target="#bareModal" data-toggle="modal">
+                            {{'Buy Now' |t| raw}}
+                          </button>
+                        </div>
+
+{#                        <div class="modal bootstrap-modal bg-transparent" id="bareModal" tabindex="-1" role="dialog"  aria-hidden="true">#}
+{#                          <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#                            <div class="modal-content">#}
+{#                              <div class="modal-body">#}
+{#                                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                                 <p>Content goes here</p> #}
+{#                                {% if iframe_url %}#}
+{#                                  <iframe id="snack-shop" src="{{iframe_url}}"></iframe>#}
+{#                                {% endif %}#}
+{#                              </div>#}
+{#                            </div>#}
+{#                          </div>#}
+{#                        </div>#}
+                     </div>
+                    <div class="products-nutrition">
+                      <div class="fa-nutrition">
+                        <div class="">
+                          <h3>{{'Nutrition'|t}}</h3>
+                        </div>
+                        <div class="fa-nutrition-icon">
+                          <i class="fa-swap fa fa-plus"></i>
+                        </div>
+                      </div>
+                      <div class="nutrition-copy animate__animated">
+                        {{ product.nutrition|raw }}
+                      </div>
+                    </div>
+                    <div class="products-ingredients">
+                      <h3>{{'Ingredients'|t}}</h3>
+                      {{ field.content }}
+                      {{ product.ingredients|raw }}
+                    </div>
+                </div> {# END div.text-left d-inline-block#}
+
+              </div>
+
+            {% else %}
+              {% set class_align = 'product-align-right' %}
+              <div class="col-lg-6 product-copy-col text-center ">
+                <div class="text-left d-inline-block">
+                  {# all the other fields #}
+                    <div class="products-title bare-fave-title html-title">
+                      {{ product.html_title|raw }}
+                    </div>
+                    <div class="products-title bare-fave-subtitle padding-top">
+                    {{ product.title|raw }}
+                    </div>
+                    <div class="products-body bare-fave-body padding-top">
+                      {{ product.body|raw }}
+                      <div class = "product-buy-now">
+                      <button class = "btn_bare product-bare-buynow js-buynow bare-buy" data-target="#bareModal" data-toggle="modal">
+                            {{'Buy Now' |t| raw}}
+                          </button>
+                        </div>
+
+{#                        <div class="modal bootstrap-modal bg-transparent" id="bareModal" tabindex="-1" role="dialog"  aria-hidden="true">#}
+{#                          <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#                            <div class="modal-content">#}
+{#                              <div class="modal-body">#}
+{#                                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                                #}{# <p>Content goes here</p> #}
+{#                                {% if iframe_url %}#}
+{#                                  <iframe id="snack-shop" src="{{iframe_url}}"></iframe>#}
+{#                                {% endif %}#}
+{#                              </div>#}
+{#                            </div>#}
+{#                          </div>#}
+{#                        </div>#}
+                     </div>
+                    <div class="products-nutrition">
+                      <div class="fa-nutrition">
+                        <div class="">
+                          <h3>{{'Nutrition'|t}}</h3>
+                        </div>
+                        <div class="fa-nutrition-icon">
+                          <i class="fa-swap fa fa-plus"></i>
+                        </div>
+                      </div>
+                      <div class="nutrition-copy animate__animated">
+                        {{ product.nutrition|raw }}
+                      </div>
+                    </div>
+                    <div class="products-ingredients">
+                      <h3>{{'Ingredients'|t}}</h3>
+                      {{ field.content }}
+                      {{ product.ingredients|raw }}
+                    </div>
+                </div> {# END div.text-left d-inline-block#}
+              </div>
+
+              <div class="col-lg-6 product-img-col bare-align-right animate__animated ">
+                <div class="products-recipe-image">
+                    <img src="{{product.image_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                </div>
+                <div class="products-extra-image">
+                  {% if product.extraimage1_url %}
+                    <img src="{{product.extraimage1_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                  {% endif %}
+                </div>
+                <div class="products-extra-image2">
+                  {% if product.extraimage2_url %}
+                    <img src="{{product.extraimage2_url}}" width="408" height="538" alt="{{product.title}}" typeof="foaf:Image" class="img-responsive">
+                  {% endif %}
+                </div>
+              </div>
+
+            {% endif %}
+          </div>
+        {% endfor %}
+    </div> {# End div.products-items #}
+
+
+
+
+  </div> {# End div.row #}
+
+</div>
+
+
+<div class="modal bootstrap-modal bg-transparent bare-buynow-modal" id="bareModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-bare" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button closeModal" class="close" data-dismiss="modal">×</button>
+        {# <p>Content goes here</p> #}
+        {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+        {% if iframe_url %}
+          <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

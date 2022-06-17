@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Code for the Google Tag Manager dataLayer Views module.
+ */
+
+use Drupal\gtm_datalayer_views\Controller\DataLayerViewsController;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Instantiates a new instance of DataLayerViewsController object.
+ *
+ * @return \Drupal\gtm_datalayer_views\Controller\DataLayerViewsControllerInterface
+ *   The views dataLayer controller.
+ */
+function gtm_datalayer_views_get_controller() {
+  static $datalayer_controller = NULL;
+
+  if (!$datalayer_controller instanceof DataLayerViewsController) {
+    $datalayer_controller = DataLayerViewsController::create(\Drupal::getContainer());
+  }
+
+  return $datalayer_controller;
+}
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function gtm_datalayer_views_views_post_execute(ViewExecutable $view) {
+  // Builds the tags and attach needed libraries.
+  gtm_datalayer_views_get_controller()->buildGtmPusherScript($view);
+}

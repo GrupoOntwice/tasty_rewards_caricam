@@ -1,0 +1,33 @@
+Block Type,Description
+about-us,"<p>Les collations multigrains SunChips® sont bien plus que de simples collations. En fait, ces savoureux carrés ondulés faits de grains entiers à 100 % font passer votre collation à un autre niveau. Vous les partagerez en toute confiance, bien que vous aimeriez secrètement les garder rien que pour vous.</p>
+
+<p>&nbsp;</p>
+
+<p>Les collations multigrains SunChips® se distinguent des autres collations: ce sont les ingrédients que vous pouvez voir qui composent ces croustilles uniques de forme ondulée quilesrendent si exceptionnelles. Faites avec des grains entiers à 100 % et des saveurs inspirées d’ingrédients frais et authentiques, elles ne contiennent aucun arôme artificiel, colorant artificiel ou agent de conservation!</p>
+
+<p>&nbsp;</p>
+
+<p>Pour SunChips®, se démarquer c’est tout naturel et nous y prenons plaisir. Dites au revoir à l’ordinaire et préparez-vous à déguster une collation exquise hors du commun.</p>
+
+<p>&nbsp;</p>
+
+<p>Nourrissantes et savoureuses!</p>
+"
+coupon,"<div class=""container container-coupon center-align-md-dsk"">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left animate__animated "" style=""background: url('/themes/brandstheme/src/images/sunchips/sunchips-coupon-bags-bg.png')"">
+<div class=""main-coupon-centered-img""><img alt=""SunChips Pack"" src=""/themes/brandstheme/src/images/sunchips/sunchips-coupon-chips-bags.png"" /></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading"">Coupon SunChips<sup>®</sup><br />
+disponible!</h1>
+<a class=""btn_sunchips margin-top"" href=""/coupons"" target=""_self"">Obtenez votre coupon*</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons offerts jusqu’à épuisement des stocks</p>
+</div>
+</div>
+</div>
+</div>
+"

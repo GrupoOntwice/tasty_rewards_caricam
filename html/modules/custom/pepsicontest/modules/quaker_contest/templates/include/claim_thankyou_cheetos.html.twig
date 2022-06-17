@@ -1,0 +1,86 @@
+<section class="cheetos cheetos-thankyou noprovince" id="cheetos-postgame">
+  <div class="cheetos-banner">
+      <div class="cheetos-banner-content">
+          <div class="cheetos-banner-text">
+              <h1>
+                  {{ 'Thanks for playing!' | t }}
+              </h1>
+
+              <a href="{{data.game_url }}" class="cheetos-btn cheetos-btn-orange cheetos-roc">
+                  {{ 'Play game again' | t }}
+              </a>
+          </div>
+
+          <div class="cheetos-banner-chester">
+              <img src="/themes/tastytheme/src/images/contest-cheetos/chester-thankyou.png">
+          </div>
+      </div>
+  </div>
+
+  <div class="cheetos-postgame-body">
+      <div class="cheetos-postgame-body-topbanner">
+          <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-bottom-border.png">
+      </div>
+
+      <div class="cheetos-postgame-body-text star-before star-after star-title-container">
+          <h2>
+              {{ 'Check out our recipes & coupons' | t }}
+          </h2>
+      </div>
+
+      <div class="carnival-boxes">          
+        <div class="carnival-box">
+            {% if data.langcode == 'en' %}
+                <a href="https://www.tastyrewards.com/en-ca/brands/cheetos/recipes" target="_blank">
+                    <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-1-en-revised.png" />
+                </a>
+            {% elseif data.langcode == 'fr' %}
+                <a href="https://www.tastyrewards.com/fr-ca/marques/cheetos/recettes" target="_blank">
+                    <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-1-fr-revised.png" />
+                </a>
+            {% endif %}
+            </a>
+        </div>
+
+        <div class="carnival-box">
+            {% if data.langcode == 'en' %}
+                <a href="https://www.tastyrewards.com/en-ca/coupons" target="_blank">
+                    <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-2-en-revised.png" />
+                </a>
+            {% elseif data.langcode == 'fr' %}
+                <a href="https://www.tastyrewards.com/fr-ca/coupons" target="_blank">
+                    <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-2-fr-revised.png" />
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="carnival-box">
+            {% if data.langcode == 'en' %}
+            <a href="https://www.walmart.ca/en/ip/cheetos-crunchy-cheese-flavored-snacks/6000202799680" target="_blank">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-3-en-revised.png" />
+            </a>
+            {% elseif data.langcode == 'fr' %}
+            <a href="https://www.walmart.ca/fr/ip/cheetos-croquant-grignotines-saveur-de-fromage/6000202799680" target="_blank">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-3-fr-revised.png" />
+            </a>
+            {% endif %}
+        </div>
+      </div>
+  </div>
+
+        <div class="cheetos-disclaimer">
+            <p>
+                {{ '<sup>&dagger;</sup>No purchase necessary. Open to Canadian residents, 19+. Mathematical skill-testing question required. Contest period: June 28 @ 12:00 pm (noon) ET to September 5, 2021 @ 11:59:59 pm ET. Enter UPC for a chance to win (i) Instant Prizes: Cheetos® Free Product Coupon and Cheetos® Mac ’n Cheese Free Product Coupon (4,100 available/ARV $7.98 ea); (ii) Grand Prize: $10,000 cash (awarded in the form of a cheque). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules, <a href="/en-ca/contest/cheetoscarnival/officialrules" target="_blank">click here</a>' | t | raw }}
+            </p>
+
+            <div class="cheetos-disclaimer-controls">
+                <a href="{{data.rules_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'Official rules' | t }}
+                </a>
+
+                <a href="{{data.faq_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'FAQ' | t }}
+                </a>
+            </div>
+        </div>
+</section>

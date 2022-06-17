@@ -1,0 +1,115 @@
+<nav id="brands_navigation" class="ruffles-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/ruffles':'/en-ca/brands/ruffles' }}" class="ruffles-logo-mobile top-logo noDesktop">
+    <img class="ruffles-logo" src="/themes/brandstheme/src/images/ruffles/logo/ruffles-logo.svg?v=1" alt="Off The Eaten Path">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-left">
+
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+
+    <li class="brands-navbar__item-border">
+
+      {%if ( language == 'en') %}
+        <a class="ruffles-contact-us" href="https://contact.pepsico.com/fritolayca" id="" target="_blank">
+          {{'Contact Us'|t}}
+          <span>{{'Opens in a new tab'|t}}</span>
+        </a>
+
+      {% endif %}
+
+      {%if ( language == 'fr') %}
+        <a class="ruffles-contact-us" href="https://contact.pepsico.com/fritolaycafr" id="" target="_blank">
+          {{'Nous joindre'|t}}
+          <span>{{'Ouvre un nouvel onglet'|t}}</span>
+        </a>
+      {% endif %}
+
+    </li>
+
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/ruffles':'/en-ca/brands/ruffles' }}" class="logo noMobile">
+    <img class="ruffles-logo" src="/themes/brandstheme/src/images/ruffles/logo/ruffles-logo.svg?v=1" alt="ruffles Canada logo">
+  </a>
+
+  <!-- Social Icons -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border ">
+
+    <a class="brands-navbar__social-icons" href="https://www.facebook.com/RufflesCanada" id="nav-facebook" target="_blank" aria-label="facebook link">
+      <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://twitter.com/rufflescanada?lang=en" id="nav-twitter" target="_blank" aria-label="twitter link">
+      <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://www.instagram.com/rufflescanada/" id="nav-instagram" target="_blank" aria-label="instagram link">
+      <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+{#    <a class="brands-navbar__social-icons" href="https://www.youtube.com/channel/UCBoWXtmyvzBA4zoJDvi1NEA/featured" id="nav-youtube" target="_blank">#}
+{#      <i class="fa fa-youtube fa-navbar"></i>#}
+{#    </a>#}
+
+  </div>
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+
+
+    {%if ( language == 'en') %}
+      <a href="/fr-ca/marques/ruffles" id="" class="choose-lang_fr">
+        FR
+      </a>
+    {% endif %}
+
+    {%if ( language == 'fr') %}
+      <a href="/en-ca/brands/ruffles" id="" class="choose-lang_fr">
+        EN
+      </a>
+    {% endif %}
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/login-out.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/logo-{{language}}.png" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

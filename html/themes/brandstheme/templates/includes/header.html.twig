@@ -1,0 +1,318 @@
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+{# Navbar #}
+{#'navbar',#}
+{%
+      set navbar_classes = [
+        ad_banner_img ? 'scroll-ads-banner' : '',
+        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+        theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
+      ]
+%}
+{% set smaller_logo = '/officialrules' in url('<current>')|render|render or '/my-account' in url('<current>')|render|render %}
+
+{% if ad_banner_name %}
+    <section id="ads-unit" class="ads-unit-index" style="display:none;">
+        <div class="ads-unit-wrapper">
+            <a href="{{ad_banner_link}}" class="ads-banner bg-ads-banner" target="_blank">
+                <p class="ads-description">{{ad_banner_description|raw}}</p>
+            </a>
+            <span class="ads-name hidden">{{ad_banner_name}}</span>
+            <button class="modal__close-ads-banner">
+                <img class="modal__close-ads-btn-img" src="/themes/tastytheme/src/images/close.png" alt="Close button">
+            </button>
+        </div>
+     </section>
+{% endif %}
+
+{% set header_style = 'display:none;' %}
+{% set navbar_default_classes = '' %}
+{% if is_quaker_landing %}
+    {% set header_style = 'display:flex; position:inherit; height: auto;' %}
+{% endif %}
+<header
+  {% if is_quaker_landing %} class="navbar-default container" {% else %} {{ navbar_attributes.addClass(navbar_classes) }}  {% endif %}
+    id="tasty-theme" role="banner" style="{{header_style}}" {{navbar_default_classes}}>
+
+    <div class="noDesktop navbar-back-div">
+      <a id="button-mbl-back">
+        <img class="navbar-back" src="/themes/brandstheme/src/images/nav-back-arrow.svg??v=1" alt="Navbar Back arrow">&nbsp;&nbsp;{{'Back'|t}}
+      </a>
+    </div>
+
+    <div class="header__logo-container {{smaller_logo ? 'smaller'}}">
+
+        {% if tasty_logopath %}
+            <a href="{{ path('<front>') }}" class="page_top">
+                <img class="header__logo" src="{{tasty_logopath}}" alt="{{'Logo of Tasty Rewards'|t}}" />
+            </a>
+          <p class="navbar-mbl-tr center-align-mbl tr-hide-mobile">Tasty Rewards</p>
+        {% endif %}
+    </div>
+
+    <div class="header__mobile-topnav">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+    </div>
+
+    {# <div class="mobile-menu-items">
+            {% if page.menu %}
+                {{ page.menu }}
+            {% endif %}
+    </div> #}
+
+    <div class="mobile-menu-items">
+       <div class="region region-menu">
+          <nav role="navigation" aria-labelledby="block-mainnavigation-2-menu" id="block-mainnavigation-2">
+             <h2 class="visually-hidden" id="block-mainnavigation-2-menu">Main navigation</h2>
+             <nav class="menu ">
+                <span class="hidden js-show-popup">0</span>
+                {% set url_shop            = language=='fr'? shoplink ~'/home?lang=fr-ca' : shoplink ~'/home?lang=en-ca' %}
+                {% set url_changepassword  = language=='fr'? shoplink ~'/changepassword/fr-ca' : shoplink ~'/changepassword/en-ca' %}
+
+                <ul class="menu menu--main nav">
+                    <li class="first">
+                        <a href="{{'/en-ca/brands'|t}}" class="primary" data-drupal-link-system-path="brands">
+
+                            <img class="brand-navbar-icons en" src="/themes/brandstheme/src/images/lays/brands.svg" alt="brand icon" id="icon-brand-en">
+                            <img class="brand-navbar-icons fr" src="/themes/brandstheme/src/images/lays/brands.svg" alt="brand icon" id="icon-brand-fr">
+
+                            <span class="mobile-menu-text">{{'Brands'|t}}</span>
+
+                        </a>
+                    </li>
+
+                   <li>
+                       <a href="{{'/en-ca/coupons'|t}}" class="primary" data-drupal-link-system-path="coupons">
+
+                           <img class="brand-navbar-icons" src="/themes/brandstheme/src/images/lays/coupon.svg" alt="coupon icon" id="icon-coupon">
+
+                            <span class="mobile-menu-text">{{'Coupons'|t}}</span>
+                      </a>
+                   </li>
+
+                   <li>
+                       <a href="{{'/en-ca/contests'|t}}" class="primary" data-drupal-link-system-path="contests">
+
+                           <img class="brand-navbar-icons en" src="/themes/brandstheme/src/images/lays/contest.svg" alt="contest icons" id="icon-contest-en">
+
+                           <img class="brand-navbar-icons fr" src="/themes/brandstheme/src/images/lays/contest.svg" alt="contest icons" id="icon-contest-fr">
+
+                            <span class="mobile-menu-text">{{'Contests'|t}}</span>
+
+                       </a>
+                   </li>
+                   <li>
+                      <a href="{{'/en-ca/recipes'|t}}" class="primary" data-drupal-link-system-path="recipes">
+
+                          <img class="brand-navbar-icons en" src="/themes/brandstheme/src/images/lays/recipes.svg" alt="recipe icon" id="icon-recipe-en">
+
+                          <img class="brand-navbar-icons fr" src="/themes/brandstheme/src/images/lays/recipes.svg" alt="recipe icon" id="icon-recipe-fr">
+
+                        <span class="mobile-menu-text">{{'Recipes'|t}}</span>
+
+                       </a>
+                   </li>
+                   <li class="last">
+                      <a href="{{'/en-ca/where-to-buy'|t}}" class="primary where-to-buy-menu" data-drupal-link-system-path="where to buy">
+
+                          <img class="brand-navbar-icons en" src="/themes/brandstheme/src/images/lays/wheretobuy.svg" alt="recipe icon" id="icon-wheretobuy-en">
+
+                          <img class="brand-navbar-icons fr" src="/themes/brandstheme/src/images/lays/wheretobuy.svg" alt="recipe icon" id="icon-wheretobuy-fr">
+                          
+
+                        <span class="mobile-menu-text">{{'Where to buy'|t}}</span>
+
+                       </a>
+                   </li>
+                   <li class="tr-hide-desktop">
+                    <a id="active_link" data-id="en" href="javascript:void(0);"class="language__wrapper lang-switcher js-translation">{{'FR'|t}}</a>
+                   </li>
+                   <li class="menu_account_mobile_only">
+                        {% if not logged_in  %}
+                            <a href="/en-ca/user/login" class="sign_in jsModalSignIn disabled">{{'Sign In'|t}}</a>
+                            <a class="sign_up btn-red__navbar jsModalSignUp">{{'Sign Up'|t}}</a>
+                            <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+                        {% else %}
+                            {% set link_title = "My Account" %}
+                            {% set link_url = path('pepsibam.updateprofile') %}
+                            {% set hello_msg = "Hello,"|t   %}
+
+                            {% set link_title1 = "Logout" %}
+                            {% set link_url1 = "/en/user/logout" %}
+                            {% if language=='en' or language=='fr' %}
+                                <div class="dropdown">
+                                    <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+                                    <div class="dropdown-content">
+                                        <a href="{{link_url|t}}">{{link_title|t}}</a>
+                                        {% if socialsource is empty %}
+                                            <a href="{{url_changepassword }}">{{ 'Change Password'|t }}</a>
+                                        {% endif %}
+                                        <a class="jslogoutca" href="#">{{link_title1|t}}</a>
+                                    </div>
+                                </div>
+                                <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+                            {% else %}
+                                <div class="dropdown">
+                                    <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+                                    <div class="dropdown-content">
+                                        <a href="{{link_url|t}}">{{link_title|t}}</a>
+                                        <a class="jslogout" href="{{link_url1|t}}">{{link_title1|t}}</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                   </li>
+                </ul>
+
+                 <!-- SEARCH CONTAINER -->
+{#                <div class="tr-search-container">#}
+{#                    <input class="tr-search-input" type="text" placeholder="{{'Search'|t}}" />#}
+
+{#                    <div class="tr-search-icon">#}
+{#                        <i class="fa fa-search" aria-hidden="true"></i>#}
+{#                    </div>#}
+{#                </div>#}
+
+                <div class="menu_account">
+                   <a id="active_link-mobile" data-id="en" href="javascript:void(0);" class="language__wrapper lang-switcher js-translation">{{'FR'|t}}</a>
+                    {% if not logged_in  %}
+                        <a href="/en-ca/user/login" class="sign_in jsModalSignIn disabled">{{'Sign In'|t}}</a>
+                        <a class="sign_up btn-red__navbar jsModalSignUp" role="button" tabindex="0">{{'Sign Up'|t}}</a>
+                        <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+                    {% else %}
+
+                        {% set link_title = "My Account" %}
+                        {% set link_url = path('pepsibam.updateprofile') %}
+                        {% set hello_msg = "Hello,"|t   %}
+
+                        {% set link_title1 = "Logout" %}
+                        {% set link_url1 = "/en/user/logout" %}
+                        {% if language=='en' or language=='fr' %}
+                            <div class="dropdown">
+                                <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+                                <div class="dropdown-content">
+                                    <a href="{{link_url|t}}">{{link_title|t}}</a>
+                                    {% if socialsource is empty %}
+                                        <a href="{{url_changepassword }}">{{ 'Change Password'|t }}</a>
+                                    {% endif %}
+                                    <a class="jslogoutca" href="#">{{link_title1|t}}</a>
+                                </div>
+                            </div>
+                            <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+
+
+
+                        {% else %}
+                            <div class="dropdown">
+                                <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+                                <div class="dropdown-content">
+                                    <a href="{{link_url|t}}">{{link_title|t}}</a>
+                                    <a class="jslogout" href="{{link_url1|t}}">{{link_title1|t}}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+             </nav>
+          </nav>
+       </div>
+    </div>
+</header>
+
+<style type="text/css">
+
+    @media (min-width: 992px) {
+        .menu_account_mobile_only, .mobile-menu-text, .tr-hide-desktop {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .tr-hide-mobile {
+            display: none !important;
+        }
+
+        .nav > li img {
+            display: none !important;
+        }
+
+        .nav > li span {
+            display: block;
+        }
+
+        .menu_account_mobile_only {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .menu_account_mobile_only a {
+            border-bottom: none;
+        }
+
+        .menu_account_mobile_only .sign_up {
+            min-height: 0 !important;
+            margin: 0 20px;
+            padding: 8px !important;
+            min-width: 120px;
+            height: auto;
+            display: inline-block;
+            text-align: center;
+        }
+
+      .menu_account_mobile_only .btn_blue-navbar {
+        min-height: 0 !important;
+        margin: 0 20px;
+        padding: 8px !important;
+        min-width: 120px;
+        width: 120px;
+        height: auto;
+        display: inline-block;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+        .tr-search-container {
+            padding: 15px !important;
+        }
+
+        .tr-search-input {
+            border: none;
+            padding-left: 0;
+        }
+
+        .tr-search-icon {
+            top: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid black;
+            font-size: 14px;
+        }
+
+      .btn_blue-navbar:hover, .btn_blue-navbar:focus  {
+        background-color: #1b3c94 !important;
+        color: white !important;
+    }
+
+      .btn-red__navbar:hover, .btn-red__navbar:focus {
+        background-color: #b81321 !important;
+        color: white !important;
+      }
+
+    }
+
+    @media only screen and (max-width: 380px) {
+      .menu_account_mobile_only .sign_up {
+        min-width: 85px !important;
+      }
+
+      .menu_account_mobile_only .btn_blue-navbar {
+        min-width: 90px !important;
+        width: 90px !important;
+      }
+    }
+</style>

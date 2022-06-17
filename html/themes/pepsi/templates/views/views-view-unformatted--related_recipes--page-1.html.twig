@@ -1,0 +1,205 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+
+{% set current_page = view.getCurrentPage() %}
+{% set type = "recipe" %}
+{% set rows_count = rows|length %}
+
+<section id="feedBlocks">
+    <div class="row">
+        <h1 class="text-center pink uppercase signika">{{"Other recipes you may like:"|t}}</h1>
+
+        <div id="feed" class="col-sm-12 related_recipes_tracking">
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._relationship_entities.field_test.getTranslation(language).title.getValue().0.value %}
+    {% set brand = row.content["#row"]._relationship_entities.field_test.getTranslation(language).field_brand.getValue().0.value %}
+    {% set nid = row.content["#row"]._relationship_entities.field_test.nid.getValue().0.value %}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+
+    {% set img = file_url(row.content["#row"]._relationship_entities.field_test.getTranslation(language).field_recipe_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._relationship_entities.field_test.getTranslation(language).field_recipe_image.getValue().0.alt %}
+    {% set video = row.content["#row"]._relationship_entities.field_test.getTranslation(language).field_recipe_video.getValue().0.value %}    
+    
+    {% if video is not empty %}
+        {% set video_class = "video" %}
+    {% else %}
+        {% set video_class = "" %}
+    {% endif %}
+
+   
+{% if current_page == 0 %}   
+        {% if rows_count == 2 %}
+                    {% if loop.index == 1 %}
+                    <!-- block left -->
+                    <div class="block">
+
+                                    <!-- block 1 : ADVERTISEMENT -->
+                                    <div class="box size-1x1">
+                                        <div class="boxinside" style="background-color:#eeeeee">
+                                            <p>{{ drupal_view('advertisement', 'page_bigbox') }}</p>
+                                        </div>
+                                    </div>   
+                                 
+                                    <!-- block 2 -->
+                        <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+                    </div><!-- /block left -->    
+
+                    {% elseif loop.index == 2 %}
+                        <!-- block right -->
+                        <div class="block">
+                                <!-- block 4 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+
+                        </div> <!-- /block right -->  
+
+                    {% endif %}
+                    
+        {% else %}
+                        {% if loop.index == 1 %}
+                            <!-- block left -->
+                            <div class="block">
+
+                                    <!-- block 1 : ADVERTISEMENT -->
+                                    <div class="box size-1x1">
+                                        <div class="boxinside" style="background-color:#eeeeee">
+                                            <p>{{ drupal_view('advertisement', 'page_bigbox') }}</p>
+                                        </div>
+                                    </div>   
+                                 
+                                    <!-- block 2 -->
+                                <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+                                          
+
+                        {% elseif loop.index == 2 %}        
+                                    <!-- block 3 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+                            </div><!-- /block left --> 
+                        {% elseif loop.index == 3 %}
+                            <!-- block right -->
+                            <div class="block">
+                                    <!-- block 4 -->
+                                <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+                        {% elseif loop.index == 4 %}            
+                                    <!-- block 5 -->
+                                    <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+
+                        {% elseif loop.index == 5 %}        
+                                    <!-- block 6 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+
+
+                            </div> <!-- /block right -->  
+
+                        {% endif %}
+                        
+             {% endif %}
+             
+             
+{% else %}
+            {% if rows_count == 3 %}
+                    {% if loop.index == 1 %}
+                    <!-- block left -->
+                    <div class="block">
+  
+                                <!-- block 1 -->
+                        <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+                                       
+                    {% elseif loop.index == 2 %}
+                                <!-- block 2 -->
+                        <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+                               
+                    </div><!-- /block left --> 
+                    
+                    {% elseif loop.index == 3 %}
+                        <!-- block right -->
+                        <div class="block">
+                                <!-- block 4 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+
+                        </div> <!-- /block right -->  
+
+                    {% endif %}
+                    
+            {% else %}
+        
+  
+                        {% if loop.index == 1 %}
+                            <!-- block left -->
+                            <div class="block">  
+                                    <!-- block 1 -->
+                                <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+                                          
+                        {% elseif loop.index == 2 %}
+                                    <!-- block 2 -->
+                                    <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+
+                        {% elseif loop.index == 3 %}        
+                                    <!-- block 3 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+                            </div><!-- /block left --> 
+                        {% elseif loop.index == 4 %}
+                            <!-- block right -->
+                            <div class="block">
+                                    <!-- block 4 -->
+                                <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block2x1.html.twig' %}</div>
+
+                        {% elseif loop.index == 5 %}            
+                                    <!-- block 5 -->
+                                    <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+
+                        {% elseif loop.index == 6 %}        
+                                    <!-- block 6 -->
+                            <div style="float:left;" class="related_recipe_tracking" onclick="promotionClickTracking(this);">{% include directory ~ '/templates/custom/block1x1.html.twig' %}</div>
+
+
+                            </div> <!-- /block right -->  
+
+                        {% endif %}
+            {% endif %}            
+                        
+{% endif %}                          
+
+{% endfor %}
+
+
+        </div><!-- /feed -->
+
+        </div><!-- /row -->
+
+</section>  

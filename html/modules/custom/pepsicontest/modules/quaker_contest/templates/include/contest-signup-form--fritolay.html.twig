@@ -1,0 +1,106 @@
+{{ attach_library( 'quaker_contest/nintendo' ) }}
+<form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off" class="nintendo-contest-form">
+
+    <input type="hidden" name="newregister"  value="{{newregister}}">
+    {% if data.language != 'en-us' and data.language != 'es-us' %}
+        <p class="modal__inquiry">{{ "All fields are required."|t }}</p>
+    {% endif %}
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" class="contest-detail__input {{data.error.upccode?'has-error':''}}" name='upccode' id="contest-upccode" disabled="disabled"  placeholder="{{ 'Code'|t }}" value="{{data.upccode?:''}}"  {{data.upccode?form_field_status:''}}>
+            <span class="help-block err_upccode">{{data.error.upccode?:''}}</span>
+        </div>
+    </div>
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" disabled="disabled" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+            <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+        </div>
+    </div>
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" disabled="disabled" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="{{ 'First Name'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+            <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+        </div>
+
+        <div class="contest-detail__quacker-input-col">
+
+            <input type="text" disabled="disabled" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+            <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+        </div>
+    </div>
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <select class="province form-control modal__sign-up-select contest-detail__input" name="province" id="province" >
+                {{ data.provinces_options| raw }}
+            </select>
+            <span class="help-block err_province">{{data.error.province?:''}}</span>
+        </div>
+    </div>
+
+    <div class="contest-detail__quacker-input">
+        <div class="contest-detail__quacker-input-col">
+            <input type="text" disabled="disabled" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }}" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+            <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+        </div>
+    </div>
+
+
+    <div class="contest-detail__sign-up-select-checkbox layssummertime-checkbox">
+        {% if data.contest_type == 'nintendo' %}
+            <div class="contest-detail__checkboxes-wrap">
+                <input type="checkbox" class="contest-detail__checkboxes-color" id="optin_maj" name='optin_maj'  {{ data.optin_maj==1?'checked' }}  />
+                <label for="optin_maj"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'By participating in the contest, I confirm that I am eligible to and will participate according to the <a href="/contest/%s/officialrules" target="_blank">Official Rules</a>.' |format(data.contesturi)| t  }}</p>
+                <span class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span>
+            </div>
+            <br/>
+
+        {% elseif data.contest_type == 'grabsnack' %}
+            <div class="contest-detail__checkboxes-wrap">
+                <input type="checkbox" class="contest-detail__checkboxes-color" id="optin" name='optin'  {{ data.optin==1?'checked' }}/>
+                <label for="optin"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'| t }}</p>
+            </div>
+            <br/>
+            <p> {{'*Please select the option that applies:'|t}}</p>
+            <br/>
+
+            <div class="contest-detail__checkboxes-wrap">
+                <input type="checkbox" class="contest-detail__checkboxes-color" id="optin_maj" name='optin_maj'  {{ data.optin_maj==1?'checked' }}/>
+                <label for="optin_maj"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'I am the age of majority in my province/territory of residence.'| t }}</p>
+                <span class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span>
+            </div>
+            <br/>
+
+            <div class="contest-detail__checkboxes-wrap">
+                <input type="checkbox" class="contest-detail__checkboxes-color" id="optin_maj2" name='optin_maj2'  {{ data.optin_maj2==1?'checked' }}/>
+                <label for="optin_maj2"></label>
+
+                <p class="contest-detail__checkbox-text optin">{{'I am between the age of 16 and the age of majority in my province/territory of residence, and have parental permission to participate.'| t }}</p>
+            </div>
+            <br/>
+
+            <div>
+                <p class="contest-detail__checkbox-text-rules">{{ 'By submitting my entry, I confirm I am at least the age of majority in my province or territory of residence and I agree to participate according to the <a href="/contest/%s/officialrules" target="_blank">Official Rules</a>.' |format(data.contesturi)| t }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+    <div class="contest-detail__sign-up-select-button">
+        <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+        <input id="submitcontest" class="contest-detail__sign-up-button js-submit-contest {{submit_status}}" {{submit_status}} type="button" value="{{'Submit' | t}}">
+    </div>
+    <div class="contest-detail__sign-up-select-button">
+        <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+    </div>
+</form>

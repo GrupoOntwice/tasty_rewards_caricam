@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set current_path = url("<current>")["#markup"]%}
+
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.name.getValue().0.value %}
+    {% set link = path('view.articles.page_1') ~ "/" ~ title %}   
+    
+    {% set current_categ =  title|replace({" ":"%20"}) in current_path %}
+    {% if current_categ %}
+        {% set active_class = "active" %}
+    {% else %}
+        {% set active_class = "" %}
+    {% endif %}
+    
+    
+    {% if loop.index == 1%} 
+        {% if path('view.articles.page_1')~"/" in current_path %}
+            {% set active_class_all = "" %}
+        {% else %}
+            {% set active_class_all = "active" %}
+        {% endif %}
+        <a href="{{path('view.articles.page_1')}}" class="{{active_class_all}} dont-remove-class">{{"All"|t}}</a> 
+    {% endif %} 
+    
+    <a href="{{link}}" class="{{active_class}}">{{title}}</a>
+ 
+{% endfor %}

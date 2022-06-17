@@ -1,0 +1,27 @@
+<a class="btn_red js-legal hidden" href="javascript:void(0);" tabindex="-1">
+    {{'Enter Now'|t}}
+</a>
+{% set province_class = '' %}
+{% set error_legal_message = '' %}
+{% if data.contest_type == 'grabsnack' %}
+	{% set province_class = 'hidden' %}
+	{% set popup_description = 'To enter the Grab Snacks. Win† Swag Contest website, please enter your date of birth .' %}
+	{% set error_legal_message = 'UH OH! Looks like you’re not eligible at this time. You must be 16 years of age or older to participate.' %}
+	{% include '@quaker_contest/include/age-gate-popup-grabsnack.html.twig' %}
+{% elseif data.contest_type == 'nintendo' %}
+	{% set popup_description = 'Enter the Frito-La<sup>TM</sup> Variety Packs Contest website' %}
+	{% set error_legal_message = 'UH OH! Looks like you’re not eligible at this time. You must be the age of majority in your province/territory of residence to participate.' %}
+
+	{% include '@quaker_contest/include/age-gate-popup-fritolay.html.twig' %}
+{% elseif data.contest_type == 'nintendo2' %}
+	{% set popup_description = 'Enter the Frito-La<sup>TM</sup> Variety Packs Contest website' %}
+	{% set error_legal_message = 'UH OH! Looks like you’re not eligible at this time. You must be the age of majority in your province/territory of residence to participate.' %}
+
+	{% include '@quaker_contest/include/age-gate-popup-nintendo.html.twig' %}
+{% elseif data.contest_type == 'cheetos' %}
+	{% set error_legal_message = 'UH OH! Unfortunately you are not old enough to participate.' %}
+	{% include '@quaker_contest/include/age-gate-popup-cheetos.html.twig' %}
+{% elseif data.contest_type == 'hockey' %}
+	{% set error_legal_message = 'UH OH! Unfortunately you are not old enough to participate.' %}
+	{% include '@quaker_contest/include/age-gate-popup-hockey.html.twig' %}
+{% endif %}

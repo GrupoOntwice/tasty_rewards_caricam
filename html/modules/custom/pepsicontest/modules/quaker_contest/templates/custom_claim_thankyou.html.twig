@@ -1,0 +1,20 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    language = '{{ data.language }}';
+    window.contest_type = '{{data.contest_type}}';
+    window.contest_name = '{{data.contest_type}}';
+</script>
+
+{{ attach_library( 'quaker_contest/landing' ) }}
+
+{% if data.contest_type == 'grabsnack' %}
+  {{ attach_library( 'quaker_contest/grabsnack' ) }}
+  {% include '@quaker_contest/include/claim_thankyou_grabsnack.html.twig' %}
+{% elseif data.contest_type == 'cheetos' %}
+  {{ attach_library( 'quaker_contest/cheetos' ) }}
+  {% include '@quaker_contest/include/claim_thankyou_cheetos.html.twig' %}
+{% elseif data.contest_type == 'hockey' %}
+  {{ attach_library( 'quaker_contest/hockey' ) }}
+  {% include '@quaker_contest/include/claim_thankyou_hockey.html.twig' %}
+{% endif %}

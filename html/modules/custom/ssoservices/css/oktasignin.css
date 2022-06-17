@@ -1,0 +1,271 @@
+/*.en-us #okta-login, .en-us #okta-signup,
+.es-us #okta-login, .es-us #okta-signup
+{
+    display: none;
+}
+*/
+.en #regular-login, .en #regular-signup,
+.fr #regular-login, .fr #regular-signup,
+.en-us #regular-login, .en-us #regular-signup,
+.es-us #regular-login, .es-us #regular-signup
+
+{
+    display: none;
+}
+
+.auth-footer {
+    display: none;
+}
+
+#okta-signup-container .primary-auth-form, 
+#okta-signup-container .auth-divider, 
+#okta-signup-container .okta-sign-in-header,
+#okta-signup-container h2 ,
+#okta-contest-container .primary-auth-form, 
+#okta-contest-container .auth-divider, 
+#okta-contest-container .okta-sign-in-header,
+#okta-contest-container h2 ,
+#okta-contest-container .auth-footer
+{
+    display: none;
+}
+
+#okta-signup-container #okta-sign-in.no-beacon .auth-content,
+#okta-contest-container #okta-sign-in.no-beacon .auth-content
+{
+    padding-top: 0;
+}
+
+#okta-signup-container #okta-sign-in ,
+#okta-contest-container #okta-sign-in 
+{
+    margin: 0 auto 8px;
+    width: 400px;
+    min-width: 300px;
+}
+
+#okta-contest-container #okta-sign-in{
+    background-color: #fff !important;
+    border-color: #fff !important;
+}
+
+
+#okta-sign-in {
+    background-color: #ebebeb !important
+}
+
+label[for=okta-signin-username] {
+    display:  none;
+}
+label[for=okta-signin-password] {
+    display:  none;
+}
+
+#okta-sign-in.auth-container h2, #okta-sign-in.auth-container h3 {
+    font-size: 30px !important;
+    text-align: center;
+    line-height: 1;
+    margin: 5px 0 25px 0;
+    font-family: GTWalsheimBold;
+}
+
+#okta-sign-in .o-form-head {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: none;
+}
+
+#okta-sign-in.auth-container .button-primary {
+    color: #fff !important;
+    background-color: #db1d2c !important;
+    background: -o-linear-gradient(top,#db1d2c 0,#b81321 100%) !important;
+    background: -ms-linear-gradient(top,#db1d2c 0,#b81321 100%) !important;
+    background: -webkit-gradient(linear,left top,left bottom,from(#db1d2c),to(#b81321))  !important;
+    background: -webkit-linear-gradient(#db1d2c,#b81321) !important;
+    background: linear-gradient(#db1d2c,#b81321) !important;
+    border-color: white !important;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 15%), inset 0 1px 0 0 hsl(0deg 0% 100% / 10%);
+}
+
+#okta-sign-in.auth-container.main-container {
+    background-color: #ebebeb !important;
+    border-color: #ebebeb !important;
+    box-shadow: 0 !important;
+}
+
+#okta-sign-in .auth-divider {
+    background-color: transparent !important;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#okta-sign-in .auth-divider .auth-divider-text {
+    background-color: transparent !important;
+}
+
+#okta-sign-in {	
+	margin-top:0 !important;
+}
+
+
+
+
+#okta-sign-in .auth-header { 
+	border-bottom:none;
+	padding:0;
+
+ }
+
+
+#okta-sign-in .auth-content {
+	padding-bottom:0 !important;
+}
+
+
+#okta-sign-in.no-beacon .auth-content {
+	padding-top:0;
+}
+
+.o-form-input {
+ display: flex;   
+ justify-content: space-between;
+    align-items: baseline;
+}
+
+
+#okta-sign-in a:link {
+	font-size:12px;
+	color:red;
+}
+
+#okta-sign-in.auth-container.main-container .margin-btm-30 {
+	margin-bottom:10px !important;
+}
+
+#okta-login-footer p {
+	font-size:12px !important;
+	text-align:center;
+}
+
+#okta-sign-in .o-form-button-bar {
+	padding-bottom:0;
+}
+
+#okta-sign-in .o-form .custom-checkbox label {
+	color:#000;
+}
+
+#okta-sign-in.auth-container.main-container  {
+	box-shadow:none !important;
+
+}
+
+
+#okta-sign-in .auth-divider  {
+	margin-bottom:10px !important;
+
+}
+
+
+#okta-sign-in .o-form-label-top .o-form-input {
+    /*display: flex;*/
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#o-form-input:last-child{
+    display: flex;
+}
+
+
+.oktaforgotpassword a {
+color: red !important
+
+}
+
+#okta-sign-in .o-form-button-bar{
+padding-bottom: 0;
+}
+
+
+#okta-sign-in .auth-header {
+border-bottom: none;
+ padding-top: 0;
+}
+
+@media (min-width: 540px) {
+    #fancy_login_user_login_block_wrapper {
+    padding-bottom:40px;
+    }
+}
+
+#okta-sign-in.auth-container .button-primary {
+    color: #fff !important;
+    background-color: #b81321 !important;
+    background: -o-linear-gradient(top,#b81321 0,#b81321 100%) !important;
+    background: -ms-linear-gradient(top,#b81321 0,#b81321 100%) !important;
+    background: -webkit-gradient(linear,left top,left bottom,from(#b81321),to(#b81321)) !important;
+    background: -webkit-linear-gradient(#b81321,#b81321) !important;
+    background: linear-gradient(#b81321,#b81321) !important;
+    border-color: white !important;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 15%), inset 0 1px 0 0 hsl(0deg 0% 100% / 10%);
+}
+
+.okta-form-input-error .icon {
+    display: none;
+}
+
+#okta-sign-in.auth-container .o-form-explain.okta-form-input-error {
+    padding-top: 0 !important;
+}
+
+#okta-sign-in .o-form-explain.o-form-input-error {
+    padding-left: 0 !important;
+}
+
+.lds-ring {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    visibility: hidden;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all .8s;    
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

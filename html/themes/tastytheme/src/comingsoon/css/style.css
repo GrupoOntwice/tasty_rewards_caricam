@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*  --- Variables ---  */
+/* GLOBAL */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  font-family: "Akzidenz-grotesk-roman";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "GtWalsheimBold";
+}
+
+@font-face {
+  font-family: "GTWalsheimBold";
+  /*this is what you put on your font family*/
+  src: url("/themes/tastytheme/src/fonts/gtwalsheimbold-webfont.woff");
+  /*Link to the font*/
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Akzidenz-grotesk-roman";
+  /*this is what you put on your font family*/
+  src: url("../fonts/Akzidenz-grotesk-roman.ttf");
+  /*Link to the font*/
+  font-display: swap;
+}
+
+header .menu .language__wrapper {
+  font-size: 12px;
+}
+
+.arrow-section-general {
+  background: url(../images/arrow-white.png) no-repeat top center;
+  height: 80px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.arrow-section-body {
+  background: url("/src/images/arrow-white.png") no-repeat top center;
+  height: 60px;
+  position: absolute;
+  top: -55px;
+  width: 100%;
+}
+
+.arrow-section-footer {
+  background: url("/src/images/arrow-blue.png") no-repeat top center;
+  height: 60px;
+  position: absolute;
+  top: -55px;
+  width: 100%;
+}
+
+/**********************************************
+*** Maintenance
+**********************************************/
+.maintenance__main-wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.maintenance__wrapper-en, .maintenance__wrapper-fr{
+  max-width: 1024px;
+  margin: auto;
+  text-align: center;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.maintenance__text-title{
+  font-size: 55px;
+  color: #0e4caa;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.maintenance__text-paragraph{
+  font-size: 25px;
+  color: #0e4caa;
+  font-weight: bold;
+  margin-top: 20px;
+  line-height: 30px;
+}
+
+.maintenance__main-wrapper footer{
+  position: relative;
+  margin-top: 100px;
+  background: #0a387d;
+  background: linear-gradient(to top,#0a387d 30%,#0e4ca9 100%);
+  color: white;
+
+}
+
+.maintenance__main-wrapper footer .footer_row--top{
+  border-bottom: 0;
+}
+
+.maintenance__main-wrapper footer .footer_row{
+  border-bottom: 0;
+  padding: 0;
+}
+
+.maintenance__main-wrapper .arrow-section-footer {
+  background: url("/themes/tastytheme/src/images/arrow-blue.png") no-repeat top center;
+  height: 60px;
+  position: absolute;
+  width: 100%;
+}
+
+html:lang(en) .maintenance__wrapper-fr{
+  display: none;
+}
+
+html:lang(fr) .maintenance__wrapper-en{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+

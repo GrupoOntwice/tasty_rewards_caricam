@@ -1,0 +1,134 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+
+{% set user_name = user_firstname %}
+<input type="hidden" id="user_optin_status" name="user_optin_status" value="{{ user_newsletter_optin }}" />
+<!-- MOBILE NAV -->
+    <nav class="mobileNav hidden">
+            <div id="mobileClose" class="btn-close close">x</div>
+            <br>
+            <br>
+            
+            {% set mk_id = "" %}
+            {# Login/Myaccount link #}
+            {% if not logged_in  %}
+                {% set link_title = "Login" %}
+                {% set link_url = "/en/user/login" %}
+                {% set mk_id = 'mk-id-mobile' %}
+
+            {% else %}
+                {% set link_title = "My Account" %}
+                {% set link_url = path('pepsibam.updateprofile') %}
+                {% set hello_msg = "Hello,"|t   %}
+                <a href="#" class="blue">{{hello_msg}} {{user_name}}!</a>
+
+            {% endif %}
+            
+            <a href="{{link_url|t}}" class="tr-login secondary" {% if (mk_id is not empty) %}id="{{mk_id}}" {% endif%} > {{link_title|t}}</a>
+            
+    
+            {# Sing up link #}
+            {% if not logged_in  %}
+                {% set link_title = "Sign up" %}
+                {% set link_url = path('pepsibam.register') %}
+
+            {% else %}
+                {% set link_title = "Logout" %}
+                {% set link_url = "/en/user/logout" %}
+            {% endif %}
+    
+            <a href="{{link_url|t}}" class="tr-signup secondary " > {{link_title|t}}</a>
+
+            <hr />
+            {% for item in items %}
+                <a class="primary {{item.title}}" href="{{ item.url }}">{{ item.title|t }}{%if item.title == 'Coupons' %}<span></span>{% endif %}</a>
+            {% endfor %}
+            
+            <a href="{{ path('<front>') }}" class="primary" > {{ 'Home' |t}}</a>
+    
+            <hr /> 
+            {# Languaje switcher link #}
+            {% set link_title = "FR" %}
+            {% set link_url = "/fr" %}
+    
+            <a href="{{link_url|t}}" class="lang-switcher" target="" data-drupal-link-system-path="node">{{link_title|t}}</a>
+        </nav>
+
+    <div class="navbarcontainer clearfix">
+        <a id="logo" href="{{ path('<front>') }}">{{ 'TASTY REWARDS'|t }}</a>
+        <nav id="desktopNav" class="desktopNav">
+            {% for item in items %}
+                <a class="primary {{item.title}}" href="{{ item.url.toString()|t }}">{%if item.title == 'Coupons' %}<span></span>{% endif %}{{ item.title|t }}</a>
+            {% endfor %}
+            
+            {# Login/Myaccount link #}
+            {% if not logged_in  %}
+                {% set link_title = "Login" %}
+                {% set link_url = "/en/user/login" %}
+                
+                <a href="{{link_url|t}}" class="tr-login secondary first" id="mk-login"> {{link_title|t}}</a>
+                
+            {% else %}
+                
+                {% set link_title = "My Account" %}
+                {% set link_url = path('pepsibam.updateprofile') %}
+                {% set hello_msg = "Hello,"|t   %}
+                
+                {% set link_title1 = "Logout" %}
+                {% set link_url1 = "/en/user/logout" %}
+                
+                <div class="dropdown">
+                    <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{user_name}}!</a>
+                    <div class="dropdown-content">
+                        <a href="{{link_url|t}}">{{link_title|t}}</a>
+                        <a href="{{link_url1|t}}">{{link_title1|t}}</a>
+                    </div>
+                  </div>
+            {% endif %}
+            
+
+            {# Sing up link #}
+            {% if not logged_in  %}
+                {% set link_title = "Sign up" %}
+                {% set link_url = path('pepsibam.register') %}
+                <a href="{{link_url|t}}" class="tr-signup secondary last" > {{link_title|t}}</a>
+            {% endif %}
+    
+            {# Languaje switcher link #}
+            {% set link_title = "FR" %}
+            {% set link_url = "/fr" %}
+    
+            <a href="{{link_url|t}}" class="lang-switcher" target="" data-drupal-link-system-path="node">{{link_title|t}}</a>
+    
+        </nav>
+        <div id="search-bar">
+                <form id="searchform" action="#" method="post">
+                    <div id="label" class=""><label for="search-terms" id="search-label">search</label></div>
+                    <div id="input" class="notfocus"><input type="text" name="search-terms" id="search-terms" placeholder="{{"Enter search terms..."|t}}"></div>
+                </form>
+            </div>
+        {# .btn-navbar is used as the toggle for collapsed navbar content #}
+        {% if page.navigation_collapsible %}
+          <button id="navbar-toggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        {% endif %}
+    </div>

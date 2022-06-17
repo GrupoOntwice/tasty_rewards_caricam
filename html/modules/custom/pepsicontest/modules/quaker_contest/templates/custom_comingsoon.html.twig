@@ -1,0 +1,32 @@
+<script type="text/javascript">
+
+language = '{{ data.language }}';
+window.langcode = '{{ data.langcode }}';
+window.lang_prefix = '{{ data.lang_prefix }}';
+window.contest_name = '{{data.contest_type}}';
+window.popup_contest = 1;
+window.comingsoon = 1;
+</script>
+{# window.contest_name = '{{data.contesturi}}'; #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library( 'quaker_contest/landing' ) }}
+
+{% include '@quaker_contest/include/custom-contest-popup-form.html.twig' %}
+
+{% set page_comingsoon = 1 %}
+{% if data.contest_type == 'nintendo' %}
+	{{ attach_library( 'quaker_contest/nintendo' ) }}
+    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+{% elseif data.contest_type == 'nintendo2' %}
+	{{ attach_library( 'quaker_contest/nintendo' ) }}
+    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+{% elseif data.contest_type == 'grabsnack' %}
+	{{ attach_library( 'quaker_contest/grabsnack' ) }}
+    {% include '@quaker_contest/include/contest-comingsoon-grabsnack.html.twig' %}
+{% elseif data.contest_type == 'cheetos' %}
+	{{ attach_library( 'quaker_contest/cheetos' ) }}
+    {% include '@quaker_contest/include/contest-comingsoon-cheetos.html.twig' %}
+{% endif %}

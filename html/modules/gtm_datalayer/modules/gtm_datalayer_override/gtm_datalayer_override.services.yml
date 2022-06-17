@@ -1,0 +1,6 @@
+services:
+  gtm_datalayer_override.route_subscriber:
+    class: Drupal\gtm_datalayer_override\Routing\RouteSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

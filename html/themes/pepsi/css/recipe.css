@@ -1,0 +1,335 @@
+/*Recipe.css*/
+
+.recipe #topLeft{
+	padding:0 !important;
+	border: 10px solid #ffffff; 
+}
+.recipe #topRight{
+	padding:10px;
+}
+.sponsorImage{
+	height: 50px;
+	width: auto;
+}
+.rating{
+	float: left;
+}
+.rating .glyphicon{
+	font-size: 2.3em;
+}
+
+.prep-infos{
+	overflow: hidden;
+	padding: 25px;
+	margin: 10px 0;
+}
+.prep,.cook{
+	float: left;
+	width: 50%;
+	padding-left: 70px;
+	padding-top: 10px;
+	min-height: 70px;
+	font-size: 1.1em;
+	margin-bottom: 25px;
+}
+.prep{
+	/*background:transparent url("https://static.tastyrewards.ca/images/prep-icon.png") top left no-repeat;*/
+	position:relative;
+}
+.prep:before{
+	content: "\f017";
+    font-family: 'FontAwesome';
+    position:absolute;
+    top:0;
+    left: 0;
+    font-weight: 300;
+    font-size: 4em;
+}
+.cook{
+	background:transparent url("https://static.tastyrewards.ca/images/cook-icon-blue.png") top left no-repeat;
+}
+.prep .bold,
+.cook .bold{
+	font-size: 1.7em;
+}
+#featuredArticle,#coupons{
+	position: relative;
+	float: left;
+}
+
+#recipeBlocks{
+	padding:20px 20px 40px 20px;
+}
+.recipe .overlay{
+	background:rgba(64,160,213,0.8) !important;
+}
+
+#ingredients h1,
+#preparation h1{
+	position: relative;
+	padding-left: 1.5em;
+	margin-bottom: 25px;
+}
+
+#ingredients h1:before{
+	content: "\f046";
+    font-family: 'FontAwesome';
+    position:absolute;
+    top: -5px;
+	left: 0;
+	font-weight: 300;
+	font-size: 1.2em;
+	color:#40a0d5;
+}
+#preparation h1:before{
+	content: "\f02d";
+    font-family: 'FontAwesome';
+    position:absolute;
+    top: -5px;
+	left: 0;
+	font-weight: 300;
+	font-size: 1.2em;
+	color: #40a0d5;
+}
+
+#ingredients ul li{
+	position: relative;
+	padding-left: 2.3em;
+	margin-bottom: 10px;
+        font-size: 18px;
+        color: #6a6a6a;
+}
+#ingredients ul li:before{
+	content: "\f00c";
+        font-family: 'FontAwesome';
+        position:absolute;
+        top: -5px;
+	left: 0;
+	font-weight: 300;
+	color: #ef4b74;
+}
+
+#ingredients > p{
+	font-size: 18px;
+	margin: 20px 10px 10px 22px;
+}
+
+ #preparation ol {
+   list-style: none;
+   text-justify: auto;
+ }
+ #preparation ol li {
+   counter-increment: item;
+   margin-bottom: 5px;
+   display: table-row;
+   font-size: 18px;
+   color: #6a6a6a;
+}
+
+#preparation ol li:before {
+   content: counter(item);
+   text-align: right;
+   display: table-cell;
+   font-weight: 700;
+   font-size: 18px;
+   color: #ef4b74;
+   top: 5px;
+   padding-right: 0.5em;
+}
+
+.form-group {
+    margin-bottom: 0 !important;
+}    
+
+#topLeft .landing-categories-content p {
+    padding: 0 20px;
+}
+
+.page-node-type-recipe .region-content #topBlocks,
+.page-node-type-recipe .region-content #recipeBlocks
+{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.description{
+    padding-right: 0;
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* DESKTOP ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+.sponsor {
+    font-size: 1.35em;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.page-node-type-recipe .description p{
+    padding-left: 5px;
+}
+
+
+#recipeBlocks #ingredients {
+    padding-left: 25px;
+}
+
+
+/* Extra large desktops */
+@media all and (min-width: 1600px){
+	h1{
+		font-size: 48px !important;
+	}
+	.sponsor{
+		font-size: 2em;
+	}
+	.sponsor img{
+		height: 90px;
+	}
+	.description{
+		padding-top: 20px;
+	}
+}
+/* Medium desktops */
+@media all and (min-width: 1200px) and (max-width: 1599px){
+	h1{
+		font-size: 44px !important;
+	}
+	.sponsor{
+		font-size: 1.6em;
+	}
+	.sponsor img{
+		height: 80px;
+	}
+	.description{
+		padding-top: 20px;
+	}
+	
+}
+/* Small desktops */
+@media (min-width:768px) and (max-width:991px){
+    .recipe #topRight{
+	padding:10px 30px;
+    }
+}
+/* All desktops */
+@media all and (min-width:769px){
+
+}
+
+
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* TABLET AND MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+@media all and (max-width:768px){
+    .recipe #topRight{
+	padding:10px 30px;
+    }	
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 600px){
+	.prep,.cook{
+		float: none;
+		width: 100%;
+	}
+    .recipe #topRight{
+	padding:10px 30px;
+    }
+    #topLeft .landing-categories-content p {
+        padding: 0 5px;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* SMALL MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 320px){
+    .landing-categories-content p {
+        margin-bottom: 4%;
+    }
+    .landing-categories-content h4 {
+       margin-bottom: 5px;
+    }
+	
+}
+
+
+.contestpic {
+    margin-top: 20px;
+}
+
+.winnertext {
+    color: #000;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    padding: 10px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;    
+}
+
+.centered-in-absolute {
+  padding: 10px;
+}
+
+
+.grayout{
+    opacity: 0.4;
+    margin-top: 20px;
+}
+
+.othercontest .links li{
+    display: none;
+}
+
+.morecontest {
+    height: 500px; 
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 420px){
+    .morecontest-odd {
+        display: none;
+    }
+    
+    .winnertext .h3, .winnertext h3 {
+        font-size: 15px;
+    }
+    .winnertext .h2, .winnertext h2 {
+        font-size: 20px;
+    }	
+}

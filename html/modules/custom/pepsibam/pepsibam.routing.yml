@@ -1,0 +1,750 @@
+pepsibam.test:
+  path: '/pepsibam/test'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::test'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+pepsibam.test1:
+  path: '/pepsibam/welcomeemail'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::welcomeemail'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+pepsibam.test2:
+  path: '/pepsibam/test2'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::forgotpass'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+pepsibam.testExport:
+  path: '/pepsibam/testExport'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::testExport'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+
+pepsibam.unblock.scan-users:
+  path: '/pepsibam/unblock/test-users'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::unblock'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    
+
+pepsibam.test4:
+  path: '/pepsibam/test4'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::social'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'reporting'
+
+
+pepsibam.monthly-report:
+  path: '/pepsibam/reporting'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\TestController::monthly_report'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _permission: 'access administration pages'
+    _role: 'reporting'
+
+#LOGIN ROUTES    
+pepsibam.fblogin:
+  path: '/pepsibam/fblogin'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\LoginController::fblogin'
+    _title: ''
+  requirements:
+    #_user_is_logged_in: 'FALSE'
+    _access: 'TRUE'
+
+pepsibam.google_login:
+  path: '/pepsibam/google-login'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\LoginController::google_login'
+    _title: ''
+  requirements:
+    #_user_is_logged_in: 'FALSE'
+    _access: 'TRUE'
+ 
+#REGISTER ROUTES     
+pepsibam.register:
+  path: '/subscribe/{source}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::index'
+    _title: 'Sign Up'
+    source: 'tastyrewards'
+  requirements:
+#    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+
+pepsibam.iframe.register:
+  path: '/iframe/subscribe/{source}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::index'
+    _title: 'Sign Up'
+    source: ''
+    _allowiframe: True
+  requirements:
+#    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+    
+    
+
+pepsibam.register_ajax:
+  path: '/pepsi/register/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_register_callback'
+  requirements:
+    # _user_is_logged_in: 'FALSE'
+    _access: 'TRUE'
+  methods: [POST]
+
+
+fr-ca.pepsibam.register.processed:
+  path: '/merci'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Thank you'
+  requirements:
+    # _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+
+en-ca.pepsibam.register.processed:
+  path: '/thank-you'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Thank you'
+  requirements:
+    # _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+
+en-us.pepsibam.register.processed:
+  path: '/thank-you'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Thank you'
+  requirements:
+    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+es-us.pepsibam.register.processed:
+  path: '/gracias'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Thank you'
+  requirements:
+    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+
+
+
+pepsibam.iframe.register.processed:
+  path: '/iframe/subscribe/thank-you'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Thank you'
+    _allowiframe: True    
+  requirements:
+    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+
+
+#UPDATE PROFILE ROUTES    
+pepsibam.updateprofile:
+  path: '/my-account'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::updateProfilePage'
+    _title: 'My Account'
+  requirements:
+#    _user_is_logged_in: 'FALSE'  
+    _access: 'TRUE'
+    
+pepsibam.profileupdate_ajax:
+  path: '/pepsi/updateprofile/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_updateprofile_callback'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+pepsibam.updateprofile.processed:
+  path: '/form/updateprofile/processed'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+#DELETE PROFILE ROUTES    
+pepsibam.deleteprofile:
+  path: '/my-account/delete'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::deleteProfilePage'
+    _title: 'Delete Account'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    
+pepsibam.deleteprofile_ajax:
+  path: '/my-account/delete/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_deleteprofile_callback'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    
+pepsibam.deleteprofilereasons_ajax:
+  path: '/my-account/delete/reasons/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_deleteprofilereasons_callback'
+  requirements:
+    _user_is_logged_in: 'FALSE'
+    
+    
+#UPDATE PROFILE - PASSWORD ROUTES    
+pepsibam.updateprofilepwd:
+  path: '/form/updateprofilepassword'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::updateProfilePasswordPage'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    
+pepsibam.updateprofilepwd_ajax:
+  path: '/pepsi/updateprofilepassword/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_updateprofilepassword_callback'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+pepsibam.updateprofilepwd.processed:
+  path: '/form/updateprofilepassword/processed'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+
+#UNSUBSCRIBE ROUTES        
+pepsibam.unsubscribe:
+  path: '/unsubscribe'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::unsubscribePage'
+    _title: 'Unsubscribe'
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.unsubscribe:
+  path: '/unsubscribe'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::unsubscribePage'
+    _title: 'Unsubscribe'
+  requirements:
+    _access: 'TRUE'
+    
+fr.pepsibam.unsubscribe:
+  path: '/unsubscribe'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::unsubscribePage'
+    _title: 'Unsubscribe'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsibam.unsubscribe:
+  path: '/unsubscribe'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::unsubscribePage'
+    _title: 'Unsubscribe'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsibam.unsubscribe:
+  path: '/darse-de-baja'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::unsubscribePage'
+    _title: 'Unsubscribe'
+  requirements:
+    _access: 'TRUE'
+
+
+
+pepsibam.unsubscribe_ajax:
+  path: '/pepsi/unsubscribe/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_unsubscribe_callback'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.unsubscribe.processed:
+  path: '/unsubscribe-confirmation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Unsubscribe Confirmation'
+  requirements:
+    _access: 'TRUE'
+en.pepsibam.unsubscribe.processed:
+  path: '/unsubscribe-confirmation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Unsubscribe Confirmation'
+  requirements:
+    _access: 'TRUE'
+fr.pepsibam.unsubscribe.processed:
+  path: '/unsubscribe-confirmation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Unsubscribe Confirmation'
+  requirements:
+    _access: 'TRUE'
+en-us.pepsibam.unsubscribe.processed:
+  path: '/unsubscribe-confirmation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Unsubscribe Confirmation'
+  requirements:
+    _access: 'TRUE'
+es-us.pepsibam.unsubscribe.processed:
+  path: '/darse-de-baja-confirmacion'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Unsubscribe Confirmation'
+  requirements:
+    _access: 'TRUE'
+
+
+#ACTIVATION ROUTES    
+pepsibam.activationform:
+  path: '/form/activation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::activationFormPage'
+  requirements:
+    _access: 'TRUE'
+    
+pepsibam.activationform_ajax:
+  path: '/pepsi/activation/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_activation_callback'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.activationform.processed:
+  path: '/form/activation/processed'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.registrationform:
+  path: '/register/popup'
+  defaults:
+    _form: '\Drupal\pepsibam\Form\RegisterForm'
+    _title: 'Popup registration form'
+  requirements:
+    _access: 'TRUE'
+    # _permission: 'access content'
+
+pepsibam.accountactivation:
+  path: '/activation/{token}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::accountactivation'
+  requirements:
+    _access: 'TRUE'
+
+    
+#FORGOT PASSWORD ROUTES    
+pepsibam.resetpwdrequestform:
+  path: '/forgot-password'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::resetPwdRequest'
+    _title: 'Forgot Password'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.createpwdrequestform:
+  path: '/create-password'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::createPwdRequest'
+    _title: 'Create Password'
+  requirements:
+    _access: 'TRUE'
+    
+pepsibam.resetpwdrequestform_ajax:
+  path: '/pepsi/resetpasswordrequest/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_resetpwdrequest_callback'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.resetpwdrequestform.processed:
+  path: '/password-confirmation'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+    _title: 'Forgot Password Confirmation'
+  requirements:
+    _access: 'TRUE'
+
+
+pepsibam.changepassword:
+  path: '/reset-password/{token}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::resetpassword'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.changepassword_ajax:
+  path: '/pepsi/changepassword/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_resetpassword_callback'
+  requirements:
+    _access: 'TRUE'
+    
+pepsibam.changepassword.processed:
+  path: '/reset-password/processed'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+  requirements:
+    _access: 'TRUE'
+
+
+    
+pepsibam.account.blocked:
+  path: '/user/blocked'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::RequestProcessed'
+  requirements:
+    _access: 'TRUE'  
+    
+pepsibam.saverecipevote_ajax:
+  path: '/pepsi/saverecipevote/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_saverecipevote_callback'
+  requirements:
+    _access: 'TRUE'
+    
+pepsibam.updaterecipevote_ajax:
+  path: '/pepsi/updaterecipevote/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_updaterecipevote_callback'
+  requirements:
+    _access: 'TRUE'
+
+
+pepsibam.popupoptin_ajax:
+  path: '/popup/optin/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_popup_optin'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.popupopclose_ajax:
+  path: '/popup/close/savedate'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_popup_close'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.popupop_check_close:
+  path: '/popup/get/date_close'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_popup_check_close'
+  requirements:
+    _access: 'TRUE'
+   
+
+   
+    
+pepsibam.coupon:
+  path: '/coupons'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.coupon:
+  path: '/coupons'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+    
+fr.pepsibam.coupon:
+  path: '/coupons'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+    
+en-us.pepsibam.coupon:
+  path: '/coupons'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+    
+es-us.pepsibam.coupon:
+  path: '/cupones'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CouponController::index'
+    _title: 'Cupones'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+    
+
+
+
+pepsibam.brands.coupon:
+  path: '/coupons/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.brands.coupon:
+  path: '/coupons/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+fr.pepsibam.brands.coupon:
+  path: '/coupons/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+en-us.pepsibam.brands.coupon:
+  path: '/coupons/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::index'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+es-us.pepsibam.brands.coupon:
+  path: '/cupones/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::index'
+    _title: 'Cupones'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'    
+
+
+pepsibam.brands.coupon.rules:
+  path: '/coupons/{brand}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::rules'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.brands.coupon.rules:
+  path: '/coupons/{brand}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::rules'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+fr.pepsibam.brands.coupon.rules:
+  path: '/coupons/{brand}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::rules'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+en-us.pepsibam.brands.coupon.rules:
+  path: '/coupons/{brand}/officialrules'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::rules'
+    _title: 'Coupons'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+es-us.pepsibam.brands.coupon.rules:
+  path: '/cupones/{brand}/reglas-oficiales'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\BrandCouponController::rules'
+    _title: 'Cupones'
+    _allowiframe: True
+  requirements:
+    _access: 'TRUE'
+
+
+pepsibam.checkpollvote_ajax:
+  path: '/pepsi/verifypollvote/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\ProcessedController::ajax_verifypollvote_callback'
+  requirements:
+    _access: 'TRUE'    
+    
+pepsibam.rtp_ajax:
+  path: '/pepsi/rtp'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RtpController::getRtpHtmlAction'
+  requirements:
+    _access: 'TRUE'
+
+pepsibam.admin_comingsoon_form:
+  path: '/admin/config/comingsoon/adminsettings'
+  defaults:
+    _form: '\Drupal\pepsibam\Form\ComingSoonForm'
+    _title: 'Coming soon configuration'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+
+en.pepsibam.main.recipe:
+  path: '/recipes'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::recipeLanding'
+    _title: 'Recipe Category'
+  requirements:
+    _access: 'TRUE'
+
+fr.pepsibam.main.recipe:
+  path: '/recettes'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::recipeLanding'
+    _title: 'Recettes'
+  requirements:
+    _access: 'TRUE'
+
+en-us.pepsibam.main.recipe:
+  path: '/recipes'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::recipeLanding'
+    _title: 'Recipe Category'
+  requirements:
+    _access: 'TRUE'
+
+es-us.pepsibam.main.recipe:
+  path: '/recetas'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::recipeLanding'
+    _title: 'Recetas'
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.recipe.category:
+  path: '/recipes/category/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::categoryLanding'
+    _title: 'Recipe Category'
+  requirements:
+    _access: 'TRUE'
+
+en-us.pepsibam.recipe.category:
+  path: '/recipes/category/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::categoryLanding'
+    _title: 'Recipe Category'
+  requirements:
+    _access: 'TRUE'
+
+es-us.pepsibam.recipe.category:
+  path: '/recetas/categoria/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::categoryLanding'
+    _title: 'Receta Category'
+  requirements:
+    _access: 'TRUE'
+
+fr.pepsibam.recipe.category:
+  path: '/recettes/categorie/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::categoryLanding'
+    _title: 'Categorie Recettes'
+  requirements:
+    _access: 'TRUE'
+
+en.pepsibam.recipe.subcategory:
+  path: '/recipes/category/{category}/{subcategory}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::subCategoryLanding'
+    _title: 'Recipe Subcategory'
+  requirements:
+    _access: 'TRUE'
+
+en-us.pepsibam.recipe.subcategory:
+  path: '/recipes/category/{category}/{subcategory}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::subCategoryLanding'
+    _title: 'Recipe Subcategory'
+  requirements:
+    _access: 'TRUE'
+
+fr.pepsibam.recipe.subcategory:
+  path: '/recettes/categorie/{category}/{subcategory}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::subCategoryLanding'
+    _title: 'Recipe Subcategory'
+  requirements:
+    _access: 'TRUE'
+
+es-us.pepsibam.recipe.subcategory:
+  path: '/recetas/categoria/{category}/{subcategory}'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::subCategoryLanding'
+    _title: 'Recipe Subcategory'
+  requirements:
+    _access: 'TRUE'
+
+
+pepsibam.recipe.category.search:
+  path: '/recipe-filters/load-recipes'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\CategoriesController::searchRecipes'
+    _title: 'Recipe Category'
+  requirements:
+    _access: 'TRUE'
+
+#Edit addresses Begin
+pepsibam.editaddress_ajax:
+  path: '/pepsi/editaddress/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_editaddress_callback'
+  requirements:
+    _user_is_logged_in: 'TRUE'    
+
+pepsibam.removeaddress_ajax:
+  path: '/pepsi/removeaddress/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibam\Controller\RegisterController::ajax_removeaddress_callback'
+  requirements:
+    _user_is_logged_in: 'TRUE'  
+
+#Edit addresses End

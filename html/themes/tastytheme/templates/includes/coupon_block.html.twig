@@ -1,0 +1,42 @@
+
+{# {%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'clearfix',
+  ]
+%} #}
+{{ attach_library('tastytheme/coupon_block') }}
+<section class="block clearfix js-section-couponblock">
+    {% for item in coupon_blocks %}
+        {% set bg = item.bg_image_url %}
+        {% set couponimg = item.image_url %}
+        {% set couponlogo = item.extra_image_url %}
+        {% set haslogo = 0 %}
+        {% set link_url = item.link %}
+        {% set link_title = item.link_title %}
+        {% set footer = item.footer %}
+        {# <div class="coupon--container-bg-desktop" style="background-image: url({{ bg }});"> #}
+        <div class="coupon--container-bg-desktop js-lazyload-coupon" data-style="url({{ bg }})">
+            <div class="coupon--container">
+                <div class="coupon--display">
+                    <div class="coupon--leftcol js-coupon-img-container"   data-alt="{{item.image_alt}}" data-src="{{couponimg}}">
+                        {# <img alt="{{item.image_alt}}" data-entity-type="file" src="{{couponimg}}" /> #}
+                    </div>
+                </div>
+                <div class="coupon--text">
+                    <div class="coupon--text-wrapper">
+                        {% if haslogo %}
+                        {# <img class="coupon-logo" alt="{{content.body[0]['#text']|raw }}" data-entity-type="file" src="{{couponlogo}}" /> #}
+                        {% endif %}
+                    </div>
+                    {{item.body|raw}}
+                    <a class="btn_red" aria-label="{{link_title}}" href="{{link_url}}">{{link_title}}</a>
+                    <p class="coupon-disclaimer">{{footer|raw }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+

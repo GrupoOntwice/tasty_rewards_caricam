@@ -1,0 +1,464 @@
+{{ attach_library('tastytheme/slickLibrary') }}
+{{ attach_library( 'quaker_contest/nintendo' ) }}
+
+{% if data.langcode == 'fr' %}
+  {% include '@quaker_contest/include/nintendo_landing_fr.html.twig' %}
+
+{% else %}
+
+<section class="nintendo-contest-banner">
+		<img class="nintendo-landing-desktop noMobile en" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/top-banner.png" alt = "Banner">
+		<img class="nintendo-landing-desktop noMobile fr" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/top-banner-fr.png" alt = "Banner">
+		<div class = "noDesktop banner-mb en">
+      <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/win-everyday-mb.png" style = "width:250px" alt = "win-everyday">
+      <img class = "w-100" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt = "console">
+      <p class = "text-uppercase text-white robo-font">{{ '1 OF 3 NINTENDO <br> SWITCH™ -OLED <br> MODEL BUNDLES'|t }}</p>
+      <img class = "mario-mb" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-header-mb.png" alt = "mario">
+    </div>
+    <div class = "noDesktop banner-mb fr">
+      <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/win-everyday-mb-fr.png" style = "width:250px" alt = "win-everyday">
+      <img class = "w-100" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt = "console">
+      <p class = "text-uppercase text-white robo-font">{{ '1 OF 3 NINTENDO <br> SWITCH™ -OLED <br> MODEL BUNDLES'|t }}</p>
+      <img class = "mario-mb" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-header-mb.png" alt = "mario">
+    </div>
+
+  <div class = "top-btn">
+    <a class="btn_nintendo_red" href="{{data.signup_link}}" tabindex="-1">
+      {{'Enter Now'|t}}
+    </a>
+    <p>{{ 'Prize may not be exactly as shown' |t }}</p>
+  </div>
+</section>
+
+<div class="nintendo-background-main-wrapper">
+
+    <section class="nintendo-contest-fritolay-coupon-code how-to-enter">
+      <img class = "coin-bg" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/coin.png" alt = "coin">
+            <div class="nintendo-contest-unlock-wrap nintendo-fritolay container row m-auto">
+                <div class="nintendo-contest-unlock-img col-lg-6">
+                    <img class = "enter-img en" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/fritolay-product-code.png" alt = "product code">
+                  <img class = "enter-img fr" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/fritolay-product-code-fr.png" alt = "product code">
+                </div>
+
+                <div class="nintendo-contest-text-wrap col-lg-6">
+                    <h3 class = "enter-heading">{{'HOW TO ENTER'|t}}</h3><br>
+                    <span class="nintendo-contest-text-wrap-sub">{{'BUY'|t}}</span>
+
+                    <p class="margin-bottom margin-top enter-text">
+                        {{"A participating Frito-Lay<sup>®</sup> Variety Pack or Quaker<sup>®</sup> product. <br> See <a href = '/en-ca/contest/fritolayquakercontest/officialrules'>Official Rules</a> for the full list."|t}}
+                    </p>
+
+                    <span class="nintendo-contest-text-wrap-sub">{{'ENTER UPC'|t}}</span>
+
+                    <p class="margin-bottom margin-top upc-text">
+                        {{"<span style='font-weight: bold;'>Enter</span> the 12-digit UPC located under the barcode of participating Frito-Lay<sup>®</sup> Variety Packs and Quaker<sup>®</sup> products.<br><br>
+
+                        See below for visual reference.<br><br>
+                        <span style='font-weight: bold;'>You could WIN<sup>†</sup></span> 1 of 3 Nintendo Switch™ - OLED Model bundles every day.<br><br>
+                        See below for prize details.
+                        "|t}}
+                    </p>
+
+                    <a class="btn_nintendo" href="{{data.signup_link}}" tabindex="-1">
+                        {{'Enter Now'|t}}
+                    </a>
+                </div>
+            </div>
+    </section>
+
+    <section class="nintendo-contest-participating participating-contain">
+      <img class = "star-bg" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/star.png" alt = "star">
+        <h3>{{'participating products'|t}}</h3>
+        <div class="nintendo-content-participating-wrap slick">
+            <div class="nintendo-content-participating-div slide text-center">
+                <div class="nintendo-content-participating-img">
+                    <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/3x-entries.png" alt = "3x entries">
+                </div>
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'Worth 3 entries'|t}}
+                </span>
+              <div class="text-center entries-subtext">
+              <p class = "text-white">{{ 'When you enter the UPC from <br> one of these products.' |t }}</p>
+              </div>
+              </div>
+            <div class="nintendo-content-participating-div slide text-center">
+                <div class="nintendo-content-participating-img">
+                    <img class = "en" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/2x-entries.png" alt = "2x entries">
+                  <img class = "fr" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/2x-entries-fr.png" alt = "2x entries">
+                </div>
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'Worth 2 entries'|t}}
+                </span>
+              <div class="text-center entries-subtext">
+              <p class = "text-white">{{ 'When you enter the UPC <br> from one of these products.'|t }}</p>
+              </div>
+            </div>
+            <div class="nintendo-content-participating-div slide text-center">
+                <div class="nintendo-content-participating-img">
+                    <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/1x-entries.png" alt = "1x entries">
+                </div>
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'Worth 1 entry'|t}}
+                </span>
+              <div class="text-center entries-subtext">
+              <p class = "text-white">{{ 'When you enter the UPC <br> from one of these products.' |t }}</p>
+              </div>
+              </div>
+        </div>
+      <p class="rules text-white open-font text-center">{{ "See <a href = '/en-ca/contest/fritolayquakercontest/officialrules'>  Official Rules </a> for full details."|t }}</p>
+    </section>
+
+  <section class="nintendo-contest-fritolay-coupon-code prize-section">
+
+    <img class = "dice-bg" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/dice.png" alt = "dice">
+
+    <div class="nintendo-contest-unlock-wrap nintendo-code row container">
+      <div class="nintendo-contest-unlock-img col-md-6 console-image">
+        <img class = "noMobile" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/white-switch.png" alt = "white switch">
+
+        <p class = "text-white open-font noMobile">{{ 'The Nintendo Switch – OLED Model system is <br> designed to fit your life, transforming from <br> home console to portable system in a snap.'|t }}</p>
+
+
+      </div>
+
+      <div class="nintendo-contest-text-wrap col-lg-6">
+        <div>
+        <h3>{{'Prize details'|t}}</h3>
+
+        <p class="margin-bottom-max margin-top">{{"There are 3 Nintendo Switch™ – OLED Model systems available to be won each day - bundled with a download code for your choice of one of four digital games! Learn more on our <a href='/en-ca/contest/fritolayquakercontest/faq'>FAQ</a>.<br><br>
+Prize may not be exactly as shown. Game will be awarded as a digital download."|t}}</p>
+          <a class="btn_nintendo_red" href="{{data.signup_link}}" tabindex="-1">
+            {{'Enter Now'|t}}
+          </a>
+        </div>
+        <div style = "margin-top:40px">
+          <img class = "noDesktop" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/white-switch.png" alt = "white switch">
+          <p class = "text-white open-font noDesktop margin-bottom">{{ 'The Nintendo Switch – OLED Model system is designed to fit your life, transforming from home console to portable system in a snap'|t }}</p>
+        <h3>{{'Bonus!'|t}}</h3>
+        <p class="margin-bottom margin-top">{{"Unlock a code for 100 My Nintendo Switch™ Platinum Points* with your first entry. Points can be redeemed for Nintendo rewards like digital wallpapers or physical goods (while supplies last)."|t}}</p>
+
+
+
+
+          <p class="margin-bottom bonus-copy">{{ "<span class = 'legal-copy'>*A Nintendo Account is required to receive and redeem My Nintendo points. Terms apply.
+          <a class = 'account' href = 'https://accounts.nintendo.com/term_point'>https://accounts.nintendo.com/term_point.</a></span>" |t }}</>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{#    <section class="nintendo-contest-fritolay-coupon-code prize-section">#}
+{#            <div class="nintendo-contest-unlock-wrap nintendo-code">#}
+{#                <div class="nintendo-contest-unlock-img">#}
+{#                    <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/white-switch.png">#}
+
+{#                    <ul class="nintendo-contest-text-description">#}
+{#                        <li>{{"Nintendo Switch – OLED Model system is designed to fit your life, transforming from home console to portable system in a snap"|t}}</li>#}
+{#                        <li>{{"Vibrant 7-inch OLED screen"|t}}</li>#}
+{#                        <li>{{"Wide adjustable stand"|t}}</li>#}
+{#                        <li>{{"64 GB of storage, a portion of which is reserved for use by the system"|t}}</li>#}
+{#                        <li>{{"Enhanced audio for Handheld and Tabletop modes"|t}}</li>#}
+{#                    </ul>#}
+{#                </div>#}
+
+{#                <div class="nintendo-contest-text-wrap">#}
+{#                    <h3>{{'Prize details'|t}}</h3>#}
+
+{#                    <p class="margin-bottom margin-top">{{"There are 3 Nintendo Switch™ – OLED Model systems available to be won each day - bundled with a download code for your choice of one of four digital games! Learn more on our <a href='#'>FAQ</a>."|t}}</p>#}
+
+{#                    <a class="btn_nintendo" href="{{data.signup_link}}" tabindex="-1">#}
+{#                        {{'Enter Now'|t}}#}
+{#                    </a>#}
+
+{#                    <br><br>#}
+
+{#                    <h3>{{'Bonus!'|t}}</h3>#}
+{#                    <p class="margin-bottom margin-top">{{"Unlock a code for 100 My NintendoTM Platinum Points* with your first entry. Points can be redeemed for Nintendo rewards like digital wallpapers or physical goods (while supplies last). <br><br> Prize may not be exactly as shown. Game will be awarded as a digital download."|t}}</p>#}
+
+{#                </div>#}
+{#            </div>#}
+{#    </section>#}
+
+    <section class="nintendo-contest-participating pick-game">
+      <div class = "container">
+        <h3>{{'PLUS, YOUR CHOICE OF<br>1 OF THE FOLLOWING GAMES!'|t}}</h3>
+        <div class="nintendo-content-participating-wrap nintendo-contest-game slick">
+            <div class="nintendo-content-participating-div">
+                <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-party.png" alt = "mario party">
+              <div class = "participate-text">
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'Mario Party<sup>TM</sup> <br> Superstars'|t}}
+                </span>
+
+                <button class="btn_nintendo mario-party-js">{{'LEARN MORE'|t}}</button>
+              </div>
+            </div>
+            <div class="nintendo-content-participating-div">
+                <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/kirby.png" alt = "kirby">
+              <div class = "participate-text">
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'KIRBY<sup>TM</sup> and the <br> forgotten land'|t}}
+                </span>
+
+                <button class="btn_nintendo kirby-btn-js">{{'LEARN MORE'|t}}</button>
+
+{#                <a class="btn_nintendo kirby-btn-js" href="" tabindex="-1">#}
+{#                    {{'LEARN MORE'|t}}#}
+{#                </a>#}
+              </div>
+            </div>
+            <div class="nintendo-content-participating-div">
+                <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/pokemon-arceus.png" alt = "pokemon">
+                <span class="nintendo-contest-text-wrap-sub">
+                  <div class = "participate-text">
+                    <span class="nintendo-contest-text-wrap-sub">
+                    {{'Pokémon<sup>TM</sup> <br> LEGENDS: ARCEUS'|t}}
+                </span>
+
+                    <button class="btn_nintendo pokemon-btn-js">{{'LEARN MORE'|t}}</button>
+
+{#                <a class="btn_nintendo pokemon-btn-js" href="{{data.signup_link}}" tabindex="-1">#}
+{#                    {{'LEARN MORE'|t}}#}
+{#                </a>#}
+            </div>
+            </div>
+            <div class="nintendo-content-participating-div">
+                <img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-deluxe.png" alt = "mario-deluxe">
+              <div class = "participate-text">
+                <span class="nintendo-contest-text-wrap-sub">
+                    {{'Mario Kart<sup>TM</sup> 8 <br> Deluxe'|t}}
+                </span>
+
+                <button class="btn_nintendo mariokart-btn-js"> {{'LEARN MORE'|t}}</button>
+
+{#                <a class="btn_nintendo mariokart-btn-js" href="{{data.signup_link}}" tabindex="-1">#}
+{#                    {{'LEARN MORE'|t}}#}
+{#                </a>#}
+              </div>
+            </div>
+        </div>
+
+{#        <div class = "slider d-none">#}
+{#        <div class="mario-party-superstar-description game-description container row">#}
+{#          <div class = "col-lg-4 description-img mario">#}
+{#          <img class = "mario-img" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-party-description.png" alt = "mario">#}
+{#          </div>#}
+{#          <div class = "game-description-text col-lg-5">#}
+{#            <h2 class = "text-white text-center">{{ 'Mario Party<sup>TM</sup> <br> Superstars' |t }}</h2>#}
+{#            <div>#}
+{#            <p class = "text-white description-text">{{ 'Join the party and prove you’re the board game superstar in the Mario Party™ Superstars game! <br><br>#}
+{#Roll your dice and race to get the most stars (and sabotage your opponents) on 5 game boards. With minigames, star-stealing ghosts, and the troublemaking Bowser, you can turn the tables on your friends and family* in an instant.<br><br>#}
+{#*Additional games, systems and/or accessories may be required for multiplayer mode. Games, systems and some accessories sold separately.' |t }}</p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+
+{#      <div class="kirby-forgotten-land-description game-description container row">#}
+{#        <div class = "col-lg-4 description-img kirby">#}
+{#        </div>#}
+{#        <div class = "game-description-text kirby-description-text col-lg-5">#}
+{#          <h2 class = "text-white text-center">{{ 'KIRBY<sup>TM</sup> and the forgotten land' |t }}</h2>#}
+{#          <div>#}
+{#            <p class = "text-white description-text">{{ 'Take control of the powerful pink puffball in a new Kirby title for the Nintendo Switch system launching on March 25: Kirby and the Forgotten Land. <br><br>#}
+{#            Explore a mysterious world with abandoned structures, remnants of a past civilization. Copy enemies’ abilities like the new Drill and Ranger and use them to attack, explore, and save the Waddle Dees.<br><br>#}
+{#             Bring along a second player to control Bandana Waddle Dee and take on the forgotten world together.What journey awaits Kirby?' |t }}</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+{#      <div class="pokemon-description game-description container row">#}
+{#        <div class = "col-lg-4 description-img pokemon">#}
+{#        </div>#}
+{#        <div class = "game-description-text kirby-description-text col-lg-5">#}
+{#          <h2 class = "text-white text-center">{{ 'Pokémon<sup>TM</sup> LEGENDS: ARCEUS' |t }}</h2>#}
+{#          <div>#}
+{#            <p class = "text-white description-text">{{ 'Get ready for a new kind of grand Pokémon adventure in the Pokémon™ Legends: Arceus game! <br><br>#}
+{#            Embark on survey missions in the ancient Hisui region. Explore natural expanses to catch wild Pokémon by learning their behavior, sneaking up, and throwing a well-aimed Poké Ball™. You can also toss the Poké Ball containing your ally Pokémon near a wild Pokémon to seamlessly enter battle.' |t }}</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+{#      <div class="mario-kart-description game-description container row">#}
+{#        <div class = "col-lg-4 description-img mario-kart">#}
+{#        </div>#}
+{#        <div class = "game-description-text kirby-description-text col-lg-5">#}
+{#          <h2 class = "text-white text-center">{{ 'Mario Kart<sup>TM</sup> 8 Deluxe' |t }}</h2>#}
+{#          <div>#}
+{#            <p class = "text-white description-text">{{ 'Hit the road with the Mario Kart™ 8 Deluxe game and play anytime, anywhere! Race your friends or battle them in battle mode. Plus, the Inklings appear as guest characters, along with returning favorites such as King Boo, Dry Bones and Bowser Jr.!<br><br>#}
+{#            <span class = "text-bold">Double your course options with the Mario Kart 8 Deluxe – Booster Course Pass!</span><br>#}
+{#             NEW! A total of 48 remastered courses from throughout the Mario Kart™ series are racing to the Mario Kart 8 Deluxe game as paid DLC. Courses include those based on real-world locations like Paris Promenade and Tokyo Blur from the Mario Kart Tour game in addition to nostalgic favorites like N64 Choco Mountain and Wii Coconut Mall! Content will release in 6 waves of 8 courses from March 18, 2022 until the end of 2023' |t }}</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+{#      </div>#}
+
+
+
+        <div id="game-description-carousel" class="carousel slide d-none" data-interval="false" data-ride="carousel">
+
+          <div>
+            <button class="back-link">
+            <i class="fa fa-angle-left text-white" aria-hidden="true"></i>
+          <span class = "text-white back-text">{{ 'Back' |t }}</span>
+            </button>
+          </div>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active mario-game">
+              <div class="mario-party-superstar-description item active game-description container row">
+                <div class = "col-lg-5 description-img mario">
+                  {#          <img class = "mario-img" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-party-description.png" alt = "mario">#}
+                </div>
+                <div class = "game-description-text col-lg-5">
+                  <h2 class = "text-white text-center">{{ 'Mario Party<sup>TM</sup> <br> Superstars' |t }}</h2>
+                  <div>
+                    <p class = "text-white description-text">{{ 'Join the party and prove you’re the board game superstar in the Mario Party™ Superstars game! <br><br>
+Roll your dice and race to get the most stars (and sabotage your opponents) on 5 game boards. With minigames, star-stealing ghosts, and the troublemaking Bowser, you can turn the tables on your friends and family* in an instant.<br><br>
+*Additional games, systems and/or accessories may be required for multiplayer mode. Games, systems and some accessories sold separately.' |t }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item kirby-game">
+              <div class="kirby-forgotten-land-description game-description container row">
+                <div class = "col-lg-5 description-img kirby">
+                </div>
+                <div class = "game-description-text kirby-description-text col-lg-5">
+                  <h2 class = "text-white text-center">{{ 'Kirby<sup>TM</sup> and the Forgotten Land' |t }}</h2>
+                  <div>
+                    <p class = "text-white description-text">{{ 'Take control of the powerful pink puffball in a new Kirby title for the Nintendo Switch system launching on March 25: Kirby and the Forgotten Land. <br><br>
+            Explore a mysterious world with abandoned structures, remnants of a past civilization. Copy enemies’ abilities like the new Drill and Ranger and use them to attack, explore, and save the Waddle Dees.<br><br>
+             Bring along a second player to control Bandana Waddle Dee and take on the forgotten world together.What journey awaits Kirby?<br><br>
+From March 25 to May 22, redeem this Present Code at Waddle Dee-liveries in the Kirby and the Forgotten Land game to get useful in-game items: <span>KIRBYSNACKS</span> <br><br>
+You will receive:<br>
+<ul>
+<li>250 Star Coins</li>
+<li>1 Stock Item</li>
+<li>1 Food Item</li>
+</ul>' |t }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item pokemon-game">
+              <div class="pokemon-description game-description container row">
+                <div class = "col-lg-5 description-img pokemon">
+                </div>
+                <div class = "game-description-text kirby-description-text col-lg-5">
+                  <h2 class = "text-white text-center">{{ 'Pokémon<sup>TM</sup> Legends: Arceus' |t }}</h2>
+                  <div>
+                    <p class = "text-white description-text">{{ 'Get ready for a new kind of grand Pokémon adventure in the Pokémon™ Legends: Arceus game! <br><br>
+            Embark on survey missions in the ancient Hisui region. Explore natural expanses to catch wild Pokémon by learning their behavior, sneaking up, and throwing a well-aimed Poké Ball™. You can also toss the Poké Ball containing your ally Pokémon near a wild Pokémon to seamlessly enter battle.' |t }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class = "item mariokart-game">
+              <div class="mario-kart-description game-description container row">
+                <div class = "col-lg-5 description-img mario-kart">
+                </div>
+                <div class = "game-description-text kirby-description-text col-lg-5">
+                  <h2 class = "text-white text-center">{{ 'Mario Kart<sup>TM</sup> 8 Deluxe' |t }}</h2>
+                  <div>
+                    <p class = "text-white description-text">{{ 'Hit the road with the Mario Kart™ 8 Deluxe game and play anytime, anywhere! Race your friends or battle them in battle mode. Plus, the Inklings appear as guest characters, along with returning favorites such as King Boo, Dry Bones and Bowser Jr.!<br><br>
+            <span class = "text-bold">Double your course options with the Mario Kart 8 Deluxe – Booster Course Pass!</span><br>
+             NEW! A total of 48 remastered courses from throughout the Mario Kart™ series are racing to the Mario Kart 8 Deluxe game as paid DLC. Courses include those based on real-world locations like Paris Promenade and Tokyo Blur from the Mario Kart Tour game in addition to nostalgic favorites like N64 Choco Mountain and Wii Coconut Mall! Content will release in 6 waves of 8 courses from March 18, 2022 until the end of 2023' |t }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#game-description-carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#game-description-carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+      </div>
+
+
+</div>
+    </section>
+
+    <section class="nintendo-contest-unlock-switch find-code">
+        <div class="nintendo-contest-unlock-wrap nintendo-switch row container">
+            <div class="nintendo-contest-text-wrap col-md-5">
+                <h3>{{'Where to find my code?'|t}}</h3>
+
+                <p class="margin-bottom margin-top">
+                    {{"The 12-digit UPC is located under the barcode of participating Frito-Lay<sup>®</sup> Variety Packs and Quaker<sup>®</sup> products (see <a href = '/en-ca/contest/fritolayquakercontest/officialrules'> Official Rules </a> for full list)"|t}}
+                </p>
+
+                <a class="btn_nintendo" href="{{ '/en-ca/contest/fritolayquakercontest/participate' |t }}" tabindex="-1">
+                    {{'Enter Now'|t}}
+                </a>
+            </div>
+            <div class="nintendo-contest-unlock-img col-md-7">
+                <img class = "en" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/find-code.png" alt = "find-code">
+              <img class = "fr" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/find-code-fr.png" alt = "find-code">
+            </div>
+        </div>
+    </section>
+
+      <section class="nintendo-contest-unlock-switch nintendo-switch">
+              <div class="nintendo-contest-unlock-wrap find-code-nintendo container row">
+                  <div class="nintendo-contest-text-wrap find-code-text col-lg-6">
+                      <h3>{{'Have you<br> entered yet? '|t}}</h3>
+
+                      <p class="margin-bottom margin-top">
+                          {{"Enter everyday for more chances to win!<br> Don’t forget, you can get a maximum of 3 entries per day."|t}}
+                      </p>
+                  </div>
+                  <div class="nintendo-contest-unlock-img days-count col-lg-6">
+                    <div class = "days-text">
+                      {# <h2 class = "days">{{ '32' |t }}</h2> #}
+                      <h2 class = "days">{{ data.days_til_end }}</h2>
+                      <h2 class = "text-uppercase days-to">{{ 'Days to Go' |t }}</h2>
+                    </div>
+                      <img class = "mario-days-count" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/mario-days.png" alt = "days">
+                  </div>
+              </div>
+      </section>
+</div>
+
+
+<section class="nintendo-landing-contest-rules">
+
+  <img class = "logo-nintendo" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/rules-logo.png" alt = "logo">
+
+	<div class="container">
+		<div class="margin-bottom margin-top">
+			{{data.legal_footer|raw}}
+		</div>
+{#		<span class="rules">#}
+{#			<a href="{{data.rules_link}}">{{'Read our complete rules'|t}}</a>#}
+{#		</span>#}
+		<div class="nintendo-landing-contest-rules-text-wrap">
+			<a class="btn_nintendo rules_btn" href="{{ '/en-ca/contest/fritolayquakercontest/officialrules' |t }}">{{'Official Rules'|t}}</a><br>
+			<a class="btn_nintendo" href="{{ '/en-ca/contest/fritolayquakercontest/faq' |t }}">{{'FAQ'|t }}</a>
+			<br>
+
+		</div>
+    <div class = "margin-top">
+    <p>{{'Games shown:'|t}}</p>
+		<img src="/themes/tastytheme/src/images/contest-nintendo/esrb-logo.png" alt = "esrb">
+    </div>
+	</div>
+</section>
+
+
+{% endif %}  {# END if langcode == 'fr' #}

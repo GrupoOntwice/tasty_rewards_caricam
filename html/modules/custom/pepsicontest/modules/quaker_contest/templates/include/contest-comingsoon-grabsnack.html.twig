@@ -1,0 +1,41 @@
+<section class="grabsnack-comingsoon">
+  <div class = "container-fluid">
+    <div class="row coming-soon ">
+
+
+        <div class="col-lg-6 grabsnack-prizes d-flex">
+          {% if data.langcode == 'en' %}
+            <img class = "winswag-image" src="/themes/tastytheme/src/images/grab-snack/win-swag.png" alt="grabsnack-winswag" />
+          {% elseif data.langcode == 'fr' %}
+            <img class = "winswag-image" src="/themes/tastytheme/src/images/grab-snack/french-logo.png" alt="grabsnack-winswag" />
+          {% endif %}
+
+
+
+        </div>
+
+        <div class="col-lg-6">
+          <img class="nintendo-fritolay-img mw-100" src="/themes/tastytheme/src/images/grab-snack/Tiles-Prizes-3.png" alt="Coming-Soon">
+          <div class = "text-right p-1">
+            <span class = "text-uppercase montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+          </div>
+        </div>
+
+
+    </div>
+    <div class = "text-center p-2">
+    <h2 class = "blue-font montserrat-black comingsoon-heading ">{{'Grab Snacks. Win<sup>†</sup> Swag Contest is coming soon!'|t}}</h2>
+      <h2 class = "montserrat-black blue-font comingsoon-heading" >{{'Grab a specially marked bag of your favourite Frito-Lay<sup>®</sup> snacks and come back to enter for your chance to WIN<sup>†</sup> Summer Swag instantly! Contest begins on June 14!
+
+'|t}}</h2>
+      <p class = "opensans-semibold span-font pt-2">{{'† No purchase necessary. Open to Canadian residents only, 16+. Mathematical skill-testing question required. Contest Period: June 14, 2021 at 12:00pm (noon) ET to August 8, 2021 at 11:59:59pm ET. Instant Prizes: 771 available per week. See Official Rules for full prize details (ARV $2.49 - $653 each). Odds of winning an instant prize depend on when entry played. Prizes diminish as awarded. Maximum 7 codes per person per week.' |t}}</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+

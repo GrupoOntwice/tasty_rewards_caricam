@@ -1,0 +1,154 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12 text-center products-title animate__animated ">
+      <h3>{{'Flamin’ Hot<sup class="super-sup">®</sup><br>Hall of Flame'|t}}</h3>
+      <p class="flaminhot-products-subtitle">{{'Is it hot in here, or is it just us?'|t}}</p>
+    </div>
+    {# div.container > div.row > div.products-items col-md-12
+          foreach products
+              div.products-item w-100 d-md-flex
+              if TEXT RIGHT
+                div.col-md-5 product-copy-col text-right-dsk animate__animated  animate__fadeIn
+                  div.w-80-mbl text-right-dsk d-inline-block
+                    div.products-title flaminhot-fave-title html-title
+                    div.products-body flaminhot-fave-body
+                    div.products-buy-now-right
+
+
+                div.col-md-7 product-img-col flaminhot-align-right animate__animated  animate__zoomInRight
+                  div.products-recipe-image
+                    a > img
+              else TEXT LEFT
+                div.col-md-7 product-img-col flaminhot-align-left animate__animated  animate__zoomInLeft
+                  div.products-recipe-image
+                    a > img
+
+                div.col-md-5 product-copy-col text-left-dsk animate__animated  animate__fadeIn
+                  div.w-80-mbl text-left-dsk d-inline-block
+                    div.products-title flaminhot-fave-title html-title
+                    div.products-body flaminhot-fave-body
+                    div.products-buy-now-left
+
+     #}
+
+    <div class="products-items col-md-12">
+        {% for product in products %}
+          {% set btn_class = '' %}
+          {% set img_class = '' %}
+          {% if product.brand_link is empty %}
+            {% set btn_class = 'hidden' %}
+            {% set img_class = 'not-clickable' %}
+          {% endif %}
+
+
+          <div class="products-item w-100 d-md-flex ">
+
+            {% if loop.index % 2 == 1 %}
+              {% set class_align = 'right' %}
+              <div class="col-md-5 product-copy-col text-{{class_align}}-dsk animate__animated  animate__fadeIn">
+                <div class="w-80-mbl text-{{class_align}}-dsk d-inline-block ">
+                  <div class="products-title flaminhot-fave-title html-title">
+                    {{ product.html_title|raw }}
+                  </div>
+                  <div class="products-body flaminhot-fave-body">
+                    {{ product.body|raw }}
+                  </div>
+                  <div class="products-buy-now-{{class_align}}">
+                    <div>
+                       <p>
+                          <a class="btn_flaminhot  {{btn_class}}" href="{{product.brand_link}}" tabindex="-1" title="{{product.title|raw}}" target="_blank">
+                            {{'View Product'|t}}
+                          </a>
+                        </p>
+                      {% if product.iframe_url %}
+                       <button class="btn_flaminhot product-flaminhot-buynow js-buynow flaminhot-buy" data-target="#flaminhotModal-{{loop.index}}" data-toggle="modal" data-counter="{{loop.index}}">
+                       {{'Buy Now'|t}}
+                       </button>
+                        <div class="modal bootstrap-modal bg-transparent flaminhot-buynow-modal" id="flaminhotModal-{{loop.index}}" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-flaminhot" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button type="button" class="close closeModal" data-dismiss="modal">×</button>
+                                {# <p>Content goes here</p> #}
+                                {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+{#                                {% if iframe_url %}#}
+                                  <iframe id="snack-shop-{{loop.index}}" src="{{product.iframe_url}}"></iframe>
+{#                                {% endif %}#}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                     {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7 product-img-col flaminhot-align-right animate__animated  animate__zoomInRight">
+                <div class="products-recipe-image">
+                  <a class="flaminhot-link" href="{{product.brand_link}}">
+                    <img width="1920" height="1920" alt="{{product.title|raw}}" src="{{product.image_url}}">
+                  </a>
+                </div>
+              </div>
+
+            {% else %}
+              {% set class_align = 'left' %}
+              <div class="col-md-7 product-img-col flaminhot-align-left animate__animated  animate__zoomInLeft">
+                <div class="products-recipe-image">
+                  <a class="flaminhot-link" href="{{product.brand_link}}">
+                    <img width="1920" height="1920" alt="{{product.title|raw}}" src="{{product.image_url}}">
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-5 product-copy-col text-{{class_align}}-dsk animate__animated  animate__fadeIn">
+                <div class="w-80-mbl text-{{class_align}}-dsk d-inline-block ">
+                  <div class="products-title flaminhot-fave-title html-title">
+                    {{ product.html_title|raw }}
+                  </div>
+                  <div class="products-body flaminhot-fave-body">
+                    {{ product.body|raw }}
+                  </div>
+                  <div class="products-buy-now-{{class_align}}">
+                    <div>
+                       <p>
+                          <a class="btn_flaminhot  {{btn_class}}" href="{{product.brand_link}}" tabindex="-1" title="{{product.title|raw}}" target="_blank">
+                            {{'View Product'|t}}
+                          </a>
+                        </p>
+                      {% if product.iframe_url %}
+                        <button class="btn_flaminhot product-flaminhot-buynow js-buynow flaminhot-buy" data-target="#flaminhotModal-{{loop.index}}" data-toggle="modal" data-counter="{{loop.index}}">
+                          {{'Buy Now'|t}}
+                        </button>
+                        <div class="modal bootstrap-modal bg-transparent flaminhot-buynow-modal" id="flaminhotModal-{{loop.index}}" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-flaminhot" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button type="button" class="close closeModal" data-dismiss="modal">×</button>
+                                {# <p>Content goes here</p> #}
+                                {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+                                {#                                {% if iframe_url %}#}
+                                <iframe id="snack-shop-{{loop.index}}" src="{{product.iframe_url}}"></iframe>
+                                {#                                {% endif %}#}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        {% endfor %}
+
+    </div>
+  </div>
+
+</div>

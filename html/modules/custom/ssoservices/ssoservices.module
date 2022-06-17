@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * Contains ssoservices.module..
+ */
+
+function ssoservices_preprocess_html(&$variables) {
+
+  
+  #$current_user_roles = \Drupal::currentUser()->getRoles();
+  /*
+  --Administrator
+  --Reporting
+  --Editor
+  -salesforce_subscriber
+  */
+  $allowcms = true;
+  /*if (in_array('administrator', $current_user_roles) || in_array('reporting', $current_user_roles) || in_array('editor', $current_user_roles) ) {
+    $allowcms = true;
+  }*/
+  $session = \Drupal::request()->getSession();
+  $langcode = get_current_langcode();
+
+  //$lang_prefixes = \Drupal::config('language.negotiation')->get('url.prefixes');
+
+  if ($langcode == 'en-us' || $langcode == 'es-us') 
+    $sso_config =  \Drupal::config('ssoconfig_us.adminsettings');
+  else
+    $sso_config =  \Drupal::config('ssoconfig.adminsettings');
+
+  $okta = [
+    'baseUrl'             => $sso_config->get('signin_baseUrl'),
+    'clientId'            => $sso_config->get('signin_clientId'),
+    'issuer'              => $sso_config->get('signin_issuer'),
+    'googleipd'           => $sso_config->get('signin_googleipd'),
+    'snack_url'           => $sso_config->get('snack_url'),
+    'redirectUri'         => \Drupal::request()->getSchemeAndHttpHost() . '/ssologin.html',
+    'LogoutRedirectUri'   => \Drupal::request()->getSchemeAndHttpHost(),
+    'allowcms'            => $allowcms,
+    'socialsource'        => $session->get('socialsource'),
+    'signin_scope'        => $sso_config->get('signin_scope'),
+    'signin_prefix'       => $sso_config->get('signin_prefix'),
+    'lang_prefix'         => $langcode
+  ];
+  
+  // if ($langcode !== 'en-us' && $langcode !== 'es-us'){
+    $variables['#attached']['drupalSettings']['okta'] = $okta;
+    $variables['okta_setting'] = $okta;
+  // } 
+}
+
+
+function ssoservices_page_attachments(array &$attachments) {
+  //$langcode = get_current_langcode();
+  //if ($langcode !== 'en-us' && $langcode !== 'es-us'){
+    $attachments['#attached']['library'][] = 'ssoservices/okta';
+    $attachments['#attached']['library'][] = 'ssoservices/libraries';    
+  //}
+}

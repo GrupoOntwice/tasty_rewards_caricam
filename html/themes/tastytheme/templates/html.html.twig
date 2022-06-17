@@ -1,0 +1,314 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display the basic html structure of a single
+ * Drupal page.
+ *
+ * Variables:
+ * - $css: An array of CSS files for the current page.
+ * - $language: (object) The language the site is being displayed in.
+ *   $language->language contains its textual representation.
+ *   $language->dir contains the language direction. It will either be 'ltr' or
+ *   'rtl'.
+ * - $rdf_namespaces: All the RDF namespace prefixes used in the HTML document.
+ * - $grddl_profile: A GRDDL profile allowing agents to extract the RDF data.
+ * - $head_title: A modified version of the page title, for use in the TITLE
+ *   tag.
+ * - $head_title_array: (array) An associative array containing the string parts
+ *   that were used to generate the $head_title variable, already prepared to be
+ *   output as TITLE tag. The key/value pairs may contain one or more of the
+ *   following, depending on conditions:
+ *   - title: The title of the current page, if any.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site, if any, and if there is no title.
+ * - $head: Markup for the HEAD section (including meta tags, keyword tags, and
+ *   so on).
+ * - $styles: Style tags necessary to import all CSS files for the page.
+ * - $scripts: Script tags necessary to load the JavaScript files and settings
+ *   for the page.
+ * - $page_top: Initial markup from any modules that have altered the
+ *   page. This variable should always be output first, before all other dynamic
+ *   content.
+ * - $page: The rendered page content.
+ * - $page_bottom: Final closing markup from any modules that have altered the
+ *   page. This variable should always be output last, after all other dynamic
+ *   content.
+ * - $classes String of classes that can be used to style contextually through
+ *   CSS.
+ *
+ * @ingroup templates
+ *
+ * @see bootstrap_preprocess_html()
+ * @see template_preprocess()
+ * @see template_preprocess_html()
+ * @see template_process()
+ */
+#}
+{% if  is_cheetos_game %}
+  {{ page }}
+{% elseif is_quaker_landingpage %}
+  {% include '@brandstheme/html.html.twig' %}
+{% else %}
+
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage front' : 'not-front path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+    language,
+    theme.settings.navbar_position ? 'navbar-is-' ~ theme.settings.navbar_position,
+    theme.has_glyphicons ? 'has-glyphicons',
+  ]
+%}
+<!DOCTYPE html>
+<html {{ html_attributes }}>
+  <head>
+    <meta name="facebook-domain-verification" content="70ey6649f6ziran81r4c89qjcsot6o" />
+    {# Preload fonts  #}
+    {# <link rel="preload" href="../src/fonts/gtwalsheimbold-webfont.woff" as="font" type="font/woff" crossorigin> #}
+    {# <link rel="preload" href="../src/fonts/newAkzidenz.ttf" as="font" type="font/ttf" crossorigin> #}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83095704-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    </script> 
+
+
+    {% if language == 'en-us' or language == 'es-us' %}
+        <script> 
+            gtag('config', 'DC-6902285');
+        </script> 
+        
+            <!--
+            Event snippet for Tasty Rewards_Tasty Rewards_Native Program_Q3FY20_Conversion_06.29-08.29_Universal_Load on https://www.tastyrewards.com/en-us: Please do not remove.
+            Place this snippet on pages with events you’re tracking. 
+            Creation date: 06/10/2020
+            -->
+            <script>
+              gtag('event', 'conversion', {
+                'allow_custom_scripts': true,
+                'send_to': 'DC-6902285/tasty0/tasty0+standard'
+              });
+            </script>
+            <noscript>
+            <img src="https://ad.doubleclick.net/ddm/activity/src=6902285;type=tasty0;cat=tasty0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?" width="1" height="1" alt=""/>
+            </noscript>
+            <!-- End of event snippet: Please do not remove -->
+        
+        
+        {% if root_path == 'thank-you' or  root_path == 'gracias'%}
+            <!--
+            Event snippet for Tasty Rewards_Tasty Rewards_Native Program_Q3FY20_Conversion_06.29-08.29_ThankYouPage_Load on http://https://www.tastyrewards.com/en-us/thank-you: Please do not remove.
+            Place this snippet on pages with events you’re tracking. 
+            Creation date: 06/10/2020
+            -->
+            <script>
+              gtag('event', 'conversion', {
+                'allow_custom_scripts': true,
+                'send_to': 'DC-6902285/tasty0/tasty00+standard'
+              });
+            </script>
+            <noscript>
+            <img src="https://ad.doubleclick.net/ddm/activity/src=6902285;type=tasty0;cat=tasty00;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?" width="1" height="1" alt=""/>
+            </noscript>
+            <!-- End of event snippet: Please do not remove -->
+        {% endif %} 
+        
+        
+        
+        
+     {% endif %} 
+
+     
+    <script>
+        gtag('config', 'UA-83095704-1', { 'optimize_id': 'GTM-TBRDR4B'});
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'userId': '{{uid}}'
+        });
+    </script>
+    
+
+
+    <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW8ZBJH');</script>
+
+      <!-- NOTE: Replace GTM-XXXX with your own Google Tag Manager ID -->
+      <!-- Note: GTM-XXXX of tag manager is different than GTM-XXXXXX of Optimize -->
+
+    <!-- end Google Tag Manager -->          
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    
+    
+    <script>
+        function setEinsteinCode(contentId, name, product, email){
+            
+            if (name == "%%page_title%%") {
+                name = document.title;
+            }
+            if (product == "%%page_title%%") {
+                product = document.title;
+            }
+            
+            if (contentId > ''){
+                _etmc.push(["updateItem",
+                    {
+                      "item_type": "content",
+                      "item": contentId,
+                      "url": document.URL,
+                      "available": "Y",
+                      "name": name,
+                      "Product": product,
+                      "Email Address": email
+                    }
+                  ]);
+            }
+        }
+    </script> 
+    
+    <head-placeholder token="{{ placeholder_token|raw }}">
+
+    
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="821937909405-vie3a7athrjprrpmef3ll0j3b9f90fim.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script>
+    function isFunction(functionToCheck) {
+        var getType = {};
+        return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+      }
+    </script>
+    <!--Pixel code -->
+    {% include '@tastytheme/includes/fbpixel.html.twig' %}
+    <!--Pixel code end -->
+    
+    <!-- Pinterest Tag -->
+
+    <script>
+
+      !function(e){if(!window.pintrk){window.pintrk = function () {
+      window.pintrk.queue.push(Array.prototype.slice.call(arguments))};
+      var n = window.pintrk;n.queue=[],n.version="3.0";
+      var t = document.createElement("script"); t.async=!0,t.src=e; 
+      var r=document.getElementsByTagName("script")[0];
+        r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+      pintrk('load', '2614189831223', {em: '<user_email_address>'});
+      pintrk('page');
+
+      </script>
+
+      <noscript>
+
+      <img height="1" width="1" style="display:none;" alt=""  src="https://ct.pinterest.com/v3/?event=init&tid=2614189831223&noscript=1" />
+
+      </noscript>
+
+      <!-- end Pinterest Tag -->
+
+      <script>
+
+        pintrk('track', 'pagevisit');
+
+        </script>
+
+        {# {% if is_nintendocontest == 1 or is_fritolayquakercontest == 1 %} #}
+        {% if is_nintendocontest == 1  %}
+          {% include '@quaker_contest/tracking/floodlight-nintendo.html.twig' %}
+        {% endif %}
+    
+        {% if is_grabsnackcontest == 1 %}
+          {% include '@quaker_contest/tracking/floodlight-grabsnack.html.twig' %}
+        {% endif %}
+
+
+        {% if is_customcontest == 1 %}
+          {% include '@quaker_contest/tracking/floodlight-global.html.twig' %}
+        {% endif %}
+    
+  </head>
+    
+  <body{{ attributes.addClass(body_classes) }}>
+  {% if language == 'en-us' or language == 'es-us' %}
+      <img src="https://mpp.mxptint.net/2/34973/?rnd=%n" width="0" height="0" alt="hidden_image_alt" style="display:none" referrerpolicy="no-referrer-when-downgrade" />
+  {% endif %}
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TW8ZBJH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <script type="text/javascript">
+    _etmc.push(["setOrgId", sf_mid]);
+    
+    if (sf_email){
+        _etmc.push(["setUserInfo", {"email": sf_email}]);
+    }
+    if (sf_item){
+        //push the page item into catalog
+        setEinsteinCode(sf_item, sf_item_name, sf_attrvalue ,sf_email);
+        ///track the page item
+        _etmc.push(["trackPageView", { "item" : sf_item }]);
+    }
+    else{
+        _etmc.push(["trackPageView"]);
+    }
+  </script>           
+      
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+
+    <h1 style="display: none">{{'Discovering, Saving and Winning! | Tasty Rewards' | trans }}</h1>
+
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    
+    <!--OKTA widget -->
+    {# {% if language == 'en' or language == 'fr' %} #}
+      {% include '@tastytheme/includes/sso.html.twig' %}
+    {# {% endif %} #}
+    <!--OKTA widget end -->
+
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    <script>
+
+      !function(e){if(!window.pintrk){window.pintrk = function () {
+      window.pintrk.queue.push(Array.prototype.slice.call(arguments))};
+      var n = window.pintrk;n.queue=[],n.version="3.0";
+      var t = document.createElement("script"); t.async=!0,t.src=e; 
+      var r=document.getElementsByTagName("script")[0];
+        r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+      pintrk('load', '2614189831223', {em: '<user_email_address>'});
+      pintrk('page');
+
+      </script>
+
+      <noscript>
+
+      <img height="1" width="1" style="display:none;" alt=""  src="https://ct.pinterest.com/v3/?event=init&tid=2614189831223&pd[em]=<hashed_email_address>&noscript=1" />
+
+      </noscript>
+
+      <!-- end Pinterest Tag -->
+
+      <script>
+        pintrk('track', 'pagevisit');
+      </script>
+
+    
+
+  </body>
+
+</html>
+
+{% endif %} {# if not cheetos game #}

@@ -1,0 +1,131 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set brand = row.content["#row"]._entity.getTranslation(language).field_brand.getValue().0.value %}
+   {# {% set nid = row.content["#row"]._entity.nid.getValue().0.value%}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}#}
+    
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_ads_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_ads_image.getValue().0.alt %}
+    
+    {% set link_uri = (row.content["#row"]._entity.getTranslation(language).field_ads_link.getValue().0.uri |replace({'internal:': ''})) %}
+    {% set link_title = row.content["#row"]._entity.getTranslation(language).field_ads_link.getValue().0.title %}
+    
+    {% set html_banner = row.content["#row"]._entity.getTranslation(language).field_html_banner.getValue().0.value %}
+     
+    <!--<div id="coupons" class="box size-2x1 pattern-white text-center xxx">
+      
+        <a  href="{{link_uri}}" id="mk-coupon-callout">
+            <img src="{{img}}" alt="{{img_alt}}" style="height:auto;width:100%;">
+        </a>
+        
+    </div>-->
+    <div class="views-element-container form-group">
+        <div class="view view-advertisement view-id-advertisement view-display-id-page_leaderboard">
+            <div class="views-row">
+                {% if html_banner is not empty %}
+                    {{html_banner | raw}}
+                {% else %}
+                    <a href="{{link_uri}}" target="_blank" id="{{brand}}-{{title}}">
+                        <img src="{{img}}" alt="{{img_alt}}" title="{{img_alt}}" typeof="foaf:Image" class="img-responsive" width="728" height="90">
+                    </a>
+                {% endif%}
+            </div>
+        </div>
+    </div>
+        
+    {#<div id="coupons" class="box size-2x1 bg-yellow pattern-white text-center">
+        <div class="coupon">
+            <h2 class="white signika txt-pink-shadow uppercase">{{title}}</h2>
+            <img class="second-slide" src="{{img}}" alt="{{img_alt}}" style="height:auto;width:70%;">
+            <br><a class="btn btn-primary" href="{{link_uri}}">{{link_title}}</a>
+        </div>
+    </div>#}
+
+{% endfor %}
+
+<script type="text/javascript">
+    var IframeOnClick = {
+        resolution: 200,
+        iframes: [],
+        interval: null,
+        Iframe: function() {
+            this.element = arguments[0];
+            this.cb = arguments[1];
+            this.hasTracked = false;
+        },
+        track: function(element, cb) {
+            this.iframes.push(new this.Iframe(element, cb));
+            if (!this.interval) {
+                var _this = this;
+                this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);
+            }
+        },
+        checkClick: function() {
+            if (document.activeElement) {
+                var activeElement = document.activeElement;
+                for (var i in this.iframes) {
+                    if (activeElement === this.iframes[i].element) { // user is in this Iframe
+                        if (this.iframes[i].hasTracked == false) {
+                            this.iframes[i].cb.apply(window, []);
+                            this.iframes[i].hasTracked = true;
+                        }
+                    } else {
+                        this.iframes[i].hasTracked = false;
+                    }
+                }
+            }
+        }
+    };
+
+    var top_banner_iframe = document.getElementById('{{ 'top-banner'|t }}').getElementsByTagName('iframe');
+    if(top_banner_iframe.length > 0){
+        IframeOnClick.track(document.getElementById(top_banner_iframe[0].id), function() {
+            promotionClickTracking(document.getElementById('{{ 'top-banner'|t }}'));
+        });
+    }
+
+    var bottom_banner = document.getElementById('{{ 'bottom-banner'|t }}');
+    if(bottom_banner){
+        var bottom_banner_iframe = bottom_banner.getElementsByTagName('iframe');
+        if(bottom_banner_iframe.length > 0){
+            IframeOnClick.track(document.getElementById(bottom_banner_iframe[0].id), function() {
+                promotionClickTracking(document.getElementById('{{ 'bottom-banner'|t }}'));
+            });
+        }
+    }
+
+</script>

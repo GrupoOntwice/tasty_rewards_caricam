@@ -1,0 +1,59 @@
+
+
+<div class="popup-main-wrapper popup-contest hidden nintendo">
+	<div class="modal">
+		<div class="popup-wrapper-left">
+			<a class="js-popup-langswitcher" href="{{data.trans_url}}">{{data.trans_lang}}</a>
+{#			<button class="modal_close-button jsModalSignUpClose popup-close-button hidden">#}
+{#				<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">#}
+{#			</button>#}
+
+
+			{% if data.contest_type == 'nintendo' %}
+				{# <img class="nintendo__fritolay-logo-pop en" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-blue-v1.png" alt="fritolay logo"> #}
+				{# <img class="nintendo__fritolay-logo-pop fr" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-blue-fr-v1.png" alt="fritolay logo"> #}
+			{% endif %}
+
+			<img src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/age-gate-logo.png" alt = "logo" style = "width:180px">
+
+			<p class="popup-title">{{"Ready to Enter?"|t}}</p>
+			<p class="popup-sub-title">
+				{{"Enter the Frito-Lay<sup>®</sup> Variety Packs and Quaker<sup>®</sup> Contest Website<br>Please enter your date of birth to begin."|t}}
+			</p>
+			<form id="popup-subscribe" class="popup-eligibility">
+				<div class="popup-email-wrapper {{province_class}}">
+					<select class="province form-control modal__sign-up-select" name="province" id="province" >
+						{{ data.age_provinces_options| raw }}
+					</select>
+				</div>
+				<div class="date-dropdowns modal__sign-up-birth">
+					<div class="nintendo-birth-wrapper">
+						{# <input type="hidden" id='bday' name='bday' class="form-control"> #}
+						<input type="hidden" id='contest' name='contest' class="form-control" value={{data.contesturi}}>
+						<input type="hidden" id='contest_type' name='contest_type' class="form-control" value={{data.contest_type}}>
+
+						<select class="day form-control modal__sign-up-select bday" name="agegate_bday_day" id="agegate_bday_day" >
+							{{ data.bdaydropdown.dayoption | raw }}
+						</select>
+						<select class="day form-control modal__sign-up-select" name="agegate_bday_month" id="agegate_bday_month" >
+							{{ data.bdaydropdown.monthoption | raw }}
+						</select>
+
+						<select class="day form-control modal__sign-up-select" name="agegate_bday_year" id="agegate_bday_year" >
+							{{ data.bdaydropdown.yearoption | raw }}
+						</select>
+					</div>
+
+                    {# @TODO: Replace this error message when the copydeck is available #}
+                    <span class="help-block has-error js-legal-error hidden">{{error_legal_message |t}}
+                    	<br>
+					</span>
+                    <span class="help-block has-error js-validate-error hidden">{{'All fields are required'|t}}</span>
+                </div>
+
+
+				<button class="submit  js-submit-eligibility">{{"Access Website"|t}}</button>
+			</form>
+		</div>
+	</div>
+</div>

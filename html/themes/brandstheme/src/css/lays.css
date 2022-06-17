@@ -1,0 +1,2196 @@
+
+.lays-text-title{
+    font-size: 48px !important;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize !important;
+}
+
+.btn-lays, .lays-products .view-content .view-products a{
+    border-radius: 25px;
+    margin: auto;
+    padding: 15px;
+    color: #FFFFFF;
+    width: 160px;
+    text-align: center;
+    background-color: #D62F30;
+}
+
+.lays-red-button{
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+    padding: 15px;
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    background-color: #D62F30;
+    font-weight: bold;
+    margin: auto;
+}
+
+.btn_lays{
+    border-radius: 25px;
+    width: 180px;
+    color: #FFFFFF;
+    display: block;
+    padding: 15px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    background-color: #D62F30;
+    border: none;
+}
+
+.btn_lays:hover{
+    background-color: #b81321 !important;
+    text-decoration: none !important;
+    color: #FFFFFF;
+}
+
+.btn_lays:focus{
+    outline: none;
+    color: #FFFFFF;
+}
+
+.slick-dotted.slick-slider{
+    margin-bottom: -21px !important;
+}
+
+.lays #banner-mobile, .banner-mobile {
+    margin-bottom: -2px;
+}
+
+.lays section#banner .banner_slide--text.slide-left sup{
+    top: -.5em;
+    right: 0;
+}
+
+.lays .slick-dots{
+    bottom: 80px;
+}
+
+.lays .slick-dots li button:before{
+    background-color: #ffffff;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.2s;
+    border-radius: 25px;
+    color: transparent;
+    opacity: 1;
+    position: relative;
+    font-size: 12px;
+}
+
+.lays .slick-dots li.slick-active button:before {
+    background-color: yellow;
+    transition: background-color 0.2s;
+    border: none;
+    font-size: 12px;
+    top: 0px;
+}
+
+/**********************************
+     Black color section
+***********************************/
+
+.font-black, .font-black p{
+    color: #000000 !important;
+}
+
+.font-black .lays-productdetails-nutrition-row{
+    border-bottom: 1px solid rgba(0,0,0,0.3)
+}
+
+.font-black .product-ingredients .product-field-detail{
+    color: #000000 !important;
+}
+
+.font-black .lays-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.font-black .brands-navbar__social-icons svg{
+    filter: brightness(0%) !important;
+}
+
+.font-black .product-claims-wrap{
+    display: none;
+}
+
+.font-black .product-claims-black{
+    display: flex;
+}
+
+.font-white .product-claims-wrap{
+    display: flex;
+}
+
+.font-white .product-claims-black{
+    display: none;
+}
+
+/**********************************
+     Navbar icon section
+***********************************/
+
+.lays .header__logo-container {
+  z-index: 999999;
+}
+
+.lays #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.lays .fa-navbar{
+    background: #D62728;
+    font-size: 14px !important;
+}
+
+
+/**********************************
+     Homepage banner section
+***********************************/
+
+.lays .banner_slide--text{
+    width: 70% !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+}
+
+.lays .banner_slide--text .h1{
+    color: #FFFFFF !important;
+}
+
+.lays #banner-mobile, .banner-mobile {
+  margin-bottom: -1px;
+}
+
+/**********************************
+     Featured product section
+***********************************/
+
+#lays-featured-products .banner-desktop{
+    background-repeat: no-repeat !important;
+}
+
+.lays-product-description{
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 15px;
+    display: none;
+}
+
+.lays-coupon--text a, .btn-recall, .btn-recall:hover, .btn-recall:focus, .btn-recall:active{
+    border-radius: 25px;
+    width: 160px;
+    color: #FFFFFF;
+    display: block;
+    padding: 15px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    background-color: #D62F30;
+}
+
+.lays-coupon--text .product-title{
+    display: block;
+}
+
+.lays-featured-product--container-bg-desktop{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-feature-red-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.lays-featured-product--container-bg-desktop h3{
+    font-size: 48px !important;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 60px 0 30px 0;
+    font-family: 'Raleway',sans-serif;
+    text-transform: capitalize !important;
+}
+
+.lays-featured-product--container-bg-desktop .lays-coupon--container{
+    padding-top: 0;
+}
+
+.lays-featured-product--container-bg-desktop .lays-coupon--text{
+    color: #FFFFFF;
+}
+
+.lays-banner_slide--text{
+    width: 100%;
+}
+
+.lays-product-description p{
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+/**********************************
+     Lays related product
+***********************************/
+
+.lays-related-block h2{
+    margin-top: 30px;
+}
+
+.lays-related-block .lays-chip-left{
+    top: 300px;
+}
+
+.lays-related-product-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.lays-related-product{
+    margin: 25px 30px;
+    background-color: #fec033;
+    position: relative;
+    z-index: 2;
+    width: 295px;
+}
+
+.lays-related-product img{
+    width: 100%;
+}
+
+.lays-related-product a {
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.lays-related-product .products-category-title{
+    padding: 15px;
+}
+
+.products-category-title{
+    height: 70px;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+
+}
+
+.lays-related-product .view-products a {
+    border-radius: 25px;
+    margin: auto;
+    width: 160px;
+    padding: 15px;
+    text-align: center;
+    background-color: #D62F30;
+}
+
+.lays-related-product .view-products {
+    padding: 0px 15px 20px 15px;
+}
+
+/**********************************
+     Video section
+***********************************/
+
+#home-video{
+    position: relative;
+}
+
+.social-video-content{
+    display: flex;
+}
+
+.lays-social-video-main-wrapper{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-green-background.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 60px 0px;
+}
+
+.lays-social-video-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lays-social-video-wrapper .video-section{
+    padding: 0;
+}
+
+.lays-onion{
+    width: 35%;
+    position: absolute;
+    top: -60px;
+}
+
+.lays-cream{
+    width: 35%;
+    position: absolute;
+    right: 0;
+    top: -60px;
+}
+
+#home-video.social-video li {
+    float: none;
+    display: inline-block;
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+.videolist {
+    width: 100%;
+    display: inline-block;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.videolist li {
+    width: 49%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.videolist li a.see-video .image-container {
+    background-size: cover;
+}
+
+.videolist li a .image-container {
+    width: 100%;
+    height: 310px;
+}
+
+.container-video{
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    margin: 0px auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.videolist li a {
+    width: 100%;
+    display: block;
+    height: 100%;
+    position: relative;
+}
+
+.videolist li a.see-video:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.1);
+}
+
+.videolist li a.see-video:after {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    content: '';
+    display: block;
+    margin: 0px auto;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    opacity: 0.7;
+    background: url("../images/lays/video-play.png");
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 91px;
+    background-color: transparent;
+}
+
+.srt {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+}
+
+#video-page{
+    position: relative;
+}
+
+.lays-video-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.lays-video-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-bottom: 20px;
+}
+
+.lays-video-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#video-page .lays-social-video-main-wrapper{
+    padding-top: 120px;
+}
+
+#video-page .lays-cream{
+    top: 50px;
+}
+
+#video-page .lays-onion{
+    bottom: -60px;
+    top: auto;
+    width: 25%;
+}
+
+.lays-video-box {
+    width: 46%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.lays-video-box h3{
+    font-size: 1.375em;
+    color: #FFFFFF;
+    font-family: 'Raleway',sans-serif;
+}
+
+.lays-section-container .description{
+    text-align: center;
+}
+
+.lays-video-preimg {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.lays-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lays-video-preimg:after {
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-image: url(/themes/brandstheme/src/images/lays/video-play.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none;
+}
+
+.lays-video-preimg img {
+    width: 100%;
+}
+
+/**********************************
+     Social section
+***********************************/
+
+/*****this block is hidden for now since it's not published on prod******/
+#lays-social-block{
+    display: none !important;
+}
+
+#lays-social-block{
+    background-image: url("/themes/brandstheme/src/images/lays/lay-blue-background.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+}
+
+.lays-section-container {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.lays-section-container h2{
+    font-size: 48px !important;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Raleway',sans-serif;
+    /*text-transform: capitalize !important;*/
+}
+
+.lays-social-block{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+
+.lays-social-block a{
+    padding : 0 7px;
+}
+
+/*.lays-container-video{*/
+/*    position: relative;*/
+/*    z-index: 1;*/
+/*}*/
+
+.lays-social-block p{
+    color: #FFFFFF;
+    padding-left: 10px;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.lays-social-wall {
+    max-height: 850px;
+}
+
+.lays-social-wall .size22, .lays-social-wall .size21 {
+    width: 50%;
+    max-width: 498px;
+}
+
+.lays-social-wall .size11 {
+    width: 25%;
+    max-width: 250px;
+}
+
+.lays-social-box {
+    float: left;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.lays-social-box img {
+    display: block;
+    width: 100%;
+}
+
+
+
+/*.lays-social-content-sub-wrapper {*/
+/*    display: flex;*/
+/*}*/
+
+/*.lays-social-content{*/
+/*    width: 100%;*/
+/*}*/
+
+/*.lays-social-content-flex{*/
+/*    display: flex;*/
+/*}*/
+
+/*.lays-social-content img{*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*.lays-social-content-child{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+.lays-chip-left{
+    width: 20%;
+    position: absolute;
+    top: -60px;
+    z-index: 1;
+}
+
+.lays-pepper{
+    width: 25%;
+    position: absolute;
+    right: 0;
+    top: -60px;
+}
+
+.lays-chip-right{
+    width: 20%;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+
+/**********************************
+     Coupon section
+***********************************/
+
+.lays-coupon--container-bg-desktop{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-yellow-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.lays-featured-product--container-bg-desktop .lays-coupon--container{
+    padding: 101px 0 130px 0;
+}
+
+.lays-coupon--container{
+    display: flex;
+    width: 80%;
+    max-width: 1030px;
+    margin: 0 auto;
+    padding: 101px 0;
+}
+
+.lays-coupon--display{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.lays-coupon--leftcol{
+    display: flex;
+}
+
+.lays-coupon--leftcol a{
+    display: block;
+}
+
+.lays-coupon--leftcol img {
+    width: 100%;
+    height: 100%;
+}
+
+.lays-coupon--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: white;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-coupon--text h3 {
+    color: #0e4caa;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 40px;
+    line-height: 1em;
+}
+
+.lays-coupon-disclaimer {
+    font-size: 12px;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/**********************************
+            Product page
+***********************************/
+
+.lays-product-banner-landing-page{
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.lays-product-banner-landing-page.bg-teal h1{
+    color: #FFFFFF !important;
+}
+
+.lays-product-banner-landing-page-mobile{
+    display: none;
+}
+
+.lays-product-banner-landing-page h1 {
+    font-size: 58px;
+    color: #DA252E;
+    width: 57%;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-products{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-red-background-product.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 60px 0;
+}
+
+.lays-ketchup{
+    width: 20%;
+    top: 0;
+    position: absolute;
+}
+
+.lays-ketchup-flavor{
+    width: 20%;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+
+.lays-products .view-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.lays-products .view-content .views-row{
+    margin: 25px 20px;
+    position: relative;
+    z-index: 1;
+    width: 263px;
+}
+
+.lays-products .view-content .views-row .products-category-title a{
+    color: #FFFFFF;
+    display: block;
+    padding: 15px 10px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.lays-products .products-category-image{
+    padding: 0 !important;
+    display: flex;
+}
+
+.lays-products .view-content .views-row .light-blue{
+    background-color: #A6DFFA;
+}
+
+.lays-products .view-content .views-row .teal{
+    background-color: #37C1CB;
+}
+
+.lays-products .view-content .views-row .pink{
+    background-color: #e0486f;
+}
+
+.lays-products .view-content .views-row .black{
+    background-color: #383838;
+}
+
+.lays-products .view-content .views-row .red{
+    background-color: #B01A2D;
+}
+
+.lays-products .view-content .views-row .orange{
+    background-color: #F89325;
+}
+
+.lays-products .view-content .views-row .blue{
+    background-color: #38C0C9;
+}
+
+.lays-products .products-category-image img{
+    width: auto;
+}
+
+.btn-lays, .lays-products .view-content .view-products{
+    padding: 0px 15px 20px 15px;
+    display: flex;
+}
+
+/**********************************
+            About Us
+***********************************/
+
+.lays-about-us-top-banner{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-top-banner-desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 15% 160px;
+}
+
+.lays-about-us-top-banner {
+    font-size: 60px;
+    color: #DA252E;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-about-us{
+    background-image: url("/themes/brandstheme/src/images/lays/background-about-green.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 60px 0;
+}
+
+.lays-about-container{
+    display: flex;
+}
+
+.lays-about-us-image img{
+    height: 100%;
+}
+
+.lays-about-us-paragraph{
+    background-color: #FFFFFF;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.lays-about-us-paragraph img{
+    width: 100px;
+    margin-top: 20px;
+}
+
+.lays-about-us-paragraph p{
+    font-size: 16px;
+    line-height: 1.5em;
+    font-family: 'Open Sans', sans-serif
+}
+
+html:lang(en) .about-us-logo.fr{
+    display: none
+}
+
+html:lang(fr) .about-us-logo.en{
+    display: none
+}
+
+/**********************************
+       Lays Nutrition section
+***********************************/
+
+.lays-productdetails-nutrition-table {
+    width: 100%;
+}
+
+.lays-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.lays-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.lays-productdetails-nutrition-cell {
+    padding: 6px 2px;
+    font-size: 0.875em;
+    font-weight: normal;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.lays-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.lays-row-indented .lays-productdetails-nutrition-cell:first-of-type {
+    padding-left: 20px;
+}
+
+.lays-product-nutrition .linkeable{
+    font-size: 40px;
+    padding: 30px 0px;
+    line-height: 1.3em;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-detail__product--block h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-buy-now a{
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+    padding: 15px;
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    background-color: #D62F30;
+}
+
+.lays-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.lays-product-nutrition .performance-facts table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.lays-product-nutrition .performance-facts thead {
+    border-bottom: 5px solid #000;
+    padding-bottom: 10px;
+}
+
+.lays-product-nutrition .performance-facts tbody {
+    border-top: none;
+    padding: 0 15px;
+    display: block;
+}
+
+.lays-product-nutrition .performance-facts tbody > tr {
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
+}
+
+.lays-product-nutrition .performance-facts tbody > tr:nth-child(even) {
+    background-color:rgba(255,255,255, 0.1);
+}
+
+.lays-product-nutrition .performance-facts tbody > tr .blank-cell {
+    font-style: normal;
+    font-weight: 400;
+    width: 1rem;
+    border-top: 0;
+    padding-left: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.lays-product-nutrition .performance-facts tbody > tr td, .lays-product-nutrition .performance-facts tbody > tr th {
+    border: 0;
+    width: 90%;
+    text-align: left;
+    white-space: nowrap;
+    padding: 5px 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.lays-product-nutrition .performance-facts tbody > tr td:last-child {
+    text-align: center;
+    width: 20%;
+}
+
+.lays-product-nutrition .performance-facts tbody > tr td span, .performance-facts tbody > tr th span, .tr-light {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/**********************************
+        Lays product block
+***********************************/
+
+.lays-product-banner-block{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-top-banner-desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.lays-product-banner-block h1{
+    font-size: 60px;
+    color: #DA252E;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-product-block .green{
+    padding-bottom: 30px;
+    background-color: #25AC81;
+}
+
+.product-claims{
+    display: flex;
+    align-items: baseline;
+}
+
+.product-claims-wrap{
+    width: 17% !important;
+    padding: 0;
+    margin: 10px 30px 50px 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-direction: column;
+}
+
+.product-claims img{
+    padding: 0 !important;
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+
+.product-alert{
+    color: #FFF;
+    padding: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.product-claims p{
+    font-size: 12px !important;
+}
+
+.lays-product-block{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 60px 0;
+    color: #FFF;
+}
+
+.lays-product-block .product-image img{
+    width: 50%;
+    padding: 15px;
+}
+
+.product-image-background-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image-background-wrapper .product-image-title{
+    height: 350px;
+}
+
+html:lang(fr) .product-image-background-wrapper .product-image-title{
+    height: 370px;
+}
+
+.lays-detail__product--block{
+    width: 100%;
+    padding: 50px 25px;
+}
+
+.lays-detail__product--block p{
+    color: #FFF;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-detail__product--block p span{
+    color: #FFF !important;
+    font-size: 16px !important;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.lays-detail__product--block .product-field-detail{
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.3em;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.lays-detail__product--block .product-field-detail a{
+    display: none;
+}
+
+.lays-product-nutrition{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lays-product-block .product-image{
+    display: flex;
+    align-items: end;
+}
+
+.lays-product-block .container{
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.product-ingredients .product-field-detail{
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 0 15px;
+    line-height: 1.3em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.product-ingredients .product-field-detail p{
+    color: #FFFFFF;
+}
+
+.lays-product-nutrition .product-nutrition, .lays-product-nutrition .product-ingredients{
+    width: 100%;
+}
+
+.lays-product-nutrition .product-ingredients{
+    padding: 0 15px;
+}
+
+.product-social-icons{
+    display: flex;
+}
+
+.product-social-icons p{
+    font-size: 24px;
+    padding-right: 25px;
+}
+
+.fa-product-social{
+    font-size: 16px !important;
+    color: #ffffff;
+    background: #001F5D;
+    padding: 7px 8px;
+    border-radius: 20px;
+}
+
+.lays-nutrition-icon{
+    display: none;
+}
+
+/**********************************
+        Product Landing Page
+***********************************/
+
+.lays-background-landing-page{
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 60px 0px;
+    position: relative;
+}
+
+.lays-background-landing-page .products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lays-background-landing-page .products-item{
+    text-align: center;
+    margin: 30px 5px;
+    width: 23%;
+}
+
+.lays-background-landing-page .products-category-image img{
+    width: 100%;
+}
+
+.lays-background-landing-page .products-title{
+    color: #FFFFFF;
+    padding: 15px 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+  background-color: inherit !important;
+}
+
+.lays-background-landing-page .products-title.bg-light-blue{
+    color: #FFFFFF;
+    padding: 15px 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+}
+
+.lays-background-landing-page .view-product-link{
+    display: flex;
+    padding: 0 15px 20px 15px;
+    justify-content: center;
+}
+
+.lays-background-landing-page .view-product-link a {
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+    padding: 15px;
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    background-color: #D62F30;
+    font-weight: bold;
+}
+
+.banner-desktop-lays .banner_slide--text .lays-carousel-link{
+    display: flex;
+    flex-direction: column;
+}
+
+/**********************************
+        Terms & Conditions
+***********************************/
+
+.lays-terms-conditions-top-banner {
+    background-image: url(/themes/brandstheme/src/images/lays/lays-top-banner-desktop.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 15% 160px;
+}
+
+.lays-terms-conditions-top-banner h1{
+    font-size: 45px;
+    color: #DA252E;
+    font-family: 'Raleway', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 5%
+}
+
+/**********************************
+            Lays Joys
+***********************************/
+
+.lays-joy-banner-block{
+    background-image: url("/themes/brandstheme/src/images/lays/lays-joy-banner.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+}
+
+.lays-joy-banner-block sup, .lays-joy-wrapper sup{
+    font-size: 55% !important;
+}
+
+.lays-joy-banner-content{
+    text-align: center;
+    width: 35%;
+    position: absolute;
+    right: 15%;
+    margin: 50px;
+    color: #FFFFFF;
+}
+
+.lays-joy-banner-content img{
+    width: 150px;
+}
+
+.lays-joy-banner-content h1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 38px;
+    margin: 25px 0;
+}
+
+.lays-joy-wrapper .lays-video-box{
+    width: 100%;
+}
+
+.lays-joy-wrapper{
+    background-color: #FCE633;
+    border: 15px solid #FBD100;
+    padding: 60px 0;
+}
+
+.lays-joy-wrapper h2{
+    color: #D92C27;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.lays-joy-form-wrapper{
+    position: relative;
+    background-color: #FCE010;
+    padding: 60px 0;
+    /*z-index: -1;*/
+}
+
+.lays-joy-form-block{
+    position: relative;
+    z-index: 1;
+}
+
+.lays-joy-form-block-title p{
+    font-family: 'Raleway', sans-serif;
+    color: #4E4E4E;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px !important;
+}
+
+.lays-joy-form-block form{
+    background-color: #FBD130;
+    font-family: 'Raleway-semiBold', sans-serif;
+    margin-bottom: 70px;
+}
+
+.lays-joy-form-top-pattern {
+    width: 40%;
+    top: 0;
+    position: absolute;
+}
+
+.lays-joy-form-bottom-pattern{
+    width: 40%;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+
+.upload-lays-label{
+    background-color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 250px;
+    color: #707070;
+    border-radius: 5px;
+}
+
+.upload-lays-label img{
+    margin-bottom: 15px;
+}
+
+.realjoy-story-input-checkmark-wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.realjoy-story-input-checkmark-wrapper p{
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.lays-submit-wrapper-microsite{
+    text-align: center;
+}
+
+.realjoy-form-col-wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.realjoy-form-col{
+    flex-direction: column;
+    width: 48%;
+}
+
+.realjoy-form-col-wrapper .contest-detail__input{
+    padding: 10px 0;
+    width: 100% !important;
+    text-indent: 10px;
+    border-radius: 5px;
+    border: 1px solid #C5C5C5;
+}
+
+.realjoy-form-col-wrapper .contest-detail__input:focus-visible{
+    outline: none;
+}
+
+.realjoy-story-input-half {
+    justify-content: space-between;
+    display: flex;
+  margin-top: 10px;
+}
+
+.realjoy-story-input-half-col{
+    width: 48%;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*.lays-joy-form-block form .lays-btn-red{*/
+/*    background-color: #db1d2c;*/
+/*    padding: 12px 30px;*/
+/*    color: white;*/
+/*    font-size: 16px;*/
+/*    text-align: center;*/
+/*    transition: all 0.2s;*/
+/*    font-weight: bold;*/
+/*    outline: none;*/
+/*    font-family: 'Open Sans', sans-serif;*/
+/*    border: 0;*/
+/*    box-shadow: 0 3px 0 0 #b81321;*/
+/*    border-radius: 25px;*/
+/*    min-width: 150px;*/
+/*}*/
+
+#lays-story-carousel{
+    position: relative;
+    z-index: 1;
+}
+
+#quaker-featured-products-carousel h3{
+    color: #D92C27;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 48px;
+    text-transform: capitalize;
+    font-family: 'Raleway', sans-serif;
+}
+
+.lays-story-col{
+    border: 1px solid;
+}
+
+#lays-featured-story-carousel .carousel-item{
+    display: flex;
+}
+
+/*.lays-featured-story-img-col{*/
+/*    background-image: url('/themes/brandstheme/src/images/lays/story-pattern.jpg');*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    box-shadow: 0 0px 15px 0px #bfafaf;*/
+/*    margin: 20px auto;*/
+/*    width: 100%;*/
+/*    padding: 5px 0px;*/
+/*}*/
+
+.lays-hastag-story{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.lays-hastag-story p{
+    font-size: 16px;
+    color: #D92C28;
+}
+
+.lays-hastag-story img{
+    width: 20%;
+}
+
+/*.lays-featured-story-border-col{*/
+/*    margin: 20px 20px 0;*/
+/*    padding: 30px;*/
+/*    background-color: rgba(255, 255, 255, 0.5);*/
+/*    border-radius: 15px;*/
+/*}*/
+
+.lays-featured-story-border-col img{
+    width: 100%;
+}
+
+.lays-featured-story-border-col p {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#lays-feature-product-carousel img{
+    width: 100%;
+    display: block;
+}
+
+#lays-feature-product-carousel .featured-prod-copy{
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+#lays-feature-product-carousel img{
+    width: 100%;
+}
+
+#lays-feature-product-carousel h3{
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    height: 50px
+}
+
+.lays-featured-prod-img-col{
+    margin: 20px auto;
+}
+
+/************************
+   Slick Carousel CSS
+************************/
+
+.products-carousel-slide {
+    padding: 0 15px;
+}
+
+.custom-slick-arrow .slick-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    font-size: 0;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.custom-slick-arrow .slick-next.slick-arrow {
+    right: 25px !important;
+    left: 100%;
+}
+
+.custom-slick-arrow .slick-prev.slick-arrow {
+    left: -50px !important;
+    right: 100%;
+}
+
+#lays-story-carousel .slick-prev:before{
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url("/themes/brandstheme/src/images/arrows/lays-left-chevron.svg") !important;
+}
+
+#lays-story-carousel .slick-next:before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url("/themes/brandstheme/src/images/arrows/lays-right-chevron.svg") !important;
+}
+
+#lays-feature-product-carousel .slick-prev:before{
+      content: "";
+      position: relative;
+      width: 35px;
+      height: 35px;
+      background: url("/themes/brandstheme/src/images/arrows/lays-left-chevron.svg") !important;
+  background-repeat: no-repeat !important;
+}
+
+#lays-feature-product-carousel .slick-next:before {
+    content: "";
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url("/themes/brandstheme/src/images/arrows/lays-right-chevron.svg") !important;
+  background-repeat: no-repeat !important;
+}
+
+/*.custom-slick-arrow .slick-prev {*/
+/*background-image: url("https://tastyrewards-stage.pepext.com/themes/brandstheme/src/images/arrows/lays-left-chevron.svg");*/
+/*}*/
+
+/*.custom-slick-arrow .slick-next  {*/
+/*background-image: url("https://tastyrewards-stage.pepext.com/themes/brandstheme/src/images/arrows/lays-right-chevron.svg");*/
+/*}*/
+
+/* Media query */
+
+@media (max-width:991px) {
+    .custom-slick-arrow .slick-next.slick-arrow {
+        right: 0;
+        left: auto;
+    }
+
+    .custom-slick-arrow .slick-prev.slick-arrow {
+        left: 0;
+        right: auto;
+    }
+}
+
+/**********************************
+            Responsive
+***********************************/
+
+@media screen and (max-width: 1600px) {
+    .lays-product-banner-block, .lays-product-banner-landing-page, .lays-about-us-top-banner{
+        height: 400px;
+    }
+
+    .lays-terms-conditions-top-banner{
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .lays-product-banner-block, .lays-product-banner-landing-page, .lays-about-us-top-banner{
+        height: 370px;
+    }
+
+    .lays-terms-conditions-top-banner{
+        height: 370px;
+    }
+
+    .lays-joy-banner-content{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+  .lays-navbar__vertical-align{
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 992px) {
+
+  .lays-logo{
+    width: 45px;
+  }
+
+  .lays-navbar__vertical-align{
+    flex-direction: column;
+  }
+
+  .lays-navbar__vertical-align .top-logo{
+    width: 100%;
+    padding: 8px 15px 3px;
+  }
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .lays-navbar__vertical-align .choose-lang_fr, .lays-navbar__vertical-align .brands-navbar_accout-options, .lays-navbar__vertical-align .brands-tr-navbar_copy-mbl, .lays-navbar__vertical-align .brands-navbar_accout-options a{
+        color: #000000;
+    }
+
+    .lays-navbar__vertical-align .brands-navbar_accounts-mbl{
+        width: 100%;
+    }
+
+    .lays-navbar__vertical-align .brands-navbar__center-align{
+        width: 100%;
+    }
+
+    .lays-about-container{
+        flex-direction: column;
+    }
+
+    .lays-about-us-image{
+        display: flex;
+    }
+
+    .lays-about-us-image img{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .lays-terms-conditions-top-banner h1 {
+    text-align: center;
+  }
+
+  .lays-joy-banner-block {
+    background-image: url("/themes/brandstheme/src/images/lays/lays-joy-banner-mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 830px;
+  }
+
+  .lays-joy-banner-content sup {
+    font-size: 50% !important;
+  }
+
+  .lays-joy-banner-content {
+    width: 100%;
+    right: 0;
+    margin: 0;
+    top: 0;
+    padding: 50px 15px;
+  }
+
+  .lays-joy-banner-content img {
+    width: 90px;
+  }
+
+  .lays-joy-banner-content h1 {
+    line-height: 1.2em;
+    font-size: 32px;
+    margin: 15px 0 25px;
+  }
+
+  .realjoy-form-col-wrapper {
+    flex-direction: column;
+  }
+
+  .realjoy-form-col {
+    width: 100%;
+  }
+
+  .lays-featured-story-img-col {
+    width: 90% !important;
+  }
+
+  .lays-featured-story-img-col {
+    padding: 1px;
+  }
+
+  #lays-videos-carousel .lays-video-col {
+    padding: 0 25px;
+  }
+
+  .lays-joy-wrapper {
+    padding: 60px 0 20px 0;
+  }
+
+  .product-image-background-wrapper .product-image-title {
+    height: auto;
+  }
+
+  .lays-navbar__vertical-align .btn_fritolay {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .lays-video-box {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .lays-video-container {
+    display: block;
+  }
+
+  .lays-background-landing-page .products-item {
+    width: 263px;
+    margin: 30px 15px;
+  }
+
+  .lays-background-landing-page .products {
+    justify-content: center;
+  }
+
+  .product-image-background-wrapper {
+    height: auto;
+  }
+
+  .lays-related-product-wrapper {
+    flex-direction: column;
+  }
+
+  .lays-related-product img {
+    width: 100%;
+  }
+
+  .view-display-id-lays_featured_products .carousel_desktop {
+    display: block !important;
+  }
+
+  .lays-section-container {
+    max-width: 500px;
+  }
+
+  .lays-social-wall {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+    max-height: 100%;
+  }
+
+  .lays-social-wall .size22, .lays-social-wall .size21 {
+    width: 100%;
+  }
+
+  .lays-social-wall .size11:nth-of-type(even) {
+    padding-right: 10px;
+  }
+
+  .lays-social-wall .size11 {
+    width: 50%;
+  }
+
+  .lays-product-banner-landing-page {
+    display: none;
+  }
+
+  .lays-product-banner-landing-page-mobile {
+    display: flex;
+    justify-content: center;
+    padding: 120px 15% 160px;
+  }
+
+  .lays-product-banner-landing-page-mobile h1 {
+    font-size: 60px;
+    color: #DA252E;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .lays-product-banner-block, .lays-about-us-top-banner {
+    justify-content: center;
+    height: 520px;
+    background-position: left;
+  }
+
+  .lays-coupon--text {
+    padding: 40px 15px;
+  }
+
+  .lays-nutrition-icon {
+    display: block;
+  }
+
+  .lays-product-block .product-image {
+    flex-direction: column;
+  }
+
+  .lays-product-block .product-image img {
+    width: 100%;
+  }
+
+  .lays-product-nutrition {
+    flex-direction: column;
+  }
+
+  .lays-social-content-sub-wrapper {
+    flex-direction: column;
+  }
+
+  .lays-detail__product--block {
+    padding: 15px;
+  }
+
+  .lays-product-nutrition .product-ingredients {
+    padding: 0;
+  }
+
+  .lays-social-video-main-wrapper .container-video {
+    width: 100%
+  }
+
+  .lays-onion, .lays-cream, .lays-chip-left, .lays-pepper, .lays-chip-right {
+    display: none;
+  }
+
+  .lays-ketchup, .lays-ketchup-flavor {
+    display: none;
+  }
+
+  .lays-onion, .lays-cream {
+    display: none;
+  }
+
+  .lays-social-content-flex {
+    justify-content: space-between;
+  }
+
+  .lays-social-content-flex img {
+    width: 50%;
+  }
+
+  .lays-coupon--container {
+    flex-direction: column;
+  }
+
+  section#banner .banner_slide--text.slide-right {
+    width: 100% !important;
+    text-align: center !important;
+    margin: auto !important;
+  }
+}
+
+  @media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px) {
+    section#banner .banner_slide--text.slide-right {
+      width: 60% !important;
+      text-align: center !important;
+      margin: auto !important;
+    }
+  }
+
+
+
+@media screen and (max-width: 600px) {
+    .lays-product-banner-block, .lays-about-us-top-banner{
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .lays-product-banner-block, .lays-about-us-top-banner{
+        height: 350px;
+        text-align: center;
+    }
+
+    .lays-coupon--text h3{
+        font-size: 30px;
+    }
+
+  .lays-terms {
+    padding:20px
+  }
+
+  .lays-terms-conditions-top-banner h1 {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: no-repeat 50% / 100% 100%;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrows/lays-left-chevron.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrows/lays-right-chevron.svg");
+}
+
+#lays-videos-carousel > a.carousel-control-next {
+  position: absolute;
+  left: 92%;
+  top: 50%;
+}
+
+
+#lays-videos-carousel > a.carousel-control-prev {
+  position: absolute;
+  top: 50%;
+  right: 92%;
+}
+
+/*Footer Country Selection Hide*/
+
+#block-brandstheme-footer > ul > li.footer_country--wrapper {
+  display: none;
+}
+
+/*Banner text */
+
+section#banner .banner_slide--text.slide-right {
+  width: 60% !important;
+  margin-left: auto !important;
+  margin-right: -8rem;
+}
+
+.btn_fritolay {
+  width: auto !important;
+  padding: 0 20px !important;
+}
+
+
+
+.modal-body p {
+  color: #000;
+  margin-bottom: 0;
+}
+.buynow_lays {
+  margin-top: 20px;
+  border-radius: 30px;
+  border: 2px solid #db1d2c;
+  padding: 0;
+  background-color: #db1d2c !important;
+  padding: 12px 30px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 150px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Upload file font*/
+
+.toupload {
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.lays-joy-banner-content h1 {
+  font-size:24px !important;
+}
+
+/*Product Categories*/
+
+body > div.dialog-off-canvas-main-canvas > div > section.lays-background-landing-page.bg-orange > div > ul {
+  justify-content: flex-start !important;
+}
+
+/* Spacing issue on product's page */
+
+.lays-product-block .product-image {
+  align-items: flex-start !important;
+}
+
+.lays-background-landing-page .products {
+  justify-content: center !important;
+}
+
+
+/*BuyNow Popup*/
+
+.lays-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+/*Buynow Modal*/
+
+.lays-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#laysModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#laysModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #laysModal {
+    padding:0 !important;
+  }
+}
+
+
+

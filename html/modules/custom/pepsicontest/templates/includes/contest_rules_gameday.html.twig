@@ -1,0 +1,20 @@
+{{ attach_library( 'pepsicontest/gamedayLibrary' ) }}
+<script type="text/javascript">
+window.popup_contest = 1;
+</script>
+
+<section>
+  <div class = "gameday-rules-banner">
+  <h1 class = "yellow somerton-regular">{{ "OFFICIAL RULES" | t}}</h1>
+  <img class="noMobile-sm w-100" src="/themes/brandstheme/src/images/gameday/rules-header.png" alt="Gameday Banner">
+  </div>
+</section>
+
+<section id="contentBlocks" class="container-fluid gameday-rules">
+  <div class = "rules-back-btn">
+  <a href="{{data.back_button}}"> < {{ 'Back' | t }}</a>
+  </div>
+    <div class="container text-left">
+         {{ data.body | raw}}
+    </div>
+</section>

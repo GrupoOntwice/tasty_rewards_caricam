@@ -1,0 +1,974 @@
+/**********************************
+             Products
+***********************************/
+
+#product-categories{
+    background-color: #F1F1F1;
+}
+
+.quaker-banner-products-block{
+    background-image: url("/themes/brandstheme/src/images/quaker/products.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 340px;
+}
+
+.quaker-products-filter-background{
+    background-color: #032953;
+    padding: 60px 15px;
+}
+
+.quaker-products-filter-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.quaker-products-filter-select-wrap p{
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.quaker-products-filter-wrap{
+    flex-direction: column;
+    width: 40%;
+}
+
+.quaker-products-filter-wrap h2, .quaker-products-filter-wrap p{
+    color: #FFFFFF;
+}
+
+.quaker-products-filter-wrap h2{
+    line-height: 1em;
+    margin-bottom: 20px;
+    font-family: 'Apercu-Bold', sans-serif;
+}
+
+.quaker-products-filter-wrap p{
+    line-height: 1.5em;
+    font-size: 17px;
+    font-weight: lighter!important;
+    font-family: "Open Sans", sans-serif;
+}
+
+.quaker-products-filter-select-wrap{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    font-family: "Apercu-Regular", sans-serif;
+}
+
+.quaker-products-filter-select-wrap select{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    border:none;
+    background-image: url("/themes/brandstheme/src/images/quaker/right-chevron.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 15px;
+    background-size: 3%;
+}
+
+.quaker-products-filter-select-wrap select:focus{
+    outline: none;
+}
+
+.product-categories-filter{
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.quakers-product-center{
+    display: flex;
+    justify-content: center;
+}
+
+
+/**********************************
+         Product description
+***********************************/
+
+#quakers-product-categories{
+    padding-top: 70px;
+    background-color: #F1F1F1;
+}
+
+.quaker-category-description h3{
+    margin: 15px 0;
+    font-size: 18px;
+    height: 50px;
+    color: #023B6B;
+    font-family: "Apercu-Bold", sans-serif;
+}
+
+.quaker-category-description h3 sup{
+    top: -5px;
+}
+
+.quaker-category-description h3 a{
+    color: #023B6B;
+}
+
+.quaker-prod-col {
+    padding: 0 16px;
+    margin-bottom: 60px;
+}
+
+.quaker-product-pattern{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    width: 80%;
+    display: block;
+}
+
+.quaker-nutrition-pattern{
+    width: 100%;
+    position: relative;
+}
+
+.quaker-product-block .container{
+    position: relative;
+}
+
+.quaker-product-block .product-image{
+    display: flex;
+    padding-top: 70px;
+    align-items: center;
+}
+
+.quaker-product-background-color{
+    width: 40%;
+    margin: 0 70px;
+}
+
+.quaker-product-background-color img{
+    background: linear-gradient(#023B6B 75%,transparent 25%) no-repeat;
+}
+
+.quaker-detail__product--block{
+    width: 50%;
+}
+
+.quaker-product-block .product-image-wrap{
+    width: 50%;
+    margin: 0;
+    text-align: center;
+}
+
+.quaker-product-block .product-image-wrap img{
+    width: 55%;
+}
+
+.quaker-detail__product--block .product-field-detail {
+    margin: 20px 0 30px 0;
+    font-size: 16px;
+    line-height: 1.3em;
+    font-family: 'Apercu-Regular', Sans-Serif;
+}
+
+.quaker-detail__product--block .product-field-detail ul{
+    list-style: disc;
+    margin-left: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.quaker-detail__product--block .product-field-detail ul li{
+    margin-bottom: 10px;
+}
+
+.quaker-product-nutrition .product-field-detail h4{
+    font-size: 28px;
+}
+
+.quaker-product-nutrition .product-ingredients-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #D5D6D8;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.quaker-product-nutrition .product-ingredients-wrap img{
+    width: auto;
+}
+
+.product-ingredients-wrap.active svg {
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    fill: #c5a785;
+}
+
+.product-ingredients-wrap svg {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    fill: #023B6B;
+}
+
+.quaker-detail__product--block h1{
+    font-size: 47px;
+    line-height: 1em;
+}
+
+.quaker-detail__product--block h1 sup{
+    font-size: 50% !important;
+}
+
+.quaker-product-social-icons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.quaker-product-social-icons p {
+    font-size: 24px;
+    padding-right: 25px;
+}
+
+.quaker-product-nutrition {
+    display: flex;
+    justify-content: center;
+}
+
+.quaker-title-nutrition{
+    -webkit-filter: drop-shadow(0px 0px 10px #d91f16);
+    filter: drop-shadow(0px 0px 10px #d91f16);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    color: #ffffff;
+    font-size: 60px !important;
+    position: relative;
+    margin-bottom: 25px;
+    padding-top: 60px;
+    text-transform: uppercase;
+    font-family: "Teko-SemiBold", sans-serif;
+    text-shadow: 0px 0px 1px #ffe5e5, 1px 0px 30px #d91f16, 0px 0px 2px white;
+}
+
+.quaker-product-nutrition p{
+    font-size: 16px;
+    line-height: 1.5em;
+    padding: 20px 0;
+}
+
+.quaker-product-nutrition .product-alert{
+    padding-bottom: 0 !important;
+}
+
+.quaker-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.quaker-product-nutrition .product-field-detail{
+    color: #082231;
+    padding: 20px 0;
+    font-family: "Apercu-Regular", Sans-Serif;
+}
+
+.quaker-product-nutrition .product-ingredients .product-field-detail{
+    line-height: 1.5em;
+}
+
+.product-mobile-nutrition img{
+    display: none !important;
+}
+
+.quaker-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.quaker-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.quaker-productdetails-nutrition-cell {
+    padding: 10px 15px;
+    line-height: normal;
+}
+
+.quaker-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(233,234,235, 1);
+}
+
+.quaker-productdetails-nutrition-row:nth-child(4),
+.quaker-productdetails-nutrition-row:nth-child(5),
+.quaker-productdetails-nutrition-row:nth-child(9),
+.quaker-productdetails-nutrition-row:nth-child(10),
+.quaker-productdetails-nutrition-row:nth-child(11){
+    padding-left: 25px;
+}
+
+.quaker-product-nutrition .product-ingredients {
+    padding: 0 15px;
+}
+
+.quaker-product-nutrition .performance-facts, .quaker-product-nutrition .product-ingredients {
+    width: 100%;
+}
+
+.quaker-nutrition-wrapper{
+    width: 100%;
+}
+
+/**********************************
+         Related product
+***********************************/
+
+.quaker-featured-products-block {
+    background-color: #FFFFFF;
+    color: #023B6B;
+}
+
+.quaker-related-block{
+    background-color: #E9EAEB;
+    color: #023B6B;
+    position: relative;
+    overflow-y: hidden;
+}
+
+#quaker-featured-products-carousel .carousel-inner .carousel-item.active,
+#quaker-featured-products-carousel .carousel-inner .carousel-item-next,
+#quaker-featured-products-carousel .carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/**********************************
+         Product category
+***********************************/
+
+.quaker-product-category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 70px 0;
+}
+
+.quaker-product-box {
+    width: 30%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.quaker-product-box h3 {
+    margin: 15px 0;
+    text-align: center;
+    color: #023B6B;
+    font-size: 18px;
+    font-family: "Apercu-Bold",sans-serif;
+}
+
+.quaker-product-box h3 a{
+    color: #023B6B;
+}
+
+.quaker-product-box sup{
+    top: -5px;
+    font-size: 60% !important;
+}
+
+.quaker-product-img{
+    height: 280px;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.quaker-product-img a{
+    display: block;
+}
+
+.quaker-product-img img{
+    display: block;
+    margin: auto;
+    width: 85%;
+}
+
+.quaker-products-category-title{
+    background-color: #032953;
+    padding: 60px 0;
+}
+
+.quaker-products-category-title p{
+    color: #FFFFFF;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.quaker-products-category-title h2{
+    text-align: center;
+    color: #FFF;
+    font-size: 48px;
+    font-family: 'Apercu-Bold',sans-serif;
+}
+
+/*.quaker-products-category-title h3{*/
+/*    text-align: center;*/
+/*    color: #FFF;*/
+/*    font-size: 48px;*/
+/*    font-family: 'Apercu-Bold',sans-serif;*/
+/*}*/
+
+.quaker-products-category-title sup{
+    font-size: 45% !important;
+}
+
+
+
+/**********************************
+         Featured recipes
+***********************************/
+
+/*.quaker-featured-recipes{*/
+/*    background-color: #032953;*/
+/*}*/
+
+
+
+.quaker-nocarousel-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.quaker-nocarousel-box {
+    width: 30%;
+    margin: 18px;
+    text-align: center;
+    position: relative;
+}
+
+.quaker-nocarousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    height: 300px;
+}
+
+.quaker-nocarousel-box .img img {
+    position: relative;
+    width: auto;
+    height: 450px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+/**********************************
+            Power oats
+***********************************/
+
+.quaker-power-oats{
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url("/themes/brandstheme/src/images/quaker/products.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 120px 12% 160px;
+}
+
+.quaker-power-oats h1{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Apercu-Bold',sans-serif;
+}
+
+.quaker-power-oats-banana{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 495px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: #F7F7F9;
+}
+
+.quaker-power-oats-banana h2{
+    font-size: 32px !important;
+    color: #023B6B;
+    font-family: 'Apercu-Bold',sans-serif;
+}
+
+.quaker-box{
+    display: flex;
+    padding-top: 100px;
+}
+
+.quaker-box:last-child{
+    display: flex;
+    padding-bottom: 100px;
+}
+
+.quaker-box:nth-child(2) .img{
+    order: 2;
+}
+
+.quaker-box .img{
+    width: 50%;
+}
+
+.quaker-box-content-title{
+    display: flex;
+    align-items: center;
+}
+
+.quaker-box-content-title img{
+    width: 80px;
+    margin-right: 20px;
+}
+
+.quaker-box-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    padding: 0 50px;
+    line-height: 1.2em;
+}
+
+.quaker-box-content h3{
+    font-family: 'Apercu-Bold',sans-serif;
+    color: #023B6B;
+    font-size: 32px;
+    line-height: 1.2em;
+}
+
+.quaker-box-content .quaker-body{
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 1.3em;
+    font-family: "Apercu-Regular", Sans-Serif;
+}
+
+.quaker-box-content .quaker-portion{
+    font-size: 14px;
+    font-family: "Apercu-Regular", Sans-Serif;
+}
+
+#quaker-power-carousel{
+    background: linear-gradient(0deg, rgba(233, 234, 235, 1) 55%, rgba(2, 59, 107, 1) 55%);
+}
+
+#quaker-power-carousel .carousel-inner{
+    display: flex;
+}
+
+.quakers-featured-product-description h4 a {
+    color: #023B6B !important;
+}
+
+/**********************************
+            Oat Flour
+***********************************/
+
+.quaker-oat-flour-banner img{
+    display: block;
+}
+
+html:lang(en) .quaker-oat-flour-fr{
+    display: none;
+}
+
+html:lang(fr) .quaker-oat-flour-en{
+    display: none;
+}
+
+.quaker-oat-flour-banner-pattern{
+    padding: 50px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/themes/brandstheme/src/images/quaker/quaker-pattern-oat-flour.png");
+}
+
+.quaker-oat-flour-banner-pattern p{
+    text-align: center;
+    color: #956130;
+    font-size: 30px;
+    font-family: "Apercu-Bold", Sans-Serif;
+}
+
+.quaker-oat-flour-recipe{
+    text-align: center;
+    padding: 70px 15px;
+}
+
+.quaker-oat-flour-recipe h2{
+    font-family: "Apercu-Bold", Sans-Serif;
+    font-size: 50px;
+    color: #002854;
+}
+
+.quaker-oat-flour-recipe p{
+    font-size: 30px;
+    color: #002854;
+    font-family: "Apercu-Bold", Sans-Serif;
+}
+
+.quaker-oat-flour-recipe .quaker-nocarousel-container h3{
+    font-size: 20px;
+    margin: 15px 0;
+    font-family: "Apercu-Bold", Sans-Serif;
+}
+
+.quaker-oat-flour-recipe .quaker-nocarousel-container h3 a{
+    color: #002854;
+}
+
+.quaker-oat-flour-view-more{
+    color: #002854;
+    margin-top: 30px;
+    font-family: "Apercu-Regular", Sans-Serif;
+    text-decoration: underline !important;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.quaker-oat-flour-brand-main-wrapper{
+    display: flex;
+    background-color: #E1D7CA;
+}
+
+.quaker-oat-flour-brand-main-wrapper img{
+    width: 30%;
+}
+
+.quaker-oat-flour-brand-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0 140px 0;
+}
+
+.quaker-oat-flour-brand-wrap{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 70%;
+}
+
+.quaker-oat-flour-brand-wrap h3{
+    font-family: "Apercu-Bold", Sans-Serif;
+    font-size: 45px;
+    color: #002854;
+    margin-bottom: 20px;
+}
+
+.quaker-oat-flour-brand-block-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quaker-oat-flour-brand-row{
+    display: flex;
+    align-items: center;
+    width: 48%;
+    margin: 10px 10px 10px 0;
+}
+
+.quaker-oat-flour-brand-row h4, .quaker-oat-flour-brand-row p{
+    font-family: "Apercu-Regular", Sans-Serif;
+}
+
+.quaker-oat-flour-brand-row img{
+    width: 100px;
+    margin-right: 15px !important;
+}
+
+.quaker-oat-flour-brand-italic{
+    font-family: "Apercu-Italic", Sans-Serif !important;
+    color: #002854 !important;
+    margin-top: 20px;
+}
+
+.quaker-oat-flour-brand-italic{
+    font-size: 14px;
+}
+
+.quaker-oat-flour-brand-content h4{
+    font-family: "Apercu-Bold", Sans-Serif;
+    color: #002854;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.quaker-oat-flour-brand-content p{
+    font-family: "Apercu-Italic", Sans-Serif;
+    color: #002854;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 991px) {
+    .quaker-oat-flour-brand-block-wrapper{
+        justify-content: space-between;
+    }
+
+    .quaker-oat-flour-brand-row{
+        margin: 30px 0px 20px 0;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .quaker-oat-flour-brand-row img{
+        width: 80px !important;
+        margin-left: 0 !important;
+    }
+
+    .quaker-oat-flour-brand-content{
+        margin-top: 20px;
+    }
+
+    .quaker-oat-flour-brand-wrap h3{
+        text-align: center;
+        font-size: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 60px 15px 0 15px;
+    }
+
+    .quaker-oat-flour-brand-wrap h3 sup{
+        font-size: 50% !important;
+    }
+
+    .quaker-oat-flour-brand-wrap{
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .quaker-oat-flour-brand-main-wrapper img{
+        width: 50%;
+        margin: auto;
+    }
+
+    .quaker-oat-flour-brand-flex{
+        flex-direction: column;
+        padding: 120px 15px 100px 15px;
+        position: relative;
+    }
+
+    .quaker-oat-flour-recipe .quaker-nocarousel-box{
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    .quaker-oat-flour-recipe .quaker-nocarousel-container{
+        flex-direction: column;
+    }
+
+    .quaker-oat-flour-recipe h2{
+        font-size: 30px !important;
+        margin-bottom: 5px;
+    }
+
+    .quaker-oat-flour-recipe{
+        padding: 50px 15px;
+    }
+
+    .quaker-oat-flour-recipe p{
+        font-size: 23px;
+    }
+
+    .quaker-oat-flour-banner-pattern{
+        padding: 40px 15px;
+    }
+
+    .quaker-oat-flour-banner-pattern p{
+        font-size: 22px;
+    }
+
+    .quaker-banner-products-block{
+        height: 160px;
+    }
+
+    .quaker-power-oats-banana{
+        background-size: 150%;
+        background-position: 100% bottom;
+        height: 420px;
+    }
+
+    .quaker-power-oats-banana{
+        align-items: baseline;
+        padding-top: 40px;
+    }
+
+    .quaker-product-background-color{
+        margin: 0;
+        width: 60%;
+    }
+
+    .quaker-product-pattern{
+        display: none;
+    }
+
+    .quaker-detail__product--block{
+        text-align: center;
+        width: 100%;
+    }
+
+    .quaker-detail__product--block h1 {
+        font-size: 30px;
+    }
+
+    .quaker-product-nutrition{
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .quaker-product-block .product-image{
+        flex-direction: column;
+        padding: 70px 15px 15px;
+    }
+
+    .quaker-product-category{
+        flex-direction: column;
+        padding: 50px 0 70px 0;
+    }
+
+    .quaker-product-box{
+        width: 100%;
+    }
+
+    .quaker-products-filter-flex{
+        flex-direction: column;
+    }
+
+    .quaker-products-filter-select-wrap{
+        flex-direction: column;
+        align-items: baseline;
+        margin: auto;
+    }
+
+    .quaker-products-filter-select-wrap p{
+        margin-bottom: 10px;
+    }
+
+    .quaker-products-filter-wrap{
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .quaker-power-oats-banana h2{
+        width: 100%;
+        padding: 0 16px 0;
+        text-align: center;
+        position: relative;
+    }
+
+    .quaker-box {
+        flex-direction: column;
+        padding-top: 70px;
+    }
+
+    .quaker-box .img{
+        width: 100%;
+    }
+
+    .quaker-box-content{
+        width: 100%;
+        padding: 30px 20px 0 20px;
+    }
+
+    .quaker-box:nth-child(2) .img {
+        order: inherit;
+    }
+
+    .quaker-box-content-title {
+        align-items: baseline;
+        flex-direction: column;
+    }
+
+    .quaker-box-content-title img {
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .quaker-product-box h3{
+        margin: 15px;
+    }
+
+    .quaker-oat-flour-brand-row{
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .quaker-oat-flour-brand-content{
+        margin-top: 0;
+    }
+
+    .quaker-oat-flour-brand-content h4{
+        margin-bottom: 0;
+    }
+
+    .quaker-product-img{
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .quaker-products-filter-select-wrap select{
+        width: 100%;
+    }
+
+    .quaker-oat-flour-brand-wrap h3 {
+        font-size: 24px;
+    }
+
+    .quaker-oat-flour-brand-flex{
+        padding: 140px 15px 100px 15px;
+    }
+
+    .quaker-product-background-color {
+        width: 100%;
+    }
+
+    .quaker-power-oats-banana{
+        height: 360px;
+    }
+}

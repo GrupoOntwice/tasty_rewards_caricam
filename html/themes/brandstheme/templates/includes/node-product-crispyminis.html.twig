@@ -1,0 +1,239 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{# {% set background_img_url = file_url(content.field_extra_image2['#items'].entity.uri.value)  ?: '' %} #}
+{% set background_img_url = '' %}
+
+{# {% set large_img_url = file_url(content.field_extra_image1['#items'].entity.uri.value)  ?: '' %} #}
+{# large_img_url is now defined from brandstheme.theme preprocess_node() function  #}
+
+{{ attach_library('brandstheme/crispyminis') }}
+{{ attach_library('brandstheme/slickLibrary') }}
+<section id="product" class="crispyminis-product-block  nid-{{node.id}}">
+<div class="arrow-section-body"></div>
+
+	<div class="container   font-{{font_color}}" style="background-color:{{background_color}}">
+		<div class="product-image">
+			{# <img itemprop="image" class="square" src="{{nodeimgurl}}" alt="{{nodeimgalt}}"> #}
+			<img itemprop="image" class="square" src="{{large_img_url}}" alt="{{nodeimgalt}}">
+
+			<div class="crispyminis-detail__product--block">
+				<h1 class="banner_slide_recipe-h1">
+					{% if title1 %}
+						{{title1|raw}} <br> <span>{{title2|raw}}</span>
+					{% else %}
+					{{subtitle|raw}}
+					{% endif %}
+				</h1>
+
+				<div class="wrapper-column">
+					<div class="product-description">
+						{#					<h4 class="linkeable">{{'Description'|t}}</h4>#}
+						<div class="product-field-detail">
+							{% if node.body.0.value|striptags is not empty %}
+								{{node.body.0.value | raw}}
+							{% endif %}
+						</div>
+		{% if show_product_buynow %} 
+            <button class="crispyminis-btn js-buynow" id = "crispyminis-buy" data-toggle="modal" data-target="#crispyminisModal"> {{'Buy now'|t}} </button>
+		{% endif %}
+
+{#						<div class="product-buy-now">#}
+{#							<div class="crispyminis-btn">#}
+{#								<a href="#">#}
+{#									{{buy_now | raw}}#}
+{#								</a>#}
+{#							</div>#}
+{#						</div>#}
+					</div>
+
+          <div class="modal bootstrap-modal bg-transparent crispyminis-buynow-modal" id="crispyminisModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-crispyminis" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <button type="button" id = "closeModal" class="close" data-dismiss="modal">×</button>
+                  {# <p>Content goes here</p> #}
+                  {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+                  {% if iframe_url %}
+                    <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="crispyminis-product-nutrition">
+
+				<div class="performance-facts">
+				{% set has_nutrition = 1 %}
+				{% if has_nutrition  %}
+					<div class="product-field-detail">
+						<h4 class="linkeable">{{'Nutrition'|t}}</h4>
+						<div class="nutrition-copy-js">
+
+							<div class="crispyminis-productdetails-nutrition-table">
+								<div class="crispyminis-productdetails-nutrition-header-row">
+							        <div class="crispyminis-productdetails-nutrition-cell crispyminis-productdetails-headercell">
+							            {{portion}}
+							        </div>
+							        <div class="crispyminis-productdetails-nutrition-cell crispyminis-productdetails-headercell">
+							            {{'% Daily Value'|t}}
+							        </div>
+							    </div>
+								{{nutrition | raw}}
+							</div>
+
+						</div>
+					</div>
+				{% endif %}
+				</div>
+
+
+
+
+			<div class="product-ingredients">
+				{% if noderecipeingredients|length  %}
+					<div class="product-field-detail">
+						<h4 class="linkeable">{{'Ingredients'|t }}</h4>
+						{{noderecipeingredients | raw}}
+					</div>
+				{% endif %}
+				<p class="product-alert ">{{alert}}</p>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+
+<section id="crispyminis-social-block">
+
+
+
+        <div class="carousel_fullwidth carousel_desktop js-main-carousel-crispyminis">
+            {% for product in featured_products %}
+
+
+				<div class="banner_slide home_slide" data-nid="{{nid}}">
+					<div class="banner-desktop">
+
+						<div class="crispyminis-featured-product--container-bg-desktop">
+							{% if featured_products|length %}
+								<h2>{{'Featured product'|t}}</h2>
+							{% endif %}
+
+							<div class="crispyminis-coupon--container">
+								<div class="crispyminis-coupon--display">
+									<div class="crispyminis-coupon--leftcol">
+										{% if product.extra_image_url %}
+											<img class="product-image" src="{{product.extra_image2_url}}" alt="{{product.title|raw}}">
+										{% else %}
+											<img class="product-image" src="{{product.image_url}}" alt="{{product.title|raw}}">
+										{% endif %}
+									</div>
+								</div>
+								<div class="crispyminis-coupon--text" style="background-color:{{product.bg_color}};">
+
+									<div class="crispyminis-banner_slide--text">
+
+										<span class="product-title"> {{product.title|raw}}</span>
+
+										{# <span class="crispyminis-product-description"> {{product.body|raw}}</span> #}
+
+										<br>
+										<div class="crispyminis-btn">
+											<a href="{{product.link}}" class="crispyminis-btn crispyminis-btn-white">
+												{{'View Product'|t}}
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+            {% endfor %}
+        </div>
+</section>
+
+
+
+<section id="coupon" class="crispyminis-coupon-block">
+		 {{ coupon_block|raw }}
+</section>

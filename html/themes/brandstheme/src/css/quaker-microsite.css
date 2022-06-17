@@ -1,0 +1,715 @@
+.quaker-navbar__vertical-align{
+    background-color: #F1F1F1 !important;
+    margin-bottom: -2px;
+}
+
+.quaker header .menu a{
+    margin: 0 30px;
+}
+
+.quaker header .mobile-menu-items{
+    display: block;
+}
+
+.quaker .header__logo-container {
+    width: auto;
+}
+
+.quaker .brands-navbar__item-border a:hover{
+    color: #db1d2c !important;
+    text-decoration: underline !important;
+}
+
+.quaker-nav-flex-left {
+    flex: 3 !important;
+    text-align: right;
+    align-items: flex-end !important;
+    justify-content: flex-end;
+    padding-right: 32px;
+}
+
+.quaker-nav-flex-right {
+    flex: 2 !important;
+    padding-left: 32px;
+}
+
+.quaker-navbar__vertical-align .brands-navbar__ul a{
+    color: #032953 !important;
+    font-family: 'Open Sans',sans-serif !important;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.quaker-microsite-main-wrapper h1, .quaker-microsite-main-wrapper h2, .quaker-microsite-main-wrapper h3{
+    font-family: 'Apercu-Bold',sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2em;
+}
+
+.quaker-microsite-main-wrapper p{
+    font-family: 'Apercu-Regular',sans-serif;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.quaker-banner-microsite{
+    background-image: url("../images/quaker/quaker-microsite/quaker-background-microsite.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 60px 4% 80px;
+    width: 100%;
+}
+
+.quaker-banner-microsite-upload{
+    background-image: url("../images/quaker/quaker-microsite/quaker-background-microsite.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 60px 4% 80px;
+    width: 100%;
+}
+
+.quaker-banner-microsite .banner_slide--text{
+    width: 50%;
+}
+
+.quaker-banner-microsite .banner_slide--text h1 sup{
+    font-size: 30px !important;
+}
+
+.quaker-product-image-microsite{
+    width: 30%;
+}
+
+.quaker-banner-microsite.thank-you{
+    justify-content: space-around;
+    padding: 60px 4% 80px;
+}
+
+.quaker-banner-microsite.thank-you .banner_slide--text{
+    width: 35%;
+}
+
+.quaker-banner-microsite a{
+    color: #FFFFFF;
+    text-decoration: underline !important;
+}
+
+.quaker-banner-microsite h1{
+    margin-bottom: 30px;
+    color: #FFFFFF;
+    font-size: 48px;
+}
+
+.quaker-banner-microsite.thank-you .quaker-product-image-microsite{
+    width: 63% !important;
+}
+
+.quaker-banner-microsite span{
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-family: 'Apercu-Regular',sans-serif;
+}
+
+.quaker-banner-microsite .help-block{
+    text-align: left;
+}
+
+.quaker-banner-microsite h2, .quaker-banner-microsite p{
+    color: #FFFFFF;
+}
+
+.quaker-banner-microsite form p{
+    margin-bottom: 10px;
+}
+
+.quaker-microsite-main-wrapper .contest-quaker-steps-wrapper{
+    margin: 0 0 60px 0;
+    justify-content: center;
+}
+
+.quaker-steps-microsite-participate{
+    margin-bottom: 40px;
+    color: #004179;
+    text-transform: capitalize;
+    font-size: 48px !important;
+    font-family: 'Apercu-Bold',sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.quaker-steps-microsite .contest-quaker-steps{
+    width: 30%;
+    margin: 0 20px;
+}
+
+.quaker-steps-microsite .contest-quaker-steps span{
+    font-family: 'Apercu-Regular', sans-serif;
+    font-size: 18px;
+    color: #004179;
+    line-height: 1.3em;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.quaker-steps-microsite{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.quaker-steps-microsite h2{
+    color: #004179;
+    text-transform: capitalize;
+}
+
+.quaker-steps-microsite p{
+    color: #004179;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.quaker-steps-microsite span{
+    font-size: 16px;
+    font-family: 'Apercu-Regular',sans-serif;
+    font-weight: normal;
+    display: block;
+    color: #004179;
+    line-height: 1.3em;
+}
+
+.quaker-microsite__confirmation-text{
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 30px !important;
+}
+
+.quaker-flex-microsite .contest-detail__quacker-input-half{
+    justify-content: space-between;
+    display: flex;
+}
+
+.contest-detail__quacker-input-half-col{
+    width: 48%;
+}
+
+.quaker-upload-form-microsite{
+    background-image: url("../images/quaker/quaker-microsite/quaker-background-microsite.jpg");
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 120px 15% 160px;
+    height: 580px;
+    width: 100%;
+}
+
+.quaker-microsite-main-wrapper .contest-detail__form-quacker .contest-detail__quacker-input-col{
+    width: 100% !important;
+    text-align: center;
+    height: auto;
+}
+
+.quaker-microsite-main-wrapper .contest-detail__input{
+    height: 40px;
+    color: #000000 !important;
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+    background-color: #FFFFFF !important;
+    border: none !important;
+    padding: 10px 0;
+    width: 100%;
+    text-indent: 10px;
+    border-radius: 3px;
+    font-size: 16px !important;
+    font-family: 'Apercu-Regular', Sans-Serif;
+}
+
+.quaker-microsite-main-wrapper .upload-quacker-label{
+    background-color: #FFFFFF;
+    padding: 12px 10px;
+    box-shadow: none;
+    font-size: 16px !important;
+    color: #000000 !important;
+    text-transform: inherit;
+    font-family: 'Apercu-Regular', Sans-Serif;
+}
+
+.quaker-flex-microsite #contestsignup-form input, .quaker-flex-microsite #contestsignup-form select {
+    font-size: 16px !important;
+}
+
+.quaker-flex-microsite .contest-detail__form-quacker {
+    margin: 0 20px;
+}
+
+.quaker-receipt-image-wrapper{
+    margin: 0 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.quaker-receipt-image-wrapper h2{
+    text-transform: uppercase;
+    text-align: left;
+    margin: 25px 0;
+}
+
+.quaker-receipt-image-wrapper img{
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.quaker-receipt-image-wrapper h3{
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.quaker-receipt-image-wrapper p{
+    text-align: left;
+}
+
+.quaker-flex-microsite{
+    display: flex;
+}
+
+.quaker-button-microsite{
+    background-color: #F30C22;
+    width: 100%;
+    padding: 20px 15px;
+    color: #FFFFFF;
+    border: 0;
+}
+
+.quaker-button-microsite.grey{
+    background-color: #d1d1d1;
+}
+
+.quaker-food-banks-microsite{
+    display: flex;
+}
+
+.quaker-microsite-main-wrapper .btn_quaker-white{
+    margin: 40px auto 0;
+    color: #004179 !important;
+    text-decoration: none !important;
+}
+
+.quaker-participate-microsite{
+    padding: 60px 0;
+    color: #004179;
+    font-family: 'Apercu-Regular',sans-serif;
+}
+
+.food-bank-canada-img{
+    background-color: #F7F5F5;
+    width: 50%;
+    display: flex;
+    padding: 20px 40px;
+    align-items: center;
+}
+
+.food-bank-canada-about{
+    background-image: url("../images/quaker/quaker-microsite/food-bank-background.png");
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 60px;
+    color: #FFFFFF;
+    width: 50%;
+}
+
+.food-bank-canada-about p{
+    color: #FFFFFF !important;
+    margin: 0 !important;
+}
+
+.food-bank-canada-about h2{
+    color: #FFFFFF !important;
+}
+
+.quaker-microsite-participate-wrapper{
+    padding: 0 15px;
+}
+
+.quaker-microsite-participate-wrapper span{
+    margin-top: 30px;
+    display: block;
+}
+
+.quaker-participate-microsite h2{
+    color: #004179;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quaker-participate-microsite p{
+    color: #004179;
+    font-size: 18px;
+    text-align: center;
+    margin: 50px 0 60px;
+}
+
+.quaker-participate-faq-microsite{
+    color: #004179;
+}
+
+.quaker-participate-faq-microsite h3 a{
+    color: #004179;
+    text-decoration: underline !important;
+}
+
+.quaker-participate-faq-microsite h3{
+    color: #004179;
+    font-size: 40px;
+    text-align: center;
+    margin: 80px 0px 20px;
+}
+
+.quaker-participate-faq-microsite h4{
+    font-size: 24px;
+    padding: 30px 0px;
+    font-family: 'Apercu-Bold',sans-serif;
+}
+
+.quaker-participate-faq-microsite p{
+    text-align: left;
+    margin: 0;
+}
+
+.quaker-participate-faq-microsite p a{
+    text-decoration: underline !important;
+    color: #004179;
+}
+
+.quaker-participate-faq-microsite ul{
+    font-family: 'Apercu-Regular',sans-serif;
+}
+
+.quaker-participate-faq-microsite ul li{
+    margin: 5px 0;
+    font-size: 18px;
+    list-style: disc;
+}
+
+.quaker-participate-faq-microsite .faq-border{
+    border-bottom: 2px solid #707070;
+}
+
+.quaker-participate-faq-microsite .faq-plus-minus:before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #707070;
+    position: absolute;
+    right: 20px;
+}
+
+.quaker-participate-faq-microsite .panel-group .faq-plus-minus.collapsed:after{
+    content: '';
+    border: solid #707070;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(
+            -45deg
+    );
+    -webkit-transform: rotate(
+            -45deg
+    );
+    position: relative;
+    top: 10px;
+    color: #707070;
+}
+
+.quaker-participate-faq-microsite .panel-group .faq-plus-minus:after {
+    content: '-';
+    float: right;
+    font-weight: normal;
+    position: relative;
+    right: 20px;
+    bottom: 1px;
+    font-size: 30px;
+    color: #707070;
+}
+
+.quaker-participate-rules{
+    text-align: center;
+    color: #004179;
+    margin: 60px 20px 30px;
+    text-align: left;
+    line-height: 1.2em;
+    color: #FFFFFF;
+    font-family: 'Apercu-Regular',sans-serif;
+}
+
+.quaker-participate-rules a{
+    color: #FFFFFF;
+    text-decoration: underline !important;
+}
+
+.quaker-participate-rules span{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.quaker-confirmation{
+    margin-bottom: 60px;
+}
+
+.quaker-navbar__vertical-align .brands-navbar__social-icons{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+html:lang(en) .food-bank-canada-img .food-bank-canada-fr{
+    display: none
+}
+
+html:lang(fr) .food-bank-canada-img .food-bank-canada-en{
+    display: none
+}
+
+html:lang(en) .quaker-banner-microsite .quaker-product-image-microsite.fr{
+    display: none
+}
+
+html:lang(fr) .quaker-banner-microsite .quaker-product-image-microsite.en{
+    display: none
+}
+
+@media screen and (max-width: 1650px) {
+    .quaker-nav-flex-left {
+        flex: 2 !important;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .quaker-navbar__vertical-align .brands-navbar__ul a {
+        font-size: 14px;
+    }
+
+    .quaker-navbar__vertical-align .brands-navbar__ul a{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .quaker-banner-microsite.thank-you {
+        padding: 60px 4% 80px;
+    }
+
+    .quaker-banner-microsite h1 {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .quaker-banner-microsite .banner_slide--text h1 sup{
+        top: -10px;
+    }
+
+    .quaker-banner-microsite .banner_slide--text{
+        width: 100%;
+    }
+
+    .quaker-banner-microsite.thank-you .banner_slide--text{
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .quaker-banner-microsite .quaker-product-image-microsite{
+        width: auto;
+    }
+
+    .quaker-banner-microsite.thank-you {
+        text-align: center;
+    }
+
+    .quaker-flex-microsite{
+        flex-direction: column;
+    }
+
+    .quaker-banner-microsite{
+        flex-direction: column;
+    }
+
+    .quaker-banner-microsite .contest-banner-text{
+        order: 2;
+        text-align: center;
+    }
+
+    .quaker-receipt-image-wrapper h2, .quaker-receipt-image-wrapper p {
+        text-align: center;
+    }
+
+    .quaker-product-image-microsite{
+        order: 1;
+    }
+
+    .quaker-banner-microsite {
+        padding: 80px 15% 100px;
+    }
+
+    .quaker-receipt-image-wrapper{
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .quaker-nav-flex-left{
+        text-align: left;
+        flex: 1;
+    }
+
+    .quaker-nav-flex-right{
+        flex: 1 !important;
+        padding-left: 0;
+    }
+
+    .brands-navbar__item-first-border, .brands-navbar__item-border, .menu--main a {
+        border-bottom: 1px solid #e7e7e7 !important;
+    }
+
+    .quaker-navbar__vertical-align .brands-navbar__ul a{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .quaker-banner-microsite.thank-you .quaker-product-image-microsite{
+        width: 100% !important;
+}
+
+    .quaker-participate-faq-microsite h3{
+        font-size: 30px;
+    }
+
+    .quaker-steps-microsite-participate{
+        margin-top: 60px;
+        font-size: 35px !important;
+    }
+
+    .quaker-microsite-main-wrapper .contest-quaker-steps-wrapper{
+        margin: 0;
+    }
+
+    .quaker-participate-rules{
+        margin: 60px 0;
+    }
+
+    .quaker-participate-faq-microsite .panel-group .faq-plus-minus:after{
+        display: none !important;
+    }
+
+    .quaker-participate-microsite{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .food-bank-canada-img, .food-bank-canada-about{
+        width: 100%;
+    }
+
+    .food-bank-canada-img {
+        padding: 60px 40px;
+    }
+
+    .quaker-receipt-image-wrapper img{
+        width: 50%;
+    }
+
+    .quaker-microsite-main-wrapper  .contest-detail__form-quacker{
+        width: 90%;
+    }
+
+    .quaker-banner-microsite .quaker-product-image-microsite {
+        width: 100% !important;
+    }
+
+    .quaker-microsite-main-wrapper .contest-quaker-steps-wrapper{
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .quaker-steps-microsite .contest-quaker-steps{
+        width: 100%;
+        margin: 0;
+    }
+
+    .quaker-steps-microsite .contest-quaker-steps img{
+        width: 50%;
+    }
+
+    .quaker-food-banks-microsite{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .food-bank-canada-about {
+        padding: 60px 10px;
+    }
+
+    .quaker-banner-microsite {
+        padding: 80px 5% 100px;
+    }
+
+    .quaker-banner-microsite h1 {
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+
+    .quaker-banner-microsite .banner_slide--text h1 sup {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .quaker-microsite-main-wrapper  .contest-detail__form-quacker{
+        width: 85%;
+    }
+
+    .quaker-participate-faq-microsite .faq-title a{
+        padding: 0 15px;
+    }
+}
+
+
+
+
+
+

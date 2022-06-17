@@ -1,0 +1,165 @@
+<nav id="brands_navigation" class="quaker-navbar__vertical-align quaker-nav-campbell" role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- QUAKER MOBILE-->
+  <a href="/en-ca/brands/quaker" class="quaker-logo-mobile top-logo noDesktop">
+    <img class="quaker-logo" src="/themes/brandstheme/src/images/quaker/quaker-logo.svg?v=1" alt="Quaker logo">
+  </a>
+
+  <hr class="noDesktop hr-navbar">
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align quaker-nav-flex-left">
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/oat-flour" id="products-submenu2">{{'Oat Flour'|t}}</a>
+    </li>
+
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/recipes" id="products-submenu4">{{'Recipes'|t}}</a>
+    </li>
+
+    {% if  language == 'en' %}
+      <li class="brands-navbar__item-first-border">
+        <a class="" href="{{ brand_basepath }}/power-of-oats" id="products-submenu">{{'Power of Oats'|t}}</a>
+      </li>
+    {% endif %}
+
+    {% set borough_link = 'https://quakerborough.ca' %}
+
+    {% if language == 'fr' or language == 'fr-ca' %}
+      {% set borough_link = 'https://quakerborough.ca/fr' %}
+    {% endif %}
+{# 
+      <li class="brands-navbar__item-first-border">
+        <a class="" target="_blank" href="{{borough_link}}" id="borough-submenu">{{'QUAKERborough Collection'|t}}</a>
+      </li>
+ #}
+
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ brand_basepath }}" class="logo noMobile">
+    <img class="quaker-logo" src="/themes/brandstheme/src/images/quaker/quaker-logo.svg?v=1" alt="Quaker logo">
+  </a>
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align quaker-nav-flex-right">
+
+    <li class="brands-navbar__item-border">
+
+      {% if ( language == 'en') %}
+        <a href="https://contact.pepsico.com/quakerca" target="_blank" id="occasions-submenu">
+          {{'Contact us'|t}}
+          <span>{{'Opens in a new tab'|t}}</span>
+        </a>
+      {% endif %}
+
+      {% if ( language == 'fr') %}
+        <a href="https://contact.pepsico.com/quakercafr" target="_blank" id="occasions-submenu">
+          {{'Contact us'|t}}
+          <span>{{'Ouvre un nouvel onglet'|t}}</span>
+        </a>
+      {% endif %}
+
+    </li>
+
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+
+
+    <li class="brands-navbar__item-border dropdown">
+      <a class="dropbtn" target="_blank" href="{{borough_link}}" id="products-submenu3">{{'QUAKERborough'|t}}</a>
+    </li>
+{#
+    <li class="brands-navbar__item-border dropdown">
+      <a class="dropbtn" href="{{ brand_basepath }}/QuakerFeedCanada" id="products-submenu3">{{'Programs'|t}}</a>
+      <div class="dropdown-content">
+        <a class="dropbtn" href="{{ brand_basepath }}/QuakerFeedCanada" id="products-submenu3">{{'Pack the Goodness Program'|t}}</a>
+        <a class="dropbtn" href="{{ brand_basepath }}/hockey-hungry" id="products-submenu3">{{'Hockey Hungry'|t}}</a>
+      </div>
+    </li>
+#}
+
+{#    <li class="brands-navbar__item-border dropdown">#}
+{#      <a class="dropbtn" href="{{ brand_basepath }}/QuakerFeedCanada" id="products-submenu3">{{'Pack the Goodness Program'|t}}</a>#}
+{#      <div class="dropdown-content">#}
+{#        <a href="#">Program</a>#}
+{#      </div>#}
+{#    </li>#}
+{#    <li class="brands-navbar__item-border dropdown">#}
+{#      <a class="dropbtn" href="{{ brand_basepath }}/cassie-campbell" id="products-submenu3">{{'Cassie Campbell'|t}}</a>#}
+{#      <div class="dropdown-content">#}
+{#        <a href="#">Program</a>#}
+{#      </div>#}
+{#    </li>#}
+
+  </ul>
+
+  <!-- TO SEARCH POPOVER -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+      <a class="brands-navbar__social-icons" href="https://twitter.com/quakercanada" id="nav-twitter" target="_blank" aria-label="twitter link">
+        <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.instagram.com/quakercanada/" id="nav-instagram" target="_blank" aria-label="instagram link">
+        <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.facebook.com/quakercanada/" id="nav-facebook" target="_blank" aria-label="facebook link">
+        <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.youtube.com/channel/UC4YuAgrcaJkY0-pdx3l4AHg" id="nav-youtube" target="_blank" aria-label="youtube link">
+        <i class="fa fa-youtube-play fa-navbar" title="youtube icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+  </div>
+
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+    <a href="#" id="" class="choose-lang_fr js-translation">
+      {{'FR'|t}}
+    </a>
+
+    <div class="brands-navbar_accout-options">
+      <a href="#" id="" class="sign-in_left">
+        {{'Sign In'|t}}
+      </a>
+      <a href="#" id="" class="sign-up_right">
+        {{'Sign Up'|t}}
+      </a>
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl {{language}}" src="/themes/brandstheme/src/images/logo-{{language}}.png" alt="Tasty Rewards">
+
+        {# <img class="brands-tr-navbar_image-mbl fr" src="/themes/brandstheme/src/images/logo-fr.png" alt="Tasty Rewards"> #}
+
+        <span class="brands-tr-navbar_copy-mbl">
+           {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

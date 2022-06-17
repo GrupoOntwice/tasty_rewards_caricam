@@ -1,0 +1,5 @@
+{% set pinterest_brands = ['tostitos', 'lays', 'cheetos', 'missvickies', 'crispyminis'] %}
+
+{% if brand in pinterest_brands %}
+	{% include '@brandstheme/includes/pinterest/pinterest-' ~ brand ~ '.html.twig' %}
+{% endif %}

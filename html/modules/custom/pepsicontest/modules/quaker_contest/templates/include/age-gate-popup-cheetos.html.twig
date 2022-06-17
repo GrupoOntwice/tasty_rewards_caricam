@@ -1,0 +1,72 @@
+<div class="cheetos popup-main-wrapper popup-contest hidden" id="cheetos-agegate">
+    <form id="popup-subscribe" class="popup-eligibility">                
+        <div class="date-dropdowns modal__sign-up-birth">
+            <input type="hidden" id='bday' name='bday' class="form-control">
+            <input type="hidden" id='contest' name='contest' class="form-control" value={{data.contesturi}}>
+            <input type="hidden" id='contest_type' name='contest_type' class="form-control" value={{data.contest_type}}>
+        </div>                
+    </form>
+
+    <div class="modal">
+        <img class="modal-chester" src="/themes/tastytheme/src/images/contest-cheetos/cheetos-entry-chester.png" />
+
+        <div class="modal-container">
+            <img class="modal-carnival-arrow" src="/themes/tastytheme/src/images/contest-cheetos/carnival-arrow.png" />
+
+            <a class="js-popup-langswitcher agegate-languageswitcher" href="{{data.trans_url}}">{{data.trans_lang}}</a>
+
+            <div class="cheetos-modal-content">
+                <h2>
+                    {{ 'Can I see your ticket please?' | t }}
+                </h2>
+
+                <p class="js-age-gate-hide">
+                    {{ 'Enter your date of birth.<br>
+                    You must be 19 years or older to participate.' | t | raw }}
+                </p>
+
+                <div class="dob-select">
+                    <div class="dob-select-container">
+                        <select class="day bday" name="bday_day" id="bday_day">
+                            {{ data.bdaydropdown.dayoption | raw }}
+                        </select>
+                    </div>
+
+                    <div class="dob-select-container">
+                        <select class="day" name="bday_month" id="bday_month">
+                            {{ data.bdaydropdown.monthoption | raw }}
+                        </select>
+                    </div>
+
+                    <div class="dob-select-container">
+                        <select class="day" name="bday_year" id="bday_year">
+                            {{ data.bdaydropdown.yearoption | raw }}
+                        </select>
+                    </div>
+                </div>
+
+                <p class="js-age-gate-hide">
+                    {{ 'Select your province/territory of residence' | t }}
+                </p>
+                <span class="help-block has-error js-legal-error hidden">{{error_legal_message |t}}
+                    </span>
+                        <br>
+                <span class="help-block has-error js-validate-error hidden">{{'All fields are required'|t}}</span>
+
+                <div class="popup-email-wrapper {{province_class}} select-custom-arrow-container">
+                    <select class="province form-control modal__sign-up-select" name="age_province" id="age_province">
+                        {{ data.age_provinces_options| raw }}
+                    </select>
+                </div>
+
+                <button class="cheetos-btn cheetos-btn-red submit js-submit-eligibility">
+                    {{ 'Submit' | t }}
+                </button>
+            </div>
+        </div>  
+
+        <div class="cheetos-hide-desktop cheetos-agegate-mobile-bottom">
+            <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-agegate-bottom-mobile-v2.png" />
+        </div>
+    </div>  
+</div>

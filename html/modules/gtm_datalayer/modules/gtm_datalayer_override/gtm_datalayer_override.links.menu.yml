@@ -1,0 +1,5 @@
+entity.gtm_datalayer_override.collection:
+  title: Overrides
+  route_name: entity.gtm_datalayer_override.collection
+  parent: entity.gtm_datalayer.collection
+  description: Manage your GTM dataLayer Overrides.

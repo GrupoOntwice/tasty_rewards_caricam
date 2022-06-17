@@ -1,0 +1,99 @@
+<nav id="brands_navigation" class="doritos-navbar__vertical-align" role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+  {% set trans_language = (language == 'fr')? 'en' : 'fr' %}
+
+  <!-- LOGO MOBILE-->
+  <a href="/{{language}}-ca/brands/doritos" class="doritos-logo-mobile top-logo noDesktop">
+    <img class="{{brand}}-logo" src="/themes/brandstheme/src/images/{{brand}}/{{brand}}-logo.svg?v=1" alt="Doritos">
+  </a>
+
+  <hr class="noDesktop hr-navbar">
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align">
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+{#    <li class="brands-navbar__item-border">#}
+{#      <a href="{{ brand_basepath }}/poppables" id="poppables-submenu">{{'Poppables'|t}}</a>#}
+{#    </li>#}
+    <li class="brands-navbar__item-border">
+      <a href="https://contact.pepsico.com/fritolayca" target="_blank" id="occasions-submenu">
+        {{'Contact us'|t}}
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ brand_basepath }}" class="logo noMobile">
+    <img class="{{brand}}-logo" src="/themes/brandstheme/src/images/{{brand}}/{{brand}}-logo.svg?v=1" alt="Tostitos.ca logo">
+  </a>
+
+  <!-- TO SEARCH POPOVER -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+      <a class="brands-navbar__social-icons" href="https://twitter.com/doritoscanada" id="nav-twitter" target="_blank" aria-label="twitter link">
+        <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.instagram.com/doritosca/" id="nav-instagram" target="_blank" aria-label="instagram link">
+        <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.facebook.com/DoritosCanada" id="nav-facebook" target="_blank" aria-label="facebook link">
+        <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" href="https://www.youtube.com/user/doritoscanada" id="nav-youtube" target="_blank" aria-label="youtube link">
+        <i class="fa fa-youtube-play fa-navbar" title="youtube icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+  </div>
+
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+    <a href="#" id="" class="choose-lang_fr js-translation">
+      {{'FR'|t}}
+    </a>
+
+    <div class="brands-navbar_accout-options">
+      <a href="#" id="" class="sign-in_left">
+        {{'Sign In'|t}}
+      </a>
+      <a href="#" id="" class="sign-up_right">
+        {{'Sign Up'|t}}
+      </a>
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl en" src="/themes/brandstheme/src/images/{{'logo-en.png'|t}}" alt="Tasty Rewards">
+
+        {# <img class="brands-tr-navbar_image-mbl fr" src="/themes/brandstheme/src/images/logo-fr.png" alt="Tasty Rewards"> #}
+
+        <span class="brands-tr-navbar_copy-mbl">
+           {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

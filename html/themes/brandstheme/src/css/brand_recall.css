@@ -1,0 +1,338 @@
+
+.brand-recall {
+  padding: 64px 0 128px;
+}
+
+.lays .brand-recall {
+  background: #0e4caa;
+}
+
+.fritolay .brand-recall {
+  background: #00215f;
+}
+
+.quaker .brand-recall {
+  background: #032953;
+}
+
+.otep .brand-recall {
+  ackground-attachment: fixed;
+  background-image: url(../images/otep/back-general.jpg) !important;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow-x: hidden !important;
+  margin-top: -3px;
+}
+
+.cheetos .brand-recall {
+  background-image: url(/themes/brandstheme/src/images/cheetos/cheetos-feature-yellow-background-product.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.missvickies .brand-recall{
+  background: url(/themes/brandstheme/src/images/missvickies/about-us-bg.png) top center no-repeat, #F5F1E7 !important;
+  background-size: cover;
+}
+
+.flaminhot .brand-recall {
+  background: #2B0131 !important;
+}
+
+.crispyminis .brand-recall {
+  background: #2D3C9D !important;
+}
+
+.ruffles .brand-recall {
+  background: #031C4B !important;
+}
+
+.ruffles .brand-recall {
+  background: #031C4B !important;
+}
+
+.doritos .brand-recall {
+  background: url(/themes/brandstheme/src/images/doritos/doritos-background.png) top center no-repeat;
+  background-size: cover;
+}
+
+.sunchips .brand-recall {
+  background: url(/themes/brandstheme/src/images/sunchips/sunchips-coupon-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+}
+
+.stacys .brand-recall {
+  background: url(/themes/brandstheme/src/images/stacys/stacys-coupon-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+}
+
+.smartfood .brand-recall {
+  background: url(/themes/brandstheme/src/images/smartfood/smartfood-featured-product-background.png) top right no-repeat, transparent;
+  background-size: cover;
+}
+
+.bare .brand-recall {
+  background-image: url(/themes/brandstheme/src/images/bare/back-general.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.tostitos .brand-recall p, .tostitos .brand-recall h1, .tostitos .brand-recall span, .tostitos .brand-recall h2, .tostitos .brand-recall h3, .tostitos .brand-recall h4, .tostitos .brand-recall h5, .tostitos .brand-recall h6, .tostitos .brand-recall li {
+  color: #FFFFFF;
+}
+
+.quaker .brand-recall p, .quaker .brand-recall h1, .quaker .brand-recall span, .quaker .brand-recall h2, .quaker .brand-recall h3, .quaker .brand-recall h4, .quaker .brand-recall h5, .quaker .brand-recall h6, .quaker .brand-recall li {
+  color: #FFFFFF;
+}
+
+.otep .brand-recall p, .otep .brand-recall span, .otep .brand-recall li {
+  color: #000000;
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.otep .brand-recall h1, .otep .brand-recall h2, .otep .brand-recall h3, .otep .brand-recall h4, .otep .brand-recall h5, .otep .brand-recall h6 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #000000;
+}
+
+.cheetos .brand-recall p, .cheetos .brand-recall span, .cheetos .brand-recall li {
+  color: #000000;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cheetos .brand-recall h1, .cheetos .brand-recall h2, .cheetos .brand-recall h3, .cheetos .brand-recall h4, .cheetos .brand-recall h5, .cheetos .brand-recall h6 {
+  font-family: 'Axe-Handel', sans-serif;
+  color: #000000;
+}
+
+.flaminhot .brand-recall p, .flaminhot .brand-recall span, .flaminhot .brand-recall li {
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 400;
+  font-weight: normal;
+}
+
+.flaminhot .brand-recall h1, .flaminhot .brand-recall h2, .flaminhot .brand-recall h3, .flaminhot .brand-recall h4, .flaminhot .brand-recall h5, .flaminhot .brand-recall h6 {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.crispyminis .brand-recall p, .crispyminis .brand-recall span, .crispyminis .brand-recall li {
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 400;
+  font-weight: normal;
+}
+
+.crispyminis .brand-recall h1, .crispyminis .brand-recall h2, .crispyminis .brand-recall h3, .crispyminis .brand-recall h4, .crispyminis .brand-recall h5, .crispyminis .brand-recall h6 {
+  font-weight: bold;
+  font-family: 'Century-Gothic',sans-serif;
+  color: #FFFFFF;
+}
+
+.ruffles .brand-recall p, .ruffles .brand-recall span, .ruffles .brand-recall li {
+  color: #FFFFFF;
+  font-family: 'Open Sans',sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ruffles .brand-recall h1, .ruffles .brand-recall h2, .ruffles .brand-recall h3, .ruffles .brand-recall h4, .ruffles .brand-recall h5, .ruffles .brand-recall h6 {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+.doritos .brand-recall p, .doritos .brand-recall span, .doritos .brand-recall li {
+  color: #FFFFFF;
+  font-family: 'Teko-Regular', sans-serif;
+}
+
+.doritos .brand-recall h1, .doritos .brand-recall h2, .doritos .brand-recall h3, .doritos .brand-recall h4, .doritos .brand-recall h5, .doritos .brand-recall h6 {
+  font-family: 'Teko-SemiBold', sans-serif;
+  color: #FFFFFF;
+}
+
+.lays .brand-recall p, .lays .brand-recall li, .lays .brand-recall span {
+  font-family: open-sans, sans-serif;
+  color: #FFFFFF;
+}
+
+.lays .brand-recall h1, .lays .brand-recall h2, .lays .brand-recall h3, .lays .brand-recall h4, .lays .brand-recall h5, .lays .brand-recall h6 {
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  color: #FFFFFF;
+}
+
+.bare .brand-recall p, .bare .brand-recall li, .bare .brand-recall span {
+  font-family: open-sans, sans-serif;
+  color: #3d3c3c;
+}
+
+.bare .brand-recall h1, .bare .brand-recall h2, .bare .brand-recall h3, .bare .brand-recall h4, .bare .brand-recall h5, .bare .brand-recall h6 {
+  font-family: nunito,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+}
+
+
+.fritolay .brand-recall p, .fritolay .brand-recall li, .fritolay .brand-recall span {
+  font-family: montserrat,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.fritolay .brand-recall h1, .fritolay .brand-recall h2, .fritolay .brand-recall h3, .fritolay .brand-recall h4, .fritolay .brand-recall h5, .fritolay .brand-recall h6 {
+  font-family: montserrat,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.view-recall-pdf {
+  padding-top: 32px;
+  text-align: center;
+}
+
+.sunchips .brand-recall p, .sunchips .brand-recall li, .sunchips .brand-recall span, .sunchips .brand-recall h1, .sunchips .brand-recall h2, .sunchips .brand-recall h3, .sunchips .brand-recall h4, .sunchips .brand-recall h5, .sunchips .brand-recall h6 {
+  color: #FFFFFF;
+}
+
+
+.smartfood .brand-recall p, .smartfood .brand-recall li, .smartfood .brand-recall span {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #000000;
+}
+
+.smartfood .brand-recall h1, .smartfood .brand-recall h2, .smartfood .brand-recall h3, .smartfood .brand-recall h4, .smartfood .brand-recall h5, .smartfood .brand-recall h6 {
+  font-family: "MarketPro-CondMedium", sans-serif;
+  color: #000000;
+}
+
+/*
+  Quaker Recall Button
+*/
+
+.quaker .btn-recall {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #FFFFFF;
+  color: #004179;
+  border: 2px solid #FFFFFF;
+  border-radius: 25px;
+}
+
+.quaker .btn-recall:hover, .quaker .btn-recall:focus, .quaker .btn-recall:active {
+  color: #004179;
+  background: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  outline: none;
+  text-decoration: none;
+}
+
+/*
+  Cheetos Recall Button
+*/
+
+.cheetos .btn-recall, .cheetos .btn-recall:hover, .cheetos .btn-recall:focus, .cheetos .btn-recall:active {
+  font-family: 'Axe-Handel',sans-serif;
+  text-transform: uppercase;
+  background: #FEC530;
+  color: #000000;
+  border: 2px solid #FEC530;
+  font-size: 24px !important;
+}
+
+/*
+  Ruffles Recall Button
+*/
+
+.ruffles .btn-recall, .ruffles .btn-recall:hover, .ruffles .btn-recall:focus, .ruffles .btn-recall:active {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #E81224;
+  color: #FFFFFF;
+  border: 2px solid #E81224;
+}
+
+
+/*
+  Flaminhot Recall Button
+*/
+
+.flaminhot .btn-recall, .flaminhot .btn-recall:hover, .flaminhot .btn-recall:focus, .flaminhot .btn-recall:active {
+  font-family: 'Open Sans', sans-serif !important;
+  font-style: normal;
+  font-weight: 700;
+  background: #FFA800;
+  color: #FFFFFF;
+  border: 2px solid #FFA800;
+  border-radius: 25px;
+}
+
+/*
+  Crispyminis Recall Button
+*/
+
+.crispyminis .btn-recall, .crispyminis .btn-recall:hover, .crispyminis .btn-recall:focus, .crispyminis .btn-recall:active {
+  font-family: 'Century-Gothic',sans-serif;
+  background: #FFC90A;
+  color: #2D3C9D;
+  border: 2px solid #FFC90A;
+  border-radius: 25px;
+}
+
+/*
+  Missvickes Recall Button
+*/
+
+.missvickies .btn-recall {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #403A3A;
+  color: #F5F1E7;
+  border: 2px solid #403A3A;
+  border-radius: 25px;
+}
+
+.missvickies .btn-recall:hover, .missvickies .btn-recall:focus, .missvickies .btn-recall:active {
+  color: #980F3A;
+  background: #EBE3D0;
+  border: 2px solid #980F3A;
+  outline: none;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .brand-recall {
+    padding: 48px 16px 96px;
+  }
+
+}
+
+@media only screen and (min-width: 1921px) {
+  .brand-recall {
+    padding: 64px 0 160px;
+  }
+}

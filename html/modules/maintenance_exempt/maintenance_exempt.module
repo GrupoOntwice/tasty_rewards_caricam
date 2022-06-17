@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * @file
+ * Allow exemption of maintenance mode based on either certain set IP
+ * addresses or matching a set query string value.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function maintenance_exempt_form_system_site_maintenance_mode_alter(&$form, &$form_state) {
+
+  $config = \Drupal::config('maintenance_exempt.settings');
+
+  $query_key = $config->get('query_key');
+
+  $client_ip = \Drupal::request()->getClientIp();
+
+  $form['maintenance_exempt_by_ip'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Set Exemption by IP'),
+    '#weight' => 1,
+    '#collapsible' => TRUE,
+  ];
+
+  $form['maintenance_exempt_by_ip']['exempt_ips'] = [
+    '#type' => 'textarea',
+    '#title' => t('Exempt IPs'),
+    '#default_value' => $config->get('exempt_ips'),
+    '#description' => t('Enter a newline-separated list of IP addresses who should be exempt from maintenance mode. <a href="@cidr_link">CIDR Notation</a> is allowed.', [
+      '@cidr_link' => 'http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing',
+    ]),
+    '#suffix' => t('Your current IP address is %current', [
+      '%current' => $client_ip,
+    ]),
+  ];
+
+  $form['maintenance_exempt_by_query_string'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Set Exemption by query string'),
+    '#weight' => 2,
+    '#collapsible' => TRUE,
+    '#collapsed' => $query_key,
+  ];
+
+  $form['maintenance_exempt_by_query_string']['query_key'] = [
+    '#type' => 'textfield',
+    '#title' => t('Exempt query string'),
+    '#default_value' => $query_key,
+    '#description' => t('Enter a string which can be used as a variable in the <a href="@query_string">query string</a> to exempt a visitor from maintenance mode.', [
+      '@query_string' => 'http://en.wikipedia.org/wiki/Query_string',
+    ]),
+  ];
+
+  if ($query_key) {
+    $current_exemption_link = Url::fromRoute('<front>', [], [
+      'query' => [$query_key => ''],
+    ]);
+    $form['maintenance_exempt_by_query_string']['query_key']['#suffix'] = Link::fromTextAndUrl('Hyperlink to exempt a visitor',  $current_exemption_link)->toString();
+  }
+
+  $form['#submit'][] = 'maintenance_exempt_form_system_site_maintenance_mode_submit';
+
+}
+
+/**
+ * Helper function to process submit callback.
+ */
+function maintenance_exempt_form_system_site_maintenance_mode_submit(&$form, $form_state) {
+
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('maintenance_exempt.settings');
+
+  $config
+    ->set('exempt_ips', $form_state->getValue('exempt_ips'))
+    ->set('query_key', $form_state->getValue('query_key'))
+    ->save();
+
+}
+
+/**
+ * Helper function to extract an array of IPs from the settings form.
+ */
+function maintenance_exempt_get_ips() {
+  $config = \Drupal::config('maintenance_exempt.settings');
+  $allowed_ips = $config->get('exempt_ips');
+  return array_map('trim', explode("\n", $allowed_ips));
+}
+
+/**
+ * Helper function to go through array looking in an attempt to match netmask.
+ */
+function maintenance_exempt_by_cidr_notation($ip) {
+  $allowed_ips = maintenance_exempt_get_ips();
+
+  foreach ($allowed_ips as $entry) {
+    if (strstr($entry, "/")) {
+      if (maintenance_exempt_ipCIDRCheck($ip, $entry)) {
+        return TRUE;
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Helper function to check against CIDR.
+ *
+ * Thanks claudiu - http://www.php.net/manual/en/ref.network.php#74656
+ */
+function maintenance_exempt_ipCIDRCheck($IP, $CIDR) {
+  list($net, $mask) = explode("/", $CIDR);
+
+  $ip_net = ip2long($net);
+  $ip_mask = ~((1 << (32 - $mask)) - 1);
+
+  $ip_ip = ip2long($IP);
+
+  $ip_ip_net = $ip_ip & $ip_mask;
+
+  return ($ip_ip_net == $ip_net);
+}

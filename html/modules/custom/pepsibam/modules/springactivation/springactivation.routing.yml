@@ -1,0 +1,16 @@
+en-us.springactivation:
+  path: '/makeyourspringspread'
+  defaults:
+    _controller: '\Drupal\springactivation\Controller\SpringActivationController::index'
+    _title: 'Make Your Spring Spread'
+  requirements:
+    _access: 'TRUE'  
+
+en-us.springactivation.load.recipes:
+  path: '/springactivation/load-recipes/{offset}'
+  defaults:
+    _controller: '\Drupal\springactivation\Controller\SpringActivationController::moreRecipes'
+    _title: 'Load Recipes'
+  requirements:
+    _access: 'TRUE'  
+

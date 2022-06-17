@@ -1,0 +1,47 @@
+{# signup form #}
+<div class = "signup-heading">
+<h2>{{"Sign up for Stacy’s Rise Project<sup>TM</sup> updates "|t}}</h2>
+</div>
+
+<p>{{"Sign up below and you’ll be the first to learn when our grant application opens!"|t}}</p>
+
+<form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+        <input type="hidden" name="newregister"  value="{{newregister}}">
+
+        <div class="stacys-form-col-wrapper">
+            <div class="stacys-form-col">
+              <span class="tk-houschka-pro" style = "font-size: 14px">{{ '*Required Fields'|t}}</span>
+                <div  class="stacys-story-input-half">
+                  <div class = "stacys-name-field">
+                    <div class="stacys-story-input-half-col" style = "margin-top:5px">
+                        <label for="contest-firstname" class="visuallyhidden"> First Name </label>
+                        <input type="text" class="tk-houschka-pro stacys-contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="*{{ 'First Name'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                        <span style="color: red !important;" class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                    </div>
+
+                    <div class="stacys-story-input-half-col">
+                        <label for="contest-lastname" class="visuallyhidden"> Last Name </label>
+                        <input type="text" id="contest-lastname" class="tk-houschka-pro stacys-contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="*{{ 'Last Name'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+                        <span style="color: red !important;" class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="stacys-story-input-col">
+                    <label for="contest-email" class="visuallyhidden"> Email </label>
+                    <input type="text" id="contest-email" class="tk-houschka-pro stacys-contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="*{{ 'Email'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+                    <span style="color: red !important;" class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                </div>
+
+
+            </div>
+
+            <div class="stacys-form-col-btn">
+                <div class="stacys-submit-wrapper-microsite">
+                    <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                    <input id="submitform" class="js-submit-receipt stacys-submit tk-houschka-pro" type="submit" value="{{'Sign Up' | t}}">
+                </div>
+            </div>
+        </div>
+    </form>

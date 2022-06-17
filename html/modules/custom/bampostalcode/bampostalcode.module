@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Module file for bampostalcode.
+ */
+
+/**
+ * @} End of "defgroup bampostalcode".
+ */
+
+/**
+ * 
+ * @param type $postalcode
+ * @return a row or boolean
+ */
+
+function bampostalcode_getProvCity($postalcode){
+    
+    $query = \Drupal::database()->select('postalcode_prov_city','pc');
+    $query->condition('postalcode', $postalcode);
+    $query->fields('pc');
+    $result = $query->execute();
+    $rows = array();
+    foreach($result as $row) {
+          $rows[] = (array) $row;
+    }
+    if (count($rows) > 0 )
+        return $rows[0];
+    return false;
+}

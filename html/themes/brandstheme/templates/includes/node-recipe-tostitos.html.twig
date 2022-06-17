@@ -1,0 +1,310 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/tostitos') }}
+{{ attach_library('brandstheme/slickLibrary') }}
+<section id="banner" class="tostitos-banner-nocarousel" style="background-image:url({{nodeimgurl}});padding:150px;">
+  {# <div class="tostitos-banner-nocarousel-overlay"></div>
+  <h1>{{subtitle}}</h1> #}
+</section>
+
+<section id="header-top" class="single-recipe-header-top" style="background-image:url({{nodeimgurl}})">
+
+	<!-- SCHEMA.ORG -->
+	<meta itemprop="image" content="{{nodeimgurl}}">
+	<meta itemprop="author" content="Tostitos.ca">
+	<meta itemprop="recipeCuisine" content="Canadian">
+	<meta itemprop="keywords" content="">
+</section>
+
+<div class="tostitos-content-background-container-recipesdetails">
+  <section id="recipe" class="tostitos-recipe-block">
+    <div class="tostitos-section-container">
+
+{#      {%if ( language == 'en') %}#}
+{#        {% if chefname is not empty %}#}
+{#          <h2 itemprop="name" class="chef-name"> {{'CHEF'|t}}  {{chefname}}'S</h2>#}
+{#        {% endif %}#}
+{#      {% endif %}#}
+
+        <h2 itemprop="name" class="p-name">{{subtitle|raw}}</h2>
+
+{#      {%if ( language == 'fr') %}#}
+{#        {% if chefname is not empty %}#}
+{#          <h2 itemprop="name" class="chef-name-fr"> {{'CHEF'|t}}  {{chefname}}</h2>#}
+{#        {% endif %}#}
+{#      {% endif %}#}
+
+        <div class="tostitos-subtitle-container">
+          {% if node.body.0.value|striptags is not empty %}
+            <p>
+            {{node.body.0.value | raw}}
+            </p>
+          {% endif %}
+        </div>
+
+        {% if chefcontent is not empty %}
+        <div class="tostitos-chef-content">
+          <div class="row center-align-md-dsk">
+            <div class="col-md-6 col-lg-30">
+              <img class="w-100 chef-img" src="/themes/brandstheme/src/images/tostitos/recipes/Chef-Matt-Basile.jpeg" alt="Chef Matt Basile">
+            </div>
+            <div class="col-md-6 col-lg-70 tostitos-chef-content-copy">
+                {{ chefcontent | raw}}
+              <img class="" src="/themes/brandstheme/src/images/tostitos/recipes/Chef-Matt-Basile-signatures.svg" alt="Chef Matt Basile Signatures">
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="tostitos-recipe-container">
+          <div class="tostitos-recipe-intro">
+            <div class="tostitos-recipe-icons {{ video|length ? '' : 'tostitos-recipe-icons-full' }}">
+            {% if prep_time is not empty %}
+              <div class="tostitos-recipe-icons-box">
+                <div class="tostitos-recipe-icons-box-img">
+                  <img src="/themes/brandstheme/src/images/tostitos/icons/icon-prep.png" alt="icon preparation">
+                </div>
+
+                <h3>{{'Prep Time'|t}}: </h3>
+
+                <p><time datetime="PT20M" itemprop="prepTime">{{prep_time}}</time></p>
+              </div>
+              {% endif %}
+
+              {% if cook_time is not empty %}
+              <div class="tostitos-recipe-icons-box">
+                  <div class="tostitos-recipe-icons-box-img">
+                      <img src="/themes/brandstheme/src/images/tostitos/icons/icon-cook.png" alt="icon cook">
+                  </div>
+
+                  <h3>{{'Cook Time'|t}}: </h3>
+
+                  <p><time datetime="PT20M" itemprop="cookTime">{{ cook_time }}</time></p>
+              </div>
+              {% endif %}
+
+              <div class="tostitos-recipe-icons-box">
+                  <div class="tostitos-recipe-icons-box-img">
+                      <img src="/themes/brandstheme/src/images/tostitos/icons/icon-rating.png" alt="icon rating">
+                  </div>
+
+                  <div class="tostitos-stars reverse-order" data-nid="{{nid}}">
+                      <fieldset>
+                        <legend><h3>{{'Rating'|t}}</h3></legend>
+
+                        {% for i in 1..5 %}
+
+                              <input type="radio" id="star-{{i}}" name="rate" value="{{i}}" {% if i == avg_rating %}checked="checked"{% endif %}>
+                              <label for="star-{{i}}" title="text">{{i}}</label>
+
+                        {% endfor %}
+                      </fieldset>
+                  </div>
+              </div>
+            </div>
+
+            {% if video|length %}
+              <div class="tostitos-recipe-video">
+                  <div class="tostitos-video-iframe-container">
+                      <iframe allowfullscreen frameborder="0" src="{{video}}"></iframe>
+                  </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="tostitos-recipe-info">
+          <div class="tostitos-recipe-info-ingredients">
+            <h4>{{'Ingredients'|t}} </h4>
+            {# ul gets added automaticaly #}
+              {{ingredients|raw}}
+            {# <ul>
+              <li><span class="tostitos-yellow">2</span> tbsp extra-virgin olive oil</li>
+            </ul> #}
+          </div>
+
+          <div class="tostitos-recipe-info-instructions">
+            <h4>{{'How to make it'|t}}</h4>
+            {{how_to_make|raw}}
+            {# <ol>
+              <li>First test</li>
+            </ol> #}
+          </div>
+        </div>
+
+        <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+        <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+        <input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+        <div class="tostitos-socials tostitos-socials-recipes">
+          <p>
+            {{ 'Share this recipe'|t }}
+          </p>
+
+          <a class="tostitos-social-link social-share-trigger" data-platform="twitter" href="#">
+            <img src="/themes/brandstheme/src/images/tostitos/social/twitter.png" alt="twitter icon">
+          </a>
+          {# <a class="tostitos-social-link" href="https://www.instagram.com/tostitoscanada/" target="_blank">
+            <img src="/themes/brandstheme/src/images/tostitos/social/instagram.png">
+          </a> #}
+          <a class="tostitos-social-link social-share-trigger" data-platform="facebook" href="#">
+            <img src="/themes/brandstheme/src/images/tostitos/social/facebook.png" alt="facebook icon">
+          </a>
+          {# <a class="tostitos-social-link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">
+            <img src="/themes/brandstheme/src/images/tostitos/social/youtube.png">
+          </a> #}
+          <a class="tostitos-social-link social-share-trigger" data-platform="pinterest" href="#">
+            <img src="/themes/brandstheme/src/images/tostitos/social/pinterest.png" alt="pinterest icon">
+          </a>
+          <a class="tostitos-social-link" href="mailto:?subject={{subtitle|raw}}&body={{ current_uri }}">
+             <img src="/themes/brandstheme/src/images/tostitos/social/email.png" alt="email icon">
+          </a>
+          <a class="tostitos-social-link" href="javascript:window.print()">
+            <img src="/themes/brandstheme/src/images/tostitos/social/print.png" alt="print icon">
+          </a>
+        </div>
+    </div>
+  </section>
+</div>
+
+{% if related_recipes|length > 0 %}
+<section class="tostitos-related-block tostitos-nocarousel-block">
+  <div class="tostitos-section-container">
+  {% if related_recipes|length %}
+    <h2> {{'Related Recipes'|t}} </h2>
+  {% endif %}
+
+    <div class="tostitos-related-product-wrapper tostitos-nocarousel-container">
+      {% for recipe in related_recipes %}
+        <div class="tostitos-related-product tostitos-nocarousel-box">
+          <div class="img">
+            <a class="" href="{{recipe.link}}">
+              <img src="{{recipe.image_url}}" alt={{recipe.title|raw}}>
+            </a>
+          </div>
+
+          <h3 class="products-category-title">
+            <a href="{{recipe.link}}" hreflang="en">{{recipe.title|raw}}</a>
+          </h3>
+
+          <a class="tostitos-btn tostitos-btn-yellow" href="{{recipe.link}}">{{'View Recipe'|t}}</a>
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+
+{% if featured_on|length > 0 %}
+<section class="tostitos-related-block tostitos-nocarousel-block">
+  <div class="tostitos-section-container">
+    {% if featured_on  %}
+      <h2> {{'Featured On'|t}} </h2>
+    {% endif %}
+
+    <div class="tostitos-related-product-wrapper tostitos-nocarousel-container">
+      {% for recipe in featured_on %}
+
+            <div class="tostitos-related-product tostitos-nocarousel-box">
+               <a href="{{recipe.link}}">
+                  <div class="img">
+                      <img src="{{recipe.image_url}}" alt={{recipe.title|raw}}>
+                  </div>
+
+                  <h3 class="products-category-title">
+                    {{recipe.title|raw}}
+                  </h3>
+                </a>
+
+{#              <a class="tostitos-btn tostitos-btn-yellow" href="{{recipe.link}}">{{'View Occasion'|t}}</a>#}
+
+                <form action="{{recipe.link}}">
+                    <button class="tostitos-btn tostitos-btn-yellow" type="submit">{{'View Occasion'|t}}</button>
+                </form>
+            </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<section id="coupon" class="tostitos-coupon-block" style="bottom:0;">
+  <div class="tostitos-section-container two-panel-block">
+    {{ coupon_block|t|raw }}
+  </div>
+</section>
+
+{# <section class="social-video">
+	{{block_video|raw}}
+</section> #}

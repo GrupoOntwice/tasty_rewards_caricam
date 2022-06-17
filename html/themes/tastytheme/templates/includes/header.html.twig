@@ -1,0 +1,48 @@
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+{# Navbar #}
+{%
+      set navbar_classes = [
+        'navbar',
+        ad_banner_img ? 'scroll-ads-banner' : '',
+        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+        theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
+      ]
+%}
+{% set smaller_logo = '/officialrules' in url('<current>')|render|render or '/my-account' in url('<current>')|render|render %}
+
+{% if ad_banner_img %}
+    <section id="ads-unit" class="ads-unit-index" style="display:none;">
+        <div class="ads-unit-wrapper">
+            <a href="{{ad_banner_link}}" class="ads-banner" target="_blank">
+                <img src="{{ ad_banner_img }}" alt="{{ad_banner_name}}"/>
+            </a>
+            <span class="ads-name hidden">{{ad_banner_name}}</span>
+            <button class="modal__close-ads-banner">
+                <img class="modal__close-ads-btn-img" src="/themes/tastytheme/src/images/close.png" alt="Close button">
+            </button>
+        </div>
+     </section>
+{% endif %}
+<header{{ navbar_attributes.addClass(navbar_classes) }}  id="tasty-theme" role="banner">
+    <div class="header__logo-container {{smaller_logo ? 'smaller'}}">
+
+        {% if logopath %}
+            <a href="{{ path('<front>') }}" class="page_top">
+                <img class="header__logo" src="{{logopath}}" alt="{{'Logo of Tasty Rewards'|t}}" />
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="header__mobile-topnav">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+    </div>
+{% set coupon_class = is_brandcoupon == 1 ? 'coupon-brand' : '' %}
+
+    <div class="mobile-menu-items menu-bar-{{language}} {{coupon_class}}">
+            {% if page.menu %}
+                {{ page.menu }}
+            {% endif %}
+    </div>
+</header>

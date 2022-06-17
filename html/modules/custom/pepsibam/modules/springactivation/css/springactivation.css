@@ -1,0 +1,644 @@
+/*img {*/
+/*  width: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+.noMobile-sm{display: block;}
+.noDesktop-sm{display: none;}
+
+.font-25{font-size: 25px}
+
+.cook-time-img{
+  width: 52%;
+  height: auto;
+}
+
+.springactivation-rating-img {
+  width: 36%;
+}
+
+.springactivation-btn, .springactivation-back-btn{
+  background-color: #db1d2c;
+  padding: 12px 30px;
+  box-shadow: 0 3px 0 0 #b81321;
+  border-radius: 3px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: GtWalsheimBold;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  z-index: 99999;
+}
+
+.springactivation-btn {
+  width: 210px;
+  min-width: 150px;
+}
+
+.springactivation-back-btn {
+  width: 110px;
+  min-width: 100px;
+}
+
+.springactivation-recipe-header {
+  z-index: -1;
+}
+
+.spring-activation-btn:hover, .springactivation-back-btn:hover {
+  background-color: #b81321;
+  transition: all 0.2s;
+  color: white;
+  text-decoration: none;
+}
+
+.springactivation-related-recipes {
+  padding-top: 32px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.springactivation-recipes, .springactivation-recipe-info, .springactivation-coupon-padding, .springactivation-recipe-header {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.springactivation-snacks {
+  background-image: url("/themes/tastytheme/src/images/spring-activation/fav-snack-bg.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: -32px;
+}
+
+.h3-fav-snack {
+  font-size: 25px;
+  color: white;
+  line-height: 1;
+}
+
+.spring-recipes {
+  position: relative;
+  display: flex;
+}
+
+.springactivation-nocarousel-container, #coupons {
+  z-index: 99;
+}
+
+.spring-activation-heading-div {
+  height: 75px;
+}
+
+.chips-top-left {
+  position: absolute;
+  left: 0;
+  text-align: left;
+}
+
+.chips-top-right {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+.chips-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 1%;
+  text-align: right;
+}
+
+.chips-bottom-left {
+  position: absolute;
+  left: 0;
+  bottom: 1%;
+  text-align: left;
+}
+
+.bg-chips-img {
+  width: 75%;
+  height: auto;
+}
+
+/*Recipe Page*/
+
+.springactivation-recipe-back-btn {
+  position: absolute !important;
+  left: 2%;
+  text-align: left;
+  margin-top: 16px;
+}
+
+.springactivation-recipe-info-instructions ol, .springactivation-recipe-info-instructions ul {
+  list-style: decimal !important;
+  padding-left: 16px;
+}
+
+.springactivation-subtitle-container p {
+  color: black;
+}
+
+.springactivation-recipe-info-ingredients li, .springactivation-recipe-info-instructions li {
+  padding-bottom: 8px;
+}
+
+.springactivation-recipe-info-ingredients li:last-of-type, .springactivation-recipe-info-instructions li:last-of-type {
+  padding-bottom: 0;
+}
+
+/*
+  Media Queries
+*/
+
+@media only screen and (max-width: 767px) {
+
+  .noMobile-sm{display: none;}
+  .noDesktop-sm{display: block;}
+
+  .springactivation-recipe-back-btn {
+    margin-top: 8px;
+  }
+
+  .fav-snack-copy-padding {
+    padding: 0 15px !important;
+  }
+
+  .bg-chips-img {
+    width: 50%;
+  }
+
+  .chips-bottom-right, .chips-bottom-left {
+    display: none;
+  }
+
+  .springactivation-recipe-info-instructions {
+    padding-top: 16px;
+  }
+
+  .springactivation-video {
+    padding-left: 15px;
+    padding-right: 5px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .chips-bottom-right, .chips-bottom-left {
+    bottom: -5px !important;
+  }
+
+  .springactivation-coupon-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .fav-snack-copy-padding {
+    padding-left: 15px !important;
+  }
+
+  .springactivation-recipe-info-ingredients {
+    padding-right: 8px;
+  }
+
+  .springactivation-recipe-info-instructions {
+    padding-left: 8px;
+  }
+
+}
+
+
+@media only screen and (min-width: 769px) {
+
+  .springactivation-d-md-flex {
+    display: flex;
+  }
+
+}
+
+/************************ makeyourspringspread *********************************/
+
+
+.center-left, .center-right {
+  position: absolute;
+  top: 50%;
+}
+
+.center-left img {
+  width: 165px;
+}
+
+.center-right img {
+  width: 120px;
+}
+
+.center-right {
+  left: 91%;
+}
+
+.recipe-title{
+  height:90px;
+  font-size: 20px;
+}
+
+.prep-time img {
+  width: 60px;
+  height: 70px;
+}
+
+.cook-time img {
+  width: 58px;
+  height: 70px;
+}
+
+.rating-img img {
+  width: 105px;
+  height: 70px;
+}
+
+.springactivation-recipe-icons-full {
+  background-color: #0D4CAB;
+}
+
+.springactivation-recipe-info-ingredients {
+  background-image: linear-gradient(#0D4BA8, #0C3472);
+  padding: 30px !important;
+}
+
+.springactivation-recipe-info {
+  padding-left:0 !important
+}
+
+.springactivation-recipe-info-instructions {
+  margin-left: 8rem;
+  padding-top: 30px;
+}
+
+.spring-video {
+  margin-left: 80px;
+}
+
+.icons-container {
+  padding: 0 6px 0 0 !important;
+}
+
+.springactivation-recipe-info-ingredients ul li, .springactivation-recipe-info-ingredients ul li span a {
+  color:#fff;
+}
+
+.springactivation-recipe-info-ingredients {
+  padding: 30px 0;
+}
+
+.social-share-trigger img {
+  width: 25px;
+}
+
+.coupon--leftcol {
+  height: 450px;
+  background-image: url('/themes/tastytheme/src/images/spring-activation/springspread/coupon-img.png');
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#recipe {
+  position: relative;
+}
+
+.springactivation-recipe-header h2 {
+  width: 75%;
+  margin: auto;
+}
+.springactivation-recipe-info-instructions {
+  line-height: 1.3;
+}
+
+.down-arrow {
+  width: 67%;
+  margin-top: -20px;
+}
+
+.springactivation-related-product-wrapper.springactivation-nocarousel-container {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.springactivation-nocarousel-box .img {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-radius: 1px;
+  height: 220px;
+}
+
+.springactivation-related-product.springactivation-nocarousel-box {
+  width: 25%;
+  margin: 20px 2% 5% 2%;
+  text-align: center;
+  position: relative;
+}
+
+.springactivation-section-container h2 {
+  text-align: center;
+}
+
+.text-blue {
+  color: #0E4CAA !important;;
+}
+
+.recipe-category-title {
+  height: 75px;
+}
+
+.social-container {
+  margin-top: 10px;
+}
+
+.social {
+  flex-direction: column;
+}
+
+.springactivation-recipe-info-instructions p {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.spring-recipes, #recipe, .springactivation-nocarousel-block {
+  background-image: url("/themes/tastytheme/src/images/spring-activation/springspread/springactivation-bg.png");
+  z-index: 0;
+}
+
+.spring-recipes {
+  margin-top: -50px;
+}
+
+section#banner{
+  z-index: 9;
+  position: relative;
+}
+
+.springactivation-recipe-info-ingredients li a {
+  color: #fff;
+  text-decoration: underline;
+}
+.coupon--container-bg {
+  background-image: url('/themes/tastytheme/src/images/spring-activation/springspread/coupon-bg.png') ;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.icons {
+  background-color:#0D4CAB;
+  height:100%;
+}
+
+.description p {
+  font-size: 16px;
+}
+
+.shop_now.snacks-com-updates > a > img {
+  width: 60%;
+}
+
+.description {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .coupon--container-bg {
+    background-image: url('/themes/tastytheme/src/images/spring-activation/springspread/coupon-bg-mbl.png') ;
+    padding: 50px 0;
+  }
+
+  .center-right {
+    left: 70%;
+  }
+
+  .springactivation-nocarousel-box {
+    width: 80%;
+    margin:auto;
+  }
+
+  .springactivation-recipe-info-ingredients {
+    width: 85% !important;
+    margin: -2px auto;
+}
+  .icons-container {
+    width: 85% !important;
+    padding: 0 !important;
+    margin: auto;
+  }
+
+  .springactivation-recipe-info {
+    padding: 0 !important;
+  }
+
+  .springactivation-recipe-info-instructions {
+    margin-left: 0;
+    width: 95%;
+    margin:auto;
+  }
+
+  .arrow-container {
+    width: 85%;
+    margin:auto;
+  }
+
+  .down-arrow {
+    width: 100%;
+    margin-bottom: -9px;
+  }
+
+  .recipe-left, .recipe-right {
+    z-index: -1;
+  }
+
+  .recipe-category-title {
+    width:80%;
+    margin:auto;
+  }
+
+  .springactivation-section-container h2 {
+    width:80%;
+    margin: auto;
+  }
+
+  .springactivation-related-product.springactivation-nocarousel-box {
+    margin-left: 0;
+  }
+
+  .related-img {
+    width: 80% !important;
+    margin:auto;
+  }
+
+  /*.banner_slide--text.banner-mobile.white_white.slide-left {*/
+  .banner_slide--text.banner-mobile.slide-left {
+    height:350px;
+    display: flex !important;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  /*.banner_slide--text.banner-mobile.white_white.slide-left p {*/
+  .banner_slide--text.banner-mobile.slide-left p {
+    text-align: center;
+    width: 80%;
+  }
+
+  .banner_slide--text.banner-mobile.white_white.slide-left span{
+    color: #0e4caa !important;
+  }
+  .banner_slide--text.banner-mobile.slide-left span{
+    font-size: 41px !important;
+    text-align: center;
+    /*color: #0e4caa !important;*/
+    font-family: 'GtWalsheimBold';
+    width: 90%;
+  }
+
+  }
+
+
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 992px) {
+
+  .center-right {
+    left: 87%;
+  }
+
+  .springactivation-recipe-info-ingredients {
+    width: 90% !important;
+    margin: -2px auto;
+  }
+
+  .icons-container {
+    width: 90% !important;
+    padding: 0 !important;
+    margin: auto;
+  }
+
+  .down-arrow {
+    width: 100%;
+    margin-bottom: -9px;
+  }
+
+  .arrow-container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .springactivation-recipe-info {
+    padding: 0 !important;
+  }
+
+  .springactivation-recipe-info-instructions {
+    margin-left: 0;
+    width: 95%;
+    margin: auto;
+  }
+}
+
+.img a img {
+width: 80%;
+  margin:auto;
+}
+
+.fa-angle-left:before {
+  content: "\f104";
+  color: #0E4CAA;
+  font-size: 40px;
+  margin-left:-10px !important;
+  margin-top: 1px;
+}
+
+.fa-angle-right:before {
+  content: "\f105";
+  color: #0E4CAA;
+  font-size: 50px;
+}
+
+.slick-next {
+  right: 0 !important;
+  margin-top:-7px
+}
+
+.slick-prev {
+  left: 0 !important;
+}
+
+.slick-dots {
+  display: none !important;
+}
+
+
+
+/*.banner_slide--text.banner-desktop.white_white.slide-left {*/
+.banner_slide--text.banner-desktop.slide-left {
+  height: 450px;
+  width: 45%;
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 150px;
+}
+
+/*.banner_slide--text.banner-desktop.white_white.slide-left p {*/
+.banner_slide--text.banner-desktop.slide-left p {
+  text-align: center;
+  width: 80%;
+}
+
+/*.banner_slide--text.banner-desktop.white_white.slide-left span {*/
+.banner_slide--text.banner-desktop.slide-left span {
+  font-size: 44px !important;
+  width: 600px;
+  text-align: center;
+  font-family: 'GtWalsheimBold';
+  margin-bottom:10px
+}
+
+a.btn_red.js-life-cta {
+  margin-top: 12px;
+}
+
+.springactivation-related-product-wrapper {
+  padding-bottom: 80px;
+}
+
+
+

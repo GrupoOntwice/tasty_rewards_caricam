@@ -1,0 +1,12 @@
+okta:
+  header: true
+  js:
+    # js/okta-sign-in.min.js: {}
+    //global.oktacdn.com/okta-signin-widget/5.5.3/js/okta-sign-in.min.js: { type: external }
+    # //global.oktacdn.com/okta-signin-widget/5.5.3/js/okta-sign-in.min.js: { type: external, attributes: { async: true} }
+
+  css:
+    theme:
+      css/oktasignin.css: {}
+      # css/okta-sign-in.min.css: {}
+      //global.oktacdn.com/okta-signin-widget/5.5.3/css/okta-sign-in.min.css: { type: external }

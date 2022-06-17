@@ -1,0 +1,25 @@
+services:
+  example.route_subscriber:
+    class: Drupal\pepsibam\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  remove_x_frame_options_subscriber:
+    class: Drupal\pepsibam\EventSubscriber\RemoveXFrameOptionsSubscriber
+    tags:
+      - { name: event_subscriber }
+  redirect_usenglish_subscriber:
+    class: Drupal\pepsibam\EventSubscriber\RedirectUsEnglishContent
+    tags:
+      - { name: event_subscriber }
+  pespsibam.texttwig_extension:
+    class: Drupal\pepsibam\TwigExtension\TextTwigExtension
+    tags:
+      - { name: twig.extension }
+  # theme.negotiator.brandstheme:
+  #   class: Drupal\pepsibam\Theme\BrandsThemeNegotiator
+  #   tags:
+  #     - { name: theme_negotiator, priority: -50 }
+#  pespsibam.twig_extension:
+#    class: Drupal\pepsibam\TwigExtension\LangTwigExtension
+#    tags:
+#      - { name: twig.extension }

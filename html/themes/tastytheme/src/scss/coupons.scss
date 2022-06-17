@@ -1,0 +1,113 @@
+section#coupons {
+  background-image: url("/src/images/coupon-bg.png");
+
+  .coupon {
+    &--container {
+      display: flex;
+      width: 80%;
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 60px 0;
+    }
+
+    &--display {
+      //   padding: 40px 30px;
+      flex: 2;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    &--leftcol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &--leftcol-lays {
+      width: 100%;
+    }
+
+    &--leftcoltext {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        display: inline-block;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .price {
+        font-size: $font-size * 5;
+      }
+
+      .dollarsign {
+        position: relative;
+        top: -20px;
+        font-size: $font-size * 2;
+      }
+
+      .off {
+        font-size: $font-size * 2;
+      }
+
+      .coupon-boxed {
+        font-size: $font-size * 2;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        padding: 5px 15px;
+      }
+    }
+
+    &--text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 40px 30px;
+      background-color: white;
+
+      h3,
+      h5,
+      p {
+        text-align: center;
+      }
+
+      h3 {
+        color: $blue;
+        font-weight: bold;
+        font-size: $font-size * 2.25;
+      }
+
+      h5 {
+        font-weight: bold;
+        font-size: $font-size * 1.5;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $break-mobile) {
+    .coupon--container {
+      display: flex;
+      width: 60%;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: $break-small-mobile) {
+    .coupon--container {
+      flex-direction: column;
+    }
+
+    .coupon--leftcol-lays {
+      margin-right: 0;
+    }
+  }
+}

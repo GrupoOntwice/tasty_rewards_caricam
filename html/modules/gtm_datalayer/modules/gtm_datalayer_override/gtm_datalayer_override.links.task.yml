@@ -1,0 +1,9 @@
+entity.gtm_datalayer_override.collection:
+  route_name: entity.gtm_datalayer_override.collection
+  base_route: entity.gtm_datalayer.collection
+  title: Overrides
+  weight: -30
+
+gtm_datalayer_override.entities:
+  class: \Drupal\Core\Menu\LocalTaskDefault
+  deriver: \Drupal\gtm_datalayer_override\Plugin\Derivative\DataLayerOverrideLocalTask

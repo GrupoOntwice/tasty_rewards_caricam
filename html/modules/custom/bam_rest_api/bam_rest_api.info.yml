@@ -1,0 +1,5 @@
+name: BAM - REST API
+type: module
+description: Expose rest API service
+core_version_requirement: ^8.8 || ^9
+package: Custom

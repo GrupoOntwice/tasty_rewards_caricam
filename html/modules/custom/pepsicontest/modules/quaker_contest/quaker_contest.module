@@ -1,0 +1,333 @@
+<?php
+
+/**
+ * @file
+ * Contains pepsicontest.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use CSD\Marketo\Client;
+use Drupal\Core\Link;
+use Symfony\Component\BrowserKit\Cookie;
+use Drupal\pepsicontest\ContestWinnerPicker;
+
+
+//template collection
+function quaker_contest_theme(array $existing, $type, $theme, $path) {
+  return array(
+
+    'cheetos_playgame' => array(
+      'template' => 'contest_playgame',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_comingsoon_template' => array(
+      'template' => 'custom_comingsoon',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_thankyou_template' => array(
+      'template' => 'custom_contest_thankyou',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_claim_thankyou_template' => array(
+      'template' => 'custom_claim_thankyou',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_prizes_template' => array(
+      'template' => 'custom_prizes_list',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_faq_template' => array(
+      'template' => 'custom_faq',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_claim_template' => array(
+      'template' => 'custom_claim',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'custom_landing_template' => array(
+      'template' => 'custom_landing',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+
+    'nintendo_register' => array(
+      'template' => 'nintendo_register',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'custom_contest_signup_template' => array(
+      'template' => 'custom_contest_signup',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'quaker_contest_signup_template' => array(
+      'template' => 'quaker_signup',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+
+    'custom_contest_register_template' => array(
+      'template' => 'custom_contest_register',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'quaker_contest_register_template' => array(
+      'template' => 'quaker_register',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'lays_contest_signup_template' => array(
+      'template' => 'lays_signup',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    'lays_contest_register_template' => array(
+      'template' => 'lays_register',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'quaker_contest_confirmation_template' => array(
+      'template' => 'quaker_confirm',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'quaker_contest_confirmation_winner_template' => array(
+      'template' => 'quaker_winner',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    // 'pepsicontest_processed_template' => array(
+    //   'template' => 'processed',
+    //   'variables' => array(
+    //                     'data' => NULL,
+    //                     ),
+    // ),
+    // 'pepsicontest_thanks_template' => array(
+    //   'template' => 'contestthanks',
+    //   'variables' => array(
+    //                     'data' => NULL,
+    //                     ),
+    // ),    
+      
+  );
+}
+
+function ValidateCodeUPC($value){
+
+  $value = str_replace(":", "",$value); // Remove ":" sign
+
+  // Count number of strings
+  if (strlen($value) != 15 ){
+    return false;
+  }
+
+  $p1 = substr ( $value , 0 , 1);  //1, 2, 3, 4, 5, 6, 7 only
+  if (!is_numeric($p1)) return false;
+  $p1 = (int)$p1;
+  if ($p1 < 1 || $p1 > 7 ) return false;
+
+  $p2_p3 = substr ( $value , 1 , 2); //7T, KT, 08 only
+  if ($p2_p3 != "7T" &&  $p2_p3 != "KT" &&  $p2_p3 != "08" ) return false;
+
+  $p4 = substr ( $value , 3 , 1); //1, 2, 3 only
+  if (!is_numeric($p4)) return false;
+  $p4 = (int)$p4;
+  if ($p4 < 1 || $p4 > 3 ) return false;
+
+  $p5_p6_p7 = substr ( $value , 4 , 3); // 90-206 inclusive
+  if (!is_numeric($p5_p6_p7)) return false;
+  $p5_p6_p7 = (int)$p5_p6_p7;
+  if ($p5_p6_p7 < 90 || $p5_p6_p7 > 206 ) return false;
+  
+  $p8_p9    = substr ( $value , 7 , 2); // 01
+  if ($p8_p9 != "01") return false;
+
+  $p10_p11   = substr ( $value , 9 , 2); // 11, 01 only
+  if ($p10_p11 != "11" &&  $p10_p11 != "01") return false;
+
+  $p12   = substr ( $value , 11 , 1); //1-2 only
+  if (!is_numeric($p12)) return false;
+  $p12 = (int)$p12;
+  if ($p12 < 1 || $p12 > 2 ) return false;
+
+  $p13   = substr ( $value , 12 , 1); //0-9 inclusive
+  if (!is_numeric($p13)) return false;
+  $p13 = (int)$p13;
+  if ($p13 < 0 || $p13 > 9 ) return false;
+
+  $p14   = substr ( $value , 13 , 1); //0-5 inclusive
+  if (!is_numeric($p14)) return false;
+  $p14 = (int)$p14;
+  if ($p14 < 0 || $p14 > 5 ) return false;
+
+  $p15   = substr ( $value , 14 , 1); //0-9 inclusive
+  if (!is_numeric($p15)) return false;
+  $p15 = (int)$p15;
+  if ($p15 < 0 || $p15 > 9 ) return false;
+
+
+  //If positions 2 & 3 are "7T" (Colour coded red), positions 10 & 11 will be "11" (Colour coded red as well)	
+  if ($p2_p3 == "7T" && $p10_p11 != "11") return false;
+
+  //If positions 2 & 3 are "KT" (Colour coded blue), positions 10 & 11 will be "01" (Colour coded blue as well)	  
+  if ($p2_p3 == "KT" && $p10_p11 != "01") return false;
+
+  return true;
+}
+
+function run_contest_seeding(){
+  $winner_picker = new ContestWinnerPicker();
+  $contest_node_staging = Node::load(1871);
+  $winner_picker->do_seeding($contest_node_staging);
+}
+
+function is_cheetos_game(){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, "custom.contest.cheetos.game") !== false  ){
+    return true;
+  }
+  return false;
+
+}
+
+function reallocate_unclaimed_prizes(){
+  $winner_picker = new ContestWinnerPicker();
+  $winner_picker->reset_prizes_quantity();
+}
+
+function is_fritolayquakercontest(){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  if (strpos($route_name, "custom-quaker.contest.signup") !== false 
+      || strpos($route_name, "custom.contest.landing") !== false  )
+  {
+    if (strpos($current_path, 'fritolayquakercontest') !== false )
+    {
+      return 1;
+    }
+  }
+
+  return 0;
+}
+
+function is_custom_contest_page($contest_type = ''){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($route_name, "custom-quaker.contest.signup") !== false 
+      || strpos($route_name, "custom.contest") !== false  )
+  {
+
+    if (!empty($contest_type)){
+       $current_path = \Drupal::service('path.current')->getPath();
+       if ($contest_type == 'nintendo'){
+          if (strpos($current_path, 'fritolaycontest') === false &&
+              strpos($current_path, 'concoursfritolay') === false )
+          {
+            return 0;
+          }
+       } elseif ($contest_type == 'grabsnack') {
+          if (strpos($current_path, 'grabsnackswinswag') === false &&
+              strpos($current_path, 'achetezunsacetgagnez') === false )
+          {
+            return 0;
+          }
+       }
+    }
+    return 1;
+  }
+  
+  return 0;
+}
+
+function simple_hash($str){
+  $hash = base64_encode($str);
+  return substr($hash, 0, 5);
+}
+
+function reset_nintendo_contest_entries(){
+  $em = \Drupal::service('entity_type.manager');
+        
+  $query = $em->getStorage('node')->getQuery()->condition('status', 1)
+          ->condition('type', 'contest')
+          ->condition('field_contest_type', 'nintendo');
+  $results = $query->execute();
+  if (empty($results)){
+    return false;
+  }
+
+  $nids = array_values($results);
+  $contest_id = $nids[0];
+
+  $sql = "SELECT count(*) as cnt from pepsi_microsite_weekly_entries where contest_id = $contest_id";
+
+  $select_count = \Drupal::database()->query($sql); 
+  $result =  $select_count->fetchAll(); 
+  if (empty($result)){
+    return 1;
+  }
+
+  $num_records = $result[0]->cnt;
+  $records_deleted = 0;
+  $limit = 100;
+  $loop_counter = 0;
+  while ($num_records >= $records_deleted && $loop_counter < 200){
+    // just to be safe we want to stop after 50 iterations
+    $loop_counter++;
+
+    $sql = "DELETE FROM  pepsi_microsite_weekly_entries WHERE contest_id = $contest_id limit $limit";
+
+    $select = \Drupal::database()->query($sql);
+    try{
+      $result = $select->execute();
+      $records_deleted += $limit;
+    } catch(\Exception $e){
+      log_var("", "Nintendo contest daily entries could not be reset");
+      break;
+    }
+
+  }
+
+
+
+}

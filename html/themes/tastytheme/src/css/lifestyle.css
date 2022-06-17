@@ -1,0 +1,135 @@
+section#lifestyle .lifestyle_slide {
+  /*display: flex !important;*/
+  align-items: center;
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 580px;
+  padding-top: 150px;
+}
+
+section#lifestyle .lifestyle_slide--text {
+  width: 50%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
+  bottom: 60px;
+  position: relative;
+}
+
+section#lifestyle .lifestyle_slide--text img {
+  display: block;
+  margin: 0;
+  width: 92px;
+  height: 80px;
+}
+
+section#lifestyle .lifestyle_slide--text h2,
+section#lifestyle .lifestyle_slide--text p {
+  text-align: center;
+}
+
+section#lifestyle .lifestyle_slide--text span {
+  color: white;
+  font-size: 44px !important;
+  width: 600px;
+  text-align: center;
+  font-family: 'GtWalsheimBold';
+}
+
+section#lifestyle .lifestyle_slide--text p {
+  color: white;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+section#lifestyle .lifestyle_slide--text.slide-center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section#lifestyle .lifestyle_slide--text.slide-left {
+  text-align: left;
+  margin-right: auto;
+}
+
+section#lifestyle .lifestyle_slide--text.slide-right {
+  text-align: right;
+  margin-left: auto;
+  padding-right: 20%;
+}
+
+section#lifestyle .lifestyle-detail__article {
+  max-width: 1024px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  padding: 30px 20px 0 20px;
+}
+
+section#lifestyle .lifestyle-detail__article a{
+  text-decoration: underline;
+}
+
+section#lifestyle .lifestyle-detail__article strong,
+section div.field--item strong {
+  font-weight: bold !important;
+}
+
+section#lifestyle .lifestyle-detail__article h2,
+section#lifestyle .lifestyle-detail__article h1 {
+  color: #0e4caa;
+  font-weight: bold;
+  font-size: 48px;
+  width: 100%;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__article-paragraph {
+  width: 400px;
+  width: 100%;
+  line-height: 1.4;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__article-paragraph-number {
+  color: #0e4caa;
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__article-paragraph-list li {
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__article-paragraph-bolder {
+  font-weight: bold;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__social-media {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 60px;
+  width: 100%;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__social-media a {
+  display: flex;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__social-media img {
+  width: 4%;
+  height: 100%;
+  margin: 0px 5px;
+}
+
+section#lifestyle .lifestyle-detail__article .lifestyle-detail__social-media .lifestyle-detail__social-media-wrap-paragraph {
+  color: #0e4caa;
+  font-weight: bold;
+  margin-right: 10px;
+}

@@ -1,0 +1,35 @@
+{% set url_shop  = language=='fr'? shoplink ~'/home?lang=fr-ca' : shoplink ~'/home?lang=en-ca' %}
+{% set url_changepassword  = language=='fr'? shoplink ~'/changepassword/fr-ca' : shoplink ~'/changepassword/en-ca' %}
+
+{% if not logged_in  %}
+        {% include '@brandstheme/includes/signin-signup.html.twig' %}
+        <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+      {% else %}
+          {% set link_title = "My Account 1" %}
+          {% set link_url = path('pepsibam.updateprofile') %}
+          {% set hello_msg = "Hello,"|t   %}
+
+          {% set link_title1 = "Logout" %}
+          {% set link_url1 = "/en/user/logout" %}
+          {% if language=='en' or language=='fr' %}
+            <div class="dropdown">
+              <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+              <div class="dropdown-content">
+                <a href="{{link_url|t}}">{{link_title|t}}</a>
+                {% if socialsource is empty %}
+                  <a href="{{url_changepassword }}">{{ 'Change Password'|t }}</a>
+                {% endif %}
+                <a class="jslogoutca" href="#">{{link_title1|t}}</a>
+              </div>
+            </div>
+            <a href="{{ url_shop }}" class="btn_blue" >{{'Shop'|t}}</a>
+          {% else %}
+            <div class="dropdown">
+              <a class="dropbtn secondary first last"><span class="pink">{{hello_msg}}</span> {{ user_firstname }}!</a>
+              <div class="dropdown-content">
+                <a href="{{link_url|t}}">{{link_title|t}}</a>
+                <a class="jslogout" href="{{link_url1|t}}">{{link_title1|t}}</a>
+              </div>
+            </div>
+          {% endif %}          
+{% endif %}

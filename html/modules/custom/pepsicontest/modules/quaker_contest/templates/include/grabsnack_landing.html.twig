@@ -1,0 +1,147 @@
+{{ attach_library( 'quaker_contest/grabsnack' ) }}
+
+<section class="grabsnack-contest-banner ">
+  <div class = "container-fluid">
+    <div class = "row p-5 landing-banner">
+
+
+        <div class = "col-lg-6 grabsnack-prizes d-flex" >
+          {% if data.langcode == 'en' %}
+            <img class="decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/win-swag.png" alt = "grabsnack-winswag"/>
+          {% elseif data.langcode == 'fr' %}
+            <img class="decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/french-logo.png" alt = "grabsnack-winswag"/>
+          {% endif %}
+
+          <p class = "grabsnack-prize-text text-uppercase montserrat-black"> {{ 'This summer grab a specially marked bag and use the code for your chance to win <sup class = "landing-sup">†</sup> exclusive summer swag!'|t}} </p>
+          <button class = "button-style text-uppercase  js-entercontest opensans-semibold" data-link="{{data.signup_link}}">{{ 'Enter Now'|t }}</button>
+
+        </div>
+
+        <div class = "col-lg-6 text-center">
+          <img class = "mw-100 w-100"  src = "/themes/tastytheme/src/images/grab-snack/Tiles-Prizes-3.png" alt ="grabsnack-prizes"/>
+          <div class = "text-right p-1 prizes-not-as-shown">
+            <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+          </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class = "row  pt-2 pb-5">
+
+        <div class = "col-lg-6 text-center grabsnack-packshots">
+          <img class = "mw-100 w-100" src = "/themes/tastytheme/src/images/grab-snack/upgrade-img.png" alt = "grabsnack-packshots"/>
+        </div>
+        <div class = "col-lg-6 summer-swag">
+          <div class ="summerswag-text-wrap">
+          <h1 class = "text-uppercase montserrat-black blue-font mb-1 ">{{ 'Upgrade your summer swag!'|t }}</h1>
+          <p class = "mb-1 opensans-semibold mb-1">{{ 'We’re giving away exclusive summer swag inspired by your favourite brands — with instant prizes available Every. Single. Week.'|t }}
+          </p>
+          <p class = "opensans-semibold ">{{ 'Just enter the 9-digit code on specially marked bags (look under the printed date on the front) to see if you are eligible to win<sup>†</sup>!'|t }} <br> <br>
+          </p>
+          <a class = "opensans-semibold  color-link" href = "{{data.faq_link}}">{{'Learn more on our FAQ.' |t }}</a>
+
+          <div class = "summer-swag-btn">
+
+          <button class = "button-style text-uppercase opensans-semibold  js-entercontest" data-link="{{data.signup_link}}" style = "width:auto">{{ 'Enter Now'|t }}</button>
+
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+</section>
+<section class="prices-available">
+  <div class = "container-fluid">
+    <div class = "row">
+
+        <div class = "col-lg-6 summer-swag">
+          <div class = "prizes-available-text w-80" >
+            <h1 class = "text-uppercase color-lightblue text-right montserrat-black mb-1 ">{{ 'Hundreds of prizes  available each week!'|t }}</h1>
+            <p class = "mb-0 text-right opensans-semibold">{{ 'Including branded hats, fanny packs, beach balls, wireless speakers, and other limited-edition gear to take your summer to the next level!'|t }}
+
+            </p>
+
+            <div class="text-right prizes-available-btn" style="margin-top: 10px">
+
+              <a class = "opensans-semibold color-link" href = "{{data.prize_link}}">{{ 'Learn more about our Prizes.' |t }}</a> <br>
+              <button class = "button-style text-uppercase opensans-semibold  js-entercontest" data-link="{{data.signup_link}}">{{'Enter Now' |t }}</button>
+            </div>
+
+
+
+
+          </div>
+
+
+
+        </div>
+
+        <div class = "col-lg-6">
+          <img class ="mw-100 w-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-tiles-Prizes.png" alt = "grabsnack-prizes"/>
+
+          <div class = "text-right p-1 prizes-not-as-shown">
+          <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class = "grabsnack-find-code">
+  <div class = "container-fluid">
+    <div class = "row p-5 find-code-contain">
+
+
+        <div class = "col-lg-6 text-center lays-code-pack">
+
+          {% if data.langcode == 'en' %}
+            <img class = "decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/find-code-bubble-en.png" alt = "where-to-find-code"/>
+          {% elseif data.langcode == 'fr' %}
+            <img class = "decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/find-code-bubble-fr.png" alt = "where-to-find-code"/>
+          {% endif %}
+
+          <div class = "brands">
+            <img class = " w-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-find-code.png" alt = "where-to-find-code"/>
+          </div>
+
+        </div>
+
+
+
+        <div class = "col-lg-6 summer-swag text-center">
+          <div class = "text-left m-auto w-100">
+            <div class = "find-code-text">
+
+          <div class = "text-left m-auto">
+            <div class = "find-code-text">
+          <h1 class = "text-uppercase montserrat-black blue-font montserrat-black mb-1 ">{{ 'Where to  <br> find my code'|t }}</h1>
+          <p class = "mb-0 opensans-semibold mb-1">{{ 'Find your 9-digit code located below the “Guaranteed Fresh”<br> statement on the front of specially marked bags!'|t }}
+          </p>
+          <button  class = "button-style text-uppercase opensans-semibold js-entercontest" data-link="{{data.faq_link}}">
+            {{'Have any questions?'|t  }}
+          </button>
+          </div>
+          </div>
+
+    </div>
+  </div>
+</section>
+
+<section class = "p-3 text-center terms-text">
+  <div class = "container-fluid">
+    <p class = "sans-font opensans-regular" style = "padding-top: 2rem">{{ '† No purchase necessary. Open to Canadian residents only, 16+. Mathematical skill-testing question required. Contest Period: June 14, 2021 at 12:00pm (noon) ET
+      to August 8, 2021 at 11:59:59pm ET. Instant Prizes: 771 available per week. See Official Rules for full prize details (ARV $2.49 - $653 each). Odds of winning an
+      instant prize depend on when entry played. Prizes diminish as awarded. Maximum 7 codes per person per week. For Official Rules and prize details,'|t }} <a href = "{{data.rules_link}}" class = "color-black underline " >{{'click here'|t}}</a> <br> <br>
+
+      <a class = "button-style text-uppercase footer-btn" href = "{{data.rules_link}}">{{'Official Rules'|t}}</a>
+    </p>
+  </div>
+</section>

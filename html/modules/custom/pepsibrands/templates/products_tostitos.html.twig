@@ -1,0 +1,17 @@
+<script type="text/javascript">
+language = '{{ data.language }}';
+</script>
+<section id="header-top"></section>
+<section id="product-categories">
+	{# <div class="js-product-carousel"> #}
+  <div class="tostitos-product-category">
+    	{{ drupal_view('product_categories', 'block_tostitos_product_categories') }}
+  </div>
+	{# </div> #}
+</section>
+{#
+<section id="coupon" class="tostitos-coupon-block">
+  <div class="tostitos-section-container two-panel-block">
+    {{ coupon_block|raw }}
+  </div>
+</section> #}

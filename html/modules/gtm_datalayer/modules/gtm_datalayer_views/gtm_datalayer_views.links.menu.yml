@@ -1,0 +1,5 @@
+entity.gtm_datalayer_view.collection:
+  title: Views dataLayers
+  route_name: entity.gtm_datalayer_view.collection
+  parent: entity.gtm_datalayer.collection
+  description: Manage dataLayer Views.

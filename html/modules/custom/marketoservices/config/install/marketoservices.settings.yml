@@ -1,0 +1,11 @@
+marketo:
+#REST
+  client_id: 1212f3f1-6a7c-4b4b-8385-89c7ce9c4084
+  client_secret: nzW8igfbUxRpTopfCJVbGIsxwejYq7FF
+  munchkin_id: 777-OAA-137
+#SOAP  
+  marketoSoapEndPoint: https://777-OAA-137.mktoapi.com/soap/mktows/2_9
+  marketoUserId: MKTOWS_777-OAA-137_1
+  marketoSecretKey: 0528620929884305557733AA2288331288669A629280
+  marketoNameSpace: http://www.marketo.com/mktows/
+  

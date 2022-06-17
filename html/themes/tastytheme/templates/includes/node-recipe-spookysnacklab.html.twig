@@ -1,0 +1,377 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+
+{% set nodeimgurl = file_url(content.field_recipe_image_detail['#items'].entity.uri.value)  ?: '' %}
+{% set nodeimgalt = node.field_recipe_image_detail.alt ?: label %}
+{% set nodetitle = node.label ?: '' %}
+{% set subtitle = node.field_recipe_subtitle.value ?: node.title.value?: '' %}
+{% set brand = node.field_brand.value %}
+{% set how_to_make = node.field_recipe_how_to_make.value %}
+{% set prep_time = node.field_recipe_prep_time.value %}
+{% set cook_time = node.field_recipe_cook_time.value %}
+{% set video = node.field_recipe_video.value %}
+{% set ingredients = node.field_recipe_ingredients.value|raw ?: '' %}
+
+{{ attach_library('brandstheme/tostitos') }}
+{{ attach_library( 'spookysnacklab/spookysnacklabLibrary' ) }}
+<section id="banner" class="tostitos-banner-nocarousel" style="background-image:url({{ nodeimgurl }});padding:150px;">
+  {# <div class="tostitos-banner-nocarousel-overlay"></div>
+  <h1>{{subtitle}}</h1> #}
+</section>
+<script type="text/javascript">
+  document.title = "{{ subtitle|striptags|raw }}";
+</script>
+
+<section id="header-top" class="single-recipe-header-top" style="background-image:url({{ nodeimgurl }})">
+
+  <!-- SCHEMA.ORG -->
+  <meta itemprop="image" content="{{ nodeimgurl }}">
+  <meta itemprop="author" content="Tostitos.ca">
+  <meta itemprop="recipeCuisine" content="Canadian">
+  <meta itemprop="keywords" content="">
+</section>
+
+{# <div class="springactivation-content-background-container-recipesdetails bg-black" > #}
+
+<section id="recipe" class="spookysnacklab-recipe-block">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 spookysnacklab-recipe-back-btn">
+        <a class="spookysnacklab-back-btn spookysnacklab-btn spooky-orange-btn opensans-bold btn-textsize"
+           href="{{ absolute_url }}/en-us/spookysnacklab">
+          &#8592;Back
+        </a>
+      </div>
+
+      <div class="row spookysnacklab-recipe-header">
+        <div class="col-lg-6 padding-top-medium">
+          <h1 itemprop="name" class="yellow taurunum-font">{{ subtitle|raw }}</h1>
+
+          {% if langcode == 'en-us' %}
+            <div class="spookysnacklab-view-content">
+              <p class="banner_slide--ads text-white">Brought to you by
+                {% for image_url in recipe_sponsor %}
+                {% if loop.index > 1  and loop.length == 2 %}
+                  {# We are assuming the rows cannot have more than 2 items #}
+                  <span class="separator text-white"> and </span>
+                {% endif %}
+              <div>
+                <img class="banner_slide--spookysnacklab" src="{{ image_url }}" alt=""/>
+              </div>
+              {% endfor %}
+              </p>
+            </div>
+          {% else %}
+            {{ drupal_view('related_brands', 'page_1') }}
+          {% endif %}
+
+          <div class="spookysnacklab-subtitle-container padding-top text-left">
+            {% if node.body.0.value|striptags is not empty %}
+              <p class="text-white opensans-regular">
+                {{ node.body.0.value | raw }}
+              </p>
+            {% endif %}
+          </div>
+        </div>
+
+
+        {% if video_key|length %}
+          <div class="col-lg-6" id="spookysnacklab-recipe-video">
+            <div class="spookysnacklab-video padding-top-medium">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ video_key }}?&rel=0"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+        {% endif %}
+
+
+        <div class="col-lg-6 padding-top spookysnacklab-icons">
+          <div class="spookysnacklab-recipe-icons {{ video|length ? '' : 'spookysnacklab-recipe-icons-full' }}">
+            <div class="row">
+              {% if prep_time is not empty %}
+                <div class="col-4 text-center padding-top">
+                  <div class="spookysnacklab-recipe-icons-box-img">
+                    <img class="spookysnacklab-prep-recipe"
+                         src="/themes/tastytheme/src/images/spooky-snack-lab/icon-prep.png" alt="Prep time">
+                  </div>
+
+                  <h4 class="text-white padding-top-half">{{ 'Prep Time'|t }} </h4>
+
+                  <p class="text-white padding-top-half">
+                    <time datetime="PT20M" itemprop="prepTime">{{ prep_time }}</time>
+                  </p>
+                </div>
+              {% endif %}
+
+              {% if cook_time is not empty %}
+                <div class="col-4 text-center padding-top">
+                  <div class="spookysnacklab-recipe-icons-box-img icon-cooktime">
+                    <img class="cook-time-img" src="/themes/tastytheme/src/images/spooky-snack-lab/icon-cook.png"
+                         alt="Cook time">
+                  </div>
+
+                  <h4 class="text-white padding-top-half">{{ 'Cook Time'|t }} </h4>
+
+                  <p class="text-white padding-top-half">
+                    <time datetime="PT20M" itemprop="cookTime">{{ cook_time }}</time>
+                  </p>
+                </div>
+              {% endif %}
+
+              <div class="col-4 text-center padding-top">
+                <div class="sprookysnacklab-recipe-icons-box-img">
+                  <img class="spookysnacklab-rating-img"
+                       src="/themes/tastytheme/src/images/spooky-snack-lab/icon-rating.png" alt="rating">
+                </div>
+
+                <h4 class="text-white padding-top-half">{{ 'Rating'|t }}</h4>
+
+                <div class="tostitos-stars reverse-order padding-top-half" data-nid="{{ nid }}">
+                  {% for i in 1..5 %}
+                    <input type="radio" id="star-{{ i }}" name="rate" value="{{ i }}"
+                           {% if i == avg_rating %}checked="checked"{% endif %}>
+                    <label for="star-{{ i }}" title="text">{{ i }}</label>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12 padding-top-medium padding-bottom-medium spookysnacklab-recipe-info">
+        <div class="row">
+          <div class="col-md-6 spookysnacklab-recipe-info-ingredients">
+            <h3 class=" padding-bottom font-25 text-white">{{ 'Ingredients'|t }} </h3>
+            {{ ingredients|raw }}
+          </div>
+
+          <div class="col-md-6 spookysnacklab-recipe-info-instructions">
+            <h3 class=" padding-bottom font-25">{{ 'How to make it'|t }}</h3>
+            {{ how_to_make|raw }}
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+      <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+      <input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+      <div class="col-md-12 text-center padding-bottom-medium center-align-md-dsk">
+        <p class="text-white padding-right-dsk bold opensans-bold snacklab-share">
+          {{ 'Share this recipe'|t }}
+        </p>
+
+
+        <a class="social-share-trigger" data-platform="facebook" href="#">
+          <img src="/themes/tastytheme/src/images/spooky-snack-lab/tr-fa-facebook.png" alt="facebook">
+        </a>
+        <a class="social-share-trigger" data-platform="twitter" href="#">
+          <img src="/themes/tastytheme/src/images/spooky-snack-lab/tr-fa-twitter.png" alt="twitter">
+        </a>
+        {# <a class="" href="https://www.instagram.com/tostitoscanada/" target="_blank">
+            <img src="/themes/brandstheme/src/images/tostitos/social/instagram.png">
+          </a> #}
+        {# <a class="" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">
+            <img src="/themes/brandstheme/src/images/tostitos/social/youtube.png">
+          </a> #}
+        <a class="social-share-trigger" data-platform="pinterest" href="#">
+          <img src="/themes/tastytheme/src/images/spooky-snack-lab/tr-fa-pinterest.png" alt="pinterest">
+        </a>
+        {# <a class=" padding-left" href="mailto:?subject={{ subtitle|raw }}&body={{ current_uri }}">
+          <img src="/themes/tastytheme/src/images/spring-activation/tr-fa-email.png">
+        </a> #}
+        <a href="javascript:window.print()">
+          <img src="/themes/tastytheme/src/images/spooky-snack-lab/tr-fa-print.png" alt="print">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% if related_recipes|length > 0 %}
+    <section class="spookysnacklab-related-block padding-bottom-medium-dsk">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12 text-center">
+            {% if related_recipes|length %}
+              <h2 class="yellow"> {{ 'Related Recipes'|t }} </h2>
+            {% endif %}
+          </div>
+
+          <div class="row text-center spookysnacklab-related-recipes">
+            {% for recipe in related_recipes %}
+              {# <div class="tostitos-related-product tostitos-nocarousel-box"> #}
+              <div class="col-md-4 spooky-related-recipe" style="padding: 20px;">
+                <a class="" aria-label="related-recipe-link" href="{{ recipe.link }}">
+                  <div class="related-recipe-img" style="background-image: url('{{ recipe.image_url }}')"></div>
+
+                  {# <img class="w-100" src="{{ recipe.image_url }}" alt="spookysnacklab"> #}
+                </a>
+
+
+                <h3 class="products-category-title padding-top padding-bottom font-25">
+                  <a class="yellow spookysnacklab-related-title" href="{{ recipe.link }}"
+                     hreflang="en">{{ recipe.title|raw }}</a>
+                </h3>
+
+                <a class="spookysnacklab-btn m-auto spooky-orange-btn"
+                   href="{{ recipe.link }}">{{ 'View Recipe'|t }}</a>
+                {# </div> #}
+              </div>
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  {% endif %}
+</section>
+{# </div> #}
+
+
+
+
+
+
+{# {% if featured_on|length > 0 %} #}
+{# <section class="tostitos-related-block tostitos-nocarousel-block"> #}
+{# <div class="tostitos-section-container"> #}
+{# {% if featured_on %} #}
+{# <h2> {{ 'Featured On'|t }} </h2> #}
+{# {% endif %} #}
+
+{# <div class="tostitos-related-product-wrapper tostitos-nocarousel-container"> #}
+{# {% for recipe in featured_on %} #}
+{# <div class="tostitos-related-product tostitos-nocarousel-box"> #}
+{# <div class="img"> #}
+{# <a class="" href="{{ recipe.link }}"> #}
+{# <img src="{{ recipe.image_url }}" alt="lays"> #}
+{# </a> #}
+{# </div> #}
+
+{# <h3 class="products-category-title"> #}
+{# <a href="{{ recipe.link }}" hreflang="en">{{ recipe.title|raw }}</a> #}
+{# </h3> #}
+
+{# <a class="tostitos-btn tostitos-btn-yellow" href="{{ recipe.link }}">{{ 'View Occasion'|t }}</a> #}
+{# </div> #}
+{# {% endfor %} #}
+
+{# </div> #}
+
+{# </div> #}
+{# </section> #}
+{# {% endif %} #}
+
+{# <section id="coupon" class="tostitos-coupon-block" style="bottom:0;"> #}
+{# <div class="tostitos-section-container two-panel-block"> #}
+{# #}{# {{ coupon_block|t|raw }} #}
+{# </div> #}
+{# </section> #}
+
+<section id="coupons">
+  <div class="coupon--container-bg-desktop"
+       style="background-image: url(/themes/tastytheme/src/images/spooky-snack-lab/spooky-snack-lab-coupon-bg.png);">
+    {# <div class="coupon--container"> #}
+    <div
+      class="container spookysnacklab-d-md-flex padding-top-medium-dsk padding-bottom-medium-dsk spookysnacklab-coupon-padding">
+      <div class="coupon--display">
+        <a href="/en-us/coupons">
+          <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+            <img id="spooky-coupons" alt="the season for savings" data-entity-type="file"
+                 src="/themes/tastytheme/src/images/spooky-snack-lab/coupon-img.png">
+            {# <img id="spooky-cheetos" alt="tis the season for savings" data-entity-type="file" src="/themes/tastytheme/src/images/spooky-snack-lab/spooky-snacklab-cheetos.png"> #}
+          </div>
+        </a>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <h3 class="text-purple transat-font text-uppercase"
+            style="font-size:2em;">{{ 'Spooktacular <br> savings' }}</h3>
+        <p class="opensans-bold text-purple ">{{ 'These offers are all treat,<br class="noMobile-sm">no trick.' }}</p>
+
+        <a class="spookysnacklab-btn opensans-bold spooky-orange-btn btn-textsize" href="/en-us/coupons">Get My
+          Coupon*</a>
+        <p class="coupon-disclaimer opensans-regular">*Coupons available while quantities last.</p>
+      </div>
+    </div>
+  </div>
+  {# {{ drupal_block('couponblockcallout') }} #}
+</section>
+
+{# <section class="social-video">
+	{{block_video|raw}}
+</section> #}
+
+

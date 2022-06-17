@@ -1,0 +1,147 @@
+<?php
+
+use Drupal\Core\Entity\EntityForm;
+
+/*
+|--------------------------------------------------------------------------
+| HOOK
+|--------------------------------------------------------------------------
+*/
+
+function pinterestipes_node_insert($node)
+{
+	post_to_pinterest($node);
+}
+
+/*
+|--------------------------------------------------------------------------
+| MODIFY EDIT FORMULARY
+|--------------------------------------------------------------------------
+*/
+
+function pinterestipes_form_alter(&$form, $form_state)
+{
+	$form_object = $form_state->getFormObject();
+	if ($form_object instanceof EntityForm) {
+		$node = $form_object->getEntity();
+		$entityType = $node->getEntityTypeId();
+		if ($entityType !== 'node') return;
+		if (!$node || $node->isNew()) return;
+		$type = $node->getType();
+		if ($type !== 'recipe') return;
+
+		$form['pinterest'] = array(
+			'#type' => 'fieldset',
+			'#title' => 'Pinterest',
+			'#weight' => 100,
+			'#collapsible' => TRUE,
+			'#collapsed' => TRUE,
+			'#group' => 'additional_settings'
+		);
+
+		$form['pinterest']['button_' . 1] = array(
+			'#type' => 'submit',
+			'#submit' => array('post_to_pinterest_from_form'),
+			'#value' => 'Post to Pinterest',
+			'#board' => 'Recipes'
+		);
+	}
+}
+
+/*
+|--------------------------------------------------------------------------
+| POST
+|--------------------------------------------------------------------------
+*/
+
+function post_to_pinterest_from_form($form, $form_state)
+{
+	$form_object = $form_state->getFormObject();
+	if (!$form_object instanceof EntityForm) return;
+
+	$node = $form_object->getEntity();
+	post_to_pinterest($node);
+}
+
+function post_to_pinterest($node)
+{
+	$iftttKey = \Drupal::config('pinterestipes.settings')->get('pinterest_ifttt_key');
+	if (!$iftttKey) return;
+	if (!$node->isPublished()) return;
+	$type = $node->getType();
+	if ($type !== 'recipe') return;
+	$brand = $node->field_brand_website->value;
+	if (strtolower($brand) != 'tostitos') return;
+
+	// @TODO: Add a setting that allows to disable the 
+	// module when importing a csv
+	$config = \Drupal::service('config.factory')->getEditable('pepsibrand_content_import.settings');
+	$status = $config->get('status');
+	if (!empty($status) )
+		// if node_insert is triggered by a csv import, we should ignore it
+		return;
+
+	$language = $node->language()->getId();
+
+	// IFTTT parameters
+	$webhookName = $language === 'en' ? 'recipe_posted' : 'recipe_posted_fr';
+	$url = 'https://maker.ifttt.com/trigger/' . $webhookName . '/with/key/' . $iftttKey;
+	$board = $language === 'en' ? 'Recipes' : 'Recettes';
+
+	// Image
+	// If the image is not set, we return
+	$imageEntity = $node->field_recipe_image->entity;
+	if (!$imageEntity) return;
+	$imageUri = $node->field_recipe_image->entity->getFileUri();
+	if (!$imageUri) return;
+
+	$image = file_create_url($imageUri);
+
+	// Recipe URL
+	$options = ['absolute' => TRUE];
+	$url_object = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $node->id()], $options);
+	$url = $url_object->toString();
+
+	$parameters = array(
+		'value1' => $image,
+		'value2' => $board,
+		'value3' => $url
+	);
+
+	echo 'Posting ' . $node->title . ' to ' . $board . '<br>';
+
+	postToUrlWithJsonBody($url, $parameters);
+}
+
+/*
+|--------------------------------------------------------------------------
+| HELPERS
+|--------------------------------------------------------------------------
+*/
+function postToUrlWithJsonBody($url, $parameters)
+{
+
+	// Setup cURL
+	$ch = curl_init($url);
+	curl_setopt_array($ch, array(
+		CURLOPT_POST => TRUE,
+		CURLOPT_RETURNTRANSFER => TRUE,
+		CURLOPT_HTTPHEADER => array(
+			'Content-Type: application/json'
+		),
+		CURLOPT_POSTFIELDS => json_encode($parameters)
+	));
+
+	// Send the request
+	$response = curl_exec($ch);
+
+	// Check for errors
+	if ($response === FALSE) {
+		die(curl_error($ch));
+	}
+
+	// Decode the response
+	$responseData = json_decode($response, TRUE);
+
+	return $responseData;
+}

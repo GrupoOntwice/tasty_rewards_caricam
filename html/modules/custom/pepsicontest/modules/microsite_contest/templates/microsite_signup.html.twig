@@ -1,0 +1,274 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    window.upc_error_msg = "{{'Sorry, your UPC could not be verified. Please double check that you entered it correctly and try again' | t}}";
+// language = '{{ data.language }}'
+
+// {% if logged_in %}
+//     {% set newregister = 0 %}
+// {% else %}
+//     {% set newregister = 1 %}
+// {% endif %}
+
+</script>
+{{ attach_library( 'microsite_contest/registration' ) }}
+{{ attach_library( 'microsite_contest/form' ) }}
+{% set newregister = data.is_loggedin? 0 : 1 %}
+
+<section id="banner">
+    <div class="banner_slide">
+        <div class="banner-desktop open_modal_btn" style="background-image: url('{{ file_url(data.headerimage) }}');">
+            <div class="banner_slide--text {{class_pos}} contest-banner-text">
+            </div>
+        </div>
+        <div class="banner-mobile open_modal_btn" style="background-image: url('{{ file_url(data.headermobileimage) }}');">
+            <div class="banner_slide--text slide-left {{class_pos}}">
+            </div>
+        </div>
+        <div class="arrow-section-general"></div>
+    </div>
+</section>
+
+<section class="block__intro">
+    <div class="contest_page_content_block">
+        <div class="intro_img_container">
+            <img src="/themes/tastytheme/src/images/contest/img_description_v3.png" alt="" />
+        </div>
+    </div>
+    <div class="description contest_page_content_block animated-text-block">
+        <h2>{{ "Get together, share a bite, and you’ll have the chance to win<sup style='font-size:0.5em;'>&dagger;</sup> BIG." |t }}</h2>
+        <div class="contest-description">
+            {% if data.description %}
+                {{data.description|raw}}
+            {% endif %}
+
+            <button class="contest-detail__sign-up-button open_modal_btn" type="button">
+                {{ 'Enter Now'|t }} <span class="arrow_sizing">&#8250;</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<section class="block__prizes">
+    <h2 class="block__prizes-title">
+        {{ "You could win<sup style='font-size:0.5em;'>&dagger;</sup>!" | t | raw }}
+    </h2>
+    
+    <div class="contest-prizes animated-prize-boxes">
+    {% for prize in data.prizes %}
+        <div class="contest-detail__prize">
+            <div class="prize_img_container">
+                <img class="" src="{{ file_url(prize.image) }}" alt="">
+            </div>
+
+            <p class="contest-detail__prize-title">{{prize.title |raw}}</p>
+            <div class="contest-detail__prize-description">
+                {{prize.description |raw}}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</section>
+
+<section class="block__info">
+    <div class="block__info-content">
+        <div class="info_col info_col-text">
+            <div class="info_col-text-container">
+                <h2>
+                    {{ "Where to Find My UPC"|t }}
+                </h2>
+
+                <p>
+                    {{ "Find your 12-digit UPC under the barcode on packages of Tostitos<sup style='font-size:10px;'>&reg;</sup> products!"|t }}
+                </p>
+
+                <button class="contest-detail__sign-up-button open_modal_btn hide_mobile" type="button">
+                    {{ 'Enter Now'|t }} <span class="arrow_sizing">&#8250;</span>
+                </button>
+            </div>
+        </div>
+ 
+        <div class="info_col info_col-img">
+            <div class="barcode_img_container">
+                <img src="/themes/tastytheme/src/images/contest/products_barcode.png" />
+            </div>
+
+            <button class="contest-detail__sign-up-button open_modal_btn show_mobile center_info_btn" type="button">
+                {{ 'Enter Now'|t }} <span class="arrow_sizing">&#8250;</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="contest-detail__legal-footer">
+        {{data.legal_footer|raw?:''}}
+    </div>
+</section>
+
+<div class="modal_backdrop {{data.submitted?'modal_open':'modal_closed'}}">
+</div>
+
+<div class="modal_content {{data.submitted?'modal_open':'modal_closed'}} ">
+    <div class="close_btn_container">
+        <img class="modal_content_close" 
+            src="/themes/tastytheme/src/images/close.png" alt="Close button">
+    </div>
+
+    <h3 class="modal_content_title">
+        {{ 'Enter the Contest' | t }}
+    </h3>
+    <p class="modal_content_subtitle">
+        <span class="red">*</span> {{ 'Indicates required field' | t }}
+    </p>
+
+    <form class="tostitos-form" data-toggle="validator" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+        <input type="hidden" name="newregister"  value="{{newregister}}">
+        <input type="hidden" name="nb_upc_code" id="nb_upc_code"  value="{{data.nb_upc_code?:1}}">
+        <div class="contest-detail__user-upc-code">
+            <input type="text" class="contest-detail__user-upc-code {{data.error.upc_code?'has-error':''}}" name="upc_code" id="upc-code" placeholder="{{ 'UPC Code *'|t }}" value="{{data.upc_code?:''}}" >
+            <span class="help-block err_firstname">{{data.error.upc_code| raw?:''  }}</span>
+        </div>
+        
+        {% if data.nb_upc_code > 1 %}
+            {% set nb = data.nb_upc_code %}
+            {% for i in 2..nb %}
+                <div class="contest-detail__user-upc-code">
+                    <input type="text" class="contest-detail__user-upc-code extra-upc {{data.error.extra_upc_codes[i]?'has-error':''}}" name="{{ 'upc_code_' ~ i }}" id="{{ 'upc-code-' ~ i }}" placeholder="{{ 'UPC Code *'|t }}" value="{{data.extra_upc_codes[i]?:''}}" >
+                    <span class="help-block err_firstname">{{(data.error.extra_upc_codes[i]) | raw?:''  }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <span class="upc-controls">
+            <a href="javascript:void(0)" class="less-upc"> - {{ 'Remove' | t }}</a>
+            <a href="javascript:void(0)" class="more-upc"> + {{ 'Add more' | t }}</a>
+        </span>
+
+        <!-- User data -->
+        <div class="contest-detail__user-name">
+            <div>
+                <input type="text" class="contest-detail__user-first-name  {{data.error.firstname?'has-error':''}}" name="firstname" id="firstname" placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}"  {{data.is_loggedin? 'disabled': ''}}>
+                <span class="help-block err_firstname">{{data.error.firstname| raw?:''  }}</span>
+            </div>
+
+            <div>
+                <input type="text" class="contest-detail__user-last-name {{data.error.lastname?'has-error':''}}" name="lastname" id="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}" {{data.is_loggedin? 'disabled': ''}} >
+                <span class="help-block err_lastname">{{data.error.lastname| raw?:''  }}</span>
+            </div>
+        </div>
+        <div class="contest-detail__user-name">
+            <div>
+                <input type="text" class="contest-detail__user-email {{data.error.email?'has-error':''}}" name="email" id="email" placeholder="{{ 'Email *'|t }}" value="{{data.email?:''}}" {{data.is_loggedin? 'disabled': ''}}>
+                <span class="help-block err_lastname">{{data.error.email| raw?:''  }}</span>
+            </div>
+
+            <div>
+                <input type="text" class="contest-detail__user-postalcode {{data.error.postalcode?'has-error':''}}" name="postalcode" id="postalcode" placeholder="{{ 'Postal Code *'|t }}"  value="{{data.postalcode?:''}}" {{data.is_loggedin? 'disabled': ''}} >
+                <span class="help-block err_postalcode">{{data.error.postalcode| raw?:''  }}</span>
+            </div>
+        </div>
+
+
+        <!-- User Optin data -->
+        <div class="contest-detail__sign-up-select-checkbox">
+            <div class="contest-detail__checkboxes-wrap checkbox_container">
+                <div class="checkbox_div">
+                    <input type="checkbox" class="contest-detail__checkboxes-color"  name='consent' id ='consent' {{data.consent?'checked':''}} >
+                    <label for="clipbox"></label> 
+                    <span class="red">*</span>
+                    <p class="contest-detail__checkbox-text">{{ 'By submitting my entry, I confirm I am at least the age of majority in my province or territory of residence and I agree to participate according to the <a href="/contests/custom/winwithtostitos/rules" target="_blank">Official Rules</a>.' | t }}</p>
+                </div>
+                <span class="help-block err_postalcode">{{data.error.consent| raw?:''  }}</span>
+            </div>
+
+            {% if data.user_optin != "1" %}
+                <p class="sign_up_subtitle">
+                    {{ "Want to stay up to date? Check out the opt-in below." | t }}
+                </p>
+            {% endif %}
+            <div class="contest-detail__checkboxes-wrap {{ data.user_optin != '1' ? 'checkbox_container' : ''}}">
+                {% if data.user_optin == "1" %}
+                    <label for="check" class="hidden"></label>
+                    <p class="contest-detail__checkbox-text">{{ "You are already subscribed to Tasty Rewards&trade; emails."|t }}</p>
+                {% else %}   
+                    <div class="checkbox_div">                                 
+                        <input type="checkbox" class="contest-detail__checkboxes-color"  name='optin' id ='clipbox' {{(data.optin == 1 )?'checked':''}} >
+                        <label for="clipbox"></label> 
+                        <p class="contest-detail__checkbox-text">{{ 'Sign me up for exclusive Tasty Rewards&trade; member offers, contests and more by email from PepsiCo Canada. You can unsubscribe from our emails at any time by clicking the link at the bottom of each email, or by <a href="http://www.pepsico.ca/en/Contacts.html#ConsumerContacts" target="_blank">contacting us</a>.' | t | raw }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <!-- User Optin data end -->
+
+        {% if (data.status == '4') %} {# already reguistered and can't participate today  #}
+            {% if (data.contestentry == '2') %}
+                <h4 style="margin-bottom:10px;"> {{ 'You have already entered this contest today. You can only participate once per day to a limit of 7 entries per week. ' | t  }} </h4>                    
+            {% else %}    
+                <h4 style="margin-bottom:10px;">{{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }}</h4>
+            {% endif %}
+
+            <div class="contest-detail__sign-up-select-button">
+                <a class="contest-detail__sign-up-button" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+            </div>
+        {% else %}
+            {% if (data.status != '1') %} {# already registererd but can participate today, and we don't need to show answers #}
+                <!-- User Questions -->
+                {% for question in data.questions %}
+                    {% set questionid = question.questionid %}
+                    <div class="contest-detail__checkboxes-flavour">
+
+                        <div class="col-xs-12 form-group no-padding contest-detail__checkboxes-flavour-wrap{{attribute(data.error.q, questionid)?'has-error':''}}">
+                            <p class="contest-detail__container-birth">{{ question.subject|raw }} *</p>
+                            <input type="hidden" name="questiontype[{{questionid}}]" value ="{{question.type}}">
+                            <input type="hidden" name="questionid[{{questionid}}]" value="{{questionid}}">
+                            {% if question.type == 'SingleChoice' or question.type == 'TrueFalse'  %}
+                                {% for answer in question.answers %}
+                                    {% set answ = attribute(data.answ, questionid) %}
+                                    {% set chked = ''%}
+                                    {% if loop.index0 in answ %}
+                                        {% set chked = 'checked'%}
+                                    {% endif %}
+                                    <div class="contest-detail__select-checkbox">
+                                        <div class="contest-detail__checkboxes-wrap">
+                                            <input type="radio" class="contest-detail__checkboxes-color" id="checkbox{{ loop.index}}" name="answ[{{questionid}}][]"   value="{{ loop.index}}" />
+                                            <label for="checkbox{{ loop.index}}"></label>
+                                            <p class="contest-detail__checkbox-text-flavour">{{answer.value}}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% elseif question.type == 'MultipleChoice' %}
+                                {% for answer in question.answers %}
+                                    {% set answ = attribute(data.answ, questionid) %}
+                                    {% set chked = ''%}
+                                    {% if loop.index0 in answ %}
+                                        {% set chked = 'checked'%}
+                                    {% endif %}
+                                    <div class="contest-detail__select-checkbox">
+                                        <div class="contest-detail__checkboxes-wrap">
+                                            <input type="checkbox" class="contest-detail__checkboxes-color" id="checkbox1{{ loop.index}}" name="answ[{{questionid}}][{{ loop.index}}]"  />
+                                            <label for="checkbox1{{loop.index}}"></label>
+                                            <p class="contest-detail__checkbox-text-flavour">{{answer.value}}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}    
+                            <span class="help-block err_q">{{  attribute(data.error.q, questionid) }}</span>
+                        </div>
+                    </div> 
+                {% endfor %}
+            {% endif %}
+
+            <div class="blue_bar"></div>
+            
+            <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+
+            <div class="contest-detail__sign-up-select-button">
+                <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                <input id="submitcontest" class="contest-detail__sign-up-button" type="button" value="{{ 'Enter Contest'|t }}">
+            </div>
+            <div class="contest-detail__sign-up-select-button">
+                <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+            </div>             
+        {% endif %}
+    </form>     
+</div>

@@ -1,0 +1,62 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}';
+//-->
+</script>
+{{ attach_library( 'pepsibam/pepsiupdprofilepwdlibrary' ) }}
+<section id="contentBlocks" class="container-fluid pink">
+<form data-toggle="validator" role="form" id='updateprofilepwd-form'>
+    
+       <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>{{ 'Current Password'|t }}</label>
+                <input type="password" name='currentpassword' id='currentpassword' placeholder="{{ 'Enter your current password here..'|t }}" class="form-control">
+                <span class="help-block err_currentpassword"></span>
+            </div>	
+        </div>
+        
+       <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>{{ 'New Password'|t }}</label>
+                <input type="password" name='password' id='password' placeholder="{{ 'Enter your new password here.'|t }}" class="form-control">
+                <em class="grey"><small>{{ 'Must have a minimum of 8 & maximum of 16 characters containing only numbers and letters. Must include at least one number, one uppercase letter, one lowercase letter.'|t }}</small></em> 
+                <span class="help-block err_password"></span>
+            </div>
+       </div>
+       <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>{{ 'Confirm New Password'|t }}</label>
+                <input type="password" name='confirm_password' id='confirm_password' placeholder="{{ 'Confirm your password here.'|t }}" class="form-control">
+                <span class="help-block err_confirm_password"></span>
+            </div>	
+        </div>
+        
+        <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+        <button type="button" class="btn btn-primary btnregister">{{ 'Submit'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+        
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div id='form'>
+                <span class="help-block err_form"></span>
+                </div>
+            </div>	
+        </div>        
+
+        
+        
+    </div>
+</form> 
+</section>
+
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>         

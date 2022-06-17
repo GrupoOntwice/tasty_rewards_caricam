@@ -1,0 +1,23 @@
+Block Type,Description
+about-us,"Ruffles<sup>®</sup>, la marque de croustilles ondulées préférée des Canadiens, offre une texture parfaitement croquante et un goût irrésistible!
+
+Quel que soit le moment – en regardant tranquillement le match avec vos amis ou lors d’une légendaire fête d’avant-match – les croustilles ondulées Ruffles<sup>®</sup> auront la cote auprès de vos invités!
+
+Lorsque vous êtes sur le point de vivre un moment mémorable, assurez-vous d’avoir la collation parfaite pour en profiter pleinement. Quand il s’agit de saveurs, vous pouvez compter sur Ruffles<sup>®</sup>!"
+coupon,"<div class=""container container-coupon center-align-md-dsk"">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left ruffles-coupon-pre-position animate__animated "">
+<div class=""main-coupon-centered-img""><a class=""flaminhot-link"" href=""/coupons"" target=""_self""><img alt=""flaminhot Pack"" src=""/themes/brandstheme/src/images/ruffles/ruffles-products-coupon.png"" /> </a></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading"">Coupon Ruffles<sup>®</sup><br />
+disponible!</h1>
+<a class=""btn_ruffles margin-top"" href=""/coupons"" target=""_self"">Obtenez votre coupon*</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons offerts jusqu’à épuisement des stocks</p>
+</div>
+</div>
+</div>
+</div>"

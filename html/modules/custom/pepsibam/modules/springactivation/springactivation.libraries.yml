@@ -1,0 +1,13 @@
+
+springactivationLibrary:
+  css:
+    theme:
+      css/springactivation.css: {}
+  js:
+    js/springactivation.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+

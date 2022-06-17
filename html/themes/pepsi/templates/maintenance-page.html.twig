@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ *
+ * @ingroup themeable
+ */
+#}
+
+     
+<header role="banner">
+
+    <a id="logo" href="{{ path('<front>') }}">{{ 'TASTY REWARDS'|t }}</a>
+    
+    
+</header>
+
+<div id="content" class="col-sm-12 text-center">
+    <div id="gap"></div>
+    {% if site_name %}
+      <h1 class="pink signika"> {{ title }}</h1>
+    {% endif %}
+    {{ page.content }}
+</div>
+
+{% if page.footer %}
+  <footer role="contentinfo">
+    {{ page.footer }}
+  </footer>
+{% endif %}
+
+

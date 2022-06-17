@@ -1,0 +1,17 @@
+<div class="container gameday-video-container">
+  <div class = " carousel">
+    {% for video in data.videos %}
+      <div class = "gameday-video-box">
+        <div class="gameday-video-preimg">
+          <a href="#" data-key="{{video.key}}" class="activate-video">
+            <img id="video-img" src="https://img.youtube.com/vi/{{video.key}}/maxresdefault.jpg" alt="video-image" />
+          </a>
+        </div>
+        <h3 class = "somerton-regular gameday-video-title"> {{video.title|raw}}</h3>
+        <p class = "somerton-regular ">{{video.body|raw}}</p>
+      </div>
+    {% endfor %}
+</div>
+</div>
+
+

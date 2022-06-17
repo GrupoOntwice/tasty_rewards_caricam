@@ -1,0 +1,77 @@
+{#
+
+block used on the content section size-2x1
+
+#}
+{% if (language == "en") %}
+    {% set view_name = "view.articles.page_1" %}
+{% else %}
+    {% set view_name = "view.articles.page_2" %}
+{% endif %}
+<div id="topLeft" class="size-1x1huge landing-categories-topLeft-wrapper" style="background-image:url('https://static.tastyrewards.ca/images/life-landing-bg-pink.jpg');">
+    <div class="landing-categories-content text-center">
+
+        <img src="https://static.tastyrewards.ca/images/life-landing-icon-pink.png">
+        <h1 class="pink signika uppercase" style="font-weight: 600;">{{"Life"|t}}</h1>
+        <h4 class="pink signika uppercase">{{"Tips, tricks & assorted snacktivities"|t}}</h4>
+        <p>{{"Whether you’ve got a taste for easy snacking tips, entertaining ideas or the latest gossip, we’ve got your eating inspiration right here."|t}}</p>
+        <em>
+            {# categories #}
+            <input type="hidden" name='view_path' id='view_path' value="{{ path(view_name) }}">
+
+            {% set current_path = url("<current>")["#markup"]%}
+            {% if path(view_name)~"/" in current_path %}
+                {% set active_class_all = "" %}
+            {% else %}
+                {% set active_class_all = "active" %}
+            {% endif %}
+            <div class="row">
+                <div class="col-xs-6 col-lg-6">
+                    <select name="category-filters">
+                        <option value="" >{{"-- Categories --"|t}}</option>
+                        {% for item in categ_name %}
+
+                                {% set is_current_categ =  item|lower|replace({" ":"-"}) in current_path|lower|replace({"%e2%80%99":"’"}) %}
+
+                                {% if is_current_categ %}
+                                    {% set active_class = "selected" %}
+                                {% else %}
+                                    {% set active_class = "" %}
+                                {% endif %}
+
+                            {% if item == 'Entertainment News' or item == 'Actualités De Divertissement'  %}
+                            {% else %}
+                                <option value="{{item}}" {{active_class}}>{{item}}</option>
+                            {% endif %}
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-xs-6 col-lg-6">
+                    <select name="category-filters">
+                        <option value="" >{{"-- Brands --"|t}}</option>
+                        {% for item in categ_brand_name %}
+
+                                {% set is_current_categ =  item|lower|replace({" ":"-"}) in current_path|lower|replace({"%e2%80%99":"’"}) %}
+
+                                {% if is_current_categ %}
+                                    {% set active_class = "selected" %}
+                                {% else %}
+                                    {% set active_class = "" %}
+                                {% endif %}
+
+                                <option value="{{item}}" {{active_class}}>{{item|upper}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+               
+                <div class="col-xs-12 col-lg-12">   
+                    <a href="{{path(view_name)}}" class="{{active_class_all}}">{{"All"|t}}</a>&nbsp;&nbsp;
+                    <a id="search_filter" href="" class="btn btn-primary">{{"Search"|t}}</a> 
+                    
+                </div>
+            </div>
+        </em>
+    </div>
+
+</div>

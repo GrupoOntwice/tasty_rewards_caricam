@@ -1,0 +1,104 @@
+    {% if language == 'en-us' or language == 'es-us' %}
+            <!-- Facebook Pixel Code -->
+            <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '895973454135349'); 
+                fbq('track', 'PageView');
+            </script>
+            <noscript>
+             <img height="1" width="1" src="https://www.facebook.com/tr?id=895973454135349&ev=PageView&noscript=1"/>
+            </noscript>
+            <!-- End Facebook Pixel Code -->
+            <script>
+//                console.log("root_path")
+//                console.log("{{root_path}}")
+                var pagetotrack = "{{root_path}}";
+                pagetotrack = pagetotrack==""?"home":pagetotrack;
+                //Track all pages in the track
+            </script>
+            
+            <script>
+                fbq('track', 'ViewContent', {content_name: pagetotrack});
+            </script>
+            
+            {% if root_path == 'thank-you' %}
+            <script>    
+                {# fbq('track', 'CompleteRegistration'); // If it's complete a registration #}
+            </script>
+            {% endif %} 
+            
+            {% if root_path == 'coupons' %}
+            <script>
+                fbq('track', 'AddToWishlist'); // If it's complete a registration
+            </script>
+            {% endif %} 
+            
+            {% if root_path == 'recipes' %}
+            <script>
+                if (pagetotrack == 'recipes') fbq('track', 'AddToCart'); // If it's complete a registration
+            </script>
+            {% endif %} 
+            
+            <script>
+                function fbPixel(event,attr) {
+                  if (event){ 
+                      //console.log("Pixel even fired:" + event);
+                      fbq('track', event, attr);
+                  }
+                }
+            </script>
+            
+            
+        <!-- BEGIN ControlTag for "US - FLNA - Tasty Rewards" -->
+        <script class="kxct" data-id="uawm8yx8f" data-timing="async" data-version="3.0" type="text/javascript">
+          window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+          (function(){
+            var k=document.createElement('script');k.type='text/javascript';k.async=true;
+            k.src=(location.protocol==='https:'?'https:':'http:')+'//cdn.krxd.net/controltag/uawm8yx8f.js';
+            var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+          }());
+          
+            // Note: Requires JavaScript ControlTag to be deployed on the page
+            // Replace ROUTE with one of the following: get, set, remove, portability
+            // BEGIN JavaScript Consent Tag for "PepsiCo, Inc."
+            Krux('ns:pepsicoinc', 'consent:get', {
+              /* Optional for these routes: get, remove, portability
+                 This object is used to send parameters with the API request.
+              */
+              dc: true,
+              al: true,
+              tg: true,
+              cd: true,
+              sh: true,
+              re: true
+            }, function(errors, body) {
+              /* Optional for these routes: set, remove, portability
+                 This function is called just after the request completes.
+                 If errors is not null, then something went wrong. (errors will be an instanceof Error or null.)
+              */
+                if (errors) {
+                            console.error(errors);
+                } else {
+                            console.log('Successfully set consent flags.');
+              }
+            });
+            // END JavaScript Consent Tag                  
+        </script>
+        <!-- END ControlTag -->            
+        
+
+        
+        
+            
+    {% endif %}        
+
+
+    
+    

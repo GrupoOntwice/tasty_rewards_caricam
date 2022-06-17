@@ -1,0 +1,14 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}';
+//-->
+</script>
+{# {{ data.tag | raw }} #}
+<section id="contentBlocks" class="container-fluid">
+    <div class="col-xs-12 text-center">
+        {{ data.coupon_rules | raw}}
+        <br>
+        
+    </div>
+</section>

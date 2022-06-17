@@ -1,0 +1,234 @@
+framework:
+  css:
+    theme:
+      src/css/brands_style.css: {}
+      src/css/brands_navbar.css: {}
+      src/css/brands_normalize.css: {}
+      src/css/brands_structure.css: {}
+      src/css/brands_components.css: {}
+      # src/css/tostitos.css: {}
+      # //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css: {type: external, crossorigin: anonymous}
+      # //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css: {type: external, crossorigin: anonymous}
+      //stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css: { type: external, crossorigin: anonymous}
+
+slickLibrary:
+  css:
+    theme:
+      //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css: {type: external, crossorigin: anonymous}
+      //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css: {type: external, crossorigin: anonymous}
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js: {type: external}
+
+socialfeed:
+  js:
+    src/js/social_feed.js: {}
+
+brands_carousel:
+  js:
+    src/js/brands_carousel.js: {}
+
+fritolayvp:
+  css:
+    theme:
+      src/css/fritolay.css: {}
+      src/css/brands_animation.css: {}
+
+  js:
+    src/js/fritolay_vp.js: {}
+    src/js/TimelineLite.min.js: {}
+
+bare:
+  js:
+    src/js/bare.js: {}
+  css:
+    theme:
+      src/css/bare.css: {}
+      src/css/brands_animation.css: {}
+
+products:
+  js:
+    src/js/product.js: {}
+
+
+popcorners:
+  js:
+    src/js/popcorners.js: {}
+  css:
+    theme:
+      src/css/popcorners.css: {}
+otep:
+  js:
+    src/js/otep.js: {}
+  css:
+    theme:
+      src/css/otep.css: {}
+      src/css/brands_animation.css: { }
+
+pearlmilling:
+  js:
+    src/js/pearlmilling.js: {}
+  css:
+    theme:
+      src/css/pearlmilling.css: {}
+      src/css/brands_animation.css: { }
+
+
+capncrunch:
+  js:
+    src/js/capncrunch.js: {}
+  css:
+    theme:
+      src/css/capncrunch.css: {}
+      src/css/brands_animation.css: { }
+
+recipe_script:
+  js:
+    src/js/brand_recipe.js: {}
+    src/js/recipe_ratings.js: {}
+  # css:
+  #   theme:
+  #     src/css/tostitos.css: {}
+
+tostitos:
+  js:
+    src/js/tostitos.js: {}
+  css:
+    theme:
+      src/css/tostitos.css: {}
+
+crispyminis:
+  js:
+    src/js/crispyminis.js: {}
+  css:
+    theme:
+      src/css/crispyminis.css: {}
+
+smartfood:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/smartfood.js: {}
+  css:
+    theme:
+      src/css/smartfood.css: {}
+
+sunchips:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/sunchips.js: {}
+  css:
+    theme:
+      src/css/sunchips.css: {}
+
+stacys:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/stacys.js: {}
+  css:
+    theme:
+      src/css/stacys.css: {}
+
+cheetos:
+  js:
+    src/js/cheetos.js: {}
+  css:
+    theme:
+      src/css/cheetos.css: {}
+
+doritos:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/doritos.js: {}
+  css:
+    theme:
+      src/css/doritos.css: {}
+
+quaker:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/quaker.js: {}
+  css:
+    theme:
+      src/css/quaker.css: {}
+      src/css/quaker-microsite.css: {}
+      src/css/quaker-daud.css: {}
+
+quaker-landing:
+  js:
+    src/js/quaker-landing.js: {}
+
+
+ruffles:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/ruffles.js: {}
+  css:
+    theme:
+      src/css/ruffles.css: {}
+      src/css/brands_animation.css: { }
+
+brand_recall:
+  css:
+    theme:
+      src/css/brand_recall.css: {}
+
+missvickies:
+  js:
+    src/js/bootstrap_carousel.js: {}
+    src/js/missvickies.js: {}
+  css:
+    theme:
+      src/css/missvickies.css: {}
+      src/css/brands_animation.css: { }
+
+missvickies_flavour:
+  js:
+    src/js/missvickies_flavour.js: {}
+  css:
+    theme:
+      src/css/missvickies_flavour.css: {}
+
+lays:
+  js:
+    src/js/lays.js: {}
+  css:
+    theme:
+      src/css/lays.css: {}
+
+flaminhot:
+  js:
+    src/js/flaminhot.js: {}
+    src/js/bootstrap_carousel.js: {}
+  css:
+    theme:
+      src/css/flaminhot.css: {}
+      src/css/brands_animation.css: {}
+
+quaker_feed_canada:
+  js:
+    src/js/jquery.js: { }
+    src/js/brands_script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+
+global-styling:
+  js:
+    src/js/jquery.js: { }
+    src/js/brands_script.js: {}
+    # //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js: { type: external }
+    //cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js: { type: external }
+    //cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js: { type: external }
+    //cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js: { type: external }
+    //cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js: { type: external }
+    //cdnjs.cloudflare.com/ajax/libs/freewall/1.0.5/freewall.min.js: { type: external }
+
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once

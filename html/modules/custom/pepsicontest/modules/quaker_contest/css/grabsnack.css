@@ -1,0 +1,1512 @@
+
+@font-face {
+  font-family: 'Montserrat-bold';
+  src: url('') format('woff2'),
+  url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-black';
+  src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff2') format('woff2'),
+  url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-regular';
+  src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Regular.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-semibold';
+  src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+  url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Open Sans-regular';
+  src: url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Regular.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-bold';
+  src: url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Bold.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/open-sans/OpenSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans-semibold';
+  src: url('/themes/tastytheme/src/fonts/open-sans/OpenSans-SemiBold.woff') format('woff2'),
+  url('/themes/tastytheme/src/fonts/open-sans/OpenSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sans-font {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.montserrat-black {
+  font-family: 'Montserrat-black';
+}
+
+.montserrat-bold {
+  font-family: 'Montserrat-bold';
+}
+
+.montserrat-semibold {
+  font-family: 'Montserrat-semibold';
+}
+
+.opensans-regular {
+  font-family: 'Open Sans-regular';
+}
+
+.opensans-bold {
+  font-family: 'Open Sans-bold';
+}
+
+.opensans-semibold {
+  font-family: 'OpenSans-semibold';
+}
+
+.text-left {
+  text-align: left;
+}
+
+.m-0auto {
+  margin:0 auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-2{
+  margin-top: 2rem !important;
+}
+
+.p-1{
+  padding:1rem;
+}
+.pb-5 {
+  padding-bottom: 5rem;
+}
+.p-5 {
+  padding:5rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.p-2 {
+  padding:2rem;
+}
+
+.pt-2 {
+  padding-top:2rem;
+}
+
+.w-80 {
+  width: 80%;
+}
+.pt-5 {
+  padding-top: 5rem;
+}
+
+.mw-100 {
+  max-width: 100%;
+}
+
+.blue-font {
+  color:#0C6EA8;
+}
+
+.comingsoon-heading {
+  font-size: 30px !important;
+  line-height: 1.5em;
+}
+
+.brands {
+  margin-left: -5rem !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align:center;
+}
+
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+.text-right {
+  text-align:right;
+}
+
+button-form {
+
+  background-color: #BBBBBB;
+  border: 1px solid #BBBBBB;
+  color: #fff;
+  font-family: 'OpenSans-semibold';
+  padding: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-top: 20px;
+}
+
+button-form:hover{
+  background-color: #F40522;
+  border:1px solid #F40522;
+}
+
+button-form:active{
+  background-color: #F40522;
+  border:1px solid #F40522;
+}
+
+.grabsnack-prize-text {
+  font-size: 22px;
+}
+
+.color-black {
+  color: #000;
+}
+
+.color-link {
+  color:#F30522;
+}
+
+.color-link:hover {
+  color:#F30522;
+  text-decoration: none;
+}
+
+.color-link:active {
+  color:#F30522;
+}
+
+.color-lightblue {
+  color:#17B3F1
+}
+
+.decrease-maxwidth {
+  max-width:75%;
+}
+
+.description h2 {
+  height: fit-content !important;
+}
+
+.button-style {
+  background-color: #F40522;
+  border: 1px solid #F40522;
+  color: #fff;
+  font-family: 'OpenSans-semibold';
+  padding: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-top: 20px;
+}
+
+.contest-detail__quacker-input-col .province {
+  padding: 8px !important;
+  border: 1px solid #ccc;
+
+}
+
+.grabsnack-prizes {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grabsnack-prizes p {
+  width: 70%;
+}
+
+.enter-code-form p {
+  width: 70%;
+}
+
+.grabsnack-packshots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+sup {
+  font-size: 0.7em !important;
+}
+
+button .button-style:hover {
+  background-color: #c8041b !important;
+}
+
+.grabsnack-contest-banner {
+  background-image: url("/themes/tastytheme/src/images/grab-snack/background-landing.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap .contest-detail__checkboxes-color {
+  -webkit-appearance: checkbox !important;
+  -webkit-border-radius: 5px !important;
+}
+
+.lays-code-pack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.span-font {
+  font-size: 12px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.footer-btn:hover {
+  color:#fff;
+  text-decoration: none;
+}
+
+
+
+
+
+.prices-available {
+  background-image: url('/themes/tastytheme/src/images/grab-snack/yellow-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+
+.grabsnack-prize-text {
+  color:#F40522;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.summer-swag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.prizes-available-button {
+  text-align: end;
+}
+
+.summerswag-text-wrap {
+  width: 85%;
+}
+
+.summer-swag {
+  display: flex;
+  align-items: center;
+}
+
+.prizes-available-button  button {
+  text-align: end;
+
+}
+
+.grabsnack-find-code {
+  background-image: url('/themes/tastytheme/src/images/grab-snack/find-code-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.brands img {
+  max-width: 75% !important;
+}
+
+.prizes-available-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto;
+
+}
+
+.faq-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.faq-subtext {
+  text-align: left;
+  margin: 0 auto;
+}
+
+
+/* Prizes */
+
+.prizes-banner {
+  background-image: url('/themes/tastytheme/src/images/grab-snack/prizes-background.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/*.thankyou-banner {*/
+/*  background-image: url('grab-snack/thankyou-banner.png');*/
+/*  background-size: 100%;*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: bottom;*/
+
+/*}*/
+
+.grabsnack-comingsoon{
+  background-image: url('/themes/tastytheme/src/images/grab-snack/coming-soon-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.winswag-image {
+  width: 85% !important;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+
+.grabsnack-contest-faq {
+  background-image: url('/themes/tastytheme/src/images/grab-snack/thankyou-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+}
+
+.grabsnack-prizes p {
+  width: 70%;
+}
+
+.grabsnack-sign-up {
+  background-image: url("/themes/tastytheme/src/images/grab-snack/Background-NEW-V2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+
+/*Signup Form*/
+
+#grabsnack-contest .contest-detail__quacker-input-col{
+  width: 100% !important;
+  padding: 0 10px;
+}
+
+#grabsnack-contest .contest-detail__quacker-input {
+  text-indent: 10px;
+}
+
+#grabsnack-contest .form-col {
+  display:block !important;
+}
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox {
+  margin: 0 !important;
+}
+
+#grabsnack-contest #submitcontest {
+  background-color: #bbbbbb;
+  border: 1px solid #bbbbbb;
+  color: #fff;
+  font-family: 'OpenSans-semibold';
+  padding: 12px;
+  font-size: 18px !important;
+  /* padding-right: 25px; */
+  /* padding-left: 25px; */
+  margin-top: 20px;
+  width: 100%;
+
+}
+
+
+#grabsnack-contest #submitcontest:hover {
+  background-color: #F40522;
+  border: 1px solid #F40522;
+}
+
+#grabsnack-contest .js-form-ready {
+  background-color: #F40522 !important;
+  border: 1px solid #F40522 !important;
+}
+
+#grabsnack-contest #contestsignup-form {
+  width: 70%;
+  padding-top: 3rem;
+  margin: auto;
+}
+
+#grabsnack-contest #submitcontest:active {
+  background-color: #F40522;
+  border: 1px solid #F40522;
+}
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox {
+  padding-bottom: 0 !important;
+  width: 100% !important;
+}
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__checkbox-text-rules {
+  margin-bottom: 0 !important;
+  text-align: left;
+}
+
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap {
+  display: flex;
+  justify-content: end;
+}
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap  .contest-detail__checkboxes-color {
+  margin-right: 5px !important;
+}
+
+#grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__input {
+  padding: 10px;
+  background-color: #fff !important;
+}
+
+#grabsnack-contest .contest-detail__sign-up-select-button {
+  margin: 0 !important;
+}
+
+
+/*Claim Prize*/
+
+.contest-detail__form-quacker .contest-detail__quacker-input-col {
+  width: auto !important;
+}
+
+.contest-claim {
+  background-image: url("/themes/tastytheme/src/images/grab-snack/custom-claim-banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contest-claim-form .contest-detail__input {
+  padding: 10px !important;
+
+}
+
+.skill-test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.js-challenge-submit {
+  margin-top: 5rem;
+}
+
+
+.shipping {
+ margin-top: 10px;
+  text-align: left;
+}
+
+.first-column {
+  margin-top: 1rem;
+  display: flex;
+}
+
+#postalcode {
+  padding-top: 14px;
+}
+
+
+#prize-claim {
+  width: 70% !important;
+  margin-top: auto;
+}
+
+@media (max-width: 1200px) {
+  #prize-claim {
+    width: 100% !important;
+  }
+  .enter-code-form p {
+    width: 100%;
+  }
+
+
+}
+
+#prize-claim .btn_red {
+  width: 100% !important;
+}
+
+
+.start-cancel-button {
+  display: flex;
+  width: 80%;
+
+}
+
+.claim-instruction {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center */
+}
+
+.claim-text {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*Confirmation*/
+
+
+
+
+/*Rules*/
+
+.grabsnack-rules {
+  background-image: url("/themes/tastytheme/src/images/grab-snack/thankyou-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#submitclaim {
+  width: 100% !important;
+}
+
+.contest-claim-form {
+  padding-top: 5rem !important;
+}
+
+.js-cancel {
+  margin-left: 15px;
+}
+
+
+/*popup-title*/
+
+.popup-title {
+  font-size: 2.7em !important;
+  color:#17B3F1 !important;
+  font-family: 'Montserrat-black';
+
+}
+
+
+/*Mobile Responsive*/
+@media (max-width: 992px) {
+  .landing-banner {
+    padding: 0 !important;
+    padding-top: 2rem !important;
+  }
+
+    .grabsnack-prize-text br{
+    display: none;
+   }
+
+    h1 {
+      font-size: 32px !important;
+    }
+
+  .summer-swag{
+    text-align: center;
+    margin:auto;
+    width: 80%;
+    padding-top: 2rem !important;
+
+  }
+
+  .enter-code-form button {
+    font-size: 16px;
+  }
+
+  .prizes-available-btn a{
+    display: block;
+  }
+
+  .terms-text {
+    padding: 0 !important;
+  }
+
+  .summer-swag-btn{
+    width: 100%;
+    text-align: center;
+  }
+
+  .summer-swag-btn button {
+    width: 134px  !important;
+  }
+
+  .prizes-available-text h1, .prizes-available-text p  {
+    text-align: center;
+  }
+
+  .prizes-available-text br {
+    display: none;
+  }
+
+  .prizes-available-btn {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .find-code-contain {
+   padding: 0 !important;
+    margin-top: 3rem !important;
+    margin-bottom: 3rem;
+  }
+
+  .find-code-text {
+    text-align:center;
+    padding-bottom: 2rem !important;
+  }
+
+  .brands {
+    width: 100%;
+    text-align: left;
+  }
+
+  .find-code-text p br {
+    display: none;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+
+  .w-75 {
+    width: 75%;
+  }
+
+  .find-code-text button {
+    width: auto !important;
+  }
+
+  .coming-soon {
+    padding-top: 2rem;
+  }
+
+    /*Signup Form*/
+    .enter-code-form {
+      padding: 0 !important;
+      text-align: center;
+    }
+
+    .enter-code-form p {
+      padding-top: 15px;
+      font-size: 22px;
+    }
+
+    contest-detail__quacker-input {
+      display: block !important;
+    }
+
+    /*Signup Form*/
+    .enter-code-form {
+      padding: 0 !important;
+      text-align: center;
+      padding-top: 2rem !important;
+    }
+
+    .enter-code-form p {
+      padding-top: 15px;
+      font-size: 22px;
+      width: 100% !important;
+    }
+
+    .contest-detail__quacker-wrapper .contest-detail__quacker-input {
+      display: block !important;
+    }
+
+    .contest-detail__form-quacker {
+      width: 100% !important;
+    }
+
+    .brands {
+      margin-left: -4rem !important;
+    }
+
+    .brands img {
+      max-width: 100% !important;
+    }
+
+    .grabsnack-packshots img {
+      margin-left: -2rem;
+    }
+
+    .lays-code-pack {
+      margin-left: 4rem;
+    }
+
+  #grabsnack-contest #contestsignup-form {
+    width: 90%;
+  }
+
+  .signup-check {
+    width: 42px !important;
+    height: 15px !important;
+  }
+
+  #grabsnack-contest .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap .contest-detail__checkboxes-color {
+    -webkit-appearance: checkbox;
+    -webkit-border-radius: 5px;
+  }
+  .grabsnack-prizes p {
+    width: 100%;
+  }
+  }
+
+
+
+
+
+
+/*Mobile Responsive*/
+@media (max-width: 992px) {
+  .landing-banner {
+    padding: 0 !important;
+    padding-top: 2rem !important;
+  }
+
+    .grabsnack-prize-text br{
+    display: none;
+   }
+
+  .summer-swag{
+    text-align: center;
+    margin:auto;
+    width: 80%;
+    padding-top: 2rem !important;
+
+  }
+
+  .prizes-available-btn a{
+    display: block;
+  }
+
+  .terms-text {
+    padding: 0 !important;
+  }
+
+  .summer-swag-btn{
+    width: 100%;
+    text-align: center;
+  }
+
+  .summer-swag-btn button {
+    width: auto  !important;
+  }
+
+  .prizes-not-as-shown {
+    text-align: center !important;
+  }
+
+  .prizes-available-text h1, .prizes-available-text p  {
+    text-align: center;
+  }
+
+  .prizes-available-text br {
+    display: none;
+  }
+
+  .prizes-available-text {
+    width: 100% !important;
+  }
+
+  .prizes-available-btn {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .find-code-contain {
+   padding: 0 !important;
+    margin-top: 3rem !important;
+    margin-bottom: 3rem;
+  }
+
+  .grabsnack-rules-head {
+    padding-top:2rem;
+
+  }
+  .find-code-text {
+    text-align:center;
+    padding-bottom: 2rem !important;
+  }
+
+  .find-code-text p br {
+    display: none;
+  }
+
+  .find-code-text h1 br {
+    display: none;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+
+  .w-75 {
+    width: 75%;
+  }
+
+
+  .coming-soon {
+    padding-top: 2rem;
+  }
+
+    /*Signup Form*/
+    .enter-code-form {
+      padding: 0 !important;
+      text-align: center;
+    }
+
+    .enter-code-form p {
+      padding-top: 15px;
+      font-size: 22px;
+    }
+
+    contest-detail__quacker-input {
+      display: block !important;
+    }
+
+    /*Signup Form*/
+    .enter-code-form {
+      padding: 0 !important;
+      text-align: center;
+      padding-top: 2rem !important;
+    }
+
+    .enter-code-form p {
+      padding-top: 15px;
+      font-size: 22px;
+      width: 100% !important;
+    }
+
+    .contest-detail__quacker-wrapper .contest-detail__quacker-input {
+      display: block !important;
+    }
+
+    .contest-detail__form-quacker {
+      width: 100% !important;
+    }
+
+    .comingsoon-heading {
+      font-size:20px !important;
+    }
+
+    .grabsnack-packshots img {
+      width: 80%;
+      transform: scale(1.4);
+    }
+
+  }
+
+@media (min-width: 768px) {
+  .comingsoon-heading {
+    font-size:28px !important;
+  }
+
+  .grabsnack-packshots img {
+    margin-left: -6rem;
+    transform: scale(1.2);
+  }
+
+  .prizes-available-text {
+    width: 80% !important;
+  }
+
+  .grabsnack-prizes p {
+    width: 80%;
+  }
+
+}
+
+/*Age Popup*/
+
+.grabsnack-date-dropdown {
+  display: flex;
+}
+
+.grabsnack-modal:not(.grabsnack-prize-claim) {
+  width: 30% !important;
+}
+
+.grabsnack-date-dropdown select {
+  margin-right: 20px;
+}
+
+.grabsnack-modal .submit  {
+  box-shadow: none;
+}
+
+.french-link {
+  text-decoration: underline;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+
+.grabsnack-popup {
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(9px);
+}
+
+.grabsnack-french-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
+
+
+
+
+/*************/
+/* CONTEST START */
+/*************/
+.contest-detail__form-quacker .grabsnack-address-form .contest-detail__quacker-input-col:not(.grabsnack-2col-input) {
+  width: 100% !important;
+}
+
+.grabsnack-claim-banner .content-container {
+  padding: 0 20px;
+}
+@media (max-width: 767px) {
+  .grabsnack-claim-banner .claim-text {
+    padding-top: 20px;
+  }
+}
+
+.grabsnack-modal {
+  max-width: 600px;
+  width: 100% !important;
+  padding: 50px 40px !important;
+}
+.grabsnack-modal-content-wrapper {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.grabsnack-modal .popup-title {
+  text-transform: uppercase;
+  color: #17B3F1 !important;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.grabsnack-modal .popup-sub-title {
+  color: #000000;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.grabsnack-modal .required-fields {
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.grabsnack-modal form {
+  margin-top: 0 !important;
+}
+.grabsnack-modal input {
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #aaa;
+  padding: 8px 16px;
+  color: #000000;
+  width: 100%;
+}
+.grabsnack-modal select {
+  border: 1px solid #767676;
+  border-radius: 3px;
+  outline: none;
+  color: #000000;
+  width: 100%;
+  height: 43px;
+  padding: 6px 8px;
+}
+.grabsnack-modal .modal-form-row-1col input {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .grabsnack-modal .modal-form-row-1col {
+    margin-bottom: 40px;
+  }
+}
+.grabsnack-modal .modal-form-row-2col {
+  display: flex;
+}
+.grabsnack-modal .modal-form-row-2col > div {
+  width: 48%;
+}
+.grabsnack-modal .modal-form-row-2col > div:nth-child(odd) {
+  margin-right: 2%;
+}
+.grabsnack-modal .modal-form-row-2col > div:nth-child(even) {
+  margin-left: 2%;
+}
+@media (max-width: 767px) {
+  .grabsnack-modal .modal-form-row-2col {
+    display: block;
+  }
+  .grabsnack-modal .modal-form-row-2col > div {
+    width: 100%;
+  }
+  .grabsnack-modal .modal-form-row-2col > div:nth-child(odd) {
+    margin-right: 0;
+  }
+  .grabsnack-modal .modal-form-row-2col > div:nth-child(even) {
+    margin-left: 0;
+  }
+}
+.grabsnack-modal .submit {
+  width: 100%;
+  display: block !important;
+}
+@media (max-width: 767px) {
+  .grabsnack-modal {
+    height: auto !important;
+  }
+  .grabsnack-modal input {
+    margin-top: 10px;
+  }
+}
+
+.claim-instruction {
+  width: 100%;
+}
+.claim-instruction h1 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #17B3F1 !important;
+}
+
+.start-cancel-button {
+  display: flex;
+}
+.start-cancel-button .btn_red {
+  box-shadow: none;
+  border-radius: 0;
+}
+.start-cancel-button .js-start {
+  margin-right: 30px;
+}
+.start-cancel-button .js-start, .start-cancel-button .js-cancel {
+  border: none;
+}
+
+.skill-test .contest-detail__quacker-input-col {
+  width: 100% !important;
+  height: auto !important;
+}
+.skill-test .btn_red {
+  border-radius: 0;
+  width: 100%;
+  box-shadow: none;
+}
+.skill-test .js-challenge-submit {
+  margin-top: 10px !important;
+}
+
+.grabsnack-address-form.form-disabled p, .grabsnack-address-form.form-disabled label, .grabsnack-address-form.form-disabled h4, .grabsnack-address-form.form-disabled a {
+  color: #bbbaba !important;
+}
+.grabsnack-address-form.form-disabled input[type=button] {
+  cursor: not-allowed;
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+.grabsnack-address-form.form-disabled input[type=button]:hover {
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+.grabsnack-address-form button.disabled, .grabsnack-address-form input.disabled {
+  cursor: not-allowed;
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+.grabsnack-address-form button.disabled:hover {
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+.grabsnack-address-form p {
+  font-size: 16px;
+}
+.grabsnack-address-form .js-challenge-success {
+  font-family: "OpenSans-semibold", sans-serif;
+}
+.grabsnack-address-form .js-challenge-success strong {
+  font-family: "Open Sans-bold", sans-serif;
+}
+.grabsnack-address-form .skill-timer-container {
+  margin-bottom: 5px;
+}
+.grabsnack-address-form .skill-timer-container p {
+  display: inline-block;
+  margin-right: 4px;
+  font-family: "Open Sans-bold", sans-serif;
+  color: #db1d2c;
+}
+.grabsnack-address-form .question {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: "Open Sans-bold", sans-serif;
+}
+.grabsnack-address-form .first-column {
+  display: flex;
+  width: 100%;
+}
+.grabsnack-address-form .first-column .contest-detail__quacker-input-col {
+  width: 48% !important;
+}
+.grabsnack-address-form .first-column .contest-detail__quacker-input-col:nth-child(odd) {
+  margin-right: 2%;
+}
+.grabsnack-address-form .first-column .contest-detail__quacker-input-col:nth-child(even) {
+  margin-left: 2%;
+}
+.grabsnack-address-form #submitclaim {
+  border-radius: 0;
+  box-shadow: none;
+}
+.grabsnack-address-form #submitclaim.disabled {
+  cursor: not-allowed;
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+.grabsnack-address-form #submitclaim.disabled:hover {
+  background-color: #bbbaba !important;
+  border-color: #bbbaba !important;
+}
+@media (max-width: 767px) {
+  .grabsnack-address-form .first-column {
+    display: block;
+  }
+  .grabsnack-address-form .first-column .contest-detail__quacker-input-col {
+    width: 100% !important;
+  }
+  .grabsnack-address-form .first-column .contest-detail__quacker-input-col:nth-child(odd) {
+    margin-right: 0;
+  }
+  .grabsnack-address-form .first-column .contest-detail__quacker-input-col:nth-child(even) {
+    margin-left: 0;
+  }
+}
+.grabsnack-address-form .grabsnack-province-container {
+  width: 48%;
+  margin-right: 2%;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.grabsnack-address-form select.province {
+  height: 43px;
+  border-radius: 3px;
+  border-color: #767676;
+  padding-left: 7px;
+  font-size: 16px;
+}
+.grabsnack-address-form select.province:disabled {
+  border-color: rgba(118, 118, 118, 0.3);
+  background-color: rgba(239, 239, 239, 0.7);
+}
+.grabsnack-address-form div.grabsnack-2col-input {
+  width: 46.5% !important;
+  margin-left: 2%;
+  display: inline-block;
+}
+.grabsnack-address-form div.grabsnack-2col-input input {
+  width: 100%;
+}
+.grabsnack-address-form .form-disclaimers p {
+  font-family: "OpenSans-semibold", sans-serif;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.grabsnack-address-form input.error {
+  border: 2px solid red !important;
+}
+.grabsnack-address-form label.error {
+  padding-top: 2px;
+  color: red !important;
+  font-size: 10px !important;
+  font-family: "OpenSans-semibold", sans-serif !important;
+}
+.grabsnack-address-form .form-required-fields-indicator {
+  margin-top: 30px;
+}
+.grabsnack-address-form .shipping {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+  .claim-instruction {
+    align-items: center;
+  }
+  .claim-instruction h1 {
+    text-align: center;
+  }
+
+  .start-cancel-button {
+    justify-content: center;
+  }
+
+  .grabsnack-address-form .grabsnack-province-container {
+    width: 100% !important;
+    margin-right: 0;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .grabsnack-address-form select.province, .grabsnack-address-form div.grabsnack-2col-input {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: block;
+  }
+}
+@media (max-width: 480px) {
+  .start-cancel-button {
+    display: block;
+  }
+  .start-cancel-button .js-start, .start-cancel-button .js-cancel {
+    display: block;
+    margin: 20px auto 0;
+  }
+}
+.skill-timer-container,
+.skill-test label.skill-test-question {
+  display: none;
+}
+
+.show-on-correct {
+  display: none;
+}
+
+.grabsnack-claim-banner {
+  padding-top: 20px;
+  padding-bottom: 70px;
+}
+
+@media (min-width: 1921px) {
+  .grabsnack-claim-banner {
+    padding-bottom: 130px
+  }
+}
+
+@media (max-width: 767px) {
+  .grabsnack-claim-banner {
+    padding-bottom: 20px;
+  }
+}
+
+/*************/
+/* CONTEST END */
+/*************/
+/*************/
+/* FAQ START */
+/*************/
+#grabsnack-faq sup {
+  left: 0 !important;
+}
+#grabsnack-faq .faq-banner-spacing {
+  padding: 20px;
+}
+@media (max-width: 767px) {
+  #grabsnack-faq .faq-spacing {
+    padding: 0 20px;
+  }
+}
+#grabsnack-faq .faq-text h1 {
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  #grabsnack-faq .faq-text h1 {
+    text-align: center;
+  }
+}
+#grabsnack-faq .back-btn {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#grabsnack-faq .back-btn, #grabsnack-faq .back-btn a {
+  color: #000000;
+  font-weight: bold;
+}
+#grabsnack-faq .faq-border {
+  border-bottom: 0;
+}
+#grabsnack-faq .faq-panel {
+  padding: 0 !important;
+}
+#grabsnack-faq .faq-panel-title-container {
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+#grabsnack-faq .faq-title {
+  color: #000000 !important;
+  font-size: 20px !important;
+  margin: 0 !important;
+  padding: 0;
+}
+#grabsnack-faq .faq-title a {
+  padding-left: 0 !important;
+}
+@media (min-width: 768px) {
+  #grabsnack-faq .faq-paragraph {
+    max-width: 80%;
+  }
+}
+#grabsnack-faq ul.faq-paragraph li {
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+#grabsnack-faq .panel-group .faq-plus-minus:before {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+#grabsnack-faq .panel-group .faq-plus-minus {
+  position: relative;
+}
+#grabsnack-faq .panel-group .faq-plus-minus:after {
+  content: "";
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: 12px;
+  padding: 5px;
+  position: relative;
+  top: 10px;
+  right: 15px;
+  transition: transform 0.2s;
+  margin-left: 30px;
+}
+#grabsnack-faq .panel-group .faq-plus-minus:not(.collapsed):after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  right: 15px !important;
+}
+#grabsnack-faq .faq-banner-disclaimer {
+  font-family: "Montserrat-semibold", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: right;
+}
+
+/***********/
+/* FAQ END */
+
+
+/***********/
+
+
+/*Age Popup*/
+
+.grabsnack-date-dropdown {
+  display: flex;
+}
+
+.grabsnack-date-dropdown select {
+  margin-right: 20px;
+}
+
+.grabsnack-modal .submit  {
+  box-shadow: none;
+}
+
+.french-link {
+  text-decoration: underline;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.landing-sup {
+  margin-left: -7px;
+}
+
+
+
+.grabsnack-popup {
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(9px);
+}
+
+.grabsnack-french-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+

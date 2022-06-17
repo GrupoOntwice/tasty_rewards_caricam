@@ -1,0 +1,28 @@
+/*  --- Variables ---  */
+
+// TEXT
+$font: Helvetica, Arial, sans-serif;
+
+// COLOR
+$grey: #333;
+$blue: #0e4caa;
+$red: #db1d2c;
+$dark_red: #b81321;
+
+// FONT SIZES
+// 36px = 2.25
+// 24px = 1.5
+// 18px = 1.125
+$font-size: 16px;
+// 14px = 0.875
+// 12px = 0.75
+// 10px = 0.625
+
+// RESPONSIVE BREAKPOINTS
+$break-small-mobile: 540px;
+$break-mobile: 768px;
+$break-tablet: 992px;
+
+$break-small-mobile-min: 541px;
+$break-mobile-min: 769px;
+$break-tablet-min: 993px;

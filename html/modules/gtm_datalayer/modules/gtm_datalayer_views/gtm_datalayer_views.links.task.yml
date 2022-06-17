@@ -1,0 +1,5 @@
+entity.gtm_datalayer_view.collection:
+  route_name: entity.gtm_datalayer_view.collection
+  base_route: entity.gtm_datalayer.collection
+  title: Views dataLayers
+  weight: -40

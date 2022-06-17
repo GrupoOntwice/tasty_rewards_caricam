@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains pepsicontest.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use CSD\Marketo\Client;
+use Drupal\Core\Link;
+
+
+//template collection
+function springactivation_theme(array $existing, $type, $theme, $path) {
+	return array(
+		'springactivation_landing' => array(
+			// 'template' => 'landing_page', // old backup template
+			'template' => 'springactivation_landing',
+			'variables' => [
+				'data' => NULL,
+			],
+    	),
+	);
+
+}

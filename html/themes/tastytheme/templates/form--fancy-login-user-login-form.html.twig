@@ -1,0 +1,104 @@
+{#
+/**
+ * @file
+ * Theme override of form login page using custom template while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_suggestions_page()
+ */
+#}
+
+{#
+<div class="login-form__top">
+            <h3>hello world</h3>
+            <div id="error_messages"></div>
+           {{ element.elements.message }}
+           {{ element.message }}
+            {{ element.name }}
+            {{ element.pass }}
+            <div class="login-form__help_actions">
+                <a href="/user/password" class="forgot-password">Forgot Password?</a>
+            </div>
+            {{ element.form_build_id }}
+            {{ element.form_id }}
+			{{element.persistent_login}}
+
+            <div class="login-form__submit">
+                {{ element.actions }}
+            </div>
+        </div>
+        <button type="submit" class="modal__sign-in-fb">
+			<img src="/themes/tastytheme/src/images/fb-logo.PNG" alt="facebook" />
+			Sign up with Facebook
+		</button>
+#}
+{% if langcode == 'en-us' or langcode == 'es-us' %}
+{% set en_us_enabled = '/'~langcode in url('<current>')|render|render %}
+{% endif %}
+<div class="login-form login-form__wrapper">
+  <div class="modal__container-sign-in">
+
+  	<!-- where the sign-in form will be displayed -->
+	<div id="okta-login">
+    	<div id="okta-login-container"></div>
+		<div id="okta-login-footer">
+			<p class="okta-signup-pass">{{ "Don't have an account yet?" |t }} <a class="modal__sign-in-link to-signup" href="javascript:void(0);">{{ 'Sign up' | t }}</a></p>
+		</div>
+	</div>
+	<div id="regular-login">  
+	<div class="modal">
+
+
+{#	<p class="modal__container-paragraph">{{ 'Sign In' |t }},<br> {{'Unlock Tasty' | t }}</p>#}
+        <p class="modal__container-paragraph">{{ 'Sign In & Get Started' |t }}</p>
+
+    <form{{ attributes }}>
+		<div class="modal__social-button-sign-in">
+		{{element.add_button}}
+		{# <a href="/user/login/google" class="modal__sign-in-google">
+			<img src="/themes/tastytheme/src/images/google.png" alt="google" />
+			Sign up with Google
+		</a> #}
+		
+		<div class="g-signin2 google-login hidden" id="google-login" data-onsuccess="onLogin" onclick="ClickLogin()" data-theme="dark"></div>
+				<button type="button" class="modal__sign-in-google" onclick="googleLogin()">
+							<img src="/themes/tastytheme/src/images/google.png" alt="google" />
+							{{ 'Sign in with Google'|trans }}
+						</button>
+		</div>
+		
+		<p class="modal__container-or">- {{'or'|t}} -</p>
+
+		{{ element.name }}
+
+        {{ element.pass }}
+
+		{{ element.form_build_id }}
+		{{ element.form_id }}
+		<div class="modal__sign-in-select-checkbox">
+		<div class="modal__sign-in-checkbox-wrap">
+			{{element.persistent_login}}
+		</div>
+		<div class="modal__sign-in-forgot">
+			{% if en_us_enabled %}
+				<p class="password-request"><a href="/{{element['#language'].langcode}}/create-password">{{ 'Create my Password'  | trans }}</a></p>
+			{% endif %}
+			<p class="password-request"><a href="/{{element['#language'].langcode}}/forgot-password">{{ 'Forgot Your Password?'  | trans }}</a></p>
+		</div>
+		</div>
+
+		<div class="modal__sign-in-select-button">
+			{{ element.actions }}
+		</div>
+
+		<div class="modal__sign-in">
+			{{ "Don't have an account yet?"  | trans }}<a class="modal__sign-in-link to-signup" href="javascript:void(0);">{{ 'Sign up' | trans }}</a>
+		</div>
+
+    </form>
+	</div>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+{% set user_name = user_firstname %}
+{% set show_popup = doShowPopup %}
+{% set user_prelang = user_preferred_lang %}
+
+<nav class="menu">
+<span class="hidden js-show-popup">{{show_popup}}</span>
+{% macro menu_links(items, attributes, menu_level, classes, dropdown_classes) %}
+
+    {% if items %}
+
+            <ul{{ attributes.addClass(menu_level == 0 ? classes : dropdown_classes) }}>
+                {% for item in items %}
+                    {%
+        set item_classes = item.url.getOption('container_attributes').class | split(" ")
+                    %}
+                    {%
+        set item_classes = [
+          item.is_expanded and item.below ? 'expanded dropdown',
+          item.in_active_trail ? 'active active-trail',
+          loop.first ? 'first',
+          loop.last ? 'last',
+        ]
+                    %}
+                    <li{{ item.attributes.addClass(item_classes) }}>
+                        {% set link_title = item.title %}
+                        {% set link_attributes = item.link_attributes %}
+                        {% if menu_level == 0 and item.is_expanded and item.below %}
+                            {% set link_title %}{{ link_title }} <span class="caret"></span>{% endset %}
+                            {% set link_attributes = link_attributes.addClass('dropdown-toggle').setAttribute('data-toggle', 'dropdown') %}
+                        {% endif %}
+                        {# Must use link() here so it triggers hook_link_alter(). #}
+                        {{ link(link_title, item.url, link_attributes.addClass(item.in_active_trail ? 'active-trail')) }}
+                        {% if item.below %}
+                            {{ _self.menu_links(item.below, attributes.removeClass(classes), menu_level + 1, classes, dropdown_classes) }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+
+
+
+    {% endif %}
+{% endmacro %}
+
+
+{#
+  Invoke the custom macro defined above. If classes were provided, use them.
+  This allows the template to be extended without having to also duplicate the
+  code above. @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ _self.menu_links(items, attributes, 0, classes ?: ['menu', 'menu--' ~ menu_name|clean_class, 'nav'], dropdown_classes ?: ['dropdown-menu']) }}
+
+{#{dump(language.id)}#}
+<div class="menu_account">
+
+
+    {% set url_shop  = language.id=='fr'? shoplink ~'?lang=fr-ca' : language.id=='en'? shoplink ~'?lang=en-ca' : shoplink ~'?lang='~ language.id%}
+    {% set url_changepassword  = language.id=='fr'? changepassword ~'/fr-ca' : language.id=='en'? changepassword ~'/en-ca' : changepassword ~'/'~language.id %}
+
+   {% if language.id == 'en' or language.id == 'fr' %}
+        {% set link_url  = language.id=='fr'?'/en-ca':'/fr-ca' %}
+        <a id="active_link" data-id="{{language.id}}" href="{{ link_url }}" class="language__wrapper lang-switcher" >{{ language.id=='fr'?'EN':'FR'}}</a>
+    {% else %}
+        {% set link_url  = language.id=='es-us'?'/en-us':'/es-us' %}
+        <a id="active_link" data-id="{{language.id}}" href="{{ link_url }}" class="language__wrapper lang-switcher" >{{ language.id=='es-us'?'EN':'ES'}}</a>
+    {% endif %}
+
+    {% if not logged_in %}
+        <a href="{{ path('user.login') }}" id="signinpopup" class="sign_in jsModalSignIn disabled">{{'Sign In'|t}}</a>
+            <a class="sign_up btn_red-navbar jsModalSignUp">{{'Sign Up'|t}}</a>
+
+        {% if language.id == 'en-us' %}
+            <div class = "shop-at-snacks snacks-com-updates">
+              <a href = "{{ url_shop }}"><img src = "/themes/brandstheme/src/images/shop-at-snacks-btn-{{language.id}}.png" alt = "shop-at-snacks"/></a>
+            </div>
+          {% elseif language.id == 'es-us' %}
+            <a class = "es-us-shop snacks-com-updates" href = "{{ url_shop }}"><img src = "/themes/brandstheme/src/images/shop-at-snacks-btn-{{language.id}}.png" alt = "shop-at-snacks"/></a>
+        {% else %}
+            <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+        {% endif %}
+
+    {% else %}
+        <div class="dropdown-menu">
+            <span class="hidden js-username">{{user_name}}</span>
+            <a tabindex="0" id="user_logged" data-value="{{user_prelang}}"  class="drop-link">{{ 'Hello,' | t}} {{user_name}}!</a>
+            <div class="dropdown-content" style="width:180px;">
+                <a tabindex="0" href="{{path('pepsibam.updateprofile')}}">{{ 'My Account'|t }}</a>
+                {% if socialsource is empty %}
+                    <a class="snacks-com-updates" tabindex="0" href="{{url_changepassword }}">{{ 'Change Password'|t }}</a>
+                {% endif %}
+                <a tabindex="0" class="jslogoutca" href="#" >{{ 'Logout' |t }}</a>
+            </div>
+        </div>
+
+        {% if language.id == 'en-us' %}
+            <div class = "shop-at-snacks snacks-com-updates">
+              <a href = "{{ url_shop }}"><img src = "/themes/brandstheme/src/images/shop-at-snacks-btn-{{language.id}}.png" alt="shop-at-snacks"/></a>
+            </div>
+        {% elseif language.id == 'es-us' %}
+          <a class = "es-us-shop snacks-com-updates" href = "{{ url_shop }}"><img src = "/themes/brandstheme/src/images/shop-at-snacks-btn-{{language.id}}.png" alt="shop-at-snacks"/></a>
+        {% else %}
+            <a href="{{ url_shop }}" class="btn_blue-navbar" >{{'Shop'|t}}</a>
+        {% endif %}
+
+    {% endif %}
+</div>
+</nav>

@@ -1,0 +1,652 @@
+{#{ kint(data) }#}
+{#{ form}#}
+
+
+
+<div class="wrapper-registration">
+
+<script type="text/javascript">
+    window.signup_error_msg = "{{'Please enter a valid'|t}}";
+    
+    window.get_error_msg = function(field_name) {
+        console.log(" getting error for " + field_name)
+        if (field_name == 'email'){
+            return "{{'Please enter a valid email'|t}}";
+        } else if (field_name == 'firstname'){
+            return "{{'Please enter a valid first name'|t}}";
+        } else if (field_name == 'lastname'){
+            return "{{'Please enter a valid last name'|t}}";
+        } else if (field_name == 'postalcode'){
+            return "{{'Please enter a valid postal code'|t}}";
+        } else if (field_name == 'password'){
+            return "{{'Please enter a valid password. Password must contain at least 8 characters, a lowercase letter, an uppercase letter, a number, and a symbol.'|t}} ";
+
+        } else if (field_name == 'bday'){
+            return "{{'Please enter a valid birthdate'|t}}";
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    language = '{{ data.language }}';
+
+    (function ($, Drupal, window) {
+    var zipcode_validation = false;
+
+function validateSignUpForm(){
+      var is_valid = true
+      var email_msg = "{{ 'Please enter a valid email'|t }}";
+      var firstname_msg = "{{ 'Please enter a valid first name'|t }}";
+      var lastname_msg = "{{ 'Please enter a valid last name'|t }}";
+      var postalcode_msg = "{{ 'Please enter a valid postal code'|t }}";
+      var password_msg = "{{ 'Please enter a valid password. Password must contain at least 8 characters, a lowercase letter, an uppercase letter, a number, and a symbol.'|t }}";
+      var birthdate_msg = "{{ 'Please enter a valid birthdate'|t }}";
+      
+      
+
+      var field = ''
+      if ($("#email").val() == '') {field = 'email' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(window.get_error_msg(field));   is_valid = false;}
+      // if ($("#email").val() == '') {field = 'email' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(msg + field);   is_valid = false;}
+      if ($("#firstname").val() == ''){ field = 'firstname' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(window.get_error_msg(field));   is_valid = false;}
+      if ($("#lastname").val() == ''){field = 'lastname' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(window.get_error_msg(field));   is_valid = false;}
+      if ($("#postalcode").val() == ''){field = 'postalcode' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(window.get_error_msg(field));   is_valid = false;}
+
+      if ($("#socialsource").val()==''){
+        if ($("#password").val() == ''){ field = 'password' ; $("#" + field).parent().addClass('has-error'); $(".err_"+field).html(window.get_error_msg(field));   is_valid = false;}
+      }
+      if ($("#bday_day").val() == ''){field = 'bday' ; $("#" + field).parent().parent().addClass('has-error'); $(".err_bday").html(window.get_error_msg(field));   is_valid = false;}
+      if ($("#bday_month").val() == ''){field = 'bday' ;  $("#bday_month").parent().addClass('has-error'); $(".err_bday").html(window.get_error_msg(field));  is_valid = false; }
+      if ($("#bday_year").val() == ''){field = 'bday' ; $("#bday_year").parent().addClass('has-error'); $(".err_bday").html(window.get_error_msg(field));  is_valid = false; }
+      // if ($("#gender").val() == ''){field = 'gender';  $("#gender").parent().addClass('has-error'); $(".err_"+field).html(msg + "gender"); is_valid = false; }
+
+      return is_valid
+    }
+
+    //language variable coming from twig (registration.html.tgiw)
+    $("#casl").val($('.casl').html());
+
+    window.submitRegistration = function submitRegistrationForm() {
+       clearError();
+       $("#bday").val($("#bday_year").val() + '-' + $("#bday_month").val() + '-' + $("#bday_day").val());
+
+
+       $("#grecaptcharesponse").parent(".form-group").removeClass("has-error");
+
+       if (grecaptcha.getResponse() == ""){
+            $("#grecaptcharesponse").parent(".form-group").addClass("has-error");
+            scrollToError();
+            return false;
+       }
+
+       var validForm = validateSignUpForm();
+       if (validForm === false){
+        return false
+       }
+
+       $("#grecaptcharesponse").val(grecaptcha.getResponse());
+       $("#sourceid").val(window.location.pathname);
+       var language =  $("#language").val();
+       $(".btnregister span").addClass('glyphicon-refresh');
+       console.log("Registratioin Ajax TEMPLATE")
+       $.ajax({
+          url:"/" + language + "/pepsi/register/ajaxaction",
+          type: "POST",
+          data:  $('#register-form').serialize(),
+          success:function(data) {
+              if (data.status){
+
+                  // START: tracking the registration on signup: SubscriptionMember / SubscriptionNewsletter
+                  var event_value = "";
+                  if(jQuery('#optin').is(':checked')){
+                      // event_value = "SubscriptionMember";
+                      // window.dataLayer = window.dataLayer || [];
+                      // window.dataLayer.push({
+                      //     'event': event_value
+                      // });
+                      // console.log(event_value);
+
+                      event_value = "SubscriptionNewsletter";
+                      window.dataLayer = window.dataLayer || [];
+                      window.dataLayer.push({
+                          'event': event_value
+                      });
+                      console.log(event_value);
+                  }else{
+                      event_value = "SubscriptionMember";
+                      window.dataLayer = window.dataLayer || [];
+                      window.dataLayer.push({
+                          'event': event_value
+                      });
+                      console.log(event_value);
+                  }
+                  // END: tracking the registration on signup
+
+                  window.location.href = data.route;
+              }
+              else {
+                  $('.has-error').children('.help-block').html('');
+                  $('.has-error').removeClass('has-error');
+
+                  //refresh the token
+                  $('#csrfToken').val(data.token);
+                  clearError();
+                  $.each(data.errors, function(field, msg) {
+                      $("#"+field).parents(".form-group").removeClass("success");
+                      if (field == 'bday') {
+                        $("#"+field).parent().parent().addClass('has-error');
+                        $(".err_"+field).html(msg);
+                      }
+                      else {
+                        $(".err_"+field).html(msg);
+                        $("#"+field).parent().not('form').addClass('has-error');
+                      }
+                  });
+                  grecaptcha.reset();
+                  $(".btnregister span").removeClass('glyphicon-refresh');
+                  scrollToError();
+              }
+          }
+        });
+
+    }
+
+
+    clearError();
+
+    //Clear error msg and label
+    function clearError() {
+        $(".has-error").each(function() {
+            $(this).removeClass('.has-error');
+            $(this).find(".help-block").text("");
+        });
+    }
+
+    function scrollToError() {
+
+        var errorelem = $(".has-error").first();
+        if (errorelem.offset() == undefined){
+          return;
+        }
+        var errortop = errorelem.offset().top - $(".navbarcontainer").height();
+
+        //console.log(errortop);
+
+        $('html, body').animate({
+            scrollTop: errortop
+        }, 500);
+        //focusinput = errorelem.children('input');
+        //focusinput.blur().focus().val(focusinput.val());
+    }
+
+
+    /* inline Validation */
+
+    $("#bday_day, #bday_month, #bday_year").focusout(function() {
+        if ( $(this).val() === "") {
+            $(this).removeClass("success")
+        }
+        else{
+            $(this).addClass("success")
+        }
+
+        if ($("#bday_day").val() !== "" && $("#bday_month").val() !== "" && $("#bday_year").val() !== ""  ){
+                addSuccess($(this),true);
+                clearErrorMsg('bday');
+        }
+
+        if ($("#bday_day").val() === "" || $("#bday_month").val() === "" || $("#bday_year").val() === ""  ){
+                addSuccess($(this),false);
+        }
+
+
+    });
+
+    function clearErrorMsg(field){
+      $(".err_"+field).html('');
+    }
+
+
+    $(".form-group input, .form-group select").focusout(function() {
+        var nameid = $(this).attr('id');
+        //firstname| lastname | email | confirm_email | password | confirm_password | bday_day | bday_month | bday_year | postalcode
+        if (nameid === 'firstname' || nameid === 'lastname' || nameid === 'password' || nameid === 'confirm_password' ) {
+            if ($(this).val().length === 0 ){
+                addSuccess($(this),false);
+            }
+            else{
+                addSuccess($(this),true);
+                clearErrorMsg(nameid)
+            }
+        }
+        if (nameid === 'email' || nameid === 'confirm_email' ){
+            if (isValidEmailAddress($(this).val())) {
+                addSuccess($(this),true);
+                clearErrorMsg(nameid)
+            }
+            else{
+                addSuccess($(this),false);
+                if ($(this).val() !== '' ){  clearErrorMsg(nameid) }
+            }
+        }
+        if (nameid === 'confirm_email') {
+            if (isValidEmailAddress($(this).val()) && $(this).val() === $("#email").val()  ){
+                addSuccess($(this),true);
+                clearErrorMsg(nameid)
+            }
+            else{
+                addSuccess($(this),false);
+            }
+        }
+
+        if (nameid === 'postalcode') {
+            if (isGoodPostalCode($(this).val())){
+                addSuccess($(this),true);
+                clearErrorMsg(nameid)
+            }
+            else{
+                addSuccess($(this),false);
+            }
+        }
+        if (nameid === 'password') {
+            if (isGoodPassword($(this).val())){
+                addSuccess($(this),true);
+            }
+            else{
+                addSuccess($(this),false);
+            }
+        }
+
+        if (nameid === 'confirm_password') {
+            if ($(this).val() === $("#password").val() && $(this).val().length > 0  ){
+                addSuccess($(this),true);
+            }
+            else{
+                addSuccess($(this),false);
+            }
+        }
+    });
+
+    function addSuccess(obj,isSuccess){
+        if (isSuccess ){
+            obj.parents(".form-group").addClass("success");
+            obj.parents(".form-group").removeClass("has-error");
+        }
+        else{
+            obj.parents(".form-group").addClass("has-error");
+            obj.parents(".form-group").removeClass("success");
+        }
+    }
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+        return pattern.test(emailAddress);
+    };
+
+    function isGoodPostalCode(postalcode){
+      if (zipcode_validation === false && postalcode != ''){
+        return true;
+      }
+        var regex = new RegExp(/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i);
+        if (regex.test(postalcode))
+            return true;
+        else return false;
+    }
+
+    function isGoodPassword(password){
+        {%  if data.language == 'en-ca' or  data.language == 'fr-ca' %}
+            var minMaxLength = /^[\s\S]{8,32}$/,
+                upper = /[A-Z]/,
+                lower = /[a-z]/,
+                number = /[0-9]/,
+                special = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+
+            if (minMaxLength.test(password) &&
+                upper.test(password) &&
+                lower.test(password) &&
+                number.test(password) &&
+                special.test(password)
+            ) {
+                return true;
+            }
+            return false;
+        {% else %}
+            var regex = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/);
+            if (regex.test(password))
+                return true;
+            else return false;
+        {% endif %}
+
+    }
+    /* end inline Validation */
+
+    $("#submit").click(function(event){
+        event.preventDefault();
+    console.log("Submit1");
+        grecaptcha.execute().then(function (token) {
+            window.submitRegistration();
+        });
+    });
+
+}(jQuery, Drupal, window));
+
+
+
+</script>
+{% set langcode = data.language | trim %}
+<meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="821937909405-vie3a7athrjprrpmef3ll0j3b9f90fim.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+{# Adding of the recaptcha CDN js #}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+
+    var submitsignup = true;
+
+
+    function onSubmit(token) {
+        //alert('thanks ' + document.getElementById('email').value);
+        //console.log(token);
+        document.getElementById('grecaptcharesponse').value = token;
+        // alert(token);
+        //console.log(submitsignup);
+        if (submitsignup){
+            window.submitRegistration();
+        }
+        submitsignup = true;
+    }
+
+
+    /*
+    function onload() {
+      var element = document.getElementById('submit');
+      element.onclick = validate;
+    }
+    */
+
+
+</script>
+<style>
+    .grecaptcha-badge {display: none;}
+</style>
+
+<script type="text/javascript">
+    function imNotARobot() {
+    captchaContainer = document.getElementById("grecaptcharesponse")
+    captchaContainer.parentNode.classList.remove('has-error');
+    }
+</script>
+{# Addition of the inline style css #}
+<style>
+    .max-600 {
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    /*.captchaborder.form-group.has-error {
+      border: 2px solid #fe0000!important;
+    }*/
+
+</style>
+{# set the value to the variable in twig #}
+{% set trackingpage = "registration" %}
+{% set trackinglang = data.language %}
+
+{% set postalcode = language == 'en-us'? 'Zip Code': language == 'en-us'? 'Postal Code' : 'Postal Code' %}
+
+{# Including of the template from my theme #}
+{# % include directory ~ '/templates/custom/doubleclick_tag.html.twig' %#}
+{% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+
+
+{# Attach of the library from my module theme #}
+{{ attach_library( 'pepsibam/pepsireglibrary' ) }}
+
+{# Additon of my pop up template #}
+<div class="modal__container-sign-up">
+
+    <div class="modal">
+        {# Addition of the popup close button #}
+        <button class="modal__close-button jsModalSignUpClose">
+            <img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close.png" alt="Close button" />
+        </button>
+        {# Addition of the heading of the modal #}
+        <p class="modal__container-paragraph" style = "color:#1E5AA5; margin-bottom:15px !important">
+        {# {{'Sign Up'|t}}, <br>  #}
+        {{'Join the <br> Experience'|t|raw}}
+        </p>
+
+        {% if data.nodata is not defined %}
+
+        	<div id="okta-signup">
+                <div id="okta-signup-container"></div>
+            </div>
+
+            <form id='register-form' autocomplete="off">
+                {# Addition of the facebook button #}
+
+                <div id="regular-signup">
+                    <div class="modal__social-button">
+                        {% if (data.fbid is not defined)  %}
+                            <button value="Facebook Connect" name="op" type="button" data-drupal-selector="edit-add-button" class="modal__sign-up-fb fbconnect btn hidden"><img src="/themes/tastytheme/src/images/fb-logo.PNG" alt="facebook">
+                                {{ 'Sign up'|t }}
+                            </button>
+                        {% endif %}
+
+                        {#<a href="/user/login/google" class="modal__sign-in-google">
+                        <img src="/themes/tastytheme/src/images/google.png" alt="google" />
+                        {{ 'Sign up'|t }}
+                        </a>
+                        #}
+                        {# Addition of the Google button #}
+                        <div class="g-signin2 google-registration hidden" id="google-registration" onclick="ClickLogin()" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+                        <button type="button" class="modal__sign-up-google" onclick="googleSignUp()">
+                            <img src="/themes/tastytheme/src/images/google.png" alt="google" />
+                            {{ 'Sign up with Google'|t }}
+                        </button>
+                    </div>
+                </div>
+
+
+                <p class="modal__container-or">- {{'or'|t}} -</p>
+
+
+
+
+                {% if langcode != 'en-us' and langcode != 'es-us' %}
+                    <p class="modal__inquiry">{{ "* Indicates required field."|t }}</p>
+                {% endif %}
+
+
+                {# Addition of email field #}
+                <div class="form-group" style = "margin-top: 10px;">
+                    <label id="email_label" for="email" style="display:none;">email</label>
+                    <input type="email" name='email' id='email' placeholder="{{'Email Address'|t }}*" class="form-control modal__sign-up-input" value="{{data.email?:''}}">
+                    <span class="help-block err_email"></span>
+                </div>
+                {# Addition of firstname and lastname field #}
+                <div class="modal__user-name">
+                    <div class="form-group">
+                        <label id="firstname_label" for="firstname" style="display:none;">firstname</label>
+                        <input type="text" name='firstname' id='firstname'  placeholder="{{'First Name'|t }}*" class="modal__user-first-name form-control" value="{{data.firstname?:''}}">
+                        <span class="help-block err_firstname"></span>
+                    </div>
+                    <div class="form-group">
+                        <label id="lastname_label" for="lastname" style="display:none;">lastname</label>
+                        <input type="text" name='lastname' id='lastname' class="modal__user-last-name form-control" placeholder="{{'Last Name'|t }}*" value="{{data.lastname?:''}}">
+                        <span class="help-block err_lastname"></span>
+                    </div>
+                </div>
+                {# Addition of postalcode field #}
+                <div class="modal__user-postalcode">
+                    <div class="form-group">
+                        <label id="postalcode_label" for="postalcode" style="display:none;">postalcode</label>
+                        <input type="text" name='postalcode' id='postalcode' placeholder="{{postalcode|t }}*" class="modal__sign-up-input">
+                        <span class="help-block err_postalcode"></span>
+                    </div>
+                </div>
+
+                {# Addition of password field #}
+                <div class="modal__user-password">
+                    <div class="form-group">
+                        <label id="password_label" for="password" style="display:none;">password</label>
+                        <input type="password" name='password' id='password' placeholder="{{'Password'|t }}*" class="modal__sign-up-input">
+                        <span toggle="#password-field-signup" class="field-icon toggle-password-signup"></span>
+                        <a href="#/" class="modal__user-info-icon tip">
+                            <img src="/themes/tastytheme/src/images/information.png" alt="information" />
+                            <p>
+                                {% if langcode == 'en-ca' or langcode == 'fr-ca' %}
+                                    {{ 'Must Contain:<br>At least 8 characters<br>A lower case letter<br>An upper case letter<br>A number<br>A symbol<br>No parts of your username' | raw | trans }}
+                                {% else %}
+                                    {{'Must have a minimum of 8 and a maximum of 16 characters containing only numbers and letters. Must include at least one number, one uppercase letter and one lowercase letter.'|t}}
+                                {% endif %}
+                            </p>
+                        </a>
+                        <span class="help-block err_password"></span>
+                    </div>
+                </div>
+                {# Addition of dob field #}
+                <p class="modal__container-birth">{{'Date of Birth'|t}} *</p>
+
+
+                <div class="pink form-group show-selectnav max-600">
+                    <div class="date-dropdowns modal__sign-up-birth">
+                        <input type="hidden" id='bday' name='bday' class="form-control">
+                        {% if langcode == 'en-us' or langcode == 'es-us' %}
+                            <select class="day form-control modal__sign-up-select US-bday" name="bday_month" id="bday_month" >
+                                {{ data.bdaydropdown.monthoption | raw }}
+                            </select>
+                            <select class="day form-control modal__sign-up-select" name="bday_day" id="bday_day" >
+                                {{ data.bdaydropdown.dayoption | raw }}
+                            </select>
+
+
+                        {% else %}
+                            <select class="day form-control modal__sign-up-select Canada-bday" name="bday_day" id="bday_day" >
+                                {{ data.bdaydropdown.dayoption | raw }}
+                            </select>
+                            <select class="day form-control modal__sign-up-select" name="bday_month" id="bday_month" >
+                                {{ data.bdaydropdown.monthoption | raw }}
+                            </select>
+                        {% endif %}
+
+                        <select class="day form-control modal__sign-up-select" name="bday_year" id="bday_year" >
+                            {{ data.bdaydropdown.yearoption | raw }}
+                        </select>
+                        <a href="#/" class="modal__user-info-icon tip">
+                            <img src="/themes/tastytheme/src/images/information.png" alt="information" />
+                            <p>{{'You must be at least 13 years of age or older to be a Tasty Rewards<sup>TM</sup> Member. Why do we collect your birthday? We use your birthday to send you a birthday greeting each year, and to provide the most relevant content for our members'|t}}.</p>
+                        </a>
+                    </div>
+
+
+                    <span class="help-block err_bday"></span>
+                </div>
+
+
+                {# Addition of the Gender field #}
+                <div class="modal__sign-up-gender">
+                    <div class="form-group">
+                        <select id="gender" placeholder="Gender" name="gender" class="form-control modal__sign-up-select-gender">
+                            <option value=''>{{ 'Gender'|t }}</option>
+                            <option value='M'>{{ 'Male'|t }}</option>
+                            <option value='F'>{{ 'Female'|t }}</option>
+                            <option value='O'>{{ 'Other'|t }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="help-block err_gender"></span>
+                    </div>
+                      {% if langcode == 'en-us' or langcode == 'es-us' %}
+                        <a href="javascript:void(0);" class="modal__user-info-icon tip gender-tooltip tootltip-signup">
+                          {% include '@pepsicontest/includes/gender_tooltip.html.twig' %}
+                        </a>
+                      {% endif %}
+                </div>
+
+                {# Addition of the captcha hidden field #}
+                <div class="row hidden">
+                    <div class="captchaborder form-group">
+{#                        <label class="control-label margin10">#}
+{#                            <div class="g-recaptcha" data-callback="imNotARobot" data-sitekey="6LeZcyQUAAAAAGgYkkysYZ6XWz5oCUVg_2EjP_y8"></div>#}
+{#                        </label>#}
+                        <input type="hidden" id="grecaptcharesponse" name="grecaptcharesponse">
+                        <small class="help-block err_grecaptcharesponse"></small>
+                    </div>
+                </div>
+                {# Email reciever checkbox mail #}
+
+                <div class="modal__sign-up-optin-checkbox">
+                        <label id="optin_label" for="optin" style="display:none;">optin</label>
+                    <input type = "checkbox" name='optin' id ='optin' value="1" >
+                    <span class="casl modal__checkbox-text legal-copy">
+                {{ 'Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'|t|raw }}
+                    </span>
+                    <span class="help-block err_optin"></span>
+                </div>
+
+                {% if langcode == 'en-us' or langcode == 'es-us' %}
+                    <div class="modal__sign-optin3-checkbox">
+                        <label id="optin3_label" for="optin3" style="display:none;">optin</label>
+                        <input type = "checkbox" name='optin3' id ='optin3' value="1" >
+                        <span class="casl modal__checkbox-text legal-copy">
+                            {{ 'Sign up for the latest news & offers from Snacks.com, PepsiCo, and its brands. '|t|raw }}
+                        </span>
+                        <span class="help-block err_optin3"></span>
+                    </div>
+                {% endif %}
+                {# Hidden input values to the form #}
+                <div class="form-group hidden">
+                    <label id="fbid_label" for="fbid" style="display:none;">fbid</label>
+                    <input type="text" name='fbid' id='fbid' class="form-control" value="{{data.fbid?:''}}">
+                </div>
+                <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+                <input type="hidden" name='casl' id='casl'>
+                <input type="hidden" name='source' id='source' value="{{data.source?:''}}">
+                <input type="hidden" name='language' id='language' value="{{ data.language?:''}}">
+                <input type="hidden" name='socialsource' id='socialsource'>
+                <input type="hidden" name='sourceid' id='sourceid'>
+                {# Create account button #}
+                <div class="row">
+                    <div class="text-center form-group max-600">
+
+                    <button id="submit" class="modal__sign-up-button">{{ 'Create my account'|t }}<span class="glyphicon glyphicon-spin"></span></button>
+
+
+                    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LfHi6QUAAAAAOmu4l357IDLsLFuhXLbeKpHG9XZ" data-callback="onSubmit" data-size="invisible"></div>
+
+                        <div id='form'>
+                            <span class="help-block err_form"></span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="modal__sign-up">
+                    {{ 'Already have an account'|t}}? <a class="modal__sign-up-link jsModalSignIn" href="/{{langcode}}/?signin=true">{{ 'Sign in'|t}}</a>
+                    {% if langcode != 'en-us' and langcode != 'es-us' %}
+                    <br>
+                    <br>
+                   <span class="contact-us">{{ 'Contacting Us:'|t}} </span>	<br/>
+					{{'PepsiCo Canada 2095 Matheson Boulevard East<br>Mississauga, ON L4W 0G2<br>'|t}}<br/>
+
+                    {{'www.tastyrewards.ca'|t}}<br/><br/>
+
+					{{ 'Your personal information will be collected and used in accordance with our <a class="privacy-policy" target="_blank" href="http://www.pepsico.ca/en/Privacy-Policy.html"> Privacy Policy</a>.'|raw|t}}
+                    {% else %}
+                        <br>
+                    <br>
+
+                    {{ 'To learn more about how we use your information, please read PepsiCo\'s <a class="privacy-policy" target="_blank" href="https://www.pepsico.com/legal/privacy"> Privacy Policy</a>, <a class="privacy-policy" target="_blank" href="https://www.pepsico.com/legal/terms-of-use">Terms & Conditions</a> and <a class="privacy-policy" target="_blank" href="https://policy.pepsico.com/aboutads.htm">About our Ads</a>.'|raw|t}}
+                    {% endif %}
+                </div>
+
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+</div>

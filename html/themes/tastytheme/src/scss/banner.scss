@@ -1,0 +1,38 @@
+section#banner {
+  .banner_slide {
+    display: flex;
+    align-items: center;
+    padding: 100px 15%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--text {
+      width: 50%;
+
+      h1 {
+        color: $blue;
+        font-weight: bold;
+        margin-bottom: 40px;
+      }
+
+      p {
+        margin-bottom: 40px;
+      }
+    }
+
+    &--text-recipe {
+      width: 60%;
+
+      h1 {
+        color: $blue;
+        font-weight: bold;
+        margin-bottom: 40px;
+      }
+
+      p {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

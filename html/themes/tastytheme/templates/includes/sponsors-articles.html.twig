@@ -1,0 +1,10 @@
+{% if article_sponsors %}
+  <p class="banner_slide--ads">{{"Brought to you by "|t}}
+    {% for brand in article_sponsors %}
+      {% if loop.index0 == 1 %}
+          {{'and'}}
+      {% endif %}
+        <img src="{{brand.img_url}}" width="200" height="120" alt="{{brand.title}}" loading="lazy" typeof="foaf:Image" class="img-responsive">
+    {% endfor %}
+  </p>
+{% endif %}

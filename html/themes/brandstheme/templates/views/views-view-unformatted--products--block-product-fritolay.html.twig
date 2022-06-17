@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# {% if title %}
+  <h3>{{ title }}</h3>
+{% endif %} #}
+
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name: block_product_fritolay
+ *
+ */
+ #}
+
+<div id="vr-products" class="container">
+  <div class="products-title animate__animated ">
+
+    {%if ( language == 'en') %}
+      <h3>FRITO LAY<sup class="product-sup">&reg;</sup> VARIETY PACKS</h3>
+    {% endif %}
+
+    {%if ( language == 'fr') %}
+      <h3>Les emballages de produits <br>assortis FRITO-LAY<sup class="product-sup">&reg;</sup></h3>
+    {% endif %}
+
+  </div>
+
+  <div class="products-items">
+    {# product-alight-left  #}
+    {% for row in rows %}
+      {% set class_align = 'product-align-left' %}
+
+      {% if loop.index % 2 == 0 %}
+        {% set class_align = 'product-align-right' %}
+      {% endif %}
+
+      <div class="products-item animate__animated {{class_align}} ">
+        {{ row.content }}
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+{% set iframe_url = 'https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=fritolay' %}
+
+<div class="modal bootstrap-modal bg-transparent fritolay-buynow-modal" id="fritolayModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fritolay" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close closeModal" data-dismiss="modal">×</button>
+        {% if iframe_url %}
+          <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{#  <div class="modal bootstrap-modal bg-transparent fritolay-buynow-modal" id="fritolayModal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#    <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#      <div class="modal-content">#}
+{#        <div class="modal-body">#}
+{#          <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#          #}{# <p>Content goes here</p> #}
+{#          {% if iframe_url %}#}
+{#            <iframe id="snack-shop" src="{{iframe_url}}"></iframe>#}
+{#          {% endif %}#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+

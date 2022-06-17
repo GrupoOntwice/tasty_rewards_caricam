@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+<h1 class="signika pink uppercase text-center bold">{{"CHECK OUT<br> OUR OTHER BRAND CONTESTS!"|t | raw }}</h1>
+<section id="topBlocks" class="contest container-fluid topBlockContest othercontest">
+
+{% set elements = rows|length %}
+
+{% for row in rows %}
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set brand = row.content["#row"]._entity.getTranslation(language).field_brand.getValue().0.value %}
+    
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_contest_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_contest_image.getValue().0.alt %}
+    
+    {% set link_uri = (row.content["#row"]._entity.getTranslation(language).field_contest_link.getValue().0.uri |replace({'internal:': ''})) %}
+    {% set link_title = row.content["#row"]._entity.getTranslation(language).field_contest_link.getValue().0.title %}
+     
+
+    <div class="col-xs-12 col-sm-6 contest_tracking">
+        <img src="{{ img }}" data-btntext="{{ link_title }}" data-title="{{brand}}-{{title}}" data-contesturl="{{link_uri}}" data-newwindow="true" class="contestpic socialpic" style="height:auto;width:100%;" />
+    </div>  
+                           
+{% endfor %}
+
+{% if elements > 0 and elements is odd %}
+    <!--<div class="col-xs-12 col-sm-6 ">
+        <div id="feed" class="col-sm-12">
+            <div class=" grid bg-white">
+                <h1 class="signika blue uppercase text-center">{{"Stay tuned, more<br>contests coming soon!"|t}}</h1>
+            </div>
+        </div>  
+    </div>
+    -->
+    <div class="col-xs-12 col-sm-6 morecontest-odd" >
+        <div class="morecontest">
+                <h2 class="signika blue uppercase text-center bold">{{"Stay tuned, more<br>contests coming soon!"|t}}</h2>
+        </div>
+    </div>                
+                
+{% endif %}    
+
+</section>        

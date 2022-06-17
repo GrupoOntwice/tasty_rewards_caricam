@@ -1,0 +1,13 @@
+name: Google Tag Manager dataLayer
+description: This module integrates Drupal with Google Tag Manager.
+package: Statistics
+
+core_version_requirement: ^8 || ^9
+type: module
+
+configure: gtm_datalayer.admin_settings
+
+# Information added by Drupal.org packaging script on 2021-08-13
+version: '2.0.0-beta1'
+project: 'gtm_datalayer'
+datestamp: 1628854949

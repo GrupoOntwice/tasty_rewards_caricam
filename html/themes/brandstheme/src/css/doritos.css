@@ -1,0 +1,1406 @@
+.doritos-main-wrapper, .doritos-product-block{
+    background: url("/themes/brandstheme/src/images/doritos/doritos-background.webp") top center no-repeat;
+    background-size: cover;
+}
+
+.doritos-banner .slick-dotted.slick-slider {
+    margin-bottom: -22px !important;
+}
+
+body.doritos section#banner .banner-desktop span.h1{
+    font-family: "Teko-SemiBold", Sans-Serif;
+    font-size: 60px !important;
+}
+
+.doritos section#banner .banner_slide--text.slide-left{
+    width: 45% !important;
+}
+
+.doritos .banner_slide--text .btn_carousel{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    display: inline-block;
+    font-size: 26px !important;
+    line-height: 1.5;
+    padding: 15px 30px 12px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    background: url("/themes/brandstheme/src/images/doritos/doritos-button-product.png") no-repeat center top;
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: "Teko-Medium",Sans-Serif;
+    border: none;
+    width: 240px;
+    height: 64px;
+}
+
+.doritos section#banner .banner_slide--text.slide-left sup {
+    font-size: 30px;
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+
+.doritos-product-banner-block{
+    background-image: url("/themes/brandstheme/src/images/doritos/doritos-product-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.doritos-black-button{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    display: inline-block;
+    font-size: 26px;
+    line-height: 1.5;
+    padding: 9px 30px 5px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    background: url("/themes/brandstheme/src/images/doritos/doritos-coupon-button.png") no-repeat center top;
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: "Teko-Medium", Sans-Serif;
+}
+
+.doritos-black-button:hover, .doritos-black-button:focus {
+    -webkit-filter: brightness(1.3) drop-shadow(0px 0px 20px #000000);
+    filter: brightness(1.3) drop-shadow(0px 0px 20px #000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=7, Color='$color')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=7, Color='$color')";
+    color: #FFFFFF;
+}
+
+.doritos-red-button, .doritos .btn-recall{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    display: inline-block;
+    font-size: 26px;
+    line-height: 1.2;
+    padding: 15px 30px 12px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    background: url("/themes/brandstheme/src/images/doritos/doritos-button-product.png") no-repeat center top;
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: "Teko-Medium", Sans-Serif;
+}
+
+.doritos-red-button:hover, .doritos-red-button:active, .doritos-red-button:focus, .doritos .btn-recall:hover, .doritos .btn-recall:focus, .doritos .btn-recall:active {
+    -webkit-filter: brightness(1.3) drop-shadow(0px 0px 20px #d91f16);
+    filter: brightness(1.3) drop-shadow(0px 0px 20px #d91f16);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=7, Color='$color')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=7, Color='$color')";
+    color: #FFFFFF;
+}
+
+/*
+  Teko - Bold
+*/
+@font-face {
+    font-family: 'Teko-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/doritos/Teko-Bold.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/doritos/Teko-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/doritos/Teko-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/doritos/Teko-Bold.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/doritos/Teko-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/doritos/Teko-Bold.svg#Teko-Bold') format('svg'); /* Legacy iOS */
+}
+
+/*
+  Teko - Medium
+*/
+@font-face {
+    font-family: 'Teko-Medium';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/doritos/Teko-Medium.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/doritos/Teko-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/doritos/Teko-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/doritos/Teko-Medium.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/doritos/Teko-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/doritos/Teko-Medium.svg#Teko-Medium') format('svg'); /* Legacy iOS */
+}
+
+/*
+  Teko - Regular
+*/
+@font-face {
+    font-family: 'Teko-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/doritos/Teko-Regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/doritos/Teko-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/doritos/Teko-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/doritos/Teko-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/doritos/Teko-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/doritos/Teko-Regular.svg#Teko-Regular') format('svg'); /* Legacy iOS */
+}
+
+/*
+  Teko - SemiBold
+*/
+@font-face {
+    font-family: 'Teko-SemiBold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/doritos/Teko-SemiBold.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/doritos/Teko-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/doritos/Teko-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/doritos/Teko-SemiBold.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/doritos/Teko-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/doritos/Teko-SemiBold.svg#Teko-SemiBold') format('svg'); /* Legacy iOS */
+}
+
+/*
+  TitilliumWeb - Regular
+*/
+@font-face {
+    font-family: 'TitilliumWeb-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/doritos/TitilliumWeb-Regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+    url('../fonts/doritos/TitilliumWeb-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/doritos/TitilliumWeb-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/doritos/TitilliumWeb-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/doritos/TitilliumWeb-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/doritos/TitilliumWeb-Regular.svg#TitilliumWeb-Regular') format('svg'); /* Legacy iOS */
+}
+
+/**********************************
+  Menu
+***********************************/
+
+.doritos .header__logo-container {
+  z-index: 999999;
+}
+
+.doritos #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.doritos-navbar__vertical-align{
+    background-color: #000000;
+}
+
+.doritos .fa-navbar{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 14px !important;
+}
+
+.doritos-navbar__vertical-align ul a{
+    color: #FFFFFF;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: "Teko-SemiBold", Sans-Serif;
+}
+
+/*
+  Doritos Carousel
+*/
+
+
+/*.doritos-d-md-flex {*/
+/*    display: none !important;*/
+/*}*/
+
+.doritos .slick-next:before {
+    background: url("../images/arrows/white-right-chevron.svg") !important;
+    right: 10px;
+}
+
+.doritos .slick-prev:before {
+    background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.doritos #brands .slick-next:before {
+    background: url("../images/arrows/white-right-chevron.svg") !important;
+    right: 10px;
+}
+
+.doritos #brands .slick-prev:before {
+    background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.doritos section#banner .slick-dots li.slick-active button {
+    background-color: #980F3A !important;
+}
+
+.doritos section#banner .slick-dots li button {
+    background-color: #fff4f4 !important;
+}
+
+.featured-product-image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: inherit;
+}
+
+.featured-product-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.featured-prod-heading, .signatures-featured-prod-heading {
+    font-family: new-spirit-condensed, serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 62px;
+    line-height: 1.2;
+    text-transform: uppercase !important;
+}
+
+.featured-prod-heading {
+    color: #980F3A !important;
+}
+
+.signatures-featured-prod-heading {
+    color: #F5F1E7 !important;
+}
+
+.featured-prod-copy-div{
+    padding: 0 15px;
+}
+
+.featured-product-title {
+    font-size: 60px;
+    font-family: "Teko-SemiBold", Sans-Serif;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1;
+    text-transform: uppercase !important;
+    padding-bottom: 16px;
+}
+
+.featured-product-title {
+    color: #FFFFFF !important;
+}
+
+
+.featured-prod-copy {
+    background: #F55322;
+    display: flex;
+    align-items: center;
+}
+
+/**********************************
+  Bootstrap Carousel
+***********************************/
+
+.carousel {
+    position: relative;
+}
+
+.carousel.pointer-event {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: none;
+    }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    -webkit-transform: none;
+    transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    z-index: 1;
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-fade .active.carousel-item-left,
+    .carousel-fade .active.carousel-item-right {
+        transition: none;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 5%;
+    color: #fff;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        transition: none;
+    }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    opacity: 0.9;
+}
+
+.carousel-control-prev {
+    left: -50px;
+}
+
+.carousel-control-next {
+    right: -50px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: no-repeat 50% / 100% 100%;
+}
+
+.doritos .carousel-control-prev-icon {
+    background-image: url("../images/arrows/white-left-chevron.svg");
+}
+
+.doritos .carousel-control-next-icon {
+    background-image: url("../images/arrows/white-right-chevron.svg");
+}
+
+
+/*#mv-signatures-featured-products-carousel .carousel-control-prev-icon {*/
+/*  background-image: url("../images/arrows/mv-signatures-left-chevron.svg");*/
+/*}*/
+
+/*#mv-signatures-featured-products-carousel .carousel-control-next-icon {*/
+/*  background-image: url("../images/arrows/mv-signatures-right-chevron.svg");*/
+/*}*/
+
+
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.carousel-indicators li {
+    box-sizing: content-box;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-indicators li {
+        transition: none;
+    }
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/**********************************
+  Videos
+***********************************/
+
+.doritos-video-title{
+    color: #2D3C9D !important;
+    text-align: center;
+    text-transform: inherit !important;
+    font-size: 48px !important;
+    font-weight: bold;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.doritos-video-section-container{
+    margin: auto;
+    padding: 30px 50px 100px 50px;
+}
+
+.doritos-video-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1140px;
+}
+
+.doritos-video-container h3 sup {
+    top: -5px;
+}
+
+.doritos-video-box {
+    width: 49%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.doritos-video-box.flavourful {
+    width: 100%;
+}
+
+.doritos-video-box h3{
+    color: #FFFFFF;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-family: 'Teko-SemiBold';
+}
+
+.doritos-video-preimg {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.doritos-video-box p{
+    font-family: 'Open Sans',sans-serif;
+    color: #2D3C9D;
+    margin-top: 10px;
+}
+
+.doritos-video-preimg a{
+    display: block;
+}
+
+.doritos-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.doritos-video-preimg:after {
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 90px;
+    height: 60px;
+    background-image: url("/themes/brandstheme/src/images/doritos/youtube-button.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none;
+}
+
+.doritos-video-preimg img{
+    width: 100%;
+}
+
+.doritos-video-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-bottom: 20px;
+}
+
+.doritos-video-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/**********************************
+  Coupon
+***********************************/
+
+.doritos-coupon--container{
+    display: flex;
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 70px 0 200px 0;
+}
+
+.doritos-coupon--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.doritos-coupon--leftcol a {
+    display: block;
+}
+
+.doritos-coupon--leftcol img {
+    width: 100%;
+    display: flex;
+}
+
+.doritos-coupon--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: #F55322;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+}
+
+.doritos-coupon--text h3 {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 60px;
+    line-height: 1em;
+    font-family: 'Teko-SemiBold', sans-serif;
+}
+
+.doritos-coupon-disclaimer{
+    color: #FFFFFF;
+    margin-top: 20px;
+    font-family: 'Teko-Regular', sans-serif;
+}
+
+/**********************************
+  Product
+***********************************/
+
+.doritos-product-category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.doritos-product-box{
+    margin: 25px 0px;
+    width: 340px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    align-items: center;
+}
+
+.doritos-products-categories .doritos-product-img{
+    height: 345px;
+    display: flex;
+    align-items: center;
+}
+
+.doritos-products-categories .doritos-product-img img{
+    width: 67%;
+}
+
+.doritos-products .doritos-product-img img{
+    width: 100%;
+}
+
+.doritos-red{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255,0,0,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(255,0,0,0.7));
+}
+
+.doritos-orange{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255, 147, 0, 0.7));
+    filter: drop-shadow(0px 0px 20px rgba(255, 147, 0, 0.7));
+}
+
+.doritos-green{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(70, 172, 82,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(70, 172, 82,0.7));
+}
+
+.doritos-dark-green{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(71, 154, 0,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(71, 154, 0,0.7));
+}
+
+.doritos-red-orange{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255, 59, 0,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(255, 59, 0,0.7));
+}
+
+.doritos-purple{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(128,0,208,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(128,0,208,0.7));
+}
+
+.doritos-white{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255,255,255,0.5));
+    filter: drop-shadow(0px 0px 20px rgba(255,255,255,0.7));
+}
+
+.doritos-blue{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(0, 80, 208,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(0, 80, 208,0.7));
+}
+
+.doritos-yellow{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255, 158, 0,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(255, 158, 0,0.7));
+}
+
+.doritos-light-yellow{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(255, 244, 183,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(255, 244, 183,0.7));
+}
+
+.doritos-grey{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(195, 195, 195,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(195, 195, 195,0.7));
+}
+
+.doritos-pink{
+    webkit-filter: drop-shadow(0px 0px 20px rgba(253, 36, 148,0.7));
+    filter: drop-shadow(0px 0px 20px rgba(253, 36, 148,0.7));
+}
+
+.doritos-product-img a{
+    display: block;
+}
+
+.doritos-product-box h4{
+    font-family: 'Teko-SemiBold', sans-serif;
+    font-size: 26px;
+    margin: 10px 0;
+}
+
+.doritos-product-box h4 a{
+    color: #FFFFFF;
+}
+
+.doritos-product-box h3{
+    color: #FFFFFF;
+    font-size: 20px;
+    margin: 25px 0;
+    font-family: 'Teko-SemiBold';
+}
+
+.doritos-product-box h3 sup{
+    font-size: 30px !important;
+    top: 3px;
+}
+
+.product-image{
+    display: flex;
+    align-items: center;
+}
+
+.product-image-wrap img {
+    width: 55%;
+}
+
+.product-image-wrap{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.doritos-detail__product--block {
+    width: 50%;
+    padding: 60px 25px;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+.product-social-icons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.doritos-detail__product--block h1 {
+    font-size: 60px;
+    line-height: 1em;
+    margin-bottom: 20px;
+    font-family: "Teko-SemiBold", sans-serif;
+}
+
+.product-social-icons p {
+    font-size: 24px;
+    padding-right: 25px;
+    color: #FFFFFF;
+    font-family: "Raleway-Bold",sans-serif;
+}
+
+.doritos-detail__product--block .product-field-detail{
+    font-family: 'TitilliumWeb-Regular';
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 1.3em;
+}
+
+.doritos-detail__product--block .product-field-detail p{
+    color: #FFFFFF;
+}
+
+/**********************************
+  About
+***********************************/
+
+.doritos-about-us-top-banner{
+    background: url("/themes/brandstheme/src/images/doritos/doritos-about-banner.jpg") top center no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.doritos-about-us{
+    background: url("/themes/brandstheme/src/images/doritos/doritos-about-background.jpg") top center no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+}
+
+.doritos-about-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.doritos-title {
+    -webkit-filter: drop-shadow(0px 0px 10px #d91f16);
+    filter: drop-shadow(0px 0px 10px #d91f16);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    color: #ffffff;
+    font-size: 60px !important;
+    position: relative;
+    margin-bottom: 60px;
+    padding-top: 80px;
+    text-transform: uppercase;
+    font-family: "Teko-SemiBold", Sans-Serif;
+    text-shadow: 0px 0px 1px #ffe5e5, 1px 0px 30px #d91f16, 0px 0px 2px white;
+}
+
+.doritos-title:after {
+    -moz-transform: translate3d(-50%, 0, 0);
+    -o-transform: translate3d(-50%, 0, 0);
+    -ms-transform: translate3d(-50%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    content: ' ';
+    background: url("/themes/brandstheme/src/images/doritos/title-subs.png") no-repeat 0 0;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    height: 10px;
+    width: 480px;
+    background-size: 100%;
+}
+
+.doritos-about-us-paragraph{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 60px 0;
+    width: 70%;
+    margin: auto;
+}
+
+.doritos-image-middle{
+    width: 35%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.doritos-about-us-paragraph p{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "TitilliumWeb-Regular", Sans-Serif;
+}
+
+.doritos-about-chip{
+    position: absolute;
+    left: 0;
+    bottom: -120px;
+    width: 200px;
+}
+
+.doritos-about-pattern{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 700px;
+}
+
+/**********************************
+        Product description
+***********************************/
+
+
+.doritos-product-block .container{
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.doritos-product-block .product-image{
+    display: flex;
+    padding-top: 70px;
+    align-items: center;
+}
+
+.doritos-product-block .product-image-wrap{
+    width: 53%;
+    margin: 0;
+    text-align: center;
+}
+
+.doritos-product-block .product-image-wrap img{
+    width: 45%;
+}
+
+.doritos-product-block .product-image-wrap img[alt~="FRITO-LAY®"] {
+    width: 70%;
+}
+
+.doritos-products-categories .doritos-product-img img[alt~="FRITO-LAY®"]{
+    width: 80%;
+}
+
+.doritos-detail__product--block .product-field-detail {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.3em;
+}
+
+.doritos-product-social-icons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.doritos-product-social-icons p {
+    font-size: 24px;
+    padding-right: 25px;
+    font-family: "Raleway-Bold", sans-serif;
+}
+
+.doritos-product-nutrition {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.doritos-title-nutrition{
+    -webkit-filter: drop-shadow(0px 0px 10px #d91f16);
+    filter: drop-shadow(0px 0px 10px #d91f16);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=4, Color='$color')";
+    color: #ffffff;
+    font-size: 60px !important;
+    position: relative;
+    margin-bottom: 25px;
+    padding-top: 60px;
+    text-transform: uppercase;
+    font-family: "Teko-SemiBold", Sans-Serif;
+    text-shadow: 0px 0px 1px #ffe5e5, 1px 0px 30px #d91f16, 0px 0px 2px white;
+}
+
+.doritos-product-nutrition p{
+    font-family: "TitilliumWeb-Regular", sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 1.5em;
+    padding-bottom: 20px;
+}
+
+.doritos-product-nutrition .product-alert{
+    padding-bottom: 0 !important;
+}
+
+.doritos-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.doritos-product-nutrition .product-field-detail{
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 20px;
+    font-family: 'TitilliumWeb-Regular';
+}
+
+.doritos-product-nutrition .product-ingredients .product-field-detail{
+    line-height: 1.5em;
+}
+
+.product-mobile-nutrition img{
+    display: none !important;
+}
+
+.doritos-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.doritos-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.doritos-productdetails-nutrition-cell {
+    padding: 6px 2px;
+    font-size: 0.875em;
+    font-weight: normal;
+    padding-right: 15px;
+}
+
+.doritos-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(38,38,38, 1);
+    border-top: 1px solid #707070;
+    border-bottom: 1px solid #707070;
+}
+
+.doritos-productdetails-nutrition-row:nth-child(4),
+.doritos-productdetails-nutrition-row:nth-child(5),
+.doritos-productdetails-nutrition-row:nth-child(9),
+.doritos-productdetails-nutrition-row:nth-child(10) {
+    padding-left: 25px;
+}
+
+.doritos-product-nutrition .product-ingredients {
+    padding: 0 15px;
+}
+
+.doritos-product-nutrition .product-ingredients-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doritos-product-nutrition .performance-facts, .doritos-product-nutrition .product-ingredients {
+    width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+    .doritos-coupon--container{
+        padding: 70px 20px 150px 20px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .doritos-logo{
+        width: 60px;
+    }
+
+    .brands-navbar_accout-options{
+        justify-content: space-between;
+    }
+
+    .doritos-navbar__vertical-align{
+        background: #FFFFFF;
+    }
+
+    .doritos-navbar__vertical-align{
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .doritos-logo-mobile{
+        padding: 5px 15px 0px;
+    }
+
+    .doritos-navbar__vertical-align ul a{
+        color: #000000;
+    }
+
+    .doritos-navbar__vertical-align .brands-navbar__center-align{
+        width: 100%;
+    }
+
+    .doritos .fa-navbar {
+        background-color: #000000;
+        color: #FFFFFF;
+    }
+
+    .doritos-navbar__vertical-align .brands-navbar_accounts-mbl{
+        width: 100%;
+    }
+
+    .doritos-navbar__vertical-align .brands-tr-navbar_image-mbl{
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .doritos-product-category{
+        justify-content: center;
+    }
+
+    .doritos section#banner .banner-mobile span.h1{
+        font-family: "Teko-SemiBold",Sans-Serif;
+        font-size: 60px !important;
+    }
+
+    .doritos-products-categories .doritos-product-img{
+        height: auto;
+    }
+
+    .doritos section#banner .banner_slide--text.slide-left{
+        width: auto !important;
+    }
+
+    .featured-product-title{
+        font-size: 46px;
+    }
+
+    .product-social-icons{
+        justify-content: center;
+    }
+
+    .doritos-detail__product--block h1{
+        font-size: 40px;
+    }
+
+    .doritos-title{
+        padding: 80px 20px 0 20px;
+    }
+
+    .doritos .featured-carousel-inner-border{
+        padding: 0 20px;
+    }
+
+    .doritos-title-nutrition{
+        padding-top: 40px;
+        text-align: center;
+    }
+
+    .doritos-product-nutrition{
+        flex-direction: column;
+    }
+
+    .doritos-product-block .product-image-wrap{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .doritos-detail__product--block{
+        width: 100%;
+        text-align: center;
+    }
+
+    .doritos-product-block .product-image{
+        flex-direction: column;
+    }
+
+    .featured-prod-copy {
+        padding: 30px 15px;
+    }
+
+    .doritos .featured-product-image-div{
+        display: flex;
+    }
+
+    .doritos-video-container{
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .doritos-video-box {
+        width: 100%;
+    }
+
+    .doritos-coupon--container {
+        flex-direction: column;
+        max-width: 500px;
+    }
+
+    .doritos-coupon--text {
+        padding: 40px 15px;
+    }
+
+    .doritos-about-pattern{
+        display: none;
+    }
+
+    .doritos-about-chip{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .doritos-title {
+        line-height: 1em;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+  .doritos-title:after {
+    width: 300px;
+  }
+}
+
+.modal-body p {
+  color: #000;
+  margin-bottom: 0;
+}
+
+.btn_red {
+  margin-top: 20px;
+  margin-left: 0;
+  border-radius: 30px;
+  border:2px solid #db1d2c;
+  padding: 0;
+}
+
+.product-doritos-buynow {
+  border: none;
+}
+
+
+.featured-recipe-description {
+  padding: 0 12px 12px 12px;
+}
+
+/*BuyNow Popup*/
+
+.doritos-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+/*Buynow Modal*/
+
+.doritos-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#doritosModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#doritosModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #doritosModal {
+    padding:0 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

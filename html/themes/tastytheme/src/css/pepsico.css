@@ -1,0 +1,205 @@
+/** For signup pop up page **/
+.has-error input{
+    border: 2px solid #fe0000!important;
+    /* background-image: url(/themes/tastytheme/src/images/form_err.png)!important; */
+    background-repeat: no-repeat;
+    background-position: 98% center;
+    background-size: 3%;
+}
+.has-error select {
+    border: 2px solid #fe0000!important;
+}
+.success input{
+    border: 2px solid #a9c240 !important;
+    background-image: url(/themes/tastytheme/src/images/form_filled.png)!important;
+    background-repeat: no-repeat;
+    background-position: 98% center;
+    background-size: 3%;
+}
+
+select.has-error{
+   border: 2px solid #fe0000!important;
+}
+select.success{
+   border: 2px solid #a9c240!important;
+}
+
+.success #bday_label{
+    width: 100%;
+    background-image: url(/themes/tastytheme/src/images/form_filled.png)!important;
+    background-repeat: no-repeat;
+    background-position: 91.5% center;
+    background-size: 18px;
+}
+.has-error #bday_label{
+    width: 100%;
+    background-image: url(/themes/tastytheme/src/images/form_err.png)!important;
+    background-repeat: no-repeat;
+    background-position: 91.5% center;
+    background-size: 18px;
+}
+
+.success #question_contest{
+    width: 100%;
+    background-image: url(/themes/tastytheme/src/images/form_filled.png)!important;
+    background-repeat: no-repeat;
+    background-position: 100% bottom;
+    background-size: 18px;
+}
+.has-error #question_contest{
+    width: 100%;
+    background-image: url(/themes/tastytheme/src/images/form_err.png)!important;
+    background-repeat: no-repeat;
+    background-position: 100% bottom;
+    background-size: 18px;
+}
+#question_contest h4.pink.bold {
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+}
+.contact_contest{
+  margin-left: 10%;
+}
+hr#line-left {
+    width: 45%;
+    display: inline-block;
+    border-width: 8px;
+}
+hr#line-right {
+    width: 45%;
+    display: inline-block;
+    float: right;
+    border-width: 8px;
+}
+.fbcontainner-bottom-line strong{
+    width: 10%;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 8px;
+}
+.container_signup .formlabel{
+  font-weight: 400;
+}
+
+.modal__container-sign-up .modal__user-password .form-group,.modal__container-sign-up .modal__sign-up-gender .form-group {
+    width: 100% !important;
+}
+.modal__container-sign-up .control-group .help-inline, .modal__container-sign-up .help-block {
+    margin: 5px 0px 0px 0px;
+}
+.modal__container-sign-up .modal__user-password,.modal__container-sign-up .date-dropdowns.modal__sign-up-birth {
+    position: relative;
+}
+
+.modal__container-sign-up .form-control {
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    border-radius: 0;
+}
+
+
+.modal__container-sign-up .form-control.modal__sign-up-input,.modal__container-sign-up .form-control.modal__sign-up-select-gender {
+    width: 100% !important;
+}
+.modal__container-sign-up .modal__user-name {
+    display: flex !important;
+    justify-content: space-between;
+}
+.modal__container-sign-up .modal__user-name .form-group {
+    /*display: table-cell !important;*/
+    width: 49.5%;
+}
+a.modal__sign-in-google {
+    background: #fff;
+    display: inline-block;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.modal__sign-in-google img {
+    width: 25px;
+}
+.modal__sign-in-google > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+/** End for signup pop up page **/
+
+
+
+/*Poll animated*/
+.animated .vote-form, .field--name-field-choice-image .field--label{
+    display: none;
+}
+
+.poll_spot_left {
+    position: absolute;
+    cursor: pointer;
+    width: 50%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+}
+.poll_spot_right {
+    position: absolute;
+    cursor: pointer;
+    width: 50%;
+    height: 50%;
+    bottom: 0;
+    right: 0;
+}
+/*Poll animated end*/
+
+
+/* Social Pics*/
+
+#lifestyle .fa-lg{
+    margin: 0px 10px;
+}
+
+.fa-lg {
+    margin: 0px 10px;
+    width: 45px;
+    height: 45px;
+}
+.fa-facebook {
+    background: url("../images/facebook.png") no-repeat;
+}
+.fa-twitter {
+    background: url("../images/twitter.png") no-repeat;
+}
+.fa-pinterest {
+    background: url("../images/pinterest.png") no-repeat;
+}
+.fa-print {
+    background: url("../images/print.png") no-repeat;
+}
+
+@media screen and (max-width: 320px) {
+    .fa-lg {
+        margin: 0px 10px;
+        width: 50px;
+        height: 50px;
+    }
+}

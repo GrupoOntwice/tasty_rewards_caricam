@@ -1,0 +1,20 @@
+{#{ kint(data) }#}
+<script type="text/javascript" >
+language = '{{ data.language }}';
+</script>
+{#
+<section id="banner">
+    <div class="NOT-brands-hero">
+    {% include '@pepsibrands/carousel.html.twig' %}
+  </div>
+</section>
+#}
+
+
+<section id="contentBlocks" class="container-fluid">
+    <div class="col-xs-12 text-center">
+        {{ data.rules | raw}}
+        <br>
+        
+    </div>
+</section>

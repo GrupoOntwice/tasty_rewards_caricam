@@ -1,0 +1,30 @@
+{#
+
+block used on the content section size-2x1
+
+#}
+{% set new_type = type %}
+{% if type == "recipe"%}
+    {% set new_type = "Tasty"|t %}
+{% endif%}
+{% if type == "article"%}
+    {% set new_type = "Life"|t %}
+{% endif%}
+<div class="box size-2x1">
+    <input type="hidden" name="hidden_brand_title" value="{{brand}}-{{title}}" />
+    <div class="boxinside grid" style="background-image:url('{{img}}')">
+        <figure class="effect-lily {{video_class}}">
+            <figcaption>
+                <div class="{{type}}">
+                    <h2>
+                        <span>{{new_type}}</span>
+                        {{title}}
+{#                        <br><small class="white">{{elem_categ}}</small>#}
+                    </h2>
+                        
+                </div>
+                <a href="{{link}}">{{"View more"|t}}</a>
+            </figcaption>           
+        </figure>
+    </div>
+</div>

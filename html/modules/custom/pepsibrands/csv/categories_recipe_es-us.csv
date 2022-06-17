@@ -1,0 +1,29 @@
+ID,Title,Parent_Category,Description,Image
+11111,Recetas según la hora de la comida,0,"Independientemente de si vas a cocinar para una multitud o solo para ti, tenemos la receta ideal para cada ocasión.",Home-Page_Meal-Time.jpg
+11112,Recetas para el desayuno y el brunch,11111,Es casi imposible tener un mal día si lo empiezas con recetas así de ricas.,MealTime_Breakfast.jpg
+11113,Recetas para el almuerzo,11111,¿Te cansaste ya de los emparedados de siempre? Atrévete a mezclar sabores y disfruta de nuestras deliciosas recetas para el almuerzo. ,MealTime_Lunch.jpg
+11114,Recetas para la cena,11111,¿Necesitas inspiración para responder a la pregunta diaria de: “¿Qué hay de comer?”. Olvídate del estrés con estas deliciosas y sencillas recetas.,MealTime_Dinner.jpg
+11115,Recetas de entrantes y ensaladas,11111,Con estas entradas y guarniciones tan ricas puede que ya no necesites un gran plato principal...,MealTime_Appetizer.jpg
+11116,Recetas de postres y dulces,11111,"Y para terminar, deléitate con estas recetas de apetitosos y placenteros postres y dulces.",Meal-Time_Dessert.jpg
+11117,Recetas de cocteles y bebidas,11111,¿Quién no quiere disfrutar de un rico refrigerio con sabores nuevos? Estas deliciosas recetas de bebidas merecen un brindis.,Meal-Time_Drinks.jpg
+11118,Recetas de bocadillos,0,¿Hay alguien ahí con un poco de hambre? Eso pensábamos. Con estos bocadillos gourmet vas a dar en el clavo.,Home-Page_Snack.jpg
+11119,Recetas saladas,11118,Llena de ricos aromas tu cocina con estos platillos que te harán agua la boca. ¿Te importa si probamos un poquito?,Snacks_Savory.jpg
+11120,Recetas dulces,11118,Calma tu apetito más dulce con estas divinas y apetitosas propuestas.,Snacks_Sweet.jpg
+11121,Recetas de dips,11118,¡Qué comience la fiesta con uno de estos deliciosos dips! (¡Y no te sorprendas si desaparecen en un abrir y cerrar de ojos!),Snacks_Dip.jpg
+11122,Recetas picantes,11118,¡Estas recetas no tienen nada de “suaves”! Entra en calor con una de estas recetas picantes.,Snacks_Spicy.jpg
+11123,Recetas con queso,11118,"¿Te encanta el queso? Entonces, estas recetas son para ti.",Snacks_Cheesy.jpg
+11124,Recetas de aperitivos,11118,No te dejes engañar por su tamaño. Estas minicreaciones rebosan sabor por los cuatro costados.,Snacks_Bite-Size.jpg
+11125,Recetas para Navidad y ocasiones especiales,0,No te preocupes por nada. Tenemos las recetas más deliciosas para todas tus ocasiones especiales.,Holiday_Special-Occasion.jpg
+11126,Recetas para ver los partidos,11125,No sabes si tu equipo ganará o perderá. ¡Lo que sí sabes es que con estas recetas triunfarás!,Holiday_Game-Day.jpg
+11127,Recetas para Pascua y primavera,11125,Descubre las recetas más deliciosas y especiales para Pascua y primavera.,Holiday_Spring.jpg
+11128,Recetas para Halloween,11125,¡Sabrosas recetas de Halloween para toda la familia! Estas deliciosas recetas están de muerte.,Holiday_Halloween.jpg
+11129,Recetas para Acción de Gracias,11125,Crea una deliciosa nueva tradición con estas fantásticas recetas para Acción de Gracias.,Holiday_Thanksgiving.jpg
+11130,Recetas para Navidad,11125,¡Sabe a Navidad! Celebra las fiestas navideñas con estos platillos festivos.,Holiday_Festive.jpg
+11131,Recetas para ocasiones especiales,11125,Da igual lo que estés celebrando. Con estas recetas será mucho más especial.,Holiday_Special-Occasion.jpg
+11132,Recetas según el tipo de platillo,0,¿Quieres algo específico? Busca por tipo de platillo para encontrar la receta exacta que deseas.,Home-Page_Recipes-by-Ingredient.jpg
+11133,Recetas de galletas,11132,No podemos garantizar que estas galletas acaben su proceso de enfriado antes de que se las coman... ¡pero siempre puedes hacer el doble de cantidad!,DishType_Cookies.jpg
+11134,Recetas de nachos,11132,Es difícil equivocarse con un gran plato de nachos y tenemos varios ases en la manga para que sean aún más deliciosos.,DishType_Nachos.jpg
+11135,Recetas de dips,11132,¡Qué comience la fiesta con uno de estos deliciosos dips! (¡Y no te sorprendas si desaparecen en un abrir y cerrar de ojos!),DishType_Dips.jpg
+11136,Recetas de overnight oats,11132,¡Salir de la cama es mucho más fácil cuando sabes que te están esperando estos deliciosos overnight oats en la cocina!,DishType_Oats.jpg
+11137,Recetas de guisados,11132,No hay nada mejor que un buen guisado. Todos estos son riquísimos para toda la familia.,DishType_Casserole.jpg
+11138,Recetas de ensaladas,11132,Nuestras ricas ensaladas están hechas con ingredientes frescos y deliciosos y están llenas de sabor.,DishType_Salad.jpg

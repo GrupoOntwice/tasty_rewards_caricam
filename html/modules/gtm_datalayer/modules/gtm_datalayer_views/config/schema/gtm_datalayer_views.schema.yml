@@ -1,0 +1,30 @@
+# Schema for the configuration files of the GTM dataLayer Views module.
+
+gtm_datalayer_views.gtm_datalayer_view.*:
+  type: config_entity
+  label: 'dataLayer View settings'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: string
+      label: 'Label'
+    view:
+      type: string
+      label: 'View ID'
+    plugin:
+      type: string
+      label: 'Plugin'
+    weight:
+      type: integer
+      label: 'Weight'
+    access_logic:
+      type: string
+      label: 'Access logic'
+    access_conditions:
+      type: sequence
+      label: 'Access Conditions'
+      sequence:
+        - type: condition.plugin.[id]
+          label: 'Access Condition'

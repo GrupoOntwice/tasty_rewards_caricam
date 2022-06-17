@@ -1,0 +1,308 @@
+<?php
+
+/**
+ * @file
+ * Contains sfmcservices.module..
+ */
+
+function sfmcservices_user_login() {
+  //$config = \Drupal::config('sfmcservices.adminsettings');
+  //drupal_set_message($config->get('sfmcservices_message'));
+}
+
+
+function sfmcservices_page_attachments_alter(array &$attachments) {
+    
+    $categories = [
+        '/node' => [ 
+                    'item_id'   => 'home',
+                    'item_name' => 'Home',
+                    'attrvalue' => 'Home'
+        ],
+        '/coupons' => [ 
+                    'item_id'   => 'coupon',
+                    'item_name' => 'Coupon',
+                    'attrvalue' => 'Coupon'
+        ],
+        '/contests'=>[ 
+                    'item_id'   => 'contest',
+                    'item_name' => 'Contest',
+                    'attrvalue' => 'Contest'
+        ],
+        'en.pepsicontest.contest.signup' => [ 
+                    'item_id'   => 'contest_registration_%%contestname%%',
+                    'item_name' => 'Contest Registration Form',
+                    'attrvalue' => 'Contest Registration Form'
+        ],
+        'en-ca.pepsicontest.contest.signup' => [ 
+                    'item_id'   => 'contest_registration_%%contestname%%',
+                    'item_name' => 'Contest Registration Form',
+                    'attrvalue' => 'Contest Registration Form'
+        ],
+        'en-us.pepsicontest.contest.signup' => [ 
+                    'item_id'   => 'contest_registration_%%contestname%%',
+                    'item_name' => 'Contest Registration Form',
+                    'attrvalue' => 'Contest Registration Form'
+        ],
+        'fr.pepsicontest.contest.signup' => [ 
+                    'item_id'   => 'contest_registration_%%contestname%%',
+                    'item_name' => 'Contest Registration Form',
+                    'attrvalue' => 'Contest Registration Form'
+        ],
+        'en.pepsicontest.contest.thank-you' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],        
+        'en-us.pepsicontest.contest.thank-you' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],
+        'fr.pepsicontest.contest.thank-you' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],        
+        'en.pepsicontest.contest.thank-you.new' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],
+        'en-us.pepsicontest.contest.thank-you.new' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],        
+        'fr.pepsicontest.contest.thank-you.new' => [ 
+                    'item_id'   => 'contest_registration_thank_you_%%contestname%%',
+                    'item_name' => 'Contest Registration page thank you',
+                    'attrvalue' => 'Contest Registration page thank you'
+        ],
+        '/life' => [ 
+                    'item_id'   => 'life_landing',
+                    'item_name' => 'Article Landing Page',
+                    'attrvalue' => 'Article Landing Page'
+        ],
+        'article_detail' => [ 
+                    'item_id'   => 'life_detail_%%detail_name%%',
+                    'item_name' => '%%page_title%%',
+                    'attrvalue' => '%%page_title%%'
+        ],
+        '/recipes' => [ 
+                    'item_id'   => 'recipe_landing',
+                    'item_name' => 'Recipe Landing Page',
+                    'attrvalue' => 'Recipe Landing Page'
+        ],
+        'recipe_detail' => [ 
+                    'item_id'   => 'recipe_detail_%detail_name%%',
+                    'item_name' => '%%page_title%%',
+                    'attrvalue' => '%%page_title%%'
+        ],
+        '/node/14' => [ 
+                    'item_id'   => 'about',
+                    'item_name' => 'About',
+                    'attrvalue' => 'About'
+        ],
+        'pepsibam.unsubscribe' => [ 
+                    'item_id'   => 'unsubscribe',
+                    'item_name' => 'Unsubscribe Page',
+                    'attrvalue' => 'Unsubscribe Page'
+        ],
+        'pepsibam.unsubscribe.processed' => [ 
+                    'item_id'   => 'unsubscribe_processed',
+                    'item_name' => 'Unsubscribe Page - Thank you',
+                    'attrvalue' => 'Unsubscribe Page - Thank you'
+        ],
+        '/node/51' => [ 
+                    'item_id'   => 'contact',
+                    'item_name' => 'Contact',
+                    'attrvalue' => 'Contact'
+        ],
+        '/node/8' => [ 
+                    'item_id'   => 'faq',
+                    'item_name' => 'FAQ',
+                    'attrvalue' => 'FAQ'
+        ],
+        'pepsibam.resetpwdrequestform' => [ 
+                    'item_id'   => 'forgot_password',
+                    'item_name' => 'Forgot Password',
+                    'attrvalue' => 'Forgot Password'
+        ],
+        'pepsibam.resetpwdrequestform.processed' => [ 
+                    'item_id'   => 'forgot_password_thank_you',
+                    'item_name' => 'Forgot Password - Thank you',
+                    'attrvalue' => 'Forgot Password - Thank you'
+        ],
+        'pepsibam.register.processed' => [ 
+                    'item_id'   => 'registrationa_thank_you',
+                    'item_name' => 'Registration= - Thank you',
+                    'attrvalue' => 'Registration - Thank you'
+        ],
+        'en-ca.pepsibam.register.processed' => [ 
+                    'item_id'   => 'registrationa_thank_you',
+                    'item_name' => 'Registration= - Thank you',
+                    'attrvalue' => 'Registration - Thank you'
+        ],
+        'en-us.pepsibam.register.processed' => [ 
+                    'item_id'   => 'registrationa_thank_you',
+                    'item_name' => 'Registration= - Thank you',
+                    'attrvalue' => 'Registration - Thank you'
+        ],
+        'fr-ca.pepsibam.register.processed' => [ 
+                    'item_id'   => 'registrationa_thank_you',
+                    'item_name' => 'Registration= - Thank you',
+                    'attrvalue' => 'Registration - Thank you'
+        ]
+    ];
+    
+    
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $current_path = "";
+    $titlepage = "";
+
+    if ($node){
+        switch($node->getType()){
+            case 'recipe': {
+                    $current_path = 'recipe_detail';
+                    $titlepage = $node->getTitle();
+                    break;                            
+            }
+            case 'article': {
+                    $current_path = 'article_detail'; 
+                    $titlepage = $node->getTitle();
+                    break;
+            }
+        }
+    }
+    
+    if ($current_path == "") {
+        //var_dump("URL");
+        $current_path = \Drupal::service('path.current')->getPath();
+    }
+    
+    $category = [];
+    if (isset($categories[$current_path])){
+        $category = $categories[$current_path];
+    } 
+    else {
+        // Still trying to find the route name based on the 
+        $router = \Drupal::service('router.no_access_checks');
+        //var_dump(\Drupal::service('path.current')->getPath());
+        try{
+            $route = $router->match(\Drupal::service('path.current')->getPath());
+        } catch (\Exception $e) { 
+            $channel = "general";
+            $message = " path not found ";
+            $context = [ ];
+            \Drupal::logger($channel)->info($message, $context);
+            //return;
+        }
+        
+        //var_dump($route);
+        if (isset($route['_route'])) {
+            $category = isset($categories[$route['_route']])?$categories[$route['_route']]:[];
+        }
+    }
+    //var_dump(strpos($current_path, '/contests/'));
+     
+    
+        $current_path_aux = $current_path;
+        
+        if (substr_count($current_path_aux, '/concours/')) {
+            $current_path_aux = str_replace("/concours/"  , "", $current_path_aux);
+            $current_path_aux = str_replace("/inscription", "", $current_path_aux);
+            $current_path_aux = str_replace("/merci"  , "", $current_path_aux);
+            $category['item_id'] = str_replace("%%contestname%%", $current_path_aux, $category['item_id']);                    
+        }
+        
+        if (substr_count($current_path_aux, '/contests/')) {
+            $current_path_aux = str_replace("/contests/"  , "", $current_path_aux);
+            $current_path_aux = str_replace("/signup"     , "", $current_path_aux);
+            $current_path_aux = str_replace("/thank-you"  , "", $current_path_aux);
+            $category['item_id'] = str_replace("%%contestname%%", $current_path_aux, $category['item_id']);
+        }
+        if ($titlepage) {
+            
+            $titlepage = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $titlepage)));
+            $category['item_id'] = str_replace("%%detail_name%%", $titlepage, $category['item_id']);
+        }
+    
+    
+    
+    $sfmc_config = \Drupal::config('sfmcservices.adminsettings');
+    
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    
+    $MID = '100024307'; //SF Canada BU
+    if ($language == 'en-us' or $language == 'es-us') {
+        $MID = '100022223'; //SF NA BU
+    }
+    
+    
+    $trkcode = "<script type=\"text/javascript\">\n";
+    /*
+    $trkcode =  $trkcode . "_etmc.push([\"setOrgId\", \"$MID\"]);\n";
+    if (\Drupal::currentUser()->isAuthenticated()) { //Set the email if user is authenticated
+        $trkcode =  $trkcode . "_etmc.push([\"setUserInfo\", {\"email\": \"" . \Drupal::currentUser()->getEmail() ."\"}]);\n";
+    }
+    
+    if (count($category) > ""){
+        $trkcode = $trkcode ."setEinsteinCode('" . $language . "_" . $category['item_id'] . "','" . $category['item_name']  ."','" . $category['attrvalue'] . "');\n";
+        $trkcode = $trkcode ." _etmc.push([\"trackPageView\", { \"item\" : \"" . $language . "_" . $category['item_id'] . "\" }])";
+    }
+    else{
+       $trkcode =  $trkcode . "_etmc.push([\"trackPageView\"]);\n";	 
+    }
+    */
+    
+    //var_dump($category);
+    
+    $sf_item      = isset($category['item_id'])  ?$language ."_".$category['item_id']:'';
+    $sf_item_name = isset($category['item_name'])?$category['item_name']:'';
+    $sf_attrvalue = isset($category['attrvalue'])?$category['attrvalue']:'';
+    $sf_email     = \Drupal::currentUser()->getEmail();
+    
+    $trkcode =  $trkcode . "var sf_email     = \"" . $sf_email . "\";\n";
+    $trkcode =  $trkcode . "var sf_mid       = \"" . $MID . "\";\n";
+    $trkcode =  $trkcode . "var sf_item      = \"" . $sf_item . "\";\n";
+    $trkcode =  $trkcode . "var sf_item_name = \"" . $sf_item_name . "\";\n";
+    $trkcode =  $trkcode . "var sf_attrvalue = \"" . $sf_attrvalue . "\";\n";
+    
+    $trkcode =  $trkcode . "</script>";
+    
+    
+    
+    $attachments['#attached']['html_head'][] = [
+      // The data.
+      [
+        '#type' => 'html_tag',
+        // The HTML tag to add, in this case a  tag.
+        '#tag' => 'script',
+        // The value of the HTML tag, here we want to end up with
+        //'#value' => $trkcode,
+        // Set attributes like src to load a file.
+        '#attributes' => array('type'=>"text/javascript",'src' => "https://$MID.collect.igodigital.com/collect.js"),
+      ],
+      // A key, to make it possible to recognize this HTML  element when altering.
+      'sftracking',
+    ];
+
+    $attachments['#attached']['html_head'][] = [
+      // The data.
+      [
+        '#type' => 'html_tag',
+        // The HTML tag to add, in this case a  tag.
+        '#tag' => 'script',
+        // The value of the HTML tag, here we want to end up with
+        '#value' => $trkcode,
+        // Set attributes like src to load a file.
+        //'#attributes' => array('src' => ''),
+      ],        
+      // A key, to make it possible to recognize this HTML  element when altering.
+      'sftrackingfunction',
+    ]; 
+
+     
+    
+}

@@ -1,0 +1,367 @@
+{#{ kint(data) }#}
+{#{ form}
+<script type="text/javascript">
+
+// language = '{{ data.language }}'
+
+</script>
+#}
+
+{{ data.tag | raw }}
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library('pepsicontest/regularcontest') }}
+{#<section id="banner">#}
+{#    <div class="banner_slide" style="background-image: url('{{ file_url(data.headerimage) }}');">#}
+{#        <div class="banner_slide--text">#}
+{#            <h1>{{'Are you the Next <br /> Tasty Winner?' | t }}</h1>#}
+{#            <p>{{'Sign up to our latest promos and contests for a chance to win some exciting prizes!' | t }}</p>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+
+
+{# <section id="banner">
+    <div class="banner_slide" style="background-image: url('{{ file_url(data.headerimage) }}');">
+    </div>
+    <div class="arrow-section-general"></div>
+</section> #}
+
+<script type="text/javascript">
+    window.error_requiredField = '{{"Required Field"|t}}';
+</script>
+
+
+{% if data.contest_type == 'gameday' %}
+    {% include '@pepsicontest/includes/gameday_register.html.twig' %}
+{% else %}
+
+    {% if data.contest_type == 'exclusive' %}
+        {{ attach_library( 'pepsicontest/exclusive_contest' ) }}
+    {% endif %}
+
+{{ attach_library('tastytheme/help_modal') }}
+<section id="banner">
+<div class="banner_slide">
+    <div class="banner-desktop"  style="background-image: url('{{ file_url(data.headerimage) }}');">
+        <div class="banner_slide--text {{class_pos}} contest-banner-text">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+                 {# <h1> {{ subtitle }}</h1> #}
+                 <span class="h1 {{color}}"> {{ subtitle | raw}}</span>
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red {{is_signuplink? 'sign-up-link'}}" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="banner-mobile"  style="background-image: url('{{ file_url(data.headermobileimage) }}');">
+        <div class="banner_slide--text slide-left {{class_pos}}">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+                {# <h1> {{ subtitle }}</h1> #}
+                {# <span class="h1 {{mobileColor}} {{textPosition}}"> {{ subtitle | raw }} </span> #}
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="arrow-section-general"></div>
+</div>
+</section>
+
+
+
+{% if logged_in %}
+    {% set newregister = 0 %}
+{% else %}
+    {% set newregister = 1 %}
+{% endif %}
+
+{# { dump(data) } #}
+
+<section id="contest">
+    <div class="contest-detail__wrapper contest-loggedin">
+        {% if (data.geotargeting == true) %}
+            <div class="contest-detail__view_region">
+                <h2>{{ data.title | raw | t }}</h2>
+                <p class="contest-detail__about">
+                    {{ 'This contest is not available in your region' | t  }}
+                    <a class="btn btn-primary" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+                </p>
+            </div>
+        {% else %}
+            <div class="contest-detail__view">
+                <h2 class="show_mobile">{{ data.title | raw | t }}</h2>
+                <p class="contest-detail__about">
+                    {{data.description | raw }}
+                </p>
+                <div class="contest-detail__social-media social-share" style="text-align: center;padding: 25px;">
+                    <p class="contest-detail__social-media-wrap-paragraph">{{'Share Contest'|t}}</p>
+                    <input type="hidden" id="socialshareicons" name="socialshareicons" value="crcntest">
+                    <input type="hidden" id="socialshareiconscontest" name="socialshareiconscontest" value="{{data.contesturi}}">
+                    <input type="hidden" id="socialshareiconstext" name="socialshareiconstext" value="{{'Check out Tasty Rewards™ for exclusive contests, coupons, recipes, and more!'|t}}">
+                    <a href="#" id="mk-recipe-fb" aria-label = "icon facebook link"><span class="fa fa-lg fa-facebook"></span></a>
+                    <a href="#" id="mk-recipe-tw" aria-label = "icon twitter link"><span class="fa fa-lg fa-twitter"></span></a>
+                    <a href="#" id="mk-recipe-pin" aria-label = "icon pinterest link"><span class="fa fa-lg fa-pinterest"></span></a>
+
+              </div>
+            </div>
+            <div class="contest-detail__form">
+                <!-- Form -->
+                <form data-toggle="validator" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+
+                    <input type="hidden" name="newregister"  value="{{newregister}}">
+                    <!-- User data -->
+                  <span class = "required-field">*Required Fields</span>
+                    <div class="contest-detail__user-name">
+                        <label for="firstname" class = "visuallyhidden"> Firstname </label>
+                        <input type="text" class="contest-detail__user-first-name" name="firstname" id="firstname" placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}" disabled >
+                        <label for="lastname" class = "visuallyhidden"> Lastname </label>
+                        <input type="text" class="contest-detail__user-last-name" name="lastname" id="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}" disabled>
+                    </div>
+                    <div class="contest-detail__user-name">
+                        <label for="email" class = "visuallyhidden"> Email </label>
+                        <input type="text" class="contest-detail__user-email" name="email" id="email" placeholder="{{ 'Email *'|t }}" value="{{data.email?:''}}" disabled>
+                        <label for="postalcode" class = "visuallyhidden"> Postal Code </label>
+                        <input type="text" class="contest-detail__user-postalcode" name="postalcode" id="postalcode" placeholder="{{ 'Postal Code *'|t }}"  value="{{data.postalcode?:''}}" disabled>
+                    </div>
+
+                    {% if (data.langcode == 'en-us' or data.langcode == 'es-us') and data.allow_bday_entry == 1  %}
+                    <p class="contest-detail__container-birth">{{ 'Date of Birth'| t}}  *</p>
+
+
+                    <div>
+                        <div class="contest-detail__sign-up-birth {{data.error.bday?'has-error':''}}">
+                          <label for = "contest-bday" class = "visuallyhidden"> Birthday </label>
+                            <input type="hidden" name='bday' id="contest-bday" class="form-control"  >
+
+                            {% if data.language == 'en-us' or data.language == 'es-us' %}
+                              <label class = "visuallyhidden"> Month </label>
+                                <select id = "contest-bday-month" class="contest-detail__sign-up-select form-control" name="bday_month">
+                                    {{ data.bdaydropdown.monthoption | raw }}
+                                </select>
+                              <label class = "visuallyhidden"> Day </label>
+                                <select class="contest-detail__sign-up-select form-control" name="bday_day">
+                                    {{ data.bdaydropdown.dayoption | raw }}
+                                </select>
+                            {% else %}
+                              <label class = "visuallyhidden"> Day </label>
+                                <select class="contest-detail__sign-up-select form-control" name="bday_day">
+                                    {{ data.bdaydropdown.dayoption | raw }}
+                                </select>
+                              <label class = "visuallyhidden"> Month </label>
+                                <select class="contest-detail__sign-up-select form-control" name="bday_month">
+                                    {{ data.bdaydropdown.monthoption | raw }}
+                                </select>
+                            {% endif %}
+                          <label class = "visuallyhidden"> Year </label>
+                            <select class="contest-detail__sign-up-select form-control" name="bday_year">
+                                {{ data.bdaydropdown.yearoption | raw }}
+                            </select>
+
+                            <a href="#/" class="contest-detail__user-info-icon tip">
+                                <img src="/themes/tastytheme/src/images/information.png" alt="{{'information'|trans }}" />
+                                <p>
+                                    {{"You must be at least 13 years of age or older to be a Tasty Rewards<sup>TM</sup> Member. <br />Why do we collect your birthday? <br />We use your birthday to send you a birthday greeting each year, and to provide the most relevant content for our members."|t|raw}}
+                                </p>
+                            </a>
+                        </div>
+
+                        <span class="help-block err_email">{{data.error.bday| raw?:''  }}</span>
+                    </div>
+                    {% endif %}
+
+
+                    <!-- User data end-->
+
+
+                    {% if data.contest_type == 'exclusive' %}
+                        <p class="exclusive modal__inquiry"> {{'Please select the option that applies: '|t}}</p>
+                        <input type="hidden" name="contest_type"  value="exclusive">
+                        <div class="contest-detail__age-check-select-checkbox">
+                            <div class="contest-detail__checkboxes-wrap">
+                                <input type="checkbox" class="contest-detail__checkboxes-color js-age-checkbox" id="optin_majority" name='optin_majority'  {{ data.optin_majority==1?'checked' }}/>
+                              <label for="optin_majority"><span style="display: none;">checkbox</span></label>
+                                <p class="contest-detail__checkbox-text optin">{{'I am the age of majority in my province/territory of residence'| t }}</p>
+                            </div>
+                            <span class="help-block err_email">{{data.error.optin_majority| raw?:''  }}</span>
+                        </div>
+                        <div class="contest-detail__age-check-select-checkbox">
+                            <div class="contest-detail__checkboxes-wrap">
+                                <input type="checkbox" class="contest-detail__checkboxes-color js-age-checkbox" id="optin_parental" name='optin_parental'  {{ data.optin_parental==1?'checked' }}/>
+                              <label for="optin_parental"><span style="display: none;">checkbox</span></label>
+                                <p class="contest-detail__checkbox-text optin">{{'I am between the age of 13 and the age of majority in my province/territory of residence, and have parental permission to participate'| t }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- User Optin data -->
+                  {% if data.langcode == 'en-us' or data.langcode == 'es-us' %}
+                    <div class="contest-detail__sign-up-select-checkbox" id = "rules">
+                      <div class="contest-detail__checkboxes-wrap">
+                        <input type="checkbox" class="contest-detail__checkboxes-color" id="contest_optin_rules" name='optin_rules'  {{ data.optin_rules==1?'checked' }}/>
+                        <label for="contest_optin_rules"><p class = "visually-hidden">Agree</p></label>
+                        <p class="contest-detail__checkbox-text optin_rules">{{'I agree to the'|t}} <a href="{{data.rules_link}}">{{'official rules'|t}}</a> {{' and <a href="https://www.pepsico.com/legal/privacy" target="_blank">privacy policy.</a>*'| t|raw }}</p>
+                    </div>
+                        <span class="help-block err_optin_rules">{{data.error.optin_rules?:''}}</span>
+                      
+                    </div>
+                  {% endif %}
+                    <div class="contest-detail__sign-up-select-checkbox" id = "news-subscribe">
+                        <div class="contest-detail__checkboxes-wrap">
+                            {% if data.optin == "1" %}
+                                <input type = "hidden" class="contest-detail__checkboxes-color"  name='optin' id ='clipbox' value="1" >
+                                {% if data.langcode != 'en-us' and data.langcode != 'es-us' %}
+                                    <p class="contest-detail__checkbox-text">{{ "You are already subscribed to Tasty Rewards<sup>TM</sup> emails."|t }}</p>
+                                {% endif %}
+                            {% else %}
+                                <input type = "checkbox" class="contest-detail__checkboxes-color"  name='optin' id ='clipbox' value="1" >
+                                <label for="clipbox"></label>
+                                <p class="contest-detail__checkbox-text">{{ 'Yes! Sign me up to Tasty Rewards<sup>TM</sup> emails so I never miss out on exciting updates, offers or news (and I have the option to unsubscribe at any time)' | t }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- User Optin data end -->
+
+                    <!-- User question  -->
+
+
+                    <!-- User question end-->
+
+                    {% if (data.status == '4') %} {# already reguistered and can't participate today  #}
+                        <div class="row">
+                            <div class="">
+                                {% if (data.contestentry == '2') %}
+                                    <h4> {{ 'You have already entered this contest today. You may only participate once per day. ' | t  }} </h4>
+                                {% else %}
+                                    <h4>{{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }}</h4>
+                                {% endif %}
+                            </div>
+                            <div class="contest-detail__sign-up-select-button">
+                                <a class="contest-detail__sign-up-button" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+                            </div>
+
+
+                        </div>
+                    {% else %}
+                        {% if (data.status != '1') %} {# already registererd but can participate today, and we don't need to show answers #}
+
+                            <!-- User Questions -->
+                            {% for question in data.questions %}
+                                {% set questionid = question.questionid %}
+                                <div class="contest-detail__checkboxes-flavour">
+
+                                    <div class="col-xs-12 form-group no-padding contest-detail__checkboxes-flavour-wrap{{attribute(data.error.q, questionid)?'has-error':''}}">
+                                        <p class="contest-detail__container-birth">{{ question.subject|raw }} *</p>
+                                        <input type="hidden" name="questiontype[{{questionid}}]" value ="{{question.type}}">
+                                        <input type="hidden" name="questionid[{{questionid}}]" value="{{questionid}}">
+                                        {% if question.type == 'SingleChoice' or question.type == 'TrueFalse'  %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="radio" class="contest-detail__checkboxes-color" id="checkbox{{ loop.index}}" name="answ[{{questionid}}][]"   value="{{ loop.index}}" />
+                                                        <label for="checkbox{{ loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% elseif question.type == 'MultipleChoice' %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="checkbox" class="contest-detail__checkboxes-color" id="checkbox1{{ loop.index}}" name="answ[{{questionid}}][{{ loop.index}}]"  />
+                                                        <label for="checkbox1{{loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+
+                                            {% endfor %}
+                                        {% endif %}
+                                        <span class="help-block err_q">{{  attribute(data.error.q, questionid) }}</span>
+                                    </div>
+
+                                </div>
+                                
+                            {% endfor %}
+                        {% endif %}
+
+
+                        {% if data.langcode != 'en-us' and data.langcode != 'es-us' %}
+                        <div class="contest-detail__sign-up-select-button">
+                            <h4 class=" signika">
+                                {{'By submitting my entry, I confirm that I am eligible to participate according to the'|t}} <a href="{{ path(data.language ~ '.pepsicontest.contest.officialrules', {'contest': data.contesturi }) }}" target="_blank" >{{ 'Official Rules'|t }}. </a>
+                            </h4>
+                        </div>
+                        {% endif %}
+
+                        <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+
+                        <div class="contest-detail__sign-up-select-button">
+                            <input class="contest-detail__sign-up-button js-contest-submit" type="submit" value="{{ 'Enter Contest'|t }}">
+                        </div>
+
+                    {% endif %}
+
+
+                </form>
+                <!-- Form -->
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+<section id="brands">
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+
+</section>
+
+
+{% endif %}

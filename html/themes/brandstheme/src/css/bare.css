@@ -1,0 +1,694 @@
+/*CSS for Bare brand*/
+
+body {
+  overflow-x: hidden;
+  /*width: 100%;*/
+  /*height: 100%;*/
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.bare .brand-navbar-icons:hover {padding: 0 !important;}
+.bare .navbar-default .primary:hover {
+  padding: 0 !important
+}
+
+/*******************************
+       Products Section
+********************************/
+
+.bare #products {
+  background-attachment: fixed;
+  background-image: url("../images/bare/back-general.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.bare .bare-products {
+  padding: 64px 0 48px;
+}
+
+.bare .bare-products {
+  padding: 64px 0 48px;
+}
+
+.bare .products-title hr {
+  width: 200px;
+  border: 0;
+  border-top: 4px solid #EC3330;
+}
+
+.bare .products .products-title h3 {
+  font-size: 70px;
+  line-height: 1;
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+}
+
+.fr .products .products-title h3 {
+  font-size: 62px !important;
+}
+
+.bare .products-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -ms-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  -ms-align-content: flex-start;
+  align-content: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 120px 0;
+}
+
+
+.bare .products-item:last-of-type {
+  padding: 64px 0 96px;
+}
+
+.products-recipe-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-buy-now, .products-buy-now p {
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.products-recipe-image img {
+  width: 400px;
+  height: auto;
+  max-width: 100%;
+  z-index: 2;
+}
+
+.products-extra-image img {
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  position: absolute;
+  bottom: -96px;
+  right: -64px;
+  z-index: 1;
+}
+
+.products-extra-image2 img {
+  width: 325px;
+  height: auto;
+  max-width: 100%;
+  position: absolute;
+  top: -130px;
+  left: -64px;
+  z-index: 1;
+}
+
+.products-extra-image2 img:not(:first-of-type) {
+  z-index: 1;
+}
+
+.bare-fave-title, .bare-fave-title a {
+  font-size: 32px;
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+}
+
+.bare .products-nutrition h3, .bare .products-ingredients h3 {
+  font-size: 24px;
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #EC3330;
+  padding: 16px 0 8px;
+}
+
+.bare .products-ingredients h3 {
+  padding: 16px 0 8px;
+}
+
+.bare .products-nutrition h3 {
+  padding: 0;
+}
+
+.bare .products-nutrition p, .bare .products-ingredients p {
+  /*font-size: 16px;*/
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+}
+
+.fa-nutrition {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  padding: 16px 0 8px;
+}
+
+.nutrition-copy {
+  /*opacity: 0;*/
+  display: none;
+}
+
+.fa-nutrition-icon {
+  padding-left: 64px;
+}
+
+.fa-swap {
+  cursor: pointer;
+}
+
+.fa-nutrition .fa-plus, .fa-nutrition .fa-minus{
+  color: #EC3330;
+  font-size: 18px;
+}
+
+div.nutrition-none {
+  display: none;
+}
+
+/*******************************
+      Bare Products Table
+********************************/
+
+.products #nutrition-facts {
+  border: 7px #000 solid;
+  padding: 15px;
+  color: #000;
+  margin: 10px 0;
+}
+
+.products #nutrition-facts .nutrition-title {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  padding: 0px 0 10px;
+  text-align: left;
+  border-bottom: 1px solid #000;
+}
+
+.products #nutrition-facts .serving-size {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  padding: 10px 0 10px;
+  text-align: left;
+  border-bottom: 5px solid #000;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.bare-fave-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.bare-fave-body {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.bare-fave-body p sup, .products-title sup, .bare-fave-subtitle sup {
+  font-size: 75% !important;
+}
+
+.performance-facts {
+  padding: 0;
+  line-height: 1.4;
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+.performance-facts table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.performance-facts thead {
+  border-bottom: 5px solid #000;
+  padding-bottom: 10px;
+}
+
+.performance-facts tbody {
+  border-top: none;
+}
+
+.performance-facts tbody > tr {
+  border-bottom: 1px solid #000;
+}
+
+.performance-facts tbody > tr.protein-border {
+  border-bottom: 5px solid #000;
+}
+
+.performance-facts tbody > tr .blank-cell {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  width: 1rem;
+  border-top: 0;
+  padding-left: 30px;
+}
+
+.performance-facts tbody > tr td, .performance-facts tbody > tr th {
+  border: 0;
+  width: 80%;
+  text-align: left;
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.performance-facts tbody > tr td:last-child {
+  text-align: right;
+  width: 20%;
+}
+
+.performance-facts tbody > tr td span, .performance-facts tbody > tr th span, .tr-light {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/*******************************
+         Social Block 1
+********************************/
+
+#social-block1 {
+  background-color: #FFF9ED;
+}
+
+.bare-sb1-bg {
+  background: url("../images/bare/bare-social-block-1-bg.svg") top center no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+  text-align: center;
+  z-index: 99999;
+  max-height: 100%;
+  overflow: visible;
+  position: relative;
+  margin-top: -64px;
+  padding-top: 48px;
+}
+
+.bare-sb1-heading, .bare-sb2-heading{
+  font-size: 70px;
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  color: #000000;
+}
+
+.bare-sb2-heading {
+  color: #ffffff;
+}
+
+.bare-sb1-bg p {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.bare-products-icons-1 {
+  width: 100px;
+  height: auto;
+  padding: 16px 0;
+}
+
+.bare-products-icons-2, .bare-products-icons-3 {
+  width: 150px;
+  height: auto;
+  padding: 16px 0;
+}
+
+
+/*******************************
+         Social Block 2
+********************************/
+#social-block2 h1 {
+  color: #ffffff;
+
+}
+
+#social-block2 p {
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.our-values-bg {
+  background: url("../images/bare/our-values-bg.png") top center no-repeat,#FFF9ED;
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+  text-align: center;
+  z-index: 99999;
+  max-height: 100%;
+  overflow: visible;
+  position: relative;
+  margin-top: -72px;
+  padding-top: 48px;
+}
+
+.social-block2-numbers {
+  width: 35px;
+  padding: 6px 12px 6px 12px;
+  background-color: #EC3330;
+  color: #ffffff;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+
+/*******************************
+         Bare Coupon
+********************************/
+
+.bare-coupon {
+  background: url("../images/bare/bare-coupon-bg.png") top center no-repeat, #000000;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 64px 0 128px 0;
+}
+
+/*******************************
+  Media Queries For Bare Site
+********************************/
+
+@media only screen and (max-width: 360px) {
+  .products #nutrition-facts {
+    padding: 2px;
+  }
+  .products-recipe-image img {
+    width: 250px !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+
+  .products-extra-image2 img {
+    left: -32px !important;
+  }
+
+  .products-extra-image img {
+    bottom: 0 !important;
+    right: -48px !important;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+  .product-img-col:not(:nth-of-type(1)) {
+    margin: 0 16px 16px !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .products-recipe-image img {
+    width: 300px;
+  }
+
+  .products-extra-image img {
+    width: 200px;
+    bottom: -40px;
+    right: 0;
+  }
+
+  .products-extra-image2 img {
+    width: 200px;
+    top: -75px;
+    left: 0;
+  }
+
+  .bare #products {
+    overflow: hidden;
+  }
+
+  .bare .products-item:first-of-type {
+    padding: 16px 0 16px !important;
+  }
+
+  .bare .products-item {
+    padding: 120px 0 64px !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  .bare .products .products-title h3 {
+    font-size: 10vw !important;
+  }
+
+  .bare-sb1-bg {
+    padding: 112px 0 80px;
+    height: auto;
+    margin-top: -80px;
+  }
+
+  .bare-sb1-heading, .bare-sb2-heading {
+     padding-top: 32px;
+  }
+
+  .our-values-bg {
+    height: 850px;
+  }
+
+  .bare-products-padding{
+    padding: 16px;
+  }
+
+  .bare-coupon {
+    padding: 64px 16px 128px 16px;
+  }
+
+  /*.bare .products-item {*/
+  /*  overflow-x: hidden;*/
+  /*}*/
+
+
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  /*.bare .navbar-default a:hover {*/
+  /*  padding: 15px !important;*/
+  /*}*/
+
+    .bare .navbar-default .primary:hover {
+        padding: 15px !important
+    }
+
+  /*.bare .products-item {*/
+  /*  padding: 0 0 32px !important;*/
+  /*}*/
+
+  .products-recipe-image {
+    padding: 0 16px;
+  }
+
+  /*.products-extra-image2 img {*/
+  /*  top: -75px;*/
+  /*  left: 0;*/
+  /*}*/
+
+  .product-img-col {
+    margin: 64px 0 64px;
+  }
+
+  .product-img-col:not(:nth-of-type(1)) {
+    margin: 0 0 112px;
+  }
+
+  .product-img-col:not(:nth-of-type(1)) {
+    margin: 0 16px 64px;
+    padding-bottom: 64px;
+  }
+
+  .product-copy-col:first-of-type {
+    padding: 0 16px 0 16px;
+    order: 2;
+  }
+
+  .product-copy-col {
+    padding: 0 16px;
+    order: 2;
+  }
+
+  .bare-align-right {
+    order: 1;
+  }
+
+  .bare .products-item:first-of-type {
+    padding: 16px 0 48px;
+  }
+
+  .bare .products-item {
+    padding: 120px 0 96px;
+  }
+
+  .bare .products-item:last-of-type {
+    padding: 0 0 16px !important;
+  }
+
+  .fa-nutrition {
+    justify-content: space-between;
+  }
+
+}
+
+@media only screen and (min-width: 576px) {
+  .products-extra-image img {
+    width: 250px;
+    bottom: -64px;
+    right: -48px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .bare-products-padding{
+    padding: 16px 16px 48px 16px;
+  }
+
+  .products-extra-image img {
+    width: 250px;
+    bottom: -64px;
+    right: 48px;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .navbar-wrapper-tasty {
+    overflow-x: hidden;
+  }
+
+  .product-copy-col {
+    padding-left: 48px;
+  }
+
+  .products-extra-image img {
+    width: 300px;
+    bottom: -96px;
+    right: -64px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1400px) {
+
+  .our-values-bg, .bare-sb1-bg {
+    /*height: 80vh;*/
+  }
+
+}
+
+
+.product-bare-buynow {
+  margin-top: 20px;
+}
+
+/*@media only screen and (min-width: 1920px) {*/
+
+/*  .our-values-bg, .bare-sb1-bg {*/
+/*    height: 60vh;*/
+/*  }*/
+
+/*}*/
+
+.bare-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  position:fixed;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+#bareModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#bareModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #bareModal {
+    padding:0 !important;
+  }
+}
+
+
+
+

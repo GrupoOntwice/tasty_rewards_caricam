@@ -1,0 +1,368 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+
+// language = '{{ data.language }}'
+
+</script>
+
+{{ data.tag | raw }}
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{#<section id="banner">#}
+{#    <div class="banner_slide" style="background-image: url('{{ file_url(data.headerimage) }}');">#}
+{#        <div class="banner_slide--text">#}
+{#            <h1>{{'Are you the Next <br /> Tasty Winner?' | t }}</h1>#}
+{#            <p>{{'Sign up to our latest promos and contests for a chance to win some exciting prizes!' | t }}</p>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+
+
+{# <section id="banner">
+    <div class="banner_slide" style="background-image: url('{{ file_url(data.headerimage) }}');">
+    </div>
+    <div class="arrow-section-general"></div>        
+</section> #}
+
+
+
+
+<section id="banner">
+<div class="banner_slide contest-quacker">
+    <div class="banner-desktop"  style="background-image: url('{{ file_url(data.headerimage) }}');">
+        <div class="banner_slide--text {{class_pos}} contest-banner-text">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+{#                 <h1> {{ subtitle }}</h1>#}
+                 <h1 class="h1 {{color}}"> {{ subtitle | raw}}</h1>
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red {{is_signuplink? 'sign-up-link'}}" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+            {{data.body|raw}}
+
+
+        </div>
+    </div>
+    <div class="banner-mobile"  style="background-image: url('{{ file_url(data.headermobileimage) }}');">
+        <div class="banner_slide--text slide-left {{class_pos}}">
+            {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+            {# <span class="end_date"> {{ end_date }}</span> #}
+
+            {% if subtitle %}
+                {# <h1> {{ subtitle }}</h1> #}
+                {# <span class="h1 {{mobileColor}} {{textPosition}}"> {{ subtitle | raw }} </span> #}
+                <h1 class="h1 {{color}}"> {{ subtitle | raw}}</h1>
+            {% endif %}
+
+            {% if description %}
+                <p>
+                    {{description|raw}}
+                </p>
+            {% endif %}
+
+            {% if link_url %}
+                <a class="btn_red" href="{{link_url}}">
+                    {{ link_title }}
+                </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="arrow-section-general"></div>
+</div>
+</section>
+
+<section id="contest" style="background-image: url('/themes/tastytheme/src/images/quacker-background-step.jpg'); background-position: bottom; background-repeat: no-repeat; background-size: cover;">
+    <div class="contest__detail-wrapper contest__detail-wrapper-step">
+        <h2>{{ "Follow the Steps Below to Enter" | trans}}</h2>
+
+        <p class="contest__detail-about">
+            {{ "<span class='bold'>It’s a great time to get creative</span> in your kitchen, and we want to see what you’ve been cooking up! Perhaps it’s everyone’s favourite <a class='quaker-link' target='_blank' href='/en-ca/recipes/awesome-oatmeal-cookies'>oatmeal cookies</a>, <a class='quaker-link' target='_blank' href='/en-ca/recipes/chia-peach-overnight-oats'>overnight oats</a>, or <a class='quaker-link' target='_blank' href='/en-ca/recipes/best-banana-bread'>banana bread</a>! Submit a unique photo of your finished recipe using Quaker<sup>®</sup> oats and you could <span class='bold'>win<sup>†</sup> $2,000</span>!" | trans}}
+        </p>
+
+        <p>{{ "<span class='bold'>Here's how:</span>" | trans}}</p>
+
+        <div class="contest-quaker-steps-wrapper">
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-bowl.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Bake or cook <br>using Quaker<sup>®</sup> oats" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-camera.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Take a photo of your<br> Quaker<sup>®</sup> oats recipe" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-clip.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Title your recipe" | trans}}</span>
+            </div>
+            <div class="contest-quaker-steps">
+                <div class="contest-quaker-steps-image">
+                    <img class="quaker-image-step" src="/themes/tastytheme/src/images/quacker-note.png" alt="Logo of Tasty Rewards">
+                </div>
+                <span class='bold'>{{ "Complete your<br> entry below" | trans}}</span>
+            </div>
+        </div>
+
+        <p>{{ "And voilà! It’s time to get creative!" | trans}}</p><br>
+
+        <p>{{ "<span class='bold'>You can enter one unique photo per day to up your chances of winning!</span> <br> It’s easy for Tasty Rewards™ members to enter — what are you waiting for? <br>See <a class='quaker-link' href='/en-ca/contests/getcreativewithquakercontest/officialrules'>Official Rules</a> for full details." | trans}}</p>
+
+    </div>
+</section>
+
+{% if logged_in %}
+    {% set newregister = 0 %}
+{% else %}
+    {% set newregister = 1 %}
+{% endif %}
+
+{# { dump(data) } #}
+
+<section id="contest" style="background-image: url('/themes/tastytheme/src/images/quacker-background-form.jpg'); background-position: bottom; background-repeat: no-repeat; background-size: cover;">
+    <div class="contest-detail__wrapper contest-detail__quacker-wrapper">
+
+        {% if (data.geotargeting == true) %}
+            <div class="contest-detail__view_region">
+                <h2>{{ data.title | raw | t }}</h2>
+                <p class="contest-detail__about">
+                    {{ 'This contest is not available in your region' | t  }}
+                    <a class="btn btn-primary" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+                </p>
+            </div>
+        {% else %}
+            {# <div class="contest-detail__view">
+                <h2 class="show_mobile">{{ data.title | raw | t }}</h2>
+                <p class="contest-detail__about">
+                    {{data.description | raw }}
+                </p>
+            </div> #}
+            <div class="contest-detail__form-quacker">
+                <!-- Form -->
+                <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+
+                    <input type="hidden" name="newregister"  value="{{newregister}}">
+                    <!-- User data -->
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="firstname" id="firstname" placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}" disabled >
+                        </div>
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="lastname" id="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}" disabled>
+                        </div>
+                    </div>
+                    <div class="contest-detail__quacker-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="email" id="email" placeholder="{{ 'Email *'|t }}" value="{{data.email?:''}}" disabled>
+                        </div>
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input " name="postalcode" id="postalcode" placeholder="{{ 'Postal Code *'|t }}"  value="{{data.postalcode?:''}}" disabled>
+                        </div>
+                    </div>
+                    <div class="contest-detail__quacker-last-input">
+                        <div class="contest-detail__quacker-input-col">
+                            <p class="contest-detail__quacker-upload-text">{{'Each entry must be a unique image. Limit one (1) unique entry per person per day.'| t}}</p>
+
+                            <div class="contest-detail__quacker-upload-main-wrapper">
+                                <div class="contest-detail__quacker-upload-wrapper">
+{#                                    <label class="upload-quacker-label" for="uploadImg">Upload My Image</label>#}
+{#                                    <input type="file" name="uploadImg" id="uploadImg" value="test" accept=".jpg,.png">#}
+
+                                    <label class="upload-quacker-label" for="uploadImg">{{"Upload my image"|t}}</label>
+                                    <span class="upload-quacker-fileName">{{"No file chosen"|t}}</span>
+                                    <input type="file" name="uploadImg" id="uploadImg" onchange="fileChanged(this)" value="test" accept=".jpg,.png">
+                                </div>
+                                <div class="contest-detail__quacker-upload-wrapper">
+                                    <p class="upload-quacker-file">{{ '[Files accepted: JPG or PNG <br>Maximum file size: 2MB]' | trans }}</p>
+                                </div>
+                            </div>
+                            <span class="help-block err_recipe">{{data.error.uploadImg| raw?:''  }}</span>
+                        </div>
+
+                        <div class="contest-detail__quacker-input-col">
+                            <input type="text" class="contest-detail__input  {{data.error.recipe?'has-error':''}}" placeholder="{{ 'Recipe Name* [Limit 45 characters]'|t }}" name="recipeTitle" maxlength="45">
+                            <span class="help-block err_recipe">{{data.error.recipeTitle| raw?:''  }}</span>
+                        </div>
+
+                    </div>
+
+                    <!-- User data end-->
+            
+
+                    <!-- User Optin data -->
+                    <div class="contest-detail__sign-up-select-checkbox">
+                        <div class="contest-detail__checkboxes-wrap">
+                            {% if data.optin == "1" %}
+                                <input type="checkbox" class="contest-detail__checkboxes-color" id="check" />
+                                <label for="check" class="hidden"></label>
+                                <p class="contest-detail__checkbox-text">{{ "You are already subscribed to Tasty Rewards<sup>TM</sup> emails."|t }}</p>
+                            {% else %}
+                                <input type = "checkbox" class="contest-detail__checkboxes-color"  name='optin' id ='clipbox' value="1" >
+                                <label for="clipbox"></label> 
+                                <p class="contest-detail__checkbox-text">{{ 'Yes! Sign me up to Tasty Rewards<sup>TM</sup> emails so I never miss out on exciting updates, offers or news (and I have the option to unsubscribe at any time)' | t }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- User Optin data end -->
+
+                    <!-- User question  -->
+
+
+                    <!-- User question end-->
+                    
+                    {% if (data.status == '4') %} {# already reguistered and can't participate today  #}
+                        <div class="row">
+                            <div class="">
+                                {% if (data.contestentry == '2') %}
+                                    <h4> {{ 'You have already entered this contest today. You may only participate once per day. ' | t  }} </h4>                    
+                                {% else %}    
+                                    <h4>{{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }}</h4>
+                                {% endif %}
+                            </div>
+                            <div class="contest-detail__sign-up-select-button">
+                                <a class="contest-detail__sign-up-button" href="{{ url('pepsicontest.landing') }}">{{ 'Return to homepage' | t }}</a>
+                            </div>
+
+                            
+                        </div>
+                    {% else %}
+                        {% if (data.status != '1') %} {# already registererd but can participate today, and we don't need to show answers #}
+
+                            <!-- User Questions -->
+                            {% for question in data.questions %}
+                                {% set questionid = question.questionid %}
+                                <div class="contest-detail__checkboxes-flavour">
+
+                                    <div class="col-xs-12 form-group no-padding contest-detail__checkboxes-flavour-wrap{{attribute(data.error.q, questionid)?'has-error':''}}">
+                                        <p class="contest-detail__container-birth">{{ question.subject|raw }} *</p>
+                                        <input type="hidden" name="questiontype[{{questionid}}]" value ="{{question.type}}">
+                                        <input type="hidden" name="questionid[{{questionid}}]" value="{{questionid}}">
+                                        {% if question.type == 'SingleChoice' or question.type == 'TrueFalse'  %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="radio" class="contest-detail__checkboxes-color" id="checkbox{{ loop.index}}" name="answ[{{questionid}}][]"   value="{{ loop.index}}" />
+                                                        <label for="checkbox{{ loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% elseif question.type == 'MultipleChoice' %}
+                                            {% for answer in question.answers %}
+                                                {% set answ = attribute(data.answ, questionid) %}
+                                                {% set chked = ''%}
+                                                {% if loop.index0 in answ %}
+                                                    {% set chked = 'checked'%}
+                                                {% endif %}
+                                                <div class="contest-detail__select-checkbox">
+                                                    <div class="contest-detail__checkboxes-wrap">
+                                                        <input type="checkbox" class="contest-detail__checkboxes-color" id="checkbox1{{ loop.index}}" name="answ[{{questionid}}][{{ loop.index}}]"  />
+                                                        <label for="checkbox1{{loop.index}}"></label>
+                                                        <p class="contest-detail__checkbox-text-flavour">{{ answer.value}}</p>
+                                                    </div>
+                                                </div>
+
+                                            {% endfor %}
+                                        {% endif %}    
+                                        <span class="help-block err_q">{{  attribute(data.error.q, questionid) }}</span>
+                                    </div>  
+
+                                </div> 
+                            {% endfor %}
+                        {% endif %}
+
+
+
+                        <div class="contest-detail__sign-up-select-button">
+                            <h4 class="contest-detail__checkbox-text-rules">
+                                {{'By submitting my entry, I confirm that I am eligible to participate according to the'|t}} <a href="{{ path(data.language ~ '.pepsicontest.contest.officialrules', {'contest': data.contesturi }) }}" target="_blank" >{{ 'Official Rules'|t }}. </a>
+                            </h4>
+                        </div> 
+
+                        <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+
+                        <div class="contest-detail__sign-up-select-button">
+                            <input class="contest-detail__sign-up-button" type="submit" value="{{ 'Enter Contest'|t }}">
+                        </div>
+
+                    {% endif %}                    
+
+
+                </form>                
+                <!-- Form -->
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+<section id="amazon">
+    <div class="banner-desktop white_white"  style="background-image: url('/themes/tastytheme/src/images/quacker-background-amazon.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat; height: 338px;">
+        <div class="banner_quacker-amazon {{class_pos}}">
+      {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+            <h3>
+                {{"Shop for your favourite <br>Quaker<sup class='quacker-amazon-sup'>®</sup> products on Amazon!"|t}}
+             </h3>
+
+              <p>
+                {# {{"Description"|t}} #}
+              </p>
+
+            <a class="btn_red" target="_blank" href={{"https://www.amazon.ca/stores/page/213FC30F-C3B6-467C-B53E-F9C1E99334AC?store_ref=SB_A10475021JNZ50VKHPW90&pf_rd_p=f190e936-3339-45fc-9bcd-7b3a3d3027e3&aaxitk=xi5Z9.Ymrm0o3YJahu06Yw&hsa_cr_id=6453851750401&lp_asins=B01F8YM2AS,B01F8YM2IU&lp_mat_key=quaker&lp_query=quaker&lp_slot=auto-sparkle-hsa-tetris&ref_=sb_s_sparkle"| t}}>
+                {{"Buy Now"|t}}
+            </a>
+
+
+        </div>
+      </div>
+</section>
+
+<section id="brands">
+    <p class="quacker-brands">{{"† No purchase necessary. Open to legal residents of Canada who are Tasty Rewards™ members and at least the age of majority in their province/territory of residence at the time of entry. Correctly answering a mathematical skill-testing question required to win. Contest Period: June 18, 2020 @ 9:00 am ET to August 9, 2020 @ 5:00 PM ET. One (1) prize available to be won (ARV $2,000; see prize details in Official Rules). Odds of winning depend on number of eligible entries received. Limit one (1) unique entry per person per day. Conditions/restrictions may apply. <a class='quaker-link' href='/en-ca/contests/getcreativewithquakercontest/officialrules' target='_blank'>Click here for Official Rules.</a>" | t}}</p>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->    
+
+</section>
+
+<script>
+    function fileChanged(input) {
+        let fileName = document.querySelector('.upload-quacker-fileName');
+        fileName.textContent = input.files[0]['name'];
+    }
+</script>

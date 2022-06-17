@@ -1,0 +1,5 @@
+entity.gtm_datalayer_override.add:
+  route_name: entity.gtm_datalayer_override.add_form
+  title: 'Add override'
+  appears_on:
+    - entity.gtm_datalayer_override.collection

@@ -1,0 +1,34 @@
+<script type="text/javascript">
+</script>
+
+{{ attach_library( 'pepsibrands/realjoy_export' ) }}
+
+<h2 class="">{{'All Stories'|t}} </h2>
+
+<div class="container">
+
+	<table class="views-table views-view-table cols-9 responsive-enabled sticky-enabled">
+   <thead>
+      <tr>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Email'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'First Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Last Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Story'|t}}</th>
+      </tr>
+   </thead>
+   <tbody>
+	{% for entry in data.entries %}
+      <tr>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.email}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.firstname}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.lastname}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.story}} </td>
+      </tr>
+	{% endfor %}
+   </tbody>
+</table>
+
+{# <input data-drupal-selector="edit-clear" type="submit" id="edit-download" name="op" value="Export Csv" class="button js-export-csv  form-submit" data-link="{{data.csv_link}}"> #}
+
+
+</div>

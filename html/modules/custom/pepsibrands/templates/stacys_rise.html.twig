@@ -1,0 +1,146 @@
+{# stacy_rise.html.twig #}
+{% set brand = 'stacys' %}
+{% set brand_basepath = data.brands_basepath %}
+<div class="navbar-wrapper-tasty">
+    {{ attach_library('brandstheme/framework') }}
+    {{ attach_library('brandstheme/global-styling') }}
+    {{ attach_library('brandstheme/' ~ brand) }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+
+  {# {% include '@brandstheme/includes/recall.html.twig' %} #}
+
+    <img class="w-100 noMobile-md en" src="/themes/brandstheme/src/images/stacys/stacys-rise/Stacy's_Banner_EN.jpg" alt="Stacys Banner">
+    <img class="w-100 noDesktop-md en" src="/themes/brandstheme/src/images/stacys/stacys-rise/Stacys_Banner-mb_EN.jpg" alt="Product Recipe Banner">
+
+    <img class="w-100 noMobile-md fr" src="/themes/brandstheme/src/images/stacys/stacys-rise/Stacys_Banner_FR.jpg" alt="Stacys Banner">
+    <img class="w-100 noDesktop-md fr" src="/themes/brandstheme/src/images/stacys/stacys-rise/Stacys_Banner-mb_FR.jpg" alt="Product Recipe Banner">
+
+
+  <section class="content">
+
+  	<div class = " container empower-content">
+      <div class = "empower-heading">
+      <img class = "stacys-left" src = "/themes/brandstheme/src/images/stacys/stacys-rise/left-img.png" style = "left:-7%" />
+      <img class = "stacys-right" src = "/themes/brandstheme/src/images/stacys/stacys-rise/right-img.png" style = "right: -7%" />
+		  <h2 class = "mochaMattari-font">{{'Help us empower women-founded-businesses'|t}}</h2>
+      </div>
+
+      <div>
+
+        <p class = "tk-houschka-pro">{{ 'The Stacy’s Rise Project™ is a program committed to empowering and supporting women entrepreneurs on their paths to establishing a successful business through funding, mentorship, and community. At Stacy’s, our mission is to #HelpWomenRiseCA.' |t }}</p>
+
+		  <p class = "tk-houschka-pro">{{ "Inspired by our own roots as a woman-founded company, the Stacy’s Rise Project™ was launched in the U.S in 2017. The program has since supported over 50 women founders, provided over $450,000 in grants – and in 2022, we’re expanding our program into Canada! There are approximately 1.1 million women entrepreneurs in Canada<sup>1</sup>, but many of these women face barriers to proper funding and mentorship, which limits professional growth."|t }}</p>
+
+      <br>
+
+        <p class="footnote tk-houschka-pro">{{"<sup>1</sup> Cukier, W., Mo, G. Y., Chavoushi, Z. H., Blanchette, S., Noshiravani, R. (2021). The State of Women’s Entrepreneurship in Canada 2021. Women Entrepreneurship Knowledge Hub. https://wekh.ca/wp-content/uploads/2021/06/ State_of_Womens_Entrepreneurship_in_Canada_2021.pdf
+"|t}}</p>
+      </div>
+
+  	</div>
+
+
+    <div class="content-subhead">
+      <div class = "content-heading container">
+      <img class = "stacys-left" src = "/themes/brandstheme/src/images/stacys/stacys-rise/left-img.png"  />
+      <img class = "stacys-right" src = "/themes/brandstheme/src/images/stacys/stacys-rise/right-img.png" />
+      <h2 class = "mochaMattari-font">{{'What does the Stacy’s Rise Project™ provide?' |t}}</h2>
+      </div>
+
+      <div class="stacys-subhead-row">
+		<span class="stacys-brand-row">
+			<img src="/themes/brandstheme/src/images/stacys/stacys-rise/mentorship-img.png" alt="mentorship">
+			<div class="stacys-brand-content">
+				<p class="text-bold tk-houschka-pro">{{ 'Mentorship' |t }} </p>
+        <p class="icon-description tk-houschka-pro">{{'We’ll connect you with <br> PepsiCo leaders and other <br> industry experts.' |t}}</p>
+			</div>
+		</span>
+
+        <span class="stacys-brand-row" style="margin-right: 0">
+			<img src="/themes/brandstheme/src/images/stacys/stacys-rise/monetary_img.png" alt="monetary support">
+			<div class="stacys-brand-content">
+				<p class="text-bold tk-houschka-pro">{{ 'Monetary Support' |t }}</p>
+        <p class="icon-description tk-houschka-pro">{{'We’ll award four $10,000 grants <br> to women-owned <br> businesses in Canada.' |t}}</p>
+			</div>
+		</span>
+      </div>
+
+
+    </div>
+
+
+
+  </section>
+
+
+  	<div class="stacys-banner-content">
+      <div class = "container stacys-signup" >
+      <img class = "stacys-left" src = "/themes/brandstheme/src/images/stacys/stacys-rise/left-img.png" style = "left:4%; position: absolute" />
+      <img class = "stacys-right" src = "/themes/brandstheme/src/images/stacys/stacys-rise/right-img.png" style = "right:4%; position: absolute" />
+	  	{% if data.open_applications %}
+
+	  		<h3 style = "font-size: 38px;" class = "mochaMattari-font">{{'Applications are now open!' |t}}</h3>
+	  		<p class = "tk-houschka-pro">{{"Submit your application to the Stacy’s Rise Project for a chance to receive one of our financial grants — along with valuable community exposure and mentorship from PepsiCo<sup>®</sup> executives. "|t}}</p>
+
+	  		<a class = "tk-houschka-pro" href="javascript:void(0);">{{"Submit Grant Application"|t}}</a>
+
+	  	{% else %}
+        <div class="" id="riseproject-form" ></div>
+		  	{% if data.thankyou == 1 %}
+			      <h2 class = "tk-houschka-pro thankyou-submit" style = "font-size: 38px">{{ "Thank you! Your entry has been submitted" | trans}}</h2>
+
+  			{% else %}
+
+  			  	<div class="stacys-signup-form">
+  			  		{% include '@pepsibrands/includes/stacys-signup-form.html.twig' %}
+  			  	</div>
+  			{% endif %}
+	  	{% endif %}
+      <div class = "text-center signup-form-text">
+<p class = "footnote tk-houschka-pro">{{ 'Your email address will only be used to provide you with updates relating to the “Stacy’s Rise Project™”.  Unless you have previously opted in, <br> your email address has not been added to any email marketing lists by signing up for updates.' |t }}</p>
+      </div>
+	</div>
+    </div>
+    </div>
+
+{# if data.has_error scroll down to here #}
+  {% if data.has_error or data.thankyou %}
+    <script type="text/javascript">
+      document.getElementById("riseproject-form").scrollIntoView();
+    </script>
+  {% endif %}
+
+</div>
+
+<section class = "madison-section">
+<div class = "container text-center">
+  <img class = "madison-img" src = "/themes/brandstheme/src/images/stacys/stacys-rise/stacys-madison.png" />
+  <div class = "madison-content">
+    <div class = "madison-heading">
+    <img class = "stacys-left madison-left" src = "/themes/brandstheme/src/images/stacys/stacys-rise/left-img.png"  />
+    <img class = "stacys-right madison-right" src = "/themes/brandstheme/src/images/stacys/stacys-rise/right-img.png"  />
+  <h2 class = "mochaMattari-font ">{{"Stacy’s Woman-Founded Story"|t}}</h2>
+    </div>
+  <p class = "tk-houschka-pro">{{"When Stacy Madison started making pita chips at her sandwich cart in Boston, she knew passion, hard work, and using only quality ingredients were what her customers deserved. Stacy would make baked pita chips every day and would hand them out as free samples to customers waiting in line for their sandwich.
+  The samples were an immediate hit, and Stacy’s Pita Chips was founded shortly after in 1997.
+  <br>
+  <br>
+  Even two decades later, we are still committed to our values and doing what it takes to make our best snacks. True to our history as a woman-owned business, we are thrilled to help women entrepreneurs of today rise through mentorship, grants, and community.  "|t}}</p>
+  </div>
+  {% if video %}
+  <div class="stacys-video-box">
+    <div class="stacys-video-preimg">
+      <a class="activate-video" data-key="{{video.key}}" href="#">
+        <img alt="video thumbnail" src="https://img.youtube.com/vi/{{video.key}}/maxresdefault.jpg" />
+      </a>
+    </div>
+  </div>
+</div>
+{% endif %}
+</div>
+
+</section>
+
+
+{% include '@brandstheme/includes/footer.html.twig' %}

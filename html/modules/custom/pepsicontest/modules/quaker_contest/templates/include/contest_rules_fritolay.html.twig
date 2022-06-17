@@ -1,0 +1,20 @@
+{{ attach_library( 'quaker_contest/landing' ) }}
+{{ attach_library( 'quaker_contest/nintendo' ) }}
+<script type="text/javascript">
+window.popup_contest = 1;
+</script>
+
+<section class="nintendo-contest-rules">
+    <div class="nintendo-contest-rules-text-banner">
+        <h1>{{ "CONTEST RULES" | t}}</h1>
+    </div>
+
+    <img class="nintendo-fritolay-img en" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-v1.png" alt="fritolay variety pack">
+    <img class="nintendo-fritolay-img fr" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-fr-v1.png" alt="fritolay variety pack">
+</section>
+
+<section id="contentBlocks" class="container-fluid nintendo-rules">
+    <div class="container">
+         {{ data.body | raw}}
+    </div>
+</section>

@@ -1,0 +1,127 @@
+{# TODO: add the template variables #}
+{% set page_cassiecampbell = 1 %}
+{% set langcode = active_lang %}
+
+{% include '@quaker_contest/tracking/floodlight-hockey.html.twig' %}
+
+<div class="navbar-wrapper-tasty">
+  {{ attach_library('brandstheme/quaker') }}
+  {{ attach_library('brandstheme/socialfeed') }}
+  {{ attach_library('brandstheme/slickLibrary') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+</div>
+
+<section id="quaker-campbell">
+  <div class="quaker-campbell-banner">
+    <div class="banner_slide--text {{class_pos}} contest-banner-text">
+      <img class="hockey-hungry en" src="/themes/brandstheme/src/images/quaker/campbell/hockey-hungry.png" alt="hockey hungry logo tag" />
+      <img class="hockey-hungry fr" src="/themes/brandstheme/src/images/quaker/campbell/hockey-hungry-fr.png" alt="hockey hungry logo tag" />
+      <h1>{{ "Quaker<sup>®</sup> Hockey Hungry Contest." | trans}}</h1>
+      <p>{{ "Make Quaker<sup>®</sup> Oatmeal your first score of the day for a chance to win† from Quaker<sup>®</sup> and Hockey Canada<sup>®</sup>!" | trans}}</p>
+      <br>
+      <a class="learn-more" href='/{{lang_prefix}}/contests'>
+        {{"Learn More"|t}}
+      </a>
+    </div>
+
+    <img class = "campbell-product-img en" src="/themes/brandstheme/src/images/quaker/campbell/campbell-product.png" alt="quaker products" />
+    <img class = "campbell-product-img fr" src="/themes/brandstheme/src/images/quaker/campbell/campbell-product-fr.png" alt="quaker products" />
+    <div class = "campbell-logo">
+      <img class = "campbell-logo-img en" src="/themes/brandstheme/src/images/quaker/campbell/campbell-logo.png" alt="Campbell logo" />
+      <img class = "campbell-logo-img fr" src="/themes/brandstheme/src/images/quaker/campbell/campbell-logo-fr.png" alt="Campbell logo" />
+    </div>
+  </div>
+
+{#  <div class="quaker-steps-microsite">#}
+{#      <div class="container">#}
+{#        <h2>{{ "How it works" | trans}}</h2>#}
+
+{#        <div class="contest-quaker-steps-wrapper">#}
+{#            <div class="contest-quaker-steps">#}
+{#                <img src="/themes/brandstheme/src/images/quaker/campbell/buy-step.png" alt="Logo of Tasty Rewards" />#}
+{#                <p class='bold'>{{ "Step 1: BUY" | trans}}</p>#}
+{#                <span>{{ "Purchase participating boxes of Quaker<sup>®</sup> Instant Oatmeal products." | trans}}</span>#}
+{#            </div>#}
+{#            <div class="contest-quaker-steps">#}
+{#                <img src="/themes/brandstheme/src/images/quaker/campbell/upload-step.png" alt="Logo of Tasty Rewards" />#}
+{#                <p class='bold'>{{ "Step 2: ENTER" | trans}}</p>#}
+{#                <span>{{ "Go to www.QuakerHockeyHungry.ca to enter your UPC." | trans}}</span>#}
+{#            </div>#}
+{#            <div class="contest-quaker-steps">#}
+{#                <img src="/themes/brandstheme/src/images/quaker/campbell/save-step.png" alt="Logo of Tasty Rewards" />#}
+{#                <p class='bold'>{{ "Step 3: SUBMIT" | trans}}</p>#}
+{#                <span>{{ "Submit your entry for a chance to win prizes from Quaker<sup>®</sup> and Hockey Canada<sup>®</sup>!" | trans}}</span>#}
+{#            </div>#}
+
+{#        </div>#}
+{#      </div>#}
+{#  </div>#}
+
+  <div class="quaker-campbell-enter-contest">
+      <div class="container">
+          <h3> {{'Enter for a chance to win<sup>†</sup> exclusive prizes from Quaker<sup>®</sup> and Hockey Canada<sup>®</sup>!'|t}}</h3>
+          <p>{{ "You can always count on Quaker<sup>®</sup> instant oatmeal for a warm meal before your family heads to the rink. And this season, your purchase of participating Quaker<sup>®</sup> instant oatmeal products gives you a chance to score some exclusive prizes from our friends at Hockey Canada<sup>®</sup> — including 1 of 10 Hockey Canada Grand Prize Packs – each with an ARV of $1,500!" | trans}}</p>
+      </div>
+  </div>
+
+
+    <div id="quaker-hockey-video" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <div class="carousel-inner container">
+            {% for idx, video in videos_landing %}
+                <div class="row item {{ idx==0 ? 'active' :'' }}">
+                    <div class="col-md-12 quaker-video-col quaker-video-col-{{ idx }}">
+                        <div class="quaker-video-box">
+                            <div class="quaker-video-preimg">
+                                <a href="#" data-key="{{video.key}}" class="activate-video">
+{#                                    <img src="https://img.youtube.com/vi/{{video.key}}/maxresdefault.jpg" />#}
+
+                                    <img src="/themes/brandstheme/src/images/quaker/campbell/quaker-campbell-video-thumbnail.jpg" />
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a class="carousel-control-prev" href="#quaker-hockey-video" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#quaker-hockey-video" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <section class="quaker-featured-recipes">
+
+      {% set featured_recipes = featured_content_recipes %}
+      <div class="quaker-recipes-block">
+          <div class="quaker-featured-recipes-bg-left">
+              <img class="" src="/themes/brandstheme/src/images/quaker/quaker-featured-recipes-bg-left.png" alt="Quaker Recipes block background">
+          </div>
+
+          {% include '@brandstheme/includes/featured/featured-recipes-quaker-hockey.html.twig' %}
+
+          <div class="quaker-featured-recipes-bg-right">
+              <img class="" src="/themes/brandstheme/src/images/quaker/quaker-featured-recipes-bg-right.png" alt="Quaker Recipes block background">
+          </div>
+      </div>
+
+{#      <div class="quaker-campbell-barcode container">#}
+
+{#        <img class="quaker-campbell-barcode en" src="/themes/brandstheme/src/images/quaker/campbell/quaker-campbell-barcode.png" alt = "quaker campbell barcode">#}
+{#        <img class="quaker-campbell-barcode fr" src="/themes/brandstheme/src/images/quaker/campbell/quaker-campbell-barcode-fr.png" alt = "quaker campbell barcode">#}
+{#        <div>#}
+{#            <p>{{'Quaker<sup>®</sup> and Hockey Canada<sup>®</sup> are teaming up to get Canadian households in the hockey spirit.'|t}}</p>#}
+{#        <p>{{'Enter the UPC from participating Quaker<sup>®</sup> Instant Oatmeal products for a chance to WIN!†'|t}}</p>#}
+{#        </div>#}
+{#      </div>#}
+    </section>
+
+    <section id="coupon" class="quaker-coupon-block">
+      {{ coupon_block|t|raw }}
+    </section>
+</section>

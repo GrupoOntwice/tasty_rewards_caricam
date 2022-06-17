@@ -1,0 +1,30 @@
+ID,Title,Parent_Category,Description,Image
+11111,Meal Time Recipes ,0,"Whether you’re cooking for a crowd or satisfying your hunger, we’ve got the perfect recipes for every meal.",Home-Page_Meal-Time.jpg
+11112,Breakfast & Brunch Recipes,11111,It’s almost impossible to have a bad day when you start off with recipes this good.,MealTime_Breakfast.jpg
+11113,Lunch Recipes,11111,Tired of boring sandwiches? Mix things up with some lip-smacking lunch recipes.,MealTime_Lunch.jpg
+11114,Dinner Recipes,11111,Need help answering the daily question: what’s for dinner? Take away the stress with these deliciously easy recipes,MealTime_Dinner.jpg
+11115,Appetizer & Salad Recipes,11111,"With appetizers & sides this good, you may end up rethinking your need for a big entrée…",MealTime_Appetizer.jpg
+11116,Desserts & Sweets Recipes,11111,Finish your meal with these crowd-pleasing desserts & sinfully sweet recipes.,Meal-Time_Dessert.jpg
+11117,Drink & Cocktail Recipes,11111,"We’re always thirsty for big flavors, and these delicious drink recipes are definitely worth toasting to.",Meal-Time_Drinks.jpg
+11118,Snack Recipes,0,Is anyone else getting a little hungry? Thought so. These gourmet snacks are guaranteed to hit the spot.,Home-Page_Snack.jpg
+11119,Savory Recipes,11118,These mouthwatering dishes will fill your kitchen with rich aromas. Mind if we grab a plate?,Snacks_Savory.jpg
+11120,Sweet Recipes,11118,These heavenly sweet creations will instantly satisfy your sweet-tooth.,Snacks_Sweet.jpg
+11121,Dip Recipes,11118,Get the party started with one of these delightful dips — and don’t be surprised when they quickly disappear!,Snacks_Dip.jpg
+11122,Spicy Recipes,11118,There’s nothing “mild” about these recipes! Satisfy your need for heat with one of these spicy recipe suggestions.,Snacks_Spicy.jpg
+11123,Cheesy Recipes,11118,Say cheese! These deliciously cheesy recipes are sure to hit the spot.,Snacks_Cheesy.jpg
+11124,Bite Size Recipes,11118,"Don’t let their size fool you — these little creations are full of huge flavour!
+",Snacks_Bite-Size.jpg
+11125,Holiday & Special Occasion Recipes,0,We’ve got all your special occasions covered with these tasty recipes,Holiday_Special-Occasion.jpg
+11126,Game Day Recipes,11125,"Win or lose, these fan-favorite recipes are guaranteed to score big points.",Holiday_Game-Day.jpg
+11127,Spring & Easter Recipes,11125,We’ve got all your spring and Easter recipes covered with these amazingly delicious recipes ,Holiday_Spring.jpg
+11128,Halloween Recipes,11125,Tasty Halloween recipes for the entire family! These spooky good recipes are all treats and no trick.,Holiday_Halloween.jpg
+11129,Thanksgiving Recipes,11125,Create a delicious new tradition with these next-level Thanksgiving recipes!,Holiday_Thanksgiving.jpg
+11130,Festive recipes,11125,Tastes like holiday spirit! Celebrate the holiday season with these festive creations.,Holiday_Festive.jpg
+11131,Special Occasion Recipes,11125,"Whatever you’re celebrating, these recipes will make it feel extra special.",Holiday_Special-Occasion.jpg
+11132,Dish Type Recipes,0,Looking for something specific? Browse by dish category to find the exact recipe you need.,Home-Page_Recipes-by-Ingredient.jpg
+11133,Cookie Recipes,11132,We can’t guarantee these cookies will last long enough to completely cool down — but you can always make a double batch!,DishType_Cookies.jpg
+11134,Nacho Recipes,11132,"It’s hard to go wrong with a great plate of nachos, and we’ve got a few tricks up our sleeve to make ‘em extra tasty.",DishType_Nachos.jpg
+11135,Dip Recipes,11132,Get the party started with one of these delightful dips — and don’t be surprised when they quickly disappear!,DishType_Dips.jpg
+11136,Overnight Oats Recipes,11132,It’s a whole lot easier to get out of bed when you know you have these delicious overnight oats recipes waiting for you in the kitchen!,DishType_Oats.jpg
+11137,Casserole Recipes,11132,When it comes to nothing beats a great casserole. These ones are great for the whole family.,DishType_Casserole.jpg
+11138,Salad Recipes,11132,"Bursting with fresh flavors and great ingredients, our salads have been known to steal the show!",DishType_Salad.jpg

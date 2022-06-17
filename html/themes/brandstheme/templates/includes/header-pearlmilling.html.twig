@@ -1,0 +1,103 @@
+
+
+<nav id="brands_navigation" class="pearlmilling-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/pearlmilling':'/en-ca/brands/pearlmilling' }}" class="pearlmilling-logo-mobile top-logo noDesktop">
+    <img class="pearlmilling-logo" src="/themes/brandstheme/src/images/pearlmilling/pearlmilling-logo.svg?v=1" alt="Off The Eaten Path">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-left">
+    <li class="brands-navbar__item-first-border">
+
+      <a class="" href="#products" id="products-nav">{{'Our Products'|t}}</a>
+
+
+    </li>
+
+    <li class="brands-navbar__item-border">
+
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+
+
+    </li>
+    
+    <li class="brands-navbar__item-border">
+
+        <a class="pearlmilling-contact-us" href="https://contact.pepsico.com/offtheeatenpathca{{language}}" id="" target="_blank">{{'Contact us'|t}}</a>
+    </li>
+    
+
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/pearlmilling':'/en-ca/brands/pearlmilling' }}" class="logo noMobile">
+    <img class="pearlmilling-logo" src="/themes/brandstheme/src/images//pearlmilling/pearlmilling-logo.svg?v=1" alt="pearlmilling Canada logo">
+  </a>
+
+  <!-- Social Icons -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border ">
+
+    <a class="brands-navbar__social-icons" href="https://www.facebook.com/Off-The-Eaten-Path-Snacks-Canada" id="nav-facebook" target="_blank">
+      <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+{#    <a class="brands-navbar__social-icons" href="https://instagram.com/offtheeatenpathsnacks" id="nav-instagram" target="_blank">#}
+{#      <i class="fa fa-instagram fa-navbar"></i>#}
+{#    </a>#}
+
+{#    <a class="brands-navbar__social-icons" href="https://twitter.com/OffTheEatenPath" id="nav-twitter" target="_blank">#}
+{#      <i class="fa fa-twitter fa-navbar"></i>#}
+{#    </a>#}
+
+  </div>
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+
+
+    {%if ( language == 'en') %}
+      <a href="/fr-ca/marques/pearlmilling" id="" class="choose-lang_fr">
+        FR
+      </a>
+    {% endif %}
+
+    {%if ( language == 'fr') %}
+      <a href="/en-ca/brands/pearlmilling" id="" class="choose-lang_fr">
+        EN
+      </a>
+    {% endif %}
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/login-out.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/{{'logo-en.png'|t}}" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

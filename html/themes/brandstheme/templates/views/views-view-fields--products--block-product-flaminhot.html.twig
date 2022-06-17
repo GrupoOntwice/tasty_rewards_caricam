@@ -1,0 +1,148 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name: block_product_fritolay
+ *
+ */
+#}
+
+{# {% set class_align = 'product-align-left' %}
+
+        {% if loop.index % 2 == 0 %}
+          {% set class_align = 'product-align-right' %}
+        {% endif %}
+         #}
+
+ {# class should be either products-item-image or products-item-text #}
+
+{% if row.index % 2 == 0 %}
+  <div class="col-md-6 product-img-col flaminhot-align-left animate__animated ">
+    {% for field in fields %}
+      {# {% if fields.align == ''%} #}
+      {# {% endif %} #}
+
+      {% if field.class == 'field-recipe-image' %}
+        <div class="products-recipe-image">
+          {{ field.content }}
+        </div>
+{#      {% elseif field.class == 'field-extra-image1' %}#}
+{#        <div class="products-extra-image">#}
+{#          {{ field.content }}#}
+{#        </div>#}
+{#      {% elseif field.class == 'field-extra-image2' %}#}
+{#        <div class="products-extra-image2">#}
+{#          {{ field.content }}#}
+{#        </div>#}
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+{% endif %}
+
+  <div class="col-md-6 product-copy-col text-center ">
+    <div class="text-center d-inline-block">
+
+      {% for field in fields %}
+        {# {% if field.class == 'title' %} #}
+        {% if field.class == 'field-html-title' %}
+          <div class="products-title flaminhot-fave-title html-title">
+            {{ field.content|raw }}
+          </div>
+{#        {% elseif field.class == 'field-subtitle' %}#}
+{#          <div class="products-title flaminhot-fave-subtitle padding-top">#}
+{#            {{ field.content|raw }}#}
+{#          </div>#}
+        {% elseif field.class == 'body' %}
+          <div class="products-body flaminhot-fave-body padding-top">
+            {{ field.content|raw }}
+          </div>
+{#        {% elseif field.class == 'field-nutrition' %}#}
+{#          <div class="products-nutrition">#}
+{#            <div class="fa-nutrition">#}
+{#              <div class="">#}
+{#                <h3>{{'Nutrition'|t}}</h3>#}
+{#              </div>#}
+{#              <div class="fa-nutrition-icon">#}
+{#                <i class="fa-swap fa fa-plus"></i>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="nutrition-copy animate__animated">#}
+{#              {{ field.content }}#}
+{#            </div>#}
+{#          </div>#}
+{#        {% elseif field.class == 'field-recipe-ingredients' %}#}
+{#          <div class="products-ingredients">#}
+{#            <h3>{{'Ingredients'|t}}</h3>#}
+{#            {{ field.content }}#}
+{#          </div>#}
+        {% elseif field.class == 'field-buy-now' %}
+          <div class="products-buy-now " data-hoverimage="/images/flaminhot/flaminhot-btn-fire.svg">
+            {{ field.content }}
+          </div>
+
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+
+{% if row.index % 2 == 1 %}
+  <div class="col-md-6 product-img-col flaminhot-align-right animate__animated ">
+    {% for field in fields %}
+      {# {% if fields.align == ''%} #}
+      {# {% endif %} #}
+
+      {% if field.class == 'field-recipe-image' %}
+        <div class="products-recipe-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image1' %}
+        <div class="products-extra-image">
+          {{ field.content }}
+        </div>
+      {% elseif field.class == 'field-extra-image2' %}
+        <div class="products-extra-image2">
+          {{ field.content }}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+{% endif %}
+

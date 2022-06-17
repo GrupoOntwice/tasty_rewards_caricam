@@ -1,0 +1,32 @@
+{% if featured_products|length %}
+    <h2>{{'Featured products'|t}}</h2>
+{% endif %}
+<div class="carousel_fullwidth carousel_desktop js-main-carousel-stacys">
+    {% for product in featured_products %}
+    <div class="banner_slide home_slide" data-nid="{{nid}}">
+        <div class="banner-desktop">
+                <div class="stacys-featured--container">
+                    <div class="stacys-feature--display">
+                        <div class="stacys-feature--leftcol">
+                            <img loading="lazy" class="product-image" src="{{product.extra_image_url}}">
+                        </div>
+                    </div>
+                    <div class="stacys-coupon--text">
+                        <div class="stacys-banner_slide--text">
+                            <span class="product-title"> {{product.title|raw}}</span>
+                            {% set trimmed_body = truncateText(product.body|raw, 20) %}
+                            {# <span class="stacys-product-description"> {{product.body|raw}}</span> #}
+                            <br>
+                            <div class="stacys-btn">
+                                <a href="{{product.link}}" title ="{{ product.title | raw}}">
+                                    {{'View Product'|t}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>

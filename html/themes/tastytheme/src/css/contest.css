@@ -1,0 +1,1305 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 28-May-2019, 1:15:15 PM
+    Author     : miguel.pino
+*/
+
+section#contest {
+  /**********************************************
+*** SIGN UP
+**********************************************/
+  /**********************************************
+    *** Background clip checkbox
+    **********************************************/ }
+
+.to-signup{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.contest-login{
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 110%;
+}
+
+#updatepassword-form .btnregister{
+  margin: auto;
+  width: auto;
+  margin-top: 30px;
+}
+
+  section#contest .contest__detail-wrapper {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 0 50px 0; }
+    section#contest .contest__detail-wrapper h2 ,
+    #updatepassword-form h1{
+      color: #0e4caa;
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px; }
+section#contest .contest__detail-wrapper h2 sup{
+  font-size: 0.3em;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  section#contest .contest__detail-wrapper { display: block; }
+}
+
+
+  section#contest .contest__detail-about {
+    line-height: 1.4;
+    margin-bottom: 20px; }
+  section#contest .contest__detail-view {
+    position: relative;
+    display: flex;
+    max-width: 1024px;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 50px;}
+    section#contest .contest__detail-view h3 {
+      color: #0e4caa;
+      font-weight: bold;
+      font-size: 36px;
+    }
+
+    .contest__greyout-inactive{
+      display: none;
+    }
+
+.contest__detail-image-link{
+  width: 50%;
+}
+    section#contest .contest__detail-view img {
+      width: 100%; }
+  section#contest .contest__detail-view-about {
+    margin-left: 40px;
+    /*border-bottom: 2px solid #0d4ca9;*/
+    height: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width:50%; }
+
+.contest__detail-title-link{
+  margin-bottom: 20px;
+}
+
+.contest__detail-title-link:hover{
+  text-decoration: none;
+}
+  section#contest .contest__filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1100px;
+    position: relative;
+    margin: auto; }
+  section#contest .contest__menu-detail-wrapper {
+    display: flex;
+    margin: 0 0 40px 0;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-section.empty {
+      border-bottom: 0;
+    }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-section {
+      display: flex;
+      flex-direction: column;
+      /*border-bottom: 2px solid #0d4ca9;*/
+      width: 330px;
+      margin-bottom: 40px;
+      padding-bottom: 40px; }
+      section#contest .contest__menu-detail-wrapper .contest__menu-detail-section .contest__menu-detail-section-image {
+        width: 100%; }
+      section#contest .contest__menu-detail-wrapper .contest__menu-detail-section p {
+        margin-bottom: 20px;
+        padding-left: 10px; }
+    section#contest .contest__menu-detail-wrapper .inactive,
+    section#contest .contest__detail-view .inactive{
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1); }
+    section#contest .contest__menu-detail-wrapper .grayout,
+    section#contest .contest__detail-view .grayout
+    {
+      opacity: 0.4; }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-wrapper-title {
+      color: #0e4caa;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-size: 25px;
+      padding: 20px 0 0 10px; }
+    section#contest .contest__menu-detail-wrapper .contest__btn_red {
+      background-color: #db1d2c;
+      padding: 12px 30px;
+      margin-left: 10px;
+      box-shadow: 0 3px 0 0 #b81321;
+      border-radius: 3px;
+      color: white;
+      text-align: center;
+      transition: all 0.2s;
+      font-weight: bold; }
+    section#contest .contest__menu-detail-wrapper .contest__btn_red:hover {
+      background-color: #b81321;
+      transition: all 0.2s; }
+    section#contest .contest__menu-detail-wrapper .contest__btn-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%; }
+    section#contest .contest__menu-detail-wrapper .contest__winner {
+      display: flex;
+      flex-direction: column; }
+      section#contest .contest__menu-detail-wrapper .contest__winner p {
+        margin: 0; }
+      section#contest .contest__menu-detail-wrapper .contest__winner .contest__winner-name {
+        font-weight: bold;
+        color: #3d3c3c; }
+  section#contest .contest-detail__wrapper {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0; }
+    section#contest .contest-detail__wrapper h2 {
+      color: #0e4caa;
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px; }
+
+  section#contest .contest-detail__about {
+    line-height: 1.4;
+    margin-bottom: 20px; }
+  section#contest .contest-detail__view {
+    display: flex;
+    flex-direction: column;
+    width: 45%; }
+
+  section#contest .contest-detail__view h1{
+    color: #0e4caa;
+    font-weight: bold;
+    font-size: 48px;
+  }
+
+    section#contest .contest-detail__view h2 {
+      color: #0e4caa;
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px; }
+    section#contest .contest-detail__view img {
+      width: 50%; }
+  section#contest .contest-detail__form {
+    width: 45%; }
+  section#contest .contest-detail__sup {
+    vertical-align: super;
+    font-size: 20px; }
+  section#contest i::before {
+    padding-right: 20px;
+    font-size: 17px; }
+  section#contest .modal__container-paragraph {
+    font-size: 30px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 5px; }
+  section#contest .contest-detail__form-social {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0; }
+  section#contest .contest-detail__sign-up-fb {
+    border: none;
+    background-color: #3c5a99;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+  }
+    section#contest .contest-detail__sign-up-fb img {
+      width: 12%;
+      margin-right: 5px; }
+  section#contest .contest-detail__sign-up-fb:hover {
+    background-color: #08295c; }
+  section#contest .contest-detail__sign-up-google {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #949494;
+    cursor: pointer;
+    padding: 10px 23px;
+    display: flex;
+    align-items: center;
+    margin-left: 3px;
+  }
+    section#contest .contest-detail__sign-up-google img {
+      width: 12%;
+      margin-right: 5px; }
+  section#contest .contest-detail__sign-up-google:hover {
+    background-color: #cccccc; }
+  section#contest .contest-detail__or {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #0e4caa;
+    line-height: 0.1em;
+    margin: 30px 0 30px; }
+
+  section#contest .contest-detail__or span {
+    background: #fff;
+    padding: 0 10px;
+    color: #0e4caa;
+    font-weight: 600;
+  }
+
+  .contest-quacker .banner-mobile{
+    height: 730px !important;
+  }
+
+  .contest__detail-wrapper-step{
+    padding: 30px 15px 50px 15px !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-fb{
+    display: none !important;
+  }
+
+  .contest-quacker .banner_slide--text{
+    width: 60% !important;
+  }
+
+  .contest-quacker .contest-banner-text sup{
+    top: -10px;
+    font-size: 0.5em;
+  }
+
+  .contest-quacker .banner_slide--text p{
+    color: #000000 !important;
+  }
+
+  .contest-quacker .banner-desktop{
+    padding: 20px 15% 160px !important;
+  }
+
+  .contest-detail__quacker-wrapper h2{
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .contest-detail__quacker-wrapper.nounderline .layssummertime-input h2{
+    text-align: left;
+  }
+
+  .contest-detail__quacker-wrapper.nounderline h2 {
+    cursor: auto;
+  }
+
+  .contest-detail__quacker-wrapper:not(.nounderline) h2:hover{
+    text-decoration: underline;
+  }
+
+  .contest-quaker-steps-wrapper{
+    display: flex;
+    width: 100%;
+    margin: 60px 0;
+    justify-content: space-around;
+  }
+
+  .contest-lays-summertime-logo-wrapper {
+    display: flex;
+    width: 100%;
+    margin: 60px 0;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .contest-lays-summertime-logo-wrapper {
+      margin: 60px 0 0;
+    }
+  }
+
+  .contest-quaker-steps{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quaker-image-step{
+    width: 70%;
+  }
+
+  .contest-quaker-steps-image{
+    height: 120px;
+  }
+
+  .quaker-link{
+    color: #3d3c3c;
+    text-decoration: underline;
+  }
+
+  .contest-detail__form-quacker{
+    width: 80%;
+    margin: auto;
+  }
+
+  .contest-detail__quacker-wrapper .modal__inquiry {
+    text-align: left;
+    width: 95%;
+    margin: auto;
+    padding: 0 0 10px 10px;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__or span {
+    padding: 10px 20px !important;
+    background: #fdf2e8 !important;
+    font-size: 30px;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-select{
+    background-color: transparent !important;
+    height: 40px;
+    border: 1px solid #adadad !important;
+    color: #000000 !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-select-gender{
+    background-color: transparent !important;
+    height: 40px;
+    border: 1px solid #adadad !important;
+    color: #000000 !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__checkboxes-color + label:before{
+    height: 26px !important;
+    width: 26px !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__checkbox-text{
+    font-size: 14px;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-sub{
+    padding: 0 !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__input {
+    height: 40px;
+    color: #000000 !important;
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+    border: 1px solid #adadad !important;
+    background-color: transparent !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__quacker-input {
+    display: flex;
+  }
+
+  .contest-detail__quacker-last-input:not(.layssummertime-input) {
+    height: 100px;
+    display: flex;
+  }
+
+  .layssummertime-input {
+    margin: 0 2.5%;
+  }
+
+  .layssummertime-input .selectcol {
+    margin-left: 0 !important;
+    width: 47.5% !important;
+  }
+
+  @media (max-width: 768px) {
+    .layssummertime-input .selectcol {
+      width: 44% !important;
+    }
+  }
+
+  .layssummertime-input select {
+    border-radius: 0 !important;
+    border-color: #adadad !important;
+    -webkit-appearance: none;
+    background-image: url(/themes/tastytheme/src/images/arrow-contest.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
+  }
+
+  section#contest .contest-detail__quacker-last-input.layssummertime-input h2 {
+    color: #0e4caa !important;
+    font-size: 28px !important;
+    margin-bottom: 20px;
+  }
+
+  .contest-detail__quacker-last-input .contest-detail__quacker-input-col {
+    height: 100px;
+    display: flex;
+  }
+
+  .contest-detail__quacker-last-input .contest-detail__quacker-input-col:not(.selectcol){
+    margin: 0 auto !important;
+  }
+
+  .contest-detail__quacker-last-input .contest-detail__quacker-input-col.selectcol{
+    margin: 0 auto 0 0 !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__container-birth{
+    text-align:left;
+    font-size: 28px !important;
+    margin-top: 5px !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__or{
+    margin: 30px auto 30px auto !important;
+    width: 95% !important;
+  }
+
+  .contest-detail__form-quacker .contest-detail__quacker-input-col{
+    width: 45% !important;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-birth{
+    margin: 0 !important;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__email{
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #949494;
+    padding: 10px 0;
+    width: 99%;
+    font-size: 12px;
+    text-indent: 10px;
+    margin-right: 3px;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox{
+    width: 60%;
+    margin: 40px auto auto auto !important;
+    color: #000000 !important;
+    display: block !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+    padding: 20px 0 !important;
+  }
+
+  .layssummertime-checkbox {
+    margin-top: 0 !important;
+  }
+
+  .contest-detail__sign-up-select-button{
+    margin: 10px 0px !important;
+  }
+
+  .upload-quacker-label{
+    background-color: #b79176;
+    padding: 12px 10px;
+    box-shadow: 0 3px 0 0 #916e55;
+    border-radius: 3px;
+    color: white !important;
+    cursor: pointer;
+    font-size: 16px !important;
+    outline: none !important;
+    font-family: GtWalsheimBold;
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+  }
+
+  .contest-detail__quacker-upload-wrapper{
+    width: 50%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contest__detail-title-link:focus{
+    outline: none;
+  }
+
+  .upload-quacker-fileName{
+    margin-top: 10px;
+  }
+
+  .upload-quacker-file{
+    margin-left: 10px;
+  }
+
+  .upload-quacker-file{
+    font-size: 12px;
+    color: #adadac;
+  }
+
+  .contest-detail__quacker-upload-main-wrapper{
+    display: flex;
+    margin-top: 10px;
+  }
+
+  #uploadImg{
+    display: none;
+  }
+
+  .contest-detail__quacker-upload-text{
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__checkboxes-wrap{
+    justify-content: center;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__checkbox-text{
+    color: #000000 !important;
+    padding-left: 0;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__checkbox-text-rules{
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .quacker-amazon-sup{
+    font-size: 0.5em
+  }
+
+  .banner_quacker-amazon{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 0 15%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .banner_quacker-amazon h3{
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 46px !important;
+    font-family: 'GTWalsheimBold', 'sans-serif';
+  }
+
+  .banner_quacker-amazon .btn_red{
+    min-width: 180px;
+  }
+
+  .quacker-brands{
+    max-width: 1024px;
+    font-size: 16px;
+    margin: 70px auto 50px auto !important;
+  }
+
+@media screen and (max-width: 768px) {
+  .contest-quaker-steps-wrapper{
+    margin: 30px 0;
+  }
+
+  .contest-quaker-steps{
+    margin-bottom: 30px;
+  }
+
+  .contest-quaker-steps-wrapper{
+    flex-wrap: wrap;
+  }
+
+  .contest-quacker .banner_slide--text{
+    width: 100%;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-google{
+    padding: 10px 23px !important;
+  }
+
+  .contest-quacker .banner_slide--text.slide-left{
+    margin: auto;
+  }
+
+  .contest-detail__quacker-upload-main-wrapper{
+    flex-direction: column;
+  }
+
+  .contest-detail__form-quacker{
+    width: 95%;
+  }
+
+  .contest-detail__form-quacker .contest-detail__quacker-input-col{
+    width: 42% !important;
+  }
+
+  .upload-quacker-file{
+    margin-top: 10px !important;
+  }
+
+  .contest-detail__quacker-upload-wrapper{
+    width: 70%;
+  }
+
+  .contest-detail__quacker-upload-wrapper{
+    justify-content: left;
+  }
+
+  .contest-detail__quacker-last-input{
+    height: 145px;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__sign-up-select-checkbox{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .contest-detail__quacker-upload-wrapper {
+    width: 100%;
+  }
+
+  .contest-detail__quacker-wrapper .contest-detail__container-birth{
+    font-size: 24px !important;
+  }
+}
+
+  section#contest .contest-detail__container-birth {
+    font-size: 18px;
+    margin-top: 15px; }
+    section#contest .contest-detail__container-birth sup {
+      font-size: 10px;
+      vertical-align: super; }
+  section#contest .contest-detail__input {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #949494;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 12px;
+    text-indent: 10px; }
+  section#contest .contest-detail__sign-up-birth {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;}
+
+section#contest .contest-detail__sign-up-gender {
+    display: flex;
+    margin-bottom: 15px; }
+  section#contest .contest-detail__sign-up-select-gender {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #949494;
+    padding: 0 8px;
+    text-align: center;
+    font-size: 12px;
+    flex: 1;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    background-image: url("../images/arrow-contest.png");
+    background-repeat: no-repeat;
+    background-position: 95%;
+  }
+  section#contest .contest-detail__sign-up-select {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #949494;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 12px;
+    margin: 0px 1px;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    background-image: url("../images/arrow-contest.png");
+    background-repeat: no-repeat;
+    background-position: 95%;
+  }
+
+    .contestBlockError{
+        margin-top: 150px;
+    }
+
+    .contestBlockError h1{
+        color: #0e4caa;
+    }
+
+  section#contest .contest-detail__container-birth {
+    color: #0e4caa;
+    font-weight: bold; }
+  section#contest .contest-detail__checkbox-text {
+    font-size: 12px;
+    font-weight: lighter;
+    padding-left: 15px;
+    color: #0e4caa;
+    /*width: 200px; */}
+    section#contest .contest-detail__checkbox-text.optin{
+      width: 85%;
+    }
+  section#contest input[type="checkbox"] {
+    margin: 0; }
+  section#contest .contest-detail__sign-up-select-checkbox {
+    margin: 8px 0;
+    display: flex;
+    border-bottom: 1px solid #0e4caa;
+    padding: 20px 0 20px 0;
+    border-top: 1px solid #0e4caa;
+  }
+
+  .contest-detail__age-check-select-checkbox{
+    margin: 15px 0 15px 20px;
+  }
+
+  .exclusive.modal__inquiry{
+    margin: 10px 0;
+  }
+
+  section#contest .contest-detail__sign-up-select-button {
+    justify-content: center;
+    margin: 20px 0;
+    display: flex; }
+  section#contest .contest-detail__user-name {
+    display: flex;
+    margin: auto;
+  }
+    section#contest .contest-detail__user-name .contest-detail__user-first-name {
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      color: #949494;
+      padding: 10px 0;
+      width: 99%;
+      font-size: 12px;
+      text-indent: 10px;
+      margin-right: 3px; }
+    section#contest .contest-detail__user-name .contest-detail__user-email {
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      color: #949494;
+      padding: 10px 0;
+      width: 100%;
+      font-size: 12px;
+      text-indent: 10px;
+      margin-right: 3px; }
+
+section#contest .contest-detail__user-name .contest-detail__user-postalcode {
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: #949494;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 12px;
+  text-indent: 10px;
+  margin-left: 3px; }
+
+    section#contest .contest-detail__user-name .contest-detail__user-last-name {
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      color: #949494;
+      padding: 10px 0;
+      width: 100%;
+      font-size: 12px;
+      text-indent: 10px;
+    }
+  section#contest .contest-detail__user-password {
+    display: flex;
+    position: relative;}
+  section#contest .contest-detail__user-info-icon {
+    position: absolute;
+    right: -30px;
+    margin-top: 10px; }
+  section#contest .no-padding {
+    padding: 0; }
+
+  section#contest .contest-detail__checkboxes-flavour-wrap{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section#contest .contest-detail__user-info-icon.tip p {
+    display: none;
+    background-color: #06386c;
+    color: #ffffff;
+    padding: 18px 15px 18px 18px;
+    font-weight: lighter;
+    position: absolute;
+    width: 200px;
+    z-index: 1;
+    bottom: 12px;
+    right: -225px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 14px; }
+  section#contest .contest-detail__user-info-icon.tip p:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 20px solid transparent;
+    border-right: 15px solid #06386c;
+    right: 200px;
+    bottom: 0px; }
+  section#contest .contest-detail__user-info-icon:hover.tip p {
+    display: block; }
+  section#contest .contest-detail__sign-up-button {
+    color: #ffffff;
+    padding: 15px 40px;
+    border: none;
+    display: inline-block;
+    background-color: #db1d2c;
+    padding: 12px 30px;
+    box-shadow: 0 3px 0 0 #b81321;
+    border-radius: 3px;
+    color: white !important;
+    transition: all 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px !important;
+    outline: none !important;
+    font-family: GtWalsheimBold;
+    min-width: 150px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  section#contest .contest-detail__sign-up-button.disabled {
+    background-color: grey;
+    box-shadow: 0 3px 0 0 grey;
+  }
+
+  html:lang(fr) section#contest .contest-detail__sign-up-button {
+    text-transform: inherit;
+  }
+
+  section#contest .contest-detail__sign-up-button:hover {
+    background-color: #b81321;
+    transition: all 0.2s; }
+  section#contest .contest-detail__select-checkbox-wrapper {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap; }
+  section#contest .contest-detail__select-checkbox {
+    margin: 8px 0;
+    display: flex;
+    padding: 5px 0 20px 0;
+    width: 45%; }
+  section#contest .contest-detail__checkboxes-flavour {
+    display: flex; }
+  section#contest .contest-detail__checkboxes-flavour label {
+    display: flex;
+    font-weight: 600;
+    font-size: 14px;
+    color: #717173;
+    align-items: center;
+    margin-right: 15px; }
+  section#contest .contest-detail__checkboxes-flavour span {
+    font-weight: 600;
+    font-size: 14px;
+    color: #717173; }
+  section#contest .contest-detail__checkboxes-flavour span {
+    color: #a94442;
+  }
+
+
+  section#contest .contest-detail__checkboxes {
+    border: 1px #dadada solid;
+    background: #ffffff;
+    width: 100%; }
+    section#contest .contest-detail__checkboxes label {
+      display: flex;
+      margin: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #717173;
+      align-items: center; }
+    section#contest .contest-detail__checkboxes span {
+      font-weight: 600;
+      font-size: 14px;
+      color: #717173; }
+  section#contest .contest-detail__checkbox-text-flavour {
+    font-size: 16px; }
+  section#contest .contest-detail__checkboxes-color {
+    display: none; }
+  section#contest .contest-detail__checkboxes-wrap {
+    display: flex; }
+  section#contest .contest-detail__checkboxes-color + label:before {
+    border: 2px solid #0e4caa;
+    display: flex;
+    transition-duration: 0.3s;
+    width: 16px;
+    height: 16px;
+    min-width:16px;
+    min-height:16px;
+    margin-right: 10px;
+    content: "";
+    padding: 2px;
+    /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);*/
+  }
+  section#contest .contest-detail__checkboxes-color:checked + label:before {
+    background-color: #0e4caa;
+    box-shadow: inset 0px 0px 0px 2px white; }
+  @media screen and (max-width: 1024px) {
+    section#contest .contest__detail-view-about{
+      height: 450px;
+    }
+
+    section#contest .contest__detail-view {
+      max-width: 900px; }
+    section#contest .contest__filter-wrapper {
+      width: 900px; }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-section {
+      width: 280px; }
+    section#contest .contest-detail__wrapper {
+      margin: 0 40px; }
+    section#contest .contest-detail__user-info-icon {
+      right: -28px; } }
+  @media screen and (max-width: 768px) {
+    section#contest .contest__detail-view-about{
+      height: 350px;
+      width: 90%;
+    }
+
+    section#contest .contest-detail__checkbox-text-flavour {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-section {
+      display: flex;
+      flex-direction: column;
+      width: 225px;
+      justify-content: space-between;
+      border-bottom: 2px solid #0d4ca9; }
+    section#contest .contest__detail-view {
+      width: 700px; }
+    section#contest .contest__filter-wrapper {
+      width: 700px; } }
+
+  @media screen and (max-width: 768px) {
+    section#contest .contest__menu .recipe__menu-detail-wrapper .contest__menu-detail-section {
+      width: 100%;
+    }
+
+    section#contest .contest-detail__wrapper{
+      margin: 0;
+    }
+
+    section#contest .contest-detail__wrapper{
+      padding: 30px 0;
+    }
+
+    section#contest .contest__detail-wrapper{
+      padding: 30px 15px 50px 15px;
+    }
+
+    section#contest .contest-detail__user-name {
+        display: flex;
+        margin: 5px 0;
+        justify-content: space-between;
+    }
+
+    section#contest .contest-detail__sign-up-select-button{
+      justify-content: center;
+    }
+
+    section#contest .contest__detail-view {
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      section#contest .contest__detail-view img {
+        width: 90%; }
+    section#contest .contest__filter-wrapper {
+      width: 350px; }
+    section#contest .contest__detail-view-about {
+      margin: 0 20px;
+      height: auto;
+      display: flex;
+      align-items: center !important;
+      text-align: center;
+    }
+    section#contest .contest__menu-detail-wrapper {
+      display: flex;
+      margin: 0 0 20px 0;
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: wrap; }
+    section#contest .contest__menu-detail-wrapper .contest__menu-detail-section {
+      width: 100%; }
+    section#contest .contest-detail__wrapper {
+      display: flex;
+      flex-direction: column; }
+    section#contest .contest-detail__view {
+      width: 100%;
+      text-align: center;
+      padding: 0 15px;
+    }
+    section#contest .contest-detail__form {
+      padding: 0 15px;
+      width: 90%;
+      margin: auto;
+    }
+    section#contest .contest-detail__select-checkbox {
+      width: 50%; }
+    section#contest .contest-detail__sign-up-google {
+      padding: 1px 6px;
+      font-size: 12px;
+    }
+    section#contest .contest-detail__sign-up-fb {
+      font-size: 12px;
+      padding: 10px 0px 10px 16px;
+    }
+    section#contest .contest-detail__sign-up-fb img {
+      margin-right: 5px; }
+    section#contest .contest-detail__sign-up-google img {
+      margin: 0 5px; } }
+  @media screen and (max-width: 375px) {
+    section#contest .contest-detail__checkboxes-wrap {
+      align-items: center; } }
+  @media screen and (max-width: 320px) {
+    section#contest .contest__filter-wrapper{
+      width: 290px;
+    }
+    section#contest .recipe__menu .recipe__filter-wrapper {
+      width: 300px; }
+    section#contest .recipe__menu .recipe__form {
+      width: 300px; }
+    section#contest .recipe__menu .recipe__search {
+      width: 41%; }
+    section#contest .recipe__menu .recipe__button {
+      width: 142px; }
+    section#contest .contest-detail__sign-up-select {
+      padding: 10px 5px 10px 10px; } }
+
+  .contest-detail__view_region{
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    padding: 50px 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+/* CONTEST SIGNUP FORM START */
+
+
+#contestsignup-form input.has-error, #contestsignup-form select.has-error, #contestsignup-form .has-error select {
+  border: 2px solid red !important;
+  color: red !important;}
+#contestsignup-form input.has-error::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */}
+#contestsignup-form input.has-error:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;}
+#contestsignup-form input.has-error::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;}
+#contestsignup-form span[class*="err_"] {
+  color: red;
+}
+
+#contestsignup-form .contest-detail__user-name-col {
+  width: 50%;
+  margin: auto;
+}
+
+.contestsignup_checkbox_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contest-detail__select-checkbox label p {
+  font-weight: normal;
+}
+
+/* CONTEST SIGNUP FORM END */
+
+
+body.path-contests section a#main-content,
+body.path-contest section a#main-content
+ {
+  display: none;
+}
+
+.blue_h2, .blue_h2:hover {
+   color: #0e4caa;
+}
+
+#contest #recipes {
+    padding-top: 30px;
+}
+
+
+body.path-contests  form#contestsignup-form div.contact-us,
+body.path-contest  form#contestsignup-form div.contact-us,
+body.path-concours  form#contestsignup-form div.contact-us
+{
+  font-size: 12px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1600px) {
+  section#contest .contest-detail__user-info-icon.tip p {
+    display: none;
+    background-color: #06386c;
+    color: #ffffff;
+    padding: 18px 15px 18px 18px;
+    font-weight: lighter;
+    position: absolute;
+    width: 200px;
+    z-index: 1;
+    bottom: 12px;
+    right: 45px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 14px;
+  }
+  section#contest .contest-detail__user-info-icon.tip p:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 20px solid transparent;
+    border-left: 15px solid #06386c;
+    border-right: 0px solid #06386c;
+    right: -15px;
+    bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  section#contest .contest-detail__wrapper h2{
+    text-align: center;
+  }
+
+  section#contest .contest-detail__sign-up-fb{
+    padding: 10px 0px 10px 6px;
+  }
+
+  html:lang(fr) section#contest .contest-detail__sign-up-fb{
+    font-size: 10px;
+  }
+
+  html:lang(fr) section#contest .contest-detail__sign-up-google{
+    font-size: 10px;
+  }
+}
+
+
+
+.show_mobile {
+	display: none;
+	visibility: hidden;
+}
+
+@media (max-width: 768px) {
+	.show_mobile {
+		display: block;
+		visibility: visible;
+	}
+
+	.hide_mobile {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+/**************************************
+    Contest Page Form Section
+***************************************/
+
+.tr-contest__sign-up-btn {
+  padding: 32px 0 16px;
+}
+
+.btn_tr-contest {
+  background-color: #db1d2c;
+  padding: 20px 30px 16px;
+  box-shadow: 0 3px 0 0 #b81321;
+  border-radius: 3px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: GtWalsheimBold;
+  width: 200px;
+  min-width: 200px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  margin: 0 auto;
+}
+
+.btn_tr-contest:hover, .btn_tr-contest:focus, .btn_tr-contest:active {
+  background-color: #b81321;
+  transition: all 0.2s;
+  color: white;
+  text-decoration: none;
+}
+
+.link-contest, .link-contest:hover, .link-contest:active, .link-contest:focus {
+  color: #3d3c3c;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.already-have-account {
+  font-size: 22px;
+}
+
+/**********************************************
+ *** Contest Btn Style
+ **********************************************/
+
+#contest > div.contest__detail-view > div {
+  align-items: flex-start;
+}
+
+.contest__detail-view-about {
+  align-items: flex-start !important;
+}
+
+/********* Error Message Spacing ***********/
+
+span.help-block.err_email {
+  margin-top:4px !important;
+}

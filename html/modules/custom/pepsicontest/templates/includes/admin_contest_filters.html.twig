@@ -1,0 +1,20 @@
+<div class="view-filters">
+   <form class="views-exposed-form" data-drupal-selector="views-exposed-form-content-page-1" method="get" id="views-exposed-form-content-page-1" accept-charset="UTF-8">
+      <div class="form--inline clearfix">
+         <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-type form-item-type">
+            <label for="edit-contestid">{{'Contest Name'|t}}</label>
+            <select data-drupal-selector="edit-contestid" id="edit-contestid" name="contestid" class="form-select">
+                  <option value="All" {% if data.nofilter == 1 %} selected="selected" {% endif %} >- Any -</option>
+               {% for contest in data.all_contests %}
+                  <option value="{{contest.contest_id}}" {% if contest.contest_id == data.contestid %} selected="selected" {% endif %} >{{contest.contest_name}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
+            <label for="edit-title">{{'Email'|t}}</label>
+            <input data-drupal-selector="edit-email" type="text" id="edit-email" name="email" value="{{data.email}}" size="30" maxlength="128" class="form-text">
+         </div>
+         <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-content" type="submit" id="edit-submit-content" value="Filter" class="button js-form-submit form-submit"></div>
+      </div>
+   </form>
+</div>

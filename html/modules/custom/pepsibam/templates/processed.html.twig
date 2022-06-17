@@ -1,0 +1,61 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+    language = '{{ data.language }}';
+    //-->
+</script>
+{% if data.tracking == "unsubscribe-processed" %}
+    {% set trackingpage = "unsubscribe-processed" %}
+    {% set trackinglang = data.language %}
+    {% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+{% elseif data.tracking == "register-processed" %}
+    {% set trackingpage = "register-processed" %}
+    {% set trackinglang = data.language %}
+    {# Pinterest tracking signup #}
+    <script>
+        pintrk('track', 'signup');
+    </script>
+    {# End Pinterest tracking signup #}
+    {% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+{% endif %}
+
+{% set banner_image = '/themes/tastytheme/src/images/general_empty_header.jpg' %}
+
+    <section id="banner">
+            <div class="banner_slide banner_basic_slide" style="background-image: url('{{ banner_image }}');">
+                <div class="thank_you_wrapper">
+                    <h1 class="thank_you_h1">
+                        {{ data.header }}
+                        <br>
+                        <br>
+                        {{ data.header2 }}
+                    </h1>
+                    <p class="processed_subheader"><strong>{{ data.subheader }}</strong></p>
+                    <p>{{data.body|raw}}</p>
+                    
+                    {#
+                    <a href="#" class="btn_red desktop_left_mobile_center">Test</a>
+                    #}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="general_body">
+    <div class="arrow-section-body-basic"></div>
+    {% if data.isPasswordReset != 1 %}
+        <p>{{data.body|raw}}</p>
+    {% endif %}
+</section>
+
+                
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>         

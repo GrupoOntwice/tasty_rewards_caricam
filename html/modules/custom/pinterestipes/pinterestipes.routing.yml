@@ -1,0 +1,8 @@
+# SETTINGS PAGE
+pinterestipes.settings:
+  path: '/admin/config/pinterestipes'
+  defaults:
+    _form: '\Drupal\pinterestipes\Form\PinterestipesSettingsForm'
+    _title: 'Pinterestipes Settings'
+  requirements:
+    _permission: 'administer site configuration'

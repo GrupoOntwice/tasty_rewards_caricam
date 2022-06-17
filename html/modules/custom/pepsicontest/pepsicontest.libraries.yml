@@ -1,0 +1,74 @@
+form:
+  css:
+    theme:
+      css/pepsicontest.css: {}
+
+
+reporting:
+  js:
+    js/reporting.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+signup:
+  js:
+    js/signup.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once   
+
+regularcontest:
+  js:
+    js/pepsicontest.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once    
+
+
+validation:
+  js:
+    js/contest_validation.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once  
+
+exclusive_contest:
+  js:
+    js/exclusive_contest.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once  
+
+contest:
+  js:
+    js/contest.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once   
+
+
+gamedayLibrary:
+  css:
+    theme:
+      css/gameday.css: {}
+  js:
+    js/gameday.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+

@@ -1,0 +1,2073 @@
+/*
+  Miss Vickies Stylesheet
+*/
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * new-spirit-condensed:
+ *   - http://typekit.com/eulas/00000000000000007735c4bf
+ * quiche-sans:
+ *   - http://typekit.com/eulas/00000000000000007735cad5
+ *   - http://typekit.com/eulas/00000000000000007735cad6
+ *   - http://typekit.com/eulas/00000000000000007735cae0
+ *   - http://typekit.com/eulas/00000000000000007735cae2
+ *
+ * © 2009-2020 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2021-02-12 23:11:44 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=jzp7dcn&ht=tk&f=43733.43734.43737.43738.45699&a=57061786&app=typekit&e=css");
+
+@font-face {
+  font-family: "quiche-sans";
+  src: url("https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "quiche-sans";
+  src: url("https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"), url("https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"), url("https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "quiche-sans";
+  src: url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"), url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"), url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "quiche-sans";
+  src: url("https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"), url("https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"), url("https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "new-spirit-condensed";
+  src: url("https://use.typekit.net/af/aeb63d/00000000000000007735c4bf/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"), url("https://use.typekit.net/af/aeb63d/00000000000000007735c4bf/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"), url("https://use.typekit.net/af/aeb63d/00000000000000007735c4bf/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.tk-quiche-sans {
+  font-family: "quiche-sans", sans-serif;
+}
+
+.tk-new-spirit-condensed {
+  font-family: "new-spirit-condensed", serif;
+}
+
+/*
+  Miss Vickies - The Soul Of Vodka: Bold
+*/
+@font-face {
+  font-family: 'TheSoulOfVodka';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('../fonts/missvickies/TheSoulOfVodka.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/missvickies/TheSoulOfVodka.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/missvickies/TheSoulOfVodka.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/missvickies/TheSoulOfVodka.woff') format('woff'), /* Modern Browsers */ url('../fonts/missvickies/TheSoulOfVodka.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/missvickies/TheSoulOfVodka.svg#TheSoulOfVodka') format('svg'); /* Legacy iOS */
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  color: #383333;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.missvickies h1, h2, h3, h4, h5, h6 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #1E1E1E;
+}
+
+.missvickies p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #383333;
+}
+
+.text-missvickies {
+  color: #F5F1E7 !important;
+}
+
+.missvickies-d-md-flex {
+  display: none !important;
+}
+
+/*
+  Navbar
+*/
+
+.missvickies .header__logo-container {
+  z-index: 999999;
+}
+
+.missvickies #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.missvickies .brands-navbar__ul a, .missvickies .choose-lang_fr, .missvickies .brands-navbar_accout-options, .missvickies .header .menu a {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.missvickies .brands-navbar__ul a:hover, .missvickies .brands-navbar__ul a:active, .missvickies .brands-navbar__ul a:focus {
+  color: #980F3A !important;
+}
+
+.missvickies .fa-navbar {
+  background: #980F3A !important;
+}
+
+.missvickies .fa-navbar:hover, .missvickies .fa-navbar:active, .missvickies .fa-navbar:focus {
+  background: #000000 !important;
+}
+
+/*
+  Miss Vickies Carousel
+*/
+
+.missvickies section#banner .banner-desktop span.h1, .missvickies section#banner .banner-mobile span.h1 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.missvickies section#banner .banner_slide--text p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.missvickies .slick-next:before {
+  background: url("../images/arrows/white-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.missvickies .slick-prev:before {
+  background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.missvickies #brands .slick-next:before {
+  background: url("../images/arrows/white-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.missvickies #brands .slick-prev:before {
+  background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.missvickies section#banner .slick-dots li.slick-active button {
+  background-color: #980F3A !important;
+}
+
+.missvickies section#banner .slick-dots li button {
+  background-color: #fff4f4 !important;
+}
+
+/*
+  Button Miss Vickies
+*/
+
+.btn_missvickies, .missvickies .btn_carousel {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #403A3A;
+  color: #F5F1E7;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #403A3A;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: auto !important;
+  height: auto !important;
+}
+
+.btn_missvickies:hover, .btn_missvickies:focus, .btn_missvickies:active, .missvickies .btn_carousel:hover, .missvickies .btn_carousel:focus, .missvickies .btn_carousel:active {
+  color: #980F3A;
+  background: #EBE3D0 !important;
+  border: 2px solid #980F3A;
+  outline: none;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/**********************************************************
+   HomePage Featured Products Section Bootstrap Carousel
+***********************************************************/
+
+.missvickies section#banner .banner_slide--text.slide-left sup {
+  top: -.5em !important;
+  font-size: 75% !important;
+  right: 0 !important;
+}
+
+.missvickies-content-background-container-homepage {
+  background: #EBE3D0;
+  margin-top: -20px;
+}
+
+.missvickies-carousel-block, #product-categories, #signature-product-categories, #missvickies-product-categories {
+  padding: 64px 0 64px;
+}
+
+
+.missvickies-prod-detail-carousel-block {
+  padding: 0 0 64px;
+  margin-top: -2px;
+}
+
+
+#mv-signatures-featured-products-carousel {
+  padding-bottom: 64px;
+}
+
+.featured-prod-col-bg {
+  text-align: center;
+}
+
+.featured-product-image-col, .featured-prod-copy {
+  position: relative;
+}
+
+.featured-prod-copy-div {
+  padding: 48px 16px 48px;
+}
+
+/*.featured-carousel-inner-border {*/
+/*  outline: 1px solid red;*/
+/*  outline-offset: -8px;*/
+/*}*/
+
+.featured-product-image-col, .mv-products-detail-featured-product-image-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: inherit;
+}
+
+.featured-product-image {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.featured-prod-heading, .signatures-featured-prod-heading {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 62px;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.featured-prod-heading {
+  color: #980F3A !important;
+}
+
+.signatures-featured-prod-heading {
+  color: #F5F1E7 !important;
+}
+
+.featured-product-title, .mv-prod-details-featured-prod-copy .featured-product-title {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  padding-bottom: 16px;
+}
+
+.featured-product-title {
+  color: #980F3A !important;
+}
+
+.mv-prod-details-featured-prod-copy .featured-product-title, .mv-prod-details-featured-prod-copy p {
+  color: #FFFFFF !important;
+}
+
+.featured-prod-copy {
+  background: #F5F1E7;
+}
+
+.mv-prod-details-featured-prod-copy {
+  background: #212121;
+  padding: 48px 16px 48px;
+}
+
+
+.missvickies-btn {
+  padding-top: 16px;
+}
+
+/*
+  Bootstrap Carousel
+*/
+
+.carousel {
+  position: relative;
+}
+
+.carousel.pointer-event {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+  z-index: 1;
+  opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-left,
+  .carousel-fade .active.carousel-item-right {
+    transition: none;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 5%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    transition: none;
+  }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: no-repeat 50% / 100% 100%;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrows/mv-left-chevron.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrows/mv-right-chevron.svg");
+}
+
+
+/*#mv-signatures-featured-products-carousel .carousel-control-prev-icon {*/
+/*  background-image: url("../images/arrows/mv-signatures-left-chevron.svg");*/
+/*}*/
+
+/*#mv-signatures-featured-products-carousel .carousel-control-next-icon {*/
+/*  background-image: url("../images/arrows/mv-signatures-right-chevron.svg");*/
+/*}*/
+
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 15;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+#mv-signatures-featured-products-carousel .carousel-indicators {
+  bottom: 64px;
+}
+
+.carousel-indicators li {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #980F3A;
+  background-clip: padding-box;
+  opacity: .1;
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicators li {
+    transition: none;
+  }
+}
+
+.carousel-indicators .active {
+  background-color: #980F3A;
+  opacity: 1;
+  margin-right: 3px !important;
+  margin-left: 3px !important;
+}
+
+.featured-carousel-indicators {
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+
+/*
+  HomePage Video Section
+*/
+
+.missvickies .video-section {
+  padding: 0 0 80px;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.missvickies-video-block {
+  background: url(/themes/brandstheme/src/images/missvickies/video-bg.png) top center no-repeat, #EBE3D0;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.missvickies .video-section .video-title h1 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #980F3A;
+  font-size: 62px;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  margin: 0;
+  padding: 16px 0;
+}
+
+
+/*
+ Miss Vickies Product Categories Header
+*/
+
+.missvickies-product-banner-category-block, .missvickies-product-banner-block {
+  margin-bottom: -3px;
+  position: relative;
+}
+
+.missvickies-product-banner-category-block .mv-banner-copy, .missvickies-product-banner-block .mv-banner-copy {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+}
+
+.missvickies-product-banner-category-block h1, .missvickies-product-banner-block h1 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #F5F1E7;
+  font-size: 62px;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.prod-category-copy {
+  position: absolute;
+  width: 100%;
+  bottom: 12%;
+}
+
+.prod-category-copy h3 {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.missvickies-product-block-copy h4 {
+  font-size: 16px;
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+#products-0 .missvickies-product-block-copy h4 {
+  padding-top: 16px;
+}
+
+#products-1 .missvickies-product-block-copy h4 {
+  padding-top: 16px;
+}
+
+#product-categories #prod-category-col-0 h3, #product-categories #prod-category-col-2 h3, #product-categories #prod-category-col-4 h3 {
+  color: #1E1E1E;
+}
+
+#product-categories #prod-category-col-1 h3, #product-categories #prod-category-col-3 h3, #product-categories #prod-category-col-5 h3 {
+  color: #F5F1E7;
+}
+
+
+/*
+  Miss Vickies Signatures Page
+*/
+
+#missvickies-signatures-block {
+  background: url(/themes/brandstheme/src/images/missvickies/mv-signatures-block-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: -4px;
+  overflow: hidden;
+  position: relative;
+  background-attachment: fixed;
+}
+
+#signatures-select-block-bg {
+  background: url(/themes/brandstheme/src/images/missvickies/signatures-golden-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  position: relative;
+  padding-top: 16px;
+  margin-top: 32px;
+}
+
+.signatures-prod-copy-div {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.signatures-gold-heading {
+  color: #D0A353 !important;
+  font-size: 62px;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+
+.signatures-select-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15% 0 64px;
+}
+
+.signatures-select-col {
+  position: relative;
+  cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: none;
+  outline: none;
+  z-index: 9999;
+}
+
+.missvickies-signatures-intro, .signatures-gold-heading {
+  padding: 0 16px 16px;
+}
+
+.signatures-select-block-bg {
+  border: 1px solid #EBE3D0;
+}
+
+/*.signatures-select-col:focus > .signatures-select-block-bg {*/
+/*  border: 4px solid #EBE3D0 !important;*/
+/*}*/
+
+
+/*.signatures-select-col:focus::before > .signatures-select-block-bg {*/
+
+/*!*.signatures-select-col:before {*!*/
+/*  content:'';*/
+/*  position: absolute;*/
+/*  top: 99%;*/
+/*  left: 50%;*/
+/*  margin-left: -16px;*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*  border-top: solid 16px #EBE3D0;*/
+/*  border-left: solid 16px transparent;*/
+/*  border-right: solid 16px transparent;*/
+/*}*/
+
+.border-signatures-selected-arrow:before, .border-signatures-selected-arrow-hover:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -16px;
+  margin-top: -4px;
+  width: 0;
+  height: 0;
+  border-top: solid 16px #EBE3D0;
+  border-left: solid 16px transparent;
+  border-right: solid 16px transparent;
+}
+
+.signatures-select-col:hover > .signatures-select-block-bg, .border-signatures-selected {
+  border: 4px solid #EBE3D0;
+}
+
+.signatures-select-col:hover > .signatures-select-col:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -16px;
+  margin-top: -4px;
+  width: 0;
+  height: 0;
+  border-top: solid 16px #EBE3D0;
+  border-left: solid 16px transparent;
+  border-right: solid 16px transparent;
+}
+
+.signatures-select-block-bags {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.signatures-select-block-bags img {
+  width: 60%;
+  max-width: 100%;
+  height: auto;
+}
+
+.signatures-select-block-title {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  bottom: 0;
+  left: 50%;
+  width: 75%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase !important;
+  min-height: 100px;
+}
+
+.signatures-select-block-title h3 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 22px;
+  color: #F5F1E7;
+  line-height: 1.2;
+}
+
+.signatures-ingredient-block-title {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  color: #F5F1E7;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  padding-bottom: 32px;
+}
+
+.mv-signatures-sidebyside-block {
+  background: #212121;
+  position: relative;
+  z-index: 9999;
+}
+
+.signature-prod-ingredients-bg-br {
+  position: absolute;
+  right: -15%;
+  bottom: 0;
+  z-index: 9;
+}
+
+.signature-prod-ingredients-bg-salt {
+  position: absolute;
+  left: -10%;
+  top: 0;
+  z-index: 9;
+}
+
+.signature-prod-ingredients-bg-br img, .signature-prod-ingredients-bg-salt img {
+  background: transparent !important;
+}
+
+.mv-signatures-sidebyside-block img, .mv-signatures-sidebyside-block-copy {
+  padding: 16px;
+  background: #212121;
+}
+
+.mv-signatures-sidebyside-block-copy div:first-child {
+  border: 1px solid #EBE3D0;
+  padding: 24px 24px 18px;
+}
+
+.signatures-best-paired {
+  padding-top: 24px;
+  padding-bottom: 8px;
+  text-transform: uppercase !important;
+}
+
+.mv-signatures-sidebyside-block-copy h3 {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  color: #D0A353;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.mv-signatures-sidebyside-block-copy h4 {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+.mv-signatures-sidebyside-block-copy h4:nth-of-type(1) {
+  color: #FFFFFF;
+}
+
+.mv-signatures-sidebyside-block-copy h4:nth-of-type(1n+2), .mv-signatures-sidebyside-block-copy p {
+  color: #D0A353;
+}
+
+
+/*
+  MV Products Details Page
+*/
+
+#missvickies-productdetails {
+  background: #EBE3D0;
+}
+
+#missvickies-signatures-productdetails {
+  background: url(/themes/brandstheme/src/images/missvickies/mv-signatures-block-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  position: relative;
+}
+
+#missvickies-productdetails-intro-block {
+  background: #F0EADB;
+  padding: 64px 0;
+}
+
+#missvickies-signatures-productdetails-intro-block {
+  background: #101010;
+}
+
+
+#missvickies-productdetails-info-block, #missvickies-signatures-productdetails-intro-block, #mv-signatures-productdetails-info-block, #missvickies-signatures-productdetails-info-block {
+  padding: 64px 0;
+  text-align: left;
+}
+
+.mv-product-intro-copy h3, .missvickies-productdetails-nutrition-info h3, .missvickies-productdetails-ingredients-info h3, #missvickies-signatures-productdetails-intro-block h3, .mv-wine-pairing .wine-pairing-heading, .signatures-wine-pairing .wine-pairing-heading {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.missvickies-productdetails-nutrition-info h3, .missvickies-productdetails-ingredients-info h3 {
+  color: #980F3A;
+  padding-bottom: 16px;
+}
+
+.mv-wine-pairing .wine-pairing-heading {
+  padding-top: 16px;
+  color: #1E1E1E;
+}
+
+.signatures-wine-pairing .wine-pairing-heading {
+  padding-top: 16px;
+  color: #FFC90A;
+}
+
+.mv-product-intro-copy h3 {
+  color: #1E1E1E;
+}
+
+.mv-product-intro-copy h3 span {
+  font-size: 26px;
+  color: #980F3A;
+}
+
+#missvickies-signatures-productdetails-intro-block h3 {
+  color: #FFC90A;
+}
+
+#missvickies-signatures-productdetails-intro-block h3 span {
+  color: #F5F1E7;
+  line-height: 1.6;
+}
+
+#missvickies-signatures-productdetails-info-block h3, #missvickies-signatures-productdetails-info-block p, .missvickies-signatures-intro, #missvickies-signatures-productdetails-intro-block p {
+  color: #F5F1E7 !important;
+}
+
+
+/*
+  Product Table
+*/
+
+.missvickies-productdetails-nutrition-row {
+  /*border-bottom: 1px solid rgba(0,0,0,0.3);*/
+}
+
+
+.missvickies-productdetails-nutrition-header-row, .missvickies-signatures-productdetails-nutrition-header-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /*padding-bottom: 16px;*/
+}
+
+.missvickies-signatures-productdetails-nutrition-header-row div, #missvickies-signatures-productdetails-info-block .missvickies-productdetails-nutrition-cell {
+  color: #F5F1E7;
+}
+
+.missvickies-productdetails-nutrition-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding-right: 25px;
+  /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.missvickies-productdetails-nutrition-row:nth-child(2n + 4) {
+  background-color: #F5F1E7;
+}
+
+#missvickies-signatures-productdetails-info-block .missvickies-productdetails-nutrition-row:nth-child(2n + 4) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.missvickies-productdetails-nutrition-cell {
+  padding: 6px 2px;
+  font-size: 0.875em;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.missvickies-productdetails-nutrition-cell:first-child {
+  width: 230px;
+}
+
+/*.missvickies-productdetails-nutrition-cell:last-child{*/
+/*  width: 125px;*/
+/*  text-align: center;*/
+/*}*/
+
+.missvickies-row-indented .missvickies-productdetails-nutrition-cell:first-of-type {
+  padding-left: 20px;
+}
+
+/*
+  About Us Page
+*/
+
+
+.missvickies-about-us-top-banner {
+  margin-bottom: -3px;
+  position: relative;
+}
+
+.missvickies-about-us-top-banner .mv-banner-copy {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+}
+
+
+.missvickies-about-us-top-banner h1 {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #F5F1E7;
+  font-size: 62px;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.about-us-row {
+  padding: 64px 0;
+}
+
+.mv-about-us-logo {
+  max-width: 100%;
+  width: 70%;
+}
+
+.mv-sincerely {
+  font-size: 32px;
+  font-family: new-spirit-condensed, serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  color: #383333;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  padding-top: 24px;
+}
+
+/*
+ Miss Vickies Coupon
+*/
+
+.missvickies .main-coupon-heading {
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #980F3A;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.missvickies .main-coupon-disclaimer {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0 16px 48px 16px;
+}
+
+.missvickies-coupon-block {
+  background: url(/themes/brandstheme/src/images/missvickies/missvickies-coupon-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 64px 0 112px 0;
+  overflow-x: hidden;
+}
+
+
+.missvickies .vr-coupon-left, .missvickies .main-coupon-left {
+  border-radius: 0 !important;
+}
+
+.missvickies .vr-coupon-right, .missvickies .main-coupon-right {
+  border-radius: 0 !important;
+  background: #F5F1E7 !important;
+}
+
+/*
+ Miss Vickies Videos
+*/
+#missvickies-videos-container{
+  position: relative;
+}
+
+#missvickies-videos-container .missvickies-video-box{
+  width: 100%;
+}
+
+.missvickies-video-main-wrapper{
+  background: url("/themes/brandstheme/src/images/missvickies/video-bg.png") top center no-repeat, #EBE3D0;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding: 0 0 450px 0px;
+  background-size: cover;
+}
+
+.missvickies-video-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.missvickies-video-iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+}
+
+.missvickies-video-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.missvickies-video-box {
+  width: 46%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.missvickies-video-box h3{
+  font-size: 1.375em;
+  margin-bottom: 20px;
+  font-family: 'Raleway',sans-serif;
+}
+
+.missvickies-video-preimg {
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  height: 630px;
+  overflow: hidden;
+}
+
+.missvickies-video-preimg:before {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.25);
+  left: 0;
+  top: 0;
+  z-index: 1;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+}
+
+.missvickies-video-preimg:after {
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-image: url(/themes/brandstheme/src/images/lays/video-play.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  content: '';
+  pointer-events: none;
+}
+
+.missvickies-video-preimg img {
+  width: 100%;
+}
+
+.missvickies-video-blocks{
+  display: flex;
+}
+
+.missvickies-video-blocks p{
+  font-family: new-spirit-condensed, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #1E1E1E;
+}
+
+
+.missvickies-video-main-block{
+  margin-bottom: 40px;
+  position: relative;
+}
+
+#missvickies-videos-container h1{
+  padding: 60px 0px 30px;
+  font-size: 34px;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+html:lang(en) #missvickies-videos-container .missvickies-video-box.fr{
+  display: none
+}
+
+html:lang(fr) #missvickies-videos-container .missvickies-video-box.en{
+  display: none
+}
+
+/*html:lang(en) .missvickies-main-video.fr{*/
+/*  display: none*/
+/*}*/
+
+/*html:lang(fr) .missvickies-main-video.en{*/
+/*  display: none*/
+/*}*/
+
+.missvickies-main-video{
+  height: 633px;
+  background:#333;
+  display:block;
+  margin: auto;
+  margin: 0 8px 50px 8px;
+}
+
+.missvickies-main-video iframe{
+  width:100%;
+  height:100%;
+}
+
+.missvickies-video-thumbnails{
+  padding:10px 0;
+  text-align: center;
+  display: flex;
+}
+
+.missvickies-video-thumbnails a{
+  display: block;
+}
+
+.missvickies-carousel-indicators{
+  width: 100%;
+  margin: auto;
+  bottom: -400px;
+  justify-content: space-between;
+  max-width: 1140px;
+}
+
+.missvickies-carousel-indicators li{
+  opacity: 1;
+  width: 280px;
+  height: 160px;
+  margin: 0;
+}
+
+.missvickies-carousel-indicators .active{
+  opacity: 1;
+  width: 280px;
+  height: 160px;
+  margin: 0 !important;
+}
+
+.missvickies-carousel-content{
+  width: 280px;
+}
+
+.missvickies-carousel-content-wrap h3{
+  font-size: 1.375em;
+  margin: 20px 0;
+}
+
+.missvickies-carousel-indicators .thumb-1{
+  background-image: url("/themes/brandstheme/src/images/missvickies/thumb-en-1.PNG");
+  list-style: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: inherit;
+  border: 0;
+}
+
+.missvickies-carousel-indicators .thumb-2{
+  background-image: url("/themes/brandstheme/src/images/missvickies/thumb-en-2.PNG");
+  list-style: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: inherit;
+  border: 0;
+}
+
+.missvickies-carousel-indicators .thumb-3{
+  background-image: url("/themes/brandstheme/src/images/missvickies/thumb-en-3.PNG");
+  list-style: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: inherit;
+  border: 0;
+}
+
+.missvickies-carousel-indicators .thumb-4{
+  background-image: url("/themes/brandstheme/src/images/missvickies/thumb-en-4.PNG");
+  list-style: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: inherit;
+  border: 0;
+}
+
+.missvickies-carousel-content-mobile{
+  display: none;
+}
+
+.missvickies-video-main-block .carousel-control-prev, .missvickies-video-main-block .carousel-control-next{
+  top: 20%;
+}
+
+/*
+  Media Queries Start
+*/
+
+
+@media only screen and (max-width: 280px) {
+  .prod-category-copy {
+    bottom: 8% !important;
+  }
+}
+
+/*@media only screen and (max-width: 360px) {*/
+
+/*  .signatures-select-block-title h3 {*/
+/*    font-size: 18px !important;*/
+/*  }*/
+
+/*}*/
+
+@media only screen and (max-width: 380px) {
+
+  .featured-product-title, .prod-category-copy h3, .mv-prod-details-featured-prod-copy .featured-product-title {
+    font-size: 23px !important;
+  }
+
+  .btn_missvickies, .missvickies .btn_carousel, .btn_missvickies:hover, .btn_missvickies:focus, .btn_missvickies:active, .missvickies .btn_carousel:hover, .missvickies .btn_carousel:focus, .missvickies .btn_carousel:active {
+    padding: 12px 16px !important;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+
+  .featured-prod-heading, .signatures-featured-prod-heading, .missvickies .video-section .video-title h1, .missvickies-product-banner-category-block h1, .missvickies-product-banner-block h1, .missvickies-about-us-top-banner h1, .signatures-gold-heading {
+    font-size: 48px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .mv-banner-copy h1 {
+    padding: 0;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+    .missvickies-video-main-block h1{
+        font-size: 24px;
+    }
+
+  #missvickies-videos-container{
+    padding: 0 15px;
+  }
+
+  .missvickies-video-main-block .carousel-control-prev, .missvickies-video-main-block .carousel-control-next{
+    top: 160px;
+  }
+
+    .missvickies-video-main-block .carousel-control-prev{
+        left: -10px;
+    }
+
+    .missvickies-video-main-block .carousel-control-next{
+        right: -10px;
+    }
+
+  .missvickies-video-blocks .missvickies-video-box{
+    margin: 0;
+  }
+
+  .missvickies-video-blocks{
+    flex-direction: column;
+  }
+
+  #missvickies-videos-container .missvickies-video-box{
+    margin-bottom: 20px;
+  }
+
+  .mv-wine-pairing .wine-pairing-heading, .signatures-wine-pairing .wine-pairing-heading {
+    padding-top: 16px;
+  }
+
+  .mv-yt-placeholder {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .missvickies-coupon-block {
+    background-position: top right;
+    padding: 64px 16px 112px;
+  }
+
+  .missvickies-carousel-block, #product-categories, #signature-product-categories, #missvickies-product-categories {
+    padding: 48px 0 48px;
+  }
+
+  .missvickies-prod-detail-carousel-block {
+    padding: 0 0 48px;
+  }
+
+  #mv-signatures-featured-products-carousel {
+    padding-bottom: 48px;
+  }
+
+  .featured-prod-bag-bg, .mv-products-detail-featured-prod-bag-bg {
+    padding: 0 16px;
+  }
+
+
+  .missvickies-signatures-intro {
+    padding: 16px;
+  }
+
+  .missvickies-carousel-block, #product-categories, #missvickies-product-categories {
+    background: url(/themes/brandstheme/src/images/missvickies/homepage-featured-product-bg-mbl.png) top center no-repeat, #EBE3D0;
+    background-size: contain;
+  }
+
+  #missvickies-product-categories {
+    background: url(/themes/brandstheme/src/images/missvickies/mv-product-detail-bg-mbl.png) top center no-repeat, #EBE3D0;
+    background-size: contain;
+  }
+
+  .missvickies-prod-detail-carousel-block {
+    background: url(/themes/brandstheme/src/images/missvickies/video-bg.png) bottom center no-repeat, #EBE3D0;
+    background-size: contain;
+  }
+
+  .featured-product-image-col {
+    width: 100%;
+    background: url(/themes/brandstheme/src/images/missvickies/featured-product-wooden-texture-mbl.png) top center no-repeat;
+    background-size: cover;
+  }
+
+  .mv-products-detail-featured-product-image-col {
+    width: 100%;
+    background: url(/themes/brandstheme/src/images/missvickies/featured-product-black-texture-mbl.png) top center no-repeat;
+    background-size: cover;
+    margin-bottom: -1px;
+  }
+
+  #signatures-select-block-bg {
+    background: url(/themes/brandstheme/src/images/missvickies/signatures-golden-bg-mbl.png) top right no-repeat, transparent;
+    background-size: cover;
+    padding-top: 32px;
+  }
+
+  .missvickies-about-us-top-banner .mv-banner-copy, .missvickies-product-banner-category-block .mv-banner-copy, .missvickies-product-banner-block .mv-banner-copy {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .missvickies-product-banner-category-block img, .missvickies-product-banner-block img, .missvickies-about-us-top-banner img {
+    height: 300px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-product-image {
+    padding: 16px 0 16px;
+  }
+
+  .missvickies .video-section {
+    padding: 0 0 48px !important;
+  }
+
+  .prod-category-col, .missvickies-prod-col {
+    padding: 0 16px;
+  }
+
+  #missvickies-productdetails-intro-block, #missvickies-productdetails-info-block, #missvickies-signatures-productdetails-intro-block, #mv-signatures-productdetails-info-block, #missvickies-signatures-productdetails-info-block {
+    padding: 48px 16px;
+  }
+
+  .missvickies-productdetails-ingredients-info {
+    padding-top: 32px;
+  }
+
+  .prod-category-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .prod-category-col {
+    padding-top: 32px;
+  }
+
+  .about-us-row {
+    padding: 48px 0;
+  }
+
+  .missvickies-about-us {
+    background: url(/themes/brandstheme/src/images/missvickies/about-us-bg-mbl.webp) top center no-repeat, #F5F1E7;
+    background-size: contain;
+  }
+
+  .missvickies-about-us-copy {
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  /*.missvickies-carousel-block {*/
+  /*  padding-top: 32px !important;*/
+  /*}*/
+  .signatures-select-col:nth-child(n+2) {
+    padding-top: 32px;
+    margin-top: 96px;
+  }
+
+  .signatures-select-col:first-child {
+    margin-top: 64px;
+  }
+
+  .signatures-select-block {
+    padding: 48px 0 48px;
+  }
+
+  .signatures-select-block:last-child {
+    padding: 48px 0 64px;
+  }
+
+
+  .signatures-select-block-bags {
+    margin: 0 auto;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .signatures-select-block-bg-0 .signatures-select-block-bags {
+    top: 16%;
+  }
+
+  .signatures-select-block-bg-1 .signatures-select-block-bags, .signatures-select-block-bg-2 .signatures-select-block-bags {
+    top: 24%;
+  }
+
+  .signatures-select-block-bags img {
+    width: 50%;
+  }
+
+  .missvickies-prod-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .missvickies-product-block-copy h4 {
+    padding-top: 16px;
+    font-size: 18px;
+  }
+
+  #missvickies-signatures-block {
+    padding: 48px 0;
+  }
+
+  .mv-product-intro-copy h3 {
+    padding-top: 48px;
+  }
+
+  .signature-prod-ingredients-bg-br, .signature-prod-ingredients-bg-salt {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .featured-product-title, .prod-category-copy h3, .mv-prod-details-featured-prod-copy .featured-product-title {
+    font-size: 28px;
+  }
+
+  .prod-category-copy {
+    bottom: 10%;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .missvickies-product-banner-category-block img, .missvickies-product-banner-block img, .missvickies-about-us-top-banner img {
+    height: 350px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  .missvickies-carousel-content-mobile{
+    display: block;
+  }
+
+  .missvickies-video-main-wrapper {
+    padding: 0 0 1px 0px !important;
+  }
+
+  .missvickies-video-main-block .carousel-control-prev, .missvickies-video-main-block .carousel-control-next {
+    display: none;
+  }
+
+  .missvickies-video-preimg{
+    height: auto;
+  }
+
+  .missvickies-video-main-block .carousel-inner > .item{
+    display: block;
+  }
+
+  .missvickies-carousel-indicators{
+    display: none;
+  }
+
+  .missvickies-video-thumbnails{
+    flex-direction: column;
+  }
+
+  .missvickies-main-video{
+    display: none;
+  }
+
+  .missvickies-prod-col:nth-child(n+1) {
+    padding-top: 32px;
+  }
+
+  .signatures-select-block-title {
+    bottom: -32px !important;
+    width: 75%;
+  }
+
+  .missvickies .brands-navbar__item-first-border, .missvickies .brands-navbar__item-border, .missvickies .choose-lang_fr, .missvickies .brands-navbar_accout-options, .missvickies .hr-navbar {
+    border-bottom: 1px solid #403A3A;
+  }
+
+  .missvickies .choose-lang_fr:hover, .missvickies .choose-lang_fr:active, .missvickies .choose-lang_fr:focus, .missvickies .brands-navbar_accout-options .sign_in:hover, .missvickies .brands-navbar_accout-options .sign_in:active, .missvickies .brands-navbar_accout-options .sign_in:focus, .missvickies .tr-navbar-trigger-mobile:hover, .missvickies .tr-navbar-trigger-mobile:active, .missvickies .tr-navbar-trigger-mobile:focus, .missvickies #button-mbl-back:hover, .missvickies #button-mbl-back:active, .missvickies #button-mbl-back:focus {
+    color: #980F3A !important;
+  }
+
+  .signatures-select-block-title h3 {
+    font-size: 18px;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3%;
+  }
+
+  .signatures-select-block-title {
+    bottom: -20px;
+  }
+
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+  .signatures-select-block-title {
+    bottom: -32px;
+    width: 80%;
+  }
+
+  .missvickies-carousel-indicators{
+    bottom: -90px;
+    max-width: 960px;
+  }
+
+  .missvickies-carousel-indicators li {
+    width: 100%;
+    background-size: contain !important;
+    height: 132px;
+    background-color: transparent;
+  }
+
+  .missvickies-carousel-indicators .active {
+    width: 100%;
+    margin: 0 3px !important;
+    height: 132px;
+    background-color: transparent;
+  }
+
+  .missvickies-carousel-content {
+    width: 100%;
+    margin: 0 3px;
+    height: 160px;
+  }
+
+  .missvickies-video-main-wrapper {
+    padding: 0 0 360px 0px;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .featured-carousel-indicators {
+    display: none !important;
+  }
+
+  .mv-yt-placeholder {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .missvickies-d-md-flex {
+    display: flex !important;
+  }
+
+  .missvickies-carousel-block {
+    background: url(/themes/brandstheme/src/images/missvickies/homepage-featured-product-bg.png) top center no-repeat, #EBE3D0;
+    background-size: cover;
+  }
+
+  .missvickies-prod-detail-carousel-block {
+    background: url(/themes/brandstheme/src/images/missvickies/video-bg.png) top center no-repeat, #EBE3D0;
+    background-size: cover;
+  }
+
+  .featured-product-image-col, .featured-prod-copy {
+    height: 450px !important;
+  }
+
+  .featured-prod-copy-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 16px 0;
+  }
+
+  #product-categories {
+    background: url(/themes/brandstheme/src/images/missvickies/homepage-featured-product-bg.png) top center no-repeat, #EBE3D0;
+    background-size: cover;
+  }
+
+  #missvickies-product-categories {
+    background: url(/themes/brandstheme/src/images/missvickies/missvickies-products-block-bg.png) top center no-repeat, #EBE3D0;
+    background-size: cover;
+  }
+
+  .featured-prod-bag-bg {
+    background: url(/themes/brandstheme/src/images/missvickies/featured-product-wooden-texture-dsk.jpg) left center no-repeat;
+    background-size: cover;
+  }
+
+  .mv-products-detail-featured-prod-bag-bg {
+    background: url(/themes/brandstheme/src/images/missvickies/featured-product-black-texture-dsk.png) left center no-repeat;
+    background-size: cover !important;
+  }
+
+  .featured-prod-copy p {
+    padding: 4px 0;
+  }
+
+
+  #products-0 .missvickies-product-block-copy h4, .fr #products-0 .missvickies-product-block-copy h4 {
+    min-height: 73px;
+  }
+
+  #products-1 .missvickies-product-block-copy h4 {
+    min-height: 75px;
+  }
+
+  .prod-category-col:nth-child(odd) {
+    padding-right: 16px;
+  }
+
+  .prod-category-col:nth-child(even) {
+    padding-left: 16px;
+  }
+
+  .prod-category-col:first-child, .prod-category-col:nth-child(2) {
+    padding-top: 0;
+  }
+
+  .prod-category-col {
+    padding-top: 32px;
+  }
+
+  .missvickies-prod-col {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .missvickies-about-us {
+    background: url(/themes/brandstheme/src/images/missvickies/about-us-bg.png) top center no-repeat, #F5F1E7;
+    background-size: cover;
+  }
+
+  #missvickies-signatures-block {
+    padding: 64px 0;
+  }
+
+  .signatures-select-col:first-child {
+    padding-right: 16px;
+  }
+
+  .signatures-select-block {
+    padding: 20% 0 64px;
+    margin: 0 -16px;
+  }
+
+  .signatures-select-block-bags {
+    top: -48%;
+    width: 90%;
+  }
+
+  .mv-signatures-sidebyside-block img {
+    padding: 16px 16px 12px 16px;
+  }
+
+  .mv-signatures-sidebyside-block-copy {
+    padding: 8px 12px 8px 4px;
+  }
+
+  .mv-product-intro-copy, .missvickies-productdetails-ingredients-info {
+    padding-left: 48px;;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .missvickies-prod-col:nth-child(n+5) {
+    padding-top: 32px;
+  }
+
+  .signatures-select-block {
+    padding: 15% 0 64px;
+  }
+
+  .signatures-select-block-bags {
+    top: -40%;
+  }
+
+}
+
+@media only screen and (min-width: 1025px) {
+
+  #products-0 .missvickies-product-block-copy h4 {
+    min-height: 73px;
+  }
+
+  .featured-prod-bag-bg, .mv-products-detail-featured-prod-bag-bg {
+    margin: 0 0 64px;
+  }
+
+  .featured-product-image-div {
+    position: absolute;
+    bottom: -12%;
+  }
+
+  .featured-product-image {
+    width: 325px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: -20%;
+  }
+
+
+  .featured-prod-bag-bg {
+    background-size: contain !important;
+  }
+
+}
+
+@media only screen and (min-width: 1100px) {
+
+  .featured-prod-bag-bg, .mv-products-detail-featured-prod-bag-bg {
+    background-size: contain;
+  }
+
+}
+
+@media only screen and (min-width: 1281px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 15%;
+  }
+
+}
+
+@media only screen and (min-width: 1600px) {
+
+
+  .missvickies-product-banner-category-block img, .missvickies-product-banner-block img, .missvickies-about-us-top-banner img {
+    height: 450px;
+  }
+
+}
+
+@media only screen and (min-width: 1921px) {
+
+  .missvickies-coupon-block {
+    padding: 64px 0 176px 0;
+  }
+
+}
+
+/*BuyNow Popup*/
+
+.missvickies-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+
+/*Buynow Modal*/
+
+.missvickies-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#missvickiesModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#missvickiesModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #missvickiesModal {
+    padding:0 !important;
+  }
+}
+
+#product-categories > div > div {
+  justify-content: center;
+}
+
+.d-none {
+  display: none !important;
+}

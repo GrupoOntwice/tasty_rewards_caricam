@@ -1,0 +1,66 @@
+{% if featured_products|length %}
+    <h2 class="doritos-title text-center">{{'Featured products'|t}}</h2>
+{#    <img src="/themes/brandstheme/src/images/doritos/doritos-featured-product-text.png" alt="featured product">#}
+{% endif %}
+
+
+
+
+
+<div id="homepage-featured-products-carousel" class="carousel slide" data-ride="carousel">
+
+        <!-- The slideshow -->
+    <div class="carousel-inner container">
+        {% for idx, product in featured_products %}
+            <div class="carousel-item row {{ idx==0 ? 'active' :'' }}">
+                <div class='col-md-12 featured-prod-col-bg'>
+                    <div class="row center-align-md-dsk featured-prod-bag-bg">
+                        <div class="col-md-12 featured-carousel-inner-border">
+                            <div class="row">
+                                <div class='col-md-5 featured-product-image-col'>
+                                    <div class="featured-product-image-div">
+                                        <img loading="lazy" class='featured-product-image' src='{{product.extra_image_url}}' alt="Featured Product">
+                                    </div>
+                                </div>
+                                <div class='col-md-7 featured-prod-copy'>
+
+                                    <div class="featured-prod-copy-div">
+                                        <h3 class='featured-product-title'> {{ product.title|raw }}</h3>
+                                        {% set trimmed_body = truncateText(product.body|raw, 20) %}
+{#                                      <p class = "text-white featured-recipe-description">{{ 'Synesthesia is an#}
+{#                                      extraordinary ability where the stimulation of one sensory pathway leads to#}
+{#                                      involuntary experiences in a second sensory pathway. In other words, people#}
+{#                                      with Synesthesia have the ability to see and hear flavour.' |t }}</p>#}
+                                        <a class="doritos-black-button" href="{{ product.link }}" title ="{{ product.title | raw}}">
+                                            {{'VIEW PRODUCT'|t}}
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+
+    <!-- Left and right controls -->
+
+{#    <a class="carousel-control-prev doritos-d-md-flex" href="#homepage-featured-products-carousel" data-slide="prev">#}
+{#        <span class="carousel-control-prev-icon"></span>#}
+{#    </a>#}
+{#    <a class="carousel-control-next doritos-d-md-flex" href="#homepage-featured-products-carousel" data-slide="next">#}
+{#        <span class="carousel-control-next-icon"></span>#}
+{#    </a>#}
+
+</div>
+
+
+
+
+
+
+

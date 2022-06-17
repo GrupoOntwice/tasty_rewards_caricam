@@ -1,0 +1,6 @@
+sfmcservices.admin_settings_form:
+  title: 'SFMC module'
+  route_name: sfmcservices.admin_settings_form
+  description: 'Salesforce Marketing Cloud Settings'
+  parent: system.admin_config_system
+  weight: 99

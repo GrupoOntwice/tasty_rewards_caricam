@@ -1,0 +1,18 @@
+ssoservices.test:
+  path: '/ssoservices/test'
+  defaults:
+    _controller: '\Drupal\ssoservices\Controller\TestController::test'
+    _title: ''
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+
+
+ssoservices.login_ajax:
+  path: '/sso/login'
+  defaults:
+    _controller: '\Drupal\ssoservices\Controller\SsoController::ajax_login'
+  requirements:
+    # _user_is_logged_in: 'FALSE'
+    _access: 'TRUE'
+  methods: [POST]

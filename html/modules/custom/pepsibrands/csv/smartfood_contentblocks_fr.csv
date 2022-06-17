@@ -1,0 +1,32 @@
+Block Type,Description
+about-us,"<div class=""smartfood-about-us-paragraph-col"">
+<h2>Classically Great</h2>
+
+<p>Canada’s favourite popcorn brand is not only delicious, it is also air popped for full, fresh tasting flavour and made with 100% whole grain corn. When you want it… you gotta have it! Always great tasting, it hits the spot every time. Try all of our great Smartfood<sup>®</sup> flavours.</p>
+</div>
+
+<p>&nbsp;</p>
+
+<div class=""smartfood-about-us-paragraph-col"">
+<h2>Delightfully Delicious</h2>
+
+<p>Canada’s favourite popcorn brand brings you the mouthwatering taste you love with only 35 calories per cup! New Smartfood<sup>®</sup> Delight popcorn is a good source of fibre, made with 100% whole grain premium corn and seasoned with great flavours. It has no trans fat, no artificial colours, flavours or preservatives. Open a bag of this fresh-tasting, air-popped popcorn and prepare to be delighted. Try all our Smartfood<sup>®</sup> Delight popcorn flavours!</p>
+</div>"
+coupon,"<div class=""container container-coupon"">
+<div class=""row w-100 center-align coupon-row"">
+<div class=""col-md-6 main-coupon-left animate__animated "" style=""background: #000000"">
+<div class=""main-coupon-centered-img""><a class=""smartfood-link"" href=""/coupons"" target=""_self""><img alt=""smartfood"" src=""/themes/brandstheme/src/images/smartfood/smartfood-standard-oats.png"" /> </a></div>
+</div>
+
+<div class=""col-md-6 bg-white main-coupon-right animate__animated "">
+<div class=""main-coupon-copy"">
+<h1 class=""main-coupon-heading"">smartfood<sup>®</sup><br />
+Coupon Available!</h1>
+<a class=""smartfood-button margin-top"" href=""/coupons"" target=""_self"">Get my coupon*</a>
+
+<p class=""main-coupon-disclaimer"">*Coupons available while quantities last</p>
+</div>
+</div>
+</div>
+</div>
+"

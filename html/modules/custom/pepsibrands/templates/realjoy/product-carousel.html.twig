@@ -1,0 +1,55 @@
+<div id="lays-feature-product-carousel" class="custom-slick-arrow container">
+    {% for idx, product in data.featured_products %}
+        {% set textbox_background_color = "#FFFFFF" %}
+        {% if product.textbox_background_color != '' %}
+            {% set textbox_background_color = product.textbox_background_color %}
+        {% endif %}
+        <div class="products-carousel-slide">
+            <div class="lays-featured-prod-img-col lays-featured-prod-img-col-{{ idx }}">
+                <img class='' src='{{product.extra_image_url}}' alt="{{ product.title|raw }}">
+                <div class='featured-prod-copy' style="background-color: {{ textbox_background_color }}">
+                    <h3 class='featured-product-title'> {{ product.title|raw }}</h3>
+                    {% set trimmed_body = truncateText(product.body|raw, 20) %}
+
+                    <a class="btn_lays" href="{{ product.link }}" title ="{{ product.title | raw}}">
+                        {{'View Product'|t}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+{#<div id="lays-featured-products-carousel" class="carousel slide" data-ride="carousel">#}
+{#    <div class="carousel-inner container">#}
+{#        {% for idx, product in data.featured_products %}#}
+{#            {% set textbox_background_color = "#FFFFFF" %}#}
+{#            {% if product.textbox_background_color != '' %}#}
+{#                {% set textbox_background_color = product.textbox_background_color %}#}
+{#            {% endif %}#}
+{#            <div class="row item carousel-item {{ idx==0 ? 'active' :'' }}">#}
+{#                <div class="col-md-3 lays-featured-prod-img-col lays-featured-prod-img-col-{{ idx }}">#}
+{#                        <img class='' src='{{product.extra_image_url}}' >#}
+{#                        <div class='featured-prod-copy' style="background-color: {{ textbox_background_color }}">#}
+{#                            <h3 class='featured-product-title'> {{ product.title|raw }}</h3>#}
+{#                            {% set trimmed_body = truncateText(product.body|raw, 20) %}#}
+
+{#                            <a class="lays-red-button" href="{{ product.link }}" title ="{{ product.title | raw}}">#}
+{#                                {{'View Product'|t}}#}
+{#                            </a>#}
+{#                        </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+
+{#    <a class="carousel-control-prev" href="#lays-featured-products-carousel" role="button" data-slide="prev">#}
+{#        <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#    </a>#}
+{#    <a class="carousel-control-next" href="#lays-featured-products-carousel" role="button" data-slide="next">#}
+{#        <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#    </a>#}
+
+{#</div>#}

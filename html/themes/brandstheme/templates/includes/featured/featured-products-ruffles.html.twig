@@ -1,0 +1,102 @@
+{# {% if featured_products|length %} #}
+{# <h2>{{'Featured products'|t}}</h2> #}
+{# {% endif %} #}
+{# <div class="carousel_fullwidth carousel_desktop js-main-carousel-ruffles"> #}
+{# {% for product in featured_products %} #}
+{# <div class="banner_slide home_slide" data-nid="{{nid}}"> #}
+{# <div class="banner-desktop"> #}
+{# <div class="ruffles-featured--container"> #}
+{# <div class="ruffles-feature--display"> #}
+{# <div class="ruffles-feature--leftcol"> #}
+{# <img class="product-image" src="{{product.extra_image_url}}"> #}
+{# </div> #}
+{# </div> #}
+{# <div class="ruffles-coupon--text"> #}
+{# <div class="ruffles-banner_slide--text"> #}
+{# <span class="product-title"> {{product.title|raw}}</span> #}
+{# {% set trimmed_body = truncateText(product.body|raw, 20) %} #}
+{# #}{# <span class="ruffles-product-description"> {{product.body|raw}}</span> #}
+{# <br> #}
+{# <div class="ruffles-btn"> #}
+{# <a href="{{product.link}}" title ="{{ product.title | raw}}"> #}
+{# {{'View Product'|t}} #}
+{# </a> #}
+{# </div> #}
+{# </div> #}
+{# </div> #}
+{# </div> #}
+{# </div> #}
+
+{# </div> #}
+{# {% endfor %} #}
+{# </div> #}
+
+
+<section id="featured-products" class="ruffles-carousel-block">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center padding-bottom">
+        {% if featured_products|length %}
+          <h1 class="featured-prod-heading">{{ 'Featured Products'|t }}</h1>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div id="homepage-featured-products-carousel" class="carousel slide main-featured-carousel" data-ride="carousel">
+
+    <ol class="carousel-indicators featured-carousel-indicators">
+        {% for idx, product in featured_products %}
+          <li data-target="#homepage-featured-products-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+        {% endfor %}
+    </ol>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner container">
+      {% for idx, product in featured_products %}
+        <div class="carousel-item row {{ idx==0 ? 'active' :'' }}">
+          {# product.background_color contains the color code #}
+          <div class='col-md-12 featured-prod-col-bg'>
+            <div class="row center-align-md-dsk featured-prod-bag-bg">
+              <div class="col-md-12 featured-carousel-inner-border" style="background-color:{{ product.background_color }}">
+                <div class="row">
+                  <div class='col-md-5 featured-product-image-col'>
+                    <div class="featured-product-image-div">
+                      <img loading="lazy" class='featured-product-image' src='{{ product.image_url }}' alt="Featured Product">
+                    </div>
+                  </div>
+                  <div class='col-md-7 featured-prod-copy'>
+
+                    <div class="featured-prod-copy-div">
+                      <h3 class='featured-product-title'> {{ product.title|raw }}</h3>
+{#                       <p class='ruffles-product-description'> {{ product.body|raw }}</p>#}
+                      <div class='ruffles-btn'>
+                        <a href='{{ product.link }}' class='btn_ruffles'>
+                          {{ 'View Product'|t }}
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev ruffles-d-md-flex" href="#homepage-featured-products-carousel" data-slide="prev" aria-label="toggle arrow">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next ruffles-d-md-flex" href="#homepage-featured-products-carousel" data-slide="next" aria-label="toggle arrow">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div>
+
+</section>

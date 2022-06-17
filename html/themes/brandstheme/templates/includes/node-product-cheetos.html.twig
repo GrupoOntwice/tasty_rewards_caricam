@@ -1,0 +1,252 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{{ attach_library('brandstheme/cheetos') }}
+
+{% set large_img = file_url(content.field_extra_image2['#items'].entity.uri.value)  ?: '' %}
+
+  <section id="product" class="cheetos-product-block">
+    <div class="cheetos-section-product-container">
+        <div class="product-image">
+          <div class="product-image-wrap">
+            <img itemprop="image" src="{{large_img}}" alt="{{nodeimgalt}}">
+          </div>
+          <div class="cheetos-detail__product--block">
+            <h1>{{subtitle|raw}}</h1>
+
+            <p>
+              {% if node.body.0.value|striptags is not empty %}
+                {{node.body.0.value | raw}}
+              {% endif %}
+            </p>
+            {% if show_product_buynow %} 
+             <button class="buynow_cheetos js-buynow" id = "cheetos-buy" data-toggle="modal" data-target="#cheetosModal"> {{'Buy now'|t}} </button>
+            {% endif %}
+
+
+            <div class="modal bootstrap-modal bg-transparent cheetos-buynow-modal" id="cheetosModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-cheetos" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <button type="button" id = "closeModal" class="close" data-dismiss="modal">×</button>
+                    {# <p>Content goes here</p> #}
+                    {# <iframe src="https://pepsicoca.a.destini.co/?ACODE=tastyrewards&LCODE=bare"></iframe> #}
+                    {% if iframe_url %}
+                      <iframe id="snack-shop" src="{{iframe_url}}"></iframe>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+            <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+            <input type="hidden" name='node_image' id='node_image' value="{{ product_img }}">
+
+            <div class="cheetos-product-social-icons">
+              <p>
+                {{ 'Share'|t }}
+              </p>
+
+
+                <a class="brands-navbar__social-icons social-share-trigger" data-platform="twitter" href="#" aria-label="twitter">
+                    <img src="/themes/brandstheme/src/images/cheetos/twitter.png" alt="twitter">
+                </a>
+
+{#                <a class="brands-navbar__social-icons social-share-trigger" data-platform="instagram" href="#" aria-label="instagram">#}
+{#                    <img src="/themes/brandstheme/src/images/cheetos/instagram.png" alt="instagram">#}
+{#                </a>#}
+
+                <a class="brands-navbar__social-icons social-share-trigger" data-platform="facebook" href="#" aria-label="facebook">
+                    <img src="/themes/brandstheme/src/images/cheetos/facebook.png" alt="facebook">
+                </a>
+
+{#                <a class="brands-navbar__social-icons social-share-trigger" data-platform="youtube" href="#" aria-label="youtube">#}
+{#                    <img src="/themes/brandstheme/src/images/cheetos/youtube.png" alt="youtube">#}
+{#                </a>#}
+
+                <a class="brands-navbar__social-icons social-share-trigger" data-platform="pinterest" href="#" aria-label="pinterest">
+                    <img src="/themes/brandstheme/src/images/cheetos/pinterest.png" alt="pinterest">
+                </a>
+
+            </div>
+
+          </div>
+        </div>
+
+      {% if noderecipeingredients is not empty and nutrition is not empty   %}
+        <div class="cheetos-product-nutrition">
+
+            <div class="performance-facts">
+                <div class="product-field-detail">
+
+                    <span class="product-ingredients-wrap product-mobile-nutrition">
+                         <h4 class="linkeable">{{'Nutrition'|t}}</h4>
+                        <img class="fa-swap-cheetos fa-swap fa fa-plus" src="/themes/brandstheme/src/images/cheetos/dropdown-arrow.png" alt="dropdown arrow"/>
+                    </span>
+
+                    <div class="fa-nutrition-icon">
+{#                        <i class="fa-swap-cheetos fa-swap fa fa-plus"></i>#}
+
+                    </div>
+
+                    <div class="nutrition-copy-js">
+                        <div class="cheetos-productdetails-nutrition-table">
+                              <div class="cheetos-productdetails-nutrition-header-row">
+                                  <div class="cheetos-productdetails-nutrition-cell cheetos-productdetails-headercell">
+                                    {{portion}}
+                                  </div>
+                                  <div class="cheetos-productdetails-nutrition-cell cheetos-productdetails-headercell">
+                                    {{'% Daily Value'|t}}
+                                  </div>
+                              </div>
+                              {{nutrition | raw}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-ingredients">
+                <span class="product-ingredients-wrap product-mobile-ingredient">
+                    <h4 class="linkeable">{{'Ingredients'|t}}</h4>
+                    <img class="fa-swap-cheetos fa-swap fa fa-plus" src="/themes/brandstheme/src/images/cheetos/dropdown-arrow.png" alt="dropdown arrow"/>
+                </span>
+
+                <p>
+                  {{noderecipeingredients | raw}}
+                </p>
+
+                <p class="product-alert">{{alert}}</p>
+
+                <div class="cheetos-productdetails-nutrition-icons">
+                  {% if 'source_of_fibre' in claims %}
+                    <a href="javascript:void(0)" title="{{ 'Source of fibre'|t}}" style="cursor: auto;">
+                      <img src="/themes/brandstheme/src/images/cheetos/icons/icon-corn.png"/>
+                    </a>
+                  {% endif %}
+                  {% if 'made_with_100%_whole_grains' in claims %}
+                    <a href="javascript:void(0)" title="{{ 'Made with 100% whole grains'|t}}" style="cursor: auto;">
+                      <img src="/themes/brandstheme/src/images/cheetos/icons/icon-wheat.png"/>
+                    </a>
+                  {% endif %}
+                  {% if 'no_artificial_colours_flavours_or_preservatives' in claims %}
+                    <a href="javascript:void(0)" title="{{ 'No artificial colour, flavours or preservatives'|t}}" style="cursor: auto;">
+                      <img src="/themes/brandstheme/src/images/cheetos/icons/icon-nuts.png"/>
+                    </a>
+                  {% endif %}
+                  {% if 'no_cholesterol' in claims %}
+                    <a href="javascript:void(0)" title="{{ 'No cholesterol'|t}}" style="cursor: auto;">
+                      <img src="/themes/brandstheme/src/images/cheetos/icons/icon-0mg.png"/>
+                    </a>
+                  {% endif %}
+                  {% if 'gluten_free' in claims %}
+                    <a href="javascript:void(0)" title="{{ 'Gluten free'|t}}" style="cursor: auto;">
+                      <img src="/themes/brandstheme/src/images/cheetos/icons/icon-nowheat.png"/>
+                    </a>
+                  {% endif %}
+                </div>
+            </div>
+
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+
+
+  <section class="cheetos-related-block">
+    <div class="cheetos-section-container">
+      <h2> {{'Recipes'|t}} </h2>
+
+      <div class="cheetos-related-product-wrapper cheetos-nocarousel-container">
+        {% for recipe in related_recipes %}
+          <div class="cheetos-related-product cheetos-nocarousel-box">
+            <div class="img">
+              <a href="{{recipe.link}}" hreflang="en"><img src="{{recipe.image_url}}" alt="lays"></a>
+            </div>
+
+            <h3 class="products-category-title">
+              <a href="{{recipe.link}}" hreflang="en">{{recipe.title|raw}}</a>
+            </h3>
+
+            <a class="cheetos-btn-yellow" href="{{recipe.link}}">{{'View Recipe'|t}}</a>
+
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+
+
+<section id="coupon" class="cheetos-coupon-block">
+    <div class="cheetos-coupon--container-bg-desktop">
+        {{ coupon_block|t|raw }}
+    </div>
+</section>

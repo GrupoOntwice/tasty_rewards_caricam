@@ -1,0 +1,29 @@
+pepsibrands:
+  version: 1.x
+  js:
+    js/brands_admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+pepsibrands_page:
+  js:
+    js/our_brands.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+realjoy_export:
+  js:
+    js/realjoy_export.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+
+realjoy_landing:
+  js:
+    js/realjoy_landing.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

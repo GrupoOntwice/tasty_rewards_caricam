@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains marketotest.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
+
+/**
+ * Implements hook_help().
+ */
+function marketoservices_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the marketoservices module.
+    case 'help.page.marketoservices':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Marketo API connection') . '</p>';
+      return $output;
+
+    default:
+  }
+}

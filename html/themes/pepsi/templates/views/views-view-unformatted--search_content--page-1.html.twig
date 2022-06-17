@@ -1,0 +1,104 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}
+#}
+
+
+{% set result_count = view.total_rows %}
+{% set string_searched = view.exposed_data.search_api_fulltext %}
+{% set current_page = view.getCurrentPage() %}
+
+
+{% set video_class = "" %}
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._object.get("title").getValue().0.value %}
+    {% set nid = row.content["#row"]._object.get("nid").getValue().0.value %}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+    
+    {% set type = row.content["#row"]._object.get("type").getValue().0.target_id %}
+    
+    {% if type == "recipe" %}    
+        {% set img = file_url(row.content["#row"]._object.get("field_recipe_image").entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._object.get("field_recipe_image").value.0.alt %} 
+        
+    {% elseif type == "article" %} 
+        {% set img = file_url(row.content["#row"]._object.get("field_image").entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._object.get("field_image").value.0.alt %}
+    {% elseif type == "brand" %} 
+        {% set img = file_url(row.content["#row"]._object.get("field_brand_image").entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._object.get("field_brand_image").value.0.alt %}
+        {% set link = row.content["#row"]._object.get("field_brand_page_link").value.0.uri %}
+    {% elseif type == "contest_callout" %} 
+        {% set img = file_url(row.content["#row"]._object.get("field_contest_image").entity.uri.value) %}
+        {% set img_alt = row.content["#row"]._object.get("field_contest_image").value.0.alt %}
+        {% set link = row.content["#row"]._object.get("field_contest_link").value.0.uri %}    
+    {% endif %}
+    
+    {% if current_page == 0 and loop.index == 1 %}
+        {% set trackingpage = "search" %}
+        {% set trackinglang = language %}
+        {% include directory ~ '/templates/custom/doubleclick_tag.html.twig' %}
+        <div class="search-results text-center">
+            <span class="grey"><span id="resultNumber">{{ result_count }}</span> {{"results found on:"|t}}</span>
+            {% if string_searched %}
+                <h1 class="pink signika">"<span id="resultQuery">{{ string_searched }}</span>"</h1>
+            {% endif %}
+            <hr class="bg-grey" />
+            <div class="search-filters clearfix">
+              
+{#              <section id="block-facecontenttype" class="contextual-region block clearfix">#}
+                 
+                 <ul data-drupal-facet-id="facet_content_type" id="ct-facet">
+                    <strong class="blue signika uppercase">{{"Search results for:"|t}}</strong> 
+                    <li class="facet-item"><a id="ct-all" href="{{"/en/search"|t }}" rel="nofollow">{{"All"|t}}</a></li>
+                    <li class="facet-item"><a id="ct-brand" href="{{"/en/search"|t ~ "?f%5B0%5D=facet_content_type%3Abrand"}}" rel="nofollow">{{"Brands"|t}}</a></li> 
+                    <li class="facet-item"><a id="ct-recipe" href="{{"/en/search"|t ~ "?f%5B0%5D=facet_content_type%3Arecipe"}}" rel="nofollow">{{"Tasty"|t}}</a></li>
+                    <li class="facet-item"><a id="ct-article" href="{{"/en/search"|t ~ "?f%5B0%5D=facet_content_type%3Aarticle"}}" rel="nofollow">{{"Life"|t}}</a></li>
+                    <li class="facet-item"><a id="ct-contest" href="{{"/en/search"|t ~ "?f%5B0%5D=facet_content_type%3Acontest_callout"}}" rel="nofollow">{{"Rewards"|t}}</a></li> 
+                 </ul>
+{#            </section>#}
+{#              {{ drupal_block('facetcontenttype') }} #}
+            </div>
+        </div>
+            
+    {% endif %}
+        
+    <div class="result-item">                    
+
+       {% include directory ~ '/templates/custom/block1x1.html.twig' %}
+
+    </div> 
+
+
+{% endfor %}
+

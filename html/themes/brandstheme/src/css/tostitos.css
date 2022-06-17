@@ -1,0 +1,2349 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Amatic';
+  src: url("/themes/brandstheme/src/fonts/tostitos/AmaticSC-Regular.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Amatic';
+  src: url("/themes/brandstheme/src/fonts/tostitos/AmaticSC-Bold.ttf");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Archer';
+  src: url("/themes/brandstheme/src/fonts/tostitos/ArcherPro-Medium.otf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Archer';
+  src: url("/themes/brandstheme/src/fonts/tostitos/ArcherPro-Bold.otf");
+  font-weight: bold;
+  font-style: normal; }
+
+/*  --- Variables ---  */
+/* GLOBAL */
+
+
+.tostitos .header__logo-container {
+  z-index: 999999;
+}
+
+.tostitos #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.tostitos .fa-navbar{
+  background: #004179;
+  color: #FBD91F;
+}
+
+.tostitos .slick-dotted.slick-slider{
+  margin-bottom: -21px !important;
+}
+
+.tostitos #brands_navigation {
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-menu.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #FBD91F; }
+  @media (min-width: 992px) {
+    .tostitos #brands_navigation .brands-navbar__ul, .tostitos #brands_navigation .logo, .tostitos #brands_navigation .tostitos-socials {
+      width: 100%; }
+    .tostitos #brands_navigation .logo {
+      text-align: center;
+      max-width: 20%; }
+    .tostitos #brands_navigation .brands-navbar__ul {
+      text-align: left;
+      max-width: 40%;
+      -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+      justify-content: flex-start !important;
+      padding-left: 15px; }
+      .tostitos #brands_navigation .brands-navbar__ul a {
+        padding-left: 0;
+        padding-right: 20px;
+        color: #004179; }
+    .tostitos #brands_navigation .tostitos-socials {
+      text-align: right;
+      max-width: 40%;
+      padding-right: 5%; } }
+  @media (max-width: 991px) {
+    .tostitos #brands_navigation .tostitos-socials {
+      padding-left: 2%;
+      padding-bottom: 5px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #e7e7e7;
+      padding: 10px 5px 5px 15px; } }
+
+.tostitos .brands-navbar__ul a:hover, .tostitos .brands-navbar__ul a:focus, .tostitos .brands-navbar__ul a:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background-color: transparent; }
+
+.tostitos .dialog-off-canvas-main-canvas {
+  background-color: #004179; }
+
+.tostitos .home_slide .banner-desktop {
+  cursor: auto; }
+
+.tostitos-content-background-container-homepage {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-home.png");
+  background-size: 100% 100%;
+  padding-top: 20px;
+  /*top: -20px;*/
+  background-color: #0A365D; }
+
+.tostitos-content-background-container-occasions {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-occasions.png");
+  background-size: 100% 100%;
+  padding-top: 20px; }
+
+.tostitos-content-background-container-occasionsdetails {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-occasionsdetails.png");
+  background-size: 100% 100%;
+  padding-top: 20px; }
+
+.tostitos-content-background-container-recipes {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-recipes.png");
+  background-size: 100% 100%;
+  padding-top: 20px; }
+
+.tostitos-content-background-container-recipesdetails {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-recipedetails.png");
+  background-size: 100% 100%;
+  padding-top: 20px; }
+  .tostitos-content-background-container-recipesdetails .tostitos-section-container {
+    margin-bottom: 0;
+    padding-bottom: 60px; }
+
+.tostitos-content-background-container-productcategories {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-products.png");
+  background-size: 100% auto;
+  padding-top: 20px; }
+
+.tostitos-content-background-container-productdetails {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-productdetails.png");
+  background-size: 100% 100%;
+  padding-top: 20px; }
+
+.tostitos-content-background-container-aboutus {
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-aboutus.png");
+  background-size: 100% auto;
+  padding-top: 20px; }
+
+.slick-slide:focus {
+  outline: none; }
+
+.tostitos {
+  -webkit-font-smoothing: antialiased; }
+  .tostitos .tostitos-product-block .slick-dots {
+    position: relative;
+    bottom: 70px;
+    left: 21.3%;
+    height: 0; }
+    .tostitos .tostitos-product-block .slick-dots li {
+      width: 10px;
+      height: 10px; }
+    .tostitos .tostitos-product-block .slick-dots li.slick-active button:before {
+      border: none;
+      color: #ffffff !important;
+      font-size: 8px; }
+    .tostitos .tostitos-product-block .slick-dots li button:before {
+      color: #ffffff; }
+  .tostitos-d-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex; }
+  .tostitos-justify-sb {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .tostitos-subtitle {
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 800px; }
+    .tostitos-subtitle-aboutus {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 800px;
+      padding-bottom: 100px; }
+    .tostitos-subtitle-container {
+      text-align: center;
+      margin: 0 auto 40px;
+      max-width: 800px; }
+  .tostitos-section-container {
+    max-width: 1600px;
+    margin: 0 auto 40px;
+    padding: 20px 50px; }
+    @media (max-width: 992px) {
+      .tostitos-section-container {
+        max-width: 1100px; } }
+    @media (max-width: 768px) {
+      .tostitos-section-container {
+        max-width: 500px;
+        padding: 20px; } }
+    .tostitos-section-container h1, .tostitos-section-container h2, .tostitos-section-container h3, .tostitos-section-container h4, .tostitos-section-container h5, .tostitos-section-container h6 {
+      font-weight: bold; }
+      .tostitos-section-container h1 a, .tostitos-section-container h2 a, .tostitos-section-container h3 a, .tostitos-section-container h4 a, .tostitos-section-container h5 a, .tostitos-section-container h6 a {
+        color: inherit;
+        text-decoration: none; }
+    .tostitos-section-container h3, .tostitos-section-container h4 {
+      color: white;
+      margin-bottom: 15px;
+      font-family: 'Open Sans', sans-serif; }
+      .tostitos-section-container h3 a, .tostitos-section-container h4 a {
+        color: #ffffff; }
+    .tostitos-section-container h1 {
+      font-size: 4em !important;
+      font-weight: bold; }
+      @media (max-width: 768px) {
+        .tostitos-section-container h1 {
+          font-size: 3em !important; } }
+    .tostitos-section-container h2 {
+      font-size: 3em !important;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Amatic', Helvetica, Arial, sans-serif; }
+    .tostitos-section-container .chef-name{
+      margin-bottom: 0 !important;
+    }
+
+.tostitos-section-container .chef-name-fr{
+  margin-top: -20px;
+  margin-bottom: 0 !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .chef-img {
+    margin-bottom: -3px;
+  }
+}
+
+
+      .tostitos-section-container h2 sup {
+        font-size: 40% !important;
+        position: relative;
+        top: -30px; }
+      @media (max-width: 768px) {
+        .tostitos-section-container h2 {
+          font-size: 2em !important; }
+          .tostitos-section-container h2 sup {
+            font-size: 55% !important;
+            top: -10px; } }
+    .tostitos-section-container h3 {
+      font-size: 1.375em;
+      font-weight: bold; }
+    .tostitos-section-container h4 {
+      font-size: 1.125em;
+      font-weight: bold; }
+    .tostitos-section-container p {
+      font-size: 1em;
+      color: white;
+      font-family: 'Open Sans', sans-serif; }
+      .tostitos-section-container p.centered {
+        text-align: center; }
+    .tostitos-section-container li {
+      font-family: 'Open Sans', sans-serif; }
+  .tostitos-btn, .btn-recall {
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 12px 42px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1em;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    font-family: 'open-sans', sans-serif;
+    text-align: center; }
+    .tostitos-btn:hover {
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s; }
+    .tostitos-btn-yellow {
+      border: 2px solid #F3C530;
+      background-color: #FEC530;
+      color: #004179; }
+      .tostitos-btn-yellow:hover, .tostitos-btn-yellow:focus {
+        background-color: transparent;
+        color: #fec530; }
+    .tostitos-btn-white, .btn-recall {
+      border: 2px solid #ffffff;
+      background-color: #ffffff;
+      color: #004179; }
+      .tostitos-btn-white:hover, .tostitos-btn-white:focus, .btn-recall:hover, .btn-recall:focus {
+        color: #ffffff;
+        background-color: transparent; }
+    .tostitos-btn-blue {
+      border: 2px solid #004179;
+      background-color: #004179;
+      color: #ffffff; }
+      .tostitos-btn-blue:hover, .tostitos-btn-blue:focus {
+        background-color: #ffffff;
+        color: #004179; }
+  @media (max-width: 768px) {
+    .tostitos-socials {
+      margin-bottom: 10px; } }
+  .tostitos-socials a {
+    text-decoration: none; }
+  .tostitos-socials-products {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 20px; }
+    .tostitos-socials-products p {
+      margin-right: 10px;
+      font-size: 1.375em; }
+  .tostitos-socials-recipes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-top: 20px; }
+    .tostitos-socials-recipes p {
+      margin-right: 10px;
+      font-size: 1.2em; }
+  .tostitos-stars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .tostitos-stars input:checked ~ label {
+      color: #ffc700; }
+    .tostitos-stars label:hover,
+    .tostitos-stars label:hover ~ label {
+      color: #deb217; }
+    .tostitos-stars input:checked + label:hover,
+    .tostitos-stars input:checked + label:hover ~ label,
+    .tostitos-stars input:checked ~ label:hover,
+    .tostitos-stars input:checked ~ label:hover ~ label,
+    .tostitos-stars label:hover ~ input:checked ~ label {
+      color: #c59b08; }
+    .tostitos-stars span {
+      color: #ccc; }
+      .tostitos-stars span:before {
+        content: "★ "; }
+      .tostitos-stars span.checked {
+        color: #ffc700; }
+    .tostitos-stars-corner {
+      background-color: #004179;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 2px 6px;
+      border-radius: 7px;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+    .tostitos-stars.reverse-order {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+      flex-direction: row-reverse; }
+    .tostitos-stars input {
+      display: none; }
+      .tostitos-stars input:checked ~ label {
+        color: #ffc700; }
+    .tostitos-stars label {
+      width: 1em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      color: #ccc; }
+      .tostitos-stars label:before {
+        content: "★ "; }
+      .tostitos-stars label:not(:checked):hover, .tostitos-stars label:not(:checked):hover ~ label {
+        color: #deb217; }
+  .tostitos-yellow {
+    color: #F7D400; }
+
+.no-padding-top {
+  padding-top: 0 !important; }
+
+.two-panel-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  max-width: 1100px;
+  width: 80%;
+  margin: 100px auto; }
+  .two-panel-block-left {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .two-panel-block-left .img {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      position: relative;
+      width: 100%; }
+      .two-panel-block-left .img img {
+        width: 100%; }
+  .two-panel-block-right {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px; }
+    .two-panel-block-right h2 {
+      font-family: 'Archer', Helvetica, Arial, sans-serif;
+      font-weight: bold; }
+    .two-panel-block-right .tostitos-btn {
+      margin: 20px; }
+
+.tostitos-btn-container {
+  text-align: center; }
+  .tostitos-btn-container a {
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 12px 42px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s; }
+    .tostitos-btn-container a:hover {
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s; }
+  .tostitos-btn-container-yellow a {
+    border: 2px solid #F3C530;
+    background-color: #FEC530;
+    color: #004179; }
+    .tostitos-btn-container-yellow a:hover, .tostitos-btn-container-yellow a:focus {
+      background-color: transparent;
+      color: #fec530;
+      outline: none; }
+  .tostitos-btn-container-white a {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    color: #004179; }
+    .tostitos-btn-container-white a:hover, .tostitos-btn-container-white a:focus {
+      color: #ffffff;
+      background-color: transparent;
+      outline: none; }
+  .tostitos-btn-container-blue a {
+    border: 2px solid #004179;
+    background-color: #004179;
+    color: #ffffff; }
+    .tostitos-btn-container-blue a:hover, .tostitos-btn-container-blue a:focus {
+      background-color: #ffffff;
+      color: #004179;
+      outline: none; }
+
+.custom-select-container {
+  position: relative;
+  font-family: Arial; }
+
+.custom-select-container select {
+  display: none;
+  /*hide original SELECT element: */ }
+
+.select-selected {
+  background-color: none; }
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 18px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #FEC530 transparent transparent transparent; }
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #FEC530 transparent;
+  top: 11px; }
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+  color: #FEC530;
+  padding: 12px 24px 12px 16px;
+  cursor: pointer;
+  background-color: #004179; }
+
+.select-items div {
+  border: 3px solid #fec530;
+  border-top: none; }
+  .select-items div:first-of-type {
+    border-top: 3px solid #fec530; }
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: none;
+  top: 100%;
+  left: -3px;
+  right: -3px;
+  z-index: 99; }
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none; }
+
+.select-items div:hover {
+  background-color: #FEC530;
+  color: white; }
+
+.same-as-selected {
+  border: 3px solid #FEC530; }
+
+.tostitos article.recipe {
+  background-color: #0A365D; }
+
+.tostitos-filters-container button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  background-color: #004179;
+  padding: 12px 24px 12px 16px;
+  font-size: 1em;
+  text-align: left; }
+  @media (max-width: 992px) {
+    .tostitos-filters-container button {
+      width: 100%; } }
+
+.tostitos-filters-container h2 {
+  text-align: center;
+  font-weight: bold; }
+
+.tostitos-filters-container #recipesFilterDropdowns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .tostitos-filters-container #recipesFilterDropdowns .custom-select-container, .tostitos-filters-container #recipesFilterDropdowns button {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 3px solid #FEC530;
+    color: #FEC530;
+    min-width: 225px;
+    font-family: 'Open Sans',sans-serif; }
+
+  .filter-chef, .fr .filter-chef {
+    /*padding: 17px 24px 17px 16px !important;*/
+    border: 2px solid #FEC530 !important;
+    color: #004179 !important;
+    background-color: #FEC530 !important;
+  }
+
+/*.filter-chef {*/
+/*  background: url("/themes/brandstheme/src/images/tostitos/recipes/chef-recipe-btn-text-EN.svg") center center no-repeat, #FEC530 !important;*/
+/*  background-size: contain !important;*/
+/*}*/
+
+/*.fr .filter-chef {*/
+/*  background: url("/themes/brandstheme/src/images/tostitos/recipes/chef-recipe-btn-text-FR.svg") center center no-repeat, #FEC530 !important;*/
+/*  background-size: contain !important;*/
+/*}*/
+
+@media only screen and (max-width: 992px) {
+
+  /*.filter-chef, .fr .filter-chef {*/
+  /*  padding: 22px 16px 22px 16px !important;*/
+  /*}*/
+
+  /*.filter-chef, .fr .filter-chef {*/
+  /*  background-size: contain !important;*/
+  /*}*/
+
+}
+
+  .tostitos-chef-content {
+    background: #0A365D;
+    margin-bottom: 20px;
+  }
+
+.tostitos-chef-content-copy img {
+  padding-left: 20px;
+  padding-top: 20px;
+  width: 15%;
+  height: auto;
+}
+
+.tostitos-chef-content p{
+  padding: 20px 20px 0;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  .tostitos-chef-content p{
+    padding: 16px 16px 0;
+    text-align: center;
+  }
+
+  .tostitos-chef-content-copy img {
+    padding: 20px 16px 20px;
+    width: 35%;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 992px) {
+    .tostitos-filters-container #recipesFilterDropdowns {
+      display: block; }
+      .tostitos-filters-container #recipesFilterDropdowns .custom-select-container, .tostitos-filters-container #recipesFilterDropdowns button {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px; } }
+
+.tostitos p {
+  font-family: 'Open Sans', sans-serif; }
+
+.tostitos-banner-nocarousel {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .tostitos-banner-nocarousel h1 {
+    font-family: 'Archer', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 125px 20px;
+    z-index: 2; }
+  .tostitos-banner-nocarousel-overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); }
+  .tostitos-banner-nocarousel-occasions {
+    background-image: url("/sites/default/files/inline-images/recipe_hd_shrimp-tostada-bites_0.jpg"); }
+  .tostitos-banner-nocarousel-products {
+    background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-products-banner.png"); }
+  .tostitos-banner-nocarousel-recipes {
+    background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-recipes-banner.png"); }
+  .tostitos-banner-nocarousel-aboutus {
+    background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-aboutus-banner.png"); }
+
+.carousel-cursor-fix {
+  cursor: pointer !important; }
+
+.tostitos-carousel-block {
+  overflow-x: hidden;
+  text-align: center;
+  margin-bottom: 50px; }
+
+.tostitos-carousel-container {
+  width: 100%;
+  margin: 0 auto 30px;
+  padding: 0 40px; }
+  .tostitos-carousel-container .slick-prev, .tostitos-carousel-container .slick-next {
+    top: 180px !important; }
+  .tostitos-carousel-container-single .slick-prev, .tostitos-carousel-container-single .slick-next {
+    top: 50% !important; }
+  @media (max-width: 992px) {
+    .tostitos-carousel-container .slick-prev, .tostitos-carousel-container .slick-next {
+      top: 130px !important; } }
+  @media (max-width: 480px) {
+    .tostitos-carousel-container {
+      padding: 0; } }
+
+.tostitos-carousel-box {
+  margin: 20px;
+  text-align: center; }
+  .tostitos-carousel-box h3, .tostitos-carousel-box h4 {
+    min-height: 50px; }
+  .tostitos-carousel-box h3 a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit; }
+  .tostitos-carousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid white;
+    margin-bottom: 20px;
+    border-radius: 1px;
+    height: 300px; }
+    .tostitos-carousel-box .img-carousel-fix {
+      position: absolute;
+      width: 1000px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+    .tostitos-carousel-box .img img {
+      position: absolute;
+      width: auto;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      height: 450px; }
+      @media (max-width: 768px) {
+        .tostitos-carousel-box .img img {
+          height: 350px; } }
+    @media (max-width: 992px) {
+      .tostitos-carousel-box .img {
+        height: 200px; }
+        .tostitos-carousel-box .img-carousel-fix {
+          height: 200px; } }
+
+.tostitos-video-viewmore {
+  margin-top: 40px;
+  text-align: center; }
+
+.tostitos-video-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  @media (max-width: 768px) {
+    .tostitos-video-container {
+      display: block; } }
+
+.tostitos-video-iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px; }
+  .tostitos-video-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; }
+
+.tostitos-video-box {
+  width: 46%;
+  text-align: center; }
+  @media (max-width: 768px) {
+    .tostitos-video-box {
+      width: 100%;
+      margin-bottom: 40px; } }
+
+.tostitos-video-preimg, .tostitos-video-preimg-1, .tostitos-video-preimg-2  {
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px; }
+  .tostitos-video-preimg img, .tostitos-video-preimg-1 img, .tostitos-video-preimg-2 img {
+    width: 100%; }
+  .tostitos-video-preimg:before, .tostitos-video-preimg-1:before, .tostitos-video-preimg-2:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none; }
+  .tostitos-video-preimg:after, .tostitos-video-preimg-1:after, .tostitos-video-preimg-2:after {
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-image: url("/themes/brandstheme/src/images/tostitos/icons/youtube.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none; }
+  .tostitos-video-preimg:hover:before, .tostitos-video-preimg-1:hover:before, .tostitos-video-preimg-2:hover:before {
+    opacity: 1; }
+  .tostitos-video-preimg:hover:after, .tostitos-video-preimg-1:hover:after, .tostitos-video-preimg-2:hover:after {
+    background-image: url("/themes/brandstheme/src/images/tostitos/icons/youtube-blue.png"); }
+
+.tostitos #videos .tostitos-video-container {
+  margin-bottom: 100px; }
+
+.tostitos #videos .tostitos-video-box {
+  margin-bottom: 40px; }
+
+/*****this block is hidden for now since it's not published on prod******/
+.social-block.tostitos-social-block{
+  display: none !important;
+}
+
+.tostitos-social-block {
+  text-align: center; }
+  .tostitos-social-block h2 {
+    margin-bottom: 20px; }
+
+.tostitos-social-wall {
+  max-height: 1230px; }
+  @media (min-width: 769px) {
+    .tostitos-social-wall {
+      position: relative;
+      left: 4%; } }
+  .tostitos-social-wall .size22, .tostitos-social-wall .size21 {
+    width: 46%; }
+  .tostitos-social-wall .size11 {
+    width: 23%; }
+  @media (max-width: 768px) {
+    .tostitos-social-wall {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 auto;
+      max-height: 100%; }
+      .tostitos-social-wall .size22, .tostitos-social-wall .size21 {
+        width: 96%; }
+      .tostitos-social-wall .size11 {
+        width: 48%; }
+        .tostitos-social-wall .size11:nth-of-type(odd) {
+          padding-left: 2%; }
+        .tostitos-social-wall .size11:nth-of-type(even) {
+          padding-right: 2%; } }
+
+.tostitos-social-link-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px; }
+  @media (max-width: 768px) {
+    .tostitos-social-link-container {
+      display: block; }
+      .tostitos-social-link-container p {
+        padding: 0 20px; } }
+
+.tostitos-social-link img {
+  margin-right: 10px; }
+
+.tostitos-social-box {
+  float: left;
+  overflow: hidden;
+  padding: 1%; }
+  .tostitos-social-box img {
+    display: block;
+    width: 100%; }
+  @media (max-width: 768px) {
+    .tostitos-social-box {
+      float: none;
+      padding: 10px 0; } }
+
+.tostitos-coupon-block {
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-coupon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative; }
+  @media (min-width: 1921px) {
+    .tostitos-coupon-block {
+      margin-bottom: 50px; } }
+  .tostitos-coupon-block .two-panel-block-left {
+    background-color: #0057A2;
+    background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-blue.png");
+    background-size: cover;
+    background-position: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .tostitos-coupon-block .two-panel-block-left img {
+      width: auto;
+      height: auto;
+      max-width: 80%;
+      padding-top: 10%;
+      padding-bottom: 10%; }
+  .tostitos-coupon-block .two-panel-block-right {
+    background-color: #ffffff; }
+    .tostitos-coupon-block .two-panel-block-right h2, .tostitos-coupon-block .two-panel-block-right p {
+      color: #004179;
+      margin: 0; }
+      .tostitos-coupon-block .two-panel-block-right h2 sup, .tostitos-coupon-block .two-panel-block-right p sup {
+        font-size: 75% !important;
+        position: relative;
+        top: -10px; }
+  @media (max-width: 768px) {
+    .tostitos-coupon-block .two-panel-block {
+      display: block;
+      width: 95%;
+      max-width: 500px; }
+      .tostitos-coupon-block .two-panel-block-left, .tostitos-coupon-block .two-panel-block-right {
+        width: 100%; }
+      .tostitos-coupon-block .two-panel-block-right {
+        padding: 40px 20px; }
+        .tostitos-coupon-block .two-panel-block-right h2 {
+          font-size: 1.375em; }
+        .tostitos-coupon-block .two-panel-block-right .tostitos-btn {
+          margin: 20px 0; } }
+
+.tostitos-product-block {
+  padding: 0 0 50px; }
+  .tostitos-product-block h2 {
+    text-align: center; }
+
+.tostitos-product-featured {
+  margin-bottom: 40px; }
+
+.tostitos-product-slide .two-panel-block {
+  margin: 60px auto 20px;
+  max-width: 100%;
+  width: 90%;
+  min-height: 400px; }
+  .tostitos-product-slide .two-panel-block-left {
+    background-color: #E67B88;
+    background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-red.png");
+    background-size: cover;
+    background-position: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; }
+    .tostitos-product-slide .two-panel-block-left .img {
+      height: 100%; }
+      .tostitos-product-slide .two-panel-block-left .img img {
+        width: auto;
+        max-width: 400px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); }
+        @media (min-width: 1100px) {
+          .tostitos-product-slide .two-panel-block-left .img img {
+            position: absolute;
+            top: -50px;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none; } }
+        @media (max-width: 768px) {
+          .tostitos-product-slide .two-panel-block-left .img img {
+            width: 80%;
+            padding: 20px;
+            top: 0;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none; } }
+  .tostitos-product-slide .two-panel-block-right {
+    background-color: #A13548;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; }
+    .tostitos-product-slide .two-panel-block-right h2, .tostitos-product-slide .two-panel-block-right p {
+      color: #ffffff; }
+  @media (max-width: 768px) {
+    .tostitos-product-slide .two-panel-block {
+      width: 95%;
+      max-width: 500px;
+      display: block; }
+      .tostitos-product-slide .two-panel-block-left, .tostitos-product-slide .two-panel-block-right {
+        width: 100%; }
+      .tostitos-product-slide .two-panel-block-left {
+        border-radius: 10px 10px 0 0; }
+      .tostitos-product-slide .two-panel-block-right {
+        border-radius: 0 0 10px 10px; } }
+
+.tostitos-product-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  @media (max-width: 768px) {
+    .tostitos-product-category {
+      display: block; } }
+
+.tostitos-product-box {
+  width: 21%;
+  text-align: center;
+  margin: 2% 40px; }
+  .tostitos-product-box h4 {
+    min-height: 50px; }
+  @media (max-width: 768px) {
+    .tostitos-product-box {
+      width: 98%;
+      margin-bottom: 40px;
+      margin: 40px auto; }
+      .tostitos-product-box h4 {
+        min-height: 0; } }
+
+.tostitos-product-img {
+  margin-bottom: 20px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .tostitos-product-img img {
+    width: auto;
+    height: auto;
+    max-height: 200px; }
+
+.tostitos-product-categories {
+  margin-bottom: 40px; }
+  @media (min-width: 769px) {
+    .tostitos-product-categories.tostitos-Triangles .tostitos-product-box .tostitos-product-img {
+      overflow: hidden; }
+    .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(1) {
+      width: 96%; }
+    .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(2), .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(3), .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(4), .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(5) {
+      width: 21%;
+      margin: 2%; }
+    .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(6), .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(7), .tostitos-product-categories.tostitos-Triangles .tostitos-product-box:nth-of-type(8) {
+      width: 29%;
+      margin: 2%; } }
+
+.tostitos-productdetails-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  margin-bottom: 40px; }
+  .tostitos-productdetails-intro-img {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .tostitos-productdetails-intro-img img {
+      width: 100%;
+      max-width: 450px; }
+  .tostitos-productdetails-intro-text {
+    width: 50%;
+    padding: 20px 10px; }
+    .tostitos-productdetails-intro-text h4 {
+      margin-bottom: 20px; }
+    .tostitos-productdetails-intro-text .tostitos-btn {
+      margin-top: 50px;
+      margin-bottom: 40px; }
+  @media (max-width: 768px) {
+    .tostitos-productdetails-intro {
+      display: block; }
+      .tostitos-productdetails-intro-img, .tostitos-productdetails-intro-text {
+        width: 100%; }
+      .tostitos-productdetails-intro-text {
+        text-align: center; } }
+
+.tostitos-productdetails-nutrition h2 {
+  text-align: center; }
+
+.tostitos-productdetails-nutrition-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  @media (max-width: 768px) {
+    .tostitos-productdetails-nutrition-container {
+      display: block; } }
+
+.tostitos-productdetails-nutrition-table-container {
+  width: 48%;
+  margin: 1% auto;
+  color: white;
+  max-width: 450px; }
+  @media (max-width: 768px) {
+    .tostitos-productdetails-nutrition-table-container {
+      width: 100%;
+      margin-bottom: 40px; } }
+  .tostitos-productdetails-nutrition-table-container-table {
+    max-width: 450px;
+    margin: 0 auto; }
+
+.tostitos-productdetails-nutrition-header-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: #004179; }
+
+.tostitos-productdetails-nutrition-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  background-color: #004179; }
+  .tostitos-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: #0A365D; }
+
+.tostitos-productdetails-nutrition-cell {
+  padding: 6px 2px;
+  font-size: 0.875em;
+  font-weight: bold; }
+
+.tostitos-productdetails-nutrition-info {
+  width: 48%;
+  margin: 1%; }
+  .tostitos-productdetails-nutrition-info h4, .tostitos-productdetails-nutrition-info p {
+    margin-bottom: 20px; }
+  @media (max-width: 768px) {
+    .tostitos-productdetails-nutrition-info {
+      width: 100%; } }
+
+.tostitos-productdetails-nutrition-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex; }
+  .tostitos-productdetails-nutrition-icons img {
+    max-width: 45px;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    width: 100%; }
+  .tostitos-productdetails-nutrition-icons-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 5px;
+    width: 20%;
+    max-width: 60px; }
+    .tostitos-productdetails-nutrition-icons-container.icon-large {
+      max-width: 90px; }
+      .tostitos-productdetails-nutrition-icons-container.icon-large img {
+        max-width: 90px; }
+    .tostitos-productdetails-nutrition-icons-container:first-of-type {
+      margin-left: 0; }
+    .tostitos-productdetails-nutrition-icons-container:last-of-type {
+      margin-right: 0; }
+  .tostitos-productdetails-nutrition-icons-text {
+    color: #ffffff;
+    font-size: 0.75em !important;
+    text-align: center; }
+    @media (max-width: 768px) {
+      .tostitos-productdetails-nutrition-icons-text {
+        font-size: 0.625em !important; } }
+
+.tostitos-row-indented .tostitos-productdetails-nutrition-cell:first-of-type {
+  padding-left: 20px; }
+
+#product-categories .tostitos-product-category {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap; }
+
+#product-categories .tostitos-product-box .tostitos-product-img {
+  height: auto;
+  margin-bottom: 0; }
+  #product-categories .tostitos-product-box .tostitos-product-img img {
+    max-height: 100%; }
+
+@media (max-width: 768px) {
+  #product-categories .tostitos-product-box {
+    margin-bottom: 60px; }
+    #product-categories .tostitos-product-box img {
+      max-width: 250px; } }
+
+.tostitos-nocarousel-container {
+  width: 100%;
+  margin: 0 auto 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  @media (max-width: 768px) {
+    .tostitos-nocarousel-container {
+      display: block; } }
+
+.tostitos-nocarousel-box {
+  width: 29%;
+  margin: 20px 2%;
+  text-align: center;
+  position: relative; }
+  .tostitos-nocarousel-box h3 {
+    min-height: 50px; }
+    @media (max-width: 768px) {
+      .tostitos-nocarousel-box h3 {
+        min-height: 0; } }
+  .tostitos-nocarousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid white;
+    margin-bottom: 20px;
+    border-radius: 1px;
+    height: 300px; }
+    .tostitos-nocarousel-box .img img {
+      position: relative;
+      width: auto;
+      height: 450px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+      @media (max-width: 768px) {
+        .tostitos-nocarousel-box .img img {
+          height: 450px; } }
+    @media (max-width: 992px) {
+      .tostitos-nocarousel-box .img {
+        height: 200px; }
+        .tostitos-nocarousel-box .img img {
+          height: 400px; } }
+  @media (max-width: 768px) {
+    .tostitos-nocarousel-box {
+      width: 98%; } }
+
+.tostitos-unevencarousel-container {
+  position: relative;
+  right: 0.5%; }
+  .tostitos-unevencarousel-container .slick-prev, .tostitos-unevencarousel-container .slick-next {
+    top: 50% !important; }
+  .tostitos-unevencarousel-container h2 {
+    font-family: 'Archer', Helvetica, Arial, sans-serif;
+    font-weight: bold; }
+
+.tostitos-unevencarousel-box-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  padding: 20px;
+  min-height: 500px; }
+
+.tostitos-unevencarousel-box-left {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.tostitos-unevencarousel-box-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px; }
+  .tostitos-unevencarousel-box-img img {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.tostitos-unevencarousel-box-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px 30px;
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-background-bluechips.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 300px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px; }
+  .tostitos-unevencarousel-box-right .tostitos-stars {
+    margin-bottom: 20px;
+    font-size: 2em; }
+
+@media (max-width: 768px) {
+  .tostitos-unevencarousel-box-content {
+    display: block;
+    padding: 1%;
+    position: relative; }
+  .tostitos-unevencarousel-box-left {
+    position: relative; }
+  .tostitos-unevencarousel-box-img {
+    height: auto !important;
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 10px; }
+    .tostitos-unevencarousel-box-img img {
+      position: absolute;
+      width: auto;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: 100% !important; }
+  .tostitos-unevencarousel-box-right {
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px; } }
+
+.tostitos-occasiondetails-block .tostitos-nocarousel-box .img img {
+  height: 480px; }
+
+.tostitos-recipe-block h2 {
+  text-align: center; }
+
+.tostitos-recipe-container {
+  margin-bottom: 50px; }
+
+.tostitos-recipe-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  margin-bottom: 40px; }
+  @media (max-width: 768px) {
+    .tostitos-recipe-intro {
+      display: block; } }
+
+.tostitos-recipe-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  margin: auto 0;
+  width: 50%; }
+  .tostitos-recipe-icons-full {
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .tostitos-recipe-icons-box {
+    text-align: center;
+    width: 23%;
+    margin: 1%;
+    max-width: 130px; }
+    @media (max-width: 992px) {
+      .tostitos-recipe-icons-box {
+        margin: 1% 3%;
+        max-width: 100%; } }
+    .tostitos-recipe-icons-box-img {
+      margin-bottom: 10px;
+      height: 100px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      -js-display: flex;
+      display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      .tostitos-recipe-icons-box-img img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%; }
+  @media (max-width: 768px) {
+    .tostitos-recipe-icons {
+      width: 100%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-bottom: 20px; }
+      .tostitos-recipe-icons-box {
+        width: 31%; } }
+
+.tostitos-recipe-video {
+  width: 50%; }
+  @media (max-width: 768px) {
+    .tostitos-recipe-video {
+      width: 100%; } }
+
+.tostitos-recipe-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  margin-bottom: 40px; }
+  .tostitos-recipe-info-ingredients {
+    width: 50%; }
+    .tostitos-recipe-info-ingredients ul li {
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.3; }
+  .tostitos-recipe-info-instructions {
+    width: 50%; }
+    .tostitos-recipe-info-instructions ol {
+      list-style: none;
+      counter-reset: instructions-counter; }
+      .tostitos-recipe-info-instructions ol li {
+        counter-increment: instructions-counter;
+        color: #fff;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        font-weight: normal;
+        font-family: 'Open Sans', sans-serif; }
+        .tostitos-recipe-info-instructions ol li:before {
+          content: counter(instructions-counter) ". ";
+          color: #fff;
+          font-weight: bold;
+          font-family: "open-sans", sans-serif; }
+  .tostitos-recipe-info-ingredients, .tostitos-recipe-info-instructions {
+    padding-right: 50px; }
+    .tostitos-recipe-info-ingredients h3, .tostitos-recipe-info-instructions h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bold; }
+  @media (max-width: 768px) {
+    .tostitos-recipe-info {
+      display: block; }
+      .tostitos-recipe-info-ingredients, .tostitos-recipe-info-instructions {
+        width: 100%;
+        margin-bottom: 60px;
+        padding-right: 0; } }
+
+.tostitos-recipe-share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .tostitos-recipe-share p {
+    margin-right: 10px; }
+  @media (max-width: 768px) {
+    .tostitos-recipe-share {
+      display: block;
+      text-align: center; }
+      .tostitos-recipe-share p {
+        margin-right: 0;
+        margin-bottom: 20px;
+        font-size: 1.375em; } }
+
+.tostitos .tostitos-related-product-wrapper, .tostitos .tostitos-related-block {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+@media print {
+  @page {
+    size: auto;
+    width: 100%;
+    margin: 0; }
+  .tostitos .tostitos-section-container {
+    max-width: 100%; }
+  .tostitos header, .tostitos nav, .tostitos section#banner, .tostitos section#header-top,
+  .tostitos .tostitos-socials-recipes, .tostitos .tostitos-related-block,
+  .tostitos section#coupon, .tostitos footer, .tostitos .navbar-back-div, .tostitos .header__logo-container,
+  .tostitos a.visually-hidden.focusable.skip-link,
+  .tostitos div.region-page-bottom {
+    display: none; }
+  .tostitos .tostitos-content-background-container-recipesdetails {
+    padding-top: 0; }
+  .tostitos h2.p-name {
+    margin-top: 0;
+    margin-bottom: 20px; }
+  .tostitos .tostitos-recipe-intro,
+  .tostitos .tostitos-recipe-info {
+    display: block;
+    width: 100%; }
+  .tostitos .tostitos-recipe-info-ingredients,
+  .tostitos .tostitos-recipe-info-instructions {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top; }
+    .tostitos .tostitos-recipe-info-ingredients ul, .tostitos .tostitos-recipe-info-ingredients ol,
+    .tostitos .tostitos-recipe-info-instructions ul,
+    .tostitos .tostitos-recipe-info-instructions ol {
+      list-style-position: inside;
+      padding-left: 0; }
+    .tostitos .tostitos-recipe-info-ingredients li,
+    .tostitos .tostitos-recipe-info-instructions li {
+      margin-bottom: 5px;
+      padding-left: 0; } }
+
+.occasion-description{
+  color: #FFF;
+  text-align: center;
+}
+
+/*******************************/
+/*****DROP THE HINT SECTION*****/
+
+@font-face {
+  font-family: 'love-of-thunder';
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/tostitos/ALoveofThunder.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/tostitos/ALoveofThunder.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/tostitos/ALoveofThunder.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/tostitos/ALoveofThunder.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/tostitos/ALoveofThunder.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/tostitos/ALoveofThunder.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'OpenSans-ExtraBold';
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/tostitos/OpenSans-ExtraBold.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/tostitos/OpenSans-ExtraBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/tostitos/OpenSans-ExtraBold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/tostitos/OpenSans-ExtraBold.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/tostitos/OpenSans-ExtraBold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/tostitos/OpenSans-ExtraBold.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'OpenSans-Regular';
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/tostitos/OpenSans-Regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/tostitos/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/tostitos/OpenSans-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/tostitos/OpenSans-Regular.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/tostitos/OpenSans-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/tostitos/OpenSans-Regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+.tostitos-banner-hint-wrapper{
+  background-image: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-hint-banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+}
+
+#drop-hint-vide .tostitos-video-box{
+  width: 19.9%;
+  color: #FFFFFF;
+  font-family: "open-sans", sans-serif
+}
+
+.tostitos-hint-section-video-container .tostitos-video-container{
+  justify-content: space-evenly;
+}
+
+.tostitos-hint-section-video-container .tostitos-video-iframe-container{
+  /*height: 405px;*/
+  height: 477px;
+}
+
+.tostitos-hint-section-video-container .tostitos-video-iframe-container iframe{
+  /*height: 131.2%;*/
+  height: 111.4%;
+}
+
+.tostitos-hint-section-video-container .tostitos-video-preimg img{
+  height: 477px;
+}
+
+.tostitos-hint-section-video-container h2{
+  color: #FDC52D;
+  text-align: center;
+  line-height: 1em;
+  margin-bottom: 40px;
+  font-size: 70px !important;
+  font-family: 'love-of-thunder',sans-serif;
+}
+
+#drop-hint-vide .tostitos-video-box h3{
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+#drop-hint-vide .tostitos-video-box span{
+  color: #FDC52D;
+}
+
+#drop-hint-vide .tostitos-video-box p{
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: "open-sans", sans-serif
+}
+
+#drop-hint-vide{
+  background-color: #1382C3;
+  position: relative;
+}
+
+.tostitos-hint-section-video-container{
+  padding: 90px 50px;
+  width: 1600px;
+  margin: auto;
+  position: relative;
+}
+
+.tostitos-hint-section-carousel-container{
+  background-color: #0A57A2;
+
+}
+
+.tostitos-hint-section-carousel-container-wrap{
+  width: 1600px;
+  margin: auto;
+  padding: 100px 50px;
+  position: relative;
+}
+
+.tostitos-hint-section-carousel-container-wrap .sub{
+  color: #FFFFFF;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.tostitos-hint-section-carousel-container h2{
+  color: #FDC52D;
+  font-size: 70px !important;
+  text-align: center;
+  line-height: 1em;
+  margin-bottom: 10px;
+  font-family: 'love-of-thunder',sans-serif;
+}
+
+.tostitos-hint-section-carousel-container h2 span{
+  font-size: 125%;
+}
+
+.tostitos-banner-hint-logo-wrap{
+  height: auto;
+  width: 25%;
+}
+
+.tostitos-banner-hint-logo{
+  width: 100%;
+  padding: 60px 0;
+}
+
+.tostitos-banner-hint-logo.fr{
+  width: 100%;
+  padding: 60px 0;
+}
+
+html:lang(en) .tostitos-banner-hint-logo.fr{
+  display: none
+}
+
+html:lang(fr) .tostitos-banner-hint-logo.en{
+  display: none
+}
+
+.tostitos-how-to-drop-hint{
+  background-color: #0A57A2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 15px;
+  position: relative;
+}
+
+.tostitos-how-to-drop-hint h2 span{
+  font-size: 125%;
+}
+
+.tostitos-hint-pattern-1{
+  position: absolute;
+  bottom: -150px;
+  right: 0;
+}
+
+.tostitos-hint-pattern-2{
+  position: absolute;
+  bottom: -300px;
+  left: 0;
+}
+
+.tostitos-hint-pattern-3{
+  position: absolute;
+  bottom: -150px;
+  right: 0;
+}
+
+.tostitos-how-to-drop-hint h2{
+  color: #FDC52D;
+  text-align: center;
+  line-height: 1em;
+  margin-bottom: 10px;
+  font-size: 70px !important;
+  font-family: 'love-of-thunder', sans-serif;
+}
+
+.tostitos-how-to-drop-hint p{
+  color: #FFFFFF;
+}
+
+.tostitos-how-to-scan-snapchat-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.tostitos-how-to-scan-social-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tostitos-how-to-scan-snapchat{
+  border: 6px solid #FEC530;
+  background-color: #1382C3;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 50px 25px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  z-index: 10;
+}
+
+.tostitos-how-to-scan-snapchat img{
+  width: 40%;
+}
+
+html:lang(en) .tostitos-how-to-scan-snapchat-wrapper .snapchat-fr{
+  display: none
+}
+
+html:lang(fr) .tostitos-how-to-scan-snapchat-wrapper .snapchat-en{
+  display: none
+}
+
+.tostitos-how-to-scan-snapchat h3{
+  color: #FDC52D;
+  font-size: 30px;
+  text-align: center;
+  font-family: 'love-of-thunder', sans-serif;
+}
+
+.tostitos-how-to-scan-snapchat p{
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'OpenSans-Regular', sans-serif;
+}
+
+.tostitos-how-to-scan-snapchat-paragraph{
+  margin-bottom: 20px;
+}
+
+.tostitos-how-to-scan-snapchat-paragraph:last-child{
+  margin-bottom: 0px;
+}
+
+.tostitos-hint-section-product-container .tostitos-product-box{
+  width: 18%;
+}
+
+.tostitos-unevencarousel-container .slick-prev{
+  left: -30px !important;
+}
+
+.tostitos-unevencarousel-container .slick-next {
+  right: -30px !important;
+}
+
+.tostitos-carousel-container .slick-prev{
+  left: 10px !important;
+}
+
+.tostitos-carousel-container .slick-next{
+ right: 10px !important;
+}
+
+.tostitos .slick-prev:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: url("/themes/brandstheme/src/images/arrows/fritolay-left-chevron.svg") !important;
+}
+
+.tostitos .slick-next:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: url("/themes/brandstheme/src/images/arrows/fritolay-right-chevron.svg") !important;
+}
+
+.tostitos-hint-section-product-container .tostitos-product-img img{
+  max-height: 300px;
+}
+
+.tostitos-hint-section-product-container .tostitos-product-img{
+  height: 300px;
+}
+
+.tostitos-disable{
+  pointer-events: none;
+  cursor: default;
+}
+
+.tostitos-snapchat-button-mobile{
+  display: none !important;
+}
+
+html:lang(en) .tostitos-hint-section-video-container .tostitos-video-box.fr{
+  display: none
+}
+
+html:lang(fr) .tostitos-hint-section-video-container .tostitos-video-box.en{
+  display: none
+}
+
+@media screen and (max-width: 1400px) {
+  .tostitos-hint-section-video-container, .tostitos-hint-section-carousel-container-wrap {
+    width: 100%;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-iframe-container {
+    height: 390px
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-iframe-container iframe{
+    height: 113.4%;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-preimg img{
+    height: 390px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .snapchat-en, .snapchat-fr {
+    margin: 20px 0;
+  }
+
+  .tostitos-hint-section-video-container h2,.tostitos-how-to-drop-hint h2{
+    font-size: 48px !important;
+  }
+
+  .tostitos-hint-section-video-container {
+    padding: 90px 15px 40px 15px;
+  }
+
+  .tostitos-hint-section-carousel-container-wrap{
+    padding: 100px 30px;
+  }
+
+  .tostitos-hint-section-carousel-container h2{
+    font-size: 50px !important;
+  }
+
+  .tostitos .carousel_desktop{
+    display: block !important;
+  }
+
+  .tostitos .slick-prev, .tostitos .slick-next{
+    display: block !important;
+  }
+
+  .tostitos-snapchat-button-mobile{
+    display: block !important;
+  }
+
+  .tostitos-snapchat-button-desktop{
+    display: none !important;
+  }
+
+  .tostitos-banner-hint-logo-wrap{
+    height: auto;
+    width: 70%;
+  }
+
+  .tostitos-how-to-scan-snapchat-wrapper{
+    flex-direction: column;
+  }
+
+  .tostitos-how-to-scan-snapchat{
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  .tostitos-how-to-drop-hint p{
+    text-align: center;
+  }
+
+  #drop-hint-vide .tostitos-video-box{
+    width: 45%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-iframe-container {
+    height: 473px;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-preimg img {
+    height: 473px;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-iframe-container iframe {
+    height: 110%;
+  }
+
+  .tostitos-hint-section-product-container .tostitos-product-box{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #drop-hint-vide .tostitos-video-box{
+    width: 100%;
+  }
+
+  .tostitos-hint-section-video-container .tostitos-video-iframe-container iframe {
+    height: 100%;
+  }
+
+  .tostitos-hint-pattern-1, .tostitos-hint-pattern-2, .tostitos-hint-pattern-3{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .tostitos-hint-section-carousel-container h2 {
+    font-size: 40px !important;
+  }
+}
+/*
+  Landing Video section
+*/
+
+.tostitos-banner {
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .tostitos-filters-container #recipesFilterDropdowns .custom-select-container, .tostitos-filters-container #recipesFilterDropdowns button {
+    min-width: 180px !important;
+  }
+}
+
+.activate-landing-video-1, .activate-landing-video-2 {
+  cursor: pointer;
+}
+
+.tostitos-landing-videos-div {
+  margin: 0 auto !important;
+  padding: 0 50px 50px !important;
+}
+
+.tostitos-video-block {
+  background: url("/themes/brandstheme/src/images/tostitos/backgrounds/tostitos-videos-background-home.png") bottom center no-repeat, #0A365D;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .tostitos-unevencarousel-container .slick-next {
+    right: -45px !important;
+  }
+
+  .tostitos-unevencarousel-container .slick-prev {
+    left: -45px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .tostitos-carousel-container .slick-prev {
+    left: -25px !important;
+  }
+
+  .tostitos-carousel-container .slick-next {
+    right: -25px !important;
+  }
+
+  .tostitos-unevencarousel-box{
+    padding: 0 10px;
+  }
+
+  .tostitos-unevencarousel-container .slick-next {
+    right: -30px !important;
+  }
+
+  .tostitos-unevencarousel-container .slick-prev {
+    left: -30px !important;
+  }
+}
+
+.modal-body p {
+  color: #000;
+  margin-bottom: 0;
+}
+
+.tostitos-products-btn {
+  background-color: #FFC90A !important;
+  padding: 12px 30px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 150px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-transform: capitalize; */
+  border: 2px solid #FFC90A;
+  margin-top:20px;
+  color: #000 !important;
+  border-radius: 30px;
+}
+
+.tostitos-products-btn:hover {
+  background-color: #e6b400 !important;
+}
+
+/*tostitos-search*/
+
+.tostitos-search {
+  text-align: center;
+}
+
+.tostitos-search input {
+  height: 42px;
+  padding: 16px;
+  font-size: 18px;
+}
+
+.tostitos-search a {
+  background-color: #FEC530;
+  border: 2px solid #FEC530;
+  color: #004179;
+  padding: 6px 16px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+
+/*.videoWrapper {*/
+/*  position: relative;*/
+/*  padding-bottom: 56.25%; !* 16:9 *!*/
+/*  height: 0;*/
+/*}*/
+
+/*.videoWrapper iframe {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*}*/
+
+/*.tostitos-yt-placeholder-1, .tostitos-yt-placeholder-2 {*/
+/*  width: 100%;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.tostitos-video-copy {*/
+/*  padding-top: 32px;*/
+/*}*/
+
+
+/*@media only screen and (min-width: 768px) {*/
+
+/*  .tostitos-yt-placeholder-1, .tostitos-yt-placeholder-2 {*/
+/*    width: 560px;*/
+/*    height: 315px;*/
+/*  }*/
+
+/*}*/
+
+
+/**** Accessibility *****/
+
+.sr-only{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/*Buynow Modal*/
+
+#tostitos-buy {
+  display: initial !important;
+}
+
+.tostitos-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  position:fixed;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+#tostitosModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#tostitosModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #tostitosModal {
+    padding:0 !important;
+  }
+}

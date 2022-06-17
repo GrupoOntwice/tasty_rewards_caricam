@@ -1,0 +1,559 @@
+en-ca.pepsibrands.recall:
+  path: '/brands/{brand}/recall'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::recall'
+    _title: 'Recall'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.recall:
+  path: '/marques/{brand}/rappel'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::recall'
+    _title: 'Recall'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.homepage:
+  path: '/brands/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::homepage'
+    _title: 'Home'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.homepage:
+  path: '/marques/{brand}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::homepage'
+    _title: 'Accueil'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.products:
+  path: '/brands/{brand}/products'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProducts'
+    _title: 'Products'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.products:
+  path: '/marques/{brand}/produits'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProducts'
+    _title: 'Produits'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.products.categories:
+  path: '/brands/{brand}/products-categories/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProductCategories'
+    _title: 'Product Categories'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.products.categories:
+  path: '/marques/{brand}/produits-categories/{category}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProductCategories'
+    _title: 'Categories de produits'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.products.group:
+  path: '/brands/{brand}/products-list/{group}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProductGroup'
+    _title: 'Product Categories'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.products.group:
+  path: '/marques/{brand}/produits-list/{group}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsProductGroup'
+    _title: 'Categories de produits'
+  requirements:
+    _access: 'TRUE'
+
+
+en-ca.pepsibrands.products.lays.poppables:
+  path: '/brands/lays/poppables'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::laysProductPoppables'
+    _title: 'Lays Poppables'
+  requirements:
+    _access: 'TRUE'
+
+
+en-ca.pepsibrands.recipes:
+  path: '/brands/{brand}/recipes'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsRecipes'
+    _title: 'Recipes'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.recipes:
+  path: '/marques/{brand}/recettes'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsRecipes'
+    _title: 'recettes'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.occasions:
+  path: '/brands/{brand}/occasions'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsOccasions'
+    _title: 'Occasions'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.occasions:
+  path: '/marques/{brand}/occasions'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsOccasions'
+    _title: 'Occasions'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.collections:
+  path: '/brands/{brand}/collections'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsOccasions'
+    _title: 'Collections'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.collections:
+  path: '/marques/{brand}/collections'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::brandsOccasions'
+    _title: 'Collections'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.about-us:
+  path: '/brands/{brand}/about-us'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::aboutUs'
+    _title: 'About us'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.about-us:
+  path: '/marques/{brand}/a-propos'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::aboutUs'
+    _title: 'About us'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.brand.videos:
+  path: '/brands/{brand}/videos'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::recipesWithVideos'
+    _title: 'Videos'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.pepsibrands.brand.videos:
+  path: '/marques/{brand}/videos'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::recipesWithVideos'
+    _title: 'Videos'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.crispyminis.contest.rules:
+  path: '/brands/crispyminis/contest-rules'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::contestRules'
+    _title: 'Contest Rules'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.crispyminis.contest.rules:
+  path: '/marques/crispyminis/reglement-concours'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::contestRules'
+    _title: 'Reglement'
+  requirements:
+    _access: 'TRUE'
+
+# en-ca.pepsibrands.brand.dropthehint:
+#   path: '/brands/{brand}/dropthehint'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::dropTheHint'
+#     _title: 'Drop the hint'
+#   requirements:
+#     _access: 'TRUE'
+
+# fr-ca.pepsibrands.brand.dropthehint:
+#   path: '/marques/{brand}/mettezunsoupcon'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::dropTheHint'
+#     _title: 'Drop the hint'
+#   requirements:
+#     _access: 'TRUE'
+
+en-ca.pepsibrands.our-brands:
+  path: '/brands'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::ourBrands'
+    _title: 'Our brands'
+  requirements:
+    _access: 'TRUE'
+
+
+fr-ca.pepsibrands.our-brands:
+  path: '/marques'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::ourBrands'
+    _title: 'Marques'
+  requirements:
+    _access: 'TRUE'
+
+
+pepsibrands.ajax.findflavour:
+  path: '/missvickies/findflavour'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::ajaxFindFlavour'
+    _title: 'find flavour'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.load.recipes:
+  path: '/brands/{brand}/load-recipes/{offset}'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::loadRecipes'
+    _title: 'Load Recipes'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.pepsibrands.load.social.feed:
+  path: '/brands/{brand}/socialfeeds'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::loadSocialFeeds'
+    _title: 'Load Social Feeds'
+  requirements:
+    _access: 'TRUE'   
+
+# en-ca.pepsibrands.cheetos.rules:
+#   path: '/brands/cheetos/cheetosartofficialrules'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::cheetosRules'
+#     _title: 'Cheetos Art Official Rules'
+#   requirements:
+#     _access: 'TRUE' 
+
+# fr-ca.pepsibrands.cheetos.rules:
+#   path: '/marques/cheetos/reglementsofficielsartcheetos'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::cheetosRules'
+#     _title: 'Reglement Officiel Art Cheetos'
+#   requirements:
+#     _access: 'TRUE' 
+
+en-ca.pepsibrands.oat-flour:
+  path: '/brands/quaker/oat-flour'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::oatFlour'
+    _title: 'Oat Flour'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.oat-flour:
+  path: '/marques/quaker/farine-davoine'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::oatFlour'
+    _title: 'Farine d Avoine'
+  requirements:
+    _access: 'TRUE' 
+
+# en-ca.pepsibrands.quaker.comingsoon:
+#   path: '/brands/quaker/QuakerFeedCanada/comingsoon'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::comingsoon'
+#     _title: 'Coming Soon'
+#   requirements:
+#     _access: 'TRUE' 
+
+# fr-ca.pepsibrands.quaker.comingsoon:
+#   path: '/marques/quaker/QuakerNourrirLeCanada/comingsoon'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::comingsoon'
+#     _title: 'Coming Soon'
+#   requirements:
+#     _access: 'TRUE' 
+
+en-ca.pepsibrands.quaker.admin.entries:
+  path: '/admin/quaker/receipts/entries'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::receiptsEntries'
+    _title: 'Receipts entries'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'administrator' 
+
+
+
+en-ca.pepsibrands.quaker.landing:
+  path: '/brands/quaker/QuakerFeedCanada'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::landing'
+    _title: 'Landing'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.quaker.landing:
+  path: '/marques/quaker/QuakerNourrirLeCanada'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::landing'
+    _title: 'Landing'
+  requirements:
+    _access: 'TRUE' 
+
+
+en-ca.pepsibrands.realjoy.landing:
+  path: '/brands/lays/joystory'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoy'
+    _title: 'Joy Story'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.realjoy.landing:
+  path: '/marques/lays/momentsdejoie'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoy'
+    _title: 'Moments de joie'
+  requirements:
+    _access: 'TRUE' 
+
+
+en-ca.pepsibrands.realjoy.terms:
+  # path: '/brands/lays/realjoy/terms'
+  path: '/brands/lays/joystory/terms'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoyTerms'
+    _title: 'Terms and condition'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.realjoy.terms:
+  path: '/marques/lays/momentsdejoie/termes'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoyTerms'
+    _title: 'Modalites'
+  requirements:
+    _access: 'TRUE' 
+
+
+
+pepsibrands.realjoy.csvexport:
+  path: '/admin/entries/realjoy/export'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoyCsvExport'
+    _title: 'Real Joy entries'
+  requirements:
+    _role: 'administrator' 
+
+
+pepsibrands.realjoy.entries:
+  path: '/admin/entries/realjoy'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::realjoyEntries'
+    _title: 'Real Joy entries'
+  requirements:
+    _role: 'administrator' 
+
+# en-ca.pepsibrands.quaker.thankyou:
+#   path: '/brands/quaker/QuakerFeedCanada/thankyou'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::thankyou'
+#     _title: 'Confirmation'
+#   requirements:
+#     _access: 'TRUE' 
+
+# fr-ca.pepsibrands.quaker.thankyou:
+#   path: '/marques/quaker/QuakerNourrirLeCanada/merci'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::thankyou'
+#     _title: 'Confirmation'
+#   requirements:
+#     _access: 'TRUE' 
+
+en-ca.pepsibrands.quaker.expiry:
+  path: '/brands/quaker/QuakerFeedCanada/expiry'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::expiry'
+    _title: 'Confirmation'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.quaker.expiry:
+  path: '/marques/quaker/QuakerNourrirLeCanada/expiration'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::expiry'
+    _title: 'Confirmation'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.pepsibrands.power-of-oats:
+  path: '/brands/quaker/power-of-oats'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::powerOfOats'
+    _title: 'The Power of Oats'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.pepsibrands.flavorful:
+  path: '/brands/{brand}/flavourful'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Flavorul'
+    _title: 'Unexpectedly Flavourul'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.flavorful:
+  path: '/marques/{brand}/savoureuses'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Flavorul'
+    _title: 'Étonnamment Savoureuses'
+  requirements:
+    _access: 'TRUE' 
+
+
+en-ca.pepsibrands.story:
+  path: '/brands/{brand}/our-story'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::ourStory'
+    _title: 'Our story'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.story:
+  path: '/marques/{brand}/notre-histoire'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::ourStory'
+    _title: 'Notre histoire'
+  requirements:
+    _access: 'TRUE' 
+
+
+
+
+# en-ca.pepsibrands.signature:
+#   path: '/brands/{brand}/signatures'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Signature'
+#     _title: 'Signature'
+#   requirements:
+#     _access: 'TRUE' 
+
+# fr-ca.pepsibrands.signature:
+#   path: '/marques/{brand}/signatures'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Signature'
+#     _title: 'Signature'
+#   requirements:
+#     _access: 'TRUE' 
+
+pepsibrands.receipt.ajaxaction:
+  path: 'pepsibrands/quaker/receipt/ajaxaction'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::receiptAjaxAction'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+
+# pepsibrands.receipt.email.test:
+#   path: '/quaker/email/test'
+#   defaults:
+#     _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::emailTest'
+#     _title: 'Email Test'
+#   requirements:
+#     _access: 'TRUE'  
+#     _role: 'administrator'
+
+
+pepsibrands.stacys.email.test:
+  path: '/stacys/email/test'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::emailStacysTest'
+    _title: 'Email Test'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'administrator'
+
+
+en-ca.pepsibrands.sparksflyforsummer:
+  path: '/brands/{brand}/datenight'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Sparksflyforsummer'
+    _title: 'Date Night'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.sparksflyforsummer:
+  path: '/marques/{brand}/soireeadeux'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::Sparksflyforsummer'
+    _title: 'Soirée à deux'
+  requirements:
+    _access: 'TRUE'     
+
+en-ca.pepsibrands.quaker.hockey.landing:
+  path: '/brands/quaker/hockey-hungry'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::hockeyLanding'
+    _title: 'Hockey Hungry'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.quaker.hockey.landing:
+  path: '/marques/quaker/faim-de-hockey'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::hockeyLanding'
+    _title: 'Faim de hockey'
+  requirements:
+    _access: 'TRUE' 
+
+
+en-ca.pepsibrands.stacys.rise:
+  path: '/brands/stacyssnacks/riseproject'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::stacysRise'
+    _title: 'Rise Project'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.stacys.rise:
+  path: '/marques/stacyssnacks/projectascension'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::stacysRise'
+    _title: 'Projet Ascension'
+  requirements:
+    _access: 'TRUE'
+
+
+en-ca.pepsibrands.missvickies.flavour:
+  path: '/brands/missvickies/findyourflavour'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::missvickiesLanding'
+    _title: 'Find your flavour'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.pepsibrands.missvickies.flavour:
+  path: '/marques/missvickies/trouvezvotresaveurpreferee'
+  defaults:
+    _controller: '\Drupal\pepsibrands\Controller\PepsiBrandsController::missvickiesLanding'
+    _title: 'Find your flavour'
+  requirements:
+    _access: 'TRUE'

@@ -1,0 +1,549 @@
+
+/* =GRID CSS
+-------------------------------------------------------------- */
+/* Top grid */
+
+#topRight,
+#topLeft,
+#topFeatured,
+#topPromotion{
+	float: left;
+}
+#topLeft {
+    font-size: 16px;
+}
+/* Botton Grid */
+#feed{
+	clear: both;
+	position: relative;
+	overflow: hidden;
+	border:4px solid #fff;
+}
+.block{
+	overflow: hidden;
+	padding: 0 !important;
+	width: 50%;
+	float: left;
+	
+}
+.box {	position:relative;
+		box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    border:8px solid #ffffff;
+		float: left;
+ 
+-webkit-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+   -moz-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+    -ms-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+     -o-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+        transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); /* easeInOutExpo */
+        
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+
+.boxinside{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.grid {
+	position: relative;
+	
+	list-style: none;
+	text-align: center;
+}
+
+.grid figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: auto;
+	opacity: 0.8;
+}
+
+.grid figure figcaption {
+	/* HERE THE STYLE FOR THE CAPTION ICON */
+	padding: 2em;
+	color: #fff;
+	font-size: 1em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+	z-index: 10;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 0;
+}
+
+.grid figure h2 {
+	font-weight: 700;
+}
+.grid figure h2 span {
+	font-weight: 300;
+	font-size: 0.9em;
+	padding-bottom: 10px;
+	display: block;
+	padding-left: 30px;
+    line-height: 27px;
+}
+.grid figure .article h2 span{
+	background:transparent url('https://static.tastyrewards.ca/images/article-icon.png') top left no-repeat;
+}
+.grid figure .recipe h2 span{
+	background:transparent url('https://static.tastyrewards.ca/images/recipe-icon.png') top left no-repeat;
+}
+.grid figure.video{
+	background:transparent url('https://static.tastyrewards.ca/images/play-icon.png') top center no-repeat;
+}
+.grid figure h2,
+.grid figure p {
+	margin: 0;
+}
+
+.grid figure p {
+	letter-spacing: 1px;
+	font-size: 68.5%;
+	padding-top: 10px;
+}
+
+/*---------------*/
+/***** Lily *****/
+/*---------------*/
+
+figure.effect-lily img {
+	max-width: none;
+	width: -webkit-calc(100% + 50px);
+	width: calc(100% + 50px);
+	opacity: 0.7;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(-40px,0, 0); 
+	transform: translate3d(-40px,0,0);
+}
+
+figure.effect-lily figcaption {
+	text-align: left;
+	font-family: 'Signika', sans-serif;
+}
+
+figure.effect-lily figcaption > div {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 1em;
+	width: 100%;
+	height: 40%;
+}
+figure.effect-lily figcaption > div.recipe{
+	background-color: rgba(64,160,213,0.8);
+}
+figure.effect-lily figcaption > div.article{
+	background-color: rgba(239,75,116,0.8);
+}
+
+figure.effect-lily h2,
+figure.effect-lily p {
+	-webkit-transform: translate3d(0,35px,0);
+	transform: translate3d(0,35px,0);
+}
+
+figure.effect-lily h2 {
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+}
+
+figure.effect-lily p {
+	color: rgba(255,255,255,0.8);
+	opacity: 0;
+	-webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
+	transition: opacity 0.2s, transform 0.35s;
+}
+
+figure.effect-lily:hover img,
+figure.effect-lily:hover p {
+	opacity: 1;
+}
+
+figure.effect-lily:hover img,
+figure.effect-lily:hover h2,
+figure.effect-lily:hover p {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-lily:hover p {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+}
+
+#viewMoreBtn{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+/* CONTENT TYPES - Articles / Video / Coupons */
+
+.coupon {
+	height: 90%;
+    width: 90%;
+    margin: auto;
+    padding: 0px 10px;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    text-align: center;
+    border: 3px dashed #fff;
+}
+
+.boxinside .coupon img {
+    padding-top: 5px;
+}
+
+.boxinside .coupon .btn-primary {
+    padding-top: 5px !important;
+}
+
+/*.verticalhelper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}*/
+
+.grid .snacktivity{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+
+
+/******************************************************
+**
+**                 SOCIALPIC CSS
+** 
+** Styles for the socialpic jquery plugin
+**
+** Author: Andrew Hartnett
+**   Date: November 2014
+**
+******************************************************/
+
+span.socialclick:hover{
+	cursor: pointer;
+}
+
+div.overlay{
+	position: absolute;
+	top:0;
+	left:0;
+	opacity: 0;
+}
+
+div.overlay ul{
+	width:100%;
+	text-align: center;
+	padding: 0;
+}
+
+div.overlay ul li{
+	display: inline;
+	margin: 0 10px;
+}
+
+div.wrap div.overlay:hover{
+	opacity: 1;
+	-webkit-transition: all .5s ease .15s;
+    -moz-transition: all .5s ease .15s;
+    -o-transition: all .5s ease .15s;
+    -ms-transition: all .5s ease .15s;
+    transition: all .5s ease .15s;
+}
+
+div.wrap{
+	position: relative;
+}
+
+
+#topBlocks .size-1x1big, #topRight .size-1x1, #topRight .size-2x1{
+    border: 8px solid #ffffff;
+}
+
+.coupon h2{
+	    margin-top: 10% !important;
+	}
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* DESKTOP ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+/* All desktops */
+@media all and (min-width:769px){
+	.grid figure h2 {
+		font-size: 1em;
+	}
+	.size-2x1 figure.effect-lily figcaption > div {
+    height: 40%;
+    padding: 0.5 1em;
+	}
+	.size-1x1 figure.effect-lily figcaption > div {
+    height: 40%;
+    padding: 0.5 1em;
+	}
+	figure.effect-lily h2,
+	figure.effect-lily p {
+		-webkit-transform: translate3d(0,5px,0);
+		transform: translate3d(0,5px,0);
+	}
+
+}
+
+/* Small desktops */
+@media (min-width:768px) and (max-width:991px){
+	.size-2x1 figure.effect-lily figcaption > div {
+    height: 55%;
+    padding: 1em;
+	}
+	.size-1x1 figure.effect-lily figcaption > div {
+    height: 70%;
+    padding: 1em;
+	}
+	figure.effect-lily h2,
+	figure.effect-lily p {
+		-webkit-transform: translate3d(0,20px,0);
+		transform: translate3d(0,20px,0);
+	}
+	.grid figure h2 span {
+        background-size: 20px !important;
+    	padding-left: 23px;
+    	background-position-y: 4px !important;
+	}
+	.quote {
+    font-size: 0.8em;
+	}
+	.quote blockquote:after{
+		bottom:20px;
+	}
+	.coupon .btn{
+		margin-top: 0px !important;
+	}
+	.coupon h2{
+	    margin-top: 0% !important;
+	}
+}
+
+/* because the grid is super small on smaller desktop screens we need this to shrink the button */
+@media(min-width: 768px) and (max-width:910px){
+	.coupon .btn{
+		max-width: 130px;
+	    font-size: 1em !important;
+	    padding-left: 10px !important;
+	    overflow: hidden;
+	    padding-right: 10px !important;
+		margin-top: 0px !important;
+	}
+	.coupon h2{
+	    font-size: 20px !important;
+	    margin-top: 0% !important;
+		margin-bottom: 5px !important;
+	}
+}
+
+@media(min-width: 910px) and (max-width:1065px){
+	.coupon .btn{
+		max-width: 130px;
+	    font-size: 1em !important;
+	    padding-left: 10px !important;
+	    overflow: hidden;
+	    padding-right: 10px !important;
+		margin-top: 0px !important;
+	}
+	
+	.coupon h2{
+		font-size: 20px !important;
+	    margin-top: 5% !important;
+	    margin-top: 15% !important;
+	}
+}
+
+@media(min-width: 1066px) and (max-width:1199px){
+	.coupon .btn{
+		max-width: 130px;
+	    font-size: 1em !important;
+	    padding-left: 10px !important;
+	    overflow: hidden;
+	    padding-right: 10px !important;
+		margin-top: 0px !important;
+	}
+	.coupon h2{
+	    font-size: 20px !important;
+	    margin-top: 15% !important;
+		margin-bottom: 5px !important;
+	}
+}
+
+
+/* Large desktops */
+@media all and (min-width: 1200px) and (max-width: 1599px){
+	.grid figure h2 {
+		font-size: 1.3em !important;
+	}
+	.size-2x1 figure.effect-lily figcaption > div {
+    height: 40%;
+    padding: 1em;
+	}
+	.size-1x1 figure.effect-lily figcaption > div {
+    height: 38%;
+    padding: 1em;
+	}
+	figure.effect-lily h2,
+	figure.effect-lily p {
+		-webkit-transform: translate3d(0,10px,0);
+		transform: translate3d(0,10px,0);
+	}
+	
+	.coupon {
+		padding: 10px 10px;
+	}
+	.coupon .btn{
+		margin-top: 0px !important;
+	}
+	.coupon h2{
+	    font-size: 20px !important;
+	    margin-top: 5% !important;
+	}
+}
+
+/* Extra large desktops */
+@media all and (min-width: 1600px){
+	.grid figure h2 {
+		font-size: 1.4em !important;
+	}
+	figure.effect-lily h2,
+	figure.effect-lily p {
+		-webkit-transform: translate3d(0,10px,0);
+		transform: translate3d(0,10px,0);
+	}
+	.coupon h2{
+	    margin-top: 10% !important;
+	}
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* TABLET AND MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+@media all and (max-width:768px){
+    .grid figure h2 {
+		font-size: 1.1em !important;
+	}
+	.size-2x1 figure.effect-lily figcaption > div {
+    height: 60%;
+    padding: 1em;
+	}
+	.size-1x1 figure.effect-lily figcaption > div {
+    height: 100%;
+    padding: 1em;
+	}
+	.coupon .btn{
+		margin-top: 0px !important;
+	}
+
+}
+
+@media all and (max-width:767px){
+	
+    #topRight,
+    #topLeft{
+    	width:100%;
+    }
+    .block{
+    	width: 100%;
+    }  
+    .size-1x1 figure.effect-lily figcaption > div {
+    	height: 40%;
+    	padding: 1em;
+	}
+
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 660px){
+	
+	.block,
+	.box.size-1x1,
+	.box.size-2x1{
+		width:100%;
+	}
+
+	.size-1x1 figure.effect-lily figcaption > div,
+	.size-2x1 figure.effect-lily figcaption > div  {
+	    height: 42%;
+	    padding: 1em;
+	}
+        figure.effect-lily h2, figure.effect-lily p {
+            -webkit-transform: translate3d(0,3px,0);
+            transform: translate3d(0,3px,0);
+	}
+	
+	.coupon h2 {
+    margin-top: 15% !important;
+}
+
+}
+@media screen and (max-width: 320px){
+.coupon h2 {
+    margin-top: 5% !important;
+}
+	}

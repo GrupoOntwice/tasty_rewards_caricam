@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 featured-recipe-heading text-center">
+      <h1>{{ 'Featured Recipes'|t }}</h1>
+    </div>
+
+    {% if featured_recipes %}
+      <div class="col-md-12 ">
+        <div class="row">
+
+          {% for idx, recipe in featured_recipes %}
+            <div class="col-md-4 {{ idx>=3 ? 'd-none' :'' }} quaker-featured-recipe-img-col quaker-featured-recipe-img-col-{{ idx }}">
+              <div class="row">
+                <div class="col-md-12 quaker-featured-recipe-img-block">
+                  <a href="{{ recipe.link }}" aria-label="{{ recipe.title|raw }}">
+                    <div class="quaker-featured-recipe-img {% if recipe.img_position is empty %} img-align-center {% else %} img-align-{{recipe.img_position}} {% endif %}" style="background-image: url('{{ recipe.image_url }}');">
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="quaker-stars quaker-stars-corner">
+                {% for i in 1..5 %}
+                  <span {% if i <= recipe.rating %}class="checked"{% endif %}></span>
+                {% endfor %}
+              </div>
+
+              <div class="quakers-featured-recipes-description">
+                <h4>
+                  {{ recipe.title|raw }}
+                </h4>
+
+{#                <p class="quaker-product-description"> {{ recipe.body|raw }}</p>#}
+
+              </div>
+
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-12 quaker-view-more-recipes">
+        <a class="btn_quaker-white" href="/{{ lang_prefix }}/brands/quaker/recipes">
+          {{ 'View More Recipes'|t }}
+        </a>
+      </div>
+
+    {% endif %}
+
+  </div>
+</div>

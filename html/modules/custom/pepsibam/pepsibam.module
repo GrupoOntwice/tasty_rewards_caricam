@@ -1,0 +1,3976 @@
+<?php
+
+/**
+ * @file
+ * Contains pepsibam.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Link;
+use Symfony\Component\BrowserKit\Cookie;
+use Drupal\Core\Flood\DatabaseBackend;
+use Drupal\pepsibam\CronScheduledTasks;
+use Drupal\pepsibam\BotIdentification;
+use Drupal\Core\Menu\MenuLinkInterface;
+use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
+use Drupal\node\NodeInterface;
+use Drupal\pathauto\PathautoPatternInterface;
+use Drupal\pathauto\AliasCleanerInterface;
+
+use Drupal\pepsibam\ContentQueries;
+use Drupal\pepsibam\ContentExport;
+
+
+
+/**
+ * Implements hook_help().
+ */
+function pepsibam_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the pepsibam module.
+    case 'help.page.pepsibam':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Test of Marketo connection') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+}
+
+function pepsibam_cron(){
+    //This should only run when it's in production
+    
+    $env =  \Drupal\Core\Site\Settings::get("environment");
+    \Drupal::logger('cron-scheduledTasks')->info("Cron running on environment : $env ", []);
+    if ($env == "prod" ){
+        // unblock_usa_users();
+        // reSyncUserInfo();
+        // reSyncContestInfo();
+        // syncUserIDs();
+        // // CronScheduledTasks::instance()->run_every("syncUserIDs", $hours = 12);
+        // CronScheduledTasks::instance()->run_every("fetch_unsubscribed_emails", $hours = 12, $args = ['ca']);
+        // CronScheduledTasks::instance()->run_every("fetch_unsubscribed_emails", $hours = 12, $args = ['usa']);
+        $ET_time = new DateTime("now", new DateTimeZone('America/New_York') );
+        $time =  $ET_time->format('H:i:s');
+        if ($time >= "00:00:00" && $time < "01:30:00") {
+            CronScheduledTasks::instance()->run_every("clear_spam_table", $hours = 24);
+            CronScheduledTasks::instance()->run_every("cloud_storage_export", $hours = 24);
+        }
+        // $time = date("H:i:s");
+        // CronScheduledTasks::instance()->run_every("bot_identification_report", $hours = 6);
+        if ($time > "01:00:00" && $time < "02:30:00") {
+            CronScheduledTasks::instance()->run_every("bot_identification_report", $hours = 24);
+            CronScheduledTasks::instance()->run_every("send_contest_optin_report", $hours = 24);
+            CronScheduledTasks::instance()->run_every("set_sourceid_numbers", $hours = 24);
+            CronScheduledTasks::instance()->run_every("update_recipe_tables", $hours = 24);
+            \Drupal::logger('cron-scheduledTasks')->info("Start running count_snackperks_users", []);
+            CronScheduledTasks::instance()->run_every("count_snackperks_users", $hours = 24);
+            if ( $time > "01:30:00"){
+                if (date('l') == 'Monday' || date('l') == 'Tuesday'){
+                    CronScheduledTasks::instance()->run_every("export_winners_csv", $hours = 24*5);
+                }
+                // CronScheduledTasks::instance()->run_every("reSyncUserInfo", $hours = 24);
+                // CronScheduledTasks::instance()->run_every("reallocate_unclaimed_prizes", $hours = 24);
+            }
+            // \Drupal::logger('cron-scheduledTasks')->info("Start running syncPollInfo", []);
+        }
+
+        if ($time > "00:00:00" && $time < "01:00:00") {
+            if (date('l') == 'Monday'){
+                CronScheduledTasks::instance()->run_every("reset_weekly_entries", $hours = 24 * 6.5, [], $log = true);
+            }
+            // CronScheduledTasks::instance()->run_every("reset_nintendo_contest_entries", $hours = 24);
+            
+            if ($time > "00:28:00"){
+                CronScheduledTasks::instance()->run_every("flag_fraudulent_entries", $hours = 24);
+            }
+        }
+        // fetch_unsubscribed_emails($country_code = 'ca');
+        // fetch_unsubscribed_emails($country_code = 'usa');
+
+        \Drupal::logger('cron-scheduledTasks')->info("Start running syncContestAndCouponStatus", []);
+        CronScheduledTasks::instance()->run_every("syncContestAndCouponStatus", $hours = 24);
+        // syncContestAndCouponStatus();
+        
+         // syncPollInfo();
+
+         
+
+        \Drupal::logger("general")->info(" pepsibam_cron has run all functions ", []);
+         // clear_spam_table;`
+         // sync_tostitos_contests();
+        //setTostitosContestSourceID($sourceID = "CA_FRITOLAY_TOSTITOS_PROMOTION_20200229");
+        //reSyncUserLoginActivities();
+        //SyncFixOptin();
+        //Marketo Connection to be removed
+        //SyncActivationStatus();
+    }
+}
+
+function count_snackperks_users(){
+    \Drupal::logger('report-generator')->info("Running Count snackperks users query", []);
+
+    $sql =  " SELECT count(*) as cnt FROM csv_usa_users 
+                    WHERE email not in (select name  FROM `users_field_data` )
+            ";
+
+    $query = \Drupal::database()->query($sql);
+    try{
+        $results = $query->fetchAll();
+        if (!empty($results)){
+            $nb_users = $results[0]->cnt;
+            $today = date('Y-m-d');
+            try{
+                    $sql = " INSERT  into pepsi_temp_results (name, event_date, value) VALUES 
+                        ('snackperks_user_count', '$today', $nb_users)";
+                    $insert = \Drupal::database()->query($sql);
+                    $query_result = $insert->execute();
+                } catch(\Exception $e){
+                    \Drupal::logger("report-generator")->info("Could not insert into pepsi_temp_results table " . $e->getMessage(), []);
+
+                }
+
+        }
+    } catch(\Exception $e){
+        \Drupal::logger('report-generator')->info("Could not run Snackperk inactive user count", []);
+    }
+
+    return 0;
+}
+
+
+function setTostitosContestSourceID($sourceID){
+    unsubscribe_all_tostitos_participants();
+    subscribe_tostitos_participants($sourceID);
+}
+
+/**
+ * Unsubscribe Tostitos participants with the old sourceID
+ * @return [type] [description]
+ */
+function unsubscribe_all_tostitos_participants(){
+    \Drupal::logger("general")->info(" Unsubscribing Tostitos contest participants ...  ", []);
+
+    $highest_not_synced_user_id = 615078; // Users created after this ID have their tostitos contest entry synced already    
+
+    // New table tostitos_resubmitted_entries
+    $temporary_table = 'tostitos_resubmitted_entries';
+
+    $sql = " SELECT user_id, email, first_name, last_name, postalcode,language, regdate, user_ip, user_agent   
+                FROM  pepsicontest_reg_contest AS t1 
+                LEFT JOIN `users_field_data` AS t3 
+                ON t1.user_id = t3.uid  WHERE t3.uid IS NULL
+                /*AND t1.user_id < $highest_not_synced_user_id */
+                AND t1.user_id not IN (
+                    select t4.user_id from $temporary_table as t4
+                )
+                AND t1.contest_id = 1943 AND t1.contest_optin > 0 AND t1.regdate = (
+                    SELECT MAX(t2.regdate) FROM pepsicontest_reg_contest AS t2 
+                    WHERE t1.user_id = t2.user_id
+                ) limit 600";
+
+
+    $query = \Drupal::database()->query($sql);
+    try{
+        $results = $query->fetchAll();
+    } catch(\Exception $e){
+        \Drupal::logger('general')->info("Could not run sync_tostitos_contests request", []);
+        return null;
+    }
+    
+    if (!empty($results)){
+        foreach ($results as $key => $obj_entry) {
+
+            $user = User::create([
+                            'name' => $obj_entry->email,
+                            'mail' => $obj_entry->email,
+                            'status' => 1, 
+                            'field_firstname' => $obj_entry->first_name,
+                            'field_lastname' => $obj_entry->last_name,
+                            'field_city' =>  "",
+                            'field_province' => "",
+                            'field_postalcode' => "",
+                            'field_postal_code_ext' => "",
+                            'field_gender' => "", //  No gender field in contest form
+                            'field_bday' => "",
+                            'field_fbid' => "",
+                            'field_optin' => "1",
+                            'field_source' => "tastyrewards",
+                            'field_ccid' => "",
+                            'field_ip_address' => $obj_entry->user_ip,
+                            'field_user_agent' => $obj_entry->user_agent,
+                ]);                
+                
+                $user->set("field_created_date", $obj_entry->regdate);
+
+                $user->set("langcode", $obj_entry->language);
+                $user->set("preferred_langcode", $obj_entry->language);
+                $user->set("preferred_admin_langcode", $obj_entry->language);
+                sfmcservices_contest_entry($user, $source = 'tastyrewards', $unsubscribe = true);
+                // tostitos_entries_sync
+                try{
+                    $sql = " INSERT ignore into $temporary_table (user_id, email, is_unsubscribed) VALUES 
+                        ($obj_entry->user_id, '$obj_entry->email', 1)";
+                    $insert = \Drupal::database()->query($sql);
+                    $query_result = $insert->execute();
+                } catch(\Exception $e){
+                    \Drupal::logger("general")->info("Could not insert into tostitos_entries_sync table " . $e->getMessage(), []);
+
+                }
+        }
+    }
+}
+
+function bot_identification_report(){
+    $obj = new BotIdentification();
+    $obj->sendReport();
+    // debug_var("", 1);
+}
+
+function sfmcservices_contest_entry($account, $source = 'tastyrewards' , $unsubscribe = false){
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+
+
+    $created_or_updated = false;
+    
+    if (!$account->get('field_optin')->value)
+        $unsubscribe = true;
+    
+    $lead = UserFieldsSFMC($account,$unsubscribe, $source);  // maps the fields with the SF object
+    $country_code = 'ca';
+
+    $SFMC_Service->init_api($country_code);
+    $leadresponse = $SFMC_Service->createOrUpdateLeads($lead, $country_code); // this is where the request is sent to SF    
+    
+
+    if (isset($leadresponse->message) && isset($leadresponse->errorcode) ) {
+        $channel = "general";
+        $message = $leadresponse->message . "\n reponse object: \n";
+        $message .= print_r($leadresponse, true);
+
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    } else {
+        $sourceID =  $lead[0]['keys']['SourceID'];
+        $OptIns =  $lead[0]['values']['optinsValue'];    
+        
+        
+
+        return true;
+    }   
+    
+    return false;
+}
+
+
+/**
+ * Send the Tostitos particpants with the new sourceID
+ * @param  [string] $sourceID 
+ * @return [type]    
+ */
+function subscribe_tostitos_participants($sourceID){
+    \Drupal::logger("general")->info(" Resubscribing Tostitos contest participants with correct sourceID", []);
+
+    // New table tostitos_resubmitted_entries
+    $temporary_table = 'tostitos_resubmitted_entries';
+
+    $sql = " SELECT user_id, email, first_name, last_name, postalcode,language, regdate, user_ip, user_agent   
+                FROM  pepsicontest_reg_contest AS t1 
+                
+                WHERE t1.user_id IN (
+                    select t4.user_id from $temporary_table as t4 WHERE t4.is_resubscribed = 0
+                )
+                limit 10";
+
+
+    $query = \Drupal::database()->query($sql);
+    try{
+        $results = $query->fetchAll();        
+    } catch(\Exception $e){
+        \Drupal::logger('general')->info("Could not run sync_tostitos_contests request", []);
+        return null;
+    }
+}
+
+
+function syncUserIDs(){
+
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    $SFMC_Service->init_api($country_code = 'ca');
+    $flag = "synced";
+
+    $sql = "SELECT t1.uid, mail, t1.langcode, status, DATE_FORMAT(FROM_UNIXTIME(`created`), '%Y-%m-%d %H:%i:%s') AS 'date_subscription', field_optin_value as optin 
+    from users_field_data as t1 join user__field_optin as t2 on t1.uid = t2.entity_id  where t1.langcode = 'en-us' AND t1.langcode = 'es-us' AND
+    NOT EXISTS 
+    (select 1 from sf_synced_users as t3 where t3.uid = t1.uid and $flag = 1) order by uid DESC limit 500; ";
+
+
+    $select = \Drupal::database()->query($sql);
+    $results = $select->fetchAll();
+    $sfmc_process = 0;
+    $sfmc_success = 0;
+
+    foreach ($results as $key => $row) {
+        $sfmc_process++;
+        $userFields = UserIdFieldsSFMC($row);
+        try{
+            $country_code = "ca";
+            if ($row->langcode == 'en-us' || $row->langcode == 'es-us'){
+                $country_code = "usa";
+            }
+            $response = $SFMC_Service->syncDrupalIDs($userFields, $country_code);   
+      
+            if ($response){
+                $sfmc_success++;
+            } else {
+                \Drupal::logger("sync-userIDs")->info("User IDS could not be synced", []);
+                continue;
+            }
+        } catch( \Exception $e){
+            \Drupal::logger("sync-userIDs")->info("User IDS could not be synced", []);
+            continue;
+        }
+        try{
+            $sql = " INSERT into sf_synced_users (uid, email, $flag) VALUES ($row->uid, '$row->mail', 1)
+                ON DUPLICATE KEY UPDATE $flag = 1
+            ";
+            $insert = \Drupal::database()->query($sql);
+            $query_result = $insert->execute();
+        } catch(\Exception $e){
+            \Drupal::logger("sync-userIDs")->info("Could not insert into sf_synced_users table " . $e->getMessage(), []);
+
+        }
+
+        
+
+    }
+
+    unset($query_result);
+
+    if ($sfmc_success > 0){
+        $channel = "sf-synchronization";
+        $message = "Sync User IDS  $sfmc_success / $sfmc_process";
+
+        $context = [ ];
+        \Drupal::logger($channel)->info($message, $context);
+    }
+    
+
+}
+
+function UserIdFieldsSFMC($row){
+    $array = array();
+    $array[0]['keys'] = array();
+    $array[0]['values'] = array();
+    $array[0]['keys']['user_id'] = $row->uid;
+    $array[0]['values']['email'] = $row->mail;
+    $array[0]['values']['langcode'] = $row->langcode;
+    $array[0]['values']['status'] =  $row->status;
+    $array[0]['values']['optin'] =  $row->optin;
+    $array[0]['values']['date_subscription'] = $row->date_subscription;
+    
+    return $array;
+}
+
+function syncContestAndCouponStatus(){
+
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    // @TODO: DO the same for USA 
+    $SFMC_Service->init_api($country_code = 'ca');
+    $result = get_active_contests();
+    $contest_status = true;
+    $coupon_status = get_active_coupons();
+
+    // @TODO: Add a check for active coupons
+    if (empty($result['url'])){
+        $contest_status = false;
+    }
+    try{
+        $SFMC_Service->setContestsStatus($contest_status, $coupon_status, $country_code = 'ca');
+        $message = " Contest Status set to " . ($contest_status? "true" :  "false") ;
+        $message .= " & coupon status set to " . ($coupon_status? "true" :  "false") ;
+        $context = [];
+        \Drupal::logger('general')->info($message, $context);
+    } catch(\Exception $e){
+        \Drupal::logger('general')->info(" There was a problem setting contest status for " . $country_code, []);
+    }
+
+    // USA active coupons
+    $result = get_active_contests('en-us');
+    $contest_status = true;
+    $coupon_status = get_active_coupons('usa');
+
+    // @TODO: Add a check for active coupons
+    if (empty($result['url'])){
+        $contest_status = false;
+    }
+    try{
+        $SFMC_Service->setContestsStatus($contest_status, $coupon_status, $country_code = 'usa');
+        $message = "USA Contest Status set to " . ($contest_status? "true" :  "false") ;
+        $message .= " & coupon status set to " . ($coupon_status? "true" :  "false") ;
+        $context = [];
+        \Drupal::logger('general')->info($message, $context);
+    } catch(\Exception $e){
+        \Drupal::logger('general')->info(" There was a problem setting contest status for " . $country_code, []);
+    }
+
+}
+
+function get_active_coupons($country_code = 'ca'){
+    $sql = "SELECT data FROM `config` WHERE name = 'block.block.couponblockcallout'";
+
+    try{
+        $select = \Drupal::database()->query($sql);
+        $result = $select->fetchAll();
+        if (empty($result)) return;
+
+    } catch (\Exception $e) { 
+        $channel = "general";
+        $message = "Problem retrieving the status of the coupon block callout";
+        $context = [ ];
+        \Drupal::logger($channel)->info($message, $context);
+        return;
+    }
+
+    $blob_data = $result[0]->data;
+    
+
+    $coupon_status = unserialize($blob_data)['status'];
+    if ($country_code == 'usa') {
+        $block_info = unserialize($blob_data);
+        try{
+            $visible_langcodes = $block_info['visibility']['language']['langcodes'];
+            if (empty($visible_langcodes['en-us'])){
+                return false;
+            }
+        } catch (\Exception $e){
+            \Drupal::logger('general')->info(" coupon block for USA is not activated", []);
+            return false;
+        }
+    }
+
+    return $coupon_status;
+}
+
+function create_test_users(){
+    for ($i = 1000; $i < 6000; $i++){
+
+        try {
+                $email = "bam_test_user" . $i . "@bam.com";
+                $password = "xgXVM@LNo2";
+                $user = User::create([
+                            'name' => $email,
+                            'mail' => $email,
+                            'status' => 1, 
+                            'field_firstname' => 'test',
+                            'field_lastname' => "test",
+                            'field_city' =>  '',
+                            'field_province' => '',
+                            'field_postalcode' => "",
+                            'field_postal_code_ext' => "",
+                            'field_gender' => "F",
+                            'field_bday' => "",
+                            'field_fbid' => "",
+                            'field_optin' => "",
+                            'field_source' => "tastyrewards",
+                            'field_ccid' => "",
+                            'field_ip_address' => getIPaddress(),
+                            'field_user_agent' => substr($_SERVER['HTTP_USER_AGENT'], 0, 255)
+                ]);
+                $user->setPassword($password);
+
+                $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+                $date = date('Y-m-d H:i:s');
+                $user->set("field_created_date", $date);
+
+                $user->set("langcode", $language);
+                $user->set("preferred_langcode", $language);
+                $user->set("preferred_admin_langcode", $language);
+
+                $user->save();
+
+                
+            } catch (\Exception $e) {
+                $status = FALSE;
+                $errors['form'] = t('Oops, there is an issue. User could not be created');
+                $route = '';
+            }
+    }
+
+}
+
+
+function unblock_usa_users(){
+
+    $sql = "SELECT uid FROM `users_field_data` where (preferred_langcode = 'en-us' or preferred_langcode = 'es-us') and status = 0 limit 500";
+    try{
+        $select = \Drupal::database()->query($sql);
+        $result = $select->fetchAll();
+        if (empty($result)) return;
+    } catch (\Exception $e) { 
+        $channel = "general";
+        $message = " Users syncing SQL query error ";
+        $context = [ ];
+        \Drupal::logger($channel)->info($message, $context);
+        return;
+    }
+    $count = 0;
+    foreach ($result as $key => $obj) {
+        $count++;
+        $user = user_load($obj->uid);
+        $user->set('status', 1);
+        $user->save();
+    }
+
+    $channel = "general";
+    $message = $count . " USA users have been unblocked";
+    $context = [ ];
+    \Drupal::logger($channel)->info($message, $context);
+}
+
+function syncPollInfo(){
+    /*
+    DROP TABLE IF EXISTS `poll_vote_flag`;
+    CREATE TABLE IF NOT EXISTS `poll_vote_flag` (
+      `pid` int(10) NOT NULL,
+      `uid` int(10) NOT NULL,
+      `hostname` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+      `synced` tinyint(2) NOT NULL DEFAULT '0',
+      PRIMARY KEY (`pid`,`uid`,`hostname`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+     */
+    $sql = "SELECT chid, pid, uid, hostname, `timestamp` FROM `poll_vote` as pv WHERE NOT EXISTS ( SELECT 1 from `poll_vote_flag` WHERE pid = pv.pid AND uid = pv.uid AND hostname = pv.hostname ) LIMIT 100"; // how do we flag this?
+
+        try{
+            $select = \Drupal::database()->query($sql);
+            $result = $select->fetchAll();
+        } catch (\Exception $e) { 
+            $channel = "general";
+            $message = " Poll syncing SQL query error ";
+            $context = [ ];
+            \Drupal::logger($channel)->info($message, $context);
+            return;
+        }
+
+        $country_code = 'ca'; // Contest only exist for Canada
+        $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+        $SFMC_Service->init_api($country_code);
+        $sfmc_process = 0;
+        $sfmc_success = 0;
+
+        foreach ($result as $key => $value) {
+            $sfmc_process++;
+            try{
+                $pollFields = PollFieldsSFMC($value);
+                if (empty($pollFields))
+                    continue;
+                $response = $SFMC_Service->syncPoll($pollFields, $country_code);
+                if ($response){
+                    $sfmc_success++;
+                }
+
+            } catch (\Exception $e){
+                $channel = "general";
+                $message = " Poll syncing SF API call error ";
+                $context = [ ];
+                \Drupal::logger($channel)->info($message, $context);
+                continue;
+            }
+
+            $fields = array('pid', 'uid', 'hostname', 'synced');
+              $query = \Drupal::database()->insert('poll_vote_flag')
+                       ->fields($fields);
+              $data = array($value->pid, $value->uid, $value->hostname, 1);
+                $query->values(array_combine($fields, $data));
+              $query->execute();
+
+            // $contestFields = ContestFieldsSFMC($value);
+        }
+
+        if ($sfmc_success >= 0){
+            $channel = "general";
+            $message = "Sync Poll  Processed  $sfmc_success / $sfmc_process";
+
+            $context = [ ];
+            \Drupal::logger($channel)->info($message, $context);
+        }
+}
+
+function PollFieldsSFMC($poll_row){
+    $account = user_load($poll_row->uid);
+    if (empty($account))
+        return [];
+    $langcode = $account->get('preferred_langcode')->value;
+    // Get the choice name from the chid
+    $sql = "SELECT choice from poll_choice_field_data where id =  " . $poll_row->chid . "
+            AND langcode LIKE '" . $langcode . "'";
+    $select = \Drupal::database()->query($sql);
+    $result = $select->fetchAll();
+    $choice = $result[0]->choice;
+
+    // Get the poll name from the pid
+    $sql = "SELECT question from poll_field_data where id =  " . $poll_row->pid . "
+            AND langcode LIKE '" . $langcode . "'";
+    $select = \Drupal::database()->query($sql);
+    $result = $select->fetchAll();
+    $pollName = $result[0]->question;
+    
+    $email = $account->get('mail')->value;
+
+    $array = array();
+    $array[0]['keys'] = array();
+    $array[0]['values'] = array();
+
+    $array[0]['keys']['EmailAddress'] = $account->get('mail')->value;;
+    $array[0]['keys']['Poll Name'] = $pollName;
+    $array[0]['keys']['hostname'] = $poll_row->hostname;
+    $array[0]['values']['Enter Date'] = date("F d, Y h:i:s A", $poll_row->timestamp) ;
+    $array[0]['values']['Choice'] = $choice;
+    
+    $country = 'CA';
+    if ($langcode == 'en-us' || $langcode == 'es-us') $country = 'USA';
+    $array[0]['values']['Country'] = $country;
+
+   
+    return $array;
+
+
+}
+
+function set_sourceid_numbers(){
+    $yesterday = date('Y-m-d',strtotime("-1 days"));
+    $obj = new ContentExport();
+    $obj->setCountBySourceID($yesterday, 'canada');
+    $obj->setCountBySourceID($yesterday, 'usa');
+}
+
+function cloud_storage_export(){
+    try{
+        $obj = new ContentExport();
+        $obj->exportContests('ca');
+        $obj->exportUsers();
+
+    } catch(\Exception $e){
+        log_var("", "export for cloud storage failed", "azcopy");
+    }
+}
+
+function reSyncContestInfo(){
+    \Drupal::logger('cron-scheduledTasks')->info("Start running reSyncContestInfo", []);
+    // Go through each row of pepsi_reg_contest table.
+    //$sql = "SELECT * from pepsicontest_reg_contest  WHERE synced != 1  ORDER BY regdate DESC LIMIT 350";
+
+    $date = date("Y-m-d", strtotime("-1 month"));
+
+    $ET_time = new DateTime("now", new DateTimeZone('America/New_York') );
+    $time =  $ET_time->format('H:i:s');
+    $limit = 100;
+    if ($time > "00:00:00" && $time < "06:00:00") {
+        $limit = 1000;
+        if ($time > "01:00:00" && $time < "04:00:00") {
+            $limit = 2000;
+        }
+    }
+
+    $sql = "SELECT DISTINCT contest_id, enterdate FROM pepsicontest_reg_contest WHERE contest_id > 0 AND email > '' AND enterdate > '$date' AND synced = 0 limit 20";
+    $select = \Drupal::database()->query($sql);
+    $contests = $select->fetchAll();
+
+    $country_code = 'ca'; // Contest only exist for Canada
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    $SFMC_Service->init_api($country_code);
+    $sfmc_process = 0;
+    $sfmc_success = 0;
+
+
+    foreach ($contests as $contest) {
+
+        $contest_id = $contest->contest_id;
+        $enterdate = $contest->enterdate;
+
+        $sql = "SELECT * FROM pepsicontest_reg_contest  WHERE contest_id = $contest_id AND email > '' AND enterdate = '$enterdate' AND synced = 0 limit $limit";
+
+
+        $select = \Drupal::database()->query($sql);
+        $result = $select->fetchAll();
+
+        foreach ($result as $key => $value) {
+            if ($value->synced != 0) continue;
+            $sfmc_process++;
+            $contestFields = ContestFieldsSFMC($value);
+            $country_code =  'ca';
+            if ($value->language == 'en-us' || $value->language == 'es-us') $country_code = 'usa';
+            try{
+                $response = $SFMC_Service->syncContest($contestFields, $country_code);
+                if ($response){
+                    $sfmc_success++;
+                }
+            } catch (\Exception $e) { 
+                $channel = "cron-scheduledTasks";
+                $message = " Contest syncing error occured ";
+                    $context = [ ];
+                    \Drupal::logger($channel)->info($message, $context);
+                continue;
+            }
+            // $query = \Drupal::database()->update('pepsicontest_reg_contest');
+            \Drupal::database()->update('pepsicontest_reg_contest')
+            ->fields([
+                'synced' => 1,
+            ])
+            ->condition('contest_id',$value->contest_id)
+            ->condition('email',$value->email)
+            ->condition('enterdate',DATE($enterdate))
+            ->execute();
+
+        }
+
+        unset($result);
+
+    }
+
+        if ($sfmc_success > 0){
+            $channel = "sf-synchronization";
+            $message = "Sync Contest  Processed  $sfmc_success / $sfmc_process";
+
+            $context = [ ];
+            \Drupal::logger($channel)->info($message, $context);
+        }
+
+}
+
+function ContestFieldsSFMC($contest_row){
+    $array = array();
+    $array[0]['keys'] = array();
+    $array[0]['values'] = array();
+    $array[0]['keys']['EmailAddress'] = $contest_row->email;
+    $array[0]['keys']['ContestName'] = $contest_row->contest_name;
+    $array[0]['keys']['Enter Date'] = $contest_row->enterdate;
+    $array[0]['values']['FirstName'] = $contest_row->first_name;
+    $array[0]['values']['LastName'] = $contest_row->last_name;
+    $array[0]['values']['Gender'] = $contest_row->gender;
+    $array[0]['values']['PostalCode'] = $contest_row->postalcode;
+    $array[0]['values']['Province'] = $contest_row->province;
+    $array[0]['values']['Language'] = $contest_row->language;
+    $array[0]['values']['Registration Date'] = $contest_row->regdate;
+    $array[0]['values']['IP Address'] = $contest_row->user_ip;
+    $array[0]['values']['User Agent'] = $contest_row->user_agent;
+    $array[0]['values']['Nomember'] = $contest_row->nomember;
+    $array[0]['values']['Optin'] = $contest_row->contest_optin;
+    $array[0]['values']['Bonus'] = $contest_row->bonus;
+    $array[0]['values']['City'] = $contest_row->city;
+    // $array[0]['values']['Contest Id'] = $contest_row->contest_id;
+    // $array[0]['values']['User Id'] = $contest_row->user_id;
+    return $array;
+}
+
+function reSyncUserLoginActivities(){
+    
+        $sql = "SELECT uid, login, status FROM user_activities WHERE STATUS = 0 limit 10000";
+
+        $select = \Drupal::database()->query($sql);
+                
+        $nosyc_users = $select->fetchAll();
+        
+        foreach ($nosyc_users as $nosyc_user) {
+            $account =  user_load($nosyc_user->uid);
+            if (EpsilonLogin($account)) {
+                \Drupal::database()->update('user_activities')
+                    ->condition('uid' , $nosyc_user->uid)
+                    ->fields(['status' => 1])->execute(); 
+            }
+            else{
+                \Drupal::database()->update('user_activities')
+                    ->condition('uid' , $nosyc_user->uid)
+                    ->fields(['status' => 2])->execute(); 
+
+            }
+        }
+        drupal_set_message("Sync processing: Epsilon login activities processed", 'status');
+}
+
+function SyncActivationStatus(){
+    
+        $date = date('Y-m-d H:i:s');
+        
+        $sql = "SELECT uid, sync_marketo_status  FROM user_activation_cron WHERE sync_marketo_status = 0 limit 5000";
+
+        $select = \Drupal::database()->query($sql);
+                
+        $nosyc_users = $select->fetchAll();
+        
+        foreach ($nosyc_users as $nosyc_user) {
+            $account =  user_load($nosyc_user->uid);
+            
+            if ( $account->isActive() ) {
+                if (!$account->get('field_activation_date')->value) {
+                    $crddate = format_date($account->created->value, 'custom', 'Y-m-d H:i:s');
+                    $account->set('field_activation_date',$crddate);
+                    $account->save(); 
+                }
+            }
+            //Marketo Connection to be removed
+            //MarketoSubscribe($account);
+            
+            \Drupal::database()->update('user_activation_cron')
+                    ->condition('uid' , $nosyc_user->uid)
+                    ->fields(['sync_marketo_status' => 1,'sync_marketo_date' => $date])
+                    ->execute(); 
+
+        }
+        drupal_set_message("Sync ActivationStatus process: Marketo sync finished", 'status');
+}
+
+
+function SyncFixOptin(){
+    
+        $date = date('Y-m-d H:i:s');
+        
+        $sql = "SELECT uid, sync_marketo_status  FROM user_reoptin_cron WHERE sync_marketo_status = 0 limit 1000";
+
+        $select = \Drupal::database()->query($sql);
+                
+        $nosyc_users = $select->fetchAll();
+        
+        foreach ($nosyc_users as $nosyc_user) {
+            $account =  user_load($nosyc_user->uid);
+            $account->set('field_optin',true);
+            $account->save(); 
+            
+            //Marketo Connection to be removed
+            //MarketoSubscribe($account);
+            
+            \Drupal::database()->update('user_reoptin_cron')
+                    ->condition('uid' , $nosyc_user->uid)
+                    ->fields(['sync_marketo_status' => 1,'sync_marketo_date' => $date])
+                    ->execute(); 
+
+        }
+        drupal_set_message("Sync Reoptin process: Marketo sync finished", 'status');
+}
+
+function deleteOldSourceID(){
+    $select = "SELECT    `field_marketoid_value`, `entity_id`  from `user__field_marketoid`  WHERE `field_marketoid_value` LIKE '%CA_PEPSI_TASTYREWARDS_SIGNUP%'";
+    $select = \Drupal::database()->query($select);
+    $marketo_fields = $select->fetchAll();
+
+    if (empty($marketo_fields)){
+        return;
+    }
+
+    try{
+
+        foreach ($marketo_fields as $field) {
+            $account =  user_load($field->entity_id);
+            $account->set('field_marketoid', '');
+            $account->save(); 
+        }
+
+
+        $sql = "UPDATE  `user__field_marketoid` SET `field_marketoid_value` = '' WHERE `field_marketoid_value` LIKE '%CA_PEPSI_TASTYREWARDS_SIGNUP%'";
+        $result = \Drupal::database()->query($sql);
+        return $result;
+
+    } catch (\Exception $e) { 
+        $message = " There was an error in deleteing old sourceID ";
+            $context = [ ];
+            \Drupal::logger($channel)->info($message, $context);
+    }
+
+    return;
+}
+
+function syncSfmcUsaUsers(){
+    $obj = new ContentExport();
+    $obj->syncSfmcUsers();
+}
+
+function reSyncUserInfo($user_id = null){
+
+    //deleteOldSourceID();
+    
+    if (isset($user_id)){
+        $where = " users_field_data.langcode in ('en-us', 'es-us') AND  users_field_data.uid = " . $user_id ;
+    }else{
+        $where = " users_field_data.langcode in ('en-us', 'es-us') AND  users_field_data.uid > 0 ";
+    }
+
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    // $sourceID = $SFMC_Service->get_config()->get('sfmcservices_sourceID');
+    // Use the new Source id
+    
+    
+        $sql = "SELECT users_field_data.uid AS uid, users_field_data.status AS STATUS, user__field_marketoid.field_marketoid_value AS field_marketoid_value, user__field_epsilonid.field_epsilonid_value
+  FROM users_field_data
+LEFT JOIN user__field_marketoid ON users_field_data.uid = user__field_marketoid.entity_id AND (user__field_marketoid.deleted = '0' AND user__field_marketoid.langcode = users_field_data.langcode)
+LEFT JOIN user__field_epsilonid ON users_field_data.uid = user__field_epsilonid.entity_id AND (user__field_epsilonid.deleted = '0' AND user__field_epsilonid.langcode = users_field_data.langcode)
+LEFT JOIN user__field_province ON users_field_data.uid = user__field_province.entity_id AND (user__field_province.deleted = '0' AND user__field_province.langcode = users_field_data.langcode)
+WHERE " . $where . "
+AND (
+     (user__field_marketoid.field_marketoid_value IS NULL )
+) LIMIT 1000";
+
+
+        $select = \Drupal::database()->query($sql);
+        $nosyc_users = $select->fetchAll();
+
+        
+        $epsilonprocess = 0;
+        $epsilonsuccess   = 0;
+        $sfmc_process = 0;
+        $sfmc_success   = 0;
+        $sfmc_failed   = 0;
+        
+        foreach ($nosyc_users as $nosyc_user) {
+            $account =  \Drupal\user\Entity\User::load($nosyc_user->uid);
+
+            $prov = $account->get('field_province')->value;
+            $pcode = $account->get('field_postalcode')->value;
+            $source = $account->get('field_source')->value;
+
+            
+            $prov_changed = false;
+            
+
+            $preferred_lang = $account->get('preferred_langcode')->value;
+
+            $registrationInfo = get_registration_source($source , $preferred_lang );
+            $sourceID = $registrationInfo['sourceID'];
+            // Some users have empty sourceID
+
+            
+                
+            if (!$nosyc_user->field_marketoid_value ) {
+                $sfmc_process++;
+                //Call Marketo subscribe
+                if (!$nosyc_user->field_marketoid_value){
+                    //Call SF subscribe 
+                    $result = sfmcservices_subscribe($account, $source);
+                    $sfmc_failed++;
+                    if ($result){
+                        $account->set('field_marketoid', $sourceID);
+                        $account->save(); 
+                        $sfmc_success++;
+                        $sfmc_failed--;
+                    }
+                }
+                
+                // if ($account->get('field_marketoid')->value > 0) $sfmc_success++;
+            }
+        }
+        // drupal_set_message("Sync processing: Salesforce  Processed $sfmc_success /  $sfmc_process .\n Failed : $sfmc_failed", 'status');
+
+        if ($sfmc_success > 0){
+            $channel = "sfmc";
+            $message = "Sync processing: Salesforce  Processed  $sfmc_success / $sfmc_process";
+
+            $context = [
+                          '%username' => $account->get('name')->value
+            ];
+            \Drupal::logger($channel)->info($message, $context);
+        }
+    
+}
+
+function is_recipe_landingpage(){
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  if ($current_path == "/recipes") {
+      return true;
+   }
+   return false;
+}
+
+function is_recipe_category_page(){
+  $current_path = \Drupal::service('path.current')->getPath();
+  $route_name =  \Drupal::routeMatch()->getRouteName();
+  if (strpos($route_name, "pepsibam.recipe.category") !== false   
+       || strpos($route_name, "pepsibam.recipe.subcategory") !== false ) {
+      return true;
+   }
+   return false;
+}
+
+function get_recipe_categories(){
+    return ContentQueries::instance()->find_recipe_categories();
+}
+
+
+function update_recipe_tables(){
+    return ContentQueries::instance()->update_pepsi_recipes_table();
+}
+
+function get_category_by_basename($basename){
+    return ContentQueries::instance()->find_category_by_url($basename);
+}
+
+function is_superbowl_coupon(){
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    $current_path = \Drupal::service('path.current')->getPath();
+    if (strpos($route_name, 'pepsibam.brands.coupon') !== false 
+        && strpos($current_path, "cheetossuperbowl") !== false ){
+        return true;
+    }
+    return false;
+}
+
+function pepsibam_user_login($account) {
+    //Marketo Connection to be removed
+    //have to check if thisi is needed for SSF
+    
+
+    $marketo_id = $account->get('field_marketoid')->value;
+    $epsilon_id = $account->get('field_epsilonid')->value;
+    $marketo_cookie = $account->get('field_marketocookie')->value;
+    //drupal_set_message(t('USer Logged'), 'error');
+    
+    
+    //Call Marketo Registration API is still user have no MarketoID
+    if (!$marketo_id){
+        //If user have no marketo_Id,  have to create a Marketo Lead, get a new Id from there and save it in a user profile.
+        //Creating an array with all information needed to send Marketo. email will be uses as key by default
+        //Marketo Connection to be removed
+         //$marketo_id = MarketoSubscribe($account);
+    }
+
+}
+
+
+function pepsibam_views_pre_view($view, $display_id, &$args) {
+    //\Drupal::service('page_cache_kill_switch')->trigger();
+    //$view
+    
+    //\Doctrine\Common\Util\Debug::dump($view->id());
+    
+    
+    if ($view->id() == 'recipes') {
+        //$results = $view->execute();
+        //echo "<pre>";
+        //\Doctrine\Common\Util\Debug::dump($args[0]);
+        //echo "</pre>";
+        if (isset($args[0])){
+            if (!searchRecipeTaxonomy($args[0])) {
+                $args[0] = null;
+                $view->execute($display_id);
+                $view->setTitle('NotFound'); 
+                //drupal_set_message(t('No result found'), 'error');
+            }
+        }
+        else{
+            
+        }
+    }else if ($view->id() == 'articles') {
+
+        if (isset($args[0])){
+            if (!searchArticleTaxonomy($args[0])) {
+                $args[0] = null;
+                $view->execute($display_id);
+                $view->setTitle('NotFound'); 
+                //drupal_set_message(t('No result found'), 'error');
+            }
+        }
+    }
+    
+}
+
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function pepsibam_preprocess_block(array &$variables) {
+  // Empty the block local_tasks_block on pages login, reset password
+  // and register for removing corresponding tabs on these pages.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $plugin_id = $variables['elements']['#plugin_id'];
+  $routes = ['user.login', 'user.pass', 'user.register'];
+  if (in_array($route_name, $routes) && 'local_tasks_block' === $plugin_id) {
+    $variables['content'] = [];
+  }
+}
+
+
+function pepsibam_preprocess_html(array &$variables) {
+
+  $variables['fbappid'] = \Drupal\Core\Site\Settings::get("fbappid");
+  addRobotsMetaForGossipArticles($variables);
+  if (\Drupal::routeMatch()->getRouteName() == 'pepsibam.iframe.register') {
+    $variables['page_top'] = NULL;
+    if (isset($variables['html']['page_top'])) {
+      $variables['page_top'] = $variables['html']['page_top'];
+      unset($variables['html']['page_top']);
+    }
+  }
+ 
+}
+
+//function pepsibam_preprocess_links__language_block(&$vars) {
+//    \Doctrine\Common\Util\Debug::dump("MyLinks");
+//    \Doctrine\Common\Util\Debug::dump($vars['links']);
+//    
+//    $current_path = \Drupal::service('path.current')->getPath(); // Gets internal path - for eg /node/29.
+//    $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path, 'en');
+//    
+//    \Doctrine\Common\Util\Debug::dump($path_alias);
+//    
+//    /*foreach ($vars['links'] as $i => $link) {
+//        $url = $link['link']['#url'];
+//        \Doctrine\Common\Util\Debug::dump($url->toRenderArray());
+//        $lmanager = \Drupal::service('path.alias_manager');
+//        $result = $lmanager->getAliasByPath('/node/171','fr');
+//        $mylink = \Drupal\Core\Link::fromTextAndUrl(t('Open Project'), $url);
+//        \Doctrine\Common\Util\Debug::dump($mylink->toString());
+//    }
+//    */
+//    //$linkLanguage = $link['link']['#options']['language'];
+//    //if ($currentLanguageCode == $linkLanguage->get('id')) {
+//    
+//}
+
+
+
+
+function addRobotsMetaForGossipArticles(array &$variables){
+    
+    $node = \Drupal::routeMatch()->getParameter('node');// Load the node entity from current route
+    $route = \Drupal::routeMatch()->getRouteName();
+    //\Doctrine\Common\Util\Debug::dump($route);
+    
+    if ($node) {
+
+        if ($node->getType() === 'article') {// Check if node type is basic page
+            $is_gossip = $node->get('field_article_gossip')->value;
+            if ($is_gossip == "1"){
+                $robots = [
+                    '#tag' => 'meta',
+                    '#attributes' => [
+                        'name' => 'robots',
+                        'content' => 'nofollow',
+                    ],
+                ];
+                $variables['page']['#attached']['html_head'][] = [$robots, 'robots'];
+            }          
+        }
+        
+    }
+    if ($route){
+        if($route == "pepsibam.coupon"){
+            $title = [
+                '#tag' => 'meta',
+                '#attributes' => [
+                    'name' => 'og:title',
+                    'content' => t('Access Tasty Rewards coupons here!'),
+                ],
+            ];
+            $description = [
+                '#tag' => 'meta',
+                '#attributes' => [
+                    'name' => 'og:description',
+                    'content' => t('Did you know you could get coupons for some of your favourite snacks? Check out Tasty Rewards if you want yours!Sign up and get coupons from brands like Lay’s®, Doritos®, Quaker®, and more!'),
+                ],
+            ];
+            $image = [
+                '#tag' => 'meta',
+                '#attributes' => [
+                    'name' => 'og:image',
+                    'content' => t('https://s3.amazonaws.com/static.tastyrewards.ca/images/coupon/tasty-rewards_coupon_en.png'),
+                ],
+            ];
+            $variables['page']['#attached']['html_head'][] = [$title, 'title'];
+            $variables['page']['#attached']['html_head'][] = [$description, 'description'];
+            $variables['page']['#attached']['html_head'][] = [$image, 'image'];
+        }
+    }
+    
+    
+}
+
+
+function pepsibam_preprocess_page(&$variables) {
+
+   //$tempstore = \Drupal::service('tempstore.private')->get('pepsibam');
+   
+   //\Doctrine\Common\Util\Debug::dump($tempstore->get('username'));
+   
+   //$variables['#cache']['contexts'][] = 'user';
+   
+
+    $variables["language"] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    // only for the  homepage and if the user is logged in
+    $user_id = \Drupal::currentUser()->id();
+    if ($variables['is_front'] && $user_id > 0){
+        $answered_poll = getCompletedPoll($user_id);    //get all the completed polls ID for specific user
+        $poll_id = getOneActivePoll($answered_poll);    // get one active poll that the user does not answered yet
+        $variables["poll_id"] = $poll_id; 
+        
+    }
+
+} 
+/*
+function pepsibam_user_logout() {
+    $tempstore = \Drupal::service('tempstore.private')->get('pepsibam');
+    $tempstore->delete('username');
+} 
+*/
+function getCurrentUserName(){
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    return $user->field_firstname->value;
+}
+
+function getCurrentUser(){
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    return $user;
+}
+
+function getCurrentUserNewsletterOptin(){
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    return $user->field_optin->value;
+}
+
+function getuserSessionName(){
+    $account = \Drupal::currentUser();
+    $tempstore = \Drupal::service('tempstore.private')->get('pepsibam');
+    $username = null;
+    if ($account->isAuthenticated()){
+        //Check if Exist session 'username' for this user 
+        if (!$tempstore->get('username')) {
+            //create session with the user name get from DB
+            $user = \Drupal\user\Entity\User::load($account->id());
+            $username = $user->field_firstname->value;
+            $tempstore->set('username', $username);
+        }
+        else{
+            $username = $tempstore->get('username');           
+        }
+    }
+    else {
+        $tempstore->delete('username');
+    }
+    return $username;
+}
+
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+
+function pepsibam_preprocess_menu(&$variables){
+   // \Drupal::service('page_cache_kill_switch')->trigger(); // Mark this page as being uncacheable.
+    
+       //$variables["user_firstname"] = getCurrentUserName();
+       //var_dump($variables['menu_name']);
+       
+       if (isset($variables['menu_name']) && $variables['menu_name'] == "main") {
+            $user = getCurrentUser();
+            //\Doctrine\Common\Util\Debug::dump($user->preferred_langcode->value); 
+
+            $variables["user_firstname"] = $user->field_firstname->value;
+            $variables["user_preferred_lang"] = $user->preferred_langcode->value;
+            $variables['doShowPopup'] = doShowPopup();
+
+            $variables["user_newsletter_optin"] = getCurrentUserNewsletterOptin();
+
+            // Get context language.
+            $language = Drupal::languageManager()->getCurrentLanguage()->getId();
+
+            if (isset($variables['items'])) {
+                pepsibam_menu_item_cleanup($variables['items'], $language);
+            }
+            if ($language == 'en-us' || $language == 'es-us'){
+                $ssoconfig = \Drupal::config('ssoconfig_us.adminsettings');
+            }
+            else{
+                $ssoconfig = \Drupal::config('ssoconfig.adminsettings');
+            }
+            
+
+            $variables['shoplink'] = $ssoconfig->get('snack_url') . '/productlist';
+            $variables['changepassword'] = $ssoconfig->get('snack_url') . '/changepassword';
+            $session = \Drupal::request()->getSession();
+            $variables['socialsource'] = $social = $session->get('socialsource');
+
+       }
+       $variables['language'] = \Drupal::languageManager()->getCurrentLanguage();
+
+       $variables['#cache']['contexts'][] = 'user';
+
+    //search the user name to include in the main menu when the user is logged in
+    /*if (isset($variables['menu_name']) && $variables['menu_name'] == 'main') {
+        $user_role = \Drupal::currentUser()->getRoles()[0];
+        if ($user_role === "authenticated"){
+            $user_id = \Drupal::currentUser()->id();
+            $results = views_get_view_result('user_firstname', 'page_1', $user_id);
+            $firstname = $results[0]->_entity->get("field_firstname")->getValue()[0]["value"];
+            $variables["user_firstname"] = $firstname;
+        }
+
+    }*/
+}
+
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ */
+function pepsibam_preprocess_views_view_unformatted(&$variables){
+    
+    $variables["language"] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    //if ($variables['view']->element['#name'] === 'recipes'){
+    if ($variables['view']->id() === 'recipes'){
+        $variables['ratings'] = array();
+        foreach ($variables['view']->result as $key => $value) {    
+            $total = 0;
+            $variables['ratings'][$value->nid] = getRecipeVote($value->nid, $total);
+        }
+
+    }
+}
+
+
+function pepsibam_preprocess_views_view_unformatted__articles(&$variables){
+
+    $results = views_get_view_result('articles_categories','page_1');   //get articles category
+    
+    get_categories($variables,$results,$variables["categ_id"],$variables["categ_name"]);    //get the categories from the view result
+   
+    $results = views_get_view_result('articles_categories','page_2');    //get brands category
+    
+    get_categories($variables,$results,$variables["categ_brand_id"],$variables["categ_brand_name"]);    //get the categories from the view result
+        
+}
+
+function pepsibam_preprocess_views_view_unformatted__recipes(&$variables){
+
+    $results = views_get_view_result('recipes_categories','page_1');
+
+    get_categories($variables,$results,$variables["categ_id"],$variables["categ_name"]);    //get the categories from the view result
+    
+    $results = views_get_view_result('recipes_categories','page_2');
+
+    get_categories($variables,$results,$variables["categ_brand_id"],$variables["categ_brand_name"]);    //get the categories from the view result
+        
+    
+    $results = views_get_view_result('recipes_categories','page_3');
+
+    get_categories($variables,$results,$variables["categ_occasions_id"],$variables["categ_occasions_name"]);    //get the categories from the view result
+    
+}
+
+//get the categories from the view result
+function get_categories(&$variables,$results,&$ids, &$names){
+    
+    $lang = $variables["language"];
+
+    $categories_id = array();
+    $categories_name = array();
+    
+    foreach ($results as $item) {
+        array_push($categories_id, $item->_entity->getTranslation($lang)->id());
+        array_push($categories_name , ucwords(strtolower($item->_entity->getTranslation($lang)->getName())));
+        
+    }
+
+    $ids = $categories_id;
+    $names = $categories_name;
+   
+}
+
+
+function pepsibam_preprocess_node(&$variables){
+    
+    //if the node is recipe, get the rating vote
+    if (!empty($variables['node']) && $variables['node']->getType() == 'recipe') {
+        
+        $total = 0;
+        $variables["vote_average"]  = getRecipeVote($variables['node']->id(), $total);
+        $variables["vote_total"] = $total;
+
+    }  
+    $variables["language"] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables["current_path_w"]  = \Drupal::service('path.current')->getPath();
+}
+
+function send_curl_request($url, $data) {
+    $curl = curl_init($url);
+
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    
+    // get the environment
+    $env =  \Drupal\Core\Site\Settings::get("environment");
+    /*if ($env == "dev"){
+        $user="wsdev";
+        $password="F~tmven`Z\$A4;<jW";
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);   
+        curl_setopt($curl, CURLOPT_USERPWD,  $user.":".$password);
+    }else{*/
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_ANY); 
+    //}
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    $json_response = curl_exec($curl);
+    curl_close($curl);
+    return $json_response;
+}
+
+//get the rating vote
+function getRecipeVote($node_id, &$total){
+        $query = \Drupal::database()->select('rating', 'rt');
+        $query->condition('node_id', $node_id);
+        $query->fields('rt', array('vote_value'));
+        
+        $result = $query->execute();
+        
+        $sum = 0;
+        $total = 0;
+        foreach($result as $row) {
+            $sum +=  $row->vote_value;
+            $total ++;
+        }
+        if ($total == 0){
+            return 0;
+        }else{
+           return round($sum/$total); 
+        }
+        
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pepsibam_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  
+  /*if ('user.login' !== \Drupal::routeMatch()->getRouteName()) {
+    return;
+  }*/
+  $form['actions']['submit']['#attributes']['class'][] = 'tr-login';
+  $form['#validate'][] = 'pepsibam_user_login_final_validate';
+
+    
+  $form['name']['#title'] = t('Email Address');
+  
+  // Wrap the form.
+  $form['#prefix'] = '<div class="wrapper-nice-login login-form">';
+  $form['#suffix'] = '</div>';
+  $form['#attached']['library'][] = 'pepsibam/form';
+
+  // Add reset password link.
+  $link = Link::createFromRoute(t('Forgot your password?'), 'user.pass');
+  $link->getUrl()->setOption('attributes', ['class' => ['nice-login', 'nice-login-reset-password']]);
+  $form['pass']['#prefix'] = '<div class="nice-login-pass">' . $link->toString() . '</div>';
+
+  //add aria-labelledby
+  $form['name']['#prefix'] .= '<div id="edit-name--description"></div>';
+  $form['pass']['#prefix'] .= '<div id="edit-pass--description"></div>';
+
+  $form['add_button'] = array(
+    '#type' => 'button',
+    '#value' => 'Facebook Connect',
+    '#attributes' => array(
+      'onclick' => "return false;",
+      'class' => ['fbconnect'],  
+    ),
+  );
+  
+
+  // Add create account link if user has permission.
+  $user_settings = \Drupal::configFactory()->get('user.settings');
+  if ($user_settings->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
+    $link = Link::createFromRoute(t('Create an account?'), 'user.register');
+    $link->getUrl()->setOption('attributes', ['class' => ['nice-login', 'nice-login-create-account']]);
+    $form['actions']['submit']['#suffix'] = '<div class="nice-login-create">' . $link->toString() . '</div>';
+  }
+
+    
+}
+
+
+/**
+ * Validate profile form
+ * Force form error if new email address matches current email address
+ *
+ */
+function pepsibam_user_login_final_validate($form, &$form_state)  {
+    //This function revaluate some error and set the messages according copy deck
+    $errors = $form_state->getErrors();
+    $email = $form_state->getValue('name');
+    $pass = $form_state->getValue('pass');
+    $remember_me = $form_state->getValue('remember_me');
+	$langcode = get_current_langcode($with_prefix = true);
+
+    
+    $current_lang = \Drupal::languageManager()->getcurrentLanguage()->getId();
+    //validate if user is canadian member
+    $canuser = user_load_by_mail($email);
+    if ($canuser) {
+        $usrlang = $canuser->get('preferred_langcode')->value;
+        if ($usrlang == 'en' ||  $usrlang == 'fr'){
+            $roles = $canuser->getRoles();
+            if (in_array('administrator', $roles) || in_array('reporting', $roles) || in_array('editor', $roles) ) {
+            
+            }else{
+                $form_state->setErrorByName('name', t("Looks like you're already a Canadian Tasty Rewards™ member! <a href='/" .$usrlang . "-ca/'><i>Switch countries to sign in</i></a>"));
+            }           
+        }
+    }
+            
+    //\Doctrine\Common\Util\Debug::dump($remember_me);
+    //exit;
+    $flood_config = \Drupal::config('user.flood');    
+    $limit = $flood_config->get('user_limit');
+    
+
+    
+//    echo "<pre>";
+    $flood_control_user_identifier = $form_state->get('flood_control_user_identifier');
+    $flood_control_triggered = $form_state->get('flood_control_triggered');
+//    \Doctrine\Common\Util\Debug::dump($flood_control_user_identifier);
+//    \Doctrine\Common\Util\Debug::dump($flood_control_triggered);
+//    echo "</pre>";
+          
+    //Redefine the error messages
+    if ($errors) {
+        //Validate if Email is well formatted
+        if (trim($email) == ''){
+            $form_state->clearErrors();    
+            // Blocked in user administration.
+            $form_state->setErrorByName('name', t('Oops, don’t forget to enter your email address.'));
+        }elseif (!\Drupal::service('email.validator')->isValid($email)){
+            $form_state->clearErrors();    
+            $form_state->setErrorByName('name', t('Oops, that doesn’t look like a valid email address.'));
+        }elseif (trim($pass) == ''){
+            $form_state->clearErrors();    
+            // Blocked in user administration.
+            $form_state->setErrorByName('name', t('Oops, don’t forget to enter your password.'));
+        }
+        elseif (user_is_blocked($form_state->getValue('name')) && ifUserDeleted($email)) {
+            $form_state->clearErrors();    
+            // Blocked in user administration.
+            $activatelink = Url::fromRoute('pepsibam.activationform', [],['absolute'=>true ])->toString();
+            $form_state->setErrorByName('name', t('Oops, looks like you need to reactivate your account. Please resend the activation email by clicking <a href=":activation">here</a>',array(':activation'=>$activatelink)));
+
+        }elseif (user_is_blocked($form_state->getValue('name'))) {
+            $form_state->clearErrors();    
+            // Blocked in user administration.
+            $activatelink = Url::fromRoute('pepsibam.activationform', [],['absolute'=>true ])->toString();
+            $form_state->setErrorByName('name', t('Oops, looks like you did not activate your account. Please check your emails or resend the activation email by clicking <a href=":activation">here</a>',array(':activation'=>$activatelink)));
+
+        }        
+        elseif (!$form_state->get('uid')){
+            $form_state->clearErrors();    
+            // Blocked in user administration.
+            if ($flood_control_triggered == 'user'){
+                $form_state->setErrorByName('name', t('There have been more than @count failed login attempts for this account. It is temporarily blocked. Try again in 1 hour or request a new password.', array('@count'=> $limit)));
+                                                        
+            } else {
+
+                if(in_array($langcode, ['en-ca', 'fr-ca'])){
+                $form_state->setErrorByName('name', t('Oops, looks like the email and password does not match our records.'));
+                } else {
+                    if (user_load_by_mail($email)){
+                        $form_state->setErrorByName('name', t('Oops, looks like the email and password does not match our records.'));
+                    } else {
+                        // This should normally be handled in the translation interface
+                        // at /admin/config/regional/translate but they have put in place
+                        // a security rule that bans html code so I'm adding the translation
+                        // directly from here for now.
+                        if ($langcode == 'en-us'){
+                            $form_state->setErrorByName('name', t('Oops, looks like you haven’t finished setting up an account.<br> <a href="javascript:void(0);" class="js-us-signup">Click here</a> to fix it'));
+                        } elseif ($langcode == 'es-us'){
+                            $form_state->setErrorByName('name', t('Ups, parece que aún no has acabado de configurar la cuenta. Haz <a href="javascript:void(0);" class="js-us-signup">clic aquí</a> para solucionarlo.'));
+
+            }
+        }
+                }
+            }
+        } 
+        
+    }
+    else {
+        $year = time() + 31536000; //set a year for remember
+        if($remember_me) {
+            setcookie('remember_me', $email, $year);
+        }
+        elseif(isset($_COOKIE['remember_me'])) {
+                $past = time() - 100;
+                setcookie('remember_me', null, $past);
+        }
+    }
+
+}
+
+function ifUserDeleted($email) {
+    if ($user = user_load_by_mail($email)){
+        $delete_date = $user->get('field_deleted_date')->value;
+        if ($delete_date != ""){
+           return true; 
+        }
+    }
+        
+    return false;
+}
+
+
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pepsibam_form_user_pass_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  /*if ('user.pass' !== \Drupal::routeMatch()->getRouteName()) {
+    return;
+  }*/
+
+  $form['name']['#title'] = t("Custom title");  
+    
+  // Wrap the form.
+  $form['#prefix'] = '<div class="wrapper-nice-login reset-password-form">';
+  $form['#suffix'] = '</div>';
+  $form['#attached']['library'][] = 'pepsibam/form';
+
+  // Add login link.
+  $link = Link::createFromRoute(t('Log in'), 'user.login');
+  $link->getUrl()->setOption('attributes', ['class' => ['nice-login', 'nice-login-login']]);
+  $form['actions']['submit']['#suffix'] = '<div class="nice-login-login">' . $link->toString() . '</div>';
+}
+
+
+function pepsibam_page_bottom(array &$page_bottom) {
+    $page_bottom['#attached']['drupalSettings']['pepsibam']['pepsilibrary']['fbappid'] = \Drupal\Core\Site\Settings::get("fbappid");
+    $page_bottom['pepsibam']['#attached']['library'][] = 'pepsibam/pepsilibrary';
+}
+
+function pepsibam_page_attachments_alter(array &$page) {
+  // Attach the flot asset on every page.
+  $page['#attached']['library'][] = 'pepsibam/pepsiMunchinlibrary';
+  
+  processMetaTags($page); //adjust metatags for views page
+
+}
+
+  /**
+   * For debug purposes
+   * 
+   */
+function save_to_watchdog($var, $varname, $save_config = false){
+    $channel = "general";
+        $dump = \Doctrine\Common\Util\Debug::dump($var);
+        $message = $varname . " --- has value ---  :\n " . $dump;
+        $context = [
+                      '%username' => 'current-user'
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+
+        if ($save_config){
+            $config = \Drupal::service('config.factory')->getEditable('mymodule.settings');
+            $config->set($varname, print_r($var, true) )
+              ->save();
+        }
+}
+
+//adjust metatags for views page
+function processMetaTags(&$page){
+
+    $meta =  $page['#attached']['html_head'];
+    foreach ($meta as $key => $value) {
+        
+            if (isset($value[0]["#attributes"]["name"]) && ($value[0]["#attributes"]["name"] == "description") ){
+                $desc_key = $key;
+            }elseif(isset($value[0]["#attributes"]["name"]) && ($value[0]["#attributes"]["name"] == "keywords") ){
+                $keywords_key = $key;
+            }
+            else {
+                if (isset($value[0]["#attributes"]["name"]) &&  ($value[0]["#attributes"]["name"] == "title") ){
+                    $type = $value[0]["#attributes"]["content"];
+
+                    if (strpos(strtolower($type),'life') !== false || strpos(strtolower($type),'vie') !== false){
+                        //var_dump($page['#attached']['html_head'][$key][0]["#attributes"]["content"]); 
+                        //var_dump($page['#attached']['html_head'][$desc_key][0]["#attributes"]["content"]);  
+//                        $meta_descrip = t("Be the life of the party with easy tips and tricks for entertaining, the latest entertainment news and gossip, and the most stylish life hacks.");
+                        $meta_descrip = t("Whether you’ve got a taste for easy snacking tips or entertaining ideas, we’ve got your eating inspiration right here.");
+                        $title_key = $key;
+                        $meta_title = t("Tips, Tricks & Assorted Snacktivities | Tasty Rewards");
+                    }else if (strpos(strtolower($type),'recipes') !== false || strpos(strtolower($type),'recettes') !== false){
+//                        $meta_descrip = t("From backyard BBQs to girls' night out, discover your next favourite recipe for a crowd of any size with the best meal ideas and healthy snacks.");
+                        $meta_descrip = t("Whether you’re snacking solo or entertaining a crowd, we’ve got you covered with all kinds of recipes from salty to sweet. New flavour sensations await.");
+                        $title_key = $key;
+                        $meta_title = t("Salty or Sweet Snacks & Meal Recipes | Tasty Rewards");
+                        $meta_keywords = t("recipes,tasty recipes,snacks");
+                    }else if (strpos(strtolower($type),'contest') !== false || strpos(strtolower($type),'concours') !== false){
+//                        $meta_descrip = t("From backyard BBQs to girls' night out, discover your next favourite recipe for a crowd of any size with the best meal ideas and healthy snacks.");
+                        $meta_descrip = t("Every month, don't forget to enter our new contest for a chance to win great prizes for you and your family!");
+                        $title_key = $key;
+                        $meta_title = t("Sign Up to Tasty Rewards and Enter to WIN! | Tasty Rewards");
+                        $meta_keywords = t("contests,free contests,freebies,giveaway");
+                    }else if (strpos(strtolower($type),'sign up') !== false || strpos(strtolower($type),"s'inscrire") !== false){
+                        $meta_descrip = t("Become a member of Tasty Rewards and get the best money-saving offers, contests, coupons, giveaways, and more from your favourite PepsiCo brands!");
+                        
+                    }else if (strpos(strtolower($type),'thank you') !== false || strpos(strtolower($type),'merci') !== false){
+                        $meta_descrip = t("Check your email to activate your account and guarantee your access to exclusive contests, free giveaways and more from your favourite PepsiCo brands.");
+                        
+                    }else if (strpos(strtolower($type),'forgot password confirmation') !== false || strpos(strtolower($type),'mot de passe oublié confirmation') !== false){
+                        $meta_descrip = t("We’ve sent an email for you to reset your password. Head back over to Tasty Rewards to check out the latest recipes, promotions and contests!");
+                        
+                    }else if (strpos(strtolower($type),'forgot password') !== false || strpos(strtolower($type),'mot de passe oubli') !== false){
+                        $meta_descrip = t("Forgot your Tasty Rewards password? No worries! Enter your email here and you’ll be back to entering the best contests and giveaways in no time.");
+                        
+                    }else if (strpos(strtolower($type),'search') !== false || strpos(strtolower($type),'recherche') !== false){
+                        $meta_descrip = t("Search here for the best recipes and foodie news, easy tips for entertaining, and exciting promotions and contests. We’ve got it all on Tasty Rewards!");
+                        
+                    }else if (strpos(strtolower($type),'unsubscribe confirmation') !== false || strpos(strtolower($type),'se désinscrire confirmation') !== false){
+                        $meta_descrip = t("Didn’t mean to unsubscribe? Go back to Tasty Rewards and subscribe to get the best contents and deals from your favourite PepsiCo brands.");
+                        
+                    }else if (strpos(strtolower($type),'unsubscribe') !== false || strpos(strtolower($type),'se désinscrire') !== false){
+                        $meta_descrip = t("We’re sad to see you go, but if you no longer wish to receive email updates from Tasty Rewards, unsubscribe here by entering your email address.");
+                        
+                    }else if (strpos(strtolower($type),'my account') !== false || strpos(strtolower($type),'mon compte') !== false){
+                        $meta_descrip = t("This is your Tasty Rewards Account page. Here you can edit your account information, change your password, and manage your email preferences.");
+                        
+                    }else if (strpos(strtolower($type),'coupons') !== false){
+                        $meta_descrip = t("Do you love saving money? Then don’t miss out on these coupons, discounts, and special offers created exclusively for Tasty Rewards Members!");
+                        $title_key = $key;
+                        $meta_title = t("Online Coupons, Discounts & Savings | Tasty Rewards");
+                        $meta_keywords = t("coupons,savings,discounts");
+                        
+                    }
+                }
+            }
+
+    }
+     if (isset($desc_key) && isset($meta_descrip)){
+        $page['#attached']['html_head'][$desc_key][0]["#attributes"]["content"] = $meta_descrip;
+
+    }
+    if(isset($title_key) && isset($meta_title)){
+        $page['#attached']['html_head'][$title_key][0]["#attributes"]["content"] = $meta_title;
+    }
+    if(isset($keywords_key) && isset($meta_keywords)){
+        $page['#attached']['html_head'][$keywords_key][0]["#attributes"]["content"] = $meta_keywords;
+    }
+
+}
+
+
+/*
+ *   MARKETO CALLS 
+ */
+/*** REMOVED
+function MarketoSubscribe($account){
+    
+    $marketoservice = \Drupal::service('marketoservices.apicall');
+    
+    $unsubscribe = false;
+    
+    if (!$account->get('field_optin')->value)
+        $unsubscribe = true;
+    
+    $lead = UserFieldsMarketo($account,$unsubscribe);
+    
+    
+    $leadresponse = $marketoservice->createOrUpdateLeads(array($lead));
+    
+    if ($leadresponse->getError()){
+        $channel = "general";
+        $message = "Marketo createOrUpdateLeads API fail for user %username ";
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    }
+    else {
+        if ($leadresponse->getStatus() == 'skipped') {
+            $channel = "general";
+            $message = "Marketo createOrUpdateLeads API fail,  for user %username, doesn't match fields ";
+            $context = [
+                          '%username' => $account->get('name')->value
+                   ];
+            \Drupal::logger($channel)->info($message, $context);
+        }
+        else {
+            $account->set('field_marketoid', $leadresponse->getId());
+            $account->save();
+            return $leadresponse->getId();
+        }
+    }
+    
+    return false;
+}
+ * 
+***/
+
+
+/*** REMOVED
+function setAssociateLead($id, $cookie){
+    
+    $marketoservice = \Drupal::service('marketoservices.apicall');
+    
+    $associatelead = $marketoservice->associateLead($id, $cookie);
+    
+    return $associatelead;
+}
+ * 
+ */
+
+
+/*** REMOVED
+function MarketoUnsubscribe($account) {
+
+    $marketoservice = \Drupal::service('marketoservices.apicall');
+    
+    $lead = UserFieldsMarketo($account, $unsubscribed = true );
+    
+    
+    $leadresponse = $marketoservice->createOrUpdateLeads(array($lead));
+    
+    if ($leadresponse->getError()){
+        $channel = "general";
+        $message = "Marketo createOrUpdateLeads API fail for user %username ";
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    }
+    else {
+        if ($leadresponse->getStatus() == 'skipped') {
+            $channel = "general";
+            $message = "Marketo createOrUpdateLeads API fail,  for user %username, doesn't match fields ";
+            $context = [
+                          '%username' => $account->get('name')->value
+                   ];
+            \Drupal::logger($channel)->info($message, $context);
+        }
+        else {
+            $account->set('field_marketoid', $leadresponse->getId());
+            $account->save();
+            return $leadresponse->getId();
+        }
+    }
+    
+    return false;    
+    
+}
+* 
+*/
+
+/*** REMOVED
+function MarketoEmailActivation($account,$resend = false) {
+    
+    $lang = $account->get('preferred_langcode')->value;
+    //$lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    if ($resend == true){
+        $campaignId = ($lang=='fr')?'1613':'1612';  //  Marketo Marketing activities: Drupal french api welcome email resend / Drupal english api welcome email resend
+    }
+    else{
+        $campaignId = ($lang=='fr')?'1763':'1762';  //  Marketo Marketing activities: Drupal Welcome email French / Drupal Welcome email english
+    }
+    
+    MarketoSyncAndEmail($account,$campaignId);
+            
+    return true;
+
+}
+* 
+*/
+
+/*
+$campaignId is the tempplate Id in Marketo, (Email template for Activation, Forgot Email, etc)
+ *  */
+
+/*** REMOVED
+function MarketoSyncAndEmail($account,$campaignId, $resend = false) {
+
+    
+    if ($resend) { //Only call to sync if user is asking for resending activation email
+        $marketoservice = \Drupal::service('marketoservices.apicall');
+
+        $lead = UserFieldsMarketo($account);
+
+        $leadresponse = $marketoservice->createOrUpdateLeads(array($lead));
+    }
+    //\Doctrine\Common\Util\Debug::dump($leadresponse);
+
+    //Call service to send email from Marketo
+    
+    $marketoserviceEmail = \Drupal::service('marketoservices_email_soap.apicall');
+    
+    $result = $marketoserviceEmail->postData($account->get('field_marketoid')->value,$campaignId);
+    
+    return true;
+}
+ * 
+ */
+
+
+/*** REMOVED
+function UserFieldsMarketo($account, $unsubscribed = false) { 
+    
+        $lead['email']        = $account->get('mail')->value;
+        $lead['firstName']    = $account->get('field_firstname')->value;
+        $lead['lastName']     = $account->get('field_lastname')->value;
+        $lead['city']         = $account->get('field_city')->value;
+        $lead['PostalCode']   = $account->get('field_postalcode')->value;
+        $lead['gender']       = $account->get('field_gender')->value;
+        $lead['dateOfBirth']  = $account->get('field_bday')->value;
+        $lead['facebookId']   = $account->get('field_fbid')->value;
+        $lead['LeadLanguage']     = $account->get('preferred_langcode')->value;
+        $lead['Country']          = 'CA';
+        $lead['State']            = $account->get('field_province')->value;
+        $lead['activationLink']   = $account->get('field_activationurl')->value;
+        $lead['leadSource']       = $account->get('field_source')->value;
+        $lead['EpsilonProfileID'] = $account->get('field_epsilonid')->value;
+        
+        if ($account->isActive()) 
+            $lead['deactivated'] = false;
+        else
+            $lead['deactivated'] = true;
+        
+        $lead['activationDate'] = $account->get('field_activation_date')->value;
+        
+        $lead['unsubscribed'] = $unsubscribed;
+        if ($unsubscribed){
+            $lead['unsubscribedReason'] = $account->get('field_deleted_reasons')->value;  
+        }
+        
+        $lead['blackListedTastyRewards'] = false;
+        if ($account->get('field_black_listed')->value) {
+            $lead['blackListedTastyRewards'] = $account->get('field_black_listed')->value;
+        }
+   return $lead;
+}
+*/
+
+
+/*
+ * EPSILON CALLS
+ * 
+ */
+
+function PepsiEmailSender($email, $key, $langcode, $params) {
+
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    //$module = ‘<module_name>’;
+    //$key = 'create_article';
+    $to = $email;
+    //$params['message'] = $entity->get('body')->value;
+    //$params['node_title'] = $entity->label();
+    $module = 'pepsibam';
+
+    $send = true;
+    $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+    if ($result['result'] !== true)
+        return false;
+    return true;
+    
+}
+
+/*
+function pepsibam_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+    
+    $route = \Drupal::request()->get(Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_NAME);
+    
+    drupal_set_message($route, 'error');
+    
+  // Add content type suggestions.
+    if ($route == 'pepsibam.iframe.register' || $route == 'pepsibam.iframe.register.processed') {
+      array_splice($suggestions, 1, 0, 'page__register');
+    }
+    
+    //\Doctrine\Common\Util\Debug::dump($route);
+
+}
+*/
+
+
+function pepsibam_theme(array $existing, $type, $theme, $path) {
+  return array(
+    'pepsibam_registration_template' => array(
+      'template' => 'registration',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_updateprofile_template' => array(
+      'template' => 'updateprofile',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_updateprofilepwd_template' => array(
+      'template' => 'updateprofilepwd',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_unsubscribe_template' => array(
+      'template' => 'unsubscribe',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_activationform_template' => array(
+      'template' => 'activation',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_resetpwdrequestform_template' => array(
+      'template' => 'resetpwdrequest',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_updatepassword_template' => array(
+      'template' => 'updatepassword',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_processed_template' => array(
+      'template' => 'processed',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_deleteprofile_template' => array(
+      'template' => 'deleteprofile',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'pepsibam_coupon_template' => array(
+      'template' => 'coupon',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),  
+    'pepsibam_brand_coupon_template' => array(
+      'template' => 'brand_coupon',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    'recipe_main_landing' => array(
+      'template' => 'recipe_main',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),  
+    'recipe_category_landing' => array(
+      'template' => 'recipe_category',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ), 
+    'recipe_subcategory_landing' => array(
+      'template' => 'recipe_subcategory',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ), 
+     
+    'pepsibam_brand_coupon_rules_template' => array(
+        'template' => 'brand_coupon_rules',
+        'variables' => array(
+                          'data' => NULL,
+                          ),
+      ),  
+  
+  );
+}
+
+
+function CreateDateDropdown($date = null) {
+
+        $dd = 0;
+        $mm = 0;
+        $yy = 0;
+
+        $months = [t("January"), t("February"), t("March"), t("April"), t("May"), t("June"), t("July"), t("August"), t("September"), t("October"), t("November"), t("December")];
+
+        if ($date) {
+            $newdate = \DateTime::createFromFormat("Y-m-d", $date);
+            $dd = $newdate->format("d");
+            $mm = $newdate->format("m");
+            $yy = $newdate->format("Y");
+        }
+
+        //dropdown day
+        $dayoption = '<option value="">' . t('Day') . '</option>';
+        for ($i = 1; $i <= 31; $i++) {
+            $tmp = ($i == $dd) ? 'selected' : '';
+            $dayoption = $dayoption . '<option value="' . substr('0' . $i, -2) . '"' . $tmp . '>' . $i . '</option>';
+        }
+
+        //dropdown month
+        $monthoption = '<option value="">' . t('Month') . '</option>';
+        for ($i = 1; $i <= 12; $i++) {
+            $tmp = ($i == $mm) ? 'selected' : '';
+            $monthoption = $monthoption . '<option value="' . substr('0' . $i, -2) . '"' . $tmp . '>' . $months[$i - 1] . '</option>';
+        }
+
+        //dropdown year
+        $yearoption = '<option value="">' . t('Year') . '</option>';
+        $currentyear = date("Y") - 13;
+        for ($i = $currentyear; $i > $currentyear - 100; $i--) {
+            $tmp = ($i == $yy) ? 'selected' : '';
+            $yearoption = $yearoption . '<option value="' . $i . '"' . $tmp . '>' . $i . '</option>';
+        }
+
+        return array('dayoption' => $dayoption, 'monthoption' => $monthoption, 'yearoption' => $yearoption);
+    }
+
+
+/**
+* Implements hook_mail().
+*/
+function pepsibam_mail($key, &$message, $params) {
+ $options = array(
+   'langcode' => $message['langcode'],
+ );
+ switch ($key) {
+   case 'forgot_password':
+     $message['from'] = \Drupal::config('system.site')->get('mail');
+     //$message['subject'] = t('Article created: @title', array('@title' => $params['node_title']), $options);
+     $message['subject'] = t('Forgot Password', array(), $options);
+     $message['body'][] = $params['message'];
+     break;
+ }
+}
+
+
+
+
+function getIPaddress(){
+    $ip = isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:$_SERVER['REMOTE_ADDR'];
+    if(strpos($ip,',') !== false) {
+        $ip = substr($ip,0,strpos($ip,','));
+    }
+    return $ip;
+}
+
+function searchTermInContentType($field, $word, $type){
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', $type);
+    $query->condition('status', 1);
+    
+    $query->condition($field.'.entity.name', $word);
+    $entity_ids = $query->execute();
+    
+    if (count($entity_ids) > 0)
+        return true;
+    return false;
+}
+
+function getAdvertisementBanner(){
+    $langcode = get_current_langcode(false);
+    $query = \Drupal::entityQuery('node');
+    $date = gmdate('Y-m-d\TH:i:s');
+    $query->condition('type', 'advertisement'); 
+    $query->condition('langcode', $langcode); 
+    $query->condition('field_opening_date', $date, '<=');
+    $query->condition('field_closing_date', $date, '>=');
+    $query->condition('status', 1);
+
+    // Get taxonomy ID : First Create the 
+    $term = taxonomy_term_load_multiple_by_name('Banner','ads_category');
+    if(empty($term) ){        
+        $message = "the taxonomy term 'Banner' does not exist in the ads_category vocabulary ";        
+        \Drupal::logger('General')->info($message, []);
+        return false;
+    }    
+    $tid = key($term);
+    $query->condition('field_ads_type', $tid);
+    $entity_ids = $query->execute();
+
+    if(empty($entity_ids) ){
+        $channel = 'General';
+        $message = "No Ads of type 'Banner' has been created or published ";
+        $context = [];
+        // \Drupal::logger($channel)->info($message, $context);
+        return false;
+    }
+    
+    
+    if (count($entity_ids) > 0){
+        $nid = array_values($entity_ids)[0];
+        return $nid;
+    }
+
+    return false;
+}
+
+function searchRecipeTaxonomy($word){
+   
+    //$entity_ids = searchTermInContentType('field_recipe_brands_category', 'cheetos');
+    
+    $tax_name =  str_replace("-"," ",$word);
+    
+    if ( searchTermInContentType('field_recipe_category', $tax_name, 'recipe') ||   
+            searchTermInContentType('field_recipe_brands_category', $tax_name, 'recipe') ||
+                searchTermInContentType('field_recipe_occasions_category', $tax_name, 'recipe')) 
+            return true;
+    return false;
+    
+    /*if ($term = taxonomy_term_load_multiple_by_name( $word,'recipe_category')) {
+        
+    }
+    
+    if ($term = taxonomy_term_load_multiple_by_name( $word,'brands_category')){
+        return true;
+    }
+    
+    if ($term = taxonomy_term_load_multiple_by_name( $word,'occasions_category')){
+        return true;
+    }
+    return false;
+     * 
+     */
+}
+
+function searchArticleTaxonomy($word){
+    
+    $tax_name =  str_replace("-"," ",$word);
+    if ( searchTermInContentType('field_article_category', $tax_name, 'article') ||   
+            searchTermInContentType('field_article_brands_category', $tax_name, 'article') ) 
+            return true;
+    return false;
+}
+
+
+function TestMessage(){
+    return "Test";
+}
+
+
+function pepsibam_mail_alter(&$message) {
+  $message['send'] = FALSE; 
+}
+
+
+/** POLL ***/
+// get one active poll that the user does not answered yet
+function getOneActivePoll($answered_poll){
+    
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    
+    $query = \Drupal::database()->select('poll_field_data', 'pfd');
+    $query->condition('status', 1);
+    $query->condition('langcode', $lang);
+    $query->condition('id', $answered_poll, "NOT IN");
+    $query->fields('pfd', array('id'));
+        
+    $result = $query->execute();
+    $poll_ids = array();
+    
+    foreach($result as $row) {
+        array_push($poll_ids, (int)$row->id);
+    }
+    shuffle($poll_ids);     //random the ids array
+    
+    if (empty($poll_ids)){  //get the first id
+        return 0;
+    }else{
+        return $poll_ids[0]; 
+    } 
+
+}
+
+//get all the completed polls ID for specific user
+function getCompletedPoll($user_id){
+        $query = \Drupal::database()->select('poll_vote', 'pv');
+        $query->condition('uid', $user_id);
+        $query->fields('pv', array('pid'));
+        
+        $result = $query->execute();
+        $poll_ids = array();
+        
+        foreach($result as $row) {
+            array_push($poll_ids, (int)$row->pid);
+        }
+        
+        if (empty($poll_ids)){  
+            return array(0);
+        }else{
+            return $poll_ids; 
+        } 
+        
+    
+}
+
+//get all the completed polls ID for specific user
+function getPollIsVoted($poll_id){
+    
+        $user_id = \Drupal::currentUser()->id();
+        if ($user_id == 0) return false;
+            
+        $query = \Drupal::database()->select('poll_vote', 'pv');
+        $query->condition('uid', $user_id);
+        $query->condition('pid', $poll_id);
+        $query->fields('pv', array('pid'));
+        
+        $result = $query->execute();
+        
+        $poll_ids = array();
+        
+        foreach($result as $row) {
+            array_push($poll_ids, (int)$row->pid);
+        }
+        
+        if (!empty($poll_ids)){  
+            return '1';
+        } 
+        return '0'; 
+}
+
+
+function getCurrentUserMarketoId(){
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    return $user->field_marketoid->value;
+}
+
+// function pepsibam_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+ 
+//     //if the form is for the poll, add a callback function to save info in Marketo
+//     if (strpos($form_id, 'poll_view_form') !== false) {
+//             foreach (array_keys($form['actions']) as $action) {
+//                 if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+//                   $form['actions'][$action]['#submit'][] = 'savePollInMarketo';
+//                 }
+//             }
+//     }
+    
+    
+// }
+ 
+function savePollInMarketo(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+        
+    $user_id = \Drupal::currentUser()->id();
+    $last_poll = getLastAnsweredPoll($user_id); 
+    
+    if ($last_poll != 0){
+        $user_mk_id = getCurrentUserMarketoId();
+        
+        $polltoMrkto = PollFieldsMarketo($last_poll, $user_mk_id);
+        
+        $info = marketoSavePoll($polltoMrkto, $user_mk_id);  //save poll in marketo   
+//        $channel = "general";
+//        $message = "user ID: %user_id , poll_id: %poll_id ";
+//        $context = [
+//                      '%user_id' => $user_mk_id,
+//                      '%poll_id' => $last_poll["pid"]
+//        ];
+//        \Drupal::logger($channel)->info($message, $context);
+    }
+  
+}
+
+
+//get last answered poll by user
+function getLastAnsweredPoll($user_id){
+
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    
+    $query = \Drupal::database()->select('poll_vote', 'pv');
+    $query->join('poll_field_data','pfd','pv.pid = pfd.id');
+    $query->join('poll_choice_field_data','pchfd','pv.chid = pchfd.id');
+    
+    $query->condition('pv.uid', $user_id);
+    $query->condition('pfd.langcode', $lang);
+    $query->condition('pchfd.langcode', $lang);
+    $query->fields('pv', array('pid','chid'));
+    $query->fields('pfd', array('question'));
+    $query->fields('pchfd', array('choice'));
+    
+    $query->orderBy('timestamp', 'DESC');
+
+    $result = $query->execute()->fetchAssoc();
+
+    if ($result){
+        return $result;
+    }else{
+        return 0;
+    }
+}
+
+
+function PollFieldsMarketo($poll, $user_mk_id) { 
+        $m_poll = [ [
+                "leadID" => $user_mk_id,
+                "questionID" => $poll["pid"],
+                "questionText" => $poll["question"],
+                "answerID" => $poll["chid"], 
+                "answerText" => $poll["choice"], 
+                "language" => \Drupal::languageManager()->getCurrentLanguage()->getId() 
+               
+        ]];
+
+   return $m_poll;
+}
+
+function marketoSavePoll($input, $user_mk_id , $objectname = null) {
+
+    $marketo_custom_object = \Drupal::service('marketoservices_custom_object.apicall');
+    
+    $marketo_custom_object->name = $objectname?$objectname:"marketoDrupalLeadPolls_c";
+    $marketo_custom_object->input = $input;
+    
+    $result = $marketo_custom_object->postData();
+    
+    $response = json_decode($result, true);
+
+    $channel = "general";
+    if ($response["success"]){
+        if ($response["result"][0]["status"] == "skipped"){
+            $code = $response["result"][0]["reasons"][0]["code"];
+            $msg = $response["result"][0]["reasons"][0]["message"];
+            
+            $message = "Marketo createOrUpdatePoll API was skipped,  for user %user, reasons: %reasons ";
+            $context = [
+                        '%user' => $user_mk_id,
+                        '%reasons' => $code . " - " . $msg
+                   ];
+            \Drupal::logger($channel)->info($message, $context);
+            
+        }else{
+            //COMENT THIS   *******
+            $message = "Marketo createOrUpdatePoll success, for user %user and status: %status";
+            $context = [
+                        '%user' => $user_mk_id,
+                        '%status' => $response["result"][0]["status"]
+                   ];
+            \Drupal::logger($channel)->info($message, $context);
+            return true;
+        }
+
+    }else{
+        if ($response["errors"]){
+            $code = $response["errors"][0]["code"];
+            $msg = $response["errors"][0]["message"];
+
+            $message = "Marketo createOrUpdatePoll API fail for user %user ,  error: %error ";
+            $context = [
+                        '%user' => $user_mk_id,
+                        '%error' => $code . " - " . $msg
+            ];
+            \Drupal::logger($channel)->info($message, $context);
+
+        }
+    }
+
+    return false;    
+    
+}
+
+function EpsilonEmailValidation($email) {
+
+    $user = implode('@', explode('@', $email, -1));
+
+    $notallowed = ["admin", "autoresponder", "abuse", "administrator", "alerts", "blank", "bulkmail", "contact", "devnull", "domain", "domreg", "domtech", "email", "ftp", "help", "hostmaster", "hr", "info", "it", "jobs", "mailer-daemon", "marketing", "na", "news", "noc", "noemail", "none", "notgiven", "postmaster", "privacy", "remarks", "root", "route", "sales", "security", "spam", "support", "techsupport", "test", "unknown", "usenet", "uucp", "webmaster", "webteam", "www"];
+
+    if (in_array($user, $notallowed)) {
+        return false;
+    }
+
+    return true;
+}
+
+function getProvinceFromPCode($pcode) {
+    
+    $pcode = strtoupper(substr($pcode,0,1));
+            
+    $CodePrv = ['A'=>'NL',
+                'B'=>'NS',
+                'C'=>'PE',
+                'E'=>'NB',
+                'G'=>'QC',
+                'H'=>'QC',
+                'J'=>'QC',
+                'K'=>'ON',
+                'L'=>'ON',
+                'M'=>'ON',
+                'N'=>'ON',
+                'P'=>'ON',
+                'R'=>'MB',
+                'S'=>'SK',
+                'T'=>'AB',
+                'V'=>'BC',
+                'X'=>'NU', //NT as well, but no way how to define which one, 
+                'Y'=>'YT'];
+    
+    return isset($CodePrv[$pcode])?$CodePrv[$pcode]:'NA';
+
+}
+
+
+function pepsibam_language_switch_links_alter(array &$links, $type, $path) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        foreach ($links as $langcode => $link) {
+            if ($node && !array_key_exists($langcode, $node->getTranslationLanguages(TRUE))) {
+                //There is no translation in that language, disable url
+                unset($links[$langcode]['url']);
+                //And probably do something with attributes (eg. add class)
+                //$links[$langcode]['attributes']['class'][] = 'foo';
+                //Or you can unset the whole thing
+                //unset($links[$langcode]);
+            }
+        }
+    }
+}
+
+
+
+function MarketoCallMarketingActivities($marketoid,$campaignId) {
+    
+    $marketoserviceEmail = \Drupal::service('marketoservices_email_soap.apicall');
+    $result = $marketoserviceEmail->postData($marketoid,$campaignId);
+    
+    return $result; 
+}
+
+
+function RecaptchaValidation($grecaptcharesponse){
+    $disableCaptcha =  \Drupal\Core\Site\Settings::get("disableCaptcha");
+    
+    
+    if ($disableCaptcha) return true; // disable the captcha 
+    
+    $secret = '6LfHi6QUAAAAAEX2f9VtLPv5hdSf3MjOTXP61Z92';
+    // $secret = '6LfHi6QUAAAAAEX2f9VtLPv5hdSf3MjOTXP61Z92';
+    
+    //get verify response data
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$grecaptcharesponse);
+
+ 
+    $responseData = json_decode($verifyResponse);
+    if($responseData->success) {
+          return true;
+    }
+      else {
+          return false;
+    }
+    
+    return true;
+}
+
+/*
+function sfmcservices_unsubscribe($account){
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    
+    $unsubscribe = true;
+
+    
+    
+    
+    $leadresponse = $SFMC_Service->unsubscribeLead($lead); // this is where the request is sent to SF
+    // if ($leadresponse->getError()){
+    if ($leadresponse->results && isset($leadresponse->results[0]->ErrorMessage) ) {
+        $channel = "general";
+        $message = $leadresponse->results[0]->ErrorMessage;
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    } 
+    return $leadresponse;
+}
+*/
+
+function get_registration_source($source, $langcode = 'en'){
+    // Temporary fix for the urgency
+    // somehow the $source value becomes lowercase 
+    if ($source == 'popuptastyrewards'){
+        $source = 'popupTastyrewards';
+    }
+    $nids = \Drupal::entityQuery('node')->condition('type','registration_source')->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    $subscriptionInfo = array();
+    foreach ($nodes as $nid => $node) {
+         $translation_languages = $node->getTranslationLanguages();
+
+         if ( isset($translation_languages[$langcode]) ) {
+            // continue;
+            $node_us = $node->getTranslation($langcode);
+            $uri =  $node->get('field_source_uri')->value;
+            if ($source == $uri){
+                $subscriptionInfo['sourceID'] = $node->getTranslation($langcode)->field_source_id->value;
+                $subscriptionInfo['optins'] = $node->getTranslation($langcode)->field_optins->value;
+                break;
+            }
+         }
+         
+
+    }
+
+    return $subscriptionInfo;
+}
+
+function sfmcservices_subscribe($account, $source = 'tastyrewards' , $unsubscribe = false){
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+
+    if ($source == 'TastyRewardsUS'){
+        $source = 'tastyrewards';
+    }
+
+
+    $created_or_updated = false;
+    
+    if (!$account->get('field_optin')->value)
+        $unsubscribe = true;
+    
+    $lead = UserFieldsSFMC($account,$unsubscribe, $source);  // maps the fields with the SF object
+    // $country_code = get_user_country_code($account);
+    // For now we only sync USA users to salesforce
+    $country_code = 'usa';
+
+    // Add tracking
+    if (strpos(strtolower($source) , "popup") !== false){
+        track_user_action($account, $source);
+    }
+
+    $SFMC_Service->init_api($country_code);
+    $leadresponse = $SFMC_Service->createOrUpdateLeads($lead, $country_code); // this is where the request is sent to SF
+
+    // if (isset($leadresponse->results[0]->StatusMessage)){
+    //     $msg = $leadresponse->results[0]->StatusMessage;
+    //     if (trim($msg) == "Updated DataExtensionObject" || trim($msg) == "Created DataExtensionObject"){
+    //         $created_or_updated = true;
+    //     }
+    // }
+    
+    // if ($leadresponse->getError()){
+    if (isset($leadresponse->message) && isset($leadresponse->errorcode) ) {
+        $channel = "general";
+        $message = $leadresponse->message . "\n reponse object: \n";
+        $message .= print_r($leadresponse, true);
+
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    } else {
+        $sourceID =  $lead[0]['keys']['SourceID'];
+        $OptIns =  $lead[0]['values']['optinsValue'];
+        $account->set("field_marketoid", $sourceID);
+
+        $enable_waitlist =  \Drupal\Core\Site\Settings::get("enable_welcome_waitlist");
+        // the marketkocookie field will be used to identify users on the waitlist 
+        // to welcome email 
+        if ($enable_waitlist) $account->set("field_marketocookie", 'welcome_waitlist');
+        
+        $account->set("field_epsilonid", $OptIns);
+        $account->save();
+
+        return true;
+    }
+    // TODO: create log when successful
+    // else {
+    //     if ($leadresponse->getStatus() == 'skipped') {
+    //         $channel = "general";
+    //         $message = "SFMC createOrUpdateLeads API fail,  for user %username, doesn't match fields ";
+    //         $context = [
+    //                       '%username' => $account->get('name')->value
+    //                ];
+    //         \Drupal::logger($channel)->info($message, $context);
+    //     }
+    //     else {
+    //         $account->set('field_marketoid', $leadresponse->getId()); // how do I set this  ???
+    //         $account->save();
+    //         return $leadresponse->getId();
+    //     }
+    // }
+    
+    return false;
+}
+
+function sfmcservices_trigger_email_activation ($account, $resend = false){
+    // We no longer send trigger emails
+    return false;
+    
+    $enable_waitlist =  \Drupal\Core\Site\Settings::get("enable_welcome_waitlist");
+    // We do not send the trigger email if waitlist is enabled
+    if ($enable_waitlist){
+        $message = $account->get('mail')->value . " is added to welcome email waitlist ";
+        \Drupal::logger('general')->info($message, []);
+        return false;
+    }
+    $lang = $account->get('preferred_langcode')->value;
+    $lang = ($lang == "en" || $lang == "fr" || $lang == "en-us" || $lang == "es-us")? $lang : "en"; // Default to english if not set
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+
+    $bday_array = explode("-", $account->get('field_bday')->value);
+    $birth_year   = $bday_array[0] ;
+    $birth_month = $bday_array[1] ;
+    $birth_day    = $bday_array[2] ;
+
+    // COMMENTED for now as we are using the old SFMC credentials
+
+    // $subscriber = ["EmailAddress" => $account->get('mail')->value, "SubscriberKey" => $account->get('mail')->value,
+    //                       "Attributes" => [
+    //                                        ["Name"=>"First Name", "Value"=> $account->get('field_firstname')->value ],
+    //                                        ["Name"=>"Last Name", "Value"=> $account->get('field_lastname')->value ],
+    //                                        ["Name"=>"Birth Month", "Value"=> $birth_month ],
+    //                                        ["Name"=>"Birth Day", "Value"=> $account->get('field_bday')->value ],
+    //                                        ["Name"=>"Birth Year", "Value"=> $birth_year ],
+    //                                        ["Name"=>"Link"     , "Value"=> $account->get('field_activationurl')->value ],
+    //                                        ["Name"=>"ZIP Code", "Value"=> $account->get('field_postalcode')->value ],
+    //                                        ["Name"=>"InsertedDate", "Value"=> date("Y/m/d") ],
+    //                                       ]
+    
+    //               ];  
+
+    $subscriber = ["EmailAddress" => $account->get('mail')->value, "SubscriberKey" => $account->get('mail')->value,
+                          "Attributes" => [
+                                           ["Name"=>"FirstName", "Value"=> $account->get('field_firstname')->value ],
+                                           ["Name"=>"Link"     , "Value"=> $account->get('field_activationurl')->value ]
+                                          ]
+                  ];    
+    $country_code = get_user_country_code($account);
+    $SFMC_Service->init_api($country_code);
+    if ($country_code == 'usa' ){
+        $customer_key_welcome =    "usa_sfmcservices_customerkey_welcome_en";
+    } else {
+        if ($lang == 'fr') {
+            $customer_key_welcome =  "sfmcservices_customerkey_welcome_fr";
+        } else {
+            $customer_key_welcome =  "sfmcservices_customerkey_welcome_en";
+        }
+    }
+
+    return $SFMC_Service->sendTriggeredEmail($customer_key_welcome, $subscriber, $country_code );
+}
+
+
+function get_user_country_code($account){
+    // get the preferred language instead
+    $langcode = $account->get("preferred_langcode")->value;
+    if ($langcode == 'en' || $langcode == 'fr' ) {
+        return 'ca';
+    } else if ($langcode == 'en-us' || $langcode == 'es-us'){
+        return 'usa';
+    } else {
+        $channel = "general";
+        $message = " No preferred language for %username ";
+
+        $context = [
+                              '%username' => $account->get('name')->value
+                ];
+        \Drupal::logger($channel)->info($message, $context); 
+
+    }
+
+    return false;
+
+
+    // $postalcode = $account->get('field_postalcode')->value;
+    // if (preg_match("/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/", $postalcode)){
+    //     return 'ca';
+    // } elseif (preg_match("/^([0-9]{5})(-[0-9]{4})?$/i",$postalcode)){
+    //     return 'usa';
+    // }
+
+    // return false;
+}
+
+function subscriber_attributes($account){
+    $lead_array = UserFieldsSFMC($account);
+    $subscriber = array();
+    $subscriber["Attributes"] = array();
+    foreach ($lead_array as $property_name => $value) {
+        if ($property_name == "EmailAddress" || $property_name == "SubscriberKey"){
+            $subscriber[$property_name]= $value;
+        } else {
+            $subscriber["Attributes"][] = array(
+                'Name' => $property_name, 
+                'Value' => $value, 
+            );
+        }
+    }
+    return $subscriber;
+}
+
+/**
+ * Establishes the mapping between Drupal registration fields and  SFMC Lead data extension fields
+ * 
+ * @return lead      Array containing the lead profile information
+ */
+
+function UserFieldsSFMC($account, $unsubscribed = false, $source) { 
+
+        $preferred_lang = $account->get('preferred_langcode')->value;
+        $language_name = array(
+            "en" => "English",
+            "en-ca" => "English",
+            "en-us" => "English",
+            "es-us" => "Spanish",
+            "fr" => "French",
+            "fr-ca" => "French",
+        );
+
+        $language_codes = array('en', 'en-ca', 'en-us','es-us', 'fr', 'fr-ca');
+
+        $lead_array = array( 0 => array(
+            'keys' => array(),
+            'values' => array(),
+            )
+        );
+
+        $keys = array();
+
+
+
+        // $lead['SubscriberKey']  = "TR_CANADA_" . $account->uuid(); // This should be the primaryKey based on CF_MasterProfile
+        $now = date('m/d/Y h:i:s a', time());
+
+        $keys['EmailAddress']        = $account->get('mail')->value;
+        // $keys['SourceID']        = "US_PEPSI99_SIGNUP";
+        // $keys['TimeStamp']      = date(' Y-m-d h:i:s A', $account->get('created')->value ); // from user table
+        $keys['TimeStamp']      = $now;
+
+        $registrationInfo = get_registration_source($source, $preferred_lang);
+        $source_id = $account->get('field_source_id')->value; // If values exists
+        $keys['SourceID'] = isset($source_id)? $source_id : $registrationInfo['sourceID'];
+
+        $lead['optinsValue'] = $registrationInfo['optins'];
+
+        $optin3 = $account->get('field_optin3')->value;
+        // if (!empty($optin3)){
+        //     if (!empty($registrationInfo['optins'])){
+        //         $lead['optinsValue'] = $registrationInfo['optins'] . ",Newsletter";
+        //     } else {
+        //         $lead['optinsValue'] = "Newsletter";
+        //     }
+        // }
+
+        // if ($account->field_marketocookie->value == 'microsite_contest')
+        //     $lead['optinsValue'] = "";
+
+        // $lead['OptIns'] = "100022227_PEPSI_NEWSLETTER_PURELYPEPSINEWSLETTER_20140320,100022222_MOUNTAINDEW_NEWSLETTER_DEWSLETTERNEWSLETTER_20140320";
+        $lead['FirstName']    = $account->get('field_firstname')->value;
+        // $lead['MiddleInit']    = $account->get('field_firstname')->value;
+        $lead['LastName']     = $account->get('field_lastname')->value;
+        $lead['City']         = $account->get('field_city')->value;
+        $zipcode_ext = !empty($account->get('field_postal_code_ext')->value) ? 
+                                   '-' . $account->get('field_postal_code_ext')->value : '';  
+        $lead['ZipPostalCode']   = $account->get('field_postalcode')->value . $zipcode_ext;
+        $lead['Gender']       = $account->get('field_gender')->value;
+        $lead['dateOfBirth']  = $account->get('field_bday')->value;
+        $lead['Bday']  = $account->get('field_bday')->value;
+        // break down into components BirthMonth, BirthDay, BirthYear
+        if (!empty($lead["dateOfBirth"])){
+            $bday_array = explode("-", $lead["dateOfBirth"]);
+            $lead['BirthYear']   = $bday_array[0] ;
+            $lead['BirthMonth']  = $bday_array[1] ;
+            $lead['BirthDay']    = $bday_array[2] ;
+        }
+
+        $lead['Facebook']   = $account->get('field_fbid')->value;
+        $lead['LeadLanguage']     = $account->get('preferred_langcode')->value;
+        $lead['Country']          = 'CA';
+        if ($preferred_lang == 'en-us' || $preferred_lang == 'es-us') $lead['Country'] = 'USA';
+
+        $lead['StateProvince']            = $account->get('field_province')->value;
+        $lead['activationLink']   = $account->get('field_activationurl')->value;
+        $lead['leadSource']       = $account->get('field_source')->value;
+        $lead['EpsilonProfileID'] = $account->get('field_epsilonid')->value;
+        $optin2 =  isset($account->get('field_optin2')->value)? $account->get('field_optin2')->value : 0;
+        if ($preferred_lang != 'en-us' && $preferred_lang != 'es-us')
+            $lead['CF_Remarketing'] = $optin2;
+
+        // $lead['Address1']  = "";
+        // $lead['Address2']  = "";
+        // $lead['Address3']  = "";
+        // $lead['Address4']  = "";
+        // $lead['PhoneNumber']  = "";
+        // $lead['PhoneNumber2']  = "";
+        // $lead['Google']  = "";
+        // $lead['Microsoft']  = "";
+        $lead['LanguageCode']  = strtoupper( in_array($preferred_lang, $language_codes) ? $preferred_lang : "en" ); 
+        $lead['LanguageName']  = $language_name[strtolower($lead['LanguageCode'])];
+        // $lead['Occupation']  = "";
+        // This is for Facebook Ad users only
+        $facebook_ad = $account->get('field_facebook_ad')->value;
+        if ($facebook_ad == 'FBADS201909') $lead['ConsumerType'] = 'FBADS201909';
+        // the following fields are not nullable on SF
+        $lead['Status']  = $account->get('status')->value ? "Active" : "Blocked";
+        // Hardcoded some values for now, just to make sure they pass test
+        // $lead['DateAdded'] = !empty($account->get("field_created_date")->value)? $account->get("field_created_date")->value: $account->get('field_activation_date')->value  ; //"01-01-2019"; 
+        $lead['LastUpdatedDate'] = !empty($account->get("field_edit_date")->value)? $account->get("field_edit_date")->value: $now ;
+        
+        if ($account->isActive()) {
+            $lead['deactivated'] = false;
+        } else {
+            $lead['deactivated'] = true;
+        }
+        
+        $lead['activationDate'] = $account->get('field_activation_date')->value;
+        
+        $lead['unsubscribed'] = $unsubscribed;
+        if ($unsubscribed){
+            $lead['unsubscribedReason'] = $account->get('field_deleted_reasons')->value;  
+            // $lead['Status']  = "Unsubscribe";             
+        }
+        
+        $lead['blackListedTastyRewards'] = false;
+        if ($account->get('field_black_listed')->value) {
+            $lead['blackListedTastyRewards'] = $account->get('field_black_listed')->value;
+        }
+
+        $lead_array[0]['keys'] = $keys;
+        $lead_array[0]['values'] = $lead;
+   return $lead_array;
+}
+
+function format_trigger_email_subscriber_payload($account){
+    $country_code = get_user_country_code($account);
+    $payload = [];
+    if ($country_code == 'usa'){
+        $subscriber = [
+            "Address" => $account->get('mail')->value, 
+            "SubscriberKey" => $account->get('mail')->value,
+            "ContactAttributes" => [
+                "SubscriberAttributes" => [
+                    "FirstName" => $account->get('field_firstname')->value,
+                    "Link" => $account->get('field_activationurl')->value,
+                ]
+            ]
+                
+        ];
+
+        $payload = [
+            "To" => $subscriber ,
+        ];
+    } else {
+        $payload = [
+            "EmailAddress" => $account->get('mail')->value, 
+            "SubscriberKey" => $account->get('mail')->value,
+            "Attributes" => [
+                [ "Name"=>"FirstName", "Value"=> $account->get('field_firstname')->value ],
+                ["Name"=>"Link", "Value"=> $account->get('field_activationurl')->value ]
+            ]
+        ];
+    }
+
+    return $payload;
+}
+
+function sfmcservices_trigger_forgotpassword($account, $create_pwd = false){
+    $lang = $account->get('preferred_langcode')->value;
+    $lang = ($lang == "en" || $lang == "fr" || $lang == "en-us" || $lang == "es-us")? $lang : "en"; // Default to english if not set
+    
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    
+    $subscriber = format_trigger_email_subscriber_payload($account);
+
+    // $payload = [
+    //     "To" => $subscriber ,
+    // ];
+
+    $country_code = get_user_country_code($account);
+
+    if ($country_code == 'usa'){
+        $customer_key_forgot =    $lang == "en-us"?"usa_sfmcservices_customerkey_forgot_en":  "usa_sfmcservices_customerkey_forgot_es";
+        if ($create_pwd){
+            $langcode = get_current_langcode($_prefix = false);
+            $customer_key_forgot =    $langcode == "en-us"?"usa_sfmcservices_customerkey_create_pwd":"usa_sfmcservices_customerkey_create_pwd_es";
+        }
+    } else {
+        if ($create_pwd) return; // Canada users should not receive "Create pwd" emails
+        if ($lang == 'fr') {
+            $customer_key_forgot =  "sfmcservices_customerkey_forgot_fr";
+        } else {
+            $customer_key_forgot =  "sfmcservices_customerkey_forgot_en";
+        }
+    }
+
+    if ($country_code == 'usa'){
+        $SFMC_Service->init_api($country_code);
+        return $SFMC_Service->sendTriggeredEmail_V2($customer_key_forgot, $subscriber, $country_code);
+    } else {
+        // We still use the old oAuth API for Canada
+        $SFMC_Service->init_api($country_code, $oAuth_v1 = true);
+        return $SFMC_Service->sendTriggeredEmail($customer_key_forgot, $subscriber, $country_code);
+    }
+    
+}
+
+
+function get_current_langcode($with_prefix = true){
+    $current_lang = \Drupal::languageManager()->getcurrentLanguage()->getId();
+    if (!$with_prefix){
+        // return 'en' or'fr' or 'en-us'
+        return $current_lang;
+    }
+    $prefixes = \Drupal::config('language.negotiation')->get('url.prefixes');
+    // return 'en-ca' or'fr-ca' or 'en-us'
+    return $prefixes[$current_lang];
+}
+
+
+function find_snackperk_user($email, $has_bonus = false){
+    $sql = "SELECT * from csv_usa_users where email like '" . $email . "' ";
+    if ($has_bonus){
+        $sql = "SELECT * from csv_usa_users as t1  where  t1.email like '" . $email . "' and NOT EXISTS (SELECT 1  from csv_users_imported as t2 WHERE t2.email = t1.email and t2.bonus > 0)";
+    }
+    try{
+        $select = \Drupal::database()->query($sql);
+        $result = $select->fetchAll();
+    } catch (\Exception $e) { 
+        $channel = "general";
+        $message = " Snackperk user SQL query error ";
+        $context = [ ];
+        \Drupal::logger($channel)->info($message, $context);
+        return null;
+    }
+
+    return $result;
+
+}
+
+// Reuse this function for 5 bonus entries
+function create_snackperk_user($user_profile,$source_id = null){
+    // create drupal user
+    // 
+    $lead = $user_profile[0];
+    $user = User::create();
+    $user->setPassword('testbam@123');
+    $user->enforceIsNew();
+    $user->setEmail($lead->email);
+    $user->setUsername($lead->email);
+    //Adding Field value of Account settings
+    ////$user->set('field_subscriber_key', $subscriberkey);
+    $user->set('field_firstname', $lead->firstname);
+    $user->set('field_lastname', $lead->lastname);
+    $user->set('field_gender', $lead->gender);
+    $user->set('field_bday', $lead->bday);
+    $user->set('field_city', $lead->city);
+    $user->set('field_province', $lead->province);
+    $user->set('field_postalcode', $lead->postalcode);
+    $user->set('field_ip_address', getIPaddress());
+    $user->set('field_user_agent', substr($_SERVER['HTTP_USER_AGENT'],0,255) );
+    $user->set('field_postal_code_ext', $lead->postalcode_ext);
+    $user->set('field_marketoid', "IMPORTED_FROM_SF");
+    $user->set('field_source', "IMPORTED_FROM_SF");
+    $user->set('field_created_date', format_date(\Drupal::time()->getCurrentTime(), 'custom', 'Y-m-d H:i:s'));
+    //Optional settings
+    $user->set("init", 'email');
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    if ($language == 'es-us'){
+        //$language = 'en-us';
+    }
+    else{
+        $language == 'en-us';
+    }
+    $user->set("langcode", $language);
+    $user->set("preferred_langcode", $language);
+    $user->set("preferred_admin_langcode", $language);
+    //if( ($selectedRoleType[0] != "anonymous") && ($selectedRoleType[0] != "authenticated") ) {
+    $user->addRole('salesforce_subscriber');
+    //}
+    $user->set("status", 1);
+    if ($source_id){
+        $user->set('field_source_id', $source_id);
+    }
+    $user->save();
+
+    // save created snackperk user into a temp table. 
+
+    $sql = "INSERT INTO csv_users_imported (email, firstname, lastname) VALUES (
+    '" . $lead->email . "', '" . $lead->firstname . "', '" . $lead->lastname . "'); ";
+
+    try{
+        $select = \Drupal::database()->query($sql);
+        $result = $select->execute();
+    } catch (\Exception $e) { 
+        $channel = "custom-module";
+        $message = " csv redundancy SQL query error ";
+        $context = [ ];
+        \Drupal::logger($channel)->info($message, $context);
+        
+        //return null;
+    }
+
+    return $user;
+
+}
+
+
+
+function get_active_contests($langcode = 'en', $keep_querystring = true){
+
+    if($langcode == 'en-ca') $langcode = 'en';
+    if($langcode == 'fr-ca') $langcode = 'fr';
+
+    $lang = array(
+          'en' => 'en-ca',
+          'en-us' => 'en-us',
+          'es-us' => 'es-us',
+          'fr' => 'fr-ca',
+        );
+
+    $em = \Drupal::service('entity_type.manager');
+    $date = date('Y-m-d\TH:i:s');
+    // $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    
+    $prefixes = \Drupal::config('language.negotiation')->get('url.prefixes');
+    $lang_url = $prefixes[$langcode];
+
+    
+    $query = $em->getStorage('node')->getQuery()->condition('status', 1)
+            ->condition('type', 'contest')
+            ->condition('field_opening_date', $date, '<=')
+            ->condition('field_closing_date', $date, '>=')
+            ->condition('langcode', $langcode)
+            ->sort('field_opening_date', 'DESC');
+
+
+    $nids = $query->execute();
+    if (empty($nids))  return array('url' => '', 'title' => '');
+
+    $nid = reset($nids);
+    $node =  \Drupal\node\Entity\Node::load($nid);
+    $uri = $node->getTranslation($langcode)->get('field_landing_image')->entity->getFileUri();
+    $contest_uri = $node->getTranslation($langcode)->get('field_contest_uri')->getValue();
+    $properties = $node->getTranslation($langcode)->get('field_landing_image')[0]->getValue();
+    $alt = !empty($properties['alt'])? $properties['alt'] : '';
+    
+    $url = file_create_url($uri);
+    $contest_title = $node->getTranslation($langcode)->get('field_title')->getValue()[0]['value'];
+    $contest_date = $node->getTranslation($langcode)->get('field_closing_date')->getValue()[0]['value'];
+    $legal_footer = $node->getTranslation($langcode)->get('field_legal_footer')->getValue()[0]['value'];
+
+    $email = '';
+    if (isset($_SERVER['QUERY_STRING'])){
+      parse_str($_SERVER['QUERY_STRING'], $url_parameters); 
+      $email = isset($url_parameters['email']) ? $url_parameters['email'] : ''; 
+    }
+
+    if ($keep_querystring){
+        $contest_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . "/" . $lang[$langcode] ."/contests/" . $contest_uri[0]['value'] . "/signup?mkcontest=" . $email;
+    } else {
+        $contest_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . "/" . $lang[$langcode] ."/contests/" . $contest_uri[0]['value'] . "/signup" ;
+
+    }
+
+    $contest_resource = array(
+        'url' => $url,
+        'contest_uri' => $contest_uri[0]['value'],
+        'contest_url' => $contest_url,
+        'alt' => $alt,
+        'title' => $contest_title,
+        'end_date' => $contest_date,
+        'legal_footer' => $legal_footer,
+    );
+
+    return $contest_resource;
+}
+
+function get_motionmail_src($contest_date ){
+    
+    $session = \Drupal::request()->getSession();
+    // We're using the date as a key for session. 
+    // therefore when the date changes, it won't exist in the session and will call the API again. 
+    if (!empty($session->get('motionmail_' . $contest_date))) return $session->get('motionmail_' . $contest_date);
+    
+    $config =  \Drupal\Core\Site\Settings::get("motion_mail");
+    $current_language = get_current_langcode();
+    $source_url = $current_language == 'fr-ca'? $config['source_url_fr'] : $config['source_url'];
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, 'https://api.motionmailapp.com/tokens/datetime');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, "datetime=2019-11-11");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "datetime=" . $contest_date);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    // curl_setopt($ch, CURLOPT_USERPWD, '1943487c-3f8c-499b-ac69-aac700fda0d3' . ':' . '1897ba1e-6193-4ddd-83b0-aac700fda0d3');
+    curl_setopt($ch, CURLOPT_USERPWD, $config['api_key'] . ':' . $config['secret_key']);
+
+
+    $headers = array();
+    $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    $response = json_decode($result);
+    if (curl_errno($ch)) {
+        $error = 'Error in function get_motionmail_src:' . curl_error($ch);
+        \Drupal::logger("general")->info($error, []);        
+        curl_close($ch);
+        return "";
+    }
+    
+    $token = $response->Data;
+    curl_close($ch);
+
+    $url = $source_url . "?endDateTimeToken=" . $token;
+    $session->set('motionmail_' . $contest_date, $url);
+    return $url;
+
+}
+
+
+function find_fb_ad_user($email){
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+
+    $SFMC_Service->init_api($country_code = 'usa'); // FB campaign is only deployed in USA
+    $lead_profile = $SFMC_Service->find_email_fb_list($email); 
+    /*
+    $lead_profile =
+            [email] => test@aol.com
+            [first_name] => John
+            [last_name] => Doe
+            [zip_code] => 11004
+    */
+    
+     
+    return $lead_profile;
+
+}
+
+
+function create_user_fb_ad($user_profile){
+
+    try {
+        $email = $user_profile['email'];
+        $password = "xgXVM@LNo2";
+        $user = User::create([
+                    'name' => $email,
+                    'mail' => $email,
+                    'status' => 1, 
+                    'field_firstname' => $user_profile['first_name'],
+                    'field_lastname' => $user_profile['last_name'],
+                    'field_city' =>  '',
+                    'field_province' => '',
+                    'field_postalcode' => $user_profile['zip_code'],
+                    'field_postal_code_ext' => "",
+                    'field_gender' => "",
+                    'field_bday' => "",
+                    'field_facebook_ad' => "FBADS201909",
+                    'field_fbid' => "",
+                    'field_optin' => "",
+                    'field_source' => "tastyrewards", // What is the source here?
+                    'field_ccid' => "",
+                    'field_ip_address' => getIPaddress(),
+                    'field_user_agent' => substr($_SERVER['HTTP_USER_AGENT'], 0, 255)
+            ]);
+        $user->setPassword($password);
+
+        $language = 'en-us'; //\Drupal::languageManager()->getCurrentLanguage()->getId();
+
+        $date = date('Y-m-d H:i:s');
+        $user->set("field_created_date", $date);
+
+        $user->set("langcode", $language);
+        $user->set("preferred_langcode", $language);
+        $user->set("preferred_admin_langcode", $language);
+
+        $user->save();
+        sfmcservices_subscribe($user, $source = 'tastyrewards');
+        return $user;
+
+        
+    } catch (\Exception $e) {
+        $status = FALSE;
+        $errors['form'] = t('Oops, there is an issue. User from Facebook Ad could not be created');
+        $route = '';
+        return null;
+    }
+
+}
+
+function fetch_unsubscribed_emails($country_code = 'ca'){
+    try{
+        // $country_code = 'ca';
+        $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+        $SFMC_Service->init_api($country_code);
+        $emails = $SFMC_Service->get_unsubscribed_emails($country_code);
+        $count = 0;
+        foreach ($emails as $email) {
+            $user = user_load_by_mail($email);
+            if (!$user) continue;
+            $user->set('field_optin', 0);
+            $user->save();
+            $count++;
+        }
+        $log_message = $count . " emails have been unsubscribed for " . $country_code; 
+        \Drupal::logger('custom-module')->info($log_message,  []);
+    } catch( \Exception $e){
+        $message = $country_code . ": Exception : %error ";
+        $context = ["%error" => $e->getMessage()];
+        \Drupal::logger('custom-module')->info($message, $context);
+    }
+
+}
+
+
+function pepsibam_clear_flood($account, $ip){
+    $identifier = $account->id() . '-' . $ip;
+
+    $connection = \Drupal::service('database');
+    $request_stack = \Drupal::service('request_stack');
+    $flood = new DatabaseBackend($connection, $request_stack);
+    try{
+        $flood->clear('user.failed_login_user', $identifier);
+        \Drupal::logger("general")->info("Flood table HAS been cleared for " . $identifier, []);
+    } catch(\Exception $e){
+        \Drupal::logger("general")->info("Flood table could not be cleared for " . $identifier, []);
+    }    
+}
+
+
+function get_email_domain($email){
+    $split = explode("@", $email);
+    if (count($split) !== 2)
+        return null;
+    return $split[1];
+}
+
+function is_mobile_device() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+
+function validate_ip_address($ip_address, $email, $max_total = 35){
+    $today = date('Y-m-d');
+
+    $domain = get_email_domain($email);
+    $ip_address = trim($ip_address);
+    $min_time_diff = 60; // 3 minutes
+    $max_entries_total = $max_total;
+    $max_entries_per_domain = 25;
+    if (is_mobile_device() ){
+         // log_var($_SERVER["HTTP_USER_AGENT"],'Mobile user agent', 'ip-validation');
+        return 1;
+    }
+    $sql = "SELECT ip_address, count, last_inserted, domain from spammy_ip_address where 
+    ip_address = '$ip_address' AND enterdate = '$today' ";
+
+
+    $select = \Drupal::database()->query($sql);
+    $result = $select->fetchAll();
+    if (!empty($result) ){ 
+        $total_count = 0;
+        $domain_count = 0;
+        $last_inserted = "";
+        foreach ($result as $key => $value) {
+            $total_count += $result[$key]->count;
+            if ($domain == $value->domain){
+                $domain_count = $value->count;
+            }
+            if ($last_inserted < $value->last_inserted)
+                $last_inserted = $value->last_inserted;
+        }
+        // $count = $result[0]->count;
+        $last_inserted = strtotime($result[0]->last_inserted);
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $diff = abs($now - $last_inserted);
+
+        if ($diff < $min_time_diff || $total_count >= $max_entries_total || $domain_count >= $max_entries_per_domain){
+            \Drupal::logger('spam-validation')->info("$email at  $ip_address has be temporarily blocked ", []);
+            return 0;
+        }
+
+    }
+    return 1;
+}
+
+function insert_ip_address($ip_address, $email){
+    $domain = get_email_domain($email);
+    if (empty($domain)){
+        \Drupal::logger('custom-module')->info(" Email is not valid", []);
+        return false;
+    }
+    $today = date("Y-m-d");
+
+    $select = "SELECT ip_address, count, domain from spammy_ip_address WHERE ip_address = '$ip_address' 
+                AND enterdate = '$today'
+           -- AND domain = '$domain'";
+
+    $query = \Drupal::database()->query($select);
+    $result = $query->fetchAll();
+    $count = 0;
+    if (!empty($result)){
+        $count = $result[0]->count;
+    } 
+
+
+    try{
+            $now = date("Y-m-d H:i:s");
+            if ($count == 0){
+                $sql = " INSERT into spammy_ip_address (ip_address, count, last_inserted, enterdate, domain) 
+                VALUES ('$ip_address', 1 , '$now', '$today' , '$domain') "; // Why this always inserts 2?
+            } else {
+                $count++;
+                $sql = "UPDATE spammy_ip_address SET count = $count, enterdate = '$today', last_inserted = '$now' WHERE ip_address = '$ip_address'
+                        AND enterdate = '$today'
+                       -- AND domain = '$domain' ";
+            }
+            $insert = \Drupal::database()->query($sql);
+            $query_result = $insert->execute();
+        } catch(\Exception $e){
+            \Drupal::logger("custom-module")->info("Could not insert into spammy_ip_address table " . $e->getMessage(), []);
+            return false;
+        }
+
+    return true;
+}
+
+function clear_spam_table(){
+    try{
+        $sql = "DELETE FROM `spammy_ip_address` WHERE 1 "; 
+        
+        $query = \Drupal::database()->query($sql);
+        $query_result = $query->execute();
+        $now = date("Y-m-d H:i:s");
+        \Drupal::logger("custom-module")->info(" spammy_ip_address table has been emptied at " . $now, []);
+    } catch(\Exception $e){
+        \Drupal::logger("custom-module")->info("Could not empty spammy_ip_address table " . $e->getMessage(), []);
+        return false;
+    }
+}
+
+function debug_var($var, $die = false){
+    print_r("<pre>");
+    print_r($var);
+    if ($die)
+        die;
+}
+
+function print_var($var){
+    echo " variable of type" . gettype($var) . "  \n";
+
+    if (gettype($var) == 'string')
+        echo " VAR = $var \n";
+    // debug_var();
+    echo " array keys \n";
+    debug_var(array_keys($var));
+    if (gettype($var) == 'object'){
+        echo " Object properties \n";
+        debug_var(get_object_vars($var));
+
+    }
+    echo " class methods \n";
+    debug_var(get_class_methods($var), 1);
+}
+
+
+function doShowPopup(){
+    // If the popup_form_table doesn't exist, return false
+    $user_id = \Drupal::currentUser()->id();
+    if (!\Drupal::database()->schema()->tableExists('pepsi_popup_form') || $user_id == 0){
+        if ($user_id != 0 ){
+            \Drupal::logger('debug')->info("pepsi_popup_form: Table not exist", []);
+        }
+        return 0;
+    }
+    $return = 0;
+    // $user = \Drupal\user\Entity\User::load($user_id);
+
+    $sql = "SELECT * from pepsi_popup_form WHERE user_id = $user_id";
+    try{
+        $select = \Drupal::database()->query($sql);
+        $result = $select->fetchAll();
+        if (!empty($result)){
+            $close_until = $result[0]->date_exit;
+            $today = date("Y-m-d H:i:s");
+            $account = \Drupal\user\Entity\User::load($user_id);
+            $optin = $account->get('field_optin')->value;
+            $return = ($today > $close_until && !$optin)? 1 : 0;
+        } else {
+            $return = 1; // Because the user was never shown the popup before
+        }
+    } catch(\Exception $e){
+
+        \Drupal::logger('custom-module')->info(" Could not fetch data from table pepsi_popup_form", []);
+    }
+
+    // \Drupal::logger('debug')->info("pepsi_popup_form: return value $return", []);
+    return $return;
+}
+
+
+function savePopupUserAction($user_id, $date){
+    $return = false;
+        
+    if (!empty($user_id) && \Drupal::database()->schema()->tableExists('pepsi_popup_form') ){
+        $sql = "SELECT * from pepsi_popup_form WHERE user_id = $user_id";
+        $hasClosedBefore = false;
+        try{
+            $select = \Drupal::database()->query($sql);
+            $result = $select->fetchAll();
+            if (!empty($result)){                    
+                $hasClosedBefore = true;
+            }
+
+        } catch (\Exception $e){
+            \Drupal::logger('custom-module')->info(" Could not select table pepsi_popup_form", []);
+
+        }
+        if ($hasClosedBefore){
+            $sql = "UPDATE pepsi_popup_form SET date_exit = '$date' WHERE user_id = $user_id ";
+        } else {
+            // Save user ID and date in the new table
+            $sql = "INSERT into pepsi_popup_form (user_id, date_exit) values ($user_id, '" . $date . "')";
+        }
+        try{
+            $insert = \Drupal::database()->query($sql);
+            $query_result = $insert->execute();
+            \Drupal::logger('custom-module')->info(" Saved closed form for userID = $user_id", []);
+            $return = true;
+        } catch(\Exception $e){
+
+            \Drupal::logger('custom-module')->info(" Could not insert into table pepsi_popup_form", []);
+        }
+
+    }
+    return $return;
+}
+
+
+function track_user_action($user, $tracking_code){
+    $langcode = get_current_langcode();
+    $uid = $user->id();
+    $email = $user->get('mail')->value;
+    $now = date('Y-m-d H:i:s');
+    try{
+        $sql = " INSERT into pepsi_tracking (uid, email, tracking_code, event_date, langcode) VALUES ($uid, '$email', '$tracking_code' , '$now', '$langcode')
+        ";
+        $insert = \Drupal::database()->query($sql);
+        $query_result = $insert->execute();
+    } catch(\Exception $e){
+        \Drupal::logger("tracking")->info("Could not insert into pepsi_tracking table " . $e->getMessage(), []);
+    }
+}
+
+
+function get_snacks_link($node ){
+    $langcode = get_current_langcode($with_prefix = false);
+    $sponsors = $node->get('field_recipe_sponsor')->referencedEntities(); 
+    $images = [];
+    $brand = '';
+    $snackscom_keys = [];
+    $tastemade_img = '';
+    $env =  \Drupal\Core\Site\Settings::get("environment");
+
+    // $base_url = "https://shop-tastyrewards-dev.azurefd.net/productlist?deepLink=true&&Brand=";
+    // if ($env == 'prod' || $env == 'preprod'){
+        // $base_url = "https://www.snacks.com/productlist?deepLink=true&&Brand=";
+    // }
+
+
+    // $base_url = "https://www.snacks.com/productlist?deepLink=true&&Brand=";
+
+    // $ssoconfig = \Drupal::config('ssoconfig.adminsettings');
+    $ssoconfig = \Drupal::config('ssoconfig_us.adminsettings');
+    $snack_url  = $ssoconfig->get('snack_url');
+    $base_url = rtrim($snack_url, '/') . "/productlist?deepLink=true&&Brand=" ;
+    
+    foreach($sponsors as $key => $entity){
+
+        if ($entity->hasTranslation($langcode)){
+            $entity = $entity->getTranslation($langcode);
+        }
+        $key = $entity->field_snacks_com_key->value;
+        if (!empty($key))
+            $snackscom_keys[] = $key;
+    }
+
+    $snack_link = '';
+    if (count($snackscom_keys) > 0 ){
+        $snacks_filter = "";
+        foreach ($snackscom_keys as $counter => $key) {
+            $snacks_filter .= ($counter == 0) ? $key: "," . $key ;
+        }
+        $snack_link = $base_url . $snacks_filter . "&&";
+    } 
+    return $snack_link;
+}
+
+
+function get_recipe_sponsor($node, $with_image = true ){
+    $langcode = get_current_langcode($with_prefix = false);
+    $sponsors = $node->get('field_recipe_sponsor')->referencedEntities(); 
+    $images = [];
+    $brand = '';
+    $tastemade_img = '';
+    $counter = 0;
+    foreach($sponsors as $key => $entity){
+        $counter++;
+        if ($counter > 2)
+            break;
+
+        if ($entity->hasTranslation($langcode)){
+            $entity = $entity->getTranslation($langcode);
+        }
+
+        if ($with_image === false ){
+            $brand = '';
+            if ( $entity->get('field_machinename')->getValue() != [] ){
+
+                $brand = $entity->field_machinename->value;
+                return $brand;
+            }
+        }
+
+        if (empty($entity->field_brand_image->target_id))
+            continue;
+
+        $img = \Drupal\file\Entity\File::load($entity->field_brand_image->target_id);
+        // if ($entity->getTitle() == 'TasteMade US'){
+        if (strpos(strtolower($entity->getTitle() ), 'tastemade') !== false ){
+            $tastemade_img = !empty($img)? file_create_url( $img->getFileUri()) : '';
+        } else {
+            $images[] = !empty($img)? file_create_url( $img->getFileUri()) : '';
+        }
+
+    }
+
+    if ($with_image === false){
+        return $brand;
+    }
+
+    if (!empty($tastemade_img))
+        $images[] = $tastemade_img;
+    
+    return $images;
+
+}
+
+
+function get_video_key($youtube_video){
+    $embedded_video = youtube_embed($youtube_video);
+    return str_replace("https://www.youtube.com/embed/", "", $embedded_video);
+}
+
+function youtube_embed($youtube_url) {
+    if (empty($youtube_url))
+        return '';
+
+    if (strpos($youtube_url, "https://www.youtube.com/embed/") !== false)
+        return $youtube_url;
+    
+    return preg_replace(
+        "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+        "https://www.youtube.com/embed/$2",
+        $youtube_url
+    );
+}
+
+
+/**
+ * Recursive function to remove menu items with different language
+ * than context language.
+ *
+ * @param $items
+ *   Menu items for current menu depth.
+ * @param $language
+ *   The context language.
+ */
+function pepsibam_menu_item_cleanup(&$items, $language) {
+
+    // Check language for current menu depth.
+    foreach ($items as $key => &$item) {
+      $menuLinkEntity = pepsibam_load_link_entity_by_link($item['original_link']);
+  
+      // Ignore if we don´t have a menu object.
+      if ($menuLinkEntity != NULL) {
+        $languages = $menuLinkEntity->getTranslationLanguages();
+  
+        // Remove links with different language than context.
+        if (!array_key_exists($language, $languages)) {
+          unset($items[$key]);
+        }
+        // Recursive call until no more below items exists.
+        else if (isset($items[$key]['below'])) {
+            pepsibam_menu_item_cleanup($items[$key]['below'], $language);
+        }
+      }
+    }
+  }
+  
+  function pepsibam_load_link_entity_by_link(MenuLinkInterface $menuLinkContentPlugin) {
+    $entity = NULL;
+  
+    if ($menuLinkContentPlugin instanceof MenuLinkContent) {
+      list($entity_type, $uuid) = explode(':', $menuLinkContentPlugin->getPluginId(), 2);
+      $entity = \Drupal::service('entity.repository')->loadEntityByUuid($entity_type, $uuid);
+    }
+    return $entity;
+  }
+
+function remove_space($name){
+    $name = trim($name);
+    $name = preg_replace("/[^A-Za-z0-9 ]/", '', strtolower($name) );
+     return preg_replace('/\s+/', '-',$name);
+}
+function CreateUserRecord($post) {
+        
+    //Verify if user already exist 
+    $user = user_load_by_mail($post['email']);
+    if (!$user){
+        $user = User::create([
+            'name' => $post['email'],
+            'mail' => $post['email'],
+            'status' => 1, // Always active for USA - What about CA?
+            'field_firstname' => $post['firstname'],
+            'field_lastname' => $post['lastname'],
+            'field_city' => $post['city'],
+            'field_province' => $post['province'],
+            'field_postalcode' => $post['zipcode']['main'],
+            'field_postal_code_ext' => $post['zipcode']['extension'],
+            'field_gender' => $post['gender'],
+            'field_bday' => $post['bday'],
+            'field_fbid' => $post['fbid'],
+            'field_optin' => $post['optin'],
+            'field_optin2' => isset($post['optin2'])?$post['optin2']:0,
+            'field_optin3' => isset($post['optin3'])?$post['optin3']:0,
+            'field_optin4' => isset($post['optin4'])?$post['optin4']:0,
+            'field_optin5' => isset($post['optin5'])?$post['optin5']:0,
+            'field_optin6' => isset($post['optin6'])?$post['optin6']:0,
+            'field_source' => $post['source'],
+            'field_ccid' => $post['ccid'],
+            'field_ip_address' => $post['ipaddress'],
+            'field_user_agent' => $post['useragent'],
+            'field_marketoid' => isset($post['field_marketoid'])?$post['field_marketoid']:'',
+            'field_source_id'=> $post['sourceid'],
+        ]);
+        $user->setPassword($post['password']);
+
+        $user->set("field_created_date", $post['date']);
+        if ($post['optin'] || $post['isIframeForm']) {
+
+            $user->set("field_optin_date", $post['date']);
+            if ( !empty($post['casl']) ){
+                $user->set("field_optin_casl", $post['casl']);
+            }
+        }
+
+        $user->set("langcode", $post['language']);
+        $user->set("preferred_langcode", $post['language']);
+        $user->set("preferred_admin_langcode", $post['language']);
+        if ($post['isIframeForm']){
+            $user->set("langcode", $post['langcode']);
+            $user->set("preferred_langcode", $post['langcode']);
+            $user->set("preferred_admin_langcode", $post['langcode']);
+        }
+        $user->save();
+    } 
+    else{
+        $user->set('field_firstname', $post['firstname']);
+        $user->set('field_lastname', $post['lastname']);
+        $user->set('field_city', $post['city']);
+        $user->set('field_province', $post['province']);
+        $user->set('field_postalcode', $post['zipcode']['main']);
+        $user->set('field_postal_code_ext', $post['zipcode']['extension']);
+        $user->set('field_gender', $post['gender']);
+        $user->set('field_bday', $post['bday']);
+        $user->set('field_fbid', $post['fbid']);
+        $user->set('field_optin', $post['optin']); //$isIframeForm? true : $post['optin'],
+        $user->set('field_optin2', isset($post['optin2'])?$post['optin2']:0);
+        $user->set('field_optin3', isset($post['optin3'])?$post['optin3']:0);
+        $user->set('field_optin4', isset($post['optin4'])?$post['optin4']:0);
+        $user->set('field_optin5', isset($post['optin5'])?$post['optin5']:0);
+        $user->set('field_optin6', isset($post['optin6'])?$post['optin6']:0);
+        $user->set('field_source', $post['source']);
+        $user->set('field_ccid', $post['ccid']);
+        $user->set('field_ip_address', $post['ipaddress']);
+        $user->set('field_user_agent', $post['useragent']);
+        $user->set('field_marketoid', isset($post['field_marketoid'])?$post['field_marketoid']:'');
+        $user->set('field_source_id', $post['sourceid']);
+        $user->setPassword($post['password']);
+        $user->set("field_created_date", $post['date']);
+        if ($post['optin'] || $post['isIframeForm']) {
+
+            $user->set("field_optin_date", $post['date']);
+            if ( !empty($post['casl']) ){
+                $user->set("field_optin_casl", $post['casl']);
+            }
+        }
+
+        $user->set("langcode", $post['language']);
+        $user->set("preferred_langcode", $post['language']);
+        $user->set("preferred_admin_langcode", $post['language']);
+        $user->save();
+
+    }
+
+    return $user;
+}
+
+function pepsibam_append_to_log($message){
+    $date = date('Y-m-d h:i:s');
+    $filename = "../export_contest/drupal_cron_logs.txt";
+    try{
+        file_put_contents($filename, "$date : " . $message . "\n",FILE_APPEND);
+    }catch(\Exception $e){
+        log_var('could not write logs ','logfile permission issue', 'cron');
+    }
+}
+
+function getSourceIdRegularPages($url, $lang){
+    /*
+    $pattern = explode('/',$key);
+
+    if (is_array($pattern) && count($pattern) > 4){
+        $key = $pattern[0] . '/'. $pattern[1] . '/'. $pattern[2]. '/'. $pattern[3];
+    }*/
+    
+    
+    $source['/en-ca/brands/lays'] = 'CA_TR_EN_TRWEB_LAYSWEBSITE_20210801';
+    $source['/en-ca/brands/doritos'] = 'CA_TR_EN_TRWEB_DORITOSWEBSITE_20210801';
+    $source['/en-ca/brands/cheetos'] = 'CA_TR_EN_TRWEB_CHEETOSWEBSITE_20210801';
+    $source['/en-ca/brands/quaker'] = 'CA_TR_EN_TRWEB_QUAKERWEBSITE_20210801';
+    $source['/en-ca/brands/ruffles'] = 'CA_TR_EN_TRWEB_RUFFLESWEBSITE_20210801';
+    $source['/en-ca/brands/fritolayvarietypacks'] = 'CA_TR_EN_TRWEB_FLVPWEBSITE_20210801';
+    $source['/en-ca/brands/bare'] = 'CA_TR_EN_TRWEB_BAREWEBSITE_20210801';
+    $source['/en-ca/brands/crispyminis'] = 'CA_TR_EN_TRWEB_CRISPYMINISWEBSITE_20210801';
+    $source['/en-ca/brands/capncrunch'] = 'CA_TR_EN_TRWEB_CAPNCRUNCHWEBSITE_20210801';
+    $source['/en-ca/brands/flaminhot'] = 'CA_TR_EN_TRWEB_FLAMINHOTWEBSITE_20210801';
+    $source['/en-ca/brands/missvickies'] = 'CA_TR_EN_TRWEB_MISSVICKIESWEBSITE_20210801';
+    $source['/en-ca/brands/offtheeatenpathsnacks'] = 'CA_TR_EN_TRWEB_OTEPWEBSITE_20210801';
+    $source['/en-ca/brands/smartfoodpopcorn'] = 'CA_TR_EN_TRWEB_SMARTFOODWEBSITE_20210801';
+    $source['/en-ca/brands/stacyssnacks'] = 'CA_TR_EN_TRWEB_STACYSWEBSITE_20210801';
+    $source['/en-ca/brands/sunchips'] = 'CA_TR_EN_TRWEB_SUNCHIPSWEBSITE_20210801';
+    $source['/en-ca/brands/tostitos'] = 'CA_TR_EN_TRWEB_TOSTITOSWEBSITE_20210801';
+    $source['/fr-ca/marques/lays'] = 'CA_TR_FR_TRWEB_LAYSWEBSITE_20210801';
+    $source['/fr-ca/marques/doritos'] = 'CA_TR_FR_TRWEB_DORITOSWEBSITE_20210801';
+    $source['/fr-ca/marques/cheetos'] = 'CA_TR_FR_TRWEB_CHEETOSWEBSITE_20210801';
+    $source['/fr-ca/marques/quaker'] = 'CA_TR_FR_TRWEB_QUAKERWEBSITE_20210801';
+    $source['/fr-ca/marques/ruffles'] = 'CA_TR_FR_TRWEB_RUFFLESWEBSITE_20210801';
+    $source['/fr-ca/marques/produitsassortisfritolay'] = 'CA_TR_FR_TRWEB_FLVPWEBSITE_20210801';
+    $source['/fr-ca/marques/fritolayproduitsassortis'] = 'CA_TR_FR_TRWEB_FLVPWEBSITE_20210801';
+    $source['/fr-ca/marques/bare'] = 'CA_TR_FR_TRWEB_BAREWEBSITE_20210801';
+    $source['/fr-ca/marques/crispyminis'] = 'CA_TR_FR_TRWEB_CRISPYMINISWEBSITE_20210801';
+    $source['/fr-ca/marques/capitainecrounche'] = 'CA_TR_FR_TRWEB_CAPNCRUNCHWEBSITE_20210801';
+    $source['/fr-ca/marques/enflamme'] = 'CA_TR_FR_TRWEB_FLAMINHOTWEBSITE_20210801';
+    $source['/fr-ca/marques/missvickies'] = 'CA_TR_FR_TRWEB_MISSVICKIESWEBSITE_20210801';
+    $source['/fr-ca/marques/maissoufflesmartfood'] = 'CA_TR_FR_TRWEB_SMARTFOODWEBSITE_20210801';
+    $source['/fr-ca/marques/stacyssnacks'] = 'CA_TR_FR_TRWEB_STACYSWEBSITE_20210801';
+    $source['/fr-ca/marques/sunchips'] = 'CA_TR_FR_TRWEB_SUNCHIPSWEBSITE_20210801';
+    $source['/fr-ca/marques/tostitos'] = 'CA_TR_FR_TRWEB_TOSTITOSWEBSITE_20210801';
+    $source['/en-us/spookysnacklab'] = 'US_PTR_EN_TRWEB_SPOOKYSNACKLAB_20210801';
+    $source['/en-us/makeyourspringspread'] = 'US_PTR_EN_TRWEB_SPRINGSPREAD_LP_20220321';
+
+    if (strpos($url, 'fritolayquakercontest')){
+        $microsite_source = [
+            'en' => 'CA_TR_EN_TRWEB_FLVPQUAKERNINTENDOCONTEST_20220321',
+            'en-ca' => 'CA_TR_EN_TRWEB_FLVPQUAKERNINTENDOCONTEST_20220321',
+            'fr-ca' => 'CA_TR_FR_TRWEB_FLVPQUAKERNINTENDOCONTEST_20220321',
+            'fr' => 'CA_TR_FR_TRWEB_FLVPQUAKERNINTENDOCONTEST_20220321',
+        ]; 
+        return $microsite_source[$lang];
+    }
+
+
+
+    $source['/en-us/coupons'] = 'US_PTR_EN_TRWEB_COUPSIGNUP_20210801';
+    $source['/es-us/cupones'] = 'US_PTR_EN_TRWEB_COUPSIGNUP_20210801';
+    $source['/en-ca/coupons'] = 'CA_TR_EN_TRWEB_COUPSIGNUP_20210801';
+    $source['/fr-ca/coupons'] = 'CA_TR_EN_TRWEB_COUPSIGNUP_20210801';
+    $source['/en-us/sweepstakes-contests'] = 'US_PTR_EN_TRWEB_GENSWEEPSIGNUP_20210801';
+    $source['/en-ca/contests'] = 'CA_TR_EN_TRWEB_GENCONTSIGNUP_20210801';
+    $source['/en-ca/contest'] = 'CA_TR_EN_TRWEB_GENCONTSIGNUP_20210801';
+    $source['/en-us/recipes'] = 'US_PTR_EN_TRWEB_RECIPESIGNUP_20210801';
+    $source['/en-ca/recipes'] = 'CA_TR_EN_TRWEB_RECIPESIGNUP_20210801';
+    $source['/en-us/about-tasty-rewards'] = 'US_PTR_EN_TRWEB_ABOUTSIGNUP_20210801';
+    $source['/en-ca/about-tasty-rewards'] = 'CA_TR_EN_TRWEB_ABOUTSIGNUP_20210801';
+    $source['/en-ca/brands'] = 'CA_TR_EN_TRWEB_BRANDSIGNUP_20210801';
+    $source['/en-us/life'] = 'US_PTR_EN_TRWEB_LIFESIGNUP_20210801';
+    $source['/en-ca/life'] = 'CA_TR_EN_TRWEB_LIFESIGNUP_20210801';
+    $source['/marques/collationsofftheeatenpath'] = 'CA_TR_FR_TRWEB_OTEPWEBSITE_20210801';
+    
+    $source['/es-us/cupones'] = 'US_PTR_ES_TRWEB_COUPSIGNUP_20210801';
+    $source['/fr-ca/coupons'] = 'CA_TR_FR_TRWEB_COUPSIGNUP_20210801';
+    $source['/es-us/sorteos-concursos'] = 'US_PTR_ES_TRWEB_GENSWEEPSIGNUP_20210801';
+    $source['/fr-ca/concours'] = 'CA_TR_FR_TRWEB_GENCONTSIGNUP_20210801';
+    $source['/es-us/recetas'] = 'US_PTR_ES_TRWEB_RECIPESIGNUP_20210801';
+    $source['/fr-ca/recettes'] = 'CA_TR_FR_TRWEB_RECIPESIGNUP_20210801';
+    $source['/es-us/sobre-nosotros'] = 'US_PTR_ES_TRWEB_ABOUTSIGNUP_20210801';
+    $source['/fr-ca/a-propos'] = 'CA_TR_FR_TRWEB_ABOUTSIGNUP_20210801';
+    $source['/fr-ca/marques'] = 'CA_TR_FR_TRWEB_BRANDSIGNUP_20210801';
+    $source['/es-us/modo-de-vida'] = 'US_PTR_ES_TRWEB_LIFESIGNUP_20210801';
+    $source['/es-us/vida'] = 'US_PTR_ES_TRWEB_LIFESIGNUP_20210801';
+    $source['/fr-ca/mode-de-vie'] = 'CA_TR_FR_TRWEB_LIFESIGNUP_20210801';
+
+
+    $source['/en-us'] = 'US_PTR_EN_TRWEB_GENSIGNUP_20201115';
+    $source['/es-us'] = 'US_PTR_ES_TRWEB_GENSIGNUP_20201115';
+    $source['/en-ca'] = 'CA_TR_EN_TRWEB_GENSIGNUP_20190805';
+    $source['/fr-ca'] = 'CA_TR_FR_TRWEB_GENSIGNUP_20190805';
+
+
+    //Checking if coming from contest pages  i.e "/es-us/contests/luckysweeps/signup"
+    $urlsplit = explode("/", $url);
+
+    if (count($urlsplit) > 0 && $urlsplit[2] == 'contests' && $urlsplit[4] == 'signup'){
+        if ( $lang == 'en-us') return 'US_PTR_EN_TRWEB_SWEEPSPOPUP_20210801';
+        if ( $lang == 'es-us') return 'US_PTR_ES_TRWEB_SWEEPSPOPUP_20210801';
+        if ( $lang == 'en-ca') return 'CA_TR_EN_TRWEB_CONTESTPOPUP_20210801';
+        if ( $lang == 'fr-ca') return 'CA_TR_FR_TRWEB_CONTESTPOPUP_20210801';  
+
+    }
+
+
+    foreach($source as $key => $item){
+        if (strpos($url, $key) !== false){
+            return $item;
+        }
+    }
+    /*
+    if ( isset($source[$key])){
+        return $source[$key];
+    }
+    else{*/
+        //defaults per language
+        if ( $lang == 'en-us') return 'US_PTR_EN_TRWEB_GENSIGNUP_20201115';
+        if ( $lang == 'es-us') return 'US_PTR_ES_TRWEB_GENSIGNUP_20201115';
+        if ( $lang == 'en-ca') return 'CA_TR_EN_TRWEB_GENSIGNUP_20190805';
+        if ( $lang == 'fr-ca') return 'CA_TR_FR_TRWEB_GENSIGNUP_20190805';
+    //}
+    //default
+    return 'CA_FRITOLAY_GENERALPRODUCTS_LOYALTY_20190508';
+
+}
+
+
+function pepsibam_pathauto_pattern_alter(PathautoPatternInterface &$pattern, array $context) {
+    
+    if ($context['module'] == 'node' && ($context['op'] == 'insert' || $context['op'] == 'update') && $context['bundle'] === "recipe") {
+      $node = $context['data']['node'];
+      $brand = $node->get('field_brand_website')->getString();
+      $sub_brand = $node->get('field_sub_brand')->getString();
+      
+
+      if ($brand == "" || $brand == 'Tastyrewards Default'){
+        // do nothing
+        if ($context['language'] == 'en-us' && $sub_brand == 'springactivation'){
+            $pattern->setPattern('/makeyourspringspread/recipes/[node:field_recipe_subtitle]');
+        }
+      }
+      else{
+        if ($context['language'] == 'fr'){
+            $pattern->setPattern('/marques/[node:field_brand_website]/recettes/[node:field_recipe_subtitle]');
+        }
+        elseif ($context['language'] == 'en' || $context['language'] == 'en-us'){
+            $pattern->setPattern('/brands/[node:field_brand_website]/recipes/[node:field_recipe_subtitle]');
+        }
+        elseif ($context['language'] == 'es-us'){
+            $pattern->setPattern('/brands/[node:field_brand_website]/recetas/[node:field_recipe_subtitle]');
+        }
+      }
+    }
+}

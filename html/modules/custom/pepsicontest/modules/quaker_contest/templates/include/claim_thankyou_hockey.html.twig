@@ -1,0 +1,171 @@
+<style>
+
+  @font-face {
+    font-family: 'Montserrat-black';
+    src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff2') format('woff2'),
+    url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat-semibold';
+    src: url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+    url('/themes/tastytheme/src/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+    .contest-description, .description h2 {
+        height: 150px;
+    }
+
+    .block__intro {
+      background-image: url("/themes/tastytheme/src/images/grab-snack/thankyou-background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+
+    .thankyou-header h2 {
+      padding-bottom: 20px !important;
+    }
+
+    .montserrat-black {
+      font-family: Montserrat-black;
+    }
+
+    .span-font {
+      font-size: 12px;
+    }
+
+    .mw-100 {
+      max-width: 100%;
+    }
+
+    .montserrat-black {
+      font-family: Montserrat-black;
+    }
+
+    .span-font {
+      font-size: 12px;
+    }
+
+    .montserrat-semibold {
+      font-family: 'Montserrat-semibold';
+    }
+
+
+    .opensans-semibold {
+      font-family: 'OpenSans-semibold';
+    }
+
+    .p-3 {
+      padding: 3rem;
+    }
+
+    .blue-font {
+      color:#0C6EA8;
+    }
+    .color-lightblue {
+      color:#17B3F1
+    }
+
+    .text-uppercase {
+      text-transform: uppercase;
+    }
+
+    .description h2 {
+      height:85px
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .m-auto {
+      margin: auto !important;
+    }
+
+    .description {
+      width: 85%;
+    }
+
+    .prizes-not-as-shown span {
+      font-weight: bold;
+    }
+
+    @media (max-width: 967px) {
+      .thankyou-column{
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      .thankyou-text-contain {
+        padding-left: 0!important;
+        margin-top: 2rem;
+
+      }
+
+      .thankyou-text-contain {
+        padding: 0 !important;
+      }
+
+      .description h2 {
+        height: 60px !important;
+      }
+
+      .description h2, .description p {
+        text-align: center;
+
+      }
+
+      .description br {
+        display: none;
+      }
+
+      .prizes-not-as-shown {
+        text-align: center;
+      }
+
+      .prizes-not-as-shown span {
+        font-weight: bold;
+      }
+    }
+
+</style>
+
+
+<div class="quaker-hockey-banner">
+    <div class="banner_slide--text {{class_pos}} contest-banner-text">
+        <h1>{{ "Thank you" |t }}!</h1>
+        <p>{{ "You should receive your prize within 4 – 6 weeks." | trans}}</p>
+    </div>
+
+  <div class = "noMobile-sm">
+    <img class = "mw-100 en" src="/themes/brandstheme/src/images/quaker/hockey-contest/Top-Banner-Small_ENG.png" alt="quaker products" />
+  <img class = "mw-100 fr" src="/themes/brandstheme/src/images/quaker/hockey-contest/Top-Banner-Small_FR.png" alt="quaker products" />
+  </div>
+  <div class = "noDesktop-sm">
+    <img class = "hockey-banner-faq-img en" src="/themes/brandstheme/src/images/quaker/hockey-contest/banner-lose-mobile.jpg" alt="quaker products" />
+    <img class="hockey-banner-faq-img fr" src="/themes/brandstheme/src/images/quaker/hockey-contest/banner-lose-mobile-fr.png" alt="quaker products" />
+  </div>
+</div>
+
+
+<div class="quaker-hockey-official-rules">
+    <div class="container">
+      {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+      <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+
+        <div class="quaker-hockey-official-rules-links">
+            <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+            <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+            <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+        </div>
+    </div>
+</div>

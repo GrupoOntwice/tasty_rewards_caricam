@@ -1,0 +1,51 @@
+{{ attach_library( 'quaker_contest/landing' ) }}
+{#comments#}
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    language = '{{ data.language }}';
+    window.popup_contest = 1;
+</script>
+
+{% if data.is_comingsoon == 1 %}
+	{% set page_comingsoon = 1 %}
+	{% if data.contest_type == 'nintendo' %}
+		{{ attach_library( 'quaker_contest/nintendo' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+	{% elseif data.contest_type == 'nintendo2' %}
+		{{ attach_library( 'quaker_contest/nintendo' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+	    {# {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %} #}
+	{% elseif data.contest_type == 'grabsnack' %}
+		{{ attach_library( 'quaker_contest/grabsnack' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-grabsnack.html.twig' %}
+	{% elseif data.contest_type == 'cheetos' %}
+		{{ attach_library( 'quaker_contest/cheetos' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-cheetos.html.twig' %}
+	{% endif %}
+{% else %}
+	{% set page_contestfaq = 1 %} 
+
+	{% if data.contest_type == 'nintendo' %}
+		{% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+	  {{ attach_library( 'quaker_contest/nintendo' ) }}
+	  {% include '@quaker_contest/include/contest-faq-fritolay.html.twig' %}
+	{% elseif data.contest_type == 'nintendo2' %}
+		{% include '@quaker_contest/tracking/pixel-tracking-nintendo2.html.twig' %}
+	  {{ attach_library( 'quaker_contest/nintendo' ) }}
+	  {% include '@quaker_contest/include/contest-faq-nintendo.html.twig' %}
+	{% elseif data.contest_type == 'grabsnack' %}
+	  {{ attach_library( 'quaker_contest/grabsnack' ) }}
+	  {% include '@quaker_contest/include/contest-faq-grabsnack.html.twig' %}
+	{% elseif data.contest_type == 'cheetos' %}
+	  {{ attach_library( 'quaker_contest/cheetos' ) }}
+	  {% include '@quaker_contest/include/contest-faq-cheetos.html.twig' %}
+	{% elseif data.contest_type == 'hockey' %}
+{#		{{ attach_library( 'quaker_contest/quaker' ) }}#}
+		{{ attach_library( 'quaker_contest/landing' ) }}
+		{{ attach_library( 'quaker_contest/hockey' ) }}
+		{% include '@quaker_contest/include/contest-faq-hockey.html.twig' %}
+	{% endif %}
+
+{% endif %}

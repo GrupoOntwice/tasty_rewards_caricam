@@ -1,0 +1,551 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the tastytheme theme.
+ */
+
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\pepsibam\Controller\RegisterController;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use GuzzleHttp\Cookie;
+use GuzzleHttp\Cookie\SetCookie;
+
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function tastytheme_preprocess_html(&$variables) {
+  $variables['is_quaker_landingpage'] = is_quaker_landing();
+  if ($variables['is_quaker_landingpage']){
+    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    // $current_brand = get_current_brand();
+    $variables['brand'] = "quaker";
+
+    $variables['tasty_logopath'] =  '/themes/brandstheme/src/images/logo-' . $current_language . '.webp';
+    $variables['logofooterpath'] = '/themes/brandstheme/src/images/logofooter-' . $current_language . '.png';
+    // $variables['shoplink'] = getShopLink();
+  }
+
+   //kint($variables);
+   //var_dump($variables['page']['#attached']['html_head'][6]);
+
+   $route = \Drupal::routeMatch()->getRouteName();
+   //var_dump($route);
+   
+   if ($route == "en.pepsibam.coupon" || $route == "fr.pepsibam.coupon" || $route == "en-us.pepsibam.coupon" || $route == "es-us.pepsibam.coupon"){
+      $description = [
+        '#tag' => 'meta',
+        '#attributes' => [
+            'property' => 'og:title',
+            'content' => t("Exclusive Coupons, Contests, Recipes, and more!"),
+        ],
+      ];
+      $variables['page']['#attached']['html_head'][] = [$description, 'og_title'];
+   }
+
+
+   if ($route == "en.pepsicontest.contest.signup" || $route == "en-ca.pepsicontest.contest.signup" || $route == "fr.pepsicontest.contest.signup" || $route == "fr-ca.pepsicontest.contest.signup" || $route == "en-us.pepsicontest.contest.signup" || $route == "es-us.pepsicontest.contest.signup"){
+      $description = [
+        '#tag' => 'meta',
+        '#attributes' => [
+            'property' => 'og:title',
+            'content' => t("Exclusive Contests, Coupons, Recipes, and more!"),
+        ],
+      ];
+      $variables['page']['#attached']['html_head'][] = [$description, 'og_title'];
+   }
+
+   if ($route == "pepsicontest.landing"){
+      $description = [
+        '#tag' => 'meta',
+        '#attributes' => [
+            'property' => 'og:title',
+            'content' => t("Exclusive Contests, Coupons, Recipes, and more!"),
+        ],
+      ];
+      $variables['page']['#attached']['html_head'][] = [$description, 'og_title'];
+   }
+   
+   
+     //search the og_title
+     /*
+     foreach ($variables['page']['#attached']['html_head'] as $key => $value){
+      //var_dump($value[1]);
+        if (isset($value[1]) && $value[1] == 'og_title'){
+          var_dump($variables['page']['#attached']['html_head'][$key][0]['#attributes']['content']);
+          $variables['page']['#attached']['html_head'][$key][0]['#attributes']['content'] = 'XXXXXXXX';
+          break;
+        }
+
+     }
+    */
+
+
+  // Add adminimal class to the body.
+  //if (\Drupal::currentUser()->isAnonymous()) {
+  // Anonymous user...
+   $variables['#attached']['library'][] = 'tastytheme/my_customscripts';
+  //}
+  $variables['attributes']['class'][] = 'tastythemed8';
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['uid'] = \Drupal::currentUser()->id();
+  $variables['is_nintendocontest'] = is_custom_contest_page('nintendo');
+  $variables['is_fritolayquakercontest'] = is_fritolayquakercontest();
+  $variables['is_grabsnackcontest'] = is_custom_contest_page('grabsnack');
+  $variables['is_customcontest'] = is_custom_contest_page();
+  $variables['is_cheetos_game'] = is_cheetos_game();
+  $userCurrent = \Drupal::currentUser();
+  if ($userCurrent->isAuthenticated()) {
+    $variables['username'] = $userCurrent->getAccountName();
+  }
+  else{
+    $variables['username'] = "NA";
+  }
+
+}
+
+function set_language_cookie(){
+
+	// $cookie->setDomain()
+	if (array_key_exists("rememberlang", $_GET)){
+		$cookie = new SetCookie(['Name' => 'rememberlang', 'Value' => $_GET['rememberlang'], 'Domain' => $_SERVER['HTTP_HOST']]) ;
+		setcookie("rememberlang", $_GET['rememberlang'],  time()+(60*60*24*30) );
+	}
+}
+
+function tastytheme_preprocess_links(&$variables){
+    //var_dump($variables['title']);
+    //var_dump($variables['links']['en']['link']);
+            
+    if ($variables['theme_hook_original'] == 'links__language_block'){
+        if (isset($variables['links']['en']['link']['#title'])){
+            $variables['links']['en']['link']['#title'] = 'EN';
+        }
+        if (isset($variables['links']['en']['link']['#title'])){
+            $variables['links']['fr']['link']['#title'] = 'FR';
+        }
+        // Add langu
+        
+    }
+       //kint($variables['links']['fr']['link']);
+}
+
+// function redirect_comingsoon(){
+// 	$current_path = \Drupal::service('path.current')->getPath();
+//     $comingsoonConfig = \Drupal::config('comingsoon.adminsettings');
+//     // possible modes 'always_active' , 'whitelist', 'always_comingsoon'
+//     $mode = $comingsoonConfig->get('modes');
+//     if ($mode == 'always_active'){
+//     	// Do nothing
+//     } elseif($mode == 'always_comingsoon'){
+//     	$hostname = $_SERVER['REQUEST_SCHEME'] . '://' .  $_SERVER['SERVER_NAME'];
+// 		header('Location: '.$hostname.'/comingsoon.html', TRUE, 302);
+// 		die("");
+//     } elseif($mode == 'whitelist') { 
+    	
+//     	$whitelist = $comingsoonConfig->get('whitelist');
+//     	$ip_addresses = array_map('trim', explode(",", $whitelist)) ;
+//     	if (!in_array(getIPaddress(), $ip_addresses)){
+//     		$hostname = $_SERVER['REQUEST_SCHEME'] . '://' .  $_SERVER['SERVER_NAME'];
+// 			header('Location: '.$hostname.'/comingsoon.html', TRUE, 302);
+// 			die("");
+//     	}
+    	
+//     }
+// }
+
+function tastytheme_preprocess_page(&$variables) {
+$language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $language;
+  // @TODO: this variable should be home page
+  // $variables['coupon_block'] = get_block_content('Tastyrewards', 'coupon');
+  $variables['coupon_blocks'] = get_couponblock_fields('Tastyrewards');
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  if ($variables['is_front']){
+    $variables['socialblock'] = get_socialblock('socialblock');
+    $variables['socialpollblock'] = get_socialblock('socialpollblock');
+  }
+	// redirect_comingsoon();
+  $variables['is_cheetos_game'] = is_cheetos_game();      
+  $variables['is_nintendocontest'] = is_custom_contest_page('nintendo');
+  $is_customcontest = is_custom_contest_page();
+  $variables['exclude_popup'] = $is_customcontest? 1: 0;
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+  $variables['site_slogan'] = $site_config->get('slogan');
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $nid = getAdvertisementBanner();
+  $variables['is_quaker_landingpage'] = is_quaker_landing();
+
+
+  if (!empty($nid)){
+    $ad_node =  \Drupal\node\Entity\Node::load($nid); 
+    if (!empty($ad_node)){
+      try{
+        $audience = $ad_node->getTranslation($current_language)->field_audience->value;
+        $user_id = \Drupal::currentUser()->id();
+        if ( ($audience == 'anonymous' && $user_id == 0) || 
+             ($audience == 'members' && $user_id > 0 ) ||
+             $audience == 'all'){
+
+          // $uri = $ad_node->get('field_ads_image')->entity->getFileUri();
+          // $ad_img_url = file_create_url($uri);
+          $ad_img_url = get_translated_image_url($ad_node,'field_ads_image', $language);
+
+          $variables['ad_banner_img'] = $ad_img_url;
+          $variables['ad_banner_link'] = $ad_node->getTranslation($current_language)->field_ads_link->uri;
+          $variables['ad_banner_name'] = str_replace(' ', '-', strtolower($ad_node->getTranslation($current_language)->getTitle()));
+        }
+
+      } catch( \Exception $e){
+          $message = "Exception:  %error";
+          $context = ['%error' => $e->getMessage()];
+          \Drupal::logger('general')->info($message, $context);
+      }
+    }
+  }
+
+  $variables['is_brandcoupon'] = is_superbowl_coupon() ? 1 : 0 ;
+
+  
+  
+  $variables['language'] = $current_language;
+  
+  set_language_cookie();
+  
+   // Redirect to when 
+  if ($_SERVER['REQUEST_URI'] == '/') {
+        $newlang = isset($_COOKIE['rememberlang'])?$_COOKIE['rememberlang']:"";
+        if ( $newlang == 'en-ca' || $newlang == 'fr-ca' || $newlang == 'en-us' || $newlang == 'es-us') {
+            $response = new RedirectResponse('/'. $newlang, 302);
+            $response->send();
+            exit(0);
+        }
+        $variables['countrypopup'] = "Y";
+   }
+
+   if (array_key_exists("password", $_GET)){
+   		$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http" ;
+   		$current_url = $protocol . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+   		$parsed = parse_url($current_url);
+		$query = $parsed['query'];
+
+		parse_str($query, $params);
+
+		unset($params['password']);
+		$new_url = $protocol . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REDIRECT_URL']}?" .  http_build_query($params);
+		$response = new RedirectResponse($_SERVER['REDIRECT_URL'], 302);
+        $response->send();
+        exit(0);
+   }
+
+  
+  $theme = \Drupal::theme()->getActiveTheme();
+
+
+  // logo needs to be placed within specified folder
+  // $variables['logopath'] = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
+  	$variables['logopath'] =  '/' .  $theme->getPath() . rtrim(base_path(), '/')  . '/src/images/logo-' . $current_language . '.webp';
+    $variables['logofooterpath'] = '/' . $theme->getPath() . rtrim(base_path(), '/') . '/src/images/logofooter-' . $current_language . '.png';
+
+	$controller_variable = new RegisterController;
+	$rendering_date = $controller_variable->CreateDateDropdown();
+	$rendering_token = $controller_variable->CreateCsrfToken();
+
+	//kint($rendering_date);
+	
+	$variables['data']['bdaydropdown'] = $rendering_date;
+	$variables['data']['csrfToken'] = $rendering_token;
+	$variable_prefixes = \Drupal::config('language.negotiation')->get('url.prefixes');
+    $variables['data']['language'] = $variable_prefixes[\Drupal::languageManager()->getCurrentLanguage()->getId()] ;
+    $variables['data']['source'] = 'tastyrewards';
+    // $variables['data']['doShowPopup'] = doShowPopup();
+
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    if (!empty($user)){
+      $name = $user->get('field_firstname')->value;
+    } else {
+      $name = "";
+    }
+    $variables['data']['username'] = $name;
+	$variables['main_carousel'] = get_active_carousels($brand = null, 'main');
+    $variables['is_recipecategory'] = is_recipe_category_page();
+    if (is_recipe_category_page()){
+      $current_path = \Drupal::service('path.current')->getPath();
+      $basename = basename($current_path);
+      $variables['category'] = get_category_by_basename($basename);
+    }
+
+    if ( is_recipe_landingpage() ){
+       $variables['recipe_categories'] = get_recipe_categories();
+    }
+}
+
+function tastytheme_preprocess(&$variables, $hook, $info){
+  // $account = $variables['elements']['#user'];
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    if (!empty($user)){
+      $name = $user->get('field_firstname')->value;
+    } else {
+      $name = "";
+    }
+
+  $variables['userFirstname'] = $name;
+  // $variables['doShowPopup'] = doShowPopup();
+}
+
+function tastytheme_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+  if ($hook == 'page' & !empty($variables['element']['#id'])) {
+    $suggestions[] = 'page__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+  
+  if ($hook == 'form' & !empty($variables['element']['#id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+   
+ return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_container_alter().
+ */
+function tastytheme_theme_suggestions_container_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#type']) && $element['#type'] == 'view') {
+    $suggestions[] = 'container__' . $element['#name'];
+    $suggestions[] = 'container__' . $element['#name'] . '__' . $element['#display_id'];
+  }
+
+  if (isset($element['#type']) && $element['#type'] == 'container' && isset($element['children']['#type'])) {
+    $suggestions[] = 'container__' . $element['children']['#type'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_node() for HTML document templates.
+ */
+function tastytheme_preprocess_node(&$variables) {
+    $node = $variables['node'];
+    $variables['email_block_type'] = "";
+    $variables['language'] = get_current_langcode();
+    $variables['lang_prefix'] = get_current_langcode();
+
+    if ( in_array($node->getType(), ['recipe', 'article'] ) ||
+         in_array($node->id(), [8, 14 ] )  
+    ){
+      // $variables['coupon_block'] = get_block_content('Tastyrewards', 'coupon');
+      $variables['coupon_blocks'] = get_couponblock_fields('Tastyrewards');
+    } 
+
+    // if ($node->id() == 1865){ // coupon block page for email 
+    if ($node->type->entity->Id() == "sf_external_content"){ // coupon block page for email 
+        $langcode =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $ext_content_type = $node->getTranslation($langcode)->field_external_content_type->value;
+        $lang = array(
+          'en' => 'en-ca',
+          'en-us' => 'en-us',
+          'es-us' => 'es-us',
+          'fr' => 'fr-ca',
+        );
+
+        $variables['langcode'] = $langcode;
+        
+        if ($ext_content_type == "coupon" || $ext_content_type == "coupon-title"){
+
+          $block = \Drupal\block_content\Entity\BlockContent::load(13);
+          $block_translated = $block->getTranslation($langcode);
+          
+          $alt = $block_translated->field_coupon_image->__get('alt');
+          $coupon_body = $block_translated->body->value;
+          $image_url = file_create_url($block_translated->field_coupon_image->entity->uri->value);
+          $variables['image_url'] = $image_url;
+          $variables['image_alt'] = $alt;
+          $variables['title'] = $coupon_body;
+          $variables['coupon_url'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . "/" . $lang[$langcode] ."/coupons";
+          $variables['is_contest'] = false;
+          $variables['email_block_type'] = "coupon";
+
+          if ($ext_content_type == "coupon-title") {
+            $variables['email_block_type'] = "coupon-title";
+            $variables['title'] = strip_tags($coupon_body) ;
+          }
+        } else if ($ext_content_type == "contest"){
+            $langcode =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+            // This needs to return the contest on top
+            $contest_resource = get_active_contests($langcode);
+                    
+            $variables['image_url'] = $contest_resource['url'];
+            $variables['image_alt'] = $contest_resource['alt'];            
+            $variables['contest_url'] = $contest_resource['contest_url'];
+            $variables['title'] = $contest_resource['title'];
+            if (empty($contest_resource['url'])){
+              $variables['countdown_url'] = '';        
+            }
+            $variables['email_block_type'] = "contest";
+        } elseif ($ext_content_type == "countdown"){
+          
+          $variables['email_block_type'] = "countdown";
+          $contest_resource = get_active_contests($langcode);
+          if (empty($contest_resource['url'])){
+              $variables['countdown_url'] = '';        
+          } else {
+             $_date = date_parse($contest_resource['end_date']) ;
+              $_hour = $_date['hour'] .  ":" . $_date['minute'] .  ":" . $_date['second'];
+              $nifty_url = "https://img1.niftyimages.com/1y-/vbyh/eg2h";
+              if ($langcode == 'fr-ca' || $langcode == 'fr') {
+                 $nifty_url = "https://img1.niftyimages.com/1y-/nbyh/-g2h";
+              }
+              // 2015-08-16T17:24:59 
+              $_date['month'] = sprintf("%02d", $_date['month'] );
+              $_date['day'] = sprintf("%02d", $_date['day'] );
+              $_date['hour'] = sprintf("%02d", $_date['hour'] );
+              $_date['minute'] = sprintf("%02d", $_date['minute'] );
+              $_date['second'] = sprintf("%02d", $_date['second'] );
+              
+            $contest_enddate = $_date['year'] . "-" . $_date['month'] . "-" . $_date['day'] . "T" . $_date['hour'] .  ":" . $_date['minute'] .  ":" . $_date['second'];
+            
+            $variables['countdown_url'] = get_motionmail_src($contest_enddate);
+              // $variables['countdown_url'] = $nifty_url . "?dt=" . $_date['day'] . "/" . $_date['month'] . "/" . $_date['year'] . "+" . $_hour . "&format=dd/MM/yyyy";
+          }
+
+        } elseif ($ext_content_type == "contest-rules"){
+          $variables['email_block_type'] = "contest-rules";
+          $langcode =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+          $contest_resource = get_active_contests($langcode);
+          $variables['legal_footer'] = $contest_resource['legal_footer'];
+          $variables['contest_url'] = $contest_resource['contest_url'];
+
+        }
+    } elseif ($node->getType() == 'recipe'){
+      $langcode = get_current_langcode();
+      $variables['langcode'] = $langcode;
+      $variables['recipe_sponsor'] = get_recipe_sponsor($node);
+      $sponsors = $node->get('field_recipe_sponsor')->referencedEntities(); 
+      if ( in_array($langcode, ['en-us', 'es-us']) ){
+        $variables['iframe_url'] = get_snacks_link($node);
+      } else {
+        $recipe_brand = get_recipe_sponsor($node, $with_image = false);
+        $variables['iframe_url'] = get_brand_iframe_url($recipe_brand);
+      }
+      // @TODO: only fetch related recipes for spring activation
+      // $node->field_sub_brand->value == 'springactivation'
+      if ($node->field_sub_brand->value == 'springactivation' || $node->field_brand_website->value == 'spookysnacklab'){
+        $variables['related_recipes'] = get_related_recipes_by_recipe($node->id(), false);
+        $variables['video_key'] = get_video_key($node->field_recipe_video->value);
+        $variables['life_carousel'] = get_active_carousels($brand = null, 'article_spring');
+      }
+      if ($node->field_brand_website->value == 'gameday'){
+        $variables['related_recipes'] = get_related_recipes_by_recipe($node->id(), false);
+        $variables['coupon_block'] = get_block_content('gameday', 'coupon');
+        $variables['video_key'] = get_video_key($node->field_recipe_video->value);
+      }
+
+    } elseif ($node->getType() == 'article'){
+       $variables['article_sponsors'] = get_content_sponsors($node);
+
+    }
+
+	if (isset($node) && !is_string($node)) {
+			if ($node->hasField('field_image_detail')) {
+			$images = $node->get('field_image_detail');
+
+				if (sizeof($images) === 0) {
+				  $image = $images->getFieldDefinition();
+				  $defaultImage = $image->getSetting('default_image');
+
+				  $entityrepository = Drupal::service('entity.repository');
+				  $defaultImageFile = $entityrepository->loadEntityByUuid('file', $defaultImage['uuid']);
+
+				  if($defaultImageFile) {
+					$defaultImageUri = $defaultImageFile->getFileUri();
+					$defaultImage['fileuri'] = $defaultImageUri;
+					$image->setSetting('default_image', $defaultImage);
+				  }
+				}
+			}
+
+			$relatedarticles = array();
+				$ar_rows = array();
+				if ($node->hasField('field_related_articles')) {
+					$relatedarticles = array_column($node->field_related_articles->getValue(), 'target_id');
+				}
+
+				foreach($relatedarticles as $relatedarticlenid) {
+						try{
+						$node = Node::load($relatedarticlenid);
+						$langcode =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+						$articlecontenttranslation = $node->getTranslation($langcode);
+							// Now deal with the right language from here on.
+							$variables['ar_rows'][] = array(
+							'title' => $articlecontenttranslation->getTitle(), 
+							'body' => $articlecontenttranslation->body->value,
+							'nodeurl' => '/'. $langcode . \Drupal::service('path_alias.manager')->getAliasByPath('/node/'.$articlecontenttranslation->id()),
+							'article_imageurl' => file_create_url($articlecontenttranslation->field_image->entity->getFileUri()),
+							'article_imagealt' => $articlecontenttranslation->get('field_image')->alt ?: $articlecontenttranslation->getTitle(),
+							);	
+
+						} catch (\Exception $e) {
+			                // Log into DB 
+			                $channel = "general";
+			                $message = " There is no  ". $langcode .  " translation  for Article " . $node->getTitle();
+				            $context = [ ];
+				            \Drupal::logger($channel)->info($message, $context);
+			                
+			                // continue;
+			            }
+				}
+				/** Related recipes is set in field_test **/
+				$relatedrecipes = array();
+				$rp_rows = array();
+				if ($node->hasField('field_test')) {
+					$relatedrecipes = array_column($node->field_test->getValue(), 'target_id');
+				}
+				
+				foreach($relatedrecipes as $relatedrecipenid) {
+					try{
+						$node = Node::load($relatedrecipenid);
+            if (empty($node)) continue;
+
+
+						$langcode =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+              $recipe = $node->getTranslation($langcode);
+            if (empty($recipe->field_recipe_image->entity)){
+              continue;
+            }
+              // Now deal with the right language from here on.
+            $variables['rp_rows'][] = array(
+              'title' => $recipe->getTitle(), 
+              'body' => $recipe->body->value,
+              'prepare_time' => $recipe->field_recipe_prep_time->value,
+              'nodeurl' => '/'. $langcode . \Drupal::service('path_alias.manager')->getAliasByPath('/node/'.$recipe->id()),
+              'recipe_imageurl' => file_create_url($recipe->field_recipe_image->entity->getFileUri()),
+              'recipe_imagealt' => $recipe->get('field_recipe_image')->alt ?: $recipe->getTitle(),
+              );	
+
+						}  catch (\Exception $e) {
+                // Log into DB 
+                $channel = "general";
+                $message = " There is no  ". $langcode .  " translation  for recipe " . $node->getTitle();
+	              $context = [ ];
+	             \Drupal::logger($channel)->info($message, $context);
+            }
+
+				}
+		}
+
+}
+
+function tastytheme_preprocess_views_view_unformatted__active_contest(&$variables) {
+    $variables['get']['firstname'] = isset($_GET['firstname'])?$_GET['firstname']:'';
+}
+

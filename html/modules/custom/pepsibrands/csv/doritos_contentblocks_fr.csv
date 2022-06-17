@@ -1,0 +1,16 @@
+Block Type,Description
+about-us,"La marque DORITOS<sup>®</sup> offre non seulement des chips tortilla avec une texture sérieusement croquante et des saveurs audacieuses, mais c’est également la marque de choix des amateurs qui recherchent des expériences de collation intenses."
+coupon,"<div class=""doritos-coupon--container"">
+<div class=""doritos-coupon--display"">
+<div class=""doritos-coupon--leftcol""><a href=""/fr-ca/coupons""><img alt=""doritos packshots"" src=""/themes/brandstheme/src/images/doritos/doritos-coupon.png"" /></a></div>
+</div>
+
+<div class=""doritos-coupon--text"">
+<h3>Économisez 0,50 $ sur<br />
+les Chips tortilla Doritos<sup>®</sup></h3>
+<a class=""doritos-black-button"" href=""/fr-ca/coupons"">Obtenir mon coupon* </a>
+
+<p class=""doritos-coupon-disclaimer"">*Coupons disponibles jusqu’à épuisement des stocks</p>
+</div>
+</div>
+"

@@ -1,0 +1,125 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# {% if title %}
+  <h3>{{ title }}</h3>
+{% endif %} #}
+
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name: block_product_fritolay
+ *
+ */
+#}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12 text-center products-title animate__animated ">
+      <h3>{{ "Flamin’ Hot<sup class='super-sup'>®</sup><br>Hall&nbsp;of&nbsp;Flame"|t }}</h3>
+      <p class="flaminhot-products-subtitle">{{ "Is it hot in here, or is it just us?"|t }}</p>
+    </div>
+
+    <div class="products-items col-md-12">
+      {# product-alight-left #}
+      {% for row in rows %}
+        {% set class_align = 'flaminhot-align-left' %}
+        {% set row = row|merge({'index': loop.index}) %}
+
+        {% if loop.index % 2 == 0 %}
+          {% set class_align = 'flaminhot-align-right' %}
+        {% endif %}
+
+        {# {kint(row.content["#row"]._entity.getTranslation(language).field_recipe_image.0.entity.uri.value)} #}
+
+
+        {% set title = row.content["#row"]._entity.getTranslation(language).field_subtitle.getValue().0.value %}
+        {% set body = row.content["#row"]._entity.getTranslation(language).body.getValue().0.value %}
+        {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_recipe_image.0.entity.uri.value) %}
+        {% set link_url = row.content["#row"]._entity.getTranslation(language).field_brand_page_link.0.url %}
+        {% set link_title = row.content["#row"]._entity.getTranslation(language).field_brand_page_link.0.title %}
+
+
+        <div class="products-item w-100 d-md-flex ">
+
+          {% if loop.index % 2 != 1 %}
+            <div class="col-md-7 product-img-col flaminhot-align-left animate__animated " style="visibility: visible;">
+              <div class="products-recipe-image">
+                {% if (link_url is not empty) %}
+                  <a class="flaminhot-link" href="{{ link_url }}" tabindex="-1" title="{{ title }}" target="_blank">
+                    <img src="{{ img }}" width="1920" height="1920" alt="{{ title }}" typeof="foaf:Image" class="w-100">
+                  </a>
+                {% else %}
+                  <img src="{{ img }}" width="1920" height="1920" alt="{{ title }}" typeof="foaf:Image" class="w-100">
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-5 product-copy-col text-left-dsk animate__animated " style="visibility: visible;">
+              <div class="w-80-mbl text-left-dsk d-inline-block">
+                <div class="products-title flaminhot-fave-title html-title">
+                  {{ title|raw }}
+                </div>
+                <div class="products-body flaminhot-fave-body">
+                  {{ body|raw }}
+                </div>
+                {% if (link_url is not empty) %}
+                  <div class="products-buy-now-left " data-hoverimage="/images/flaminhot/flaminhot-btn-fire.svg">
+                    <p><a class="btn_flaminhot" href="{{ link_url }}" tabindex="-1" title="{{ title }}" target="_blank">{{ "View Product"|t }}</a></p>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            <div class="col-md-5 product-copy-col text-right-dsk animate__animated " style="visibility: visible;">
+              <div class="w-80-mbl text-right-dsk d-inline-block">
+                <div class="products-title flaminhot-fave-title html-title">
+                  {{ title|raw }}
+                </div>
+                <div class="products-body flaminhot-fave-body">
+                  {{ body|raw }}
+                </div>
+                {% if (link_url is not empty) %}
+                  <div class="products-buy-now-right " data-hoverimage="/images/flaminhot/flaminhot-btn-fire.svg">
+                    <p><a class="btn_flaminhot" href="{{ link_url }}" tabindex="-1" title="{{ title }}" target="_blank">{{ "View Product"|t }}</a></p>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-7 product-img-col flaminhot-align-right animate__animated " style="visibility: visible;">
+              <div class="products-recipe-image">
+                {% if (link_url is not empty) %}
+                  <a class="flaminhot-link" href="{{ link_url }}" tabindex="-1" title="{{ title }}" target="_blank">
+                    <img src="{{ img }}" width="1920" height="1920" alt="{{ title }}" typeof="foaf:Image" class="w-100">
+                  </a>
+                {% else %}
+                  <img src="{{ img }}" width="1920" height="1920" alt="{{ title }}" typeof="foaf:Image" class="w-100">
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>

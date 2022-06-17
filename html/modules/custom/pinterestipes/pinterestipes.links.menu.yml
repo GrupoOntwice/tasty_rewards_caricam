@@ -1,0 +1,6 @@
+# ADMIN MENU LINKS
+pinterestipes.admin_item_1:
+  title: 'Pinterestipes Settings'
+  parent: system.admin_config
+  description: 'Pinterestipes Settings'
+  route_name: pinterestipes.settings

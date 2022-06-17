@@ -1,0 +1,1452 @@
+/*
+  Ruffles Stylesheet
+*/
+
+
+/****************************
+  Ruffles Fonts: Chunkfive
+*****************************/
+
+@font-face {
+  font-family: ChunkFiveEx Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('../fonts/ruffles/Chunkfive-Ex.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/ruffles/Chunkfive-Ex.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/ruffles/Chunkfive-Ex.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ruffles/Chunkfive-Ex.woff') format('woff'), /* Modern Browsers */ url('../fonts/ruffles/Chunkfive-Ex.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ruffles/Chunkfive-Ex.svg#Chunkfive-Ex') format('svg'); /* Legacy iOS */
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  color: #383333;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.ruffles h1, .ruffles h2, .ruffles h3, .ruffles h4, .ruffles h5, .ruffles h6 {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ruffles p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.empty-div {
+  height: 16px;
+}
+
+.sup-banner-mc {
+  font-size: 40% !important;
+  top: -1.6em !important;
+}
+
+/*****************************
+       Ruffles Navbar
+*****************************/
+
+.ruffles .header__logo-container {
+  z-index: 999999;
+}
+
+.ruffles #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.ruffles #brands_navigation {
+  background: url(/themes/brandstheme/src/images/ruffles/navbar-pattern.png?r=1) center center repeat, #031C4B !important;
+  background-size: cover;
+  margin-bottom: -2px;
+}
+
+.ruffles .brands-navbar__ul a, .ruffles .choose-lang_fr, .ruffles .brands-navbar_accout-options, .ruffles .header .menu a {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/*****************************
+    Main Carousel Banner
+*****************************/
+
+.ruffles section#banner .banner-desktop {
+  height: 644px;
+}
+
+.ruffles section#banner .slick-dots {
+  top: -96px;
+}
+
+.ruffles .slick-prev, .ruffles .slick-next {
+  top: 42% !important;
+}
+
+.ruffles .blue_black .h1, .ruffles .blue_white .h1, .ruffles .blue_black h1, .ruffles .blue_white h1, .ruffles .blue_black span, .ruffles .blue_white span, .ruffles .blue_black .recipe_slide-icon-text, .ruffles .blue_white .recipe_slide-icon-text, .ruffles .blue_black .lifestyle_slide-icon-text, .ruffles .blue_white .lifestyle_slide-icon-text, .ruffles .banner-mobile.blue_white .h1 .banner-mobile.blue_white .h1, .ruffles .banner-mobile.blue_black h1, .ruffles .banner-mobile.blue_white h1, .ruffles .banner-mobile.blue_black span, .ruffles .banner-mobile.blue_white span, .ruffles .banner-mobile.blue_black .recipe_slide-icon-text, .ruffles .banner-mobile.blue_white .recipe_slide-icon-text, .ruffles .banner-mobile.blue_black .lifestyle_slide-icon-text, .ruffles .banner-mobile.blue_white .lifestyle_slide-icon-text {
+  color: #01102c !important;
+}
+
+.ruffles section#banner .banner-desktop span.h1, .ruffles section#banner .banner-mobile span.h1 {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ruffles section#banner .banner_slide--text p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ruffles .slick-next:before {
+  background: url("../images/arrows/white-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.ruffles .slick-prev:before {
+  background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.ruffles #brands .slick-next:before {
+  background: url("../images/arrows/white-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.ruffles #brands .slick-prev:before {
+  background: url("../images/arrows/white-left-chevron.svg") !important;
+}
+
+.ruffles section#banner .slick-dots li.slick-active button {
+  background-color: #E81224 !important;
+}
+
+.ruffles section#banner .slick-dots li button {
+  background-color: #FFFFFF !important;
+}
+
+
+/*****************************
+    Main Carousel Buttons
+*****************************/
+
+.btn_ruffles, .ruffles .btn_carousel {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #E81224;
+  color: #FFFFFF;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #E81224;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: auto !important;
+  height: auto !important;
+}
+
+.btn_ruffles:hover, .btn_ruffles:focus, .btn_ruffles:active, .ruffles .btn_carousel:hover, .ruffles .btn_carousel:focus, .ruffles .btn_carousel:active {
+  color: #FFFFFF;
+  background: #E81224 !important;
+  border: 2px solid #E81224;
+  outline: none;
+  text-decoration: none;
+  /*-webkit-border-radius: 5px;*/
+  /*-moz-border-radius: 5px;*/
+  /*border-radius: 5px;*/
+}
+
+
+.btn_ruffles-prod {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #E81224;
+  color: #FFFFFF;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #FFFFFF;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: auto !important;
+  height: auto !important;
+  -webkit-box-shadow: 0 0 0 2px #01102c;
+  -moz-box-shadow: 0 0 0 2px #01102c;
+  box-shadow: 0 0 0 2px #01102c;
+}
+
+.btn_ruffles-prod:hover, .btn_ruffles-prod:focus, .btn_ruffles-prod:active {
+  color: #FFFFFF;
+  background: #E81224 !important;
+  border: 2px solid #FFFFFF;
+  outline: none;
+  text-decoration: none;
+  -webkit-box-shadow: 0 0 0 2px #01102c;
+  -moz-box-shadow: 0 0 0 2px #01102c;
+  box-shadow: 0 0 0 2px #01102c;
+}
+
+/**********************************************************
+   HomePage Featured Products Section Bootstrap Carousel
+***********************************************************/
+
+.ruffles-banner {
+  position: relative;
+}
+
+.ruffles-banner-waves {
+  position: absolute;
+  width: 100%;
+  background: url(/themes/brandstheme/src/images/ruffles/ruffles-zig-zag-banner.svg) top center repeat, transparent;
+  background-size: contain;
+  height: 101px;
+  bottom: -3%;
+}
+
+.ruffles section#banner .banner_slide--text.slide-left sup {
+  top: -.5em !important;
+  font-size: 75% !important;
+  right: 0 !important;
+}
+
+.ruffles-content-background-container-homepage, .ruffles-content-background-container-products {
+  background-color: #031C4B;
+  width: 100%;
+  height: auto;
+}
+
+.ruffles-carousel-block {
+  padding: 48px 0 48px;
+}
+
+
+#product-categories, #ruffles-product-categories {
+  padding: 64px 0 160px;
+}
+
+
+.ruffles-prod-detail-carousel-block {
+  padding: 0 0 64px;
+  margin-top: -2px;
+}
+
+
+#ruffles-signatures-featured-products-carousel {
+  padding-bottom: 64px;
+}
+
+.featured-prod-col-bg {
+  text-align: center;
+}
+
+.featured-product-image-col, .featured-prod-copy {
+  position: relative;
+}
+
+
+.featured-product-image-col {
+  /*background: #E81224;*/
+}
+
+.featured-prod-copy-div {
+  padding: 48px 16px 48px;
+}
+
+.featured-product-image-col, .ruffles-products-detail-featured-product-image-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: inherit;
+}
+
+.featured-product-image {
+  max-width: 100%;
+  width: 60%;
+  height: auto;
+}
+
+.featured-prod-heading {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 62px;
+  line-height: 1.2;
+  /*text-transform: uppercase !important;*/
+}
+
+.featured-prod-heading {
+  color: #FFFFFF !important;
+}
+
+.signatures-featured-prod-heading {
+  color: #F5F1E7 !important;
+}
+
+.featured-product-title, .ruffles-prod-details-featured-prod-copy .featured-product-title, .ruffles-productdetails-nutrition-info h3, .ruffles-productdetails-ingredients-info h3 {
+  font-size: 32px;
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+  padding-bottom: 16px;
+}
+
+.ruffles-productdetails-nutrition-info h3, .ruffles-productdetails-ingredients-info h3, .ruffles-productdetails-nutrition-info div, .ruffles-productdetails-ingredients-info p {
+  color: #01102c;
+}
+
+.ruffles-productdetails-nutrition-info div {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+.featured-product-title {
+  color: #FFFFFF !important;
+}
+
+.ruffles-prod-details-featured-prod-copy .featured-product-title, .ruffles-prod-details-featured-prod-copy p {
+  color: #FFFFFF !important;
+}
+
+.ruffles-prod-details-featured-prod-copy {
+  background: #212121;
+  padding: 48px 16px 48px;
+}
+
+
+.ruffles-btn {
+  padding-top: 16px;
+}
+
+
+/****************************
+   Ruffles Products Page
+****************************/
+
+.ruffles-product-description h4, .ruffles-category-description h4 {
+  font-size: 16px;
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #01102c;
+  line-height: 1.2;
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+.ruffles-prod-col {
+  padding: 0 16px;
+}
+
+.ruffles-product-description h4, .ruffles-category-description h4 {
+  padding-top: 16px;
+}
+
+.product-btn-div {
+  position: relative;
+  margin-top: 16px;
+}
+
+.ruffles-product-detail-intro-block {
+  /*padding: 64px 0;*/
+}
+
+.ruffles-product-detail-img-bg, .ruffles-product-detail-copy-bg {
+  height: 550px;
+}
+
+.ruffles-product-detail-copy-bg {
+  /*background: url("/themes/brandstheme/src/images/ruffles/ruffles-product-detail-intro-block-bg.png") left center no-repeat;*/
+  background: linear-gradient(rgba(0,0,0,0.25) 100%, rgba(0,0,0,0.25)), url("/themes/brandstheme/src/images/ruffles/featured-product-copy-bg.png") left center no-repeat;
+  background-size: cover;
+}
+
+.ruffles-product-detail-copy h3 {
+  font-size: 32px;
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+  color: #FFFFFF;
+  /*text-transform: uppercase !important;*/
+  padding-bottom: 16px;
+}
+
+.ruffles-product-detail-copy, .ruffles-product-detail-copy p  {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ruffles-product-detail-copy ul, .ruffles-product-detail-copy ol {
+  padding-left: 16px;
+}
+
+.ruffles-product-detail-copy ul {
+  list-style: initial;
+}
+
+.ruffles-product-detail-copy ol {
+  list-style: decimal;
+}
+
+.ruffles-product-detail-copy i {
+  font-style: italic;
+}
+
+.ruffles-product-detail-copy p, .ruffles-product-detail-copy ul, .ruffles-product-detail-copy ol, .ruffles-product-detail-copy i, .ruffles-product-detail-copy li, .ruffles-product-detail-copy span {
+  margin-bottom: 8px;
+}
+
+.ruffles-product-detail-btn {
+  padding-top: 48px;
+}
+
+.ruffles-product-details-img-block  {
+  position: relative;
+  height: 500px;
+  padding: 40px 16px 22px;
+  z-index: -1;
+}
+
+.ruffles-product-img-zig-zag {
+  position: absolute;
+  top: -16px;
+  right: -64px;
+  width: 100px;
+  height: 101px;
+}
+
+.ruffles-background-holder {
+  overflow: hidden;
+  margin: 0 auto;
+  position: absolute;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#ruffles-productdetails-info-block {
+  padding: 64px 0 96px;
+  text-align: left;
+}
+
+.product-alert {
+  /*color: #E81224;*/
+}
+
+/****************************
+   Ruffles Product Table
+****************************/
+
+.ruffles-productdetails-nutrition-row {
+  /*border-bottom: 1px solid rgba(0,0,0,0.3);*/
+}
+
+
+.ruffles-productdetails-nutrition-header-row, .ruffles-signatures-productdetails-nutrition-header-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /*padding-bottom: 16px;*/
+}
+
+.ruffles-signatures-productdetails-nutrition-header-row div, #ruffles-signatures-productdetails-info-block .ruffles-productdetails-nutrition-cell {
+  color: #D9DDE4;
+}
+
+.ruffles-productdetails-nutrition-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding-right: 25px;
+  /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.ruffles-productdetails-nutrition-row:nth-child(2n + 4) {
+  background-color: #D9DDE4;
+}
+
+#ruffles-signatures-productdetails-info-block .ruffles-productdetails-nutrition-row:nth-child(2n + 4) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ruffles-productdetails-nutrition-cell {
+  padding: 6px 2px;
+  font-size: 0.875em;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ruffles-productdetails-nutrition-cell:first-child {
+  width: 250px;
+}
+
+.ruffles-row-indented .ruffles-productdetails-nutrition-cell:first-of-type {
+  padding-left: 20px;
+}
+
+/****************************
+    Smaller Top Banner
+****************************/
+
+.ruffles-top-banner {
+  /*margin-bottom: -3px;*/
+  position: relative;
+}
+
+.ruffles-banner-zig-zag {
+  position: absolute;
+  width: 100%;
+  background: url(/themes/brandstheme/src/images/ruffles/ruffles-about-us-zig-zag.svg) top center repeat, transparent;
+  background-size: contain;
+  height: 101px;
+  bottom: -10px;
+}
+
+.ruffles-top-banner .ruffles-banner-copy {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+}
+
+
+.ruffles-top-banner h1 {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+  font-size: 62px;
+  line-height: 1.2;
+  /*text-transform: uppercase !important;*/
+}
+
+
+/*********************
+  Ruffles Coupon
+*********************/
+
+.ruffles .main-coupon-centered-img img {
+  max-width: 275px;
+}
+
+.ruffles-coupon-pre-position {
+  background-position: center center !important;
+}
+
+.ruffles-coupon-side-by-side-block {
+  background-color: #E81224;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 32px 0 112px 0;
+  overflow-x: hidden;
+}
+
+.ruffles-coupon-block, .ruffles-product-details-featured-carousel {
+  position: relative;
+  margin-top: -1px;
+}
+
+.ruffles-coupon-zig-zag {
+  position: absolute;
+  width: 100%;
+  background: url(/themes/brandstheme/src/images/ruffles/ruffles-coupon-zig-zag.svg) top center repeat, transparent;
+  background-size: contain;
+  height: 101px;
+  top: -15%;
+}
+
+.ruffles-products-zig-zag {
+  position: absolute;
+  width: 100%;
+  background: url(/themes/brandstheme/src/images/ruffles/ruffles-zig-zag-banner.svg) top center repeat, transparent;
+  background-size: contain;
+  height: 101px;
+  top: -10%;
+}
+
+.ruffles .main-coupon-left {
+  border-radius: 0;
+  position: relative;
+}
+
+.ruffles .main-coupon-right {
+  border-radius: 0;
+  position: relative;
+}
+
+.ruffle-couple-zig-zag-mbl {
+  position: absolute;
+  width: 100%;
+  top: -3%;
+}
+
+.ruffle-couple-zig-zag-mbl img {
+  transform: rotate(
+    180deg
+  );
+}
+
+/*********************
+      About Us
+*********************/
+
+.ruffles-about-us {
+  /*background: url(/themes/brandstheme/src/images/ruffles/ruffles-about-us-bg.svg) top center repeat, transparent;*/
+  /*background-size: cover;*/
+}
+
+.about-us-copy h1 {
+  font-family: ChunkFiveEx Regular, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 62px;
+  line-height: 1.2;
+  color: #031C4B;
+  padding-bottom: 16px;
+  /*text-transform: uppercase !important;*/
+}
+
+.about-us-copy p {
+  color: #031C4B;
+  font-family: 'Open Sans',sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/*********************
+  Bootstrap Carousel
+*********************/
+
+.carousel {
+  position: relative;
+}
+
+.carousel.pointer-event {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+  z-index: 1;
+  opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-left,
+  .carousel-fade .active.carousel-item-right {
+    transition: none;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 5%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    transition: none;
+  }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: no-repeat 50% / 100% 100%;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrows/white-left-chevron.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrows/white-right-chevron.svg");
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 15;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel-indicators li {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  opacity: .5;
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicators li {
+    transition: none;
+  }
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  margin-right: 3px !important;
+  margin-left: 3px !important;
+}
+
+.featured-carousel-indicators {
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+
+/*****************************
+  Media Queries for Ruffles
+*****************************/
+
+@media only screen and (max-width: 360px) {
+
+  #ruffles-productdetails-info-block {
+    padding: 48px 16px 80px !important;
+  }
+
+}
+
+
+@media only screen and (max-width: 380px) {
+
+  .featured-product-title, .prod-category-copy h3, .ruffles-prod-details-featured-prod-copy .featured-product-title {
+    font-size: 23px !important;
+  }
+
+  .btn_ruffles, .ruffles .btn_carousel, .btn_ruffles:hover, .btn_ruffles:focus, .btn_ruffles:active, .ruffles .btn_carousel:hover, .ruffles .btn_carousel:focus, .ruffles .btn_carousel:active, .btn_ruffles-prod, .btn_ruffles-prod:active, .btn_ruffles-prod:hover, .btn_ruffles-prod:focus {
+    padding: 12px 16px !important;
+  }
+
+}
+
+@media only screen and (max-width: 420px) {
+  .ruffles-product-details-img-block {
+    /*padding: 0 !important;*/
+    height: 400px;
+  }
+
+}
+
+@media only screen and (max-width: 575px) {
+  .ruffles-product-detail-copy {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-product-detail-intro-block-bg-mbl.png) top center no-repeat;
+    background-size: cover;
+  }
+
+  .ruffles-product-detail-copy-bg {
+    background: transparent !important;
+  }
+
+  .ruffles-product-detail-copy {
+    padding: 16px 16px 48px !important;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+
+  .ruffles-product-detail-copy h3 {
+    padding: 64px 0 16px !important;
+  }
+
+  .featured-prod-heading, .signatures-featured-prod-heading, .ruffles .video-section .video-title h1, .ruffles-product-banner-category-block h1, .ruffles-product-banner-block h1, .about-us-copy h1 {
+    font-size: 48px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .ruffles-top-banner h1 {
+    font-size: 48px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  .font-mbl-32 {
+    font-size: 32px !important;
+  }
+
+  .ruffles-product-detail-copy ul, .ruffles-product-detail-copy ol {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .ruffles-product-detail-copy {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ruffles-banner-waves {
+    bottom: -2.8%;
+  }
+
+  .empty-div {
+    height: 32px;
+  }
+
+  .ruffles .main-coupon-centered-img img {
+    max-width: 225px;
+  }
+
+  .ruffles .carousel-control-prev, .ruffles .carousel-control-next {
+    display: none;
+  }
+
+  .ruffles .slick-dotted.slick-slider {
+    margin-bottom: 0 !important;
+  }
+
+  .featured-prod-bag-bg, .ruffles-products-detail-featured-prod-bag-bg {
+    padding: 0 16px;
+  }
+
+  .ruffles-section-container {
+    padding: 16px 16px 112px 16px;
+  }
+
+  .ruffles-coupon-zig-zag {
+    top: -10% !important;
+  }
+
+  .ruffles .main-coupon-right {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-sidebyside-bg-dsk-top.svg) top center no-repeat;
+    background-size: cover;
+  }
+
+  .ruffles-coupon-position {
+    /*background-color: #FFFFFF !important;*/
+    background-position: bottom center !important;
+  }
+
+
+  .featured-prod-copy {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-featured-copy-bg-mbl.png) top center no-repeat;
+    background-size: cover;
+  }
+
+  .ruffles-top-banner .ruffles-banner-copy, .ruffles-product-banner-category-block .ruffles-banner-copy, .ruffles-product-banner-block .ruffles-banner-copy {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .featured-product-image {
+    padding: 16px 0 16px;
+    width: 50%;
+  }
+
+  .main-featured-carousel {
+    margin-bottom: 96px !important;
+  }
+
+  .ruffles-top-banner img {
+    height: 300px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .ruffles-banner-zig-zag {
+    bottom: -29px;
+  }
+
+  .ruffles-about-us {
+    padding: 48px 16px 112px;
+  }
+
+  .about-us-copy {
+    padding-top: 32px;
+  }
+
+  /*.about-us-copy h1 {*/
+  /*  padding-bottom: 8px;*/
+  /*}*/
+
+  .ruffles-productdetails-ingredients-info {
+    padding-top: 16px;
+  }
+
+  #product-categories, #ruffles-product-categories {
+    padding: 48px 16px 112px;
+  }
+
+  .ruffles-carousel-block {
+    padding: 16px 0 16px;
+    margin-top: -1px;
+  }
+
+  .ruffles-product-detail-copy {
+    text-align: center;
+    padding: 48px 0 48px;
+  }
+
+  .ruffles-coupon-block, .ruffles-product-details-featured-carousel {
+    margin-top: -2px;
+  }
+
+  /*.ruffles-product-detail-copy p {*/
+  /*  padding-bottom: 48px;*/
+  /*}*/
+
+  .ruffles-product-detail-copy h3 {
+    padding: 80px 0 16px;
+  }
+
+  .ruffles-product-details-img-block {
+    padding: 64px 48px 48px 48px;
+  }
+
+  .ruffles-product-detail-copy-bg {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-product-detail-intro-block-bg-mbl.png) top center no-repeat;
+    background-size: cover;
+    background-attachment: inherit;
+  }
+
+  .ruffles-product-detail-btn {
+    padding-top: 32px;
+  }
+
+  #ruffles-productdetails-info-block {
+    padding: 48px 16px 96px;
+  }
+
+  .ruffles-product-img-zig-zag {
+    display: none;
+  }
+
+  /*.ruffles-product-detail-img-bg, .ruffles-product-detail-copy-bg {*/
+  /*  height: 500px;*/
+  /*}*/
+
+  .about-us-copy p {
+    text-align: center;
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .featured-product-title, .prod-category-copy h3 {
+    font-size: 28px;
+  }
+
+  .ruffles-product-description h4, .ruffles-category-description h4 {
+    padding-top: 16px;
+    font-size: 18px;
+  }
+
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  .ruffles #brands_navigation {
+    background: #FFFFFF !important;
+  }
+
+  .ruffles .fa-navbar {
+    background: #01102c !important;
+    color: #FFFFFF !important;
+  }
+
+  .ruffles .fa-navbar:hover, .ruffles .fa-navbar:active, .ruffles .fa-navbar:focus {
+    background: #01102c !important;
+    color: #FFFFFF !important;
+  }
+
+  .ruffles .brands-navbar__ul a:hover, .ruffles .brands-navbar__ul a:active, .ruffles .brands-navbar__ul a:focus {
+    color: #01102c !important;
+  }
+
+  .ruffles .choose-lang_fr:hover, .ruffles .choose-lang_fr:active, .ruffles .choose-lang_fr:focus, .ruffles .brands-navbar_accout-options .sign_in:hover, .ruffles .brands-navbar_accout-options .sign_in:active, .ruffles .brands-navbar_accout-options .sign_in:focus, .ruffles .tr-navbar-trigger-mobile:hover, .ruffles .tr-navbar-trigger-mobile:active, .ruffles .tr-navbar-trigger-mobile:focus, .ruffles #button-mbl-back:hover, .ruffles #button-mbl-back:active, .ruffles #button-mbl-back:focus {
+    color: #01102c !important;
+  }
+
+  .brands-tr-navbar_copy-mbl:active, .brands-tr-navbar_copy-mbl:hover, .brands-tr-navbar_copy-mbl:focus {
+    color: #01102c !important;
+  }
+
+  .ruffles-prod-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .ruffles-prod-col:nth-child(n+1) {
+    padding-top: 48px;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .ruffles-banner-waves, .ruffles-coupon-zig-zag, .ruffles-banner-zig-zag, .ruffles-products-zig-zag {
+    background-size: cover;
+  }
+
+  .ruffles-banner-zig-zag {
+    border-bottom: 1px solid #FFFFFF;
+  }
+
+  .ruffles-coupon-zig-zag {
+    top: -13%;
+  }
+
+  .ruffles section#banner .slick-dots {
+    top: -94px;
+  }
+
+  .main-featured-carousel {
+    margin-bottom: 48px;
+  }
+
+}
+
+@media screen and (max-width: 1400px) {
+  .ruffles section#banner .slick-dots {
+    top: -96px;
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  #ruffles-productdetails-info-block {
+    padding: 96px 0 128px;
+  }
+
+  .featured-carousel-indicators {
+    display: none !important;
+  }
+
+  .ruffles .main-coupon-right {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-sidebyside-bg-dsk-left.svg) left center no-repeat;
+    background-size: cover;
+  }
+
+  .ruffles-coupon-position {
+    /*background-color: #FFFFFF !important;*/
+    background-position: right center !important;
+  }
+
+  .featured-product-image-col, .featured-prod-copy {
+    height: 450px !important;
+  }
+
+  .featured-prod-copy-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 32px 0;
+  }
+
+  .featured-prod-copy p {
+    padding: 4px 0;
+  }
+
+  .featured-prod-copy {
+    background: url(/themes/brandstheme/src/images/ruffles/ruffles-featured-copy-bg-dsk.png) left center no-repeat;
+    background-size: cover;
+  }
+
+  .ruffles-carousel-block {
+    padding: 48px 0 64px;
+  }
+
+  .ruffles-top-banner .ruffles-banner-copy {
+    top: 45%;
+  }
+
+  .ruffles-top-banner img {
+    height: 400px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .ruffles-about-us {
+    padding: 64px 0 160px;
+  }
+
+  .about-us-copy {
+    padding-left: 16px;
+  }
+
+  .ruffles-about-us-img {
+    padding-right: 16px;
+  }
+
+
+  .ruffles-prod-col {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .ruffles-product-description h4 {
+    min-height: 54px;
+  }
+
+  .ruffles-category-description h4 {
+    min-height: 54px;
+  }
+
+  .ruffles-productdetails-ingredients-info {
+    padding-left: 48px;
+  }
+
+  .ruffles-product-detail-copy {
+    padding-left: 64px;
+  }
+
+}
+
+
+@media only screen and (min-width: 992px) {
+
+  .ruffles .brands-navbar__ul a {
+    color: #FFFFFF !important;
+  }
+
+  .ruffles .fa-navbar {
+    background: #FFFFFF !important;
+    color: #01102c !important;
+  }
+
+  .ruffles .fa-navbar:hover, .ruffles .fa-navbar:active, .ruffles .fa-navbar:focus {
+    background: #FFFFFF !important;
+    color: #01102c !important;
+  }
+
+  .ruffles-prod-col:nth-child(n+5) {
+    padding-top: 32px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1025px) {
+
+  .featured-prod-bag-bg {
+    margin: 0 0 64px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: -20%;
+  }
+
+
+  .featured-product-image-col {
+    background-size: cover !important;
+  }
+
+}
+
+@media only screen and (min-width: 1100px) {
+
+  .featured-prod-bag-bg {
+    background-size: contain;
+  }
+
+}
+
+
+@media only screen and (min-width: 1281px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 15%;
+  }
+
+}
+
+
+@media only screen and (min-width: 1600px) {
+
+  .ruffles-top-banner img {
+    height: 500px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1921px) {
+
+  .ruffles-coupon-side-by-side-block {
+    padding: 32px 0 176px 0;
+  }
+
+}
+
+.modal-body p {
+  color: #000;
+  margin-bottom: 0;
+}
+
+.buynow_ruffles {
+  margin-top: 20px;
+  margin-left: 0;
+  background-color: #db1d2c !important;
+  border: 2px solid #db1d2c;
+  padding: 12px 30px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 150px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*BuyNow Popup*/
+
+.ruffles-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+/*Buynow Modal*/
+
+.ruffles-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#rufflesModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#rufflesModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #rufflesModal {
+    padding:0 !important;
+  }
+}
+

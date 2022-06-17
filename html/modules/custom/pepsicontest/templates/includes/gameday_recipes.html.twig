@@ -1,0 +1,170 @@
+<div class="container">
+  <div class="row text-center padding-top-large padding-bottom-large">
+    <div class="col-md-12">
+      <h2 class="recipe-title text-uppercase somerton-regular yellow">{{ 'Game day Recipes'|t }}</h2>
+      <p class="padding-top text-white opensans-regular">
+        {{ 'Upgrade your next tailgate or watch party with these fan-favorite recipes.'|t }}
+      </p>
+    </div>
+
+    <div class="container">
+      {% for recipe in data.featured_recipes %}
+        <div class="row gameday-recipe-block-row">
+
+          <div class="col-md-8 gameday-featured-recipe-side-img-col">
+            <a href="{{ recipe.link }}" aria-label="featured-recipe">
+              <div class="gameday-featured-recipe-img"
+                   style="background-image: url('{{ recipe.image_url }}')"></div>
+              {# <div class="spookysnacklab-featured-recipe-img"> #}
+              {# <img src = "{{ recipe.image_url }}" alt ="featured recipe"> #}
+              {# </div> #}
+            </a>
+          </div>
+
+
+          <div class="col-md-4 gameday-featured-recipe-side-description-col">
+
+
+            <div class="gameday-featured-recipe-description">
+
+              <a href="{{ recipe.link }}">
+                <h2 class="heading-text somerton-regular featured-title ">
+                  {{ recipe.title|raw }}
+                </h2>
+              </a>
+
+              <div class="gameday-stars stars-flex-center padding-top-medium">
+                {% for i in 1..5 %}
+                  <span {% if i <= recipe.rating %}class="checked"{% endif %}></span>
+                {% endfor %}
+              </div>
+
+              <div class="featured-recipe-gold-btn">
+                <a class="gameday-btn gameday-btn-black yellow" href="{{ recipe.link }}">{{ 'Show Recipe'|t }}</a>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      {% endfor %}
+    </div>
+
+
+    <div class="gameday-nocarousel-container row" data-count="{{ recipe_count }}">
+      {% for recipe in data.recipes %}
+        <div class="col-md-4 gameday-recipes">
+          <div class="gameday-nocarousel-box" data-nid="{{ recipe.nid }}">
+{#            <a href="{{ recipe.link }}">#}
+{#              <div class="img" style = "background-image: url('{{ recipe.image_url }}')" ></div>#}
+{#            </a>#}
+
+            <a href="{{ recipe.link }}" aria-label="gameday-recipe">
+            <div class="gameday-recipe-img" style = "background-image: url('{{ recipe.image_url }}')" ></div>
+
+{#                <img class="w-100" src="{{ recipe.image_url }}"/>#}
+
+
+            </a>
+
+            <div class="gameday-recipe-title">
+              <a href="{{ recipe.link }}">
+                <h3 class="padding-top padding-bottom yellow somerton-regular ">
+                  {{ recipe.title|raw }}
+                </h3>
+              </a>
+            </div>
+
+            <div class="gameday-activation-recipe-btn margin-bottom-medium">
+              <a href="{{ recipe.link }}" class="gameday-btn gameday-btn-yellow m-auto text-uppercase opensans-regular">
+                {{ 'View Recipe'|t }}
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+    <div class="col-md-12 center-align padding-top">
+      <div class="view-more-alt" style="text-align:center;">
+        <a href="javascript:void(0);" class="more-recipes yellow gameday-btn gameday-btn-black text-uppercase ">{{ 'View More Recipes'|t }}</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{#<div class="gameday-section-container">#}
+{#        <div class="row gameday-unevencarousel-container">#}
+{#          {% for recipe in data.featured_recipes %}#}
+{#            <div class = "col-md-4">#}
+{#          <div class="gameday-unevencarousel-box">#}
+{#              <div class="gameday-unevencarousel-box-content">#}
+{#                  <div class="gameday-unevencarousel-box-left">#}
+{#                      <div class="gameday-unevencarousel-box-img">#}
+{#                          <img src="{{recipe.image_url}}" />#}
+{#                      </div>#}
+{#                  </div>#}
+
+{#                  <div class="gameday-unevencarousel-box-right">#}
+{#                      <h2>#}
+{#                          {{recipe.title|raw}}#}
+{#                      </h2>#}
+
+{#                      <div class="gameday-stars">#}
+{#                        {% for i in 1..5 %}#}
+{#                            <span {% if i <= recipe.rating %}class="checked"{% endif %}></span>#}
+{#                        {% endfor %}#}
+
+{#                      </div>#}
+
+{#                      <div class="gameday-btn gameday-btn-white">#}
+{#                          <a href="{{recipe.link}}">#}
+{#                              {{'View Recipe'|t}}#}
+{#                          </a>#}
+{#                      </div>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </div>#}
+{#        </div>#}
+{#          {% endfor %}#}
+{#        </div>#}
+
+{#        <div class="gameday-nocarousel-container js-recipe-container" data-count="{{recipe_count}}">#}
+{#          {% for recipe in data.recipes %}#}
+{#            <div class="gameday-nocarousel-box" data-nid="{{recipe.nid}}">#}
+{#                <div class="img">#}
+{#                    <a href="{{recipe.link}}"><img src="{{recipe.image_url}}" /></a>#}
+{#                </div>#}
+
+{#                <h3>#}
+{#                    <a href="{{recipe.link}}">{{recipe.title|raw}}</a>#}
+{#                </h3>#}
+
+{#                <div class="gameday-btn gameday-btn-white">#}
+{#                    <a href="{{recipe.link}}">#}
+{#                        {{'View Recipe'|t}}#}
+{#                    </a>#}
+{#                </div>#}
+
+{#            </div>#}
+{#          {% endfor %}#}
+{#        </div>#}
+{#        <div class="view-more-alt" style="text-align:center;">#}
+{#            <a href="javascript:void(0);" class="more-recipes gameday-btn-yellow">{{'View More Recipes'|t}}</a>#}
+{#        </div>#}
+{#      </div>#}

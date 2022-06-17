@@ -1,0 +1,16 @@
+name: Google Tag Manager dataLayer forms
+description: This module integrates Drupal forms with Google Tag Manager.
+package: Statistics
+
+core_version_requirement: ^8 || ^9
+type: module
+
+configure: entity.gtm_datalayer_form.collection
+
+dependencies:
+  - gtm_datalayer:gtm_datalayer
+
+# Information added by Drupal.org packaging script on 2021-08-13
+version: '2.0.0-beta1'
+project: 'gtm_datalayer'
+datestamp: 1628854949

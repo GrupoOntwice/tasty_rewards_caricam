@@ -1,0 +1,359 @@
+/********************************************
+   Video and Social Block Section Classes
+********************************************/
+
+.container-video, .container-social {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.social-video {
+  /* background-color: #00b3de; */
+  /* margin-top: -2px; */
+}
+
+.video-section {
+  background: transparent;
+  padding: 98px 0;
+  overflow: hidden;
+}
+
+.video-section .video-title h3 {
+  /*font-family: 'Bliss2-ExtraBold', sans-serif;*/
+  color: #ffffff;
+  font-size: 70px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 48px;
+}
+
+.video-item {
+  margin: 0 auto;
+}
+
+/**********************
+  Social Section
+**********************/
+
+#social-block {
+  /* background: #00B3DF; */
+}
+
+.col-2-side-right {
+  display: flex;
+  padding-left: 16px;
+}
+
+.col-2-1 {
+  padding-right: 8px;
+  width: 50%;
+}
+
+.col-2-2 {
+  padding-left: 8px;
+  width: 50%;
+}
+
+.social-img {
+  width: 100%;
+  height: auto;
+}
+
+.social-section {
+  padding: 98px 0;
+  overflow: hidden;
+}
+
+.social-icons-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 48px;
+}
+
+.social-tiles-icons {
+  display: flex;
+}
+
+.social-section .social-title h3 {
+  font-family: 'Bliss2-ExtraBold', sans-serif;
+  color: #000000;
+  font-size: 70px;
+  line-height: 1;
+  margin: 0;
+}
+
+.fa-tiles {
+  font-size: 24px !important;
+  color: #000000;
+}
+
+
+/********************************
+   Side by Side Coupon Start
+*********************************/
+
+.vr-coupon-block {
+  background: #00B3DF;
+  padding-bottom: 64px;
+  margin-top: -2px;
+}
+
+.main-coupon-block {
+  padding-bottom: 64px;
+  margin-top: -2px;
+}
+
+.main-coupon {
+  padding: 64px 0;
+}
+
+.container-coupon {
+  /*background: white;*/
+  border-radius: 15px;
+}
+
+.coupon-row {
+  display: table;
+  width: 100%;
+}
+
+.vr-coupon-left, .vr-coupon-right, .main-coupon-left, .main-coupon-right  {
+  display: table-cell;
+  width: 50%;
+}
+
+.vr-coupon-left, .main-coupon-left{
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  height: 100%;
+  padding: 96px 0;
+  border-radius: 15px 0 0 15px;
+}
+
+.vr-coupon-right, .main-coupon-right {
+  text-align: center;
+  border-radius: 0 15px 15px 0;
+  background: #ffffff;
+}
+
+.vr-coupon-copy, .main-coupon-copy {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.vr-coupon-centered-img, .main-coupon-centered-img{
+  height: 200px;
+  width: 200px;
+  position: unset;
+}
+
+.vr-coupon-centered-img img {
+  max-height: 100%;
+  max-width: 425px;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0 16px;
+}
+
+.main-coupon-centered-img img {
+  max-height: 100%;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0 8px;
+}
+
+.vr-coupon-heading, .main-coupon-heading {
+  font-size: 36px !important;
+  color: #000000;
+  line-height: 1.2;
+  padding-bottom: 16px;
+  font-family: montserrat, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fr .vr-coupon-heading, .fr .main-coupon-heading {
+  font-size: 36px !important;
+}
+
+.vr-coupon-heading sup{
+  font-size: 75% !important;
+}
+
+.vr-coupon-disclaimer, .main-coupon-disclaimer {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.2;
+  padding: 32px 16px 0 16px;
+  font-family: montserrat, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/********************************
+    Side by Side Coupon Start
+********************************/
+
+
+/**************************
+   Media Queries Start
+***************************/
+
+@media only screen and (max-width: 575px) {
+
+  .video-item {
+    padding: 0 16px;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+
+  .video-frame {
+    height: 250px;
+  }
+
+  .vr-coupon-block, .main-coupon-block {
+    padding: 0 15px 64px 15px;
+  }
+
+  .main-coupon {
+    padding: 48px 16px;
+  }
+
+  .vr-coupon-heading, .main-coupon-heading {
+    font-size: 36px;
+    padding: 0 8px 16px;
+  }
+
+  .fr .vr-coupon-heading, .fr .main-coupon-heading {
+    font-size: 32px;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  .container-video, .container-social {
+    width: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .col-2-side-right {
+    display: block;
+    padding-left: 0;
+  }
+
+  .col-2-1, .col-2-2 {
+    width: 100%;
+    padding: 16px 0 0 0;
+  }
+
+  .video-section {
+    padding: 48px 0;
+  }
+
+  .video-section .video-title h3 {
+    font-size: 11vw;
+  }
+
+  .social-section .social-title h3 {
+    font-size: 30px;
+  }
+
+  .social-icons-div {
+    display: block;
+    padding-bottom: 24px;
+  }
+
+  .social-tiles-icons {
+    display: block;
+    padding: 16px 0 8px 0;
+  }
+
+  .social-tiles-icons-text p {
+    margin: 0;
+  }
+
+  /*Side by Side Coupon*/
+
+  .vr-coupon-left, .vr-coupon-right, .main-coupon-left, .main-coupon-right {
+    display: block;
+    width: 100%;
+  }
+
+  .vr-coupon-left, .main-coupon-left {
+    border-radius: 15px 15px 0 0;
+    background: #F8E31A;
+  }
+
+  .vr-coupon-right, .main-coupon-right {
+    padding: 48px 0;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .vr-coupon-copy, .main-coupon-copy {
+    position: relative;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .vr-coupon-right, .main-coupon-right {
+    padding: 64px 0;
+  }
+
+  .vr-coupon-heading, .main-coupon-heading {
+    font-size: 36px;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .vr-coupon-heading, .main-coupon-heading {
+    padding: 0 16px 16px 16px;
+  }
+
+  .fr .vr-coupon-heading, .fr .main-coupon-heading {
+    font-size: 34px;
+    padding: 0 16px 16px 16px;
+  }
+
+}
+
+/*Min Width Media Queries*/
+
+
+@media only screen and (min-width: 992px) {
+
+  .vr-coupon-right, .main-coupon-right {
+    padding: 96px  0;
+  }
+
+}

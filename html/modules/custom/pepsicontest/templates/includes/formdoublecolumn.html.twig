@@ -1,0 +1,239 @@
+<section id="contentBlocks" class="container-fluid contest">
+
+    <div id="" class="container_signup">
+        <div class="col-xs-12">
+            <img src="{{ file_url(data.headerimage) }}" alt="{{data.title}}" style="height:auto;width:100%;" />
+        </div>
+        <br>
+        <h1 id="signup_h1" class="pink signika text-center uppercase">{{ data.title}}</h1>
+        {% if (data.status == 1) %} {#opened#}
+
+            {{ data.description | raw }}
+            <hr class="signup_hr" class="bg-grey" />
+            <h2 class="blue signika text-center uppercase">{{'Already have an account?'| t | raw}}</h2>
+            <div class="col-xs-12 text-center">
+                <a class="btn btn-primary tr-login" style="margin: 10px 0 20px !important" href="{{ path('user.login') }}"> {{'LOG IN' | t }} </a>
+            </div>
+
+            <h2 class="blue signika text-center uppercase">{{'Or<br>Create an account'| t | raw }}</h2>
+
+
+            <hr class="signup_hr" class="bg-grey" />
+
+            <div class="clearfix" ></div>
+            <em class="pink"><small>*{{ 'Mandatory fields.'|t }}</small></em> 
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.firstname?'has-error':''}}">
+                    <label class="formlabel">{{ 'First Name *'|t }} </label>
+                    <input type="text" name='firstname' id='firstname'  class="form-control" value="{{data.firstname?:''}}">
+                    <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.lastname?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Last Name *'|t }}</label>
+                    <input type="text" name='lastname' id='lastname' class="form-control" value="{{data.lastname?:''}}">
+                    <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.email?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Email *'|t }}</label>
+                    <input type="text" name='email' id='email' class="form-control" value="{{data.email?:''}}">
+                    <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                </div>	
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.confirm_email?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Confirm Email *'|t }}</label>
+                    <input type="text" name='confirm_email' id='confirm_email' class="form-control"  value="{{data.confirm_email?:''}}">
+                    <span class="help-block err_confirm_email">{{data.error.confirm_email?:''}}</span>
+                </div>	
+            </div>        
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.password?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Password *'|t }}</label>
+                    <input type="password" name='password' id='password' class="form-control"  value="{{data.password?:''}}">
+                    <span class="help-block err_password">{{data.error.password?:''}}</span>
+                    <em class="grey"><small>{{ 'Must have a minimum of 8 & maximum of 16 characters containing only numbers and letters. Must include at least one number, one uppercase letter, one lowercase letter.'|t }}</small></em> 
+                </div>	
+                <div class="col-xs-12 col-sm-6 form-group {{data.error.confirm_password?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Confirm Password *'|t }}</label>
+                    <input type="password" name='confirm_password' id='confirm_password' class="form-control"  value="{{data.confirm_password?:''}}">
+                    <span class="help-block err_confirm_password">{{data.error.confirm_password?:''}}</span>
+                </div>	
+            </div>           
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 form-group show-selectnav  {{data.error.bday?'has-error':''}}">
+                    <label id="bday_label" class="formlabel">{{ 'Birthday *'|t }}</label>
+                    <div class="date-dropdowns">
+                        <input type="hidden" id='bday' name='bday' class="form-control"  >
+                        <select class="day form-control input-sm" name="bday_day" id="bday_day" >
+                            {{ data.bdaydropdown.dayoption | raw }}
+                        </select>
+                        <select class="day form-control input-sm" name="bday_month" id="bday_month" >
+                            {{ data.bdaydropdown.monthoption | raw }}
+                        </select>
+                        <select class="day form-control input-sm" name="bday_year" id="bday_year" >
+                            {{ data.bdaydropdown.yearoption | raw }}
+                        </select>
+                    </div>
+                    <span class="help-block err_bday pull-left">{{data.error.bday?:''}}</span>
+                    <em class="grey pull-left"><small>{{"You must be at least 13 years of age or older to be a Tasty Rewards Member. <br />Why do we collect your birthday? <br />We use your birthday to send you a birthday greeting each year, and to provide the most relevant content for our members."|t|raw}}</small></em> 
+                </div>	
+                <div class="col-xs-12 col-sm-6 form-group  {{data.error.postalcode?'has-error':''}}">
+                    <label  class="formlabel">{{ 'Postal Code *'|t }}</label>
+                    <input type="text" name='postalcode' id='postalcode' class="form-control" value="{{data.postalcode?:''}}">
+                    <span class="help-block err_postalcode">{{data.error.postalcode?:''}}</span>
+                </div>	            
+            </div>        
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 form-group">
+                    <label  class="formlabel">{{ 'Gender'|t }}</label>
+                    <select id="gender" name="gender" class="form-control input-xlarge">
+                        <option value='' >{{ ' ' }}</option>
+                        <option value='M' {{ data.gender=='M'?'selected':'' }}>{{ 'Male'|t }}</option>
+                        <option value='F' {{ data.gender=='F'?'selected':'' }}>{{ 'Female'|t }}</option>
+                        <option value='O' {{ data.gender=='O'?'selected':'' }}>{{ 'Other'|t }}</option>
+                    </select>
+                    <span class="help-block err_gender"></span>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-group captchdiv {{data.error.grecaptcharesponse?'has-error':''}}" style="margin-bottom: 10px !important;">
+                    <label class="control-label margin10">
+                        <div class="g-recaptcha" data-callback="imNotARobot" data-sitekey="6LeZcyQUAAAAAGgYkkysYZ6XWz5oCUVg_2EjP_y8"></div>
+                    </label>
+                    <input type="hidden" id="grecaptcharesponse" name="grecaptcharesponse">
+                    <small class="help-block err_grecaptcharesponse">{{data.error.grecaptcharesponse?:''}}</small>
+                </div>
+                    
+            </div>
+
+            <hr class="signup_hr" class="bg-grey" style="padding-top:30px" />
+
+            {% for question in data.questions %}
+                {% set questionid = question.questionid %}
+                <div class="row">
+                    <div class="col-xs-12 form-group {{attribute(data.error.q, questionid)?'has-error':''}}">
+                        <label  class="formlabel" id="question_contest"><h4 class="pink bold">{{ question.subject|raw }} * </h4></label>
+                        <input type="hidden" name="questiontype[{{questionid}}]" value ="{{question.type}}">
+                        <input type="hidden" name="questionid[{{questionid}}]" value="{{questionid}}">
+                        {% if question.type == 'SingleChoice' or question.type == 'TrueFalse'  %}
+                            {% for answer in question.answers %}
+                                {% set answ = attribute(data.answ, questionid) %}
+                                {% set chked = ''%}
+                                {% if loop.index0 in answ %}
+                                    {% set chked = 'checked'%}
+                                {% endif %}
+
+                                <div class="radio">
+                                    <label> <input type="radio" name="answ[{{questionid}}][]" value="{{ loop.index0}}" {{chked}}>{{ answer.value}}</label>
+                                </div>
+                            {% endfor %}
+                        {% elseif question.type == 'MultipleChoice' %}
+                            {% for answer in question.answers %}
+                                {% set answ = attribute(data.answ, questionid) %}
+                                {% set chked = ''%}
+                                {% if loop.index0 in answ %}
+                                    {% set chked = 'checked'%}
+                                {% endif %}
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="answ[{{questionid}}][]" value="{{ loop.index0}}" {{chked}}>{{ answer.value}}</label>
+                                </div>
+                            {% endfor %}
+                        {% endif %}    
+
+
+                        <span class="help-block err_q">{{  attribute(data.error.q, questionid) }}</span>
+                    </div>	
+
+                </div> 
+            {% endfor %}
+
+
+
+              <div id="singup_newsletter" class="row">
+                            <div class="col-sm-4 pull-left form-group">
+                                <img id="newsletter-icon" src="https://static.tastyrewards.ca/images/newsletter-icon.png" alt="newsletter" />
+                            </div>
+
+                            <div class="col-sm-8 form-group">
+                                <h4 class="signika pink bold">
+                                    {{ "For an EXTRA CHANCE to win the prize in this month’s Contest,<br>SIGN UP for Tasty Rewards Newsletters."|t  }}</h4>
+                                    <p>
+                                        {{ "Be the first to know about exclusive member offers, contests and more!  Email is Tasty Rewards' primary means of keeping you in the loop regarding our tasty member exclusives - so be sure to sign up and not miss out."|t }}
+                                    </p>      
+                                    <label>
+                                        <input type = "hidden" name='newregister' id ='newregister' value="1" >
+                                        <input type = "checkbox" name='optin' id ='optin' value="1" {{ data.optin==1?'checked' }}>
+                                        <span class="casl">
+                                            {{ 'Yes! Keep me up to date on Tasty Rewards by email (and I have the option to unsubscribe at any time).'|t }}
+                                        </span>
+                                        <input type="hidden" name='casl' id='casl' value="{{ 'Yes! Keep me up to date on Tasty Rewards by email (and I have the option to unsubscribe at any time).'|t }}"  >
+                                    </label>
+                                <span class="help-block err_optin"></span>
+                            </div>  
+                        </div> 
+        
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <h4 class=" signika">
+                        {{'By submitting my entry, I confirm that I am eligible to participate according to the'|t}} <a href="{{ path(data.language ~ '.pepsicontest.contest.officialrules', {'contest': data.contesturi }) }}" target="_blank" >{{ 'Official Rules'|t }}. </a>
+                    </h4>
+                </div>	
+            </div> 
+            </div> 
+
+            <div class="form-group hidden">
+                <input type="text" name='fbid' id='fbid' class="form-control" value="{{data.fbid?:''}}">
+            </div>	
+            <input type="hidden" name='csrfToken' id='csrfToken' value="{{data.csrfToken?:''}}">
+            <input type="hidden" name='source' id='source' value="{{data.source?:''}}">
+
+
+            <div class="row">
+                <div class="col-sm-12 text-center form-group">
+                    <button type="button" class="btn btn-primary btnregister tr-signup" >{{ 'SIGN UP'|t }} <span class="glyphicon glyphicon-spin"></span></button>
+                    <div id='form'>
+                        <span class="help-block err_form"></span>
+                    </div>
+                </div>	
+            </div>
+            
+            <hr class="signup_hr" class="bg-grey" />
+            <div class="contact_contest">
+            <br>
+             <strong><underline>{{ 'Contacting Us:'|t }}</underline></strong><br>
+                    {{ 'PepsiCo Canada <br>5550 Explorer Drive, 8th Floor, Mississauga, ON L4W 0C3<br>'|t }}
+            <a class="pink" href="{{ path('<front>') }}">{{ 'www.tastyrewards.ca'|t }}</a><br>
+            {{ 'Your personal information will be used in accordance with our '|t }}<a href="{{"http://pepsico.ca/en/Privacy-Policy.html"|t}}" class="pink" target="_blank">{{ 'Privacy Policy'|t }}</a>
+            <br><br>
+            </div>
+        {% else %}
+
+            <div class="row">
+                <hr class="signup_hr" class="bg-grey" />
+                <div class="col-sm-12 text-center form-group">
+
+                    {% if (data.status == 2) %} {#comming soon#}
+                        <h4 class="pink signika">{{ 'Contests is not available at the moment. Please check back soon.' | t  }}</h4>
+                    {% elseif (data.status == 3) %} {#closed #}
+                        <h4 class="pink signika">{{ 'Thank you for your interest. The contest is now closed.' | t  }}</h4>
+                    {% elseif (data.status == 4) %} {#already participate #}    
+                        <h4 class="pink signika">{{ 'You have already entered this contest. You can only participate once for the duration of the Contest.' | t  }}</h4>
+                    {% else %} {#already participate #}                    
+
+                    {% endif %}
+
+                    <a class="btn btn-primary" href="{{ url('pepsicontest.landing') }}">{{ 'Return to contest' | t }}</a>
+                </div>
+            </div>                 
+        {% endif %}
+
+        <br>
+
+    </div>
+</section>

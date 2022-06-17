@@ -1,0 +1,82 @@
+<script type="text/javascript">
+    window.recipe_offset = parseInt("{{data.nb_recipes}}") ;
+    window.nb_recipes_per_query = parseInt("{{data.nb_per_query}}") ;
+</script>
+
+<div class="recipe__menu-detail-wrapper">
+    {% for recipe in data.recipes %}
+    <div class="recipe__menu-detail-section" data-nid="{{recipe.nid}}">
+        <div class="background-zoom__parent">
+
+{#            <a href="{{recipe.link}}" class="img-recipe">#}
+{#                <img tabindex="1" class="background-zoom__child recipe__menu-detail-section-image" src="{{recipe.image_url}}" alt="{{recipe.title|raw}}"/>#}
+{#            </a>#}
+
+            <a href="{{recipe.link}}" class="img-recipe">
+                <img tabindex="1" class="background-zoom__child recipe__menu-detail-section-image" src="{{recipe.image_url}}" alt="{{recipe.title|raw}}"/>
+            </a>
+        </div>
+
+        <div class="recipe__menu-detail-sub-wrapper">
+
+            <div class="recipe__menu-detail-sub-wrapper-height">
+                <a href="{{recipe.link}}" class="img-recipe">
+                    <h3 class="recipe__menu-detail-wrapper-title" href="{{recipe.link}}">{{recipe.title|raw}}</h3>
+                </a>
+
+                <div class="recipe__review-wrapper">
+
+                    <div class="recipe__star">
+                        <i class="fa fa-star"></i>
+                        <span class="recipe__star-rating"> {{recipe.rating}}/5</span>
+                    </div>
+
+                    <div class="recipe__clock">
+                        <i class="far fa-clock"></i>
+                        <span class="recipe__time">{{recipe.cook_time}}</span>
+                    </div>
+
+                </div>
+
+                <div class="truncate_text">{{recipe.body|raw}}</div>
+            </div>
+
+            <div class="recipe__btn-wrapper">
+                <a href="{{recipe.link}}" class="recipe__btn_red">
+                    {{'View Recipe'|t}}
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% endfor %}
+</div>
+{% set cta_class = '' %}
+{% if data.recipes|length < 12 %}
+    {% set cta_class = 'hidden' %}
+{% endif %}
+
+<div class="view-more-alt {{cta_class}}" style="text-align:center;">
+    <a href="javascript:void(0);" class="more-recipes recipe__btn_red">{{'View More Recipes'|t}}</a>
+</div>
+
+
+{#<div class="tasty-nocarousel-container" >#}
+{#  {% for recipe in data.recipes %}#}
+{#    <div class="tostitos-nocarousel-box" data-nid="{{recipe.nid}}">#}
+{#        <div class="img">#}
+{#            <a href="{{recipe.link}}"><img src="{{recipe.image_url}}" /></a>#}
+{#        </div>#}
+
+{#        <h3>#}
+{#            <a href="{{recipe.link}}">{{recipe.title|raw}}</a>#}
+{#        </h3>#}
+
+{#        <a href="{{recipe.link}}" class="recipe__btn_red">#}
+{#            {{'View Recipe'|t}}#}
+{#        </a>#}
+{#    </div>#}
+{#  {% endfor %}#}
+{#</div>#}

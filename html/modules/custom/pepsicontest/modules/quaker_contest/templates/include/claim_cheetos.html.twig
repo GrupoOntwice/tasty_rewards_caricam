@@ -1,0 +1,195 @@
+{# Headline about contests  #}
+    {# {% include '@quaker_contest/include/custom-contest-headlines.html.twig' %} #}
+{% if not data.submitted %}
+    {% include '@quaker_contest/include/cheetos-contest-popup-prize-form.html.twig' %}
+{% endif %}
+
+<section class="cheetos noprovince" id="cheetos-skilltest">
+        <div class="game-background">
+            <div class="cheetos-skilltest-container container">
+                <div class="cheetos-skilltest-content">
+                    <h1>
+                        {{ 'Ready?' | t }}
+                    </h1>
+
+                    <p>
+                        {{ 'The first step in claiming your prize is providing the correct response to a mathematical skill-testing question.' | t }}
+                    </p>
+
+                    <p>
+                        {{ 'If you would prefer to continue with answering the mathematical skill-testing question over a phone call instead, please reach out to <a href="mailto:contest@tastyrewards.ca">contest@tastyrewards.ca</a>.' | t }}
+                    </p>
+
+                    <p>
+                        {{ 'You will have 3 minutes to submit the correct answer once you click on the "start" button.' | t }}
+                    </p>
+
+                    <p>
+                        {{ 'You only get one chance to answer correctly.' | t }}
+                    </p>
+
+                    <p>
+                        {{ 'Note: If you provide an incorrect answer or if you run out of time, you will forfeit your prize. Please be prepared before you start.' | t }}
+                    </p>
+
+                    <p>
+                        {{ 'Click "Start" to continue or press "Cancel" to come back later.' | t }}
+                    </p>
+
+                    <div class="cheetos-skilltest-controls">
+                        <a class="cheetos-btn cheetos-btn-orange js-start" id="cheetos-start-skilltest">
+                            {{ 'Start' | t }}
+                        </a>
+
+                        <a class="cheetos-btn cheetos-btn-orange" id="cheetos-cancel-skilltest">
+                            {{ 'Cancel' | t }}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cheetos-skilltest-form-container">
+                    <div class="cheetos-skilltest-form" id="form-scroll-anchor">
+                        <form class="grabsnack-address-form form-disabled" data-toggle="validator" enctype="multipart/form-data" role="form" id='prize-claim' method="POST" autocomplete="off" data-nid="{{data.contest_id}}">
+                        <div class="cheetos-skilltest-time hidden">
+                            <span class="cheetos-skilltest-time-label">{{ 'Time remaining' | t }}</span> <span class="cheetos-skilltest-timer" id="skill-timer">02:59</span>
+                        </div>
+
+                        <div class="cheetos-skilltest-question-container">
+                            <p>
+                                <strong>
+                                {{ 'Please correctly answer the following question unaided' | t }}
+                                </strong>
+                            </p>
+                            
+                            <p id="cheetos-skilltest-question">
+                                {{data.challenge_question}}
+                            </p>
+
+                            <label class="skill-test-question" style="display: none;">{{data.challenge_question}}</label><br>
+                            <input type="text" class="contest-detail__input " name="challenge" id="challenge" placeholder="{{ 'My answer is:'|t }}" value="{{data.challenge?:''}}" disabled="disabled" >
+                            <span class="help-block err challenge">{{data.error.challenge?:''}}</span>
+                            <input type="text" class="contest-detail__input hidden " name="challenge_id" id="challenge_id" value="{{data.challenge_id}}" disabled="disabled" >
+                            <button class="cheetos-btn cheetos-btn-orange cheetos-btn-fullwidth js-challenge-submit disabled" disabled="disabled">{{'Submit'|t}} </button>
+
+                            {# <a class="cheetos-btn cheetos-btn-orange cheetos-btn-fullwidth"> #}
+                                {# {{ 'Submit' | t }} #}
+                            {# </a> #}
+
+                            <div class="cheetos-skilltest-result js-challenge-success hidden">
+                                <p class="cheetos-skilltest-result-title">
+                                    {{ 'Congratulations! Your answer is correct.' | t }}
+                                </p>
+
+                                <p class="cheetos-skilltest-result-body">
+                                    {{ 'The last step in the prize claim process is to complete the form below and accept the terms of the Prize Claim Release form so we can ship your prize.' | t }}
+                                </p>
+                            </div>
+
+                            <div class="cheetos-skilltest-result js-challenge-error hidden">
+                                <p class="cheetos-skilltest-result-body">
+                                    {{ 'Unfortunately, your answer to the mathematical skill-testing question is incorrect and in accordance with the Official Rules, you are no longer eligible to win the prize.' | t }}
+                                </p>
+                            </div>
+
+                            <div class="cheetos-skilltest-result js-challenge-timeout hidden">
+                                <p class="cheetos-skilltest-result-body">
+                                    {{ 'Sorry, you did not provide a response to the question in time, and in accordance with the Official Rules, you are no longer eligible to win the prize.' | t }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="cheetos-skilltest-address show-on-correct" id="cheetos-skilltest-address-section">
+                                <p>
+                                    {{ 'Shipping Address' | t }}
+                                </p>
+
+                                <p>
+                                    *{{ 'Required fields' | t }}
+                                </p>
+
+                                <div class="input-1col">
+                                    <input type="text" class="contest-detail__input " name="email" id="email" placeholder="*{{ 'Email'|t }}" value="{{data.email?:''}}" disabled="disabled" >
+                                    <span class="help-block err email">{{data.error.email?:''}}</span>
+                                </div>
+
+                                <div class="input-2col">
+                                    <div>
+                                        <input type="text" class="contest-detail__input " name="firstname" id="firstname" placeholder="*{{ 'First Name'|t }}" value="{{data.firstname?:''}}" disabled="disabled" >
+                                        <span class="help-block err firstname">{{data.error.firstname?:''}}</span>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" class="contest-detail__input " name="lastname" id="lastname" placeholder="*{{ 'Last Name'|t }}" value="{{data.lastname?:''}}" disabled="disabled">
+                                        <span class="help-block err lastname">{{data.error.lastname?:''}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-1col">
+                                    <input type="text" class="contest-detail__input " name="address1" id="address1" placeholder="{{ 'Address 1 *'|t }}" value="{{data.address1?:''}}" disabled="disabled">
+                                    <span class="help-block err address1">{{data.error.address1?:''}}</span>
+                                </div>
+
+                                <div class="input-1col">
+                                    <input type="text" id="address2" class="contest-detail__input {{data.error.address2?'has-error':''}}" name="address2" placeholder="{{ 'Address 2 (optional)'|t }}" value="{{data.address2?:''}}" disabled="disabled">
+                    <span class="help-block err address2">{{data.error.address2?:''}}</span>
+                                </div>
+
+                                <div class="input-1col">
+                                    <input type="text" class="contest-detail__input " name="city" id="city" placeholder="{{ 'City *'|t }}" value="{{data.city?:''}}" disabled="disabled">
+                                    <span class="help-block err city">{{data.error.city?:''}}</span>
+                                </div>
+
+                                <div class="input-2col">
+                                    <div>
+                                        <div class="select-custom-arrow-container">
+                                            <select class="province form-control modal__sign-up-select" name="province" id="province" disabled="disabled">
+                                                    {{ data.provinces_options| raw }}
+                                            </select>
+                                        </div>
+                                        <span class="help-block err postalcode">{{data.error.province?:''}}</span>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" disabled="disabled">
+                                        <span class="help-block err postalcode">{{data.error.postalcode?:''}}</span>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    {{ 'By submitting this form, you agree to the terms of the Prize Claim Release form.' | t }}
+                                </p>
+
+                                <p>
+                                    <a href="{{data.pdf_url}}">{{'Download Prize Claim Release Form' | t }}</a>
+                                </p>
+
+                                <p>
+                                    {{ 'If you need assistance, please contact <a href="mailto:contest@tastyrewards.ca">contest@tastyrewards.ca</a>' | t | raw }}
+                                </p>
+
+                                <input type="submit"  id="submitclaim" value="{{ 'SUBMIT' | t }}" class="cheetos-btn js-submit-claim cheetos-btn-orange" />
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+            <img class="cheetos-bottom-border" src="/themes/tastytheme/src/images/contest-cheetos/cheetos-bottom-border.png" />
+        </div>
+
+        <div class="cheetos-disclaimer">
+            <p>
+                {{ '<sup>&dagger;</sup>No purchase necessary. Open to Canadian residents, 19+. Mathematical skill-testing question required. Contest period: June 28 @ 12:00 pm (noon) ET to September 5, 2021 @ 11:59:59 pm ET. Enter UPC for a chance to win (i) Instant Prizes: Cheetos® Free Product Coupon and Cheetos® Mac ’n Cheese Free Product Coupon (4,100 available/ARV $7.98 ea); (ii) Grand Prize: $10,000 cash (awarded in the form of a cheque). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules, <a href="/en-ca/contest/cheetoscarnival/officialrules" target="_blank">click here</a>' | t | raw }}
+            </p>
+
+            <div class="cheetos-disclaimer-controls">
+                <a href="{{data.rules_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'Official rules' | t }}
+                </a>
+
+                <a href="{{data.faq_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'FAQ' | t }}
+                </a>
+            </div>
+        </div>
+    </section>

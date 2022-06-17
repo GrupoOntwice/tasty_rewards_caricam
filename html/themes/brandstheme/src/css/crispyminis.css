@@ -1,0 +1,1600 @@
+.crispyminis section#banner .slick-dots li.slick-active button {
+    background-color: #3abceb;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.2s;
+    border-radius: 25px;
+    border: none;
+    top: 4px;
+}
+
+.crispyminis section#banner .banner_slide--text.slide-left sup{
+    position: relative;
+    top: -10px;
+    right: 0px;
+}
+
+.crispyminis sup{
+    font-size: 55% !important;
+}
+
+.crispyminis section#banner .slick-dots li button{
+    font-size: 12px;
+}
+
+.crispyminis .slick-dots li.slick-active button:before {
+    background-color: #3abceb;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.2s;
+    border-radius: 25px;
+    border: none;
+    top: 4px;
+}
+
+.crispyminis .slick-dots li button:before{
+    font-size: 12px;
+}
+
+.crispyminis .slick-dots{
+    bottom: 35px;
+}
+
+
+/**********************************
+             Header
+***********************************/
+
+.crispyminis .header__logo-container {
+  z-index: 999999;
+}
+
+.crispyminis #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.crispyminis-navbar__vertical-align {
+    background-color: #3ABCEB;
+}
+
+.crispyminis-logo{
+    width: 100px;
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.crispyminis-navbar__vertical-align ul a {
+    color: #2D3C9D;
+}
+
+.crispyminis-banner .banner-desktop span.h1{
+    width: 90%;
+    display: block;
+    margin-bottom: 20px !important;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-banner .btn_carousel{
+    color: #2D3C9D;
+    display: block;
+    padding: 15px;
+    font-family: 'Century-Gothic',sans-serif;
+    text-align: center;
+    font-weight: bold;
+    background-color: #FFC90A;
+    border: none;
+    width: 230px;
+}
+
+.slick-dotted.slick-slider{
+    margin-bottom: -21px !important;
+}
+
+
+.crispyminis .fa-navbar{
+    background: #2D3C9D;
+    color: #3ABCEB;
+}
+
+/**********************************
+         Featured product
+***********************************/
+
+.crispyminis-featured-product--container-bg-desktop{
+    background-image: url("/themes/brandstheme/src/images/crispyminis/crispy-feature-blue-background-product.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.crispyminis-featured-product--container-bg-desktop h2, .crispyminis-featured-recipe--container-bg-desktop h2, .crispyminis-section-container h2, .crispyminis-video-section-container h2{
+    font-size: 36px !important;
+    text-align: center;
+    color: #2D3C9D;
+    padding: 20px 0 20px 0;
+    font-weight: bold;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis .crispyminis-featured-carousel{
+    margin-bottom: 50px !important;
+}
+
+.crispyminis-section-container h2{
+    padding: 20px 0 20px 0;
+}
+
+.crispyminis-featured-product--container-bg-desktop h2{
+    padding: 60px 0 20px 0 !important;
+    text-transform: capitalize !important;
+}
+
+.crispyminis-section-container p {
+    text-align: center;
+    color: #2D3C9D;
+}
+
+.crispyminis-socials-recipes p {
+    margin-right: 10px;
+}
+
+.crispyminis-social-link{
+    margin-right: 10px;
+}
+
+.crispyminis-featured-product--container-bg-desktop {
+    padding: 0 20px;
+}
+
+.crispyminis-coupon-block{
+    background-image: url("/themes/brandstheme/src/images/crispyminis/background-coupon-blue.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px 0 100px 0;
+}
+
+.crispyminis-coupon-block-blue{
+    background-image: url("/themes/brandstheme/src/images/crispyminis/background-coupon-blue.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px 0 150px 0;
+    background-color: #3ABCEB;
+}
+
+.crispyminis-coupon--container{
+    display: flex;
+    width: 100%;
+    max-width: 1140px;
+    margin: 50px auto 80px;
+    /*padding: 20px 50px;*/
+    background-image: url("/themes/brandstheme/src/images/crispyminis/rustic-white-wood-plank-background-vintage-style.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 15px 20px -15px #000;
+}
+
+.crispyminis-feature--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("/themes/brandstheme/src/images/crispyminis/blue-rectangle.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 420px;
+}
+
+.crispyminis-feature--leftcol{
+    position: absolute;
+    bottom: 0;
+}
+
+.crispyminis-feature--leftcol img {
+    width: 100%;
+}
+
+.crispyminis-feature--leftcol a {
+    display: block;
+}
+
+.crispyminis-coupon--display {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    height: 420px;
+}
+
+.crispyminis-coupon--leftcol {
+    width: 88%;
+}
+
+.crispyminis-coupon--leftcol img {
+    width: 100%;
+}
+
+.crispyminis-coupon--leftcol a {
+    display: block;
+}
+
+.crispyminis-featured-product--container-bg-desktop .crispyminis-coupon--text {
+    color: #FFFFFF;
+    background-color: #E2392C;
+}
+
+.crispyminis-coupon--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+}
+
+.crispyminis-coupon--text h3 {
+    color: #2D3C9D;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 40px;
+    line-height: 1em;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-banner_slide--text {
+    width: 100%;
+}
+
+.crispyminis-coupon--text .product-title {
+    display: block;
+    color: #FFFFFF;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.crispyminis-product-description {
+    font-family: 'Open Sans',sans-serif;
+    margin-top: 15px;
+    display: block;
+}
+
+.crispyminis-product-description p {
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.crispyminis-coupon--text a {
+    width: 160px;
+    color: #2D3C9D;;
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #FED430;
+    box-shadow: 0 15px 20px -15px #000;
+}
+
+.crispyminis-coupon-disclaimer{
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.crispyminis-featured-recipe--container-bg-desktop .crispyminis-coupon--text{
+    background-color: #2D3C9D;
+}
+
+.crispyminis-video-block{
+    background-color: #00b3de;
+    margin-top: -2px;
+    padding: 50px;
+}
+
+/**********************************
+         Product page
+***********************************/
+
+.crispyminis-product-banner-block {
+    background-image: url("/themes/brandstheme/src/images/crispyminis/product-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.crispyminis-product-banner-block h1{
+    font-family: 'Century-Gothic',sans-serif;
+    font-weight: bold;
+    color: #2D3C9D;
+}
+
+.crispyminis-product-banner-suggest-serving{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 15px;
+    color: #2D3C9D;
+}
+
+.crispyminis.carousel_desktop .crispyminis-product-banner-suggest-serving{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 12px 15px;
+    color: #2D3C9D !important;
+}
+
+.crispyminis-products {
+    position: relative;
+    padding-top: 60px;
+}
+
+.crispyminis-product-img{
+    display: block;
+}
+
+.crispyminis-product-img img{
+    display: block;
+    width: 100%;
+}
+
+.crispyminis-title-products{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Century-Gothic',sans-serif;
+    color: #2D3C9D;
+}
+
+.crispyminis-product-category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.crispyminis-products-categories .crispyminis-product-box{
+    margin: 25px 5px 0 5px;
+    width: 270px;
+    text-align: center;
+}
+
+.crispyminis-product-box{
+    margin: 25px 5px 0 5px;
+    width: 350px;
+    text-align: center;
+}
+
+.crispyminis-product-box h3{
+    font-family: 'Century-Gothic',sans-serif;
+    color: #2D3C9D;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    height: 100px;
+    padding: 10px 0 15px 0px;
+}
+
+.crispyminis-product-box h4{
+    padding: 15px 10px;
+    height: 75px;
+}
+
+.crispyminis-product-box h4 a{
+    font-family: 'Century-Gothic',sans-serif;
+    color: #2D3C9D;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.crispyminis-btn a{
+    width: 160px;
+    color: #2D3C9D;
+    display: block;
+    padding: 15px;
+    margin: 0 auto;
+    font-family: 'Century-Gothic',sans-serif;
+    text-align: center;
+    font-weight: bold;
+    background-color: #FFC90A;
+}
+
+.product-buy-now .crispyminis-btn a{
+    margin: 15px 0;
+}
+
+/**********************************
+            Recipe page
+***********************************/
+
+.crispyminis-featured-recipe--container-bg-desktop{
+    background-image: url("/themes/brandstheme/src/images/crispyminis/crispy-feature-blue-background-product.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.crispyminis-featured-recipe--container-bg-desktop.homepage{
+    background-image: none;
+}
+
+.crispyminis-banner-nocarousel{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 520px;
+}
+
+.crispyminis-stars span {
+    font-size: 30px;
+    color: #71d3f0;
+}
+
+.crispyminis-stars span:before {
+    content: "★ ";
+}
+
+.crispyminis-nocarousel-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.crispyminis-nocarousel-box {
+    width: 30%;
+    margin: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.crispyminis-nocarousel-box .img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    height: 300px;
+}
+
+.crispyminis-nocarousel-box .img img {
+    position: relative;
+    width: auto;
+    height: 450px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.crispyminis-nocarousel-box h3 {
+    min-height: 50px;
+}
+
+.crispyminis-nocarousel-box h3 a{
+    font-weight: bold;
+    color: #2D3C9D;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 22px !important;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-btn .more-recipes{
+    margin-bottom: 50px;
+}
+
+.crispyminis-related-recipe-title{
+    padding-top: 60px !important;
+}
+
+/**********************************
+            Recipe-detail
+***********************************/
+
+.crispyminis-content-background-container-recipesdetails {
+    background-repeat: no-repeat;
+    background-position: top;
+    position: relative;
+    background-size: 100% 100%;
+    padding-top: 20px;
+}
+
+.crispyminis-content-background-container-recipesdetails .crispyminis-section-container {
+    margin-bottom: 0;
+    padding-bottom: 60px;
+}
+
+.crispyminis-subtitle-container {
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 800px;
+}
+
+.crispyminis-subtitle{
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-stars.reverse-order {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+.crispyminis-stars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.crispyminis-stars input:checked ~ label {
+    color: #ffc700;
+}
+
+.crispyminis-stars label {
+    width: 1em;
+    font-size: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.crispyminis-stars span.checked {
+    color: #ffc700;
+}
+
+.crispyminis-stars label::before {
+    content: "★ ";
+}
+
+.crispyminis-stars label {
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.crispyminis-stars input {
+    display: none;
+}
+
+.crispyminis-related-product a{
+    color: #2D3C9D;
+}
+
+.crispyminis-recipe-container {
+    margin-bottom: 50px;
+}
+
+.crispyminis-recipe-intro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    margin: 40px 0;
+}
+
+
+.crispyminis-recipe-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    margin: auto 0;
+    width: 50%;
+}
+
+.crispyminis-recipe-icons-full {
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.crispyminis-navigation-recipesdetails{
+    display: flex;
+    justify-content: space-between;
+}
+
+.crispyminis-navigation-recipesdetails .next-recipe{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 0 10px;
+}
+
+.crispyminis-navigation-recipesdetails .prev-recipe{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 10px;
+}
+
+.crispyminis-navigation-recipesdetails a{
+    color: #2D3C9D;
+    display: flex;
+    align-items: center;
+}
+
+.crispyminis-navigation-recipesdetails a img{
+    width: 50px;
+    padding: 0 10px;
+}
+
+.crispyminis-socials-recipes{
+    display: flex;
+    justify-content: center;
+}
+
+.crispyminis-recipe-icons-box {
+    text-align: center;
+    width: 33%;
+    margin: 1%;
+    max-width: 140px;
+}
+
+.crispyminis-recipe-icons-box p{
+    font-size: 16px;
+    margin-top: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.crispyminis-recipe-icons-box-img {
+    margin-bottom: 10px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.crispyminis-related-block{
+    background-color: #3ABCEB;
+}
+
+.crispyminis-section-container h4 {
+    font-size: 1.125em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2D3C9D;
+}
+
+.crispyminis-recipe-icons-box-img img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 70px;
+}
+
+.crispyminis-recipe-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.crispyminis-recipe-info-ingredients {
+    width: 50%;
+}
+
+.crispyminis-recipe-info-ingredients, .cheetos-recipe-info-instructions {
+    padding-right: 50px;
+}
+
+.crispyminis-recipe-info-ingredients h3, .cheetos-recipe-info-instructions h3, .crispyminis-recipe-info-instructions h3 {
+    font-family: 'Century-Gothic',sans-serif;
+    font-weight: bold;
+    color: #2D3C9D;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.crispyminis-recipe-info-ingredients ul li {
+    color: #2D3C9D;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif
+}
+
+.crispyminis-recipe-info-ingredients ul li span{
+    font-weight: bold;
+}
+
+.crispyminis-recipe-info-instructions ol {
+    list-style: revert;
+    margin-left: 15px;
+}
+
+.crispyminis-recipe-info-instructions ol li {
+    color: #2D3C9D;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    font-weight: normal;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-section-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0px 50px 100px 50px;
+    display: block !important;
+}
+
+.crispyminis .carousel_fullwidth .crispyminis-section-container{
+    padding: 0px 20px 0 20px;
+}
+
+.crispyminis-unevencarousel-container {
+    position: relative;
+    right: 0.5%;
+    margin-top: 30px;
+}
+
+.crispyminis-unevencarousel-container h2{
+    display: block;
+    font-size: 36px !important;
+}
+
+.crispyminis-unevencarousel-box-right h2{
+    color: #FFFFFF;
+}
+
+.crispyminis-unevencarousel-box-right .crispyminis-product-description{
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #FFF;
+    padding: 0 30px;
+    line-height: 1.5em;
+}
+
+.crispyminis-unevencarousel-box-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    min-height: 450px;
+    box-shadow: 0 20px 15px -15px grey;
+}
+
+.crispyminis-unevencarousel-box-left {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.crispyminis-unevencarousel-box-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.crispyminis-unevencarousel-box-img img {
+    width: 70rem;
+    position: absolute;
+}
+
+.crispyminis-unevencarousel-box-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #2D3C9D;
+    position: relative;
+    min-height: 300px;
+    padding: 0 20px;
+}
+
+/**********************************
+          Flavourful page
+***********************************/
+
+.crispyminis-about-us-top-banner{
+    text-align: center;
+    padding-top: 100px;
+    background-image: url("/themes/brandstheme/src/images/crispyminis/flavourful-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+html:lang(en) .crispyminis-about-us-top-banner .fr{
+    display: none;
+}
+
+html:lang(fr) .crispyminis-about-us-top-banner .en{
+    display: none;
+}
+
+.crispyminis-about-us-top-banner h1{
+    color: #2D3C9D;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-about-us-top-banner img{
+    margin-top: 30px;
+}
+
+.crispyminis-about-us-paragraph{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.crispyminis-about-us-paragraph p{
+    font-size: 16px;
+    color: #2D3C9D;
+    line-height: 1.5em;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-three-blocks{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: auto;
+}
+
+.crispyminis-three-blocks img{
+    width: 30%;
+}
+
+html:lang(en) .crispyminis-three-blocks .fr{
+    display: none;
+}
+
+html:lang(fr) .crispyminis-three-blocks .en{
+    display: none;
+}
+
+.crispyminis-video{
+   text-align: center;
+}
+
+.crispyminis-video h4{
+    font-family: 'Century-Gothic',sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 25px 0 5px 0;
+    color: #2D3C9D;
+}
+
+.crispyminis-video p{
+    font-family: 'Century-Gothic',sans-serif;
+    color: #2D3C9D;
+}
+
+.crispyminis-video-iframe-container iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.crispyminis-video-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-bottom: 20px;
+}
+
+.crispyminis-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.crispyminis-video-preimg:hover:before {
+    opacity: 1;
+}
+
+/**********************************
+             Videos
+***********************************/
+
+.crispyminis-video-title{
+    color: #2D3C9D !important;
+    text-align: center;
+    text-transform: inherit !important;
+    font-size: 48px !important;
+    font-weight: bold;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-video-section-container{
+    margin: auto;
+    padding: 30px 50px 20px 50px;
+    background-color: #3ABCEB;
+}
+
+.crispyminis-video-container{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1140px;
+    margin: 30px auto 40px;
+}
+
+.crispyminis-video-box {
+    width: 47%;
+    text-align: center;
+}
+
+.crispyminis-video-box.flavourful {
+    width: 100%;
+}
+
+.crispyminis-video-box h3{
+    color: #2D3C9D;
+    font-size: 22px;
+}
+
+.crispyminis-video-preimg {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.crispyminis-video-box p{
+    font-family: 'Open Sans',sans-serif;
+    color: #2D3C9D;
+    margin-top: 10px;
+}
+
+.crispyminis-video-preimg a{
+    display: block;
+}
+
+.crispyminis-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.crispyminis-video-preimg:after {
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-image: url("/themes/brandstheme/src/images/crispyminis/video-play.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none;
+}
+
+.crispyminis-video-preimg img{
+    width: 100%;
+}
+
+
+/**********************************
+        Product description
+***********************************/
+
+.crispyminis-product-block{
+    position: relative;
+    background-image: url("/themes/brandstheme/src/images/crispyminis/flavourful-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #FFF;
+}
+
+.crispyminis-product-block .container{
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    background-color: transparent !important;
+}
+
+.crispyminis-product-block .product-image{
+    display: flex;
+    align-items: center;
+}
+
+.crispyminis-product-block .product-image img {
+    width: 50%;
+    padding: 15px;
+}
+
+.crispyminis-coupon--leftcol .product-image{
+    position: relative;
+    top: -30px;
+}
+
+.crispyminis-detail__product--block{
+    width: 100%;
+    padding: 50px 25px;
+    color: #2D3C9D;
+}
+
+.crispyminis-detail__product--block p{
+    color: #2D3C9D;
+}
+
+.crispyminis-detail__product--block h1 {
+    font-size: 33px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: 'Century-Gothic',sans-serif;
+}
+
+.crispyminis-detail__product--block .banner_slide_recipe-h1 span{
+    font-size: 40px;
+    line-height: 1em;
+    margin-top: 20px;
+    display: block;
+}
+
+.crispyminis-detail__product--block .product-field-detail {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.3em;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.crispyminis-product-nutrition {
+    display: flex;
+    justify-content: space-between;
+}
+
+.crispyminis-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.crispyminis-product-nutrition .linkeable {
+    font-size: 50px;
+    padding: 30px 0px;
+    line-height: 1.3em;
+    font-weight: bold;
+    color: #2D3C9D;
+}
+
+.crispyminis-productdetails-nutrition-table {
+    width: 100%;
+    color: #2D3C9D
+}
+
+.crispyminis-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.crispyminis-productdetails-nutrition-row {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.crispyminis-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.crispyminis-productdetails-nutrition-cell {
+    padding: 6px 2px;
+    font-size: 0.875em;
+    font-weight: bold;
+    width: auto;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-productdetails-nutrition-cell:last-child{
+    text-align: center;
+}
+
+.crispyminis-productdetails-nutrition-row:nth-child(2n + 2) {
+    background-color: rgba(230,248,255,1);
+}
+
+.crispyminis-productdetails-nutrition-row:nth-child(4),
+.crispyminis-productdetails-nutrition-row:nth-child(5),
+.crispyminis-productdetails-nutrition-row:nth-child(9),
+.crispyminis-productdetails-nutrition-row:nth-child(10) {
+    padding-left: 25px;
+}
+
+.crispyminis-product-nutrition .product-ingredients {
+    padding: 0 15px;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-product-nutrition .product-ingredients .product-alert {
+    color: #2D3C9D;
+    padding: 15px;
+}
+
+.crispyminis-product-nutrition .product-ingredients .product-field-detail{
+    color: #2D3C9D;
+    padding: 0 15px;
+    line-height: 1.5em;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.crispyminis-product-nutrition .product-nutrition, .crispyminis-product-nutrition .product-ingredients {
+    width: 100%;
+}
+
+/**********************************
+            Responsive
+***********************************/
+
+@media screen and (max-width: 1600px){
+    .crispyminis-product-banner-block {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .crispyminis-product-banner-block{
+        height: 370px;
+    }
+
+    .menu-text-flavourful{
+        font-size: 13px !important;
+    }
+
+    .crispyminis .brands-navbar__ul a{
+        font-size: 15px;
+    }
+
+    .crispyminis .brands-navbar__ul a{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .crispyminis-nocarousel-box {
+        width: 28%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .crispyminis-three-blocks {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+  .crispyminis-navbar__vertical-align {
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .crispyminis-logo{
+    width: 85px;
+    max-width: 100%;
+    height: auto;
+    padding: 8px 10px 4px;
+  }
+
+  .crispyminis .brands-navbar__ul a{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #crispyminis-buy {
+    float: none !important;
+  }
+
+}
+
+@media (max-width: 992px) {
+
+    .crispyminis-section-container{
+        padding: 20px 0px 100px 0px;
+    }
+
+    .crispyminis-about-us-paragraph{
+        width: 100%;
+    }
+
+    .crispyminis-nocarousel-box .img{
+        height: 300px;
+    }
+
+    .crispyminis-navbar__vertical-align .brands-navbar__center-align {
+        width: 100%;
+    }
+
+    .crispyminis-navbar__vertical-align .brands-navbar_accounts-mbl {
+        width: 100%;
+    }
+
+    .crispyminis-navbar__vertical-align a{
+        color: #2D3C9D;
+    }
+}
+
+@media (max-width: 768px) {
+    .crispyminis-coupon--leftcol{
+        width: 100%;
+    }
+
+    .crispyminis-product-block .product-image img{
+        width: 100%;
+    }
+
+    .crispyminis-video-box.flavourful{
+        padding: 0 20px;
+    }
+
+    .crispyminis-about-us-paragraph {
+        width: 100%;
+        padding: 60px 20px 0 20px;
+    }
+
+    .crispyminis-unevencarousel-box-right{
+        min-height: 350px;
+    }
+
+    .crispyminis-unevencarousel-box-right .crispyminis-product-description{
+        padding: 0 20px;
+    }
+
+    .crispyminis-section-container h2 {
+        padding: 0px 0 20px 0;
+    }
+
+    .carousel_desktop {
+        display: block !important;
+    }
+
+    .crispyminis-feature--display {
+        height: 420px;
+        flex: auto;
+    }
+
+    .crispyminis-feature--leftcol{
+        position: relative;
+        bottom: 30px;
+    }
+
+    .crispyminis-coupon--text{
+        padding: 40px 15px;
+    }
+
+    .crispyminis-unevencarousel-box-content{
+        flex-direction: column;
+    }
+
+    .crispyminis-unevencarousel-box-img img{
+        position: relative;
+        left: 0;
+        width: 50rem;
+    }
+
+    .crispyminis-video-container {
+        flex-direction: column;
+    }
+
+    .crispyminis-video-box {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .crispyminis-video-box:last-child {
+        margin-bottom: 0px;
+    }
+
+
+    .crispyminis-coupon-block{
+        padding: 0px 20px 100px 20px;
+    }
+
+    .crispyminis-product-banner-block, .crispyminis-product-banner-block{
+        justify-content: center;
+    }
+
+    .crispyminis-detail__product--block h1{
+        text-align: center;
+    }
+
+    .crispyminis-detail__product--block .banner_slide_recipe-h1 span{
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    .crispyminis-detail__product--block h1{
+        font-size: 20px;
+    }
+
+    .crispyminis-coupon--container{
+        flex-direction: column;
+        max-width: 500px;
+    }
+
+    .crispyminis-about-us-top-banner img{
+        width: 80%;
+    }
+
+    .crispyminis-three-blocks{
+        flex-direction: column;
+    }
+
+    .crispyminis-three-blocks img {
+        width: 60%;
+        margin: 0 auto 20px auto;
+    }
+
+    .crispyminis-nocarousel-container{
+        flex-direction: column;
+    }
+
+    .crispyminis-nocarousel-box .img{
+        height: 280px;
+    }
+
+    .crispyminis-nocarousel-box{
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    .crispyminis-recipe-info-ingredients {
+        width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .crispyminis-recipe-info{
+        flex-direction: column;
+    }
+
+    .crispyminis-product-box{
+        width: auto;
+    }
+
+    .crispyminis-product-block .product-image{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .crispyminis-detail__product--block{
+        padding: 0px 25px;
+    }
+
+    .crispyminis-product-nutrition{
+        flex-direction: column;
+    }
+
+    .crispyminis-product-nutrition .product-ingredients .product-field-detail{
+        padding: 0;
+    }
+
+    .crispyminis-product-nutrition .product-ingredients .product-alert{
+        padding: 15px 0;
+    }
+
+    .crispyminis-coupon--display{
+        padding-top: 50px;
+    }
+
+    .crispyminis-section-container{
+        max-width: 500px;
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .crispyminis-logo {
+    height: 63px;
+  }
+
+}
+
+/*Hide Subtext on first slide*/
+
+div#slick-slide00 .crispyminis-product-banner-suggest-serving {
+  display: none !important;
+}
+
+
+.crispyminis-btn{
+width: 160px;
+color: #2D3C9D;
+display: block;
+padding: 15px;
+margin: 0 auto;
+font-family: 'Century-Gothic',sans-serif;
+text-align: center;
+font-weight: bold;
+background-color: #FFC90A;
+border:2px solid #FFC90A;
+}
+
+.product-buy-now {
+  text-align: left;
+  width: 100;
+}
+
+/*Hide Subtext on first slide*/
+
+div#slick-slide00 .crispyminis-product-banner-suggest-serving {
+  display: none !important;
+}
+
+/*Buynow Modal*/
+
+.crispyminis-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  position: fixed;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+#crispyminisModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+  height: 650px;
+}
+
+div#crispyminisModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+#crispyminis-buy {
+  float: left;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #crispyminisModal {
+    padding:0 !important;
+  }
+}

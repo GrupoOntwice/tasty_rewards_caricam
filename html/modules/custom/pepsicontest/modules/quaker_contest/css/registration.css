@@ -1,0 +1,693 @@
+div.tostitos-contest, form.tostitos-form{
+	padding-top: 50px;
+}
+
+.menu_buffer {
+	padding-top: 80px !important;
+}
+
+@media(max-width: 768px) {
+	.menu_buffer {
+		padding-top: 130px !important;
+	}
+}
+
+.open_modal_btn {
+	cursor: pointer;
+}
+
+.valid-upc {
+	border: 1px solid #51e01b !important;
+	color: #51e01b !important;
+}
+
+.arrow_sizing {
+	font-size: 1.9em;
+    line-height: 0;
+    position: relative;
+    top: 3px;
+    left: 3px;
+}
+
+.contest-detail__sign-up-button {
+	box-shadow: 0 3px 0 0 #b81321;
+	transition: background-color 0.2s, box-shadow 0.2s;
+	display: inline-block;
+}
+
+.contest-detail__sign-up-button:focus {
+	outline: none;
+}
+
+.contest-detail__sign-up-button:hover {
+	text-decoration: none;
+	color: white;
+	background-color: #b81321;
+	box-shadow: 0 3px 0 0 #C30024;
+	transition: all 0.3s;
+}
+
+.contest-detail__sign-up-button.smaller_btn {
+    font-size: 12px;
+	padding: 10px 20px;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.red {
+	color: #C30024;
+}
+
+.blue_bar {
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	height: 1px;
+    background-color: #106cae;
+    margin-bottom: 20px;
+}
+
+.show_mobile {
+	display: none;
+	visibility: hidden;
+}
+
+@media (max-width: 768px) {
+	.show_mobile {
+		display: block;
+		visibility: visible;
+	}
+
+	.hide_mobile {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+.close_btn_container {
+	width: 100%;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.modal_content_close {
+	cursor: pointer;
+	position: absolute;
+	background-color: #cccccc;
+	padding: 14px 12px 10px;
+	top: -20px;
+    right: -20px;
+}
+
+.contest-detail__sign-up-button {
+	background-color: #C30024;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 12px 24px;
+    border: none;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+.contest-detail__sign-up-select-button {
+	text-align: center;
+}
+
+/* MODAL START */
+.modal_backdrop.modal_closed, 
+.modal_content.modal_closed {
+	position: fixed;
+	top: -99999px;
+	left: -99999px;
+	display: none;
+	opacity: 0;
+}
+
+.modal_backdrop.modal_open {
+	position: fixed;
+	opacity: 0.5;
+	z-index: 9999;
+	background-color: #000000;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.modal_content.modal_open {
+	z-index: 10000;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #ffffff;
+	max-width: 650px;
+	width: 80%;
+	padding: 20px;
+	border-radius: 3px;
+	max-height: 100vh;
+	overflow-y: auto;
+}
+
+.modal_content_title, .modal_content_subtitle {
+	text-align: center;
+}
+
+.modal_content_title {
+	font-size: 2em;
+}
+
+.modal_content input[type="text"] {
+	border: 1px solid #106cae;
+	border-radius: 1px;	
+	padding: 8px 5px;
+	font-size: 14px;
+	width: 100%;
+}
+
+.modal_content .upc-controls {
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.modal_content a.more-upc {
+	display: inline-block;
+	color: #2e2e2e;
+	text-align: right;
+	margin-bottom: 15px;
+	font-size: 12px;
+	text-transform: lowercase;
+	text-decoration: underline;
+	margin-right: 4%;
+}
+
+.modal_content a.less-upc {
+	display: inline-block;
+	color: #C30024;
+	text-align: right;
+	margin-bottom: 15px;
+	font-size: 12px;
+	text-transform: lowercase;
+	text-decoration: underline;
+	margin-left: 4%;
+}
+
+.contest-detail__user-upc-code {
+	margin-bottom: 10px;
+}
+
+.contest-detail__user-upc-code input,
+.contest-detail__user-upc-code > span.help-block {
+	width: 96% !important;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.contest-detail__user-name {
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.contest-detail__user-name > div {
+	width: 100%;
+	max-width: 46%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.contest-detail__checkboxes-wrap {
+	margin-bottom: 20px;
+}
+
+.modal_content .checkbox_container .checkbox_div {
+	display: flex;
+	margin-left: 2%;
+    margin-right: 2%;
+}
+
+.modal_content .checkbox_container .help-block {
+	margin: 5px 2% 0;
+	width: 96%;
+	display: inline-block;
+}
+
+.modal_content .checkbox_container input[type="checkbox"] {
+	position: relative;
+	cursor: pointer;
+	padding: 0;
+	height: 20px;
+	width: 60px;
+	vertical-align: bottom;
+    margin-left: -2%;
+}
+.modal_content .checkbox_container label:hover {
+color: #333;}
+.modal_content .checkbox_container input[type="checkbox"]:focus:before {
+box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);}
+.modal_content .checkbox_container input[type="checkbox"]:checked:before {
+background-color: #0e4caa;
+box-shadow: inset 0 0 0 2px white;}
+
+
+.contest-detail__checkbox-text {
+	font-size: 12px;	
+    margin-left: 1%;
+}
+
+.sign_up_subtitle {
+	font-weight: bold;
+	text-align: center;
+	font-size: 14px;
+	margin-bottom: 10px;
+	font-family: 'GtWalsheimBold', Helvetica, sans-serif;
+}
+
+@media (max-width: 768px) {
+	.modal_content.modal_open {
+		width: 100%;
+		max-height: 92vh;
+		top: 5vh;
+		overflow-y: auto;
+		transform: translate(-50%, 0);
+		padding: 10px;
+		padding-top: 50px;
+		justify-content: flex-start;
+	}
+
+	.close_btn_container {
+		margin-bottom: 0;
+	}
+
+	.modal_content_close {
+		top: -50px;
+		right: -10px;
+	}
+
+	.contest-detail__user-name {
+		flex-direction: column;
+		margin-bottom: 0;
+	}
+	
+	.contest-detail__user-name input {
+		max-width: 96%;
+	}
+
+	.contest-detail__user-name > div {
+		max-width: 100% !important;
+	}
+}
+
+/* MODAL END */
+
+section {
+	padding: 20px 5%;
+}
+
+/* BLOCKS */
+.block__intro {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+	background-image: url('/themes/tastytheme/src/images/contest/bg_1.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+.contest_page_content_block {
+	width: 50%;
+}
+
+.animated-text-block {
+	opacity: 0;
+}
+
+.intro_img_container {
+	max-width: 800px;
+    margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.intro_img_container img {
+	max-width: 80%;
+	width: 100%;
+}
+
+.block__intro .description h2 {
+	max-width: 600px;
+}
+
+.block__intro .description .contest-description {
+	max-width: 400px;
+}
+
+.description h2 {
+	margin-bottom: 30px;
+}
+
+.contest-description button {
+	margin-top: 30px;
+}
+
+.description.other .contest-description p {
+	margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+	.block__intro {
+		background-image: url('/themes/tastytheme/src/images/contest/bg1_mbl.png');
+		flex-direction: column;
+		padding-bottom: 0;
+		padding-left: 20px;
+    	padding-right: 20px;
+	}
+
+	.contest_page_content_block {
+		width: 96%;
+		margin-left: 2%;
+		margin-right: 2%;
+	}
+
+	.description {
+		text-align: center;
+	}	
+
+	.block__intro .description h2, 
+	.block__intro .description .contest-description {
+		margin: 0 auto 30px;
+	}
+}
+
+/* PRIZES */
+.block__prizes {
+	background-image: url('/themes/tastytheme/src/images/contest/bg_2.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 50px;
+    padding-bottom: 90px;
+}
+
+.block__prizes-title,
+.contest-detail__prize-title,
+.contest-detail__sign-up-button {
+	font-family: 'GtWalsheimBold', Helvetica, sans-serif;
+}
+
+.contest-detail__prize-description p {
+	font-family: 'newAkzidenz', Helvetica, sans-serif;
+}
+
+.block__prizes-title {
+	color: white;
+	text-align: center;
+	padding: 40px 20px 20px;
+}
+
+.contest-prizes {
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+}
+
+.animated-prize-boxes .contest-detail__prize {
+	opacity: 0;
+}
+
+.contest-detail__prize {
+	width: 100%;
+	max-width: 20%;
+	margin: 20px 2%;
+	text-align: center;
+	position: relative;
+}
+
+.contest-detail__prize p {
+	margin-bottom: 10px;
+}
+
+.prize_img_container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 0;
+}
+
+.prize_img_container.recipes_block_img_container {
+	height: auto;
+}
+
+.contest-detail__prize img {
+    max-width: 90%;
+	max-height: 100%;
+	height: auto;
+    width: 100%;
+}
+
+
+
+.contest-detail__prize-title {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 10px;
+	color: white;
+}
+
+.contest-detail__prize-title.big_title {
+	font-size: 1.8em;
+    padding: 20px 10px;
+}
+
+.contest-detail__prize-description p {
+	font-size: 1em;
+	text-align: center;
+	padding: 0 10px 10px;
+	color: white;
+}
+
+.animated-prize-boxes .contest-detail__prize:hover img {
+	-webkit-animation-name: wiggle;
+	animation-name: wiggle; 
+	-webkit-animation-duration: 0.75s; 
+	animation-duration: 0.75s;
+} 
+
+.prizes-recipes-content .contest-detail__prize {
+	padding-bottom: 50px;
+}
+
+.contest-detail__sign-up-button.smaller_btn {
+	position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes wiggle {
+	0% { transform: rotate(9deg); } 
+	10% { transform: rotate(-8deg); } 
+	20% { transform: rotate(7deg); } 
+	30% { transform: rotate(-6deg); } 
+	40% { transform: rotate(5deg); } 
+	50% { transform: rotate(-4deg); } 
+	60% { transform: rotate(3deg); } 
+	70% { transform: rotate(-2deg); } 
+	80% { transform: rotate(1deg); } 
+	90% { transform: rotate(0deg); } 
+	100% { transform: rotate(0deg); } 
+ } 
+
+@media (max-width: 1200px) and (min-width: 769px) {
+	.contest-detail__prize.wider_prize_box {
+		max-width: 30%;
+	}
+}
+
+@media (max-width: 992px) {
+	.contest-detail__prize {
+		max-width: 30%;
+	}
+}
+
+@media (max-width: 768px) {
+	.block__prizes {
+		background-image: url('/themes/tastytheme/src/images/contest/bg2_mbl.png');
+		padding-left: 20px;
+    	padding-right: 20px;
+	}
+
+	.contest-prizes {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.contest-detail__prize {
+		max-width: 100%;
+		margin: 0 0 20px;
+	}
+
+	.contest-detail__prize-title,
+	.contest-detail__prize-description {
+		width: 80%;
+		max-width: 320px;
+		margin: 0 auto;
+	}
+
+	.contest-detail__prize-title {
+		font-size: 1.8em;
+	}
+
+	.contest-detail__prize-description {
+		font-size: 1.2em;
+	}
+}
+
+/* INFO */
+.block__info {	
+	background-image: url('/themes/tastytheme/src/images/contest/bg_3.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 80px;
+    padding-bottom: 60px;
+}
+
+.block__info-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 80px;
+}
+
+.info_col-text {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.info_col-img {
+	width: 60%;
+}
+
+.info_col-text .info_col-text-container {
+	max-width: 300px;
+	margin-right: 5%;
+	margin-left: auto;
+}
+
+.info_col-text .info_col-text-container h2,
+.info_col-text .info_col-text-container p {
+	margin-bottom: 20px;
+}
+
+.barcode_img_container {
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.barcode_img_container img {
+	max-width: 80%;
+	width: 100%;
+}
+
+.block__info-text-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.contest-detail__legal-footer {
+	text-align: center;
+	width: 80%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.contest-detail__legal-footer p {
+	font-size: 14px;
+}
+
+.contest-detail__legal-footer a {
+	color: #000000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+	.info_col-text, 
+	.info_col-img {
+		width: 50%;
+	}
+}
+
+@media (max-width: 768px) {
+	.block__info {	
+		background-image: url('/themes/tastytheme/src/images/contest/bg3_mbl.png');
+		padding-left: 20px;
+    	padding-right: 20px;
+	}
+
+	.block__info-content {
+		flex-direction: column;
+		margin-bottom: 50px;
+	}
+
+	.info_col-text {
+		width: 96%;
+		margin-left: 2%;
+		margin-right: 2%;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.info_col-text .info_col-text-container {
+		margin-right: auto;
+		margin-left: auto;
+		width: 80%;
+		max-width: 260px;
+	}
+
+	.info_col-img {
+		width: 96%;
+		margin-left: 2%;
+		margin-right: 2%;
+	}
+
+	.barcode_img_container {
+		justify-content: center;
+	}
+
+	.center_info_btn {
+		margin: 50px auto 0;
+	}
+
+	.contest-detail__legal-footer {
+		width: 100%;
+	}
+}
+
+.negative_margin {
+	margin-bottom: -100px;
+}
+
+.arrow_overlap {
+    top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+}

@@ -1,0 +1,135 @@
+{{ attach_library( 'quaker_contest/hockey' ) }}
+
+
+<section class="quaker-hockey-contest-form-wrapper">
+
+    <div class="banner_slide--text {{class_pos}} contest-banner-text">
+        <h1>{{ "Enter your UPC for a chance to win<sup>†</sup> exclusive prizes from Quaker<sup>®</sup> and Hockey Canada<sup>®</sup>!" | trans}}</h1>
+        <p>{{ "Enter the 12-digit UPC from a participating Quaker<sup>®</sup> Instant Oatmeal product." | trans}}</p>
+
+        <a class="quaker-hockey-contest-claim-button" href={{data.faq_link}}>{{ 'Have any questions?' |t}}</a>
+    </div>
+
+    <div class="quaker-hockey-contest-form d-flex">
+        <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off" class="hockey-contest-form">
+
+            <input type="hidden" name="newregister"  value="{{newregister}}">
+            {% if data.language != 'en-us' and data.language != 'es-us' %}
+                <p class="modal__inquiry">{{ "All fields are required."|t }}</p>
+            {% endif %}
+
+            <div class="contest-detail__quacker-input">
+                <div class="contest-detail__quacker-input-col">
+
+
+                  <label for="contest-upccode" class="sr-only">Upc</label>
+                    <input type="text" class="contest-detail__input {{data.error.upccode?'has-error':''}}" name='upccode' id="contest-upccode" disabled="disabled"  placeholder="{{ 'UPC'|t }}" value="{{data.upccode?:''}}"  {{data.upccode?form_field_status:''}}>
+
+                    <span class="help-block err_upccode">{{data.error.upccode?:''}}</span>
+                </div>
+            </div>
+
+            <div class="contest-detail__quacker-input">
+                <div class="contest-detail__quacker-input-col">
+                  <label for="contest-email" class="sr-only">Email</label>
+                    <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+                    <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+                </div>
+            </div>
+
+            <div style="margin-top:10px" class="contest-detail__quacker-input">
+                <div class="contest-detail__quacker-input-col">
+                  <label for="contest-firstname" class="sr-only">Firstname</label>
+                    <input type="text" class="contest-detail__input {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="{{ 'First Name'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                    <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                </div>
+
+                <div class="contest-detail__quacker-input-col">
+                  <label for="contest-lastname" class="sr-only">Lastname</label>
+                    <input type="text" id="contest-lastname" class="contest-detail__input {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+                    <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                </div>
+            </div>
+
+            <div class="contest-detail__quacker-input">
+                <div class="contest-detail__quacker-input-col">
+                <select class="province form-control" name="province" id="province">
+                    {{ data.provinces_options| raw }}
+                </select>
+                <span class="help-block err_province">{{data.error.province?:''}}</span>
+                </div>
+            </div>
+
+            <div class="contest-detail__quacker-input">
+                <div class="contest-detail__quacker-input-col">
+                  <label for="postalcode" class="sr-only">Postal Code</label>
+                    <input type="text" id="postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }}" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+                    <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+                </div>
+            </div>
+
+            <div class="contest-detail__sign-up-select-checkbox">
+
+                <div class="contest-detail__checkboxes-wrap">
+                  <label for="optin_maj" class="sr-only"> Confirm </label>
+                    <input class="contest-detail__checkboxes-color" style = "width: 44px; height: 15px" type="checkbox" class="" id="optin" name='optin_maj'  {{ data.optin_maj==1?'checked' }}/>
+                    <div>
+                    <p class="contest-detail__checkbox-text optin">{{'By participating in the contest, I confirm that I am eligible to and will participate according to the <a class="quaker-hockey-upc-link" href="/en-ca/contest/quakerhockeyhungry/officialrules">Official Rules.</a>'| t }}</p>
+                  <span class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span>
+                    </div>
+
+                </div>
+                {# <div style = "padding-left: 20px"> #}
+                    {# <span style = "margin: 0" class="help-block err_optin_maj">{{data.error.optin_maj| raw?:''  }}</span> #}
+                {# </div> #}
+
+            </div>
+
+            <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+
+            <div class="contest-detail__sign-up-hockey-button">
+                <input id="submitcontest" class="contest-detail__sign-up-button grey js-submit-contest {{submit_status}}" {{submit_status}} disabled type="button" value="{{'Submit' | t}}"  style="border: solid;">
+            </div>
+
+
+            <div class="">
+                <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+            </div>
+        </form>
+      <div style = "margin-top:34px">
+        <a href = "#where-to-find-upc"> <img class = "upc-tooltip hockey-banner-faq-img" src="/themes/brandstheme/src/images/quaker/hockey-contest/upc.png" alt="upc" /></a>
+      </div>
+    </div>
+
+</section>
+
+<div id = "where-to-find-upc" class="quaker-recipe-coupon sign-up">
+    <div class="container">
+        <div class="quaker-recipe-coupon-goalie">
+
+            <div class="quaker-recipe-coupon-col">
+              <img class = "hockey-canada-barcode en" src="/themes/brandstheme/src/images/quaker/hockey-contest/quaker-barcode.png" alt="quaker hockey barcode" />
+              <img class = "hockey-canada-barcode fr" src="/themes/brandstheme/src/images/quaker/hockey-contest/quaker-barcode-fr.png" alt="quaker hockey barcode" />
+            </div>
+            <div class="quaker-recipe-coupon-col">
+                <h3>{{'WHERE TO FIND YOUR UPC'|t}}</h3>
+                <p>{{'Find the UPC on the bottom of participating Quaker<sup>®</sup> Instant Oatmeal products! See the <a class="quaker-hockey-link" href="/en-ca/contest/quakerhockeyhungry/officialrules">Official Rules</a> for details.'|t}}</p>
+{#                <a class="quaker-hockey-contest-button" href="">{{'ENTER'|t}}</a>#}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="quaker-hockey-official-rules">
+    <div class="container">
+      {{'† No purchase necessary. Open to Canadian residents only, age of majority or older. Mathematical skill-testing question required. Contest Period: September 27 at 12:00pm (noon) ET to December 5, 2021 at 11:59:59pm ET. Instant Prizes available: (i) 9,000 Free Product Coupons (ARV $5.99 each); (ii) 1,000 Quaker<sup>®</sup> Oatmeal Travelers (ARV $20 each). Grand Prizes available: (i) 10 Hockey Canada<sup>®</sup> Prize Packs (1 per week/ARV $1,500 each). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules,'|t}}
+      <a style = "font-size: 17px" href = "{{data.rules_link}}"> {{ 'click here.'|t }}</a>
+
+        <div class="quaker-hockey-official-rules-links">
+            <a class="quaker-hockey-contest-rules-button" href="{{data.rules_link}}">{{'OFFICIAL RULES'|t}}</a>
+            <a class="quaker-hockey-contest-rules-button" href="{{data.prize_link}}">{{'PRIZES'|t}}</a>
+            <a class="quaker-hockey-contest-rules-button" href="{{data.faq_link}}">{{'FAQ'|t}}</a>
+        </div>
+    </div>
+</div>

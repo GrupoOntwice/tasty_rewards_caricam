@@ -1,0 +1,47 @@
+<script type="text/javascript">
+</script>
+
+{{ attach_library( 'pepsibrands/realjoy_export' ) }}
+
+<h2 class=""> {{data.title}} </h2>
+
+{% include '@pepsicontest/includes/draw_contest_filters.html.twig' %}
+
+<div class="container">
+	<table class="views-table views-view-table cols-9 responsive-enabled sticky-enabled">
+   <thead>
+      <tr>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Contest Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Email'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'First Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Last Name'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Date'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Gender'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Postal Code'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'Team'|t}}</th>
+         <th id="view-title-table-column" class="views-field views-field-title" scope="col">{{'User Entries'|t}}</th>
+      </tr>
+   </thead>
+   <tbody>
+	{% for entry in data.winners %}
+      <tr>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.contest_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.email}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.first_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.last_name}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.enterdate}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.gender}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.postalcode}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">{{entry.team}} </td>
+         <td headers="view-title-table-column" class="views-field views-field-title">  
+            <a target="_blank" href="/en-ca/admin/contests/entries?contestid={{entry.contest_id}}&email={{entry.email}}"> entries</a>
+         </td>
+      </tr>
+	{% endfor %}
+   </tbody>
+</table>
+
+{# <input data-drupal-selector="edit-clear" type="submit" id="edit-download" name="op" value="Export Csv" class="button js-export-csv  form-submit" data-link="{{data.csv_link}}"> #}
+
+
+</div>

@@ -1,0 +1,6 @@
+pepsibam.admin_comingsoon_form:
+  title: 'ComingSoon Configuration'
+  route_name: pepsibam.admin_comingsoon_form
+  description: 'Coming soon page configuration settings'
+  parent: system.admin_config_system
+  weight: 98

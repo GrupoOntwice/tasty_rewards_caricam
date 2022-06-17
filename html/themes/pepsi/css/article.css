@@ -1,0 +1,139 @@
+/*Article.css*/
+
+.article #topLeft{
+	padding:0 !important;
+	border: 10px solid #ffffff; 
+}
+.article #topRight{
+	padding:10px 115px 10px 30px;
+}
+
+.article .social-share{
+	padding-top: 30px;
+}
+
+
+
+.article .description p{
+    padding-left: 0;
+}
+
+.sponsorImage{
+	height: 50px;
+	width: auto;
+}
+
+#featuredRecipe,#coupons{
+	position: relative;
+	float: left;
+}
+
+#articleBlocks{
+	padding:20px;
+	max-width:1200px;
+}
+
+.video{
+	margin:20px auto;
+}
+
+.article .overlay{
+	background:rgba(239,75,116,0.8) !important;
+}
+
+.description p {
+    text-align: justify;
+    font-size: 18px;
+}
+
+.article .sponsor {
+    font-size: 18px;
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* DESKTOP ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+/* Extra large desktops */
+@media all and (min-width: 1600px){
+	h1{
+		font-size: 48px !important;
+	}
+	.sponsor{
+		font-size: 2em;
+	}
+	.sponsor img{
+		height: 90px;
+	}
+	.description{
+		padding-top: 20px;
+		font-size: 18em;
+	}
+}
+/* Medium desktops */
+@media all and (min-width: 1200px) and (max-width: 1599px){
+	h1{
+		font-size: 44px !important;
+	}
+	.sponsor{
+		font-size: 1.6em;
+	}
+	.sponsor img{
+		height: 80px;
+	}
+	.description{
+		padding-top: 20px;
+		font-size: 18em;
+	}
+	
+}
+/* Small desktops */
+@media (min-width:768px) and (max-width:991px){
+    .article #topRight{
+	padding:10px;
+    }
+}
+/* All desktops */
+@media all and (min-width:769px){
+	
+}
+
+
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* TABLET AND MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+@media all and (max-width:768px){
+    .article #topRight{
+	padding:10px;
+    }	
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 600px){
+    #topLeft .landing-categories-content p {
+        padding: 0;
+    }
+    
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* SMALL MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 320px){
+
+    .landing-categories-content p {
+        margin-bottom: 1%;
+    }	
+}

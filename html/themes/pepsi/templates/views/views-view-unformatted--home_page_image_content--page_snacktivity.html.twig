@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#} 
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.title.getValue().0.value %}
+    {% set brand = row.content["#row"]._entity.field_brand.getValue().0.value %}
+    {% set link_text = row.content["#row"]._entity.field_home_page_link.getValue().0.title %}
+    {% set link_url = row.content["#row"]._entity.field_home_page_link.getValue().0.uri |replace({'internal:': ''})%}
+    
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_home_page_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.getTranslation(language).field_home_page_image.getValue().0.alt %}
+    
+    {% set target = "_blank" %}
+    {% if ("tastyrewards.ca" in link_url) %}
+        {% set target = "" %}
+    {% endif %}
+    
+    
+    <div id="topSnacktivity" class="size-2x1 bg-yellow pattern-white text-center" onclick="promotionClickTracking(this);">
+        {% if link_url is not empty %}
+            <a class="" href="{{link_url}}" target="{{target}}" >
+                <img id="homepage_snacktivity" src="{{img}}" class="" alt="{{brand}}-{{img_alt}}" style="height:auto;width:100%;" />
+            </a>
+        {%else%}
+            <img id="homepage_snacktivity" src="{{img}}" class="" alt="{{brand}}-{{img_alt}}" style="height:auto;width:100%;" />
+        {% endif %}
+    </div>
+
+{% endfor %}

@@ -1,0 +1,234 @@
+
+{% set nodeimgurl = file_url(content.field_recipe_image_detail['#items'].entity.uri.value)  ?: '' %}
+{% set nodeimgalt = node.field_recipe_image_detail.alt ?: label %}
+{% set nodetitle = node.label ?: '' %}
+{% set subtitle = node.field_recipe_subtitle.value ?: node.title.value?: '' %}
+{% set brand = node.field_brand.value %}
+{% set how_to_make = node.field_recipe_how_to_make.value %}
+{% set prep_time = node.field_recipe_prep_time.value %}
+{% set cook_time = node.field_recipe_cook_time.value %}
+{% set video = node.field_recipe_video.value %}
+{% set ingredients = node.field_recipe_ingredients.value|raw ?: '' %}
+
+{{ attach_library('brandstheme/tostitos') }}
+{#{{ attach_library( 'springactivation/springactivationLibrary' ) }}#}
+{{ attach_library( 'pepsicontest/gamedayLibrary' ) }}
+<section id="banner" class="tostitos-banner-nocarousel" style="background-image:url({{ nodeimgurl }});padding:150px;">
+</section>
+<script type="text/javascript">
+  document.title = "{{ subtitle|striptags|raw }}";
+</script>
+
+<section id="header-top" class="single-recipe-header-top" style="background-image:url({{ nodeimgurl }})">
+
+  <!-- SCHEMA.ORG -->
+  <meta itemprop="image" content="{{ nodeimgurl }}">
+  <meta itemprop="author" content="Tostitos.ca">
+  <meta itemprop="recipeCuisine" content="Canadian">
+  <meta itemprop="keywords" content="">
+</section>
+
+{# <div class="springactivation-content-background-container-recipesdetails bg-black" > #}
+<section id="gameday-recipe" class="gameday-recipe-block padding-top-large padding-bottom-large">
+  <img class = "top-left" src="/themes/brandstheme/src/images/gameday/top-left.png" alt = "gameday top-left">
+  <img class = "top-right" src="/themes/brandstheme/src/images/gameday/top-right.png" alt = "gameday top-right">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 gameday-recipe-back-btn">
+            <a class="gameday-back-btn gameday-btn" href="{{ absolute_url }}{{'/en-us/contests/gamedaystartshere/signup' |t }}">
+              &#8592;{{ "Back" |t}}
+            </a>
+          </div>
+
+      <div class="col-md-6 padding-top-medium text-center gameday-recipe-header">
+        <h2 itemprop="name" class="yellow text-left somerton-regular">{{ subtitle|raw }}</h2>
+
+        <div class="gameday-subtitle-container padding-top">
+          {% if node.body.0.value|striptags is not empty %}
+            <p class="text-white opensans-regular">
+              {{ node.body.0.value | raw }}
+            </p>
+          {% endif %}
+        </div>
+
+        <div class = "shop-now-snacks">
+          <p class = "text-white">
+            {{"Shop now at" |t}}
+          </p>
+          <a href = "https://www.snacks.com/productlist" aria-label="snacks">
+          <img src = "/themes/brandstheme/src/images/gameday/snacks_logo.png" alt = "snacks-logo">
+          </a>
+        </div>
+      </div>
+
+
+
+        {% if video_key|length %}
+      <div class="col-md-6 gameday-recipe-video">
+          <div class="gameday-video padding-top-medium">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{video_key}}?&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+      </div>
+        {% endif %}
+
+
+      <div class="col-md-6 padding-top">
+        <div class="gameday-recipe-icons {{ video|length ? '' : 'gameday-recipe-icons-full' }}">
+          <div class="row">
+            {% if prep_time is not empty %}
+              <div class="col-4 text-center padding-top">
+                <div class="gameday-recipe-icons-box-img">
+                  <img class="prep-time-img" src="/themes/brandstheme/src/images/gameday/prep.png" alt = "prep time">
+                </div>
+
+                <h4 class="text-white padding-top-half opensans-bold">{{ 'Prep Time'|t }}: </h4>
+
+                <p class="text-white padding-top-half">
+                  <time datetime="PT20M" itemprop="prepTime">{{ prep_time }}</time>
+                </p>
+              </div>
+            {% endif %}
+
+            {% if cook_time is not empty %}
+              <div class="col-4 text-center padding-top">
+                <div class="gameday-recipe-icons-box-img">
+                  <img class="cook-time-img" src="/themes/brandstheme/src/images/gameday/cook.png" alt = "Cook Time">
+                </div>
+
+                <h4 class="text-white padding-top-half opensans-bold">{{ 'Cook Time'|t }}: </h4>
+
+                <p class="text-white padding-top-half">
+                  <time datetime="PT20M" itemprop="cookTime">{{ cook_time }}</time>
+                </p>
+              </div>
+            {% endif %}
+
+            <div class="col-4 text-center padding-top">
+              <div class="gameday-recipe-icons-box-img">
+                <img class="gameday-rating-img" src="/themes/brandstheme/src/images/gameday/rating.png" alt = "Rating">
+              </div>
+
+              <h4 class="text-white padding-top-half opensans-bold">{{ 'Rating'|t }}</h4>
+
+              <div class="tostitos-stars reverse-order padding-top-half" data-nid="{{ nid }}">
+                {% for i in 1..5 %}
+                  <input type="radio" id="star-{{ i }}" name="rate" value="{{ i }}" {% if i == avg_rating %}checked="checked"{% endif %}>
+                  <label for="star-{{ i }}" title="text">{{ i }}</label>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-12 padding-top-medium padding-bottom-medium gameday-recipe-info">
+        <div class="row">
+          <div class="col-md-6 gameday-recipe-info-ingredients">
+            <h3 class="text-white padding-bottom font-25 opensans-bold">{{ 'Ingredients'|t }} </h3>
+            {{ ingredients|raw }}
+          </div>
+
+          <div class="col-md-6 gameday-recipe-info-instructions">
+            <h3 class="text-white padding-bottom font-25 opensans-bold">{{ 'How to make it'|t }}</h3>
+            {{ how_to_make|raw }}
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" name='node_url' id='node_url' value="{{ current_uri }}">
+      <input type="hidden" name='node_title' id='node_title' value="{{ subtitle|striptags }}">
+      <input type="hidden" name='node_image' id='node_image' value="{{ nodeimgurl }}">
+
+          <div class="col-md-12 text-center padding-bottom-medium center-align-md-dsk">
+            <p class="text-white padding-right-dsk bold opensans-bold snacklab-share">
+                {{ 'Share this recipe' |t }}
+            </p>
+        <a class="social-share-trigger" id="mk-recipe-fb" data-platform="facebook" href="#" tabindex="-1">
+          <img src="/themes/brandstheme/src/images/gameday/tr-fa-facebook.png" alt="facebook">
+        </a>
+        <a class="social-share-trigger" data-platform="twitter" href="#" tabindex="-1">
+          <img src="/themes/brandstheme/src/images/gameday/tr-fa-twitter.png" alt="twitter">
+        </a>
+        <a class="social-share-trigger" data-platform="pinterest" href="#" tabindex="-1">
+          <img src="/themes/brandstheme/src/images/gameday/tr-fa-pinterest.png" alt="pinterest">
+        </a>
+        <a href="javascript:window.print()" tabindex="-1">
+          <img src="/themes/brandstheme/src/images/gameday/tr-fa-print.png" alt="print">
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  {% if related_recipes|length > 0 %}
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12 text-center padding-bottom-medium">
+            {% if related_recipes|length %}
+              <h2 class="yellow somerton-regular"> {{ 'Related Recipes'|t }} </h2>
+            {% endif %}
+          </div>
+
+
+            {% for recipe in related_recipes %}
+              {# <div class="tostitos-related-product tostitos-nocarousel-box"> #}
+          <div class="col-md-4 text-center gameday-related-recipes">
+            <a class="" href="{{ recipe.link }}" aria-label="related-img">
+              <div class="gameday-related-img" style = "background-image:url('{{ recipe.image_url }}')"> </div>
+            </a>
+
+
+              <h3 class="products-category-title blue padding-top padding-bottom font-25 somerton-regular">
+                <a class="yellow" href="{{ recipe.link }}" hreflang="en">{{ recipe.title|raw }}</a>
+              </h3>
+
+              <a class="gameday-btn gameday-btn-yellow m-auto opensans-regular" href="{{ recipe.link }}">{{ 'View Recipe'|t }}</a>
+          </div>
+              {# </div> #}
+            {% endfor %}
+
+
+
+        </div>
+      </div>
+
+  {% endif %}
+  <img class = "gameday-bottom-right" src="/themes/brandstheme/src/images/gameday/top-left.png" alt = "gameday">
+</section>
+{# </div> #}
+
+
+
+{#<section id="coupons">#}
+{#  {{ coupon_block|raw}}#}
+{#</section>#}
+
+
+<section id="coupons">
+  <div class="coupon--container-bg-desktop" style="background-image: url('/themes/brandstheme/src/images/gameday/coupon-bg.png');">
+    <div class="container gameday-d-md-flex padding-top-medium-dsk padding-bottom-medium-dsk gameday-coupon-padding">
+      <div class="coupon--display">
+        <a href="{{ '/en-us/coupons'|t }}" tabindex="-1">
+          <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+            <img class = "en"  alt="the season for savings" data-entity-type="file" src="/themes/brandstheme/src/images/gameday/coupon-img.png" alt = "coupon">
+            <img class = "es"  alt="the season for savings" data-entity-type="file" src="/themes/brandstheme/src/images/gameday/coupon-img-es.png" alt = "coupon">
+          </div>
+        </a>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <h3 class="heading-text somerton-regular text-uppercase" style="font-size:2em;">{{'Save on these <br> gameday
+        Frito-Lay<sup>®</sup> <br> flavours' |t}} </h3>
+        <a class="gameday-btn gameday-coupon-btn  opensans-bold" href="{{'/en-us/coupons' |t}}" tabindex="-1">{{ 'Get My
+        Coupon' |t }}*</a>
+        <p class="coupon-disclaimer opensans-regular">{{ '*Coupons available while quantities last.'|t }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# <section class="social-video">
+	{{block_video|raw}}
+</section> #}

@@ -1,0 +1,143 @@
+{# <nav role="navigation" aria-label="main navigation"> #}
+{# #}
+{# <!-- LOGO --> #}
+{# <a href="https://www.tostitos.ca" class="logo"> #}
+{# <h1> #}
+{# <img src="https://www.fritolay.com/sites/fritolay.com/themes/fritolay/img/logo.png" alt="FRITOLAY.ca logo"> #}
+{# </h1> #}
+{# </a> #}
+
+{# <!-- MENU OPTIONS --> #}
+{# <ul> #}
+{# <li class=""> #}
+{# <a href="{{ brand_basepath }}/products" id="products-submenu">Products</a> #}
+{# </li> #}
+{# <li class=""> #}
+{# <a href="http://www.tostitos.ca/#newsletter_signup" id="http://www.tostitos.ca/#newsletter_signup-submenu">Tasty Rewards</a> #}
+{# </li> #}
+{# </ul> #}
+
+{# <!-- TO SEARCH POPOVER --> #}
+{# <div id="to-open-close-search-popover-container"> #}
+{# <input type="text" id="to-open-close-search-popover-input" title="Search..."> #}
+{# <a href="#" id="to-open-close-search-popover-button"> #}
+{# <span class="srt">Search</span> </a> #}
+{# </div> #}
+{# </nav> #}
+
+<nav id="brands_navigation" class="flaminhot-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/enflamme':'/en-ca/brands/flaminhot' }}" class="flaminhot-logo-mobile top-logo noDesktop">
+{#    <img class="flaminhot-logo" src="/themes/brandstheme/src/images/flaminhot/flaminhot-logo.svg?v=1" alt="Flamin' Hot Canada logo">#}
+
+    <img class="flaminhot-logo" src="/themes/brandstheme/src/images/flaminhot/{{ language == 'fr'?'flaminhot-logo-fr':'flaminhot-logo' }}.svg?v=1" alt="Flamin' Hot Canada logo">
+
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-left">
+
+    <li class="brands-navbar__item-first-border">
+      {% if ishome == 1 %}
+        <a class="" href="#products" id="flaminhot-nav-products">{{'Our Products'|t}}</a>
+      {% else %}
+        <a class="" href="{{ brand_basepath }}/#products" id="flaminhot-nav-products-home">{{'Our Products'|t}}</a>
+      {% endif%}
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/recipes" id="recipes-submenu">{{'Recipes'|t}}</a>
+    </li>    
+    <li class="brands-navbar__item-border">
+
+      {%if ( language == 'en') %}
+        <a class="flaminhot-contact-us" href="https://contact.pepsico.com/fritolayca" id="" target="_blank">
+          {{'Contact us'|t}}
+          <span>{{'Opens in a new tab'|t}}</span>
+        </a>
+      {% endif %}
+
+      {%if ( language == 'fr') %}
+        <a class="flaminhot-contact-us" href="https://contact.pepsico.com/fritolaycafr" id="" target="_blank">
+          {{'Nous joindre'|t}}
+          <span>{{'Ouvre un nouvel onglet'|t}}</span>
+        </a>
+      {% endif %}
+
+    </li>
+
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/enflamme':'/en-ca/brands/flaminhot' }}" class="logo flaminhot-logo-dsk noMobile">
+{#    <img class="flaminhot-logo" src="/themes/brandstheme/src/images//flaminhot/flaminhot-logo.svg?v=1" alt="Flamin' Hot Canada logo">#}
+    <img class="flaminhot-logo" src="/themes/brandstheme/src/images/flaminhot/{{ language == 'fr'?'flaminhot-logo-fr':'flaminhot-logo' }}.svg?v=1" alt="Flamin' Hot Canada logo">
+
+  </a>
+
+  <!-- Social Icons -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+
+    <a class="brands-navbar__social-icons" href="https://www.facebook.com/flaminhotcanada" id="nav-facebook" target="_blank" aria-label="facebook link">
+      <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://www.instagram.com/flaminhotcanada/?hl=en" id="nav-instagram" target="_blank" aria-label="instagram link">
+      <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+{#    <a class="brands-navbar__social-icons" href="#" id="nav-twitter" target="_blank">#}
+{#      <i class="fa fa-twitter fa-navbar"></i>#}
+{#    </a>#}
+
+  </div>
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+
+
+    {%if ( language == 'en') %}
+      <a href="/fr-ca/marques/enflamme" id="" class="choose-lang_fr">
+        FR
+      </a>
+    {% endif %}
+
+    {%if ( language == 'fr') %}
+      <a href="/en-ca/brands/flaminhot" id="" class="choose-lang_fr">
+        EN
+      </a>
+    {% endif %}
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/login-out.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/logo-en.png" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

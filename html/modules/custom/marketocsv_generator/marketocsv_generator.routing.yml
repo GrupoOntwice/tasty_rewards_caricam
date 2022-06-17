@@ -1,0 +1,15 @@
+marketocsv_generator.csv_creation:
+  path: '/joinbatch/csvcreate'
+  defaults:
+    _form: '\Drupal\marketocsv_generator\Form\TablecsvForm'
+    _title: 'CSV Generator'
+  requirements:
+    _permission: 'administer marketocsv_generation'
+
+marketocsv_generator.settings_form:
+  path: '/marketocsv/settings'
+  defaults:
+    _form: '\Drupal\marketocsv_generator\Form\BulkmarketocsvsettingForm'
+    _title: 'Bulk Marketocsv Settings Form'
+  requirements:
+    _permission: 'administer marketocsv_settings_form'

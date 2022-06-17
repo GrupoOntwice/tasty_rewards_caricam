@@ -1,0 +1,23 @@
+gtm_datalayer.add_form:
+  version: 0.0.1
+  css:
+    theme:
+      css/gtm_datalayer.add_form.css: { }
+
+datalayer_pusher:
+  version: 0.0.1
+  js:
+    js/datalayer_pusher.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+datalayer_pusher_key:
+  version: 0.0.1
+  js:
+    js/datalayer_pusher_key.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

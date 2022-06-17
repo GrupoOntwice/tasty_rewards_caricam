@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the bampostalcode module.
+ *
+ * This file contains the functions required to perform install and
+ * uninstall operations.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * 
+ * --Execute this in the DB manually
+ * 
+ * TRUNCATE TABLE `postalcode_prov_city`;
+    INSERT INTO `postalcode_prov_city`
+                (`postalcode`,
+                 `province`,
+                 `province_abbr`,
+                 `city`)
+    SELECT DISTINCT 
+      `POSTAL_CODE`,
+      `PROVINCE`,
+      `PROVINCE_ABBR`,
+      `CITY`
+    FROM `postal_code`
+ * 
+ * @ingroup bampostalcode
+ */
+function bampostalcode_install() {
+  // Let us fill the database with some values for sorting.
+  /**************
+  $rows = array(
+    array('postalcode' => 'A0A1A0', 'province' => 'NEWFOUNDLAND AND LABRADOR', 'province_abbr' => 'NL', 'city' => 'AQUAFORTE'),
+  );
+
+  if (\Drupal::database()->schema()->tableExists('postalcode_prov_city')) {
+    foreach ($rows as $row) {
+      \Drupal::database()->insert('postalcode_prov_city')->fields($row)->execute();
+    }
+  }
+  
+  **********************/
+  
+  /**** NOTE ***/
+  // Since this data have around 1 millon of record, have to be populated manually,
+  // 
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It is good to clean up after ourselves
+ *
+ * @ingroup bampostalcode
+ */
+function bampostalcode_uninstall() {
+  \Drupal::database()->schema()->dropTable('postalcode_prov_city');
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup bampostalcode
+ */
+function bampostalcode_schema() {
+  $schema['postalcode_prov_city'] = array(
+    'description' => 'Store data for canadian Postal Code, Province and City',
+    'fields' => array(
+      'postalcode' => array(
+        'description' => 'Postal Code',
+        'type' => 'varchar',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'province' => array(
+        'description' => 'Province',
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+      ),
+      'province_abbr' => array(
+        'description' => 'Province Abrebiation',
+        'type' => 'varchar',
+        'length' => 2,
+        'not null' => TRUE,
+      ),
+      'city' => array(
+        'description' => 'City',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ),
+    ),
+//    'primary key' => array('postalcode','city'),
+    'indexes' => array(
+      'postalcode_idx' => array('postalcode'),
+    ),  
+  );
+
+  return $schema;
+}

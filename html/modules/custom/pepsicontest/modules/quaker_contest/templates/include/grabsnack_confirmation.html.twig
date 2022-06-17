@@ -1,0 +1,416 @@
+{{ attach_library( 'quaker_contest/landing' ) }}
+{{ attach_library( 'quaker_contest/grabsnack' ) }}
+
+
+<style>
+  .block__intro {
+    background-image: url("/themes/tastytheme/src/images/grab-snack/Background-NEW-V2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .mw-100 {
+    max-width: 100%;
+  }
+
+  .grabsnack-confirm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+
+  .prizes-available-text {
+    display: block !important;
+  }
+
+  .blue-font {
+    color:#0C6EA8;
+  }
+
+  .grabsnack-confirm p, .grabsnack-confirm h2{
+    width: 80%;
+  }
+
+  .color-red {
+    color: #F72F04;
+  }
+
+  .description h2 {
+    height: fit-content !important;
+  }
+
+
+
+  .decrease-maxwidth {
+    max-width: 75%;
+  }
+
+  .button-style {
+    background-color: #F40522;
+    border: 1px solid #F40522;
+    color: #fff;
+    font-family: 'OpenSans-semibold';
+    padding: 8px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 20px;
+  }
+
+  .montserrat-black {
+    font-family: 'Montserrat-black';
+  }
+
+  .opensans-semibold {
+    font-family: 'OpenSans-semibold';
+  }
+
+  .summer-swag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .m-auto {
+    margin:auto;
+  }
+
+  .blue-font {
+    color:#0C6EA8;
+  }
+  .color-lightblue {
+    color:#17B3F1
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .p-3 {
+    padding: 3rem;
+  }
+
+  .pt-3 {
+    padding-top: 3rem;
+  }
+
+  .pr-3 {
+    padding-right: 3rem;
+  }
+
+  .pl-3 {
+
+    padding-left: 3rem;
+  }
+
+
+  .loose-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .loose-text h2 {
+    width: 80%;
+  }
+
+  .loose-text p {
+    width: 80%;
+  }
+
+
+
+  .mb-3 {
+    margin-bottom: 3rem;
+  }
+
+  .prizes-available-text {
+    text-align: left;
+  }
+
+  prizes-available-text p {
+    text-align: left;
+  }
+
+  .prizes-available-btn {
+    text-align: left;
+  }
+
+  .description h2 {
+    height: fit-content !important;
+    margin-bottom: 2rem;
+  }
+
+  .row {
+    margin: auto;
+  }
+
+
+
+  .opensans-regular {
+    font-family: 'Open Sans-regular';
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-underline {
+    text-decoration: underline;
+  }
+
+  .find-code-contain {
+    width: 100% !important;
+  }
+
+  @media (max-width: 967px) {
+   .confirmation-text {
+     padding: 0 !important;
+     margin-top: 2rem;
+   }
+
+    h1 {
+      font-size:33px;
+    }
+
+    .brands {
+      margin-left: 12px !important;
+    }
+
+    .brands {
+      margin-left: -2rem !important;
+    }
+
+    .find-code-text {
+      text-align: center;
+    }
+
+    .winner-image img {
+      margin-top: 9rem !important;
+    }
+
+    .contest-description p {
+      width:100%;
+    }
+
+    .won-prize {
+      margin-top: 5rem;
+    }
+
+    .grabsnack-confirm h2 {
+      font-size: 25px !important;
+    }
+
+    .prizes-available-text {
+      text-align: center !important;
+    }
+
+    .prizes-available-btn {
+      text-align: center !important;
+    }
+
+    .description {
+      padding-top: 20px;
+    }
+
+    .thankyou-swag {
+      padding:0 !important;
+    }
+
+  .loose-findcode {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .loose-findcode br {
+      display: none;
+  }
+
+  .loose-text h2 {
+    font-size: 23px !important;
+  }
+
+  .loose-text {
+    text-align: center;
+  }
+
+  .thankyou-question {
+    width: 225px !important;
+  }
+
+  .lost-brands {
+    margin-left: 8px !important;
+  }
+
+  .prizes-available-text {
+    margin-top: 30px;
+  }
+
+  .prizes-not-as-shown {
+    width: 100%;
+    text-align: center;
+  }
+
+
+
+
+  }
+</style>
+
+
+<section class="block__intro negative_margin menu_buffer">
+    <div class="description contest_page_content_block other animated-text-block">
+      <div class = "container-fluid">
+
+
+        {# WINNERS Confirmation page #}
+        {# ----------------------------- #}
+        {% if data.is_winner == 1 %}
+            {% set page_contestwinner = 1 %}
+            {% include '@quaker_contest/tracking/pixel-tracking-grabsnack.html.twig' %}
+        <div class = "row p-3 confirmation-text">
+          <div class = "col-lg-6 grabsnack-confirm">
+            {{ attach_library( 'quaker_contest/landing' ) }}
+            <h2 class = "montserrat-black text-uppercase color-lightblue">{{ "Congratulations!" |t }}</h2>
+            <div class="contest-description">
+                <p class = "opensans-semibold" style = "padding-bottom: 20px">
+                    {{ "Congratulations!  You’ve been selected as a potential instant prize winner of  "|t|raw }}
+                    <strong class = "color-lightblue montserrat-black">{{data.prize}}</strong>!
+                </p>
+                <span class="hidden js-prizename">{{data.prize}}</span>
+                <input type="hidden" name="winner_firstname" id="winner_firstname" value="{{data.firstname}}">
+                <input type="hidden" name="winner_email" id="winner_email" value="{{data.email}}">
+                <input type="hidden" name="claim_url" id="claim_url" value="{{data.claim_url}}">
+                <p class = "opensans-semibold">
+                    {{ "We’ll be sending you an email with instructions on how to claim your prize.  You have 3 days to claim it, so don’t wait too long or you’ll  forfeit your chance to win! Be sure to check your spam / junk folder  if you do not see it." | t }}
+                </p>
+                {% if data.contest_type == 'cheetos' %}
+                    <a class="btn_red" href="{{ data.claim_url}}"> {{'Claim Prize'|t}} </a>
+                    <button class="btn_red"> {{'Pkay Again'|t}} </button>
+                {% endif %}
+            </div>
+          </div>
+
+
+            <div class  = "col-lg-6 won-prize">
+              {# <img class = "mw-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-tiles-Prizes.png" alt = "prizes"/> #}
+              <img class = "mw-100" src = "{{data.prize_img}}" alt = "prizes"/>
+              <div class = "text-right p-1 prizes-not-as-shown">
+                <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      <div class = "container-fluid">
+        <div class = "row p-3">
+
+          <div class = "col-lg-6 summer-swag">
+            <div class = "prizes-available-text" >
+              <h2 class = "text-uppercase blue-font montserrat-black ">{{ 'Hundreds of prizes  available each week!'|t }}</h2>
+              <p class = "mb-0 opensans-semibold">{{ 'Including branded hats, fanny packs, beach balls, wireless speakers, and other limited-edition gear to take your summer to the next level!'|t }}
+
+              </p>
+
+              <div class=" prizes-available-btn" style="margin-top: 10px">
+
+                <a class = "opensans-semibold color-link" href = "/en-ca/contest/grabsnackswinswag/prizes">{{ 'Learn more about our Prizes.' |t }}</a> <br>
+                <button class = "button-style text-uppercase  js-entercontest opensans-semibold" data-link="{{data.signup_link}}">{{ 'Enter Now'|t }}</button>
+              </div>
+
+
+
+
+            </div>
+
+
+
+          </div>
+
+          <div class = "col-lg-6">
+            <img class ="mw-100 w-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-tiles-Prizes.png" alt = "grabsnack-prizes"/>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+        {# LOSER Confirmation page #}
+        {# ----------------------------- #}
+        {% else %}
+          {% set page_contestlost = 1 %}
+          {% include '@quaker_contest/tracking/pixel-tracking-grabsnack.html.twig' %}
+          <div class = "row">
+            <div class="col-lg-6 loose-text">
+            <h2 class = "montserrat-black color-lightblue text-uppercase mb-3">{{ "Sorry, you are not an instant winner this time." |t }}</h2>
+            <p class = "opensans-semibold not-win-text">  {{"But there’s still plenty of swag up for grabs, so come back and try again soon!<br> <br> Before you go, don’t forget to sign-up to become a Tasty Rewards<sup>TM</sup> member.  It’s FREE and you will have access to exclusive"|t}}<a href='/{{data.lang_prefix}}/coupons' > {{'coupons'|t}} </a> {{"and offers!"|t}}
+            </p>
+            </div>
+            <div class="col-lg-6">
+              <img class = "mw-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-tiles-Prizes.png" alt = "prizes"/>
+              <div class = "text-right p-1 prizes-not-as-shown">
+                <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+              </div>
+            </div>
+          </div>
+
+  <div class = "row p-3 find-code-contain">
+
+
+    <div class = "col-lg-6 text-center lays-code-pack">
+
+      {% if data.langcode == 'en' %}
+        <img class = "decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/find-code-bubble-en.png" alt = "where-to-find-code"/>
+      {% elseif data.langcode == 'fr' %}
+        <img class = "decrease-maxwidth w-75" src = "/themes/tastytheme/src/images/grab-snack/find-code-bubble-fr.png" alt = "where-to-find-code"/>
+      {% endif %}
+
+      <div class = "brands">
+        <img class = " w-100" src = "/themes/tastytheme/src/images/grab-snack/Grabsnack-find-code.png" alt = "where-to-find-code"/>
+      </div>
+
+    </div>
+
+    <div class = "col-lg-6 summer-swag text-center">
+      <div class = "text-left m-auto">
+        <div class = "find-code-text">
+          <h1 class = "text-uppercase montserrat-black blue-font montserrat-black mb-1 ">{{ 'Where to  <br> find my code'|t }}</h1>
+          <p class = "mb-0 opensans-semibold mb-1">{{ 'Find your 9-digit code located below the “Guaranteed Fresh”<br> statement on the front of specially marked bags!'|t }}
+          </p>
+          <button  class = "button-style text-uppercase opensans-semibold js-entercontest" data-link="{{data.faq_link}}">
+            {{'Have any questions?'|t  }}
+          </button>
+        </div>
+      </div>
+        </div>
+      </div>
+        {% endif %}
+
+
+
+
+
+
+
+</section>
+
+<div class = "text-center">
+
+<p class = "pt-3 pl-3 pr-3 opensans-regular"> {{ '† No purchase necessary. Open to Canadian residents only, 16+. Mathematical skill-testing question required. Contest Period: June 14, 2021 at 12:00pm (noon) ET to August 8, 2021 at 11:59:59pm ET. Instant Prizes: 771 available per week. See Official Rules for full prize details (ARV $2.49 - $653 each). Odds of winning an instant prize depend on when entry played. Prizes diminish as awarded. Maximum 7 codes per person per week. For Official Rules and prize details,'|t }} <a href = "{{data.rules_link}}" class = "color-black underline " >{{'click here'|t}}</a> <br>
+</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+

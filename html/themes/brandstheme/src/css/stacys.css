@@ -1,0 +1,2803 @@
+/*
+  Brand: Stacys Stylesheet
+*/
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * houschka-pro:
+ *   - http://typekit.com/eulas/00000000000000007735a98e
+ *   - http://typekit.com/eulas/00000000000000007735a998
+ *   - http://typekit.com/eulas/00000000000000007735a9aa
+ *
+ * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2021-04-20 18:44:08 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=uip5vsa&ht=tk&f=36239.36241.36243&a=57061786&app=typekit&e=css");
+
+@font-face {
+  font-family: "houschka-pro";
+  src: url("https://use.typekit.net/af/6c9351/00000000000000007735a98e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"), url("https://use.typekit.net/af/6c9351/00000000000000007735a98e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"), url("https://use.typekit.net/af/6c9351/00000000000000007735a98e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "houschka-pro";
+  src: url("https://use.typekit.net/af/f73031/00000000000000007735a998/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"), url("https://use.typekit.net/af/f73031/00000000000000007735a998/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"), url("https://use.typekit.net/af/f73031/00000000000000007735a998/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "houschka-pro";
+  src: url("https://use.typekit.net/af/36e252/00000000000000007735a9aa/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"), url("https://use.typekit.net/af/36e252/00000000000000007735a9aa/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"), url("https://use.typekit.net/af/36e252/00000000000000007735a9aa/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.tk-houschka-pro {
+  font-family: "houschka-pro", sans-serif !important;
+}
+
+
+/*
+  Stacys Mocha Mattari
+*/
+@font-face {
+  font-family: 'MochaMattari';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/MochaMattari/MochaMattari.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/MochaMattari/MochaMattari.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/MochaMattari/MochaMattari.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/MochaMattari/MochaMattari.woff') format('woff'), /* Modern Browsers */ url('../fonts/MochaMattari/MochaMattari.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/MochaMattari/MochaMattari.svg#MochaMattari') format('svg'); /* Legacy iOS */
+}
+
+.mochaMattari-font {
+  font-family: 'MochaMattari';
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*img {*/
+/*  width: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+.stacys h1, h2, h3, h4, h5, h6 {
+  font-family: 'MochaMattari', serif;
+  color: #2A2A2B;
+}
+
+.stacys p, .stacys li, .stacys div  {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/*Medium*/
+/*font-weight: 500;*/
+
+/*Bold*/
+/*font-weight: 700;*/
+
+.stacys .text-yellow, .stacys .yellow, .stacys .yellow h1, .stacys .yellow span {
+  color: #FDD236 !important;
+}
+
+.stacys .text-dark {
+  color: #212121 !important;
+}
+
+.stacys .text-white {
+  color: #FFFFFF !important;
+}
+
+/************************
+    stacys Navbar
+************************/
+
+.stacys .header__logo-container {
+  z-index: 999999;
+}
+
+.stacys #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.stacys #brands_navigation {
+  margin-bottom: -2px;
+}
+
+.stacys .brands-navbar__ul a {
+  color: #FFFFFF !important;
+}
+
+.stacys .fa-navbar, .stacys .fa-navbar:hover, .stacys .fa-navbar:active, .stacys .fa-navbar:focus {
+  background: #FDD236 !important;
+  color: #191919 !important;
+}
+
+.stacys .fa-facebook-recipes {
+  padding: 8px 11px !important;
+}
+
+.stacys .fa-facebook-nav {
+  padding: 7px 11px !important;
+}
+
+.stacys .fa-social-share, .stacys .fa-social-share:hover, .stacys .fa-social-share:active, .stacys .fa-social-share:focus {
+  background: #191919 !important;
+  color: #FFFFFF !important;
+  font-size: 16px !important;
+  padding: 7px 8px;
+  border-radius: 20px;
+}
+
+
+.stacys .brands-navbar__ul a, .stacys .choose-lang_fr, .stacys .brands-navbar_accout-options, .stacys .header .menu a {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+/************************
+    stacys Top Banner
+************************/
+
+.w-banner-pattern, .w-banner-pattern-mbl {
+  height: auto !important;
+  object-position: 0 !important;
+}
+
+.yellow_black .h1, .yellow_white .h1, .yellow_black h1, .yellow_white h1, .yellow_black span, .yellow_white span, .yellow_black .recipe_slide-icon-text, .yellow_white .recipe_slide-icon-text, .yellow_black .lifestyle_slide-icon-text, .yellow_white .lifestyle_slide-icon-text, .banner-mobile.yellow_white .h1 .banner-mobile.yellow_white .h1, .banner-mobile.yellow_black h1, .banner-mobile.yellow_white h1, .banner-mobile.yellow_black span, .banner-mobile.yellow_white span, .banner-mobile.yellow_black .recipe_slide-icon-text, .banner-mobile.yellow_white .recipe_slide-icon-text, .banner-mobile.yellow_black .lifestyle_slide-icon-text, .banner-mobile.yellow_white .lifestyle_slide-icon-text {
+  color: #FDD236 !important;
+}
+
+.stacys section#banner .banner-desktop span.h1, .stacys section#banner .banner-mobile span.h1 {
+  font-family: 'MochaMattari', serif;
+}
+
+.stacys section#banner .banner_slide--text p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.stacys .slick-next:before {
+  background: url("../images/arrows/stacys-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.stacys .slick-prev:before {
+  background: url("../images/arrows/stacys-left-chevron.svg") !important;
+}
+
+.stacys #brands .slick-next:before {
+  background: url("../images/arrows/stacys-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.stacys #brands .slick-prev:before {
+  background: url("../images/arrows/stacys-left-chevron.svg") !important;
+}
+
+.stacys section#banner .slick-dots li.slick-active button {
+  background-color: #FDD236 !important;
+}
+
+.stacys section#banner .slick-dots li button {
+  background-color: #fff4f4 !important;
+}
+
+.stacys-banner-overlay {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.stacys-banner-overlay img {
+  /*margin-bottom: -4px;*/
+  overflow-y: hidden;
+}
+
+
+/***********************
+  Button Stacys
+***********************/
+
+.btn_stacys, .stacys .btn_carousel, .stacys .btn-recall {
+  display: inline-flex;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #FFC90A;
+  color: #2A2A2B;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #FFC90A;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stacys .btn_navigation {
+  display: inline-flex;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #FFC90A;
+  color: #2A2A2B;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #FFC90A;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: 200px !important;
+  height: 48px !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn_stacys:hover, .btn_stacys:focus, .btn_stacys:active, .stacys .btn_carousel:hover, .stacys .btn_carousel:focus, .stacys .btn_carousel:active, .stacys .btn_navigation:hover, .stacys .btn_navigation:focus, .stacys .btn_navigation:active, .stacys .btn-recall:focus, .stacys .btn-recall:hover, .stacys .btn-recall:active {
+  color: #2A2A2B;
+  background: #FFC90A !important;
+  border: 2px solid #FFC90A;
+  outline: none;
+  text-decoration: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn_stacys-dark, .btn_stacys-dark:hover, .btn_stacys-dark:active, .btn_stacys-dark:focus {
+  display: inline-flex;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #2A2A2B;
+  color: #FFFFFF;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #2A2A2B;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-filter-button {
+  display: inline-flex;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #FFC90A;
+  color: #2A2A2B;
+  font-size: 22px;
+  padding: 16px 32px !important;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #FFC90A;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  height: auto !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-filter-button:hover, .custom-filter-button:active, .custom-filter-button:focus {
+  color: #FFFFFF;
+  background: #2A2A2B !important;
+  border: 2px solid #2A2A2B;
+  outline: none;
+  text-decoration: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/****************************
+    Page Top Banner
+****************************/
+
+.stacys-top-banner {
+  /*margin-bottom: -3px;*/
+  position: relative;
+}
+
+.stacys-top-banner h1 {
+  font-family: 'MochaMattari', serif;
+  font-size: 62px;
+  line-height: 1;
+}
+
+/**********************************
+    Stacys Recipes & Products
+**********************************/
+
+.stacys-featured-recipes-block {
+  position: relative;
+  background: url("../images/stacys/stacys-marvel-stone-bg.png") center center no-repeat, transparent;
+  margin-top: -20px;
+  background-size: cover !important;
+}
+
+.stacys-related-recipes-block, .stacys-featured-recipes-block-products {
+  position: relative;
+  background: url("../images/stacys/stacys-yellow-background.png") center center no-repeat, transparent;
+  margin-top: -20px;
+  background-size: cover !important;
+}
+
+.stacys-featured-recipes-block p, .stacys-related-recipes-block p, .stacys-featured-recipes-block-products p {
+  font-family: 'Open Sans', sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
+  color: #2A2A2B;
+  padding: 16px 16px 32px;
+}
+
+.stacys-featured-recipes-container {
+  text-align: center;
+  color: #2A2A2B;
+}
+
+.stacys-recipe-header h1, .stacys-recipe-detail-header h1 {
+  font-size: 72px;
+  line-height: 1;
+  font-family: 'MochaMattari', serif;
+  color: #2A2A2B;
+  /*text-transform: uppercase;*/
+  padding-bottom: 0;
+}
+
+.stacys-recipe-header p {
+  color: #2A2A2B;
+  font-family: 'Open Sans', sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.stacys-recipe-col {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.stacys-recipe-thumbnail {
+  width: 100%;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  height: 250px;
+}
+
+.stacys-recipe-copy h3 {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  margin: 16px 0 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 55px;
+}
+
+.stacys .img-align-center {
+  background-position: center center !important;
+}
+
+.stacys .img-align-right {
+  background-position: right center !important;
+}
+
+.stacys .img-align-left {
+  background-position: left center !important;
+}
+
+.stacys .img-align-top {
+  background-position: top center !important;
+}
+
+.stacys .img-align-bottom {
+  background-position: bottom center !important;
+}
+
+/****************************
+   Stacys Products Page
+****************************/
+
+.stacys-fa-cirle-down, .stacys-fa-cirle-up {
+  background-size: contain !important;
+}
+
+.stacys-fa-cirle-down {
+  background: url("../images/stacys/stacys-fa-circle-down.svg") center center no-repeat, transparent !important;
+  width: 30px;
+  height: 30px;
+}
+
+
+.stacys-fa-cirle-up {
+  background: url("../images/stacys/stacys-fa-circle-up.svg") center center no-repeat, transparent;
+  width: 30px;
+  height: 30px;
+}
+
+
+.stacys-products-categories, .stacys-products-block {
+  position: relative;
+}
+
+.stacys-prod-col {
+  padding: 0 16px;
+}
+
+.stacys-product-description h4, .stacys-category-description h4 {
+  font-size: 18px;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #01102c;
+  line-height: 1.2;
+  width: 100%;
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+
+.products-bg-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: -1;
+}
+
+.products-bg-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: -1;
+}
+
+.products-bg-bottom-left {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  z-index: -1;
+}
+
+/******************************
+    Featured Recipe Block
+******************************/
+
+.stacys-occasions-main-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stacys-heading-pattern-left {
+  margin-right: 4px;
+}
+
+.stacys-heading-pattern-right{
+  margin-left: 4px;
+}
+
+
+.stacys-recipes-main-heading h1, .stacys-occasions-main-heading h1 {
+  font-size: 62px;
+  line-height: 1.2;
+  color: #212121;
+  text-align: center;
+}
+
+.stacys-recipe-block-row {
+  background-color: #FFC90A;
+}
+
+/*.stacys-featured-recipe-ribbon h3 {*/
+/*  color: #FFFFFF;*/
+/*  font-family: 'Apercu-Bold', sans-serif;*/
+/*  font-style: normal;*/
+/*  font-weight: 700;*/
+/*}*/
+
+.stacys-featured-recipe-description {
+  padding: 48px 32px;
+}
+
+.stacys-featured-recipe-description h2 {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+  color: #212121;
+  font-size: 22px !important;
+}
+
+.stacys-featured-recipe-description p {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 8px;
+}
+
+.stacys-featured-recipe-img, .stacys-recipes-img {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+.stacys-featured-recipe-img {
+  width: 100%;
+  height: 100%;
+}
+
+.featured-recipe-btn {
+  padding: 32px 0 32px;
+}
+
+
+/**********************************
+       Stacys Recipes Filter
+**********************************/
+
+.stacys-recipes-main-block {
+  margin-bottom: 20px;
+}
+
+.stacys-filter-clear-col .row {
+  height: 50px;
+}
+
+.stacys-recipes-filter-heading {
+  color: #082231;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stacys-recipes-filter-heading p {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.stacys-recipes-filter-heading .fa-times {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.stacys-recipes-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.btn-clear-filter, .btn-clear-filter:hover, .btn-clear-filter:active, .btn-clear-filter:focus {
+  font-size: 18px;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #ffffff;
+  background-color: #2A2A2B;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+#recipesFilterDropdowns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**********************************
+       Stacys Recipes block
+**********************************/
+
+.stacys-recipes-col {
+  padding-bottom: 32px;
+}
+
+.stacys-featured-recipe-img-block, .stacys-recipes-img-block {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: inherit;
+}
+
+.stacys-featured-recipe-img-block a, .stacys-featured-recipe-img, .stacys-recipes-img-block a, .stacys-recipes-img {
+  width: 100%;
+  height: 100%;
+}
+
+.stacys-recipes-img {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+.stacys-recipes-description {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.stacys-featured-recipes-description h4, .stacys-featured-product-description h4, .stacys-videos-description h4, .stacys-coupon-message h4, .stacys-recipes-description h4 {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.stacys-videos-description h4 {
+  /*overflow: hidden;*/
+  /*display: -webkit-box;*/
+  /*-webkit-line-clamp: 2;*/
+  /*-webkit-box-orient: vertical;*/
+  /*height: 55px;*/
+  margin-top: 16px;
+}
+
+.stacys-featured-recipes-description h4, .stacys-featured-product-description h4, .stacys-videos-description h4, .stacys-recipes-description h4 {
+  font-size: 22px;
+}
+
+.stacys-featured-recipes-description p, .stacys-videos-description p .stacys-recipes-description p {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding-top: 16px;
+}
+
+.stacys-featured-recipes-description, .stacys-featured-recipes-description h4, .stacys-featured-recipes-description p, .stacys-videos-description h4, .stacys-videos-description p, .stacys-coupon-message h4 {
+  color: #FFFFFF !important;
+}
+
+.stacys-recipes-description p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 55px;
+  padding-top: 8px;
+}
+
+.stacys-recipes-btn {
+  padding-top: 16px;
+}
+
+/**********************************
+   Stacys Recipes Details Page
+**********************************/
+
+
+.stacys-navigation-recipesdetails-mbl {
+  padding-top: 8px;
+}
+
+.stacys .next-recipe {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8px 64px 8px 0;
+}
+
+.stacys .prev-recipe {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 0 8px 64px;
+}
+
+.stacys .next-recipe-mbl, .stacys .prev-recipe-mbl{
+  display: none;
+}
+
+.stacys .prev-recipe img {
+  width: 125px;
+  padding-right: 16px;
+}
+
+.stacys .next-recipe img {
+  width: 125px;
+  padding-left: 16px;
+}
+
+.stacys .prev-recipe a, .stacys .next-recipe a, .stacys .prev-recipe a:hover, .stacys .next-recipe a:hover, .stacys .prev-recipe a:active, .stacys .next-recipe a:active, .stacys .prev-recipe a:focus, .stacys .next-recipe a:focus {
+  color: #2A2A2B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.stacys .next-recipe-mbl span, .stacys .prev-recipe-mbl span{
+  color: #2A2A2B;
+}
+
+.stacys-prev-recipe-img, .stacys-next-recipe-img {
+  width: 125px;
+  height: 50px;
+  background-size: cover !important;
+}
+
+.stacys-navigation-recipe-arrow-prev {
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 32px;
+  margin-top: -6px;
+}
+
+.stacys-navigation-recipe-arrow-next {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 32px;
+  margin-top: -4px;
+}
+
+.stacys-navigation-recipesdetails-mbl {
+  padding-top: 8px;
+}
+
+.stacys-navigation-recipe-arrow-mbl-prev, .stacys-navigation-recipe-arrow-mbl-next {
+  color: #2A2A2B;
+  font-size: 48px;
+  margin-top: 0;
+}
+
+.stacys-history-copy-arrow-mbl-prev, .stacys-history-copy-arrow-mbl-next {
+  color: #2A2A2B;
+  font-size: 32px;
+}
+
+.stacys-history-copy-arrow-mbl-next {
+  padding-left: 8px;
+  margin-top: -2px;
+}
+
+.stacys-history-copy-arrow-mbl-prev {
+  padding-right: 8px;
+}
+
+.stacys-navigation-recipe-mbl-copy {
+  padding-top: 1px;
+  color: #2A2A2B;
+}
+
+.stacys-navigation-recipe-arrow-mbl-prev {
+  padding-right: 8px;
+}
+
+.stacys-navigation-recipe-arrow-mbl-next {
+  padding-left: 8px;
+}
+
+.prev-recipe-mbl a, .next-recipe-mbl a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-recipe-mbl a, .next-recipe-mbl a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-recipe-mbl {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.prev-recipe-mbl .fa-angle-left, .next-recipe-mbl .fa-angle-right {
+  font-size: 32px;
+  color: #2A2A2B;
+}
+
+.prev-recipe-mbl .fa-angle-left {
+  padding-right: 8px;
+}
+
+.next-recipe-mbl .fa-angle-right {
+  padding-left: 8px;
+}
+
+.next-recipe-mbl {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+/**********************************
+      Stacys Products Details
+**********************************/
+
+.stacys-product-intro-copy p sup {
+  top: -2px;
+  font-size: 100% !important;
+}
+
+.stacys-product-subtitle-copy div, .stacys-product-subtitle-copy, .stacys-product-subtitle-copy span, .stacys-product-subtitle-copy li {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.stacys-products-details-main-block {
+
+}
+
+.stacys-product-img-col {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.stacys-product-img-pattern-left, .stacys-product-img-pattern-right {
+  position: absolute;
+  z-index: -1;
+}
+
+.stacys-product-details-heading, .stacys-wine-pairing h3, .stacys-productdetails-nutrition-info h4, .stacys-productdetails-ingredients-info h4 {
+  color: #2A2A2B;
+  line-height: 1.2;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+}
+
+.stacys-productdetails-nutrition-info h4, .stacys-productdetails-ingredients-info h4 {
+  padding: 24px 0 16px;
+}
+
+.stacys-wine-pairing {
+  padding-top: 16px;
+}
+
+.stacys .fa-nutrition, .stacys .fa-ingredients {
+  display: flex;
+  align-items: baseline;
+  padding: 16px 0 8px;
+  justify-content: space-between;
+}
+
+.stacys .nutrition-copy, .stacys .ingredients-copy {
+  display: none;
+}
+
+.stacys .fa-chevron-circle-down, .stacys .fa-chevron-circle-up {
+  cursor: pointer;
+  font-size: 32px;
+  color: #2A2A2B;
+}
+
+.stacys div.nutrition-none, .stacys div.ingredient-none {
+  display: none;
+}
+
+/****************************
+   Stacys Product Table
+****************************/
+
+.stacys-productdetails-nutrition-row {
+  /*border-bottom: 1px solid rgba(0,0,0,0.3);*/
+}
+
+
+.stacys-productdetails-nutrition-header-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /*padding-bottom: 16px;*/
+}
+
+.stacys-productdetails-nutrition-cell {
+  color: #D9DDE4;
+}
+
+.stacys-productdetails-nutrition-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding-right: 25px;
+  /*border-bottom: 1px solid rgba(255,255,255,0.3);*/
+}
+
+.stacys-productdetails-nutrition-row:nth-child(2n + 4) {
+  background-color: #FFCF31;
+}
+
+.stacys-productdetails-nutrition-cell {
+  padding: 6px 2px;
+  font-size: 0.875em;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #2A2A2B;
+}
+
+.stacys-productdetails-nutrition-cell:first-child {
+  width: 250px;
+}
+
+.stacys-row-indented .stacys-productdetails-nutrition-cell:first-of-type {
+  padding-left: 20px;
+}
+
+
+/**********************************
+      Stacys Recipe Details
+**********************************/
+
+.stacys-rate-recipe-row, .stacys-cook-time-row {
+  padding-top: 16px;
+}
+
+.stacys-prep-time-info p, .stacys-cook-time-info p, .stacys-rating-info p {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.stacy-recipe-hr {
+  width: 75%;
+  border-top: 1px solid #FFC90A;
+  margin: 16px 0 8px 0;
+}
+
+.stacys-recipe-ingredients-col h3, .stacys-recipe-how-to-make-col h3 {
+  color: #2A2A2B;
+  font-size: 32px;
+  line-height: 1.2;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.stacys-recipe-ingredients-col ul, .stacys-recipe-how-to-make-col ul, .stacys-recipe-ingredients-col ol, .stacys-recipe-how-to-make-col ol, .stacys-recipe-ingredients-col li, .stacys-recipe-how-to-make-col li, .stacys-recipe-ingredients-col p, .stacys-recipe-how-to-make-col span {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding-top: 8px;
+}
+
+.stacys-recipe-ingredients-col ul:first-child, .stacys-recipe-how-to-make-col ul:first-child, .stacys-recipe-ingredients-col ol:first-child, .stacys-recipe-how-to-make-col ol:first-child, .stacys-recipe-ingredients-col li:first-child, .stacys-recipe-how-to-make-col li:first-child, .stacys-recipe-ingredients-col p:first-child, .stacys-recipe-how-to-make-col span:first-child {
+  padding-top: 0;
+}
+
+.stacys-recipe-ingredients-col ul, .stacys-recipe-how-to-make-col ul {
+  /*list-style: inherit !important;*/
+}
+
+
+.stacys-recipe-ingredients-col ul li::before, .stacys-recipe-how-to-make-col ul li::before {
+  content: "\2022";
+  color: #FFC90A;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.stacys-recipe-share-block-pb {
+  padding-bottom: 32px !important;
+}
+
+.stacys-recipe-share-block p {
+  color: #2A2A2B;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.stacys-social-link {
+  margin-left: 16px;
+}
+
+.stacys-social-link:first-of-type {
+  margin-left: 0;
+}
+
+/**********************************
+       Stacys Recipe Stars
+**********************************/
+
+.stars-flex-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.stacys-stars-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 25px;
+  margin-top: 8px;
+}
+
+.stacys-rating-info .stacys-stars-corner {
+  background: transparent !important;
+}
+
+.stacys-stars span {
+  font-size: 26px;
+  color: #707070;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+.stacys-stars span:last-of-type {
+  padding-right: 0;
+}
+
+.stacys-stars span:before {
+  content: "★";
+}
+
+.stacys-stars.reverse-order {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.stacys-stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 4px 0 4px;
+}
+
+.stacys-rating-info .stacys-stars {
+  justify-content: flex-start !important;
+}
+
+.stacys-stars input:checked ~ label {
+  color: #FFC90A;
+}
+
+.stacys-stars label {
+  width: 1em;
+  font-size: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #707070;
+}
+
+.stacys-stars span.checked {
+  color: #FFC90A;
+}
+
+.stacys-stars label::before {
+  content: "★ ";
+}
+
+.stacys-stars label {
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #707070;
+}
+
+.stacys-stars input {
+  display: none;
+}
+
+/***********************
+   Stacys Occassions
+***********************/
+
+.stacys-occassions-img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.stacys-occasions-block .stacys-occassions-row:first-of-type {
+  margin-top: 0;
+}
+
+.stacys-occasions-block .stacys-occassions-row:nth-of-type(n+2) {
+  margin-top: 32px;
+}
+
+.occassions-copy-col h3 {
+  font-size: 22px;
+  color: #212121;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  padding-bottom: 8px;
+}
+
+.occassions-copy-col p {
+  color: #212121;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding-bottom: 8px;
+}
+
+/***********************
+    Stacys About Us
+***********************/
+
+.stacys-about-us-block {
+  background: #FFFFFF;
+}
+
+.stacys-about-us-copy p, .stacys-about-us-copy span, .stacys-about-us-copy ol, .stacys-about-us-copy ul, .stacys-about-us-copy li {
+  padding-bottom: 8px;
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.stacys-about-us-copy p:last-of-type, .stacys-about-us-copy span:last-of-type, .stacys-about-us-copy ol:last-of-type, .stacys-about-us-copy ul:last-of-type, .stacys-about-us-copy li:last-of-type {
+  padding-bottom: 0;
+}
+
+
+/************************
+    Stacys Videos
+************************/
+
+.stacys-video-box {
+  width: 100%;
+  text-align: center;
+}
+
+
+.stacys-video-preimg, .stacys-video-preimg-1, .stacys-video-preimg-2 {
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.stacys-video-preimg img, .stacys-video-preimg-1 img, .stacys-video-preimg-2 img {
+  width: 100% !important;
+}
+
+.stacys-video-preimg:before, .stacys-video-preimg-1:before, .stacys-video-preimg-2:before {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  left: 0;
+  top: 0;
+  z-index: 1;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stacys-video-preimg:after, .stacys-video-preimg-1:after, .stacys-video-preimg-2:after {
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-image: url("/themes/brandstheme/src/images/stacys/video-play-icon.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  content: '';
+  pointer-events: none;
+}
+
+.stacys-video-preimg:hover:before {
+  opacity: 1;
+}
+
+.stacys-video-preimg:hover:after {
+  background-image: url("/themes/brandstheme/src/images/stacys/video-play-icon.png");
+}
+
+.stacys-video-iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+}
+
+.stacys-video-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/***********************
+     Stacys Coupon
+***********************/
+
+.stacys .coupon-row {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stacys .main-coupon-heading {
+  font-family: 'MochaMattari', serif;
+  color: #2A2A2B;
+  line-height: 1.2;
+  text-transform: uppercase !important;
+}
+
+.stacys .main-coupon-heading h1{
+  padding: 0;
+}
+
+.stacys .main-coupon-disclaimer {
+  font-family: houschka-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding: 32px 16px 0 16px;
+  color: #2A2A2B;
+}
+
+.stacys-coupon-block {
+  background: url(/themes/brandstheme/src/images/stacys/stacys-coupon-bg.png) top right no-repeat, transparent;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 64px 0 112px 0;
+  overflow-x: hidden;
+}
+
+.stacys .vr-coupon-left, .stacys .main-coupon-left {
+  border-radius: 0 !important;
+}
+
+.stacys .vr-coupon-right, .stacys .main-coupon-right {
+  border-radius: 0 !important;
+  /*background: #FFFFFF !important;*/
+}
+
+.stacys .main-coupon-centered-img img {
+  padding: 0 16px;
+  max-width: 250px;
+}
+
+
+/************************
+   Bootstrap Carousel
+************************/
+.carousel {
+  position: relative;
+}
+
+.carousel.pointer-event {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+  z-index: 1;
+  opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-left,
+  .carousel-fade .active.carousel-item-right {
+    transition: none;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 5%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    transition: none;
+  }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: no-repeat 50% / 100% 100%;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrows/black-left-chevron.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrows/black-right-chevron.svg");
+}
+
+#stacys-feature-recipe .carousel-control-prev, #stacys-feature-recipe .carousel-control-next {
+  top: -32%;
+  opacity: 1;
+}
+
+#stacys-related-recipe .carousel-control-prev, #stacys-related-recipe .carousel-control-next {
+  top: -32%;
+  opacity: 1;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 15;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel-indicators li {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #212121;
+  border-color: #212121;
+  background-clip: padding-box;
+  opacity: .5;
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicators li {
+    transition: none;
+  }
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  margin-right: 3px !important;
+  margin-left: 3px !important;
+}
+
+.featured-carousel-indicators, .stacys-product-group-carousel-indicators {
+  margin: 0 auto !important;
+  bottom: -24px !important;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-indicators .active {
+  background-color: #FFC90A !important;
+  border-color: #FFC90A !important;
+  opacity: 1;
+  margin-right: 3px !important;
+  margin-left: 3px !important;
+}
+
+
+@media only screen and (min-width: 768px) {
+  #stacys-feature-recipe .carousel-inner .carousel-item.active,
+  #stacys-feature-recipe .carousel-inner .carousel-item-next,
+  #stacys-feature-recipe .carousel-inner .carousel-item-prev,
+  #stacys-related-recipe .carousel-inner .carousel-item.active,
+  #stacys-related-recipe .carousel-inner .carousel-item-next,
+  #stacys-related-recipe .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+
+  #stacys-feature-recipe .carousel-inner .carousel-item-right.active,
+  #stacys-feature-recipe .carousel-inner .carousel-item-next,
+  #stacys-related-recipe .carousel-inner .carousel-item-right.active,
+  #stacys-related-recipe .carousel-inner .carousel-item-next {
+    transform: translateX(33.33%);
+  }
+
+  #stacys-feature-recipe .carousel-inner .carousel-item-left.active,
+  #stacys-feature-recipe .carousel-inner .carousel-item-prev,
+  #stacys-related-recipe .carousel-inner .carousel-item-left.active,
+  #stacys-related-recipe .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.33%);
+  }
+
+  #stacys-feature-recipe .carousel-inner .carousel-item-right,
+  #stacys-feature-recipe .carousel-inner .carousel-item-left,
+  #stacys-related-recipe .carousel-inner .carousel-item-right,
+  #stacys-related-recipe .carousel-inner .carousel-item-left {
+    transform: translateX(0);
+  }
+
+}
+
+/*****************************
+  Media Queries: Max-Width
+******************************/
+
+
+@media only screen and (max-width: 420px) {
+  .stacy-pattern-padding {
+    padding-top: 16px;
+  }
+}
+
+@media only screen and (max-width: 438px) {
+
+  .recipe-filter-btn-col {
+    margin-bottom: 16px;
+  }
+
+  .recipe-filter-btn-col:last-of-type {
+    margin-bottom: 0;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+
+  .w-banner-pattern-mbl {
+    width: 24px !important;
+  }
+
+  .stacys-top-banner h1 {
+    font-size: 48px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .recipe-filter-btn-col {
+    margin-right: 16px;
+  }
+
+  .recipe-filter-btn-col:last-of-type {
+    margin-right: 0;
+  }
+
+  .stacys-product-img-pattern-left {
+    left: -16vw !important;
+  }
+
+  .stacys-product-img-pattern-right {
+    right: -20vw !important;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+
+  .stacys-stars-corner {
+    width: 175px;
+  }
+
+  .w-recipe-icons {
+    width: 35%;
+  }
+  .w-40-mbl {
+    width: 40% !important;
+  }
+
+  .w-banner-pattern-mbl {
+    width: 35px;
+    display: inline-flex;
+    /*margin-left: -24px;*/
+  }
+
+  .custom-filter-button {
+    width: 125px !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5% !important;
+  }
+
+  /*#stacys-feature-recipe .carousel-control-prev,*/
+  /*#stacys-feature-recipe .carousel-control-next,*/
+  /*#stacys-related-recipe .carousel-control-prev,*/
+  /*#stacys-related-recipe .carousel-control-next {*/
+  /*  display: none !important;*/
+  /*}*/
+
+  #stacys-feature-recipe .carousel-control-next,
+  #stacys-related-recipe .carousel-control-next {
+    right: -16px;
+  }
+
+  #stacys-feature-recipe .carousel-control-prev,
+  #stacys-related-recipe .carousel-control-prev {
+    left: -16px;
+  }
+
+  .stacys-featured-recipes-view-more {
+    padding-top: 64px;
+  }
+
+  .products-bg-bottom-right {
+    display: none;
+  }
+
+  .products-bg-top-right {
+    display: flex;
+  }
+
+  .stacys-top-banner img, .stacys-banner-overlay img {
+    height: 475px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .stacys-top-banner img {
+    object-position: 80% 20%;
+  }
+
+  .stacys-banner-overlay img {
+    object-position: center center;
+  }
+
+  .stacys-top-banner .stacys-banner-copy {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .stacys-top-banner .stacys-banner-copy p {
+    padding-top: 16px;
+  }
+
+  .featured-recipe-stars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .stacys-featured-recipes-block, .stacys-products-categories, .stacys-products-block, .stacys-occasions-block, .stacys-related-product-block, .stacys-related-recipes-block, .stacys-featured-recipes-block-products, .stacys-products-details-main-block, .stacys-occassions-details-block  {
+    padding: 64px 16px 64px;
+  }
+
+  .stacys .products .products-title h3, .stacys-recipe-header h1, .stacys-recipe-detail-header h1 {
+    font-size: 10vw !important;
+    /*padding: 0 16px;*/
+  }
+
+  .stacys-coupon-block {
+    background-position: top right;
+    padding: 64px 16px 112px;
+  }
+
+  .stacys-about-us-block {
+    padding: 48px 16px 48px;
+  }
+
+  .stacys-recipe-details-block {
+    padding: 48px 16px 0;
+  }
+
+  .stacys-recipes-main-block {
+    padding: 0 16px 48px;
+  }
+
+  .stacys-recipes-filters-section {
+    padding: 48px 16px 16px;
+  }
+
+  .stacys-occassions-row {
+    height: 100%;
+  }
+
+  .occassions-copy-col {
+    background: #FFC90A;
+    text-align: center;
+    margin: 0 auto;
+    padding: 48px 16px 48px;
+  }
+
+  .stacys-occassions-img {
+    height: 300px;
+  }
+
+  .stacys-featured-recipe-section {
+    padding: 0 16px 48px;
+    text-align: center;
+  }
+
+  .stacys-featured-recipe-section .stacys-stars-corner {
+    margin: 0 auto;
+  }
+
+  .stacys-recipes-main-heading h1, .stacys-occasions-main-heading h1{
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .stacys-featured-recipe-description h2, .stacys-featured-recipe-description p {
+    text-align: center;
+  }
+
+  .stacys-featured-recipe-side-img-col {
+    height: 350px;
+    /*order: 1;*/
+  }
+
+  .stacys-recipes-filters-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .stacys-filter-clear-col {
+    padding-bottom: 8px;
+  }
+
+  .stacys-featured-recipe-img-col:first-child, .stacys-recipes-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .stacys-navigation-recipesdetails {
+    background: transparent;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .stacys .next-recipe, .stacys .prev-recipe {
+    display: none;
+  }
+
+  .stacys .next-recipe-mbl, .stacys .prev-recipe-mbl {
+    display: flex;
+  }
+
+  .stacys-prep-time-icon, .stacys-cook-time-icon, .stacys-rating-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 16px;
+  }
+
+  .stacys-recipe-share-block {
+    padding: 32px 16px 16px;
+  }
+
+  .stacys-recipe-ingredients-col {
+    padding-top: 16px;
+  }
+
+  .stacys-recipe-how-to-make-col {
+    padding-top: 32px;
+  }
+
+  .stacys-recipe-share-block p, .stacys-recipe-ingredients-col h3, .stacys-recipe-how-to-make-col h3 {
+    text-align: center;
+  }
+
+  .stacys-recipe-ingredients-col ul, .stacys-recipe-how-to-make-col ul, .stacys-recipe-ingredients-col ol, .stacys-recipe-how-to-make-col ol {
+    padding-left: 16px;
+  }
+
+  .stacy-recipe-hr {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .stacys .brands-navbar__top-bar, .stacys .brands-navbar__middle-bar, .stacys .brands-navbar__bottom-bar {
+    background-color: #FFFFFF;
+  }
+
+  .stacys .choose-lang_fr, .stacys .brands-navbar_accout-options, .stacys .brands-navbar_accout-options a, .stacys .brands-tr-navbar_copy-mbl {
+    color: #FFFFFF;
+    font-family: houschka-pro, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .stacys .navbar-default a, .stacys .navbar-default li, .stacys .navbar-default span, .stacys header .menu a, .stacys .tr-search-input {
+    font-family: houschka-pro, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .stacys .tr-navbar-trigger-mobile .arrow {
+    border: solid #FFFFFF;
+    border-width: 0 3px 3px 0;
+  }
+
+  .stacys-prod-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .stacys-prod-col:nth-child(n+1) {
+    padding-top: 32px;
+  }
+
+  .w-product-img {
+    width: 75%;
+  }
+
+  .w-product-pattern {
+    width: 50%;
+  }
+
+  .stacys-product-img-pattern-left, .stacys-product-img-pattern-right {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .stacys-product-img-pattern-left {
+    left: 0;
+  }
+
+  .stacys-product-img-pattern-right {
+    right: -2vw;
+  }
+
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3%;
+  }
+
+}
+
+/*****************************
+  Media Queries: Min-Width
+******************************/
+
+@media only screen and (min-width: 576px) {
+  .recipe-filter-btn-col {
+    margin-right: 16px;
+  }
+
+  .recipe-filter-btn-col:last-of-type {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .center-align-dsk-stacys {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stacys-stars-corner {
+    width: 175px;
+  }
+
+  .w-recipe-icons {
+    width: 75%;
+  }
+
+  .w-banner-pattern {
+    width: 65px;
+    margin-right: 16px;
+    margin-left: -16px;
+  }
+
+  .w-banner-pattern-mbl {
+    display: none;
+  }
+
+  .custom-filter-button {
+    width: 150px !important;
+  }
+
+  .stacys-top-banner img {
+    height: 400px;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .stacys-top-banner .stacys-banner-copy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .featured-carousel-indicators {
+    display: none;
+  }
+
+  .products-bg-bottom-right {
+    display: flex;
+  }
+
+  .products-bg-top-right {
+    display: none;
+  }
+
+  .stacys-recipe-row {
+    padding-top: 16px;
+  }
+
+  .stacys-recipe-col {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .stacys-prod-col {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .stacys-category-description h4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 44px;
+  }
+
+  .stacys-product-description h4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 60px;
+  }
+
+  .stacys-recipe-ingredients-col ul, .stacys-recipe-how-to-make-col ul {
+    padding-left: 16px;
+  }
+
+  /*.stacys-recipe-col:nth-of-type(3n+1) {*/
+  /*  padding-right: 16px;*/
+  /*}*/
+  /*.stacys-recipe-col:nth-of-type(3n+2) {*/
+  /*  padding-left: 16px;*/
+  /*  padding-right: 16px;*/
+  /*}*/
+  /*.stacys-recipe-col:nth-of-type(3n+3) {*/
+  /*  padding-left: 16px;*/
+  /*}*/
+  .stacys-recipe-col:nth-of-type(n+4) {
+    padding-top: 32px;
+  }
+
+  .stacys-featured-recipes-block, .stacys-products-categories, .stacys-products-block {
+    padding: 96px 0 96px;
+  }
+
+  .stacys-featured-recipes-view-more {
+    padding-top: 32px;
+  }
+
+  .stacys-about-us-block, .stacys-occasions-block, .stacys-related-recipes-block, .stacys-featured-recipes-block-products, .stacys-recipe-details-block, .stacys-products-details-main-block, .stacys-occassions-details-block {
+    padding: 64px 0 64px;
+  }
+
+  .stacys-related-product-block {
+    padding: 0 16px 64px;
+  }
+
+  .stacys-occassions-row, .stacys-occassions-img {
+    height: 300px;
+    background-color: #FFC90A;
+  }
+
+  .stacys-occassions-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .occassions-copy-col {
+    padding: 0 16px 0 32px;
+  }
+
+  .stacys-recipes-main-block {
+    padding: 0 0 64px;
+  }
+
+  .stacys-recipes-filters-section {
+    padding: 64px 0 16px;
+  }
+
+  .stacys-featured-recipe-section {
+    padding: 0px 0 64px;
+  }
+
+  .stacys-recipe-block-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stacys-recipe-block-row, .stacys-featured-recipe-side-img-col {
+    height: 450px;
+  }
+
+  .stacys-filter-clear-col {
+    padding-bottom: 16px;
+  }
+
+  .stacys-featured-recipe-img-col, .stacys-recipes-col {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .stacys-recipes-col:first-child {
+    padding-right: 15px;
+    padding-left: 0;
+  }
+
+  .stacys-recipes-col:nth-of-type(3n+3) {
+    padding-right: 0 !important;
+    padding-left: 15px;
+  }
+
+  .stacys-featured-recipes-description h4, .stacys-featured-product-description h4, .stacys-videos-description h4, .stacys-recipes-description h4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 55px;
+    padding-top: 4px;
+  }
+
+  .stacys-navigation-recipesdetails {
+    background: #2A2A2B;
+  }
+
+  .stacys-prep-time-row, .stacys-rate-recipe-row, .stacys-cook-time-row {
+    padding-right: 16px;
+  }
+
+  .stacys-recipe-share-block {
+    padding: 32px 16px 16px 0;
+  }
+
+  .stacys-recipe-share-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .stacys-prep-time-icon, .stacys-cook-time-icon, .stacys-rating-icon {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /*padding-right: 16px;*/
+  }
+
+  .stacys-recipe-ingredients-col {
+    padding-right: 16px;
+  }
+
+  .stacys-recipe-how-to-make-col {
+    padding-left: 16px;
+  }
+
+  .stacys-product-img-col {
+    height: 500px;
+  }
+
+  .w-product-img {
+    width: 80%;
+  }
+
+  .w-product-pattern {
+    width: 35%;
+  }
+
+  .stacys-product-img-pattern-left, .stacys-product-img-pattern-right {
+    top: 25%;
+    transform: translate(0, -25%);
+  }
+
+  .stacys-product-img-pattern-left {
+    left: -4vh;
+  }
+
+  .stacys-product-img-pattern-right {
+    right: -6vh;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .stacys-prod-col:nth-child(n+5) {
+    padding-top: 32px;
+  }
+
+  .occassions-copy-col {
+    padding: 0 16px 0 48px;
+  }
+
+  .w-product-pattern {
+    width: 50%;
+  }
+
+  .stacys-product-img-pattern-left, .stacys-product-img-pattern-right {
+    top: 40%;
+    transform: translate(0, -40%);
+  }
+
+  .stacys-product-img-pattern-left {
+    left: -2vh;
+  }
+
+  .stacys-product-img-pattern-right {
+    right: -3vh;
+  }
+
+}
+
+@media only screen and (min-width: 1025px) {
+
+  .w-product-pattern {
+   width: 75%;
+ }
+
+  .stacys-product-img-pattern-left, .stacys-product-img-pattern-right {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .w-banner-pattern {
+    margin-left: -32px;
+  }
+
+}
+
+@media only screen and (min-width: 1281px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 15%;
+  }
+
+}
+
+@media only screen and (min-width: 1480px) {
+  .stacys-product-img-pattern-left {
+    left: -2vh;
+  }
+
+  .stacys-product-img-pattern-right {
+    right: -2vh;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .stacys-top-banner img, .stacys-banner-overlay img {
+    height: 500px;
+    object-fit: cover;
+    /*object-position: 20vh 50%;*/
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+
+  .stacys-coupon-block {
+    padding: 64px 0 176px 0;
+  }
+
+  /*.stacys-top-banner img {*/
+  /*  object-position: 32vh 50%;*/
+  /*}*/
+
+}
+
+
+
+.stacys-product-btn {
+  margin-top: 20px;
+}
+
+/*BuyNow Popup*/
+
+.stacys-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+
+/*Buynow Modal*/
+
+.stacys-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#stacysModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#stacysModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #stacysModal {
+    padding:0 !important;
+  }
+}
+
+
+/******************** Stacys Rise ********************/
+
+/*Navigation*/
+
+.brands-navbar__social-icons img {
+  width: 25px;
+  margin-right: 20px;
+}
+
+.text-white {
+  color:#fff !important;
+}
+
+.empower-content {
+  margin: auto;
+  text-align: center;
+}
+
+.empower-content > div > h2 {
+  margin-bottom: 30px;
+}
+
+.empower-content > div > p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.empower-content >div > span {
+  font-size: 14px;
+}
+
+.empower-content > div {
+  width: 65%;
+  margin:auto;
+}
+
+.content {
+  background-image: url("../images/stacys/stacys-rise/empower-content-bg.png");
+  padding: 50px 0;
+}
+
+.content-subhead {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.stacys-brand-row img {
+  width: 180px;
+}
+
+.stacys-subhead-row {
+  display: flex;
+  justify-content: center;
+}
+
+.stacys-brand-row {
+  margin-right: 5rem;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.stacys-brand-content p {
+  font-size: 15px;
+}
+
+.icon-description {
+  margin-top: 5px;
+}
+
+.stacys-banner-content {
+  background-image: url("../images/stacys/stacys-rise/stacys-form-bg.png");
+  background-size: 100%;
+  padding: 50px 0;
+}
+
+.stacys-signup-form {
+  text-align: center;
+}
+
+.stacys-name-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stacys-form-col {
+  width: 40%;
+  margin: auto;
+}
+
+.stacys-story-input-half-col {
+  width: 49%;
+}
+
+.stacys-story-input-half-col input, .stacys-story-input-col input {
+  width: 100%;
+  height: 30px;
+}
+
+.stacys-story-input-col {
+  width: 100%;
+  margin: auto;
+}
+
+.stacys-form-col {
+  text-align: left;
+}
+
+.stacys-submit {
+  width: 15%;
+  height: 35px;
+  padding: 8px 0;
+  background-color: #000;
+  color: #fff;
+  margin-top: 10px;
+}
+
+form#contestsignup-form {
+  margin-top: 30px;
+}
+
+.signup-form-text p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.madison-section {
+  background-color: #F5F5F5;
+  padding: 50px 0;
+}
+
+.madison-img {
+  width: 60%;
+}
+
+.madison-content {
+  width: 80%;
+  margin:auto;
+  margin-top: 30px;
+  padding-bottom:40px;
+}
+
+.madison-content p {
+  font-size: 16px;
+}
+
+.madison-heading, .signup-heading, .content-heading, .empower-heading {
+  position: relative;
+}
+
+.madison-heading img, .signup-heading img, .content-heading img, .empower-heading img {
+  width: 30px;
+  position: absolute;
+  top: 15%;
+}
+
+.madison-content p {
+  margin-top: 15px;
+}
+
+.stacys-rise-nav {
+  display:flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .stacys-form-col {
+    width: 65%;
+  }
+
+  .stacys-name-field {
+    display: inherit;
+  }
+
+  .stacys-story-input-half-col {
+    width: 100%;
+  }
+
+  .stacys-signup-form p {
+    padding: 0 20px;
+  }
+
+  .stacys-submit {
+    width: 35%;
+  }
+
+  .signup-form-text p {
+    padding: 0 20px;
+  }
+
+  .stacys-subhead-row {
+    display: inherit;
+  }
+
+  .empower-content > div {
+    width: 80%;
+  }
+
+  .stacys-brand-row {
+    margin-right: 0;
+  }
+}
+
+.hidden, .d-none {
+  display:none !important;
+}
+
+.brands-navbar_accout-options  {
+  display: none;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .brands-navbar__top-bar, .brands-navbar__middle-bar, .brands-navbar__bottom-bar {
+    background-color: #fff !important;
+  }
+
+  .stacys-rise-nav {
+    display: block;
+  }
+
+  .brands-tr-navbar_copy-mbl {
+    color:#fff;
+  }
+
+  .brands-navbar_accout-options a {
+    color:#fff !important;
+  }
+  .footnote {
+    font-size: 14px !important;
+  }
+
+  .thankyou-submit {
+    width: 80%;
+    margin: auto;
+    font-size: 28px !important;
+  }
+
+}
+@media only screen and (min-width: 992px) {
+  .brands-navbar__center-align {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+  }
+}
+
+
+.stacys-product-btn {
+  margin-top: 20px;
+}
+
+/*BuyNow Popup*/
+
+.stacys-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+
+/*Buynow Modal*/
+
+.stacys-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#stacysModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#stacysModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+.content-heading .stacys-left {
+  left:13%;
+}
+
+.content-heading .stacys-right {
+  right:13%;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #stacysModal {
+    padding:0 !important;
+  }
+
+  .content-heading .stacys-left {
+    left:2%;
+  }
+
+  .content-heading .stacys-right {
+    right:2%;
+  }
+
+  .stacys-signup .stacys-left {
+    left: 1% !important;
+  }
+
+  .stacys-signup .stacys-right {
+    right: 1% !important;
+  }
+
+  .signup-heading h2 {
+    font-size: 28px!important;
+    line-height: 1.6!important;
+  }
+
+  .madison-left {
+    left: -9% !important;
+  }
+
+  .madison-right {
+    right: -9% !important;
+  }
+
+  html:lang(fr) .signup-heading h2 br {
+    display: none;
+  }
+
+  html:lang(fr) .empower-heading .stacys-left {
+    left: -11% !important;
+  }
+
+  html:lang(fr) .empower-heading .stacys-right {
+    right: -11% !important;
+  }
+
+  .content-heading h2, .signup-heading h2 {
+    width: 90%;
+    margin: auto;
+  }
+
+  html:lang(fr) .madison-left {
+    left: -9% !important;
+  }
+
+  html:lang(fr) .madison-right {
+    right: -9% !important;
+  }
+
+
+}
+
+
+header#tasty-theme {
+  z-index: 999999;
+}
+
+li.brands-navbar__item-first-border a:hover, li.brands-navbar__item-border a:hover {
+  color:#fff !important;
+}
+
+p.footnote {
+  font-size: 14px !important;
+}
+
+.signup-heading > h2 > sup {
+  font-size: 18px !important;
+  top:-25px;
+}
+
+html:lang(en) .fr {
+  display: none;
+}
+
+html:lang(fr) .en {
+  display: none;
+}
+
+html:lang(en) .madison-left {
+  left:18%;
+}
+
+html:lang(en) .madison-right {
+  right:18%;
+}
+
+html:lang(fr) .madison-left {
+  left:0;
+}
+
+html:lang(fr) .madison-right {
+  right:0;
+}
+
+.stacys-banner-content {
+  text-align: center;
+}
+
+.stacys-banner-content .container {
+  position: relative;
+}
+
+.stacys-banner-content .stacys-left, .stacys-banner-content .stacys-right{
+  width: 30px;
+  top:4%;
+}
+
+
+

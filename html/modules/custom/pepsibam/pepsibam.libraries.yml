@@ -1,0 +1,105 @@
+form:
+  css:
+    theme:
+      css/pepsibam.css: {}
+
+
+pepsilibrary:
+  js:
+    # js/facebookAPI.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+
+pepsirecipecategories:
+  css:
+    theme:
+      css/recipe_category.css: {}
+  js:
+    js/recipe_category.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+
+pepsireglibrary:
+  js:
+    js/register.js: {}
+    # js/iframeResizer.contentWindow.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+pepsiupdprofilelibrary:
+  js:
+    js/updateprofile.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+pepsiupdprofilepwdlibrary:
+  js:
+    js/updateprofilepwd.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+
+pepsiunsubscribelibrary:
+  js:
+    js/unsubscribe.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+pepsiactivationlibrary:
+  js:
+    js/activation.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+pepsiresetpwdrequestlibrary:
+  js:
+    js/resetpwdrequest.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+pepsiupdatepasswordlibrary:
+  js:
+    js/updatepassword.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+
+# pepsicouponScrolllibrary:
+#   js:
+#     js/iframeresizer.min.js: {}
+#   dependencies:
+#     - core/jquery
+#     - core/drupal
+#     - core/drupalSettings
+#     - core/jquery.once
+pepsi.gmaps:
+  js:
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyAJSsWjGlqGrLiemEaZ4HI4aWbffc4sFWQ&libraries=places: { type: external }

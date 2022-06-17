@@ -1,0 +1,141 @@
+{# <nav role="navigation" aria-label="main navigation"> #}
+{# #}
+{# <!-- LOGO --> #}
+{# <a href="https://www.tostitos.ca" class="logo"> #}
+{# <h1> #}
+{# <img src="https://www.fritolay.com/sites/fritolay.com/themes/fritolay/img/logo.png" alt="FRITOLAY.ca logo"> #}
+{# </h1> #}
+{# </a> #}
+
+{# <!-- MENU OPTIONS --> #}
+{# <ul> #}
+{# <li class=""> #}
+{# <a href="{{ brand_basepath }}/products" id="products-submenu">Products</a> #}
+{# </li> #}
+{# <li class=""> #}
+{# <a href="http://www.tostitos.ca/#newsletter_signup" id="http://www.tostitos.ca/#newsletter_signup-submenu">Tasty Rewards</a> #}
+{# </li> #}
+{# </ul> #}
+
+{# <!-- TO SEARCH POPOVER --> #}
+{# <div id="to-open-close-search-popover-container"> #}
+{# <input type="text" id="to-open-close-search-popover-input" title="Search..."> #}
+{# <a href="#" id="to-open-close-search-popover-button"> #}
+{# <span class="srt">Search</span> </a> #}
+{# </div> #}
+{# </nav> #}
+
+
+<nav id="brands_navigation" class="fritolay-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/fritolayproduitsassortis':'/en-ca/brands/fritolayvarietypacks' }}" class="fritolay-logo-mobile top-logo noDesktop">
+    <img class="fritolay-logo" src="/themes/brandstheme/src/images/fritolay/logo.png?v=1" alt="Fritolay Canada logo">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-left">
+    <li class="brands-navbar__item-first-border">
+
+        <a class="" href="#vr-products" id="">{{'Products'|t}}</a>
+
+
+    </li>
+
+    <li class="brands-navbar__item-border">
+        <a href="#check-us-out" id="">{{'Videos'|t}}</a>
+    </li>
+
+    <li class="brands-navbar__item-border">
+
+      {%if ( language == 'en') %}
+        <a class="vr-contact-us" href="https://contact.pepsico.com/fritolayca" id="" target="_blank">{{'Contact us'|t}}</a>
+      {% endif %}
+
+      {%if ( language == 'fr') %}
+        <a class="vr-contact-us" href="https://contact.pepsico.com/fritolaycafr" id="" target="_blank">{{'Nous joindre'|t}}</a>
+      {% endif %}
+
+    </li>
+
+    <li class="brands-navbar__item-border">
+
+      {%if ( language == 'en') %}
+        <a href="https://www.tastyrewards.com/en-ca/coupons" id="" target="_blank">{{'Get a Coupon'|t}}</a>
+      {% endif %}
+
+      {%if ( language == 'fr') %}
+        <a href="https://www.tastyrewards.com/fr-ca/coupons" id="" target="_blank">{{'Obtenir un coupon'|t}}</a>
+      {% endif %}
+
+    </li>
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/fritolayproduitsassortis':'/en-ca/brands/fritolayvarietypacks' }}" class="logo noMobile">
+    <img class="fritolay-logo" src="/themes/brandstheme/src/images/fritolay/logo.png?v=1" alt="Fritolay Canada logo">
+  </a>
+
+  <!-- TO SEARCH POPOVER -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+{#    <input type="text" id="to-open-close-search-popover-input" title="Search...">#}
+    <a class="brands-navbar__social-icons" href="#" id="nav-twitter" target="_blank" aria-label="twitter link icon">
+      <i class="fa fa-twitter fa-navbar" title="Share on twitter icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://www.instagram.com/flvarietypackscanada/" id="nav-instagram" target="_blank" aria-label="instagram link icon">
+      <i class="fa fa-instagram fa-navbar" title="Share on instagram icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://www.facebook.com/FLVarietyPacksCanada" id="nav-facebook" target="_blank" aria-label="facebook link icon">
+      <i class="fa fa-facebook-square fa-navbar" title="Share on facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+    <a class="brands-navbar__social-icons" href="https://www.youtube.com/channel/UCLHxiJcWrF3MbMHXRMyoGTw" id="nav-youtube" target="_blank" aria-label="youtube link icon">
+      <i class="fa fa-youtube-play fa-navbar" title="Share on youtube icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+  </div>
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+{# {% set langcode = language ~ '-ca' %} #}
+
+      <a href="{{ language == 'fr'?'/en-ca/brands/fritolayvarietypacks':'/fr-ca/marques/fritolayproduitsassortis'}}" id="" class="choose-lang_fr">
+        {{inactive_lang|upper}}
+      </a>
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/login-out.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/{{'logo-en.png'|t}}" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

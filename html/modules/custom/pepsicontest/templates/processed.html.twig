@@ -1,0 +1,39 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript"><!--
+language = '{{ data.language }}';
+//-->
+</script>
+
+
+<section id="contentBlocks" class="container-fluid contestBlockError">
+    <div class="col-xs-12 text-center">
+        <h1 class="pink signika">{{ data.header }}</h1>
+        
+        {% if data.subheader is defined and data.subheader is not null and data.subheader != '' %}
+            <h2 class="pink signika">{{ data.subheader }}</h2>
+        {% endif %}
+
+        <p>{{ data.body | raw}}</p>
+        <br>
+
+        {% if data.h3 is defined and data.h3 is not null and ddata.h3 != '' %}
+            <h3 class="pink signika">{{ data.h3 }}</h3>
+        {% endif %}
+
+        <br>
+        <br>
+        
+    </div>
+</section>
+<section id="contest">
+                        
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>         

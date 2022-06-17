@@ -1,0 +1,51 @@
+  <div class="container">
+
+    <div class="row">
+
+
+      <div class="col-md-12">
+
+        <div id="carouselpearlmillingHistory" class="carousel slide" data-interval="false">
+            <h3> {{'Our History'|t}}</h3>
+
+          <div class="carousel-inner">
+            {% for idx, moment in moments %}
+              <div class="carousel-item {{ idx==0 ? 'active' :'' }} pos-relative" data-indicator="{{ idx }}">
+
+                <div class="row pearlmilling-history-carousel-row">
+                  <div class="col-md-6 pearlmilling-history-info-col">
+
+                    <div class="pearlmilling-history-year">
+                      <h3>
+                        {{ moment.title|raw }}
+                      </h3>
+                    </div>
+
+                    <div class="pearlmilling-history-body">
+                      <p>
+                        {{ moment.body|raw }}
+                      </p>
+                    </div>
+
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <img class="w-100" src="{{ moment.image_url }}" alt="pearlmilling History"/>
+                  </div>
+
+                </div>
+
+
+              </div>
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>

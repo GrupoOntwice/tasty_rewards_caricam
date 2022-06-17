@@ -1,0 +1,14 @@
+name: GTM dataLayer Example
+description: Provides examples for GTM dataLayer Processors.
+package: Examples
+
+core_version_requirement: ^8 || ^9
+type: module
+
+dependencies:
+  - gtm_datalayer:gtm_datalayer
+
+# Information added by Drupal.org packaging script on 2021-08-13
+version: '2.0.0-beta1'
+project: 'gtm_datalayer'
+datestamp: 1628854949

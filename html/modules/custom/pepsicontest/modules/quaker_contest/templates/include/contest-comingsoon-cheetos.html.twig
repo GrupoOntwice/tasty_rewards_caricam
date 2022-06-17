@@ -1,0 +1,134 @@
+
+{% if data.contest_opendate %}
+	<script type="text/javascript">
+		window.contest_opendate = '{{data.contest_opendate}}';
+	</script>
+{% endif %}
+
+<section class="cheetos noprovince" id="cheetos-coming-soon">
+        <div class="coming-soon-banner">
+			<div class="star-row star-row-top">
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+			</div>
+			
+			<div class="coming-soon-timer">
+				<div class="time-segment">
+					<span class="time-digit" id="cheetos-days">
+						{# {{data.time_to_launchday.days}} #}
+					</span>
+					<span class="time-label">{{ 'Days' | t }}</span>
+				</div>
+	
+				<div class="time-segment">
+					<span class="time-digit" id="cheetos-hours">
+						{# {{data.time_to_launchday.hours}} #}
+					</span>
+					<span class="time-label">{{ 'Hours' | t }}</span>
+				</div>
+	
+				<div class="time-segment">
+					<span class="time-digit" id="cheetos-minutes">
+						{# {{data.time_to_launchday.minutes}} #}
+					</span>
+					<span class="time-label">{{ 'Minutes' | t }}</span>
+				</div>
+	
+				<div class="time-segment">
+					<span class="time-digit" id="cheetos-seconds">
+						{# {{data.time_to_launchday.seconds}} #}
+					</span>
+					<span class="time-label">{{ 'Seconds' | t }}</span>
+				</div>
+			</div>
+			
+			<div class="star-row star-row-bottom">
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+				<span class="star">&#9733;</span>
+			</div>
+
+            <div class="coming-soon-description">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/golden-ticket.png" />
+                <p>
+					<span class="coming-soon-small">
+						{{ 'Forget cotton candy — we’re giving visitors a chance to' | t }}
+					</span>
+					<span class="coming-soon-big">
+						{{ 'win<sup>&dagger;</sup> the $10,000 grand prize' | t | raw }}
+					</span>
+					<span class="coming-soon-medium">
+						{{ 'PLUS 1000s of instant prizes available.' | t }}
+					</span>
+                </p>
+            </div>
+
+            <div class="coming-soon-red-banner coming-soon-red-banner-header cheetos-hide-desktop">
+                <h1>
+                    {{ 'Come back on June 28<sup>th</sup>!' | t | raw }}
+                </h1>
+            </div>
+
+            <img class="cheetos-bottom-border cheetos-hide-desktop" src="/themes/tastytheme/src/images/contest-cheetos/cheetos-bottom-border.png" />
+        </div>
+
+        <div class="coming-soon-body">
+            <div class="coming-soon-red-banner cheetos-hide-mobile">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-coming-soon-red-banner.png" />
+                <h1>
+                    {{ 'Come back on June 28<sup>th</sup>!' | t | raw }}
+                </h1>
+            </div>            
+
+			<div class="star-before star-after star-title-container">
+				<h2>
+					{{ 'Check out our recipes & coupons' | t }}
+				</h2>
+			</div>
+
+            <div class="carnival-boxes">          
+				<div class="carnival-box">
+					{% if data.langcode == 'en' %}
+						<a href="https://www.tastyrewards.com/en-ca/brands/cheetos/recipes" target="_blank">
+							<img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-1-en-revised.png" />
+						</a>
+					{% elseif data.langcode == 'fr' %}
+						<a href="https://www.tastyrewards.com/fr-ca/marques/cheetos/recettes" target="_blank">
+							<img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-1-fr-revised.png" />
+						</a>
+					{% endif %}
+					</a>
+				</div>
+
+				<div class="carnival-box">
+					{% if data.langcode == 'en' %}
+						<a href="https://www.tastyrewards.com/en-ca/coupons" target="_blank">
+							<img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-2-en-revised.png" />
+						</a>
+					{% elseif data.langcode == 'fr' %}
+						<a href="https://www.tastyrewards.com/fr-ca/coupons" target="_blank">
+							<img src="/themes/tastytheme/src/images/contest-cheetos/carnival-box-2-fr-revised.png" />
+						</a>
+					{% endif %}
+				</div>
+			</div>
+
+			<img class="cheetos-bottom-border" src="/themes/tastytheme/src/images/contest-cheetos/cheetos-bottom-border.png" />
+        </div>
+
+        <div class="cheetos-disclaimer">
+            <p>
+                <sup>&dagger;</sup>{{ 'No purchase necessary. Open to Canadian residents, 19+. Mathematical skill-testing question required. Contest period: June 28 @ 12:00 pm (noon) ET to September 5, 2021 @ 11:59:59 pm ET. Enter UPC for a chance to win (i) Instant Prizes: Cheetos® Free Product Coupon and Cheetos® Mac ’n Cheese Free Product Coupon (4,100 available/ARV $7.98 ea); (ii) Grand Prize: $10,000 cash (awarded in the form of a cheque). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded.' | t | raw }}
+
+            </p>
+        </div>
+    </section>

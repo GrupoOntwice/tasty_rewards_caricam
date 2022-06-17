@@ -1,0 +1,133 @@
+{{ attach_library( 'springactivation/springactivationLibrary' ) }}
+
+<section id="banner" class='springactivation banner d-block'>
+  <img class="noMobile-sm w-100" src="/themes/tastytheme/src/images/spring-activation/springactivation_banner.jpg" alt="Spring Activation Banner"/>
+  <img class="noDesktop-sm w-100" src="/themes/tastytheme/src/images/spring-activation/springactivation_banner-mbl.jpg" alt="Spring Activation Banner"/>
+</section>
+
+<section class='springactivation-snacks'>
+  <div class="container">
+    <div class="row center-align-md-dsk padding-top-large padding-bottom-large">
+
+      <div class="col-md-6">
+        <img class="w-100" src="/themes/tastytheme/src/images/spring-activation/snacks-packs.png" alt="Favourite snacks packs"/>
+      </div>
+
+      <div class="col-md-6 fav-snack-copy-padding">
+        <img class="w-50 padding-top-mbl" src="/themes/tastytheme/src/images/spring-activation/snacksdotcom.png" alt="Snacks.com"/>
+
+        <h3 class="h3-fav-snack padding-top">{{ 'Your favorite snacks are here'|t }}.</h3>
+        <div class="springactivation-container padding-top">
+          <p class="text-white">
+            {{ 'Welcome to your one-stop shop for amazing snacks! Personalize your orders, try our hottest new flavors, and get FREE shipping on orders over $10. Purchase your favorite snacks and discover more at Snacks.com!'|t }}
+          </p>
+          <a href="https://www.snacks.com/" target="_blank" class="springactivation-btn margin-top">
+            {{ 'Shop Now'|t }}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="spring-recipes">
+
+  <div class="chips-top-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/chips-top-left.png" alt="Chips Top Left"/>
+  </div>
+
+  <div class="chips-top-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/chips-top-right.png" alt="Chips Top Right"/>
+  </div>
+
+  <div class="container">
+    <div class="row text-center padding-top-large padding-bottom-large">
+      <div class="col-md-12">
+        <h2 class="recipe-title blue">{{ 'Recipes'|t }}</h2>
+        <p class="padding-top padding-bottom-medium">
+          {{ 'Try these delicious Spring and Easter creations inspired by your favorite Frito-Lay flavors!'|t }}
+        </p>
+      </div>
+
+
+      <div class="springactivation-nocarousel-container row" data-count="{{ recipe_count }}">
+        {% for recipe in data.recipes %}
+          <div class="col-md-4 springactivation-recipes">
+            <div class="springactivation-nocarousel-box" data-nid="{{ recipe.nid }}">
+              <div class="img">
+                <a href="{{ recipe.link }}"><img class="w-100" src="{{ recipe.image_url }}"/></a>
+              </div>
+
+              <div class="">
+                <a class="blue" href="{{ recipe.link }}">
+                <h3 class="padding-top padding-bottom">
+                  {{ recipe.title|raw }}
+                </h3>
+                </a>
+              </div>
+
+              <div class="spring-activation-recipe-btn margin-bottom-medium">
+                <a href="{{ recipe.link }}" class="springactivation-btn springactivation-btn-yellow m-auto">
+                  {{ 'View Recipe'|t }}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="col-md-12 center-align padding-top">
+        <div class="view-more-alt" style="text-align:center;">
+          <a href="javascript:void(0);" class="more-recipes springactivation-btn ">{{ 'View More'|t }}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chips-bottom-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/cheetos-pieces.png" alt="Chips Bottom Left"/>
+  </div>
+
+  <div class="chips-bottom-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/chips-bottom-right.png" alt="Chips Bottom Right"/>
+  </div>
+
+</section>
+
+<section id="coupons">
+  <div class="coupon--container-bg-desktop" style="background-image: url(/themes/tastytheme/src/images/spring-activation/spring-activation-coupon-bg.png);">
+{#    <div class="coupon--container">#}
+    <div class="container springactivation-d-md-flex padding-top-medium-dsk padding-bottom-medium-dsk springactivation-coupon-padding">
+      <div class="coupon--display">
+        <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+          <img alt="tis the season for savings" data-entity-type="file" src="/themes/tastytheme/src/images/spring-activation/spring-activation-coupon-packs.jpg">
+        </div>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <div class="coupon--text-wrapper">
+        </div>
+        <h3>Save Today!</h3>
+        <p>Grab our latest coupon and save on<br class="noMobile-sm"> your next purchase!</p>
+
+        <a class="btn_red" href="/en-us/coupons">Get My Coupon*</a>
+        <p class="coupon-disclaimer">*Coupons available while quantities last.</p>
+      </div>
+    </div>
+  </div>
+  {# {{ drupal_block('couponblockcallout') }} #}
+</section>
+<section id="banner">
+  <div class="springactivation-banner">
+    {% for banner in data.banners %}
+      <a href="{{banner.link}}">
+        <img class="w-100 noMobile-768" src="{{banner.image_url}}" alt="Spring Activation Desktop Banner"/>
+        <img class="w-100 noDesktop-768" src="{{banner.mobile_image_url}}" alt="Spring Activation Mobile Banner"/>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+

@@ -1,0 +1,57 @@
+<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+<script>
+  var uid = {{uid}}
+  var username = '{{username}}';
+  var okta_LogoutRedirectUri = "{{ okta_setting.LogoutRedirectUri ~ '/' ~ okta_setting.lang_prefix ~ '/user/logout'}}";
+  var snack_url = "{{ okta_setting.snack_url}}";
+  var oktacnf = {
+    baseUrl: "{{ okta_setting.baseUrl }}",
+    redirectUri: "{{ okta_setting.redirectUri }}",
+    clientId: "{{ okta_setting.clientId }}",
+    authParams: {
+      issuer: "{{ okta_setting.issuer }}",
+      scopes: ['openid', 'email', 'profile', '{{ okta_setting.signin_scope }}']
+    },
+    idps: [
+      {
+        type: "Google",
+        id: "{{ okta_setting.googleipd }}"
+      }
+    ],
+    idpDisplay: "PRIMARY",
+    transformUsername: function (username, operation) {
+          return '{{ okta_setting.signin_prefix }}' + username;
+    },
+    features: {
+      showPasswordToggleOnSignInPage: true
+    },
+    language: "{{ language }}",
+    i18n: {
+      'en': {
+        'primaryauth.title': 'Sign In & Get Started',
+        'primaryauth.username.placeholder': 'Email Address',
+        'primaryauth.password.placeholder': 'Password',
+        'primaryauth.submit': 'Sign in',
+        'errors.E0000004': 'Oops, looks like the email and password do not match our records.'
+      },
+      'fr': {
+        'primaryauth.title': 'Inscrivez-vous et commencez à explorer',
+        'primaryauth.username.placeholder': 'Adresse courriel',
+        'primaryauth.password.placeholder': 'Password',
+        'primaryauth.submit': 'Se connecter',
+        'errors.E0000004': 'Oups, l\'adresse courriel ou le mot de passe ne correspondent pas à ceux dans notre base de données'
+      },
+      'es': {
+        'primaryauth.title': 'Iniciar sesión y empezar',
+        'primaryauth.username.placeholder': 'Correo electrónico',
+        'primaryauth.password.placeholder': 'Contraseña',
+        'primaryauth.submit': 'Iniciar Sesión',
+        'errors.E0000004': 'Vaya, parece que el correo electrónico y la contraseña no coinciden con nuestros registros.'
+      },
+
+    }
+  }
+
+
+
+</script>

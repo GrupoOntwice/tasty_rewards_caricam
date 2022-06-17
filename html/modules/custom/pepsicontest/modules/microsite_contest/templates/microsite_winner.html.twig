@@ -1,0 +1,53 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+    language = '{{ data.language }}';
+</script>
+{{ attach_library( 'microsite_contest/registration' ) }}
+{{ attach_library( 'microsite_contest/form' ) }}
+
+<section class="block__intro negative_margin menu_buffer">
+    <div class="contest_page_content_block">
+        <div class="intro_img_container">
+            <img src="/themes/tastytheme/src/images/contest/img_description_v3.png" alt="" />
+        </div>
+    </div>
+    <div class="description contest_page_content_block other animated-text-block">
+        <h2>{{ "Congratulations!" |t }}</h2>
+        <div class="contest-description">
+            <p>
+                {{ "You’re eligible to be an instant winner of " | t | raw }} <strong>{{data.prize}}</strong>!
+            </p>
+
+            <p>
+                {{ "We’ll be sending you an email within three business days with details to claim 
+                your prize. Plus, you’ve also been automatically entered for your chance to win 
+                the Grand Prize." | t }}
+            </p>
+        </div>
+    </div>
+</section>  
+
+
+<section class="block__prizes arrow_overlap">    
+    <div class="contest-prizes prizes-recipes-content">
+    {% for recipe in data.recipes %}
+        <div class="contest-detail__prize wider_prize_box">
+            <div class="prize_img_container recipes_block_img_container">
+                <a href="{{recipe.url}}">
+                    <img src="{{ file_url(recipe.image) }}" alt="">
+                </a>
+            </div>
+
+            <p class="contest-detail__prize-title big_title">{{recipe.title |raw}}</p>
+            <div class="contest-detail__prize-description">
+                {{recipe.description |raw}}
+            </div>
+
+            <a class="contest-detail__sign-up-button smaller_btn" href="{{recipe.url}}">
+                {{ 'View recipe'|t }}
+            </a>
+        </div>
+    {% endfor %} 
+    </div>        
+</section>

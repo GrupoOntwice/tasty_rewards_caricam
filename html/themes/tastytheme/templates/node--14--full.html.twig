@@ -1,0 +1,68 @@
+{#
+  TEMPLATE for the about us page
+  https://www.tastyrewards.com/en-ca/about-tasty-rewards
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{% set banner_image = '/themes/tastytheme/src/images/lifestyle.jpg' %}
+
+
+{% set nodeimgurl = file_url(content.field_image_detail['#items'].entity.uri.value)  ?: '' %}
+{% set nodeimgalt = node.field_image_detail.alt ?: label %}
+{% set nodetitle = node.label ?: '' %}
+{% set nodedefaultimage = node.field_image_detail.setting('default_image') %}
+
+{{ attach_library('tastytheme/help_modal') }}
+
+<section id="banner">
+    {{ drupal_view('carousel2', 'block_aboutus_header') }}   {# page main display #}
+
+</section>
+
+<section id="contest">
+    <div class="arrow-section-body"></div>
+    <div{{ content_attributes.addClass('content') }}>
+        {{ content }}
+    </div>
+    
+    <section id="coupons">
+        {# {{ drupal_block('couponblockcallout') }} #}
+        {% if coupon_block %}
+            {{ coupon_block|t|raw }}
+        {% endif %}
+    </section>
+
+
+    <section id="recipes" class="recipe-margin-top">
+        <div class="recipe__menu">
+
+            <div class="recipe__filter-wrapper">
+                <div class="recipe__menu-detail-wrapper">
+                    <div class="recipe__menu-detail-section">
+                        {{ drupal_view('aboutus_call_out', 'block_contest_callout') }} 
+                    </div>
+
+                    <div class="recipe__menu-detail-section">
+                        {{ drupal_view('aboutus_call_out', 'block_recipe_callout') }}   
+                    </div>
+
+                    <div class="recipe__menu-detail-section">
+                        {{ drupal_view('aboutus_call_out', 'block_article_callout') }}   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>

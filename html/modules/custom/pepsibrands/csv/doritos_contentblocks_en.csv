@@ -1,0 +1,17 @@
+Block Type,Description
+about-us,"Not only are our chips packed with serious crunch and bold flavours, the DORITOS<sup>®</sup> brand is all about intense experiences in snacking and beyond."
+coupon,"<div class=""doritos-coupon--container"">
+<div class=""doritos-coupon--display"">
+<div class=""doritos-coupon--leftcol""><a href=""/en-ca/coupons""><img alt=""doritos packshots"" src=""/themes/brandstheme/src/images/doritos/doritos-coupon.png"" /></a></div>
+</div>
+
+<div class=""doritos-coupon--text"">
+<h3>Save $0.50 Off<br />
+Doritos<sup>®</sup><br />
+Tortilla Chips</h3>
+<a class=""doritos-black-button"" href=""/en-ca/coupons"">GET MY COUPON* </a>
+
+<p class=""doritos-coupon-disclaimer"">*Coupons available while quantities last</p>
+</div>
+</div>
+"

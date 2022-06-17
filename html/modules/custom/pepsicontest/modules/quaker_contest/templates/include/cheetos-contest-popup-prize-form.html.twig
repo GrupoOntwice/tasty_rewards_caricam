@@ -1,0 +1,50 @@
+<a class="btn_red js-legal hidden" href="javascript:void(0);" tabindex="-1">
+    {{'Enter Now'|t}}
+</a>
+
+<div class="popup-main-wrapper popup-contest js-popup-claim hidden" id="cheetos-prize-claim-popup-form">
+	<div class="modal grabsnack-modal grabsnack-prize-claim">
+		<div class="popup-wrapper-left grabsnack-modal-content-wrapper">
+			<button class="modal_close-button jsModalSignUpClose popup-close-button hidden">
+				<img class="modal__close-btn-img" src="/themes/tastytheme/src/images/close-white.png" alt="Close button">
+			</button>
+			<p class="popup-title">{{"Get started to claim your prize"|t}}!</p>
+			<p class="popup-sub-title">{{"Please complete the fields below:"|t}}</p>
+
+			<p class="required-fields">*{{"Required fields"|t}}</p>
+			<form id="popup-subscribe" class="popup-eligibility">
+				<input type="hidden" id='enterdate' name='enterdate' class="form-control" value={{data.enterdate}}>
+				<input type="hidden" id='contest_id' name='contest_id' class="form-control" value={{data.contest_id}}>				
+
+                <div class="contest-detail__quacker-input modal-form-row-1col">
+                    <div class="contest-detail__quacker-input-col">
+                        <input type="text"  id="claim_email" class="contest-detail__input {{data.error.claim_email?'has-error':''}}" name="claim_email" placeholder="{{ 'Email *'| t }}" value="{{data.claim_email?:''}}" {{data.email?form_field_status:''}}>
+                        <span class="help-block err_email">{{data.error.claim_email| raw?:''  }}</span>
+                        <span class="help-block error js-claim-email"></span>
+                    </div>
+                </div>
+
+				<div class="contest-detail__quacker-input modal-form-row-2col">
+                    <div class="contest-detail__quacker-input-col">
+                        <input type="text"  class="contest-detail__input {{data.error.claim_firstname?'has-error':''}}" name='claim_firstname' id="claim_firstname"  placeholder="{{ 'First Name *'|t }}" value="{{data.claim_firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+                        <span class="help-block err_firstname">{{data.error.claim_firstname?:''}}</span>
+                    </div>
+
+                    <div class="contest-detail__quacker-input-col">
+
+                        <input type="text"  id="claim_lastname" class="contest-detail__input {{data.error.claim_lastname?'has-error':''}}" name="claim_lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.claim_lastname?:''}}"  {{data.claim_lastname?form_field_status:''}}>
+                        <span class="help-block err_lastname">{{data.error.claim_lastname?:''}}</span>
+                    </div>
+                </div>
+				
+				<button class="submit  js-submit-popup-claim">{{"Submit"|t}}</button>
+			</form>
+		</div>
+		{# <div class="popup-wrapper-right-desktop">
+			<img class="pop-up-packshots-desktop-us" src="/themes/tastytheme/src/images/packshots-us-v2.png" alt="Subscribe now">
+		</div>
+		<div class="popup-wrapper-right-mobile">
+			<img class="pop-up-packshots-mobile-us" src="/themes/tastytheme/src/images/packshots-us-mobile-v2.png" alt="Subscribe now">
+		</div> #}
+	</div>
+</div>

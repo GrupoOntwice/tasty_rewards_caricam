@@ -1,0 +1,85 @@
+{#
+/**
+Article views content styled
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+		<div class="recipe__menu-detail-wrapper">
+			{% set counter = 0 %}
+			{% for row in rows %}
+					{% set summary = row.content['#row']._entity.getTranslation(language).body[0].value|render %}
+					{# {% set trimmed_body = summary|length > 100 ? summary|slice(0, 100) ~ '...' : summary %}
+					{% set trimmed_body = truncateText(trimmed_body)  %} #}
+					{% set nid = row.content["#row"]._entity.nid.getValue().0.value %}
+					{% set articlelink = path('entity.node.canonical', {'node': nid}) %}
+					{% set imagesrc = file_url(row.content['#row']._entity.field_image.entity.uri.value) %}
+					{% set imagesrcalttext = row.content['#row']._entity.field_image[0].alt ?: row.content['#row']._entity.title[0].value %}
+
+{#				<div class="recipe__menu-detail-section">#}
+{#					<a href="{{articlelink}}" class="img-article">#}
+{#						<img class="recipe__menu-detail-section-image" src="{{imagesrc}}" alt="{{imagesrcalttext}}">#}
+{#					</a>#}
+{#					<h3 class="recipe__menu-detail-wrapper-title">{{row.content['#row']._entity.getTranslation(language).title[0].value}}</h3>#}
+{#					<p>{{trimmed_body}}</p>#}
+
+{#					<div class="recipe__btn-wrapper">#}
+{#						<a href="{{articlelink}}" class="recipe__btn_red">Read More</a>#}
+{#					</div>#}
+{#				</div>#}
+
+
+				<div class="recipe__menu-detail-section">
+					<div class="background-zoom__parent">
+						<a href="{{articlelink}}" class="img-recipe">
+							<img class="background-zoom__child recipe__menu-detail-section-image" src="{{imagesrc}}" alt="{{imagesrcalttext}}" />
+						</a>
+					</div>
+
+					<div class="recipe__menu-detail-sub-wrapper">
+
+						<div class="recipe__menu-detail-sub-wrapper-height">
+							<a href="{{articlelink}}" class="img-recipe">
+								<h3 class="recipe__menu-detail-wrapper-title">{{row.content['#row']._entity.getTranslation(language).title[0].value | raw}}</h3>
+							</a>
+							{# {{trimmed_body|raw}} #}
+							<div class="truncate_text">
+								{{summary|raw}}
+							</div>
+						</div>
+
+						<div class="recipe__btn-wrapper">
+							<a href="{{articlelink}}" class="recipe__btn_red">{{'Read More' | trans }}</a>
+						</div>
+
+					</div>
+				</div>
+				{% set counter = counter + 1 %}
+		        {% if counter == 3 %}
+		            {% set counter = 0 %}
+		        {% endif %}
+			{% endfor %}
+			{% if counter > 0 %}
+		        {# There should always be multiple of 3 div.contest_menu-detail-section #}
+		        {% for i in counter..2 %}
+		            <div class="recipe__menu-detail-section empty">
+		            </div>
+		        {% endfor %}
+		    {% endif %}
+
+		</div>

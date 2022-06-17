@@ -1,0 +1,494 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
+ *   view and edit tabs when displaying a node).
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.navigation: Items for the navigation region.
+ * - page.navigation_collapsible: Items for the navigation (collapsible) region.
+ * - page.highlighted: Items for the highlighted content region.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.footer: Items for the footer region.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div class="navbar-wrapper-tasty">
+	{{ attach_library('brandstheme/missvickies') }}
+    {{ attach_library('brandstheme/socialfeed') }}
+  {% include '@brandstheme/includes/header.html.twig' %}
+  {% include '@brandstheme/includes/header-' ~ brand ~ '.html.twig' %}
+
+
+
+
+
+
+  <div id="missvickies-videos-container" class="missvickies-video-main-wrapper carousel slide" data-ride="carousel" data-interval="false">
+
+    <div class="missvickies-video-main-block">
+      <div class="container">
+        <h1>
+          {{ 'Connect, unwind, and savour the moment—and your favourite flavour of Miss Vickie’s® kettle cooked potato chips — together.' | trans }}
+        </h1>
+      </div>
+
+      <div class="carousel-inner container">
+
+        <!------------main video------------>
+        <div class="row item {{ idx==0 ? 'active' :'' }}">
+          <div class="col-md-12 missvickies-video-col">
+            <div class="missvickies-video-box en">
+              <div class="missvickies-video-preimg">
+                <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-1">
+                  <img src="/themes/brandstheme/src/images/missvickies/date-night.jpg" alt="date night">
+                </a>
+              </div>
+
+              <div class="missvickies-carousel-content-mobile">
+                <h3>{{ 'Date Night' | trans }}</h3>
+                <p>{{ 'Open some flavour. Feel the spark' | trans }}</p>
+              </div>
+            </div>
+
+            <div class="missvickies-video-box fr">
+              <div class="missvickies-video-preimg">
+                <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-1">
+                  <img src="https://img.youtube.com/vi/LcItstbyc3k/maxresdefault.jpg" alt="une soiree a deux" />
+                </a>
+              </div>
+
+              <div class="missvickies-carousel-content-mobile">
+                <h3>{{ 'Soirée en deux' | trans }}</h3>
+                <p>
+                  {{ 'Faites place à la saveur. Laissez opérer la magie.' | trans }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!------------end of main video------------>
+
+        <!------------second video------------>
+        <div class="row item">
+          <div class="col-md-12 missvickies-video-col">
+            <div class="missvickies-video-box en">
+              <div class="missvickies-video-preimg">
+                <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-2">
+                  <img src="https://img.youtube.com/vi/qIY8d0DJWtM/maxresdefault.jpg" alt="date night">
+                </a>
+              </div>
+
+              <div class="missvickies-carousel-content-mobile">
+                <h3>{{ 'Filipa & Sameer' | trans }}</h3>
+                <p>
+                  {{ 'Dating got a little trickier this year, especially for these new parents, so we brought them back to how they used to connect when they were apart. ' | trans }}
+                </p>
+              </div>
+            </div>
+
+            <div class="missvickies-video-box fr">
+              <div class="missvickies-video-preimg">
+                <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-2">
+                  <img src="https://img.youtube.com/vi/kM6JQr_7eVg/maxresdefault.jpg" alt="une soiree a deux" />
+                </a>
+              </div>
+
+              <div class="missvickies-carousel-content-mobile">
+                <h3>{{ 'Filipa & Sameer' | trans }}</h3>
+                <p>
+                  {{ 'C’était un peu plus difficile de profiter d’une soirée à deux cette année, particulièrement pour ces nouveaux parents. On leur a rappelé comment ils faisaient pour rester connectés l’un à l’autre, même lorsque séparés.' | trans }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!------------end of second video------------>
+
+        <!------------Video 3------------>
+        <div class="row item">
+          <div class="missvickies-video-box en">
+            <div class="missvickies-video-preimg">
+              <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-3">
+                <img src="https://img.youtube.com/vi/1aUxK9dzERk/maxresdefault.jpg" alt="Donald & Isabelle" />
+              </a>
+            </div>
+
+            <div class="missvickies-carousel-content-mobile">
+              <h3>{{ 'Donald & Isabelle' | trans }}</h3>
+              <p>
+                {{ 'What’s the secret to 22 years of marriage? A little flirting, lots of laughter, and some extra spice from Miss Vickie’s® Jalapeño flavour kettle cooked potato chips.' | trans }}
+              </p>
+            </div>
+          </div>
+
+          <div class="missvickies-video-box fr">
+            <div class="missvickies-video-preimg">
+              <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-3">
+                <img src="https://img.youtube.com/vi/-1Q9KYug81A/maxresdefault.jpg" alt="Donald & Isabelle" />
+              </a>
+            </div>
+
+            <div class="missvickies-carousel-content-mobile">
+              <h3>{{ 'Donald & Isabelle' | trans }}</h3>
+              <p>
+                {{ 'Quel est le secret d’un mariage qui dure depuis 22 ans? Un peu de flirt, beaucoup de rires et un extra de piquant et d’épices des croustilles cuites à la marmite Miss Vickie’s Jalapeño.' | trans }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <!------------End of Video 3------------>
+
+        <!------------Video 4------------>
+
+        <div class="row item">
+          <div class="missvickies-video-box en">
+            <div class="missvickies-video-preimg">
+              <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-4">
+                <img src="https://img.youtube.com/vi/lKrzBWM4eV4/maxresdefault.jpg" alt="Tyler & Todd" />
+              </a>
+            </div>
+
+            <div class="missvickies-carousel-content-mobile">
+              <h3>{{ 'Tyler & Todd' | trans }}</h3>
+              <p>
+                {{ 'When they aren’t exploring the world in their converted RV with their dogs, Charlie and Eddie, these two love to connect at home with their favourite shows and their favourite snacks.' | trans }}
+              </p>
+            </div>
+          </div>
+
+          <div class="missvickies-video-box fr">
+            <div class="missvickies-video-preimg">
+              <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-4">
+                <img src="https://img.youtube.com/vi/bJxGf5EVJUA/maxresdefault.jpg" alt="Tyler & Todd" />
+              </a>
+            </div>
+
+            <div class="missvickies-carousel-content-mobile">
+              <h3>{{ 'Tyler & Todd' | trans }}</h3>
+              <p>
+                {{ 'Quand ils n’explorent pas le monde à bord de leur VR converti avec leurs chiens Charlie et Eddie, ces deux amoureux aiment se rapprocher, à la maison, devant leurs émissions favorites et avec leur collation favorite.' | trans }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <!------------End of Video 4------------>
+
+      </div>
+
+
+
+        <ol class="carousel-indicators missvickies-carousel-indicators">
+          {#              {% for idx, video in data.videos %}#}
+          {#                  <li data-target="#missvickies-videos-carousel" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>#}
+          {#              {% endfor %}#}
+
+          <div class="missvickies-carousel-content">
+            <li class="thumb-1" data-target="#missvickies-videos-container" data-slide-to="0" class="active"></li>
+
+            <div class="missvickies-carousel-content-wrap">
+              <h3>{{ 'Date Night' | trans }}</h3>
+              <p>{{ 'Open some flavour. Feel the spark.' | trans }}</p>
+            </div>
+          </div>
+
+          <div class="missvickies-carousel-content">
+            <li class="thumb-2" data-target="#missvickies-videos-container" data-slide-to="1"></li>
+
+            <div class="missvickies-carousel-content-wrap">
+              <h3>{{ 'Filipa & Sameer' | trans }}</h3>
+              <p>
+                {{ 'Dating got a little trickier this year, especially for these new parents, so we brought them back to how they used to connect when they were apart. ' | trans }}
+              </p>
+            </div>
+          </div>
+
+          <div class="missvickies-carousel-content">
+            <li class="thumb-3" data-target="#missvickies-videos-container" data-slide-to="2"></li>
+
+            <div class="missvickies-carousel-content-wrap">
+              <h3>{{ 'Donald & Isabelle' | trans }}</h3>
+              <p>
+                {{ 'What’s the secret to 22 years of marriage? A little flirting, lots of laughter, and some extra spice from Miss Vickie’s® Jalapeño flavour kettle cooked potato chips.' | trans }}
+              </p>
+            </div>
+          </div>
+
+          <div class="missvickies-carousel-content">
+            <li class="thumb-4" data-target="#missvickies-videos-container" data-slide-to="3"></li>
+
+            <div class="missvickies-carousel-content-wrap">
+              <h3>{{ 'Tyler & Todd' | trans }}</h3>
+              <p>
+                {{ 'When they aren’t exploring the world in their converted RV with their dogs, Charlie and Eddie, these two love to connect at home with their favourite shows and their favourite snacks.' | trans }}
+              </p>
+            </div>
+          </div>
+        </ol>
+
+        <a class="carousel-control-prev" href="#missvickies-videos-container" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#missvickies-videos-container" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+
+
+    </div>
+
+
+{#    <div class="missvickies-video-blocks container">#}
+
+{#      <!------------Video 2------------>#}
+{#      <div class="missvickies-video-box en">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-2">#}
+{#            <img src="https://img.youtube.com/vi/qIY8d0DJWtM/maxresdefault.jpg" alt="Filipa & Sameer" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Filipa & Sameer' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'Dating got a little trickier this year, especially for these new parents, so we brought them back to how they used to connect when they were apart. ' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+
+{#      <div class="missvickies-video-box fr">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-2">#}
+{#            <img src="https://img.youtube.com/vi/qIY8d0DJWtM/maxresdefault.jpg" alt="Filipa & Sameer" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Filipa & Sameer' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'C’était un peu plus difficile de profiter d’une soirée à deux cette année, particulièrement pour ces nouveaux parents. On leur a rappelé comment ils faisaient pour rester connectés l’un à l’autre, même lorsque séparés.' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+{#      <!------------End of Video 2------------>#}
+
+{#      <!------------Video 3------------>#}
+{#      <div class="missvickies-video-box en">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-3">#}
+{#            <img src="https://img.youtube.com/vi/1aUxK9dzERk/maxresdefault.jpg" alt="Donald & Isabelle" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Donald & Isabelle' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'What’s the secret to 22 years of marriage? A little flirting, lots of laughter, and some extra spice from Miss Vickie’s® Jalapeño flavour kettle cooked potato chips.' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+
+{#      <div class="missvickies-video-box fr">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-3">#}
+{#            <img src="https://img.youtube.com/vi/-1Q9KYug81A/maxresdefault.jpg" alt="Donald & Isabelle" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Donald & Isabelle' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'Quel est le secret d’un mariage qui dure depuis 22 ans? Un peu de flirt, beaucoup de rires et un extra de piquant et d’épices des croustilles cuites à la marmite Miss Vickie’s Jalapeño.' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+{#      <!------------End of Video 3------------>#}
+
+{#      <!------------Video 4------------>#}
+{#      <div class="missvickies-video-box en">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-en-4">#}
+{#            <img src="https://img.youtube.com/vi/lKrzBWM4eV4/maxresdefault.jpg" alt="Tyler & Todd" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Tyler & Todd' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'When they aren’t exploring the world in their converted RV with their dogs, Charlie and Eddie, these two love to connect at home with their favourite shows and their favourite snacks.' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+
+{#      <div class="missvickies-video-box fr">#}
+{#        <div class="missvickies-video-preimg">#}
+{#          <a href="#" data-key="Qc4_VtsQV8E" class="activate-video-fr-4">#}
+{#            <img src="https://img.youtube.com/vi/bJxGf5EVJUA/maxresdefault.jpg" alt="Tyler & Todd" />#}
+{#          </a>#}
+{#        </div>#}
+{#        <h3>{{ 'Tyler & Todd' | trans }}</h3>#}
+{#        <p>#}
+{#          {{ 'Quand ils n’explorent pas le monde à bord de leur VR converti avec leurs chiens Charlie et Eddie, ces deux amoureux aiment se rapprocher, à la maison, devant leurs émissions favorites et avec leur collation favorite.' | trans }}#}
+{#        </p>#}
+{#      </div>#}
+{#      <!------------End of Video 4------------>#}
+{#    </div>#}
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#  <div id="missvickies-videos-container" class="missvickies-video-main-wrapper">#}
+
+{#    <div class="container">#}
+{#      <h1>#}
+{#        {{ 'Connect, unwind, and savour the moment—and your favourite flavour of Miss Vickie’s® kettle cooked potato chips — together.' | trans }}#}
+{#      </h1>#}
+
+{#        <div class="missvickies-main-video en"></div>#}
+
+{#        <div class="missvickies-video-thumbnails">#}
+
+{#          <div class="missvickies-video-box en">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="{% if language == 'en' %}bWX3bE5RkEs{% else %}LcItstbyc3k{% endif %}" class="activate-video-en-1">#}
+{#                <img src="/themes/brandstheme/src/images/missvickies/date-night.jpg" alt="date night">#}
+{#              </a>#}
+{#            </div>#}
+
+{#            <h3>{{ 'Date Night' | trans }}</h3>#}
+{#            <p>{{ 'Open some flavour. Feel the spark' | trans }}</p>#}
+{#          </div>#}
+
+{#          <div class="missvickies-video-box fr">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="{% if language == 'en' %}bWX3bE5RkEs{% else %}LcItstbyc3k{% endif %}" class="activate-video-fr-1">#}
+{#                <img src="https://img.youtube.com/vi/LcItstbyc3k/maxresdefault.jpg" alt="une soiree a deux"/>#}
+{#              </a>#}
+{#            </div>#}
+
+{#            <h3>{{ 'Soirée en deux' | trans }}</h3>#}
+{#            <p>{{ 'Faites place à la saveur. Laissez opérer la magie.' | trans }}</p>#}
+{#          </div>#}
+
+
+{#          <!------------Video 2------------>#}
+{#          <div class="missvickies-video-box en">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="qIY8d0DJWtM" class="activate-video-en-2">#}
+{#                <img src="https://img.youtube.com/vi/qIY8d0DJWtM/maxresdefault.jpg" alt="Filipa & Sameer"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Filipa & Sameer' | trans }}</h3>#}
+{#            <p>{{ 'Dating got a little trickier this year, especially for these new parents, so we brought them back to how they used to connect when they were apart. ' | trans }}</p>#}
+{#          </div>#}
+
+{#          <div class="missvickies-video-box fr">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="kM6JQr_7eVg" class="activate-video-fr-2">#}
+{#                <img src="https://img.youtube.com/vi/kM6JQr_7eVg/maxresdefault.jpg" alt="Filipa & Sameer"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Filipa & Sameer' | trans }}</h3>#}
+{#            <p>{{ 'C’était un peu plus difficile de profiter d’une soirée à deux cette année, particulièrement pour ces nouveaux parents. On leur a rappelé comment ils faisaient pour rester connectés l’un à l’autre, même lorsque séparés.' | trans }}</p>#}
+{#          </div>#}
+{#          <!------------End of Video 2------------>#}
+
+
+{#          <!------------Video 3------------>#}
+{#          <div class="missvickies-video-box en">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="1aUxK9dzERk" data-key="Qc4_VtsQV8E" class="activate-video-en-3">#}
+{#                <img src="https://img.youtube.com/vi/1aUxK9dzERk/maxresdefault.jpg" alt="Donald & Isabelle"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Donald & Isabelle' | trans }}</h3>#}
+{#            <p>{{ 'What’s the secret to 22 years of marriage? A little flirting, lots of laughter, and some extra spice from Miss Vickie’s® Jalapeño flavour kettle cooked potato chips.' | trans }}</p>#}
+{#          </div>#}
+
+{#          <div class="missvickies-video-box fr">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="-1Q9KYug81A" data-key="Qc4_VtsQV8E" class="activate-video-fr-3">#}
+{#                <img src="https://img.youtube.com/vi/-1Q9KYug81A/maxresdefault.jpg" alt="Donald & Isabelle"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Donald & Isabelle' | trans }}</h3>#}
+{#            <p>{{ 'Quel est le secret d’un mariage qui dure depuis 22 ans? Un peu de flirt, beaucoup de rires et un extra de piquant et d’épices des croustilles cuites à la marmite Miss Vickie’s Jalapeño.' | trans }}</p>#}
+{#          </div>#}
+{#          <!------------End of Video 3------------>#}
+
+
+{#          <!------------Video 4------------>#}
+{#          <div class="missvickies-video-box en">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="lKrzBWM4eV4" data-key="Qc4_VtsQV8E" class="activate-video-en-4">#}
+{#                <img src="https://img.youtube.com/vi/lKrzBWM4eV4/maxresdefault.jpg" alt="Tyler & Todd"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Tyler & Todd' | trans }}</h3>#}
+{#            <p>{{ 'When they aren’t exploring the world in their converted RV with their dogs, Charlie and Eddie, these two love to connect at home with their favourite shows and their favourite snacks.' | trans }}</p>#}
+{#          </div>#}
+
+{#          <div class="missvickies-video-box fr">#}
+{#            <div class="missvickies-video-preimg">#}
+{#              <a href="bJxGf5EVJUA" data-key="Qc4_VtsQV8E" class="activate-video-fr-4">#}
+{#                <img src="https://img.youtube.com/vi/bJxGf5EVJUA/maxresdefault.jpg" alt="Tyler & Todd"/>#}
+{#              </a>#}
+{#            </div>#}
+{#            <h3>{{ 'Tyler & Todd' | trans }}</h3>#}
+{#            <p>{{ 'Quand ils n’explorent pas le monde à bord de leur VR converti avec leurs chiens Charlie et Eddie, ces deux amoureux aiment se rapprocher, à la maison, devant leurs émissions favorites et avec leur collation favorite.' | trans }}</p>#}
+{#          </div>#}
+{#          <!------------End of Video 4------------>#}
+
+{#        </div>#}
+{#    </div>#}
+{#  </div>#}
+
+
+
+
+  <section id="coupon" class="missvickies-coupon-block">
+    <div class="missvickies-section-container two-panel-block">
+      {{ coupon_block|t|raw }}
+    </div>
+  </section>
+
+</div>
+
+
+

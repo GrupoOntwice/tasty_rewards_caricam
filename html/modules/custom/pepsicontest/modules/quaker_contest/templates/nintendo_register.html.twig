@@ -1,0 +1,112 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+window.contest_name = '{{data.contest_type}}';
+window.contest_type = '{{data.contest_type}}';
+window.show_age_popup = {{data.has_age_gate}};
+window.popup_contest = 1;
+// language = '{{ data.language }}';
+</script>
+
+{% set page_contestform = 1 %}
+{% include '@quaker_contest/include/custom-contest-popup-form.html.twig' %}
+
+{% set newregister = 0 %}
+{% if logged_in %}
+    {% set newregister = 0 %}
+{% else %}
+    {% set newregister = 1 %}
+{% endif %}
+
+{% set submit_status = "" %}
+{% if data.entry_saved == 1 %}
+    {% set submit_status = "disabled" %}
+{% endif %}
+
+{{ data.tag | raw }}
+{% set subtitle = data.subtitle %}
+{% set color = data.colorTheme %}
+{% set mobileColor = data.mobileColorTheme %}
+{# {% set textPosition = data.bannerTextPosition %} #}
+{# {% set description = data.body %} #}
+
+{{ attach_library( 'pepsicontest/signup' ) }}
+{{ attach_library( 'quaker_contest/landing' ) }}
+
+{% set message_upccode = '' %}
+{% set instruction_msg = '' %}
+
+
+{% if data.contest_type == 'nintendo' %}
+    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+    {% set message_trademark = "Nintendo is not a sponsor, co-sponsor or administrator of the contest. Nintendo trademarks and copyrights are properties of Nintendo." %}
+    {% set message_upccode = "Use the 16/19 digit codes located under the date on the front of specially marked Frito-Lay<sup>®</sup> Variety Packs." %}
+    {% set instruction_msg = 'Enter your code for a chance to win<sup>†</sup> a Nintendo Switch™ bundle!' %}
+{% endif %}
+
+
+
+{% if data.contest_type == 'nintendo' %}
+    <section class="nintendo-sign-up">
+    <div class="nintendo-sign-up-text-banner">
+        <h1>{{ instruction_msg|t}}</h1><br>
+        <p>{{ message_upccode|t}}</p><br>
+        <span>{{ message_trademark|t}}</span>
+        {% if data.contest_type == 'cheetos' %}
+            <button class="btn_red"> {{'Play without UPC'|t}}</button>
+        {% endif %}
+    </div>
+
+        <img class="nintendo-fritolay-img en" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-v1.png" alt="fritolay variety packs">
+        <img class="nintendo-fritolay-img fr" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-fr-v1.png" alt="fritolay variety packs">
+
+        <section id="contest">
+            <div class="contest-detail__wrapper contest-detail__quacker-wrapper nounderline">
+
+                    <div class="contest-detail__form-quacker">
+                    {% if (data.status == 1) %} {#opened#}
+                        {% if data.contest_type == 'nintendo' %}
+                            {% if data.is_login %}
+                                {% include '@quaker_contest/include/login-form--nintendo.html.twig' %}
+                            {% else %}
+                                {% include '@quaker_contest/include/registration-form--nintendo.html.twig' %}
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <div class="row">
+                            <hr class="signup_hr" class="bg-grey" />
+                            <div class="col-sm-12 text-center form-group">
+
+                                {% if (data.status == 2) %} {#comming soon#}
+                                    <h4 class="pink signika">{{ 'Contests is not available at the moment. Please check back soon.' | t  }}</h4>
+                                {% elseif (data.status == 3) %} {#closed #}
+                                    <h4 class="pink signika">{{ 'Thank you for your interest. The contest is now closed.' | t  }}</h4>
+                                {% elseif (data.status == 4) %} {#already participate #}
+                                    {# <h4 class="pink signika">{{ 'You have already entered this contest. You can only participate three times a day' | t  }}</h4> #}
+                                    <h4 class="pink signika">{{ data.already_registered_msg}}</h4>
+                                {% else %} {#already participate #}
+                                {% endif %}
+
+                                <a class="btn btn-primary" href="{{ url('pepsicontest.landing') }}">{{ 'Return to homepage' | t }}</a>
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </section>
+
+
+{% endif %}
+
+
+<script>
+    function fileChanged(input) {
+        let fileName = document.querySelector('.upload-quacker-fileName');
+        fileName.textContent = input.files[0]['name'];
+    }
+</script>
+

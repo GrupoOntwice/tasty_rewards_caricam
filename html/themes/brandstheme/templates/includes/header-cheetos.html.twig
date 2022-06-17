@@ -1,0 +1,139 @@
+<nav id="brands_navigation" class="cheetos-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav" role="tab" tabindex="0">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ brand_basepath }}" class="cheetos-logo-mobile top-logo noDesktop">
+    <img class="cheetos-logo" src="/themes/brandstheme/src/images/cheetos/cheetos-logo.png?v=1" alt="cheetos.ca logo">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+
+  <!-- MENU OPTIONS -->
+  <ul class="brands-navbar__ul brands-navbar__center-align">
+    <li class="brands-navbar__item-first-border">
+      <a class="" href="{{ brand_basepath }}/products" id="products-submenu">{{'Products'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/recipes" id="recipes-submenu">{{'Recipes'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/about-us" id="about-us-submenu">{{'About Us'|t}}</a>
+    </li>
+    <li class="brands-navbar__item-border">
+      <a href="{{'https://contact.pepsico.com/fritolayca'|t}}" target="_blank" id="about-us-submenu">
+        {{'Contact Us'|t}}
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+    </li>
+    {#
+    <li class="brands-navbar__item-border">
+      <a href="{{ brand_basepath }}/cheetosartofficialrules" id="contest-rules">{{'Contest rules'|t}}</a>
+    </li>
+    #}
+
+    {# <li class="brands-navbar__item-border">
+      <a href="http://www.cheetos.ca/#newsletter_signup" id="http://www.cheetos.ca/#newsletter_signup-submenu">Tasty Rewards</a>
+    </li> #}
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ brand_basepath }}" class="logo noMobile">
+    <img id="cheetos-logo" src="/themes/brandstheme/src/images/cheetos/cheetos-logo.png?v=1" alt="cheetos.ca logo">
+  </a>
+
+  <!-- MENU OPTIONS -->
+
+{#  <ul class="brands-navbar__ul cheetos-nav__right">#}
+{#    <li class="brands-navbar__item-border">#}
+{#      <a href="{{ brand_basepath }}/cheetosartofficialrules" id="contest-rules">{{'Contest rules'|t}}</a>#}
+{#    </li>#}
+{#  </ul>#}
+
+  <!-- TO SEARCH POPOVER -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border">
+      <a class="brands-navbar__social-icons" aria-label="twitter link" href="https://twitter.com/cheetoscanada" id="nav-twitter" target="_blank">
+        <i class="fa fa-twitter fa-navbar" title="twitter icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" aria-label="instagram link" href="https://www.instagram.com/cheetoscanada/" id="nav-instagram" target="_blank">
+        <i class="fa fa-instagram fa-navbar" title="instagram icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" aria-label="facebook link" href="https://www.facebook.com/cheetoscanada" id="nav-facebook" target="_blank">
+        <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+
+      <a class="brands-navbar__social-icons" aria-label="youtube link" href="https://www.youtube.com/channel/UCtJ6uTLjbn-bH4dTRDN8EpQ" id="nav-youtube" target="_blank">
+        <i class="fa fa-youtube-play fa-navbar" title="youtube icon"></i>
+        <span>{{'Opens in a new tab'|t}}</span>
+      </a>
+  </div>
+
+
+
+
+{#  <div class="cheetos-socials">#}
+{#    <a class="cheetos-social-link" href="https://twitter.com/cheetoscanada" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/cheetos/twitter.png">#}
+{#    </a>#}
+{#    <a class="cheetos-social-link" href="https://www.instagram.com/cheetoscanada/" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/cheetos/instagram.png">#}
+{#    </a>#}
+{#    <a class="cheetos-social-link" href="https://www.facebook.com/cheetoscanada" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/cheetos/facebook.png">#}
+{#    </a>#}
+{#    <a class="cheetos-social-link" href="https://www.youtube.com/channel/UCu4vZs-2w-Jc15luzze8FvA" target="_blank">#}
+{#      <img src="/themes/brandstheme/src/images/cheetos/youtube.png">#}
+{#    </a>#}
+{#  </div>#}
+
+  <!-- TO SEARCH POPOVER -->
+{#   <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__search justify-center brands-navbar__item-border">
+    <input type="text" id="to-open-close-search-popover-input" title="Search...">
+    <a class="brands-navbar__search-copy" href="#" id="to-open-close-search-popover-button">
+      <span class="srt">Search</span>
+    </a>
+  </div> #}
+
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+    <a href="javascript:void(0);" id="" class="choose-lang_fr js-translation">
+      {{ active_lang == 'en' ? 'FR'|t : 'EN'|t }}
+    </a>
+
+    <div class="brands-navbar_accout-options">
+      <a href="#" id="" class="sign-in_left">
+        {{'Sign In'|t}}
+      </a>
+      <a href="#" id="" class="sign-up_right">
+        {{'Sign Up'|t}}
+      </a>
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/logo-{{active_lang}}.png" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

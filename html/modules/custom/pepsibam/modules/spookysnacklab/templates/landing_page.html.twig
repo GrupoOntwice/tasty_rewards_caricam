@@ -1,0 +1,196 @@
+{{ attach_library( 'spookysnacklab/spookysnacklabLibrary' ) }}
+
+<section id="banner" class='spookysnacklab banner d-block'>
+  <img class="noMobile-sm w-100" src="/themes/tastytheme/src/images/spooky-snack-lab/spookysnacklab_banner.png"
+       alt="Spooky Snack Lab Banner"/>
+  <img class="noDesktop-sm w-100" src="/themes/tastytheme/src/images/spooky-snack-lab/Halloween_Header-Mobile.png"
+       alt="Spooky Snack Lab Banner"/>
+</section>
+
+<section class='spookysnacklab-snacks'>
+
+
+  <div class="chips-top-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side2.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side1.png"
+         alt="Spookysnacklab Chips"/>
+  </div>
+
+  <div class="chips-top-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/topright4.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/topright2.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/topright3.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/topright1.png"
+         alt="Spookysnacklab Chips"/>
+  </div>
+
+  <div class="container">
+    <div class="row text-center spookysnacklab-recipe-container padding-bottom-large ">
+      <div class="col-md-12 recipe-heading">
+        <h1 class="recipe-title yellow text-uppercase taurunum-font">{{ 'Scary Good recipes'|t }}</h1>
+        <p class="padding-top text-white">
+          {{ 'Complete your monster bash menu with these Halloween recipes'|t }}
+        </p>
+      </div>
+
+      <div class="container">
+        {% for recipe in data.featured_recipes %}
+          <div class="row spookysnacklab-recipe-block-row">
+
+            <div class="col-md-8 spookysnacklab-featured-recipe-side-img-col">
+              <a aria-label="featured-recipe-link" href="{{ recipe.link }}">
+                <div class="spookysnacklab-featured-recipe-img"
+                     style="background-image: url('{{ recipe.image_url }}')"></div>
+                {# <div class="spookysnacklab-featured-recipe-img"> #}
+                {# <img src = "{{ recipe.image_url }}" alt ="featured recipe"> #}
+                {# </div> #}
+              </a>
+            </div>
+
+
+            <div class="col-md-4 spookysnacklab-featured-recipe-side-description-col">
+
+
+              <div class="spookysnacklab-featured-recipe-description">
+
+                <a href="{{ recipe.link }}">
+                  <h2 class="text-purple">
+                    {{ recipe.title|raw }}
+                  </h2>
+                </a>
+
+                <div class="spookysnacklab-stars stars-flex-center padding-top-medium">
+                  {% for i in 1..5 %}
+                    <span {% if i <= recipe.rating %}class="checked"{% endif %}></span>
+                  {% endfor %}
+                </div>
+
+                <div class="featured-recipe-gold-btn">
+                  <a class="spookysnacklab-btn spooky-orange-btn" href="{{ recipe.link }}">{{ 'Show Recipe'|t }}</a>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="spookysnacklab-nocarousel-container row" data-count="{{ recipe_count }}">
+        {% for recipe in data.recipes %}
+          <div class="col-md-4 spookysnacklab-recipes">
+            <div class="spookysnacklab-nocarousel-box" data-nid="{{ recipe.nid }}">
+              <a aria-label="recipe-link" href="{{ recipe.link }}">
+                <div class="spookysnacklab-recipe-img" style="background: url('{{ recipe.image_url }}') no-repeat">
+                  {# <a href="{{ recipe.link }}"><img class="w-100" src="{{ recipe.image_url }}"/></a> #}
+                </div>
+              </a>
+
+              <div class="spookysnacklab-recipe-title">
+                <a class="spookysnacklab_recipetitle" href="{{ recipe.link }}">
+                  <h3 class="padding-top padding-bottom yellow transat-font">
+                    {{ recipe.title|raw }}
+                  </h3>
+                </a>
+              </div>
+
+              <div class="spooky-snack-lab-recipe-btn margin-top margin-bottom-medium">
+                <a href="{{ recipe.link }}"
+                   class="spookysnacklab-btn spooky-orange-btn opensans-bold btn-textsize m-auto">
+                  {{ 'View Recipe'|t }}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="col-md-12 center-align padding-top">
+        <div class="view-more-alt" style="text-align:center;">
+          <a href="javascript:void(0);"
+             class="more-recipes spookysnacklab-btn spooky-yellow-btn text-purple opensans-bold btn-textsize ">{{ 'View More Recipes'|t }}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chips-bottom-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side3.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side5.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side6.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side8.png"
+         alt="Spookysnacklab Chips"/>
+
+  </div>
+
+  <div class="chips-bottom-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side8.png"
+         alt="Spookysnacklab Chips"/>
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spooky-snack-lab/side7.png"
+         alt="Spookysnacklab Chips"/>
+  </div>
+
+
+</section>
+
+
+<section id="coupons">
+  <div class="coupon--container-bg-desktop"
+       style="background-image: url(/themes/tastytheme/src/images/spooky-snack-lab/spooky-snack-lab-coupon-bg.png);">
+    {# <div class="coupon--container"> #}
+    <div
+      class="container spookysnacklab-d-md-flex padding-top-medium-dsk padding-bottom-medium-dsk spookysnacklab-coupon-padding">
+      <div class="coupon--display">
+        <a href="/en-us/coupons">
+          <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+            <img id="spooky-coupons" alt="the season for savings" data-entity-type="file"
+                 src="/themes/tastytheme/src/images/spooky-snack-lab/coupon-img.png">
+            {# <img id="spooky-cheetos" alt="tis the season for savings" data-entity-type="file" src="/themes/tastytheme/src/images/spooky-snack-lab/spooky-snacklab-cheetos.png"> #}
+          </div>
+        </a>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <h3 class="text-purple transat-font text-uppercase"
+            style="font-size:2em;">{{ 'Spooktacular <br> savings' }}</h3>
+        <p class="opensans-bold text-purple ">{{ 'These offers are all treat,<br class="noMobile-sm">no trick.' }}</p>
+
+        <a class="spookysnacklab-btn opensans-bold spooky-orange-btn btn-textsize" href="/en-us/coupons">Get My
+          Coupon*</a>
+        <p class="coupon-disclaimer opensans-regular">*Coupons available while quantities last.</p>
+      </div>
+    </div>
+  </div>
+  {# {{ drupal_block('couponblockcallout') }} #}
+</section>
+
+<section class = "sweepstakes-banner">
+ <a href = "/en-us/contests/notricksalltreats/sign-up"><img src="/themes/tastytheme/src/images/spooky-snack-lab/sweepstakes-banner.jpg" alt = "sweepstakes-banner"/></a>
+</section>
+
+<section  class='spookysnacklab banner d-block'>
+  {% if data.first_banner %}
+    <a href="{{data.contest_link}}">
+      <img class="noMobile-sm w-100" src="{{data.first_banner.image_url}}"
+           alt="Spooky Snack Lab Banner"/>
+      <img class="noDesktop-sm w-100" src="{{data.first_banner.mobile_image_url}}"
+           alt="Spooky Snack Lab Banner"/>
+    </a>
+  {% endif %}
+</section>
+
+
+
+
+

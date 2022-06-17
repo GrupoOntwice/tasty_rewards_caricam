@@ -1,0 +1,1253 @@
+/**********************************
+   Menu
+**********************************/
+
+.smartfood .fa-facebook-nav {
+  padding: 8px 11px !important;
+}
+
+.smartfood .header__logo-container {
+  z-index: 999999;
+}
+
+.smartfood #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.smartfood .brands-navbar__ul a{
+    font-size: 16px;
+    text-transform: uppercase !important;
+    font-family: "Farm-New-Medium",sans-serif;
+}
+
+.smartfood-navbar__vertical-align{
+    background-color: #FCD701;
+    padding: 8px 25px 8px 25px;
+    height: 75px;
+}
+
+.smartfood .fa-navbar {
+    background-color: #000000;
+    color: #FCD701;
+    font-size: 14px !important;
+}
+
+.smartfood-logo {
+    width: 90px;
+    max-width: 100%;
+    height: auto;
+}
+
+.smartfood-button{
+    background: #FFC90A;
+    font-family: "Open Sans", sans-serif;
+    padding: 15px;
+    color: #000000;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 180px;
+    display: inline-block !important;
+}
+
+.smartfood .btn_carousel, .smartfood .btn-recall{
+    background: #FFC90A;
+    font-family: "Open Sans", sans-serif;
+    padding: 15px;
+    color: #000000;
+    border-radius: 25px;
+    font-weight: bold;
+    display: inline-block !important;
+    border: none;
+    text-align: center;
+}
+
+.smartfood-button:hover{
+    color: #FBF8F0;
+}
+
+.smartfood-title{
+    font-size: 60px !important;
+    margin-bottom: 30px;
+}
+
+.smartfood section#banner .banner-desktop span.h1{
+    font-family: "MarketPro-CondMedium", sans-serif;
+    text-transform: uppercase !important;
+    color: #000000 !important;
+    font-weight: normal;
+}
+
+.smartfood-banner .slick-dotted.slick-slider {
+    margin-bottom: -22px !important;
+}
+
+.smartfood-product-img sup{
+    font-size: 1.3em !important;
+    top: -2px;
+}
+
+/**********************************
+   Featured products
+**********************************/
+
+.smartfood-content-background-container-homepage{
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-featured-product-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.featured-product-image-div{
+    position: absolute;
+    bottom: 3%;
+    text-align: center;
+}
+
+.smartfood-featured-product--container-bg-desktop{
+    padding: 70px 0;
+}
+
+.smartfood-featured-product--container-bg-desktop h2{
+    font-family: "MarketPro-CondMedium",sans-serif;
+    text-transform: uppercase !important;
+    font-size: 60px !important;
+    padding: 15px;
+    line-height: 1em;
+}
+
+.featured-prod-copy-div{
+    padding: 0 20px;
+}
+
+.smartfood-product-description{
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase !important;
+    font-family: "Farm-New-Medium",sans-serif;
+    display: block;
+}
+
+.featured-prod-bag-bg{
+    height: 480px;
+}
+
+/**********************************
+   About us
+**********************************/
+
+.smartfood-about-us-top-banner{
+    background: url("/themes/brandstheme/src/images/smartfood/smartfood-about.png") top center no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.smartfood-about-us-top-banner h1{
+    font-family: "MarketPro-CondMedium", sans-serif;
+    font-size: 60px;
+    margin: auto;
+    text-transform: uppercase !important;
+}
+
+.smartfood-about-us-wrapper{
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+.smartfood-about-us-paragraph{
+    display: flex;
+}
+
+.smartfood-about-us-paragraph-col{
+    background-image: url("/themes/brandstheme/src/images/smartfood/about-title.png");
+    background-size: 26%;
+    background-position: -2% -20%;
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    width: 50%;
+}
+
+.smartfood-about-us-paragraph-col h2{
+    font-family: "MarketPro-CondMedium", sans-serif;
+    font-size: 60px;
+    margin-bottom: 10px;
+    padding: 25px 0 10px 0;
+    text-transform: uppercase !important;
+}
+
+.smartfood-about-us-paragraph-col p{
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+/**********************************
+   Product
+**********************************/
+
+.smartfood-product-banner-category-block{
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-product-banner.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+.smartfood-products-categories{
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-product-body.png");
+    background-size: cover;
+    padding: 60px 0 30px 0;
+}
+
+.smartfood-products{
+    padding: 70px 0;
+}
+
+.smartfood-products-categories .smartfood-product-img img {
+    width: 90%;
+}
+
+.smartfood-prod-col a{
+    display: block;
+}
+
+.smartfood-products-categories .smartfood-product-box{
+    width: 340px;
+}
+
+.smartfood-product-box{
+    text-align: center;
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: inherit;
+    align-items: center;
+    padding: 40px 20px 40px;
+    background: linear-gradient(#FCD701 50%,#000000 50%) no-repeat;
+}
+
+.smartfood-product-box h3{
+    font-family: "Farm-New-Medium", sans-serif;
+    text-transform: uppercase !important;
+    margin: 0 0 15px 0;
+    color: #000000;
+}
+
+.smartfood-products-categories .smartfood-product-box{
+    background: none;
+}
+
+.smartfood-products .smartfood-product-img img {
+    /*width: 100%;*/
+    height: 280px;
+    width: auto;
+}
+
+.smartfood-products .smartfood-product-img h4{
+    margin-bottom: 10px;
+}
+
+.smartfood-product-category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.smartfood-product-img a{
+    display: block;
+}
+
+.smartfood-title h1{
+    font-family: "MarketPro-CondMedium", sans-serif;
+    font-size: 60px;
+    text-transform: uppercase !important;
+}
+
+.smartfood-product-box h4 a {
+    color: #FFC90A;
+    font-size: 40px;
+    line-height: 1.2em;
+    text-transform: uppercase !important;
+    font-family: "MarketProRegular", sans-serif;
+}
+
+/**********************************
+   Product categories
+**********************************/
+
+.smartfood-product-categories{
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-product-categories.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 120px 12% 160px;
+}
+
+/**********************************
+        Product description
+***********************************/
+
+#smartfood-related-products-carousel{
+    background: url("/themes/brandstheme/src/images/smartfood/smartfood-featured-product-carousel.png") top center no-repeat;
+    background-size: cover;
+    padding: 64px 16px 64px;
+}
+
+.smartfood-featured-product-description{
+    margin: 15px;
+    height: 70px;
+    text-align: center;
+}
+
+.smartfood-featured-product-description h4{
+    font-family: "MarketPro-CondMedium",sans-serif;
+    font-size: 25px;
+}
+
+.smartfood-featured-product-description h4 a{
+    color: #000000;
+    text-transform: uppercase !important;
+}
+
+.smartfood-view-featured-products{
+    text-align: center;
+}
+
+.smartfood-featured-prod-img-col{
+    text-align: center;
+}
+
+.smartfood-featured-prod-img-col img{
+    width: 200px;
+}
+
+.smartfood-featured-prod-img-col a{
+    display: block;
+}
+
+.smartfood-product-block{
+    background: url("/themes/brandstheme/src/images/smartfood/background-product-detail.png") top center no-repeat;
+    background-size: cover;
+}
+
+.smartfood-product-block .container{
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.smartfood-detail__product--block{
+    width: 50%;
+    padding: 60px 25px;
+}
+
+.smartfood-detail__product--block h1{
+    font-family: "MarketPro-CondMedium",sans-serif;
+    margin-bottom: 15px;
+    font-size: 60px;
+    line-height: 1em;
+    text-transform: uppercase !important;
+}
+
+.smartfood-detail__product--block .wrapper-column{
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+.smartfood-product-block .product-image{
+    display: flex;
+    padding-top: 70px;
+    align-items: center;
+}
+
+.smartfood-product-block .product-image-wrap{
+    width: 50%;
+    margin: 0;
+    text-align: center;
+}
+
+.smartfood-product-block .product-image-wrap img {
+    width: 80%;
+}
+
+.smartfood-detail__product--block .product-field-detail {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.3em;
+}
+
+.smartfood-product-social-icons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.smartfood-product-social-icons p {
+    font-size: 24px;
+    padding-right: 25px;
+}
+
+.smartfood-product-nutrition {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.smartfood-title-nutrition{
+    color: #000000;
+    font-size: 27px !important;
+    position: relative;
+    margin-bottom: 25px;
+    padding-top: 60px;
+    text-transform: uppercase !important;
+    font-family: "Farm-New-Medium", sans-serif;
+}
+
+.smartfood-product-nutrition p{
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 1.5em;
+    padding-bottom: 20px;
+}
+
+.smartfood-product-nutrition .product-alert{
+    padding-bottom: 0 !important;
+}
+
+.smartfood-product-nutrition .performance-facts {
+    padding: 0;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0;
+    float: none;
+    padding: 0 15px;
+}
+
+.smartfood-product-nutrition .product-field-detail{
+    color: #000000;
+}
+
+.smartfood-product-nutrition .product-ingredients .product-field-detail{
+    line-height: 1.5em;
+    font-family: "Open Sans", sans-serif;
+}
+
+.product-mobile-nutrition img{
+    display: none !important;
+}
+
+.smartfood-productdetails-nutrition-header-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+}
+
+.smartfood-productdetails-nutrition-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.smartfood-productdetails-nutrition-cell {
+    padding: 6px 2px;
+    font-size: 0.875em;
+    font-weight: normal;
+    padding-right: 15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bolder;
+}
+
+.smartfood-productdetails-nutrition-row:nth-child(2n + 4) {
+    background-color: rgba(245,239,218, 1);
+}
+
+.smartfood-productdetails-nutrition-row:nth-child(4),
+.smartfood-productdetails-nutrition-row:nth-child(5),
+.smartfood-productdetails-nutrition-row:nth-child(9),
+.smartfood-productdetails-nutrition-row:nth-child(10) {
+    padding-left: 25px;
+}
+
+.smartfood-product-nutrition .product-ingredients {
+    padding: 0 15px;
+}
+
+.smartfood-product-nutrition .product-ingredients-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.smartfood-product-nutrition .performance-facts, .smartfood-product-nutrition .product-ingredients {
+    width: 100%;
+}
+
+/**********************************
+   Video
+**********************************/
+
+.smartfood-video-section-container{
+    margin: auto;
+    padding: 80px 20px 100px 20px;
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-yellow-background.png");
+}
+
+.smartfood-video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.smartfood-video-section-container h2{
+    text-align: center;
+    text-transform: uppercase !important;
+    margin-bottom: 30px;
+    font-size: 60px !important;
+    font-family: "MarketPro-CondMedium",sans-serif;
+}
+
+.smartfood-video-box {
+    width: 61%;
+    text-align: center;
+}
+
+.smartfood-video-preimg {
+    width: 100%;
+    position: relative;
+}
+
+.smartfood-video-preimg:before {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    left: 0;
+    top: 0;
+    z-index: 1;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.smartfood-video-preimg a {
+    display: block;
+}
+
+.smartfood-video-preimg img {
+    width: 100%;
+}
+
+.smartfood-video-preimg:after {
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-image: url("/themes/brandstheme/src/images/smartfood/video-play.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    content: '';
+    pointer-events: none;
+}
+
+.smartfood-video-iframe-container iframe {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    width: 100%;
+    height: 640px;
+}
+
+/**********************************
+   Corousel
+**********************************/
+
+#smartfood-related-products-carousel .carousel-inner .carousel-item.active{
+    display: flex;
+}
+
+.smartfood .slick-next:before {
+    background: url("../images/arrows/black-right-chevron.svg") !important;
+    right: 10px;
+}
+
+.smartfood .slick-prev:before {
+    background: url("../images/arrows/black-left-chevron.svg") !important;
+}
+
+.smartfood #brands .slick-next:before {
+    background: url("../images/arrows/black-right-chevron.svg") !important;
+    right: 10px;
+}
+
+.smartfood #brands .slick-prev:before {
+    background: url("../images/arrows/black-left-chevron.svg") !important;
+}
+
+.smartfood section#banner .slick-dots li.slick-active button {
+    background-color: #980F3A !important;
+}
+
+.smartfood section#banner .slick-dots li button {
+    background-color: #fff4f4 !important;
+}
+
+.featured-product-image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: inherit;
+    height: 380px !important;
+    background-color: #FCD701;
+}
+
+.featured-product-image {
+    width: 85%;
+    max-width: 100%;
+    height: auto;
+}
+
+.featured-prod-heading h2{
+    color: #000000 !important;
+    font-family: "MarketPro-CondMedium", sans-serif;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.featured-product-title {
+    font-size: 40px;
+    font-style: normal;
+    line-height: 1;
+    text-transform: uppercase !important;
+    padding-bottom: 16px;
+    color: #FFC90A !important;
+    font-family: "MarketPro-CondMedium", sans-serif;
+}
+
+.featured-prod-copy {
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/**********************************
+  Bootstrap Carousel
+***********************************/
+
+.carousel {
+    position: relative;
+}
+
+.carousel.pointer-event {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: none;
+    }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    -webkit-transform: none;
+    transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    z-index: 1;
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-fade .active.carousel-item-left,
+    .carousel-fade .active.carousel-item-right {
+        transition: none;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 5%;
+    color: #fff;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        transition: none;
+    }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    opacity: 0.9;
+}
+
+.carousel-control-prev {
+    left: 0px;
+    width: 15%;
+}
+
+.carousel-control-next {
+    right: 0px;
+    width: 15%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: no-repeat 50% / 100% 100%;
+}
+
+.smartfood .carousel-control-prev-icon {
+    background-image: url("../images/arrows/black-left-chevron.svg");
+}
+
+.smartfood .carousel-control-next-icon {
+    background-image: url("../images/arrows/black-right-chevron.svg");
+}
+
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+    margin: auto;
+}
+
+.carousel-indicators li {
+    box-sizing: content-box;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 12px;
+    height: 12px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: none;
+    opacity: .5;
+    transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-indicators li {
+        transition: none;
+    }
+}
+
+.carousel-indicators .active {
+    background-color: #FFFFFF;
+    opacity: 1;
+    margin: 2px;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.smartfood-d-md-flex {
+    display: flex !important;
+}
+
+@media only screen and (min-width: 768px) {
+  #smartfood-related-products-carousel .carousel-inner .carousel-item.active,
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-next,
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-right.active,
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-next {
+    transform: translateX(33.33%);
+  }
+
+
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-left.active,
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.33%);
+  }
+
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-right,
+  #smartfood-related-products-carousel .carousel-inner .carousel-item-left {
+    transform: translateX(0);
+  }
+
+}
+
+/**********************************
+   Coupon
+**********************************/
+
+.smartfood-coupon-block {
+    padding: 120px 0 140px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/themes/brandstheme/src/images/smartfood/smartfood-coupon-background.png");
+}
+
+.smartfood .coupon-row {
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 50%);
+}
+
+.main-coupon-right {
+    background: #FFFBED
+}
+
+.smartfood .main-coupon-left, .smartfood .main-coupon-right{
+    border-radius: 0;
+}
+
+.smartfood .main-coupon-centered-img img {
+    width: 75%;
+    height: auto;
+    position: absolute;
+    top: -70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0 8px;
+}
+
+.smartfood-coupon-block .main-coupon-heading{
+    font-family: "MarketPro-CondMedium",sans-serif;
+    font-size: 40px !important;
+    text-transform: uppercase !important;
+    font-weight: normal;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 3%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    .smartfood-logo {
+        position: relative;
+        padding: 8px 10px;
+    }
+
+    .smartfood-navbar__vertical-align {
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .smartfood-navbar__vertical-align{
+        height: auto;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .smartfood section#banner .banner-mobile span.h1{
+        font-family: "MarketPro-CondMedium",sans-serif;
+        text-transform: uppercase !important;
+        color: #000000 !important;
+        font-weight: normal;
+    }
+
+    .smartfood-coupon-block{
+        padding: 120px 15px 140px;
+    }
+
+    .smartfood .main-coupon-centered-img img{
+        width: 400px;
+    }
+
+    #homepage-featured-products-carousel{
+        padding: 0 15px;
+    }
+
+    .carousel-indicators{
+        bottom: 24px;
+    }
+
+    .smartfood-d-md-flex {
+        display: none !important;
+    }
+
+    .smartfood-title-nutrition{
+        padding-top: 30px;
+    }
+
+    .smartfood-product-block .product-image-wrap{
+        width: 100%;
+    }
+
+    .smartfood-detail__product--block{
+        padding: 20px 25px;
+    }
+
+    .smartfood-detail__product--block .wrapper-column p{
+        text-align: center;
+    }
+
+    .smartfood-detail__product--block h1{
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .smartfood-product-category{
+        padding: 0 15px;
+    }
+
+    .smartfood-coupon-block{
+        padding: 120px 15px 140px;
+    }
+
+    .smartfood .main-coupon-centered-img img{
+        width: 85%;
+    }
+
+    .featured-prod-copy-div{
+        padding: 40px 20px 60px 20px;
+        height: 370px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .featured-prod-bag-bg{
+        height: auto;
+    }
+
+    .featured-product-image{
+        width: 400px;
+    }
+
+    .featured-product-image-div{
+        top: 1%;
+    }
+
+    .featured-product-image-col{
+        margin-top: 50px;
+    }
+
+    .smartfood-video-box{
+        width: 100%;
+    }
+
+    .smartfood-video-iframe-container iframe{
+        height: 310px;
+    }
+
+    .smartfood-video-section-container{
+        padding: 60px 20px 80px 20px;
+    }
+
+    .smartfood-product-box{
+        margin-bottom: 20px;
+    }
+
+    .smartfood-product-block .product-image{
+        flex-direction: column;
+    }
+
+    .smartfood-detail__product--block{
+        width: 100%;
+    }
+
+    .smartfood-product-nutrition{
+        flex-direction: column;
+    }
+
+    .smartfood-about-us-paragraph{
+        flex-direction: column;
+    }
+
+    .smartfood-about-us-paragraph-col{
+        background-size: 20%;
+        background-position: 32% -15%;
+        text-align: center;
+        width: 100%;
+    }
+
+    .smartfood-about-us-paragraph-col:last-child{
+        background-position: 24% -8%;
+    }
+
+    .smartfood-product-banner-category-block{
+        padding: 0;
+        background-position: center;
+        height: 140px;
+    }
+
+    .smartfood-product-categories{
+        padding: 0;
+        background-position: center;
+        height: 140px;
+    }
+
+    .smartfood-about-us-top-banner{
+        height: 140px;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .smartfood .main-coupon-centered-img img {
+        width: 100%;
+    }
+
+    .smartfood-about-us-paragraph-col{
+        background-position: 27% 0%;
+    }
+
+    .smartfood-about-us-paragraph-col:last-child {
+        background-position: 17% 0%;
+    }
+
+    .featured-prod-copy-div {
+        height: 450px;
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+    .featured-product-image-col {
+        height: 340px !important;
+    }
+}
+
+.smartfood_product_btn {
+  background-color: #FFC90A !important;
+  padding: 12px 30px;
+  color: white !important;
+  text-align: center;
+  transition: all 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none !important;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 150px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-transform: capitalize; */
+  border: 2px solid #FFC90A;
+  margin-top:20px;
+  color: #000 !important;
+}
+
+.smartfood_product_btn:hover {
+  background-color: #e6b400 !important;
+}
+
+/*BuyNow Popup*/
+
+.smartfood-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+/*Buynow Modal*/
+
+.smartfood-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#smartfoodModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#smartfoodModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #smartfoodModal {
+    padding:0 !important;
+  }
+}
+
+
+
+
+
+
+
+

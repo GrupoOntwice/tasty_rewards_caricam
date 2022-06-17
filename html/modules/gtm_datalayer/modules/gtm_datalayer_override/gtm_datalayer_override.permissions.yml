@@ -1,0 +1,4 @@
+administer gtm datalayer overrides:
+  title: Administer dataLayer Overrides
+  description: Allows users to create, update, and delete dataLayer overrides.
+  restrict access: TRUE

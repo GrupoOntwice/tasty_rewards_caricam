@@ -1,0 +1,401 @@
+#SIGN UP    
+en-us.custom-quaker.contest.signup:
+  path: '/contest/{contest}'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+    
+en-ca.custom-quaker.contest.signup:
+  path: '/contest/{contest}/participate'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+    
+fr-ca.custom-quaker.contest.signup:
+  path: '/concours/{contest}/participer'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::signup'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+
+# en-ca.custom-quaker.contest.register:
+#   path: '/contest/{contest}/register'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::register'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'    
+    
+# fr-ca.custom-quaker.contest.register:
+#   path: '/concours/{contest}/register'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::register'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+
+# en-ca.custom-quaker.contest.signin:
+#   path: '/contest/{contest}/signin'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::signIn'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'    
+    
+# fr-ca.custom-quaker.contest.signin:
+#   path: '/concours/{contest}/connecter'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::signIn'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'  
+
+en-us.custom.contest.faq:
+  path: '/contest/{contest}/faq'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::faq'
+    _title: 'FAQ'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.custom.contest.faq:
+  path: '/contest/{contest}/faq'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::faq'
+    _title: 'FAQ'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.custom.contest.faq:
+  path: '/concours/{contest}/faq'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::faq'
+    _title: 'FAQ'
+  requirements:
+    _access: 'TRUE'
+
+en-us.custom.contest.claim.prize:
+  path: '/contest/{contest}/claim'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::claimPrize'
+    _title: 'Claim Prize'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.custom.contest.claim.prize:
+  path: '/contest/{contest}/claim'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::claimPrize'
+    _title: 'Claim Prize'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.custom.contest.claim.prize:
+  path: '/concours/{contest}/reclamer'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::claimPrize'
+    _title: 'Claim Prize'
+  requirements:
+    _access: 'TRUE'
+
+
+en-ca.custom.contest.cheetos.game:
+  path: '/contest/{contest}/play/{playerid}'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::cheetosGame'
+    _title: 'Cheetos'
+  requirements:
+    _access: 'TRUE'
+
+# custom.contest.cheetos.playgame:
+#   # path: '/contest/{contest}/game/{player}'
+#   path: '/contest/{contest}/game/{player}'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::playGame'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE' 
+#     player: \d+
+
+en-ca.custom.contest.comingsoon:
+  path: '/contest/{contest}/comingsoon'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::comingSoon'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.custom.contest.comingsoon:
+  path: '/concours/{contest}/comingsoon'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::comingSoon'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.custom.contest.landing:
+  path: '/contest/{contest}/landing'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::landing'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.custom.contest.landing:
+  path: '/concours/{contest}/landing'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::landing'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+en-us.custom.contest.landing:
+  path: '/contest/{contest}/landing'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::landing'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+en-ca.custom.contest.prize.list:
+  path: '/contest/{contest}/prizes'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::prizeList'
+    _title: 'Prizes'
+  requirements:
+    _access: 'TRUE' 
+
+
+en-ca.custom.contest.prize.seeding:
+  path: '/contest/{contest}/prize-seeding'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::seedPrizes'
+    _title: 'Prizes'
+  requirements:
+    _access: 'TRUE' 
+    _role: 'administrator' 
+
+en-us.custom.contest.prize.list:
+  path: '/contest/{contest}/prizes'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::prizeList'
+    _title: 'Prizes'
+  requirements:
+    _access: 'TRUE' 
+
+fr-ca.custom.contest.prize.list:
+  path: '/concours/{contest}/prix'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::prizeList'
+    _title: 'Prix'
+  requirements:
+    _access: 'TRUE' 
+
+
+
+custom.contest.eligibility.ajax:
+  path: '/contest/custom/age/ajaxaction'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::ajaxEligibility'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+custom.contest.claim.ajax:
+  path: '/contest/custom/claim/ajaxaction'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::ajaxClaim'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+custom.contest.math.challenge.ajax:
+  path: '/contest/custom/math-challenge/ajaxaction'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::ajaxMathChallenge'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+custom.contest.email.confirmation.ajax:
+  path: '/contest/custom/email/ajaxaction'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::ajaxConfirmationEmail'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+
+
+en-ca.custom.contest.confirmation:
+  path: '/contest/{contest}/confirm'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+fr-ca.custom.contest.confirmation:
+  path: '/concours/{contest}/confirmer'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+custom.contest.confirmation.winner:
+  path: '/contest/{contest}/congrats/{prize_id}'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::winner'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE' 
+
+
+custom.contest.claim.thankyou:
+  path: '/contest/{contest}/claim/thankyou'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::claimThankyou'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+custom.contest.monitoring:
+  path: '/contest/{contest}/monitor'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::monitor'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'reporting'
+
+custom.contest.prize.status:
+  path: '/contest/{contest}/prize/status'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::prizeStatus'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'administrator'
+
+
+custom.contest.prize.schedule:
+  path: '/contest/{contest}/prize/schedule'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::prizeSchedule'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'administrator'  
+
+# custom.contest.validate.upccode:
+#   path: '/quaker/validate/upccode'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::isValidUPC'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     
+custom.contest.email.test:
+  path: '/contest/{contest}/email/test'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::emailTest'
+    _title: 'Email Test'
+  requirements:
+    _access: 'TRUE'  
+    _role: 'administrator' 
+
+custom-quaker.contest.landing:
+  path: 'custom/contests'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::index'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+en-ca.custom.contest.officialrules:
+  path: '/contest/{contest}/officialrules'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'    
+fr-ca.custom.contest.officialrules:
+  path: '/concours/{contest}/reglementsofficiels'
+  defaults:
+    _controller: '\Drupal\quaker_contest\Controller\CustomContestController::rules'
+    _title: 'Contest'
+  requirements:
+    _access: 'TRUE'
+
+# en-ca.custom.contest.rules:
+#   path: '/contests/custom/{contest}/rules'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::contestRules'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     # _user_is_logged_in: 'FALSE' 
+# fr.custom.contest.rules:
+#   path: '/concours/custom/{contest}/regles'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::contestRules'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+
+# en-ca.custom.contest.thank-you.new:
+#   path: '/contest/{contest}/thank-you/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::thankyou'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     # _user_is_logged_in: 'FALSE' 
+# fr-ca.custom.contest.thank-you.new:
+#   path: '/concours/{contest}/merci/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::thankyou'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     # _user_is_logged_in: 'FALSE'
+#     # 
+# en-ca.custom.contest.sorry:
+#   path: '/contests/{contest}/confirm/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     # _user_is_logged_in: 'FALSE' 
+# fr-ca.custom.contest.sorry:
+#   path: '/concours/{contest}/confirm/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+
+# en-ca.custom.contest.winner:
+#   path: '/contests/{contest}/winner/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation_winner'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     # _user_is_logged_in: 'FALSE' 
+# fr-ca.custom.contest.winner:
+#   path: '/concours/{contest}/winner/reg'
+#   defaults:
+#     _controller: '\Drupal\quaker_contest\Controller\CustomContestController::confirmation_winner'
+#     _title: 'Contest'
+#   requirements:
+#     _access: 'TRUE'
+#     
+#   

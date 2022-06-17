@@ -1,0 +1,990 @@
+/*
+  OTEP Site Stylesheet
+*/
+
+/*
+  OTEP Gibson - Bold
+*/
+@font-face {
+  font-family: Gibson-Bold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/otep/gibson/Gibson-Bold.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/otep/gibson/Gibson-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/otep/gibson/Gibson-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/otep/gibson/Gibson-Bold.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/otep/gibson/Gibson-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/otep/gibson/Gibson-Bold.svg#Gibson-Bold') format('svg'); /* Legacy iOS */
+}
+
+/*
+  OTEP Gibson - Semi Bold
+*/
+@font-face {
+  font-family: Gibson-SemiBold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/otep/gibson/Gibson-SemiBold.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/otep/gibson/Gibson-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/otep/gibson/Gibson-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/otep/gibson/Gibson-SemiBold.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/otep/gibson/Gibson-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/otep/gibson/Gibson-SemiBold.svg#Gibson-SemiBold') format('svg'); /* Legacy iOS */
+}
+
+/*
+  OTEP Barlow - Condensed
+*/
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/otep/barlow/BarlowCondensed-SemiBold.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/otep/barlow/BarlowCondensed-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/otep/barlow/BarlowCondensed-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/otep/barlow/BarlowCondensed-SemiBold.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/otep/barlow/BarlowCondensed-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/otep/barlow/BarlowCondensed-SemiBold.svg#Barlow') format('svg'); /* Legacy iOS */
+}
+
+/*
+  OTEP Gilroy - Bold
+*/
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('../fonts/otep/gilroy/Gilroy-Bold.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/otep/gilroy/Gilroy-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/otep/gilroy/Gilroy-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/otep/gilroy/Gilroy-Bold.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/otep/gilroy/Gilroy-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/otep/gilroy/Gilroy-Bold.svg#Gilroy') format('svg'); /* Legacy iOS */
+}
+
+/*
+  OTEP Veneer - Soft
+*/
+@font-face {
+  font-family: 'Veneer Clean Soft';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/otep/veneer/VeneerClean-Soft.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('../fonts/otep/veneer/VeneerClean-Soft.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/otep/veneer/VeneerClean-Soft.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/otep/veneer/VeneerClean-Soft.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/otep/veneer/VeneerClean-Soft.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/otep/veneer/VeneerClean-Soft.svg#Veneer') format('svg'); /* Legacy iOS */
+}
+
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1; // hide images
+  content:url('../images/otep/otep-btn-bg.png');
+}
+
+p {
+  color: #000000;
+}
+
+
+.micro-sup {
+  font-size: 35% !important;
+}
+
+.otep-hr {
+  border-top: 4px solid #EAA920;
+  border-radius: 5px;
+  width: 100px;
+  margin-left: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/*
+  Navbar
+*/
+
+.otep .header__logo-container {
+  z-index: 999999;
+}
+
+.otep #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.otep .brands-navbar__ul a:hover, .otep .brands-navbar__ul a:active, .otep .brands-navbar__ul a:focus {
+  color: #72A701 !important;
+}
+
+.otep .brands-navbar__ul a, .otep .choose-lang_fr, .otep .brands-navbar_accout-options, .otep .header .menu a {
+  font-family: 'Gibson-SemiBold', sans-serif !important;
+  text-transform: uppercase;
+}
+
+.otep #brands_navigation {
+  background: url("../images/otep/otep-navbar-bg.png?n=1") top left no-repeat, #FFFFFF !important;
+}
+
+.otep .fa-navbar {
+  background: #72A701 !important;
+}
+
+.otep .fa-navbar:hover, .otep .fa-navbar:active, .otep .fa-navbar:focus {
+  background: #000000 !important;
+}
+
+/*
+  OTEP Carousel
+*/
+
+.otep section#banner .banner-desktop span.h1, .otep section#banner .banner-mobile span.h1 {
+  font-family: 'Veneer Clean Soft', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.otep section#banner .banner_slide--text p {
+  font-family: 'Veneer Clean Soft', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.otep .slick-next:before {
+  background: url("../images/arrows/otep-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.otep .slick-prev:before {
+  background: url("../images/arrows/otep-left-chevron.svg") !important;
+}
+
+.otep #brands .slick-next:before {
+  background: url("../images/arrows/otep-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.otep #brands .slick-prev:before {
+  background: url("../images/arrows/otep-left-chevron.svg") !important;
+}
+
+.otep section#banner .slick-dots li.slick-active button {
+  background-color: #72A701 !important;
+}
+
+.otep section#banner .slick-dots li button {
+  background-color: #000000 !important;
+}
+
+/*
+  Button OTEP - Green Shaded
+*/
+
+.btn_otep, .otep .btn_carousel, .otep .btn-recall {
+  font-family: 'Gibson-Bold', sans-serif;
+  background: url("../images/otep/otep-btn-bg.png") no-repeat 25% 50% transparent !important;
+  color: #ffffff;
+  border: none;
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+  background-size: contain;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  transition: ease-in;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: 170px !important;
+  height: 47px !important;
+}
+
+.btn_otep:before, .otep .btn_carousel:before, .otep .btn-recall:before {
+  content: url('../images/otep/otep-btn-bg.png');
+  width:0;
+  height:0;
+  display:none;
+}
+
+.btn_otep:hover, .btn_otep:focus, .btn_otep:active, .otep .btn_carousel:hover, .otep .btn_carousel:focus, .otep .btn_carousel:active, .otep .btn-recall:hover, .otep .btn-recall:active, .otep .btn-recall:focus {
+  color: #FFFFFF;
+  background: #72A701 !important;
+  border: 2px solid #72A701;
+  outline: none;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/*******************************
+       Products Section
+********************************/
+
+.otep #products {
+  background-attachment: fixed;
+  background-image: url("../images/otep/back-general.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow-x: hidden !important;
+  margin-top: -3px;
+}
+
+.otep-bg-top-left {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  text-align: left;
+  z-index: 0;
+}
+
+.otep .otep-products {
+  padding: 64px 0 48px;
+}
+
+.otep .otep-products {
+  padding: 64px 0 48px;
+}
+
+.otep .products-title hr {
+  width: 100px;
+  border: 0;
+  border-top: 4px solid #EAA920;
+  margin: 0 auto;
+}
+
+.otep .products .products-title h1 {
+  font-size: 70px;
+  line-height: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.fr .products .products-title h1 {
+  font-size: 62px !important;
+}
+
+.otep .products-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -ms-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  -ms-align-content: flex-start;
+  align-content: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 96px 0;
+}
+
+
+/*.otep .products-item:last-of-type {*/
+/*  padding: 64px 0 96px;*/
+/*}*/
+
+.products-recipe-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-buy-now, .products-buy-now p {
+  font-family: nunito, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.products-recipe-image img {
+  width: 75%;
+  height: auto;
+  max-width: 100%;
+  z-index: 2;
+}
+
+/*
+  Product Side Image 1
+*/
+
+.products-extra-image img {
+  height: auto;
+  max-width: 100%;
+  position: absolute;
+}
+
+
+.otep-align-left .products-extra-image img {
+  width: 250px;
+  bottom: -96px;
+  left: -64px;
+  z-index: 0;
+}
+
+
+.otep-align-right .products-extra-image img {
+  width: 225px;
+  bottom: -120px;
+  right: -64px;
+  z-index: 99999;
+}
+
+/*
+  Product Side Image 2
+*/
+
+.products-extra-image2 img {
+  height: auto;
+  max-width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.otep-align-left .products-extra-image2 img {
+  width: 275px;
+  top: -130px;
+  left: -64px;
+}
+
+.otep-align-right .products-extra-image2 img {
+  width: 300px;
+  top: -120px;
+  right: 0;
+}
+
+.products-extra-image2 img:not(:first-of-type) {
+  z-index: 1;
+}
+
+.otep-fave-title, .otep-fave-title a {
+  font-size: 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #000000;
+}
+
+.otep .products-nutrition h3, .otep .products-ingredients h3 {
+  font-size: 32px;
+  font-family: 'Veneer Clean Soft', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #72A701;
+  padding: 16px 0 8px;
+}
+
+.otep .product-copy-col p {
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.otep .products-ingredients h3 {
+  padding: 16px 0 8px;
+}
+
+.otep .products-nutrition h3 {
+  padding: 0;
+}
+
+.otep .products-nutrition p, .otep .products-ingredients p {
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  color: #000000;
+}
+
+.fa-nutrition, .fa-ingredients {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+
+.fa-nutrition {
+  padding: 32px 0 0;
+}
+
+.fa-ingredients {
+  padding: 0;
+}
+
+.nutrition-copy {
+  display: none;
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.fa-nutrition-icon {
+  padding-left: 90px;
+}
+
+.fa-ingredients-icon {
+  padding-left: 64px;
+}
+
+.fa-swap, .fa-ingredients-swap {
+  cursor: pointer;
+}
+
+.fa-nutrition .fa-plus, .fa-nutrition .fa-minus, .fa-ingredients .fa-plus, .fa-ingredients .fa-minus{
+  color: #72A701;
+  font-size: 28px;
+}
+
+div.nutrition-none {
+  display: none;
+}
+
+/*******************************
+      otep Products Table
+********************************/
+
+.products #nutrition-facts {
+  border: 7px #000 solid;
+  padding: 15px;
+  color: #000;
+  margin: 10px 0;
+}
+
+.products #nutrition-facts .nutrition-title {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  padding: 0px 0 10px;
+  text-align: left;
+  border-bottom: 1px solid #000;
+}
+
+.products #nutrition-facts .serving-size {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  padding: 10px 0 10px;
+  text-align: left;
+  border-bottom: 5px solid #000;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.otep-fave-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.otep-fave-body {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
+.otep-fave-body p sup, .products-title sup, .otep-fave-subtitle sup {
+  font-size: 60% !important;
+  top: -.80em !important;
+}
+
+.banner-desktop sup, .banner-mobile sup {
+  font-size: 50% !important;
+  top: -1em !important;
+}
+
+.main-coupon-heading sup {
+  font-size: 50% !important;
+  top: -.75em !important;
+}
+
+.performance-facts {
+  padding: 0;
+  line-height: 1.4;
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+.performance-facts table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.performance-facts thead {
+  border-bottom: 5px solid #000;
+  padding-bottom: 10px;
+}
+
+.performance-facts tbody {
+  border-top: none;
+}
+
+.performance-facts tbody > tr {
+  border-bottom: 1px solid #000;
+}
+
+.performance-facts tbody > tr.protein-border {
+  border-bottom: 5px solid #000;
+}
+
+.performance-facts tbody > tr .blank-cell {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  width: 1rem;
+  border-top: 0;
+  padding-left: 30px;
+}
+
+.performance-facts tbody > tr td, .performance-facts tbody > tr th {
+  border: 0;
+  width: 80%;
+  text-align: left;
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.performance-facts tbody > tr td:last-child {
+  text-align: right;
+  width: 20%;
+}
+
+.performance-facts tbody > tr td span, .performance-facts tbody > tr th span, .tr-light {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+/*
+  About Us OTEP
+*/
+
+.w-about-us {
+  width: 100%;
+}
+
+#otep-about-us {
+  background: url(/themes/brandstheme/src/images/otep/otep-bg-about-us.png) top center no-repeat,#000000;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 64px 0;
+}
+
+#otep-about-us-copy .about-us-title {
+  font-size: 70px;
+  line-height: 1.2;
+  font-family: 'Veneer Clean Soft', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+#otep-about-us-copy .about-us-subtitle {
+  font-size: 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+#otep-about-us-copy p {
+  color: #FFFFFF;
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.about-us-copy-img {
+  width: 100%;
+}
+
+/*
+  Coupon OTEP
+*/
+
+.otep .vr-coupon-heading, .otep .main-coupon-heading, .otep .main-coupon-disclaimer {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.otep-coupon {
+  background: url(/themes/brandstheme/src/images/otep/otep-coupon-bg.png) top center no-repeat,#000000;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 64px 0 112px 0;
+  overflow-x:hidden;
+}
+
+/*******************************
+  Media Queries For OTEP Site
+********************************/
+
+@media only screen and (max-width: 360px) {
+  .products #nutrition-facts {
+    padding: 2px;
+  }
+  .products-recipe-image img {
+    width: 250px !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+
+  /*.products-extra-image2 img {*/
+  /*  left: -32px !important;*/
+  /*}*/
+
+}
+
+
+@media only screen and (max-width: 576px) {
+
+  .products-recipe-image img {
+    width: 300px;
+  }
+
+
+  .otep-align-left .products-extra-image img {
+    width: 175px !important;
+    bottom: -48px !important;
+    left: -64px !important;
+  }
+
+
+  .otep-align-right .products-extra-image img {
+    width: 150px !important;
+    bottom: -32px !important;
+    right: 0 !important;
+  }
+
+  .otep-align-left .products-extra-image2 img {
+    width: 175px !important;
+    top: -75px !important;
+    left: 0 !important;
+  }
+
+  .otep-align-right .products-extra-image2 img {
+    width: 250px !important;
+    top: -96px !important;
+    right: -32px !important;
+  }
+
+  .otep .products-item:first-of-type {
+    padding: 16px 0 32px !important;
+  }
+
+  .otep .products-item {
+    /*padding: 120px 0 64px !important;*/
+    padding: 0 0 32px !important;
+  }
+
+  .product-img-col:nth-of-type(1) {
+    margin: 80px 0 48px !important;
+  }
+
+
+  .product-img-col:nth-of-type(2) {
+    margin: 80px 0 48px !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  .otep .products .products-title h1 {
+    font-size: 10vw !important;
+  }
+
+  #otep-about-us-copy .about-us-title {
+    font-size: 10vw !important;
+  }
+
+  .otep-coupon {
+    background-position: top right;
+    padding: 64px 16px 112px;
+  }
+
+  #otep-about-us {
+    background: url(/themes/brandstheme/src/images/otep/otep-bg-about-us-mbl.png) top left no-repeat,#000000;
+    background-size: cover;
+  }
+
+  .container-otep-about-us {
+    padding: 0 16px;
+  }
+
+  .otep-align-left .products-extra-image2 img {
+    width: 250px;
+    top: -96px;
+    left: -64px;
+  }
+
+  .otep-align-right .products-extra-image2 img {
+    width: 300px;
+    top: -96px;
+    right: 0;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .otep-align-left .products-extra-image img {
+    bottom: -64px;
+    left: -96px;
+  }
+
+
+  .otep-align-right .products-extra-image img {
+    bottom: -64px;
+    right: 0;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .otep .choose-lang_fr:hover, .otep .choose-lang_fr:active, .otep .choose-lang_fr:focus, .otep .brands-navbar_accout-options .sign_in:hover, .otep .brands-navbar_accout-options .sign_in:active, .otep .brands-navbar_accout-options .sign_in:focus, .otep .tr-navbar-trigger-mobile:hover, .otep .tr-navbar-trigger-mobile:active, .otep .tr-navbar-trigger-mobile:focus, .otep #button-mbl-back:hover, .otep #button-mbl-back:active, .otep #button-mbl-back:focus {
+    color: #72A701 !important;
+  }
+
+  .otep #brands_navigation {
+    background: #FFFFFF !important;
+  }
+
+  .brands-navbar__item-first-border, .brands-navbar__item-border, .menu--main a {
+    background: #FFFFFF;
+  }
+
+  .products-recipe-image {
+    padding: 0 16px;
+  }
+
+  .product-img-col:nth-of-type(1) {
+    margin: 80px 0 64px;
+  }
+
+
+  .product-img-col:nth-of-type(2) {
+    margin: 80px 0 64px;
+  }
+
+  /*.product-img-col:not(:nth-of-type(1)) {*/
+  /*  margin: 0 0 112px;*/
+  /*}*/
+
+
+  /*.product-img-col:not(:nth-of-type(1)) {*/
+  /*  margin: 16px 16px 16px;*/
+  /*  !*padding-bottom: 64px;*!*/
+  /*}*/
+
+  .product-copy-col:first-of-type {
+    padding: 0 16px 0 16px;
+    order: 2;
+  }
+
+  .product-copy-col {
+    padding: 0 16px;
+    order: 2;
+    z-index: 9999;
+  }
+
+  .otep-align-right {
+    order: 1;
+  }
+
+  .otep .products-item:first-of-type {
+    padding: 48px 0 80px;
+  }
+
+  .otep .products-item {
+    padding: 0 0 80px;
+  }
+
+  .otep .products-item:last-of-type {
+    padding: 0 0 0 !important;
+  }
+
+  .fa-nutrition, .fa-ingredients {
+    justify-content: space-between;
+  }
+
+}
+
+@media only screen and (max-width: 992px) {
+
+  .choose-lang_fr, .brands-navbar_accout-options, .tr-navbar-trigger-mobile {
+   background: #FFFFFF;
+  }
+
+}
+
+/*
+  Min-width Queries
+*/
+
+
+@media only screen and (min-width: 768px) {
+
+  .about-us-copy-img {
+    width: 75%;
+  }
+
+  #otep-about-us-copy {
+    padding-left: 48px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .otep section#banner .banner_slide--text.slide-right {
+    width: 65% !important;
+    text-align: left !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .w-about-us {
+    width: 75%;
+  }
+
+  .otep section#banner .banner_slide--text.slide-right {
+    width: 55% !important;
+  }
+
+  .otep .products-item {
+    /*align-items: center;*/
+    /*justify-content: center;*/
+  }
+
+
+  .products-recipe-image img {
+    width: 425px;
+  }
+
+  .product-copy-col:nth-of-type(even) {
+    padding-left: 48px;
+  }
+
+  .product-copy-col:nth-of-type(odd) {
+    padding-right: 48px;
+  }
+
+}
+
+@media only screen and (min-width: 1140px) {
+
+  #otep-about-us-copy {
+    margin-top: -48px;
+  }
+
+  .products-extra-image img {
+    right: -64px;
+  }
+
+}
+
+.otep-product-buynow {
+  margin-top: 20px;
+}
+
+/*!*Buynow Modal*!*/
+
+.otep-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  position:fixed;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+
+#otepModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+  height: 650px;
+}
+
+div#otepModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #otepModal {
+    padding:0 !important;
+  }
+}
+

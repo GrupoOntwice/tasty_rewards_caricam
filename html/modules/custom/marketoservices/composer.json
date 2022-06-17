@@ -1,0 +1,14 @@
+{
+  "name": "drupal/marketotest",
+  "type": "drupal-module",
+  "description": "Test of Marketo connection",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/marketotest",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/marketotest",
+    "source": "http://cgit.drupalcode.org/marketotest"
+  },
+  "require": { }
+}

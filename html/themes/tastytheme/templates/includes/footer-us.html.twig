@@ -1,0 +1,169 @@
+<footer id="footer-us">
+   <div class="arrow-section-footer"></div>
+   <div class="footer_row footer_row--top">
+      <section id="block-footerfirst" class="block block-block-content block-block-content66ff3498-0d12-4fc9-99b7-f77d0b865101 clearfix">
+         <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+            <h2>{{'Join the PepsiCo Tasty Rewards Experience!'|t}}</h2>
+            <p><img src="/themes/tastytheme/src/images/icon-airplane.png" alt="icon airplane"></p>
+            <p class="footer-blue">{{'Get full access to PepsiCo Tasty Rewards and exclusive content by becoming a member.'|t}}</p>
+         </div>
+      </section>
+      <section id="block-footerfirstsecond" class="block block-block-content block-block-contentd8c2f96e-d304-4b32-bbc3-817f38d12803 clearfix">
+         <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+            <p><a class="sign_up btn_red jsModalFooterSignUp">{{'Sign Up'|t}}</a></p>
+         </div>
+      </section>
+   </div>
+   <div class="footer_row footer_row--bottom">
+      <div class="img_container">
+         <img src="{{ "/themes/tastytheme/src/images/logofooter-en-us.png" | t }}" alt="pepsico tastyrewards icon">
+      </div>
+      <div class="footer_row--bottom--links">
+         <nav role="navigation" aria-labelledby="block-footer-2-menu" id="block-footer-2">
+            <h2 class="visually-hidden" id="block-footer-2-menu">Footer</h2>
+            <ul class="menu menu--footer nav">
+               <li class="first">
+                 {% if language == 'es-us'%}
+                   <a href="/es-us/sobre-nosotros" data-drupal-link-system-path="node/14">{{'About Us'|t}}</a>
+                 {% else %}
+                   <a href="/en-us/about-tasty-rewards" data-drupal-link-system-path="node/14">{{'About Us'|t}}</a>
+                 {% endif %}
+{#                  <a href="/{{language}}/about-tasty-rewards" data-drupal-link-system-path="node/14">{{'About Us'|t}}</a>#}
+               </li>
+               <li>
+                  <a href="{{'https://contact.pepsico.com/tastyrewardsus'|t}}" target="_blank" data-drupal-link-system-path="node/51">{{'Contact Us'|t}}</a>
+               </li>
+               <li>
+                  {# <a href="/{{language}}/faq" data-drupal-link-system-path="node/8">{{'FAQ'|t}}</a> #}
+                  <a href="{{'https://contact.pepsico.com/tastyrewardsus/faqs'|t}}" data-drupal-link-system-path="node/8">{{'FAQ'|t}}</a>
+               </li>
+               <li>
+                  <a href="{{'https://www.snacks.com/'|t}}" class="only-us" title="This is a link to click the Snacks.Com site">{{'Snacks.Com'|t}}</a>
+               </li>
+               <li>
+                  <a href="{{'http://www.pepsico.ca/en/Accessibility.html'|t}}" class="accessibility" target="_blank">{{'Accessibility'|t}}</a>
+               </li>
+               <li>
+                  <a href="{{'https://www.pepsico.com/legal/privacy'|t}}" target="_blank">{{'Privacy Policy'|t}}</a>
+               </li>
+               <li>
+                  <a href="{{'https://www.pepsico.com/legal/terms-of-use'|t}}" target="_blank">{{'Terms of Use'|t}}</a>
+               </li>
+               <li class="last">
+                  <a href="{{'https://policy.pepsico.com/aboutads.htm'|t}}" target="_blank">{{'About Our Ads'|t}}</a>
+               </li>
+               {#
+               <li class="last">
+                  {% if language == 'es-us'%}
+                     <a href="/es-us/darse-de-baja" data-drupal-link-system-path="unsubscribe">{{'Unsubscribe'|t}}</a>
+                  {% else %}
+                     <a href="/en-us/unsubscribe" data-drupal-link-system-path="unsubscribe">{{'Unsubscribe'|t}}</a>
+                  {% endif %}
+               </li>
+               #}
+               <li class="footer_country--wrapper">
+                  <div class="dropdown">
+                     <label for="countries_footer" class="visuallyhidden">countries</label>
+                     <select name="countries_footer" id="countries_footer">
+                        <option value="" selected="" disabled="" hidden="">{{'Country'|t}}</option>
+                        <option class="en" value="en" style="background-image:url('/themes/tastytheme/src/images/canada_20x11.jpg');">{{'Canada'|t}}</option>
+                        <option class="{{language}}" value="{{language}}" selected="" style="background-image:url('/themes/tastytheme/src/images/usa_20x11.jpg');">{{'United States'|t}}</option>
+                     </select>
+                     {# <div class="button"><span style="background-image:url(&quot;https://www.tastyrewards.com/themes/tastytheme/src/images/usa_20x11.jpg&quot;)">{{'United States'|t}}</span><i class="select-list-link arrow-down"></i></div>
+                     <ul class="select-list">
+                        <li class="clsAnchor"><span value="en" class="en" style="background-image:url(&quot;https://www.tastyrewards.com/themes/tastytheme/src/images/canada_20x11.jpg&quot;)">Canada</span></li>
+                        <li class="clsAnchor active"><span value="en-us" class="en-us" style="background-image:url(&quot;https://www.tastyrewards.com/themes/tastytheme/src/images/usa_20x11.jpg&quot;)">United States</span></li>
+                     </ul> #}
+                  </div>
+               </li>
+            </ul>
+         </nav>
+         <section id="block-footersecondtrademark" class="block block-block-content block-block-content0641bce2-a316-4bc3-b89c-69a38fb96dee clearfix">
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+               <p>©2022&nbsp;PepsiCo, Inc., 700 Anderson Hill, Rd, Purchase, NY, 10577</p>
+            </div>
+         </section>
+      </div>
+      <section id="block-footerthirdspacerblock" class="block block-block-content block-block-content58357e81-055d-4086-97f6-3fb90812af62 clearfix">
+      </section>
+   </div>
+</footer>
+
+{# <footer>
+   <div class="arrow-section-footer"></div>
+   <div class="footer_row footer_row--top">
+      <section id="block-footerfirst" class="block block-block-content block-block-content66ff3498-0d12-4fc9-99b7-f77d0b865101 clearfix">
+         <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+            <h2>Join the PepsiCo Tasty Rewards Experience!&nbsp;</h2>
+            <p><img src="/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/icon-airplane.png"></p>
+            <p class="footer-blue">Get full access to PepsiCo Tasty Rewards and exclusive content by becoming a member.</p>
+         </div>
+      </section>
+      <section id="block-footerfirstsecond" class="block block-block-content block-block-contentd8c2f96e-d304-4b32-bbc3-817f38d12803 clearfix">
+         <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p><a class="sign_up btn_red jsModalFooterSignUp">Sign Up</a></p>
+         </div>
+      </section>
+   </div>
+   <div class="footer_row footer_row--bottom">
+      <div class="img_container">
+      <img src="/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/logofooter-en-us.png">
+      </div>
+      <div class="footer_row--bottom--links">
+         <nav role="navigation" aria-labelledby="block-footer-2-menu" id="block-footer-2">
+            <h2 class="visually-hidden" id="block-footer-2-menu">Footer</h2>
+            <ul class="menu menu--footer nav">
+               <li class="first">
+                  <a href="/web/20201112014856/https://www.tastyrewards.com/en-us/about-tasty-rewards" data-drupal-link-system-path="node/14">About Us</a>
+               </li>
+               <li>
+                  <a href="/web/20201112014856/https://www.tastyrewards.com/en-us/contact-us" target="_self" data-drupal-link-system-path="node/51">Contact Us</a>
+               </li>
+               <li>
+                  <a href="/web/20201112014856/https://www.tastyrewards.com/en-us/faq" data-drupal-link-system-path="node/8">FAQ</a>
+               </li>
+               <li>
+                  <a href="https://web.archive.org/web/20201112014856/https://www.snacks.com/" class="only-us" title="Snacks.Com">Snacks.Com</a>
+               </li>
+               <li>
+                  <a href="https://web.archive.org/web/20201112014856/http://www.pepsico.ca/en/Accessibility.html" class="accessibility" target="_blank">Accessibility</a>
+               </li>
+               <li>
+                  <a href="https://web.archive.org/web/20201112014856/https://www.pepsico.com/legal/privacy" target="_blank">Privacy Policy</a>
+               </li>
+               <li>
+                  <a href="https://web.archive.org/web/20201112014856/https://www.pepsico.com/legal/terms-of-use" target="_blank">Terms of Use</a>
+               </li>
+               <li>
+                  <a href="https://web.archive.org/web/20201112014856/https://policy.pepsico.com/aboutads.htm" target="_blank">About Our Ads</a>
+               </li>
+               <li class="last">
+                  <a href="/web/20201112014856/https://www.tastyrewards.com/en-us/unsubscribe" data-drupal-link-system-path="unsubscribe">Unsubscribe</a>
+               </li>
+               <li class="footer_country--wrapper">
+                  <div class="dropdown">
+                     <select name="countries_footer" id="countries_footer">
+                        <option value="" selected="" disabled="" hidden="">Country</option>
+                        <option class="en" value="en" style="background-image:url('/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/canada_20x11.jpg');">Canada</option>
+                        <option class="en-us" value="en-us" selected="" style="background-image:url('/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/usa_20x11.jpg');">United States</option>
+                     </select>
+                     <div class="button">
+                        <span style="background-image:url(&quot;https://web.archive.org/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/usa_20x11.jpg&quot;)">
+                        United States</span><i class="select-list-link arrow-down"></i>
+                     </div>
+                     <ul class="select-list">
+                        <li class="clsAnchor"><span value="en" class="en" style="background-image:url(&quot;https://web.archive.org/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/canada_20x11.jpg&quot;)">Canada</span></li>
+                        <li class="clsAnchor active"><span value="en-us" class="en-us" style="background-image:url(&quot;https://web.archive.org/web/20201112014856im_/https://www.tastyrewards.com/themes/tastytheme/src/images/usa_20x11.jpg&quot;)">United States</span></li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+         </nav>
+         <section id="block-footersecondtrademark" class="block block-block-content block-block-content0641bce2-a316-4bc3-b89c-69a38fb96dee clearfix">
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>©2020&nbsp;PepsiCo, Inc., 700 Anderson Hill, Rd, Purchase, NY, 10577</p>
+            </div>
+         </section>
+      </div>
+      <section id="block-footerthirdspacerblock" class="block block-block-content block-block-content58357e81-055d-4086-97f6-3fb90812af62 clearfix">
+      </section>
+   </div>
+</footer> #}

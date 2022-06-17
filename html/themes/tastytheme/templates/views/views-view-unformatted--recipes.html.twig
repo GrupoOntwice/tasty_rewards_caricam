@@ -1,0 +1,114 @@
+{#
+/**
+Article views content styled
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+<div class="recipe__menu-detail-wrapper">
+  {% set counter = 0 %}
+  {% for row in rows %}
+    {% set summary = row.content['#row']._entity.getTranslation(language).body[0].value|render %}
+    {# {% set trimmed_body = summary|length > 100 ? summary|slice(0, 100) ~ '...' : summary %}
+            {% set trimmed_body = truncateText(trimmed_body)  %} #}
+    {% set nid = row.content["#row"]._entity.nid.getValue().0.value %}
+    {% set recipelink = path('entity.node.canonical', {'node': nid}) %}
+    {% set imagesrc = file_url(row.content['#row']._entity.field_recipe_image.entity.uri.value) ?: '' %}
+    {% set imagesrcalttext = row.content['#row']._entity.field_recipe_image[0].alt ?: row.content['#row']._entity.title[0].value %}
+    {% set preparationtime = row.content['#row']._entity.field_recipe_prep_time[0].value ?: '' %}
+    {% set total_rating = row.content['#row']._entity.getTranslation(language).field_total_rating[0].value ?: 0 %}
+    {% set total_voters = row.content['#row']._entity.getTranslation(language).field_rating_voters[0].value ?: 1 %}
+    {% set  avg_rating = (total_rating / total_voters) |round %}
+
+    {# evaluate if exist a video in the recipe sliders #}
+
+    {% set carousel = row.content['#row']._entity.getTranslation(language).field_recipe_carousel %}
+    {% set ncarousel_items = carousel.getValue %}
+
+    {% set showicon = false %}
+
+    {% for citem in  ncarousel_items if not showicon %}
+      {% if citem.title is not empty %}
+        {% set showicon = true %}
+      {% endif %}
+    {% endfor %}
+    {# kint(showicon) #}
+
+    <div class="recipe__menu-detail-section">
+      <div class="background-zoom__parent">
+        <a href="{{ recipelink }}" class="img-recipe">
+          <img loading="lazy" class="background-zoom__child recipe__menu-detail-section-image" src="{{ imagesrc }}?versionid={{ "now"|date("h") }}" alt="{{ imagesrcalttext }}"/>
+          {% if showicon %}
+            <span class="watchButton">
+                <span class="watchButton__text">{{ 'WATCH' |trans }}</span>
+            </span>
+          {% endif %}
+        </a>
+      </div>
+
+      <div class="recipe__menu-detail-sub-wrapper">
+
+        <div class="recipe__menu-detail-sub-wrapper-height">
+          <a href="{{ recipelink }}" class="img-recipe">
+            <h3 class="recipe__menu-detail-wrapper-title">{{ row.content['#row']._entity.getTranslation(language).title[0].value|raw }}</h3>
+          </a>
+
+          <div class="recipe__review-wrapper">
+
+            <div class="recipe__star">
+              <i class="fa fa-star"></i>
+              <span class="recipe__star-rating"> {{ avg_rating }}/5</span>
+            </div>
+
+            <div class="recipe__clock">
+              {% if not preparationtime is empty %}
+                <i class="far fa-clock"></i>
+                <span class="recipe__time">{{ preparationtime }}</span>
+              {% endif %}
+            </div>
+
+          </div>
+
+          <div class="truncate_text">
+            {{ summary|raw }}
+          </div>
+        </div>
+
+        <div class="recipe__btn-wrapper">
+          <a href="{{ recipelink }}" class="recipe__btn_red">{{ 'Show Recipe' | trans }}</a>
+        </div>
+      </div>
+
+    </div>
+    {% set counter = counter + 1 %}
+    {% if counter == 3 %}
+      {% set counter = 0 %}
+    {% endif %}
+
+  {% endfor %}
+  {% if counter > 0 %}
+    {# There should always be multiple of 3 div.contest_menu-detail-section #}
+    {% for i in counter..2 %}
+      <div class="recipe__menu-detail-section empty">
+      </div>
+    {% endfor %}
+  {% endif %}
+
+</div>
+
+

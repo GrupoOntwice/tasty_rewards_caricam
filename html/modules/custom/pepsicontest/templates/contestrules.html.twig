@@ -1,0 +1,36 @@
+{#{ kint(data) }#}
+{#{ form}#}
+<script type="text/javascript">
+language = '{{ data.language }}';
+</script>
+{{ data.tag | raw }}
+
+{% if data.contest_type == 'nintendo' %}
+	{% include '@quaker_contest/include/contest_rules_fritolay.html.twig' %}
+{% elseif data.contest_type == 'nintendo2' %}
+	{% if data.is_comingsoon == 1 %}
+		{% set page_comingsoon = 1 %}
+		{{ attach_library( 'quaker_contest/nintendo' ) }}
+	    {% include '@quaker_contest/include/contest-comingsoon-nintendo.html.twig' %}
+	    {% include '@quaker_contest/tracking/pixel-tracking-nintendo.html.twig' %}
+
+	{% else %}
+		{% include '@quaker_contest/include/contest_rules_nintendo.html.twig' %}
+	{% endif %}
+{% elseif data.contest_type == 'grabsnack' %}
+	{% include '@quaker_contest/include/contest_rules_grabsnack.html.twig' %}
+{% elseif data.contest_type == 'cheetos' %}
+	{% include '@quaker_contest/include/contest_rules_cheetos.html.twig' %}
+{% elseif data.contest_type == 'gameday' %}
+	{% include '@pepsicontest/includes/contest_rules_gameday.html.twig' %}
+{% elseif data.contest_type == 'hockey' %}
+	{% include '@quaker_contest/include/contest_rules_hockey.html.twig' %}
+{% else %}
+	<section id="contentBlocks" class="container-fluid">
+	    <div class="col-xs-12 text-center">
+	        {{ data.body | raw}}
+	        <br>
+	        
+	    </div>
+	</section>
+{% endif %}

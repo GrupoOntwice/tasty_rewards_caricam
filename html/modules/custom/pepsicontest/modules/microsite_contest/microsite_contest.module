@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Contains pepsicontest.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use CSD\Marketo\Client;
+use Drupal\Core\Link;
+use Symfony\Component\BrowserKit\Cookie;
+
+
+//template collection
+function microsite_contest_theme(array $existing, $type, $theme, $path) {
+  return array(
+    
+    'microsite_contest_signup_template' => array(
+      'template' => 'microsite_signup',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'microsite_contest_register_template' => array(
+      'template' => 'microsite_register',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'microsite_contest_confirmation_template' => array(
+      'template' => 'microsite_confirm',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+
+    'microsite_contest_confirmation_winner_template' => array(
+      'template' => 'microsite_winner',
+      'variables' => array(
+                        'data' => NULL,
+                        ),
+    ),
+    
+    // 'pepsicontest_processed_template' => array(
+    //   'template' => 'processed',
+    //   'variables' => array(
+    //                     'data' => NULL,
+    //                     ),
+    // ),
+    // 'pepsicontest_thanks_template' => array(
+    //   'template' => 'contestthanks',
+    //   'variables' => array(
+    //                     'data' => NULL,
+    //                     ),
+    // ),    
+      
+  );
+}
+
+
+function sfmcservices_contest_winner($account, $contest_node){
+    // return ;
+
+    $SFMC_Service = \Drupal::service('sfmcservices.apicall');
+    $langcode = \Drupal::languageManager()->getcurrentLanguage()->getId();
+    $prize_node = getNextPrize($contest_node);
+    $prize_title = $prize_node->getTranslation($langcode)->field_subtitle->value;
+    try{
+        $contestName = $contest_node->getTranslation($langcode)->field_contest_uri->value;
+        $lead = ContestWinnerFieldsSFMC($account, $contestName, $prize_title);  // maps the fields with the SF object
+        $country_code = get_user_country_code($account);
+    } catch (\Exception $e){
+        $message = "Error: Contest does not exist " . $e->getMessage();
+        \Drupal::logger('general')->info($message, []);
+        return false;
+    }
+
+    $SFMC_Service->init_api($country_code);
+    $leadresponse = $SFMC_Service->syncContestWinners($lead, $country_code); // this is where the request is sent to SF
+
+    
+    // if ($leadresponse->getError()){
+    if (isset($leadresponse->message) && isset($leadresponse->errorcode) ) {
+        $channel = "general";
+        $message = $leadresponse->message . "\n reponse object: \n";
+        $message .= print_r($leadresponse, true);
+
+        $context = [
+                      '%username' => $account->get('name')->value
+        ];
+        \Drupal::logger($channel)->info($message, $context);
+                    //dpm("error API");
+    } else {
+        return true;
+    }
+    
+    
+    return false;
+}

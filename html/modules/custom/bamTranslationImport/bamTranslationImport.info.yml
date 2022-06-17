@@ -1,0 +1,13 @@
+name: bamTranslationImport
+type: module
+description: import node translations
+core: 8.x
+package: Custom
+
+#bam_translation_import:
+#  path: '/bamTranslationImport'
+#  defaults:
+#    _title: 'Import node translations'
+#    _controller: '\Drupal\bamTranslationImport\BamTranslationImportController::content'
+#  requirements:
+#    _permission: 'access content'

@@ -1,0 +1,190 @@
+{{ attach_library( 'quaker_contest/cheetos' ) }}
+
+<section class="cheetos noprovince" id="cheetos-landing">        
+    <div class="cheetos-banner">
+        <div class="cheetos-banner-content">
+            <div class="cheetos-banner-text">
+                <h1>
+                    {{ 'Welcome to the Cheetos<sup>&reg;</sup> Carnival!' | t | raw }}
+                </h1>
+    
+                <p class="cheetos-roc">
+                    {{ 'Think you can beat me at my own game? Plus enter for a chance to win<sup>&dagger;</sup> $10,000 and 1000’s of instant prizes.' | t | raw }}
+                </p>
+                
+                <p class="cheetos-qc">
+                    {{ 'Enter for a chance to win<sup>&dagger;</sup> $10,000 plus 1000’s of instant prizes available!' | t | raw }}
+                </p>
+
+                <a href="" class="cheetos-btn cheetos-btn-orange">
+                  {{ 'Enter now' | t }}
+                </a>
+
+                <div class="cheetos-roc cheetos-hide-mobile">
+                  <p>
+                    {{ 'Want to play but don’t have a UPC? No worries, you can still show me your skills without entering the contest!' | t }}
+                  </p>
+
+                  <a href="{{data.game_url }}" class="cheetos-btn cheetos-btn-orange">
+                    {{ 'Play game for fun' | t }}
+                  </a>
+                </div>
+            </div>
+
+            <div class="cheetos-banner-chester">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-entry-chester.png" />
+            </div>
+
+            
+            <div class="cheetos-entry-form">
+                <form data-toggle="validator" enctype="multipart/form-data" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+                    <p>
+                        *{{ 'Required fields' | t }}
+                    </p>
+
+                    <div class="input-1col">
+                        <input type="text" name="cheetos_upc" id="cheetos_upc" placeholder="*UPC" />
+                    </div>
+
+                    <div class="input-1col">
+                        <input type="email" name="cheetos_email" id="cheetos_email"  placeholder="*Email" />
+                    </div>
+
+                    <div class="input-2col">
+                        <input type="text" name="cheetos_firstname" id="cheetos_firstname"  placeholder="*First Name" />
+
+                        <input type="text" name="cheetos_lastname" id="cheetos_lastname"  placeholder="*Last Name" />
+                    </div>
+
+                    <div class="input-1col select-custom-arrow-container">
+                        <select name="cheetos_province" id="cheetos_province" >
+                        </select>
+                    </div>
+
+                    <div class="input-1col">
+                        <input type="text" name="cheetosPostalcode" id="cheetosPostalcode"  placeholder="*Postal Code" />
+                    </div>
+
+                    <label class="checkbox-container">
+                        {{ 'Yes! Sign me up to Tasty Rewards&trade; by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).' | t }}
+                        <input type="checkbox" name="cheetos_newsletter" id="cheetos_newsletter"  />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">
+                        {{ 'By submitting my entry, I confirm that I am 19 years of age or older, and I have read, understood and agree to participate according to the Official Rules.' | t }}
+                        <input type="checkbox" name="cheetos_ageConfirm" id="cheetos_ageConfirm"  />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <input type="submit" value="SUBMIT" class="cheetos-btn cheetos-btn-red" />
+
+                    <div class="cheetos-roc cheetos-hide-desktop cheetos-form-playforfun">
+                        <p>
+                            {{ 'Want to play but don’t have a UPC? No worries, you can still show me your skills without entering the contest!' | t }}
+                        </p>
+
+                        <a href="{{data.game_url }}" class="cheetos-btn cheetos-btn-red">
+                            {{ 'Play game for fun' | t }}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <img class="cheetos-bottom-border" src="/themes/tastytheme/src/images/contest-cheetos/cheetos-bottom-border.png" />
+    </div>
+
+    <div class="cheetos-entry-body">
+        <div class="cheetos-entry-row cheetos-entry-row-first container">
+            <div class="cheetos-entry-row-text">
+                <h2>
+                    {{ 'Step right up & enter for your chance to WIN<sup>&dagger;</sup> $10,000' | t | raw }}
+                </h2>
+
+                <p class="cheetos-roc">
+                    {{ "How’s that for high-stakes? Try to beat me at my own game. Plus, you have a chance to walk away with a cool instant prize and an entry for a chance to WIN<sup>&dagger;</sup> $10K!" | t | raw }}
+                </p>
+
+                <p class="cheetos-qc">
+                  {{ 'Plus, you could walk away with a cool instant prize!' | t }}
+                </p>
+
+                <a class="cheetos-btn cheetos-btn-red" href="#">
+                    {{ "Let's play"  | t }}
+                </a>
+            </div>
+
+            <div class="cheetos-entry-row-image">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-entry-1.png" />
+            </div>
+        </div>
+
+        <div class="cheetos-entry-row container">
+            <div class="cheetos-entry-row-image">
+                <img src="/themes/tastytheme/src/images/contest-cheetos/cheetos-entry-2.png" />
+            </div>
+
+            <div class="cheetos-entry-row-text">
+                <h2>
+                    {{ 'Want a chance to win<sup>&dagger;</sup> some free Cheetos<sup>&reg;</sup> products?' | t | raw }}
+                </h2>
+
+                <p>
+                    {{ "That's not a rhetorical question. I'm literally giving away THOUSANDS of free bags* of Cheetos<sup>&reg;</sup> cheese flavoured snacks and THOUSANDS of free boxes* of Cheetos<sup>&reg;</sup> Mac 'n Cheese pasta with sauce (yes - you heard me. Cheetos<sup>&reg</sup>. Mac. 'n Cheese.)." | t | raw }}
+                </p>
+
+                <p class="cheetos-entry-row-text-disclaimer">
+                    * {{ 'Awarded in the form of free product coupons.' | t }}
+                </p>
+                
+                <a class="cheetos-btn cheetos-btn-red cheetos-roc" href="#">
+                    {{ 'Play now' | t }}
+                </a>
+
+                <a class="cheetos-btn cheetos-btn-red cheetos-qc" href="#">
+                    {{ 'Enter now' | t }}
+                </a>
+            </div>
+        </div>
+
+        <div class="cheetos-entry-findupc container">
+            <div class="cheetos-entry-row">
+                <div class="cheetos-entry-row-image">
+                    <img class="cheetos-hide-mobile" src="/themes/tastytheme/src/images/contest-cheetos/upc-location.png" />
+                    <img class="cheetos-hide-desktop" src="/themes/tastytheme/src/images/contest-cheetos/upc-location-mobile.png" />
+                </div>
+
+                <div class="cheetos-entry-row-text">
+                    <h2>
+                        {{ 'Where to find your UPC' | t }}
+                    </h2>
+
+                    <p>
+                        {{ 'Find the UPC on the back of specially marked bags of Cheetos<sup>&reg;</sup> snacks!' | t | raw }}
+                    </p>
+
+                    <a class="cheetos-btn cheetos-btn-red" href="{{data.faq_link}}">
+                        {{ 'Have any questions?' | t }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="cheetos-disclaimer">
+            <p>
+                {{ '<sup>&dagger;</sup>No purchase necessary. Open to Canadian residents, 19+. Mathematical skill-testing question required. Contest period: June 28 @ 12:00 pm (noon) ET to September 5, 2021 @ 11:59:59 pm ET. Enter UPC for a chance to win (i) Instant Prizes: Cheetos® Free Product Coupon and Cheetos® Mac ’n Cheese Free Product Coupon (4,100 available/ARV $7.98 ea); (ii) Grand Prize: $10,000 cash (awarded in the form of a cheque). Chances of winning: (i) Instant Prize, depend on when entry played; (ii) Grand Prize, depend on entries received. Max 1 UPC per day. Prizes diminish as awarded. Details & Official Rules, <a href="/en-ca/contest/cheetoscarnival/officialrules" target="_blank">click here</a>' | t | raw }}
+            </p>
+
+            <div class="cheetos-disclaimer-controls">
+                <a href="{{data.rules_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'Official rules' | t }}
+                </a>
+
+                <a href="{{data.faq_link}}" class="cheetos-btn cheetos-btn-orange" target="_blank">
+                    {{ 'FAQ' | t }}
+                </a>
+            </div>
+        </div>
+</section>

@@ -1,0 +1,111 @@
+
+
+<nav id="brands_navigation" class="capncrunch-navbar__vertical-align " role="navigation" aria-label="main navigation">
+
+  <div class="brands-navbar__mobile-topnav">
+    <span class="brands-navbar__top-bar"></span>
+    <span class="brands-navbar__middle-bar"></span>
+    <span class="brands-navbar__bottom-bar"></span>
+  </div>
+
+  {% set logo_image = 'capncrunch-logo.svg' %}
+  {% if language == 'fr' %}
+    {% set logo_image = 'capncrunch-logo-fr.png' %}
+  {% endif %}
+
+  <!-- LOGO MOBILE-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/capncrunch':'/en-ca/brands/capncrunch' }}" class="capncrunch-logo-mobile top-logo noDesktop">
+    <img class="capncrunch-logo" src="/themes/brandstheme/src/images/capncrunch/{{logo_image}}" alt="Off The Eaten Path">
+  </a>
+
+  <hr class="noDesktop hr-navbar d-none">
+  {% set homepage_link = language == 'fr'?'/fr-ca/marques/capncrunch':'/en-ca/brands/capncrunch' %}
+  <!-- MENU OPTIONS -->
+
+  <ul class="brands-navbar__ul brands-navbar__center-align justify-left">
+    <li class="brands-navbar__item-border">
+      <a class="js-home" href="#products" id="products-nav" data-link="{{homepage_link}}">{{'Our Products'|t}}</a>
+
+
+    </li>
+
+    <li class="brands-navbar__item-border">
+      <a href="javascript:void(0);" data-link="{{homepage_link}}" id="about-us-submenu" class="js-scroll-to-about js-home" >{{'About Us'|t}}</a>
+    </li>
+
+    <li class="brands-navbar__item-border">
+      <a href="javascript:void(0);" data-link="{{homepage_link}}" id="recipes-submenu" class="js-scroll-to-recipe js-home">{{'Recipes'|t}}</a>
+    </li>
+    
+    <li class="brands-navbar__item-border">
+        {% set quaker_contact = 'quakerca' %}
+        {% if language == 'fr' %}
+          {% set quaker_contact = 'quakercafr' %}
+        {% endif %}
+        <a class="capncrunch-contact-us" href="https://contact.pepsico.com/{{quaker_contact}}" id="" target="_blank">{{'Contact us'|t}}</a>
+    </li>
+    
+
+  </ul>
+
+  <!-- LOGO DESKTOP-->
+  <a href="{{ language == 'fr'?'/fr-ca/marques/capncrunch':'/en-ca/brands/capncrunch' }}" class="logo noMobile js-logo">
+    <img class="capncrunch-logo" src="/themes/brandstheme/src/images//capncrunch/{{logo_image}}" alt="capncrunch Canada logo">
+  </a>
+
+  <!-- Social Icons -->
+  <div id="to-open-close-search-popover-container" class="brands-navbar__center-align brands-navbar__social justify-end brands-navbar__item-border ">
+
+    <a class="brands-navbar__social-icons" href="https://www.facebook.com/Off-The-Eaten-Path-Snacks-Canada" id="nav-facebook" target="_blank">
+      <i class="fa fa-facebook-square fa-navbar" title="facebook icon"></i>
+      <span>{{'Opens in a new tab'|t}}</span>
+    </a>
+
+{#    <a class="brands-navbar__social-icons" href="https://instagram.com/offtheeatenpathsnacks" id="nav-instagram" target="_blank">#}
+{#      <i class="fa fa-instagram fa-navbar"></i>#}
+{#    </a>#}
+
+{#    <a class="brands-navbar__social-icons" href="https://twitter.com/OffTheEatenPath" id="nav-twitter" target="_blank">#}
+{#      <i class="fa fa-twitter fa-navbar"></i>#}
+{#    </a>#}
+
+  </div>
+
+  <div class="brands-navbar_accounts-mbl" style="display: none;">
+
+
+    {%if ( language == 'en') %}
+      <a href="/fr-ca/marques/capncrunch" id="" class="choose-lang_fr">
+        FR
+      </a>
+    {% endif %}
+
+    {%if ( language == 'fr') %}
+      <a href="/en-ca/brands/capncrunch" id="" class="choose-lang_fr">
+        EN
+      </a>
+    {% endif %}
+
+    <div class="brands-navbar_accout-options">
+      {% include '@brandstheme/includes/login-out.html.twig' %}
+    </div>
+
+    <a class="tr-navbar-trigger-mobile" href="#">
+
+      <div class="flex-1-center">
+        <img class="brands-tr-navbar_image-mbl" src="/themes/brandstheme/src/images/{{'logo-en.png'|t}}" alt="Tasty Rewards">
+
+        <span class="brands-tr-navbar_copy-mbl">
+          {{'Tasty Rewards'|t}}
+        </span>
+
+      </div>
+
+      <div class="arrow-float_right">
+        <i class="arrow right"></i>
+      </div>
+
+    </a>
+  </div>
+
+</nav>

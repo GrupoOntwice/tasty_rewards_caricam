@@ -1,0 +1,197 @@
+<script type="text/javascript">
+language = '{{ data.language }}';
+//-->
+</script>
+{{ attach_library('tastytheme/help_modal') }}
+{{ attach_library('tastytheme/landing_contest') }}
+<section id="banner">
+    {{ drupal_view('carousel2', 'block_contest_header') }}   {# page main display #}
+</section>
+{#{% set elements = data.contestopened|length %}#}
+
+{#<div class="banner_slide">#}
+{#    <div class="banner-desktop"  style="background-image: url('{{ file_url(data.headerimage) }}');">#}
+{#        <div class="banner_slide--text {{class_pos}}">#}
+{#            #}{# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+{#            #}{# <span class="end_date"> {{ end_date }}</span> #}
+
+{#            {% if subtitle %}#}
+{#                #}{# <h1> {{ subtitle }}</h1> #}
+{#                <span class="h1"> {{ subtitle | raw}}</span>#}
+{#            {% endif %}#}
+
+{#            {% if description %}#}
+{#                <p>#}
+{#                    {{description|raw}}#}
+{#                </p>#}
+{#            {% endif %}#}
+
+{#            {% if link_url %}#}
+{#                <a class="btn_red {{is_signuplink? 'sign-up-link'}}" href="{{link_url}}">#}
+{#                    {{ link_title }}#}
+{#                </a>#}
+
+{#            {% endif %}#}
+
+{#        </div>#}
+{#    </div>#}
+{#    <div class="banner-mobile"  style="background-image: url('{{mobileimg}}');">#}
+{#        <div class="banner_slide--text {{class_pos}}">#}
+{#            #}{# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+{#            #}{# <span class="end_date"> {{ end_date }}</span> #}
+
+{#            {% if subtitle %}#}
+{#                #}{# <h1> {{ subtitle }}</h1> #}
+{#                <span class="h1"> {{ subtitle | raw }} </span>#}
+{#            {% endif %}#}
+
+{#            {% if description %}#}
+{#                <p>#}
+{#                    {{description|raw}}#}
+{#                </p>#}
+{#            {% endif %}#}
+
+{#            {% if link_url %}#}
+{#                <a class="btn_red" href="{{link_url}}">#}
+{#                    {{ link_title }}#}
+{#                </a>#}
+
+{#            {% endif %}#}
+
+{#        </div>#}
+{#    </div>#}
+{#    <div class="arrow-section-general"></div>#}
+{#</div>#}
+
+<section id="contest">
+    <div class="contest__detail-wrapper">
+        <h2>{{"Tasty Rewards<sup>TM</sup> Contests"|raw|t}}</h2>
+        <p class="contest__detail-about">
+            {% if elements >= 0 %}
+                {{"Here are the latest promotions and contests featured by Tasty Rewards<sup>TM</sup>. <br> Keep checking back to get all the details on the newest contests for you to enjoy."|t}}
+            {% else %}
+                {{"Stay tuned, more<br>contests coming soon!"|t}}
+            {% endif %}
+        </p>
+
+        <div class="contest-detail__social-media social-share" style="text-align: center;padding: 25px;">
+            <p class="contest-detail__social-media-wrap-paragraph">{{'Share Contests'|t}}</p>
+            <input type="hidden" id="socialshareicons" name="socialshareicons" value="cntest">
+            <input type="hidden" id="socialshareiconstext" name="socialshareiconstext" value="{{'Check out Tasty Rewards™ for exclusive contests, coupons, recipes, and more!'|t}}">
+            <a href="#" id="mk-recipe-fb" aria-label = "icon facebook share">
+                <span class="fa fa-lg fa-facebook"></span>
+            </a>
+            <a href="#" id="mk-recipe-tw" aria-label = "icon twitter share">
+                <span class="fa fa-lg fa-twitter"></span>
+            </a>
+            <a href="#" id="mk-recipe-pin" aria-label = "icon pinterest share">
+                <span class="fa fa-lg fa-pinterest"></span>
+            </a>
+        </div>
+
+    </div>
+
+
+    {% for contest in  data.contestopened %}
+
+
+            <div class="contest__detail-view">
+
+                {% if ( contest.opened == "1" ) %}
+                <a class="contest__detail-image-link" href="{{contest.uricontest}}" aria-label="{{contest.title|raw}}">
+                    <span class="js-lazyload-contestopen" data-alt="{{contest.title|raw}}" data-src="{{ file_url(contest.image) }}" ></span>
+                    {# <img alt="{{contest.title|raw}}" src="{{ file_url(contest.image) }}" /> #}
+                </a>
+                    <div class="contest__detail-view-about">
+                        <a class="contest__detail-title-link" href="{{contest.uricontest}}">
+                            <h3>{{contest.title|raw}}</h3>
+                        </a>
+                        <div class="contest__detail-about">
+                            {{contest.body|raw}}
+                        </div>
+
+                        <a class="btn_red" href="{{contest.uricontest}}">
+                            {{ "View Contest" | t }}
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="contest__greyout-inactive">
+                        <img class="inactive grayout" src="{{ file_url(contest.image) }}" />
+                        <div class="contest__detail-view-about">
+                            <h3>{{'Coming Soon'}}</h3>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+    {% endfor %}
+
+    {{ drupal_view('contests', 'page_1') }}   <!--template: views-view-unformatted--contests.html -->
+
+    {% set elements = data.contestclosed|length %}
+    {% if elements > 0 %}
+
+
+        <div class="contest__detail-wrapper">
+            <h2>{{'Closed Contests' | t }}</h2>
+
+            {# <p class="contest__detail-about">
+                Lorem ipsum dolor si amet, consectetur adipiscing elit, sed do eiusmod tempor
+            </p> #}
+        </div>
+
+        <div class="contest__menu">
+            {% set counter = 0 %}
+            <div class="contest__filter-wrapper">
+                <div class="contest__menu-detail-wrapper">
+                    {% for contest in  data.contestclosed %}
+                        <div class="contest__menu-detail-section" id="{{contest.uricontest}}" >
+
+                            <span class="js-lazyload-contestclosed" data-class="contest__menu-detail-section-image inactive grayout" data-src="{{ file_url(contest.image) }}"></span>
+                            {# <img class="contest__menu-detail-section-image inactive grayout" src="{{ file_url(contest.image) }}" alt="{{contest.title}}" /> #}
+                            <h3 class="contest__menu-detail-wrapper-title">{{contest.title|raw}}</h3>
+                            <p>{{contest.summarybody}}</p>
+
+                            {% if contest.winners is not empty%}
+                            <div class="contest__winner">
+                                {# <p>{{ 'Contest winner:' | t }}</p> #}
+                                <p class="contest__winner-name">{{ contest.winners | raw }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% set counter = counter + 1 %}
+                        {% if counter == 3 %}
+                            {% set counter = 0 %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if counter > 0 %}
+                        {# There should always be multiple of 3 div.contest_menu-detail-section #}
+                        {% for i in counter..2 %}
+                            <div class="contest__menu-detail-section empty">
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+
+
+
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+
+</section>
+
+
+
+

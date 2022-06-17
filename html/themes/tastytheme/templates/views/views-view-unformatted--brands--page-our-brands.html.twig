@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# {% if title %}
+  <h3>{{ title }}</h3>
+{% endif %} #}
+
+
+{#
+/**
+ * Main view-name: Products
+ * View Display machine-name: block_product_fritolay
+ *
+ */
+ #}
+
+<div class="container-fluid padding-none">
+
+  <div class="row">
+    <div class="col-md-12 text-center products-title animate__animated padding-bottom-medium">
+        <h2 class="blue">{{'Our Brands'|t}}</h2>
+        <p class="padding-top-half">{{'We’ve got you covered from breakfast ‘till your favourite evening snack!'|t}}</p>
+    </div>
+
+    <div class="row products-items center-align-dsk col-md-12 padding-top-medium padding-bottom-medium bg__light-blue">
+
+      <div class="container">
+        <div class="row">
+          {% for row in rows %}
+            <div class="brands-item col-md-3 brands-items-padding">
+              {{ row.content }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,82 @@
+<div class="carousel_fullwidth carousel_desktop js-article-carousel">
+  
+  {% for slide in carousel %}
+
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+   <div class="{{carousel_type}}_slide js-home-life{{slide.theme}}" role="img" aria-label="{{ slide.title|raw}}" style="background-image: url('{{slide.image_url}}');"> 
+      <div class="{{carousel_type}}_slide--text banner-desktop {{slide.theme}} {{class_pos}}">
+         <img src="/themes/tastytheme/src/images/icon_lifestyle.png" alt="heart icon">
+         <p class="{{carousel_type}}_slide-icon-text"></p>
+         {% if slide.title %}
+                  <span> {{ slide.title|raw}}</span>
+         {% endif %}
+         <p></p>
+         {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+         <p></p>
+         
+         {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_red js-life-cta':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+        {% endif %}
+      </div>
+   </div>
+ {% endfor %}
+
+</div>
+
+<div class="carousel_fullwidth carousel_mobile js-article-carousel">
+  
+  {% for slide in carousel %}
+
+      {% if slide.position == 'C' %}
+        {% set class_pos = 'slide-center' %}
+      {% elseif slide.position == 'R' %}
+        {% set class_pos = 'slide-right' %}
+      {% elseif slide.position == 'L' %}
+        {% set class_pos = 'slide-left' %}
+      {% else %}
+        {% set class_pos = 'slide-center' %}
+      {% endif %}
+
+   <div class="{{carousel_type}}_slide js-home-life{{slide.theme}}" role="img" aria-label="{{ slide.title|raw}}" style="background-image: url('{{slide.image_url}}');"> 
+      <div class="{{carousel_type}}_slide--text banner-mobile {{slide.theme}} {{class_pos}}">
+         <img src="/themes/tastytheme/src/images/icon_lifestyle.png" alt="heart icon">
+         <p class="{{carousel_type}}_slide-icon-text"></p>
+         {% if slide.title %}
+                  <span> {{ slide.title|raw}}</span>
+         {% endif %}
+         <p></p>
+         {% if slide.body %}
+              <p>
+                {{slide.body|raw}}
+              </p>
+            {% endif %}
+         <p></p>
+         
+         {% if slide.link %}
+              <a class="{{ slide.link_title?'btn_red js-life-cta':'btn_transparent' }} {{slide.is_signuplink? 'sign-up-link'}}" href="{{slide.link}}" title ="{{ slide.title | raw}}" aria-label="{{ slide.title | raw}}">
+                {{ slide.link_title }}
+              </a>
+
+        {% endif %}
+      </div>
+   </div>
+ {% endfor %}
+
+</div>
+

@@ -1,0 +1,167 @@
+{{ attach_library( 'pepsibam/pepsicouponScrolllibrary' ) }}
+{{ attach_library('tastytheme/coupon') }}
+
+
+{% set trackingpage = "coupon" %}
+{% set trackinglang = data.language %}
+{% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+
+
+<section id="banner">
+    {{ drupal_view('carousel2', 'block_coupon_header') }}   {# page main display #}
+</section>
+
+<script>
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    if ((is_chrome) && (is_safari)) {is_safari = false;}
+    if (is_safari) {
+        if (!document.cookie.match(/^(.*;)?\s*fixed\s*=\s*[^;]+(.*)?$/)) {
+            document.cookie = 'fixed=fixed; expires=Tue, 19 Jan 2038 03:14:07 UTC; path=/';
+             window.location.replace("{{data.iframe_domain}}_safari_fix.html");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+    if (event.data === "WsScrollTop=true") {
+        scrollToTop(280);
+    } else if (event.data === "WsScrollToIframeTop=true") {
+        scrollToTop(0);
+    } else
+        return;
+}
+/*
+function scrollToTop() {
+    document.body.scrollTop =500; // For Safari
+    document.documentElement.scrollTop =500; // For Chrome, Firefox, IE and Opera
+}
+*/
+function scrollToTop(top) {
+    var iframeElement = document.getElementById("CouponFrame");
+    document.body.scrollTop = iframeElement.offsetTop + top;  // For Safari
+    document.documentElement.scrollTop = iframeElement.offsetTop + top;  // For Chrome, Firefox, IE and Opera
+}
+
+
+</script>
+
+<section id="contest">
+{#    <div class="arrow-section-body"></div>#}
+
+    {# {% if (data.language != 'en-us') %} #}
+
+        {% if (data.device_no_supported == 1)%}
+            <section id="contentBlocks" class="container-fluid">
+                <h2 class="pink signika text-center uppercase"> {{ 'Oops! The coupon section is not compatible with this device. Please try to log in from a desktop.'|t }} </h2>
+                <div class="col-xs-12 text-center">
+                    <br>
+                    <br>
+                    <a class="primary h3" href="{{ path('<front>') }}"> {{'Go back to the home page'|t }} </a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </section>
+
+        {% else %}
+
+            {% if (data.coupon_body is empty) %}
+
+                {% if (data.error)%}
+
+                    <section id="contentBlocks" class="container-fluid">
+                        <h2 class="pink signika text-center uppercase"> {{ 'Oops! It seems we are having a connexion issue'|t }} </h2>
+                        <div class="col-xs-12 text-center">
+                            <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsibam.coupon') }}"> {{'Reload this page'|t }} </a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                        </div>
+                    </section>
+
+                {% else %}
+                    <section id="contentBlocks" class="container-fluid">
+                        <h2>{{'Save on Your Favourite Brands'|t}}</h2>
+
+                        <p>{{'Check out our current coupons and offers available now for a limited time!'|t}}</p>
+                        <p>
+                            {{'Having trouble selecting your coupons? Please'|t}}{{' '}}
+                            <a href="javascript:void(0)" id="need-help-safari">{{'click here'|t}}</a>{{' '}}
+                            {{'if you are using Safari. Or'|t}}{{' '}}
+                            <a href="javascript:void(0)" id="need-help-chrome">{{'click here'|t}}</a>{{' '}}
+                            {{'if you are using Chrome.'|t}}
+                        </p>
+
+                        <div class="contest-detail__social-media social-share" style="text-align: center;padding: 25px;">
+                            <input type="hidden" id="socialshareicons" name="socialshareicons" value="coupon">
+                            <input type="hidden" id="socialshareiconstext" name="socialshareiconstext" value="{{'Check out Tasty Rewards™ for exclusive coupons, contests, recipes, and more!'|t}}">
+                            <p class="contest-detail__social-media-wrap-paragraph">{{'Share Coupons and Offers'|t}}</p>
+                            <a href="#" id="mk-recipe-fb" aria-label = "icon facebook link"><span class="fa fa-lg fa-facebook"></span></a>
+                            <a href="#" id="mk-recipe-tw" aria-label = "icon twitter link"><span class="fa fa-lg fa-twitter"></span></a>
+                            <a href="#" id="mk-recipe-pin" aria-label = "icon pinterest link"><span class="fa fa-lg fa-pinterest"></span></a>
+                        </div>
+
+                        <iframe style="width:100%;min-height:50px" id="CouponFrame" src="{{data.iframe_url}}"></iframe>
+                    </section>
+
+                {% endif %}
+            {% else %}
+
+                {{data.coupon_body|raw}}
+
+            {% endif %}
+        {% endif %}
+    {# {% endif %} #}
+</section>
+
+{{ attach_library('tastytheme/offers') }}
+{{ attach_library('tastytheme/slickLibrary') }}
+{{ attach_library('tastytheme/help_modal') }}
+
+<section id="offers" class="container hidden">
+    <div class="offers-row">
+      <div class="offers-title">
+        <h2>
+          {{'More Savings to Love'|t}}
+        </h2>
+{#        <p class="offers-description">#}
+{#          {{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud'|t}}#}
+{#        </p>#}
+      </div>
+
+    {{ drupal_view('other_offers', 'coupon_other_offers') }}   {# page main display #}
+
+    </div>
+</section>
+
+{% if (data.language == 'en-us' or data.language == 'es-us') %}
+    {# Two section with id=contest ?? #}
+<section id="contest">
+
+
+    <section id="coupons">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>
+{% endif %}
+
+
+<div id="need-help-backdrop"></div>
+<div id="need-help-modal">
+    <div id="need-help-close">
+        <span>&#215;</span>
+    </div>
+
+    <div id="need-help-content">
+    </div>
+</div>

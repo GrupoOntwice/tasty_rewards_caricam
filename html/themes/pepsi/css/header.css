@@ -1,0 +1,696 @@
+/* =Header
+-------------------------------------------------------------- */
+
+header.smaller > #topAd {
+  display: none;
+}
+
+header {
+  width: 100%;
+  height: 200px;
+  /*overflow: hidden;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /*background-color: #fff;*/
+  -webkit-transition: height .3s;
+  -moz-transition: height .3s;
+  -ms-transition: height .3s;
+  -o-transition: height .3s;
+  transition: height .3s;
+}
+
+.navbarcontainer {
+  position: relative;
+  background-color: #fff;
+  min-height: 75px;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  /*-webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+-moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);*/
+}
+
+header #logo {
+  /*display: inline-block;*/
+  position: absolute;
+  background-color: transparent;
+  height: 94px;
+  width: 350px;
+  margin-left:20px;
+  line-height: 150px;
+  float: left;
+  /*font-size: 60px;*/
+  /*font-family: 'Open Sans',sans-serif;*/
+  /*color: grey;*/
+  /*font-weight: 400;*/
+  text-indent: -9999px;
+  white-space: nowrap; 
+  background:url('https://static.tastyrewards.ca/images/PepsiCoTastyRewardsLogo_ENG.png') center center no-repeat;
+  background-size:100% auto ;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+#bottom-logo{
+  height: 130px;
+  width: 200px;
+  text-indent: -9999px;
+  white-space: nowrap; 
+  background:url('https://static.tastyrewards.ca/images/PepsiCoTastyRewardsLogo_ENG.png') center center no-repeat;
+  background-size:100% auto ;
+  margin:auto;
+}
+
+html[lang="fr"] header #logo{
+    background:url('https://static.tastyrewards.ca/images/PepsiCoTastyRewardsLogo_FR.png') center center no-repeat;
+    background-size:100% auto ;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    width: 300px;
+}
+
+html[lang="fr"] #bottom-logo{
+    background:url('https://static.tastyrewards.ca/images/PepsiCoTastyRewardsLogo_FR.png') center center no-repeat;
+    background-size:100% auto ;
+}
+
+.fr header #logo,
+.fr #bottom-logo{
+  background:url('https://static.tastyrewards.ca/images/PepsiCoTastyRewardsLogo_FR.png') center center no-repeat;
+}
+
+
+header nav.desktopNav a {
+  display: inline-block;
+  line-height: 75px;
+  margin-left: 15px;
+  color: #6b6b6b;
+  font-weight: 700;
+  font-size: 15px;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+header nav.desktopNav a:hover {
+  text-decoration: none;
+  color: #027eba;
+}
+
+.Coupons span{
+    width: 20px;
+    display: inline-block;
+    height: 26px;
+    margin-bottom: -5px;
+    margin-right: 2px;
+    background: url(https://static.tastyrewards.ca/images/scissors_sprite_blue.jpg);
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+}
+.Coupons{
+   color: #ef4b74!important;
+}
+
+.Coupons:hover{
+   color: #008bce!important;
+}
+.Coupons:hover span{
+    background-position-x: -20px;
+}
+
+header nav.desktopNav a.secondary {
+  /*color: #ef4b74;*/
+}
+
+
+header nav.desktopNav a.secondary.first, .tr-login{
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: inset 0px -5px 0px #027eba;
+  height: auto;
+  background-color: #008bce!important;
+  line-height: 15px;
+  text-transform: uppercase;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+header nav.desktopNav a.secondary.last, .tr-signup{
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: inset 0px -5px 0px #9ab23a;
+  height: auto;
+  background-color: #a9c240!important;
+  line-height: 15px;
+  text-transform: uppercase;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+header nav.desktopNav a.secondary.last:hover, header nav.desktopNav a.secondary.first:hover{
+    text-decoration: none;
+    opacity: 1!important;
+    padding: 18px!important;
+    margin-left: 13px;
+    margin-right: -4px;
+    color: #ffffff!important;
+}
+
+a.dropbtn.secondary.first.last {
+    border-right: 1px solid #40a0d5;
+    color: #40a0d5;
+    padding-right: 15px;
+    box-shadow: none;
+    background-color: transparent!important;
+    border-radius: 0px;
+    text-transform: capitalize;
+}
+a.dropbtn.secondary.first {
+    border-left: 1px solid #ef4b74;
+    color: #ef4b74;
+    padding-left: 15px;
+}
+header.smaller {
+  height: 75px;
+}
+
+header.smaller #logo {
+  width:200px;
+  height: 75px;
+  line-height: 75px;
+  /*font-size: 30px;*/
+}
+
+header.smaller nav a {
+  line-height: 75px;
+}
+
+header .container {
+  position: relative;
+}
+
+.desktopNav {
+  margin-right: 80px;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+#desktopNav.hidenav {
+  display: none;
+}
+
+#topAd {
+  background-color: #f2f2f2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#gap{
+  height: 195px;
+}
+
+/* Logged in dropdown */
+
+/* Dropdown Button */
+.dropbtn { 
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+ 
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    margin-left: 15px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #fff !important;
+    background-color: #ef4b74;
+    text-decoration: none;
+    min-width: 160px;
+    padding-left: 20px;
+    margin-left: 0 !important;
+    display: block;
+    z-index: 999999;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ffffff;color:#6b6b6b !important;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn,
+.dropdown:hover .dropbtn span {
+    background-color: #ef4b74!important;
+    color: #fff !important;
+    opacity: 1;
+}
+header nav.desktopNav a.dropbtn.secondary.last:hover, header nav.desktopNav a.dropbtn.secondary.first:hover {
+    text-decoration: none;
+    opacity: 1!important;
+    padding: 15px!important;
+    margin-left: 15px;
+    margin-right: 0px;
+    color: #ffffff!important;
+}
+
+/* =Search Bar
+-------------------------------------------------------------- */ 
+
+#search-bar {
+  position: absolute;
+  right: 0;
+  height: 75px;
+  padding-left: 75px;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+#search-bar.smaller {
+  top: 0;
+}
+
+#searchform {
+  position: relative;
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin-left: -75px;
+}
+
+#label {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  z-index: 20;
+}
+
+#label label {
+  display: block;
+  width: 75px;
+  height: 75px;
+  background: url(https://static.tastyrewards.ca/images/search_icon_450x150.png) 0 0;
+  background-size: auto 100%;
+  /*background: url(https://static.tastyrewards.ca/images/search.png) 0 0;*/
+  font-size: 0;
+  color: rgba(0,0,0,0);
+  text-indent: -9999px;
+  cursor: pointer;
+}
+
+@media(min-width: 1025px){
+  #label label:hover {
+    background: url(https://static.tastyrewards.ca/images/search_icon_450x150.png) -150px 0;
+    background-size: auto 100%;
+    /*background: url(https://static.tastyrewards.ca/images/search.png) -150px 0;*/
+  }
+}
+
+#label.active label {
+  background: url(https://static.tastyrewards.ca/images/search_icon_450x150.png) -75px 0;
+  background-size: auto 100%;
+  /*background: url(https://static.tastyrewards.ca/images/search.png) -75px 0;*/
+}
+
+#input {
+  position: absolute;
+  top: 0;
+  right: 75px;
+  width: 450px;
+  height: 75px;
+  z-index: 5;
+  overflow: hidden;
+  visibility: hidden;
+  background-color: #ef4b74;
+}
+
+#input input {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 440px;
+  height: 90%;
+  margin: 0;
+  padding: 0 10px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  background-color: #ef4b74;
+  border-bottom: 1px solid white;
+  -webkit-backface-visibility: none;
+  -moz-backface-visibility: none;
+  -ms-backface-visibility: none;
+  backface-visibility: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: right 0;
+  -moz-transition: right 0;
+  -ms-transition: right 0;
+  -o-transition: right 0;
+  transition: right 0;
+}
+
+#input input:focus {
+  outline: none;
+}
+
+#input.focus {
+  z-index: 20;
+  visibility: visible;
+}
+
+#input.focus input {
+  right: 0;
+  -webkit-transition: right .3s;
+  -moz-transition: right .3s;
+  -ms-transition: right .3s;
+  -o-transition: right .3s;
+  transition: right .3s;
+}
+
+#input.notfocus input {
+  right: -450px;
+  -webkit-transition: right .3s;
+  -moz-transition: right .3s;
+  -ms-transition: right .3s;
+  -o-transition: right .3s;
+  transition: right .3s;
+}
+
+#input input::-webkit-input-placeholder {
+  color: #f0b3c2;
+}
+
+#input input:-moz-placeholder {
+  color: #f0b3c2;
+}
+
+#input input::-moz-placeholder {
+  color: #f0b3c2;
+}
+
+#input input:-ms-input-placeholder {
+  color: #f0b3c2;
+}
+
+.desktopBottomAd, .desktopTopAd{
+      
+      margin:auto;
+      width: 728px; 
+      height: 90px; 
+      color: #fff; 
+      line-height: 90px; 
+      text-align: center;
+  }
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* DESKTOP ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+/* big desktops */
+
+
+/* all desktops */
+@media all and (min-width:769px){
+  .mobileTopAd,.mobileBottomAd {
+    display: none;
+  }
+
+  #search-bar {
+    top: 0;
+  }
+  header nav.desktopNav {
+    display: inline-block;
+    float: right;
+    /*background-color: #fff;*/
+  }
+}
+
+
+/* small desktops */
+
+@media (min-width:900px) and (max-width:991px){
+  header nav.desktopNav a {font-size: 14px;}
+    header #logo {
+      width: 280px;
+    }
+    html[lang="fr"] header #logo{  
+        width: 270px;
+    }    
+}
+@media (min-width:769px) and (max-width:899px){
+  header nav.desktopNav a {font-size: 14px;}
+    header #logo {
+      width: 195px;
+    }
+    html[lang="fr"] header #logo{  
+        width: 195px;
+    }
+}
+
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* TABLET AND MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+@media all and (max-width:768px){
+  
+  .desktopTopAd,.desktopBottomAd {
+    display: none;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block !important;
+    position: absolute !important;
+    z-index: 9;
+    left: 0;
+    top: 60px;
+    float: none !important;
+    border-color: #ef4b74 !important;
+    margin: 8px 15px !important;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+	margin-top: 28px !important;
+  }
+
+  .close {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+
+  header.smaller .navbar-toggle {
+    top: 10px;
+	margin-top: 10px !important;
+  }
+
+  .navbar-toggle .icon-bar {
+    background-color: #ef4b74;
+  }
+  .mobileBottomAd, .mobileTopAd{
+       
+      margin:auto;
+      width: 320px; 
+      height: 50px; 
+      color: #fff; 
+      line-height: 50px; 
+      text-align: center; 
+  }
+
+  
+  /* =Header
+  -------------------------------------------------------------- */
+  header #logo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    /*height: 200px;*/
+    width: 180px;
+    line-height: 150px;
+    /*text-align: center;*/
+    left: 50%;
+    position: absolute;
+    margin-left: -90px;
+    content: '';
+  }
+
+  html[lang="fr"] header #logo{  
+    width: 180px;  
+  }
+
+  header.smaller {
+    height: 75px;
+    background-color: #fff;
+  }
+
+  header.smaller #logo {
+    line-height: 80px;
+    /*font-size: 30px;*/
+    /*text-align: center;*/
+    margin-left: -90px;
+    width: 180px;
+    content: '';
+  }
+
+  #search-bar {
+    top: 0px;
+  }
+  
+    /* =Nav Mobile
+  -------------------------------------------------------------- */
+
+  nav.mobileNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9999;
+  }
+dropdown
+  nav.mobileNav hr {
+    margin-bottom: 0;
+  }
+
+  nav.mobileNav a {
+    display: block;
+    text-transform: uppercase;
+    height: 50px;
+    text-transform: uppercase;
+    line-height: 75px;
+    margin-left: 20px;
+    color: #6b6b6b;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+  }
+
+  nav.mobileNav a:hover {
+    text-decoration: none;
+  }
+
+  nav.mobileNav a.secondary {
+    color: #ef4b74;
+  }
+
+  nav.mobileNav a.secondary.first {
+    border-left: 1px solid #ef4b74;
+    padding-left: 10px;
+  }
+
+  nav.mobileNav a.secondary.last {
+    border-right: 1px solid #ef4b74;
+    padding-right: 10px;
+  }
+  #gap {
+    height: 140px;
+  }
+
+
+nav.mobileNav a.secondary{
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: inset 0px -5px 0px #9ab23a;
+    height: auto;
+    background-color: #a9c240;
+    line-height: 15px;
+    text-transform: uppercase;
+    /* width: calc(100%); */
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    display: inline-block;
+    /* margin-top: 26px; */
+    margin-right: 35%;
+}
+nav.mobileNav a#mk-id-mobile, a.tr-login.secondary {
+    box-shadow: inset 0px -5px 0px #027eba!important;
+    background-color: #008bce!important;
+    margin-bottom: 30px;
+}
+a.tr-login.secondary {
+  margin-top: 30px;
+}
+.Coupons span {
+    margin-left: 5px;
+}
+}
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* MOBILE ONLY
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media screen and (max-width: 660px){
+  
+  #input,#input input {
+    width: -moz-calc(100% - 75px);
+    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 75px);
+  }
+
+  #input {
+    position: fixed;
+  }
+
+  #search-bar:not(.smaller) #input {
+    top: 70px;
+  }
+  
+  .logo.navbar-btn{
+    display: none;
+  }
+
+}

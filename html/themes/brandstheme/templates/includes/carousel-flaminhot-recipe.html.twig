@@ -1,0 +1,82 @@
+<div class="container-fluid flaminhot-featured-recipes-bg-container d-none">
+  <div class="row">
+    <div class="flaminhot-featured-recipes-bg" style="background: url('/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-top-large.png') center center no-repeat"></div>
+    <div class="flaminhot-featured-recipes-bg" style="background: url('/themes/brandstheme/src/images/flaminhot/recipes/flaminhot-recipes-bg-bottom-large.png') center center no-repeat"></div>
+  </div>
+</div>
+
+<div class="container flaminhot-featured-recipes-container featured-recipe-position">
+
+  <div class="row">
+
+    <div class="col-md-12 flaminhot-recipe-header">
+      <h1>
+        {{ 'Featured Recipes'|t }}
+      </h1>
+
+      <p>
+        {{ 'Kick up your next meal with these Flamin’ Hot<sup>®</sup> eats.'|t }}
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div id="flaminhot-feature-recipe" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators featured-carousel-indicators">
+    {% for idx, recipe in home_recipes %}
+      <li data-target="#flaminhot-feature-recipe" data-slide-to="{{ idx }}" class="{{ idx==0 ? 'active' :'' }}"></li>
+    {% endfor %}
+  </ol>
+
+  <div class="carousel-inner container">
+    {% for idx, recipe in home_recipes %}
+      <div class="row carousel-item {{ idx==0 ? 'active' :'' }}">
+        <div class="col-md-4 flaminhot-recipe-col">
+
+
+          <a href="{{ recipe.link }}" aria-label="{{ recipe.title|raw }} " class="flaminhot-recipe-img-link">
+
+            <div class="flaminhot-recipe-thumbnail" style="background: url('{{ recipe.image_url }}') center center no-repeat, transparent; content: attr({{ recipe.title }});"></div>
+          </a>
+
+          <div class="flaminhot-recipe-copy">
+
+            <h3>
+              {{ recipe.title|raw }}
+            </h3>
+          </div>
+
+          <div class="flaminhot-recipe-btn">
+            <a class="btn_flaminhot" href="{{ recipe.link }}">
+              {{ 'View Recipe'|t }}
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+  <a class="carousel-control-prev" href="#flaminhot-feature-recipe" role="button" data-slide="prev" aria-label="previous link">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </a>
+  <a class="carousel-control-next" href="#flaminhot-feature-recipe" role="button" data-slide="next" aria-label="next arrow">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </a>
+
+</div>
+
+<div class="container text-center">
+<div class="row">
+
+  <div class="col-md-12 m-auto flaminhot-featured-recipes-view-more">
+    <a class="btn_flaminhot-view-more" href="{{ brand_basepath }}/recipes">
+      {{ 'View More Recipes'|t }}
+    </a>
+  </div>
+
+</div>
+
+</div>

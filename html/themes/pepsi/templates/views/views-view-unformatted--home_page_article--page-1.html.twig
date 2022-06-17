@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}#}
+{% for row in rows %}
+    
+    {% set title = row.content["#row"]._entity.getTranslation(language).title.getValue().0.value %}
+    {% set descrip = row.content["#row"]._entity.body.getValue().0.value %}
+    {% set nid = row.content["#row"]._entity.nid.getValue().0.value%}
+    {% set link = path('entity.node.canonical', {'node': nid}) %}
+    {% set img = file_url(row.content["#row"]._entity.getTranslation(language).field_image.0.entity.uri.value) %}
+    {% set img_alt = row.content["#row"]._entity.field_image.getValue().0.alt %}
+     
+    <div class="boxinside grid dont-remove-class" style="background-image:url('{{img}}')">
+        <figure class="effect-lily">
+            <figcaption>
+                <div class="article">
+                    <h2><span>{{"Featured article"|t}}</span>
+                    {{title}}</h2>
+                </div>
+                <a href="{{link}}">{{"View more"|t}}</a>
+            </figcaption>           
+        </figure>
+    </div>
+
+{% endfor %}
+
+

@@ -1,0 +1,152 @@
+section#recipes {
+  .recipe_slide {
+    display: flex !important;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-position: right center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 30px 0;
+
+    &--text {
+      width: 50%;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 10%;
+
+      img {
+        display: block;
+        margin: 0 auto 30px;
+      }
+
+      h2,
+      p {
+        text-align: center;
+      }
+
+      h2 {
+        color: $blue;
+        font-weight: bold;
+        margin-bottom: 40px;
+        font-size: $font-size * 2.25;
+      }
+
+      p {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  .recipe__menu {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2,
+    p {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0e4caa;
+      font-weight: bold;
+      font-size: 36px;
+      padding-bottom: 10px;
+      padding-top: 40px;
+    }
+
+    p {
+      margin-bottom: 40px;
+    }
+
+    /*Select*/
+
+    .select-css {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0e4caa;
+      padding: 0.6em 6em 0.5em 0.8em;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #acacac;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("/src/images/arrow_recipe.png");
+      background-repeat: no-repeat, repeat;
+      background-position: right 0.7em top 55%, 0 0;
+      background-size: 0.9em auto, 100%;
+    }
+    .select-css::-ms-expand {
+      display: none;
+    }
+    .select-css:hover {
+      border-color: #888;
+    }
+    .select-css:focus {
+      border-color: #888;
+      // box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+      // box-shadow: 0 0 0 3px -moz-mac-focusring;
+      // color: #222;
+      // outline: none;
+    }
+    .select-css option {
+      font-weight: bold;
+      color: #727273;
+    }
+
+    /*test*/
+
+    .recipe__multiselect {
+      width: 200px;
+    }
+
+    .recipe__select-box {
+      position: relative;
+    }
+
+    .selectBox select {
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .recipe__checkboxes {
+      display: none;
+      border: 1px #dadada solid;
+      position: relative;
+      top: -1px;
+
+      .recipe__checkboxes-padding {
+        display: block;
+        margin: 10px 10px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $break-mobile) {
+    .recipe_slide--text {
+      margin: auto;
+    }
+  }
+
+  @media screen and (max-width: $break-small-mobile) {
+    .recipe_slide--text {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}

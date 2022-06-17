@@ -1,0 +1,61 @@
+entity.gtm_datalayer_view.collection:
+  path: /admin/structure/datalayers/views
+  defaults:
+    _entity_list: gtm_datalayer_view
+    _title: dataLayer Views
+  requirements:
+    _permission: administer gtm datalayer
+
+entity.gtm_datalayer_view.condition.add:
+  path: /admin/structure/datalayers/views/{entity}/condition/add/{condition}
+  defaults:
+    _form: \Drupal\gtm_datalayer\Form\ConditionAddForm
+    _title: Add access condition
+  options:
+    parameters:
+      entity:
+        type: entity:gtm_datalayer_view
+  requirements:
+    _permission: administer gtm datalayer
+
+entity.gtm_datalayer_view.condition.edit:
+  path: /admin/structure/datalayers/views/{entity}/condition/edit/{id}
+  defaults:
+    _form: \Drupal\gtm_datalayer\Form\ConditionEditForm
+    _title: Edit access condition
+  options:
+    parameters:
+      entity:
+        type: entity:gtm_datalayer_view
+  requirements:
+    _permission: administer gtm datalayer
+
+entity.gtm_datalayer_view.condition.delete:
+  path: /admin/structure/datalayers/views/{entity}/condition/delete/{id}
+  defaults:
+    _form: \Drupal\gtm_datalayer\Form\ConditionDeleteForm
+    _title: Delete access condition
+  options:
+    parameters:
+      entity:
+        type: entity:gtm_datalayer_view
+  requirements:
+    _permission: administer gtm datalayer
+
+entity.gtm_datalayer_view.enable:
+  path: /admin/structure/datalayers/views/{gtm_datalayer_view}/enable
+  defaults:
+    _controller: \Drupal\gtm_datalayer\Controller\EntityDataLayerController::performOperation
+    op: enable
+  requirements:
+    _permission: administer gtm datalayer
+    _csrf_token: 'TRUE'
+
+entity.gtm_datalayer_view.disable:
+  path: /admin/structure/datalayers/views/{gtm_datalayer_view}/disable
+  defaults:
+    _controller: \Drupal\gtm_datalayer\Controller\EntityDataLayerController::performOperation
+    op: disable
+  requirements:
+    _permission: administer gtm datalayer
+    _csrf_token: 'TRUE'

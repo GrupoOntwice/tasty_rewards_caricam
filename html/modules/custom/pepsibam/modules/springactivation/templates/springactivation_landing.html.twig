@@ -1,0 +1,148 @@
+{{ attach_library('tastytheme/slickLibrary') }}
+{{ attach_library( 'springactivation/springactivationLibrary' ) }}
+
+<section id="banner" class='springactivation banner d-block'>
+  <img class="w-100 noMobile" src="/themes/tastytheme/src/images/spring-activation/springspread/spring-activation-page-header.png" alt="Spring Activation Banner"/>
+  <img class="noDesktop-sm w-100" src="/themes/tastytheme/src/images/spring-activation/springspread/spring-activation-page-header-mb.png" alt="Spring Activation Banner"/>
+</section>
+{#
+<section class='springactivation-snacks'>
+  <div class="container">
+    <div class="row center-align-md-dsk padding-top-large padding-bottom-large">
+
+      <div class="col-md-6">
+        <img class="w-100" src="/themes/tastytheme/src/images/spring-activation/snacks-packs.png" alt="Favourite snacks packs"/>
+      </div>
+
+      <div class="col-md-6 fav-snack-copy-padding">
+        <img class="w-50 padding-top-mbl" src="/themes/tastytheme/src/images/spring-activation/snacksdotcom.png" alt="Snacks.com"/>
+
+        <h3 class="h3-fav-snack padding-top">{{ 'Your favorite snacks are here'|t }}.</h3>
+        <div class="springactivation-container padding-top">
+          <p class="text-white">
+            {{ 'Welcome to your one-stop shop for amazing snacks! Personalize your orders, try our hottest new flavors, and get FREE shipping on orders over $10. Purchase your favorite snacks and discover more at Snacks.com!'|t }}
+          </p>
+          <a href="https://www.snacks.com/" target="_blank" class="springactivation-btn margin-top">
+            {{ 'Shop Now'|t }}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ #}
+
+<section class="spring-recipes">
+
+  <div class="chips-top-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/chips-top-left.png" alt="Chips Top Left"/>
+  </div>
+
+  <div class="chips-top-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/chips-top-right.png" alt="Chips Top Right"/>
+  </div>
+
+  <div class="container">
+    <div class="row text-center padding-top-large padding-bottom-large">
+      <div class="col-md-12">
+        <h2 class="blue">{{ 'Recipes'|t }}</h2>
+        <p class="padding-top padding-bottom-medium">
+          {{ 'These tasty recipes are sure to put a spring in your step <br> have fun whipping up something new!'|t }}
+        </p>
+      </div>
+
+
+      <div class="springactivation-nocarousel-container row" data-count="{{ recipe_count }}">
+        {% for recipe in data.recipes %}
+          <div class="col-md-4 springactivation-recipes">
+            <div class="springactivation-nocarousel-box" data-nid="{{ recipe.nid }}">
+              <div class="img">
+                <a href="{{ recipe.link }}"><img class="w-100" src="{{ recipe.image_url }}"/></a>
+              </div>
+
+              <div class="">
+                <a class="blue" href="{{ recipe.link }}">
+                <h3 class="padding-top padding-bottom recipe-title">
+                  {{ recipe.title|raw }}
+                </h3>
+                </a>
+              </div>
+
+              <div class="spring-activation-recipe-btn margin-bottom-medium">
+                <a href="{{ recipe.link }}" class="springactivation-btn springactivation-btn-yellow m-auto">
+                  {{ 'View Recipe'|t }}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="col-md-12 center-align padding-top">
+        <div class="view-more-alt" style="text-align:center;">
+          <a href="javascript:void(0);" class="more-recipes springactivation-btn ">{{ 'View More Recipes'|t }}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="center-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/center-left-leaves.png" alt="Chips Bottom Left"/>
+  </div>
+
+  <div class="center-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/center-right-leaves.png" alt="Chips Bottom Left"/>
+  </div>
+
+  <div class="chips-bottom-left">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/chips-bottom-left.png" alt="Chips Bottom Left"/>
+  </div>
+
+  <div class="chips-bottom-right">
+    <img class="bg-chips-img" src="/themes/tastytheme/src/images/spring-activation/springspread/chips-bottom-right.png" alt="Chips Bottom Right"/>
+  </div>
+
+</section>
+
+<section id="coupons">
+  <div class="coupon--container-bg">
+    <div class="container springactivation-d-md-flex padding-top-medium padding-bottom-medium-dsk springactivation-coupon-padding">
+      <div class="coupon--display">
+        <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+        </div>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <div class="coupon--text-wrapper">
+        </div>
+        <h3>{{'Save now!' |t}}</h3>
+        <p>{{ 'Scoop up our latest coupon to<br class="noMobile-sm"> save on your next purchase!' |t}} </p>
+
+        <a class="btn_red" href="/en-us/coupons">{{ 'Get My Coupon*' |t }}</a>
+        <p class="coupon-disclaimer">{{ '*Coupons available while quantities last.' |t }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="banner">
+  <div class="springactivation-banner">
+    {% for banner in data.banners %}
+      <a href="{{banner.link}}">
+        <img class="w-100 noMobile-768" src="{{banner.image_url}}" alt="Spring Activation Desktop Banner"/>
+        <img class="w-100 noDesktop-768" src="{{banner.mobile_image_url}}" alt="Spring Activation Mobile Banner"/>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="lifestyle">
+    {# {{ drupal_view('carousel2', 'page_article') }} #}
+    {% set carousel = data.life_carousel %}
+    {% set carousel_type = 'banner' %}
+    {% include '@tastytheme/includes/carousel_slides.html.twig' %}
+</section>
+
+
+

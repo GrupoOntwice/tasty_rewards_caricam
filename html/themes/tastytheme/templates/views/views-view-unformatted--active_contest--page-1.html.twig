@@ -1,0 +1,5 @@
+{% for row in rows %}
+  {% set title = row.content["#row"]._entity.title.getValue().0.value %}
+  {% set firstname = get.firstname?get.firstname~', ':'' %}
+    {{ firstname }} {{ title }}
+{% endfor %}

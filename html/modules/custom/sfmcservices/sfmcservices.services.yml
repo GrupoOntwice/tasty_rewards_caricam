@@ -1,0 +1,3 @@
+services:
+  sfmcservices.apicall:
+    class: Drupal\sfmcservices\SFMCServices

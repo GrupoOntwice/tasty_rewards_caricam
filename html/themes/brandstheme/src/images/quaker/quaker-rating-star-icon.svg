@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="39.593" height="41.329" viewBox="0 0 39.593 41.329">
+  <g id="Group_1110" data-name="Group 1110" transform="translate(0.763 0.811)">
+    <path id="star" d="M518.708,172.468a.683.683,0,0,0-.55-.464l-12.323-1.79-5.512-11.168a.68.68,0,0,0-1.221,0l-5.512,11.168-12.324,1.791a.681.681,0,0,0-.378,1.168l8.918,8.681L487.7,194.133a.682.682,0,0,0,.27.666.674.674,0,0,0,.717.051l11.023-5.795,11.023,5.793a.68.68,0,0,0,.988-.718l-2.1-12.276,8.918-8.693A.682.682,0,0,0,518.708,172.468Z" transform="translate(-480.677 -158.665)" fill="none" stroke="#bd9c7c" stroke-width="1.5"/>
+    <line id="Line_4" data-name="Line 4" y2="3.873" transform="translate(19.031 35.895)" fill="none" stroke="#bd9c7c" stroke-linecap="round" stroke-width="1.5"/>
+    <line id="Line_5" data-name="Line 5" x2="3.684" y2="1.197" transform="translate(34.201 24.877)" fill="none" stroke="#bd9c7c" stroke-linecap="round" stroke-width="1.5"/>
+    <line id="Line_6" data-name="Line 6" y1="3.134" x2="2.277" transform="translate(28.411 3.912)" fill="none" stroke="#bd9c7c" stroke-linecap="round" stroke-width="1.5"/>
+    <line id="Line_7" data-name="Line 7" x1="2.277" y1="3.134" transform="translate(7.386 3.909)" fill="none" stroke="#bd9c7c" stroke-linecap="round" stroke-width="1.5"/>
+    <line id="Line_8" data-name="Line 8" x1="3.684" y2="1.197" transform="translate(0.182 24.872)" fill="none" stroke="#bd9c7c" stroke-linecap="round" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,3155 @@
+/*
+  Quakers Site stylesheet
+*/
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  /*overflow-x: hidden;*/
+  /*color: #383333;*/
+}
+
+body.navbar-is-fixed-top {
+  margin-top: 0 !important;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+.quaker h1, h2, h3, h4, h5, h6 {
+  font-family: "Apercu-Bold", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #023B6B;
+}
+
+.quaker p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #383333;
+}
+
+html:lang(en) .quaker-campbell-barcode.fr {
+  display: none;
+}
+
+html:lang(fr) .quaker-campbell-barcode.en {
+  display: none;
+}
+
+.quaker-products .carousel-control-prev, .quaker-products .carousel-control-next{
+  width: 8%;
+}
+
+.quaker section#banner .banner_slide--text.slide-left sup {
+  top: -.5em !important;
+  font-size: 75% !important;
+  right: 0 !important;
+}
+
+.quaker .brands-navbar__item-border{
+  display: flex;
+  align-items: center;
+}
+
+/************************
+   Quaker Buttons
+************************/
+
+.btn_quaker, .quaker .btn_carousel {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #004179;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  text-decoration: none;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #004179;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  width: auto !important;
+  height: auto !important;
+}
+
+.btn_quaker:hover, .btn_quaker:focus, .btn_quaker:active, .quaker .btn_carousel:hover, .quaker .btn_carousel:focus, .quaker .btn_carousel:active {
+  color: #FFFFFF;
+  background: #BD9C7C !important;
+  border: 2px solid #BD9C7C;
+  outline: none;
+  text-decoration: none;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  transition: all 0.5s ease;
+}
+
+
+.btn_quaker-white {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #FFFFFF;
+  color: #004179 !important;
+  padding: 16px 32px !important;
+  text-decoration: none !important;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #FFFFFF;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn_quaker-white:hover, .btn_quaker-white:focus, .btn_quaker-white:active {
+  color: #004179;
+  background: #FFFFFF !important;
+  border: 2px solid #FFFFFF;
+  outline: none;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+/************************
+    Quaker Navbar
+************************/
+
+.quaker #brands_navigation {
+  background-color: #F1F1F1 !important;
+  margin-bottom: -2px;
+}
+
+.quaker .header__logo-container {
+  z-index: 999999;
+}
+
+.quaker #fancy_login_dim_screen, body.modal--is-open-sign-up .modal__container-sign-up {
+  z-index: 9999999 !important;
+}
+
+.quaker .brands-navbar__ul a {
+  color: #032953 !important;
+}
+
+.quaker .fa-navbar, .quaker .fa-navbar:hover, .quaker .fa-navbar:active, .quaker .fa-navbar:focus {
+  background: #032953 !important;
+  color: #FFFFFF !important;
+}
+
+.quaker .brands-navbar__ul a, .quaker .choose-lang_fr, .quaker .brands-navbar_accout-options, .quaker .header .menu a {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*
+  Quaker Carousel
+*/
+
+.quaker section#banner .banner-desktop span.h1, .quaker section#banner .banner-mobile span.h1 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.quaker section#banner .banner_slide--text p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quaker .slick-next:before {
+  background: url("../images/arrows/quaker-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.quaker .slick-prev:before {
+  background: url("../images/arrows/quaker-left-chevron.svg") !important;
+}
+
+.quaker #brands .slick-next:before {
+  background: url("../images/arrows/quaker-right-chevron.svg") !important;
+  right: 10px;
+}
+
+.quaker #brands .slick-prev:before {
+  background: url("../images/arrows/quaker-left-chevron.svg") !important;
+}
+
+.quaker section#banner .slick-dots li.slick-active button {
+  background-color: #004179 !important;
+}
+
+.quaker section#banner .slick-dots li button {
+  background-color: #FFFFFF !important;
+}
+
+.quaker .blue_black .h1, .quaker .blue_white .h1, .quaker .blue_black h1, .quaker .blue_white h1, .quaker .blue_black span, .quaker .blue_white span, .quaker .blue_black .recipe_slide-icon-text, .quaker .blue_white .recipe_slide-icon-text, .quaker .blue_black .lifestyle_slide-icon-text, .quaker .blue_white .lifestyle_slide-icon-text, .quaker .banner-mobile.blue_white .h1 .banner-mobile.blue_white .h1, .quaker .banner-mobile.blue_black h1, .quaker .banner-mobile.blue_white h1, .quaker .banner-mobile.blue_black span, .quaker .banner-mobile.blue_white span, .quaker .banner-mobile.blue_black .recipe_slide-icon-text, .quaker .banner-mobile.blue_white .recipe_slide-icon-text, .quaker .banner-mobile.blue_black .lifestyle_slide-icon-text, .quaker .banner-mobile.blue_white .lifestyle_slide-icon-text {
+  color: #004179 !important;
+}
+
+
+.quaker .blue_blue .h1, .quaker .blue_blue h1, .quaker .blue_blue span, .quaker .blue_blue .recipe_slide-icon-text, .quaker .banner-mobile.blue_blue .h1, .quaker .banner-mobile.blue_blue h1, .quaker .banner-mobile.blue_blue span, .quaker .banner-mobile.blue_blue .recipe_slide-icon-text, .quaker .banner-mobile.blue_blue .lifestyle_slide-icon-text {
+  color: #004179 !important;
+}
+
+.blue_blue p, .blue_blue p, .banner-mobile.blue_blue p, .banner-mobile.blue_blue p {
+  color: #004179 !important;
+}
+
+/**********************************
+   Featured Recipe & Products
+**********************************/
+
+.quaker-recipes-block {
+  padding: 64px 0 64px;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.quaker-featured-products-block {
+  padding: 64px 16px 64px;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.quaker-recipe-detail-section {
+  padding: 16px 0 0;
+  position: relative;
+}
+
+.quaker-recipes-main-block, .quaker-recipes-filters-section {
+  background: #F1F1F1;
+}
+
+.quaker-recipes-main-block {
+  padding: 64px 0 64px;
+}
+
+.quaker-recipes-block {
+  background-color: #032953;
+  color: #FFFFFF;
+  /*margin-top: -20px;*/
+}
+
+.quaker-featured-products-block {
+  background-color: #FFFFFF;
+  color: #023B6B;
+}
+
+.quaker-featured-prod-img-col {
+  text-align: center;
+}
+
+.quaker-featured-prod-img-col img {
+  width: 200px;
+}
+
+.quaker-featured-recipes-bg-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.quaker-featured-recipes-bg-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.quaker-featured-recipes-bg-left img, .quaker-featured-recipes-bg-right img {
+  max-width: 100%;
+  width: 200px;
+  height: auto;
+}
+
+.quaker-featured-recipe-img-block, .quaker-recipes-img-block {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: inherit;
+}
+
+.quaker-featured-recipe-img-block a, .quaker-featured-recipe-img, .quaker-recipes-img-block a, .quaker-recipes-img {
+  width: 100%;
+  height: 100%;
+}
+
+.quaker-featured-recipe-img, .quaker-recipes-img {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+.quaker .img-align-center {
+  background-position: center center !important;
+}
+
+.quaker .img-align-right {
+  background-position: right center !important;
+}
+
+.quaker .img-align-left {
+  background-position: left center !important;
+}
+
+.quaker .img-align-top {
+  background-position: top center !important;
+}
+
+.quaker .img-align-bottom {
+  background-position: bottom center !important;
+}
+
+.featured-prod-heading, .featured-recipe-heading, .quaker-video-heading {
+  padding-bottom: 16px;
+}
+
+.featured-prod-heading h1, .featured-recipe-heading h1, .quaker-video-heading h1, .quaker-recipe-detail-heading h1 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.2;
+}
+
+.featured-recipe-heading h1, .quaker-video-heading h1 {
+  color: #FFFFFF;
+}
+
+.featured-prod-heading h1, .quaker-recipe-detail-heading h1 {
+  color: #004179;
+}
+
+.quaker-recipe-detail-heading {
+  padding-top: 48px;
+}
+
+.quaker-recipes-col {
+  padding-bottom: 32px;
+}
+
+.quaker-recipes-btn {
+  padding-top: 16px;
+}
+
+.quakers-featured-recipes-description, .quakers-featured-product-description, .quakers-recipes-description {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.quakers-featured-recipes-description h4, .quakers-featured-product-description h4, .quaker-videos-description h4, .quaker-coupon-message h4, .quakers-recipes-description h4 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.quaker-videos-description h4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 60px;
+  margin-top: 16px;
+  padding-top: 4px;
+}
+
+.quaker-videos-description p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 78px;
+}
+
+
+.quakers-featured-recipes-description h4, .quakers-featured-product-description h4, .quaker-videos-description h4, .quakers-recipes-description h4 {
+  font-size: 22px;
+}
+
+.quaker-coupon-message h4 {
+  font-size: 32px;
+}
+
+.quaker-view-featured-products {
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#quaker-power-of-oats-carousel .quaker-view-featured-products a {
+  width: 200px !important;
+  height: 48px !important;
+}
+
+.quakers-featured-recipes-description p, .quaker-videos-description p .quakers-recipes-description p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 16px;
+}
+
+.quakers-featured-product-description h4 {
+  padding-bottom: 16px;
+}
+
+.quakers-featured-product-description div, .quakers-featured-product-description p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.quakers-featured-recipes-description, .quakers-featured-recipes-description h4, .quakers-featured-recipes-description p, .quaker-videos-description h4, .quaker-videos-description p, .quaker-coupon-message h4 {
+  color: #FFFFFF !important;
+}
+
+.quakers-featured-product-description, .quakers-featured-product-description h4, .quakers-featured-product-description div, .quakers-featured-product-description p, .quakers-recipes-description h4, .quakers-recipes-description p {
+  color: #023B6B !important;
+}
+
+.quaker-view-more-recipes {
+  text-align: center;
+  padding-top: 32px;
+}
+
+.hr-quaker-recipe {
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+
+.hr-quaker-recipe hr {
+  border-top: 2px solid #CFD0D2;
+  width: 50%;
+}
+
+.w-recipe-detail-icons, .w-prep-time-icon, .w-cook-time-icon, .w-serving-icons {
+  padding-right: 8px;
+}
+
+
+.w-recipe-detail-icons, .w-prep-time-icon, .w-cook-time-icon {
+  width: 40px;
+}
+
+.w-serving-icons {
+  width: 40px;
+}
+
+.quaker-recipe-cooking-info p {
+  padding-right: 8px;
+  color: #004179;
+}
+
+.quaker-recipe-prep-time, .quaker-recipe-servings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quaker-navigation-recipesdetails {
+  background: #004179;
+  /*height: 40px;*/
+}
+
+.quaker .next-recipe {
+  background: #004179;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.quaker .prev-recipe {
+  background: #004179;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.quaker .prev-recipe img {
+  width: 125px;
+  padding-right: 16px;
+}
+
+.quaker .next-recipe img {
+  width: 125px;
+  padding-left: 16px;
+}
+
+.quaker .prev-recipe a, .quaker .next-recipe a, .quaker .prev-recipe a:hover, .quaker .next-recipe a:hover, .quaker .prev-recipe a:active, .quaker .next-recipe a:active, .quaker .prev-recipe a:focus, .quaker .next-recipe a:focus {
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quaker-prev-recipe-img, .quaker-next-recipe-img {
+  width: 125px;
+  height: 50px;
+  background-size: cover !important;
+}
+
+.quaker-navigation-recipe-arrow-prev {
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 32px;
+  margin-top: -6px;
+}
+
+.quaker-navigation-recipe-arrow-next {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 32px;
+  margin-top: -4px;
+}
+
+.quaker-navigation-recipesdetails-mbl {
+  padding-top: 8px;
+}
+
+.quaker-navigation-recipe-arrow-mbl-prev, .quaker-navigation-recipe-arrow-mbl-next {
+  color: #004179;
+  font-size: 48px;
+  margin-top: 0;
+}
+
+.quaker-history-copy-arrow-mbl-prev, .quaker-history-copy-arrow-mbl-next {
+  color: #BD9C7C;
+  font-size: 32px;
+}
+
+.quaker-history-copy-arrow-mbl-next {
+  padding-left: 8px;
+  margin-top: -2px;
+}
+
+.quaker-history-copy-arrow-mbl-prev {
+  padding-right: 8px;
+}
+
+.quaker-navigation-recipe-mbl-copy {
+  padding-top: 1px;
+  color: #004179;
+}
+
+.quaker-navigation-recipe-arrow-mbl-prev {
+  padding-right: 8px;
+}
+
+.quaker-navigation-recipe-arrow-mbl-next {
+  padding-left: 8px;
+}
+
+.prev-recipe-mbl a, .next-recipe-mbl a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-recipe-mbl {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.prev-recipe-mbl .fa-angle-left, .next-recipe-mbl .fa-angle-right {
+  font-size: 32px;
+  color: #004179;
+}
+
+.prev-recipe-mbl .fa-angle-left {
+  padding-right: 8px;
+}
+
+.next-recipe-mbl .fa-angle-right {
+  padding-left: 8px;
+}
+
+.next-recipe-mbl {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+.quaker-recipe-type-col, .quaker-recipe-detail-rating-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quaker-recipe-print-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quaker-recipe-print {
+  padding-right: 16px;
+}
+
+.quaker-recipe-print p, .quaker-recipe-type p, .quaker-recipe-detail-rating-col p {
+  color: #004179;
+  font-weight: bold;
+}
+
+.quaker-recipe-detail-rating-col p {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.quaker-recipe-detail-rating-col .quaker-stars {
+  padding-top: 0 !important;
+}
+
+.quaker-recipe-type-name p {
+  color: #BD9C7C;
+  padding-right: 8px;
+}
+
+.quaker-recipe-type-icon {
+  width: 48px;
+}
+
+.w-recipe-print-icon, .w-recipe-rating-icon {
+  width: 30px;
+}
+
+.w-recipe-type-icon {
+  width: 48px;
+}
+
+.quaker-recipe-type-icon, .quaker-recipe-type-icon svg path {
+  fill: #BD9C7C !important;
+}
+
+.quaker-recipe-print-btn, .quaker-recipe-print-btn:active, .quaker-recipe-print-btn:hover, .quaker-recipe-print-btn:focus {
+  cursor: pointer;
+  outline: none;
+}
+
+.quaker-recipe-type-name {
+  padding-left: 16px;
+}
+
+.quaker-serve-copy {
+  padding-right: 0 !important;
+}
+
+/****************************************
+    Quaker Recipe Details Main Block
+*****************************************/
+
+
+.quaker-recipe-details-main-block, .quaker-recipe-details-main-container {
+  position: relative;
+}
+
+.quaker-recipe-details-main-container {
+  padding: 0 0 64px;
+}
+
+.quaker-recipe-info-ingredients ul {
+  padding: 16px 16px 16px;
+}
+
+.quaker-recipe-info-ingredients li {
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  padding-top: 8px;
+}
+
+.quaker-recipe-info-ingredients li:first-of-type {
+  padding-top: 0;
+}
+
+.quaker-recipe-info-ingredients .quaker-blue, .quaker-recipe-info-ingredients .quaker-yellow {
+  color: #004179;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  padding-right: 8px;
+}
+
+.quaker-recipe-label {
+  float: left;
+  padding-right: 8px;
+  color: #004179;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+
+}
+
+.quaker-recipe-text {
+  overflow: hidden;
+  display: block;
+}
+
+.quaker-recipe-detail-subtitle {
+  text-align: center;
+  padding: 32px 0 48px;
+}
+
+.quaker-recipe-detail-subtitle p {
+  color: #082231;
+}
+
+.quaker-recipe-info-ingredients {
+  background-color: #F1F1F1;
+}
+
+.quaker-recipe-ingredients-heading {
+  padding: 16px;
+  background-color: #004179;
+}
+
+.quaker-recipe-ingredients-heading h3, .quaker-recipe-how-to-make-details h3 {
+  font-size: 22px;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.quaker-recipe-how-to-make-block {
+  padding: 16px 16px 0 48px;
+}
+
+.quaker-recipe-ingredients-heading h3 {
+  color: #FFFFFF;
+}
+
+.quaker-recipe-how-to-make-details h3 {
+  color: #004179;
+}
+
+.quaker-recipe-how-to-make-details ol {
+  counter-reset: number;
+  list-style: none;
+  /*list-style: none;*/
+  /*counter-reset: my-awesome-counter;*/
+}
+
+.quaker-recipe-how-to-make-details li {
+  counter-increment: number;
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  padding-top: 8px;
+  /*list-style-position: inside;*/
+}
+
+.quaker-recipe-how-to-make-details li:first-of-type {
+  padding-top: 16px;
+}
+
+.quaker-recipe-how-to-make-details li::before {
+  color: #004179;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  content: counter(number);
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+/*  content: counter(my-awesome-counter);*/
+/*  background: #004179;*/
+/*  width: 2rem;*/
+/*  height: 2rem;*/
+/*  border-radius: 50%;*/
+/*  display: inline-block;*/
+/*  line-height: 2rem;*/
+/*  color: white;*/
+/*  text-align: center;*/
+/*  margin-right: 0.5rem;*/
+}
+
+.quaker-recipe-pattern-dsk {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  z-index: -1;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.quaker-recipe-pattern-mbl {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.quaker-recipe-how-to-make-block .quaker-video-box {
+  padding-top: 32px;
+}
+
+/****************************************
+       Quaker Related Product Block
+*****************************************/
+
+.quaker-related-product-block {
+  background: #E9EAEB;
+  padding: 64px 0 64px;
+  z-index: 9999;
+  overflow-y: hidden;
+}
+
+.quaker-related-prod-img-div {
+  background: linear-gradient(#032953 70%, transparent 20%) no-repeat;
+}
+
+.quaker-related-product-copy h4 {
+  font-size: 22px;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #004179;
+}
+
+.recipe-related-product-title {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #004179;
+  font-size: 32px !important;
+  padding-top: 64px;
+  padding-bottom: 32px;
+}
+
+/**********************************
+       Quaker Recipe Stars
+**********************************/
+
+.quaker-stars span {
+  font-size: 30px;
+  color: #707070;
+  cursor: pointer;
+}
+
+.quaker-stars span:before {
+  content: "★ ";
+}
+
+
+.quaker-stars.reverse-order {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.quaker-stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: flex-end;
+  padding: 8px 0 0;
+}
+
+.quaker-stars input:checked ~ label {
+  color: #BD9C7C;
+}
+
+.quaker-stars label {
+  width: 1em;
+  font-size: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.quaker-stars span.checked {
+  color: #BD9C7C;
+}
+
+.quaker-stars label::before {
+  content: "★ ";
+}
+
+.quaker-stars label {
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.quaker-stars input {
+  display: none;
+}
+
+/******************************
+       Quaker About Us
+******************************/
+
+.quaker-about-us-intro {
+  padding: 48px 0 48px;
+  background: #032953;
+}
+
+
+.quaker-about-us-intro p, .quaker-about-us-intro h1{
+  padding-bottom: 8px;
+}
+
+.quaker-about-us-intro p {
+  color: #FFFFFF;
+}
+
+.quaker-about-us-description p {
+  color: #082231;
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.quaker-about-us-description {
+  background-color: #f1f1f1;
+}
+
+.quaker-history-block {
+  padding: 0 0 64px;
+  margin-bottom: -2px;
+  background: linear-gradient(#f1f1f1 70%, #032953 20%) no-repeat;
+}
+
+#carouselQuakerHistory .carousel-inner {
+  background: #FFFFFF;
+}
+
+.quaker-history-year {
+  background-color: #004179;
+  padding: 16px 16px 0 16px;
+  position: relative;
+  height: 100px;
+}
+
+.quaker-history-year h3 {
+  position: absolute;
+  bottom: 0;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #FFFFFF;
+  font-size: 96px;
+  margin-bottom: -32px;
+}
+
+.quaker-history-body {
+  padding: 48px 16px 48px;
+}
+
+.quaker-history-body p {
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #082231;
+}
+
+.quaker-body-navigation {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+#carouselQuakerHistory .carousel-control-prev, #carouselQuakerHistory .carousel-control-next {
+  width: 100px;
+  height: 50px;
+  opacity: 1;
+}
+
+#carouselQuakerHistory .carousel-control-prev .sr-only, #carouselQuakerHistory .carousel-control-next .sr-only {
+  display: contents;
+  color: #BD9C7C;
+}
+
+.quaker-body-navigation-right .carousel-control-next, .quaker-body-navigation-left .carousel-control-prev {
+  width: 100% !important;
+}
+
+.quaker-body-navigation-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  left: 13%;
+  position: absolute;
+}
+
+.quaker-body-navigation-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  right: 12%;
+  position: absolute;
+}
+
+.quaker-body-navigation .fa-angle-left, .quaker-body-navigation .fa-angle-right {
+  font-size: 24px;
+}
+
+.quaker-body-navigation .fa-angle-left {
+  padding-right: 8px;
+  margin-top: -4px;
+}
+
+.quaker-body-navigation .fa-angle-right {
+  padding-left: 8px;
+  margin-top: -2px;
+}
+
+.quaker-history-carousel-indicators {
+  top: -75px !important;
+  bottom: auto !important;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*height: 75px;*/
+}
+
+
+/*.quaker-history-carousel-indicators:before {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  border-color: #D5D6D8;*/
+/*  border-style: solid;*/
+/*  border-width: 0 0 1px 0;*/
+/*  width: 90%;*/
+/*  z-index: -1;*/
+/*}*/
+
+/*.quaker-history-indicators-date {*/
+/*  position: absolute;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  width: 100%;*/
+/*  top: 0;*/
+/*}*/
+
+/*.quaker-history-indicators-date span {*/
+/*  font-size: 12px;*/
+/*  margin-left: 10px;*/
+/*  margin-right: 10px;*/
+/*  background-color: #004179;*/
+/*}*/
+
+/*.quaker-history-date {*/
+/*  position: absolute;*/
+/*  top: -32px;*/
+/*  padding-left: 8px;*/
+/*}*/
+
+
+
+.quaker-history-block .carousel-indicators li, .quaker-carousel-indicators li {
+  background-color: #D5D6D8 !important;
+  border-color: #D5D6D8 !important;
+  opacity: 1;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+
+.quaker-history-block .carousel-indicators li {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/*.quaker-carousel-indicators li {*/
+/*  width: 12px !important;*/
+/*  height: 12px !important;*/
+/*}*/
+
+.quaker-history-block .carousel-indicators .active, .quaker-carousel-indicators .active {
+  background-color: #004179 !important;
+  border-color: #004179 !important;
+  margin-left: 16px !important;
+  margin-right: 16px !important;
+}
+
+.quaker-carousel-indicators {
+  margin: 0 auto !important;
+  bottom: -48px !important;
+}
+
+.quaker-history-carousel-row {
+  margin-bottom: -3px;
+}
+
+.quaker-history-img {
+  background-size: cover !important;
+}
+
+.quaker-history-carousel-top-navigation {
+
+}
+
+.quaker-history-carousel-top-navigation .carousel-control-prev, .quaker-history-carousel-top-navigation .carousel-control-next {
+  width: 20px !important;
+  top: 24px;
+  z-index: 99999;
+  cursor: pointer;
+}
+
+
+.quaker-history-top-date-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /*padding-bottom: 48px;*/
+  height: 100px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.quaker-history-top-date-navigation::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.quaker-history-top-date-navigation ol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quaker-history-top-date-navigation ol:before {
+  content: "";
+  position: absolute;
+  border-color: #CFD0D2;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  width: 97%;
+}
+
+.quaker-history-top-date-navigation li{
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.quaker-history-date {
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  padding-bottom: 64px;
+}
+
+.quaker-history-indicator {
+  width: 16px;
+  height: 16px;
+  background: #CFD0D2;
+  position: absolute;
+  border-radius: 25px;
+}
+
+.quaker-history-date.active {
+  color: #004179;
+}
+
+.quaker-history-indicator.active {
+  background: #004179;
+}
+
+/******************************
+  Quaker Power of Oats Block
+******************************/
+
+.quaker-power-oats-caorusel-section {
+  background: linear-gradient(#023B6B 43%, #E9EAEB 30%) no-repeat;
+  overflow-y: hidden;
+}
+
+.quaker-power-oats-heading h1 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  color: #FFFFFF;
+  padding-bottom: 16px;
+}
+
+.quaker-featured-prod-img-col .w-power-oats {
+  width: 90%;
+}
+
+#quaker-power-of-oats-carousel .quaker-featured-prod-img-col .w-power-oats{
+  width: 85%;
+}
+
+/******************************
+    Featured Recipe Block
+******************************/
+
+.quaker-featured-recipe-section {
+  padding: 64px 0 64px;
+  background: linear-gradient(#032953 60%, #F1F1F1 20%) no-repeat;
+}
+
+.quaker-recipes-main-heading h1, .quaker-about-us-intro h1 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+.quaker-recipes-main-heading h1 {
+  padding-bottom: 32px;
+}
+
+.quaker-recipe-block-row {
+  background-color: #FFFFFF;
+}
+
+.quaker-featured-recipe-ribbon {
+  background-color: #004179;
+  padding: 16px 32px;
+}
+
+.quaker-featured-recipe-ribbon h3 {
+  color: #FFFFFF;
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.quakers-featured-recipe-description {
+  padding: 48px 32px;
+}
+
+.quakers-featured-recipe-description h2 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #004179;
+  font-size: 32px !important;
+}
+
+.featured-recipe-gold-btn {
+  padding-top: 48px;
+}
+
+.featured-recipe-gold-btn a {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.featured-recipe-gold-btn .fa-chevron-right {
+  color: #BD9C7C;
+  padding-top: 2px;
+  padding-left: 8px;
+}
+
+.featured-recipe-gold-btn p {
+  color: #BD9C7C;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quakers-recipes-description p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 55px;
+  padding-top: 8px;
+}
+
+.quaker-filter-clear-col .row {
+  height: 50px;
+}
+
+.quaker-recipes-filter-heading {
+  color: #082231;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.quaker-recipes-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn-clear-filter, .btn-clear-filter:hover, .btn-clear-filter:active, .btn-clear-filter:focus {
+  font-size: 18px;
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #032953;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.quaker-recipes-filter-heading .fa-times {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.custom-filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #BD9C7C;
+  border: 2px solid #BD9C7C;
+  width: 100%;
+}
+
+
+.custom-filter-button:hover, .custom-filter-button:active, .custom-filter-button:focus {
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  width: 100%;
+  outline: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-filter-button span {
+  color: #082231;
+  font-family: 'Apercu-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.quaker-recipes-filter-icon {
+  padding-left: 4px;
+  border-left: 2px solid #F1F1F1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-filter-button:hover > .quaker-recipes-filter-icon svg path, .custom-filter-button:active > .quaker-recipes-filter-icon svg path, .custom-filter-button:focus > .quaker-recipes-filter-icon svg path {
+  fill: #032953;
+}
+
+/************************
+   Bootstrap Carousel
+************************/
+.carousel {
+  position: relative;
+}
+
+.carousel.pointer-event {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+  z-index: 1;
+  opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-left,
+  .carousel-fade .active.carousel-item-right {
+    transition: none;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 5%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    transition: none;
+  }
+}
+
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: no-repeat 50% / 100% 100%;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrows/quaker-left-chevron.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrows/quaker-right-chevron.svg");
+}
+
+#quaker-power-of-oats-carousel .carousel-control-prev-icon {
+  background-image: url("../images/arrows/white-left-chevron.svg");
+}
+
+#quaker-power-of-oats-carousel .carousel-control-next-icon {
+  background-image: url("../images/arrows/white-right-chevron.svg");
+}
+
+#quaker-power-of-oats-carousel .carousel-control-prev, #quaker-power-of-oats-carousel .carousel-control-next{
+  top: -45%;
+  opacity: 1;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 15;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel-indicators li {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  opacity: .5;
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicators li {
+    transition: none;
+  }
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  margin-right: 3px !important;
+  margin-left: 3px !important;
+}
+
+.featured-carousel-indicators, .quaker-product-group-carousel-indicators {
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  #quaker-featured-products-carousel .carousel-inner .carousel-item.active,
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-next,
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-prev,
+  #quaker-related-products-carousel .carousel-inner .carousel-item.active,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-next,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-prev,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item.active,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-next,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-prev,
+  #quaker-videos-carousel .carousel-inner .carousel-item.active,
+  #quaker-videos-carousel .carousel-inner .carousel-item-next,
+  #quaker-videos-carousel .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-right.active,
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-next,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-right.active,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-left.active,
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-prev,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-left.active,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-right.active,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-next {
+    transform: translateX(33.33%);
+  }
+
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-left.active,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.33%);
+  }
+
+  #quaker-videos-carousel .carousel-inner .carousel-item-right.active,
+  #quaker-videos-carousel .carousel-inner .carousel-item-next {
+    /*transform: translateX(50%);*/
+    transform: translateX(33.33%);
+  }
+
+  #quaker-videos-carousel .carousel-inner .carousel-item-left.active,
+  #quaker-videos-carousel .carousel-inner .carousel-item-prev {
+    /*transform: translateX(-50%);*/
+    transform: translateX(-33.33%);
+  }
+
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-right,
+  #quaker-featured-products-carousel .carousel-inner .carousel-item-left,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-right,
+  #quaker-related-products-carousel .carousel-inner .carousel-item-left,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-right,
+  #quaker-power-of-oats-carousel .carousel-inner .carousel-item-left,
+  #quaker-videos-carousel .carousel-inner .carousel-item-right,
+  #quaker-videos-carousel .carousel-inner .carousel-item-left {
+    transform: translateX(0);
+  }
+
+}
+
+
+/************************
+    Quaker Videos
+************************/
+
+.quaker-video-section {
+  position: relative;
+  background: url("../images/quaker/quaker-homepage-videos-bg.png") center center no-repeat, transparent;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+.quaker-video-box {
+  width: 100%;
+  text-align: center;
+}
+
+.quaker #videos .quaker-video-box {
+  /*margin-bottom: 32px;*/
+}
+
+.quaker-video-preimg, .quaker-video-preimg-1, .quaker-video-preimg-2 {
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.quaker-video-preimg img, .quaker-video-preimg-1 img, .quaker-video-preimg-2 img {
+  width: 100% !important;
+}
+
+.quaker-video-preimg:before, .quaker-video-preimg-1:before, .quaker-video-preimg-2:before {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  left: 0;
+  top: 0;
+  z-index: 1;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quaker-video-preimg:after, .quaker-video-preimg-1:after, .quaker-video-preimg-2:after {
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-image: url("/themes/brandstheme/src/images/quaker/quaker-play-icon.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  content: '';
+  pointer-events: none;
+}
+
+.quaker-video-preimg:hover:before, .quaker-video-preimg-1:hover:before, .quaker-video-preimg-2:hover:before {
+  opacity: 1;
+}
+
+.quaker-video-preimg:hover:after, .quaker-video-preimg-1:hover:after, .quaker-video-preimg-2:hover:after {
+  background-image: url("/themes/brandstheme/src/images/quaker/quaker-play-icon.png");
+}
+
+.quaker-video-iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+}
+
+.quaker-video-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/****************************
+    Smaller Top Banner
+****************************/
+
+.quaker-top-banner, .quaker-about-top-banner, .quaker-top-banner-recipe-detail {
+  /*margin-bottom: -3px;*/
+  position: relative;
+}
+
+.quaker-top-banner .quaker-banner-copy, .quaker-about-top-banner .quaker-banner-copy, .quaker-top-banner-recipe-detail .quaker-banner-copy {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+}
+
+
+.quaker-top-banner h1, .quaker-about-top-banner h1, .quaker-top-banner-recipe-detail h1 {
+  font-family: 'Apercu-Bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.2;
+}
+
+
+/************************
+    quaker coupon
+************************/
+
+.quaker .coupon-row {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.main-coupon-right {
+  background: #004179;
+}
+
+.quaker .main-coupon-copy .main-coupon-heading, .quaker .main-coupon-copy .main-coupon-disclaimer {
+  color: #FFFFFF;
+}
+
+.quaker .main-coupon-centered-img img {
+  max-width: 400px;
+}
+
+.quaker .main-coupon-left, .quaker .main-coupon-right {
+  border-radius: 0;
+}
+
+.quaker-coupon-social {
+  padding-top: 48px;
+}
+
+.quaker .main-coupon-centered-img img {
+  padding: 0 16px;
+}
+
+.quaker-coupon-block {
+  padding: 64px 0 96px;
+  position: relative;
+  background: linear-gradient(#032953 40%, transparent 40%) no-repeat;
+}
+
+.quaker-coupon-block:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background: url("../images/quaker/quaker-coupon-bg.png") center center no-repeat, #032953;
+  background-size: cover;
+}
+
+.quaker .fa-navbar-coupon, .quaker .fa-navbar-coupon:hover, .quaker .fa-navbar-coupon:active, .quaker .fa-navbar-coupon:focus {
+  font-size: 16px !important;
+  color: #BD9C7C;
+  background: #ffffff;
+  padding: 7px 8px;
+  border-radius: 20px;
+}
+
+/****************************
+    Quaker Campbell Section
+****************************/
+
+.quaker-campbell-banner{
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+}
+
+/*#quaker-campbell-carousel .slick-next:before {*/
+/*  background: url("../images/arrows/white-right-chevron.svg") !important;*/
+/*  right: 10px;*/
+/*}*/
+
+/*#quaker-campbell-carousel .slick-prev:before {*/
+/*  background: url("../images/arrows/white-left-chevron.svg") !important;*/
+/*}*/
+
+#quaker-campbell-carousel.custom-slick-arrow .slick-prev.slick-arrow {
+  left: -50px !important;
+  right: 100%;
+}
+
+#quaker-campbell-carousel.custom-slick-arrow .slick-next.slick-arrow {
+  right: 25px !important;
+  left: 100%;
+}
+
+#quaker-campbell-carousel .slick-prev:before {
+  content: "";
+  position: relative;
+  width: 35px;
+  height: 35px;
+  background: url("../images/arrows/white-left-chevron.svg") !important;
+  background-repeat: no-repeat !important;
+}
+
+#quaker-campbell-carousel .slick-next:before {
+  content: "";
+  position: relative;
+  width: 35px;
+  height: 35px;
+  background-image: url("../images/arrows/white-right-chevron.svg") !important;
+  background-repeat: no-repeat !important;
+}
+
+.quaker-campbell-banner sup{
+  font-size: 60% !important;
+}
+
+.quaker-campbell-banner h1{
+  font-family: 'ChunkFive-Regular', sans-serif;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: normal;
+  line-height: 0.85em;
+}
+
+.hockey-hungry{
+  margin-bottom: 20px;
+  width: 45% !important;
+}
+
+.quaker-campbell-banner img{
+  width: 57%;
+}
+
+.quaker-campbell-banner p{
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+#quaker-hockey-video{
+  padding: 80px 0 60px;
+  background-color: #E9EAEB;
+}
+
+.quaker-campbell-banner .contest-banner-text{
+  padding-left: 10%;
+}
+
+#quaker-campbell .quaker-steps-microsite{
+  background-color: #E9EAEB;
+}
+
+#quaker-campbell .contest-quaker-steps-wrapper{
+  display: flex;
+  margin-top: 50px;
+}
+
+#quaker-campbell .contest-quaker-steps-wrapper img{
+  width: 70%;
+  margin-bottom: 50px;
+}
+
+.quaker-campbell-enter-contest{
+  padding: 60px 15px;
+  background-color: #032953;
+  text-align: center;
+}
+
+.quaker-campbell-enter-contest h3{
+  color: #FFFFFF;
+  font-size: 48px;
+  line-height: inherit;
+  margin-bottom: 30px;
+}
+
+.quaker-campbell-enter-contest p{
+  color: #FFFFFF;
+}
+
+.quaker-campbell-enter-contest sup{
+  font-size: 55% !important;
+  top: -15px !important;
+}
+
+.quaker-featured-recipes{
+  background-color: #E9EAEB;
+}
+
+.quaker-campbell-barcode{
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  justify-content: space-between;
+}
+
+.quaker-campbell-barcode img{
+  width: 45%;
+}
+
+.quaker-campbell-barcode p{
+  font-family: 'Apercu-Bold', Sans-Serif;
+  color: #004179;
+  font-size: 42px;
+  line-height: 1em;
+  width: 85%;
+  margin: auto;
+}
+
+#quaker-campbell > section.quaker-featured-recipes > div.quaker-campbell-barcode.container > div > p:nth-child(2) {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 100;
+  font-family: 'Apercu-Regular', sans-serif;
+}
+
+.quaker-campbell-barcode sup{
+  font-size: 55% !important;
+  top: -15px;
+}
+
+#quaker-campbell > section.quaker-featured-recipes > div.quaker-campbell-barcode.container > div > p:nth-child(2) > sup {
+  top: -8px;
+}
+
+.quaker-campbell-enter-contest sup {
+  top: -10px !important;
+}
+
+.campbell-logo img {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  width: 170px;
+}
+
+.quaker-campbell-banner {
+  position: relative;
+}
+
+/*
+  Media Queries for Quaker site
+*/
+
+
+@media only screen and (max-width: 360px) {
+
+  .recipe-filter-btn-col:nth-of-type(1n+1) {
+    padding-right: 4px !important;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+2) {
+    padding-left: 4px !important;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+1), .recipe-filter-btn-col:nth-of-type(2n+4) {
+    padding-top: 8px !important;
+  }
+
+  .quaker-navigation-recipe-arrow-mbl-prev, .quaker-navigation-recipe-arrow-mbl-next {
+    font-size: 32px;
+  }
+
+  .quaker-body-navigation-left {
+    left: 20% !important;
+  }
+
+  .quaker-body-navigation-right {
+    right: 16%;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+
+  .quaker-top-banner h1, .quaker-about-top-banner h1, .quaker-top-banner-recipe-detail h1 {
+    font-size: 48px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  #quaker-campbell .quaker-recipes-block{
+    overflow-y: inherit;
+  }
+
+  .quaker-campbell-barcode{
+    flex-direction: column;
+  }
+
+  .quaker-campbell-barcode img {
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+
+  .quaker-campbell-barcode p {
+    text-align: center;
+    font-size: 32px;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  #quaker-campbell .quaker-featured-recipes h1{
+    font-size: 38px;
+  }
+
+  #quaker-campbell-carousel.custom-slick-arrow .slick-prev.slick-arrow {
+    left: -40px !important;
+  }
+
+  #quaker-campbell-carousel .slick-prev, #quaker-campbell-carousel .slick-next{
+    display: block !important;
+  }
+
+  #quaker-campbell .quaker-recipes-block {
+    padding: 48px 30px 48px;
+  }
+
+  #quaker-hockey-video {
+    padding: 40px 25px 20px;
+  }
+
+  #quaker-campbell .quaker-steps-microsite h2 {
+    margin-bottom: 30px;
+  }
+
+  #quaker-campbell .contest-quaker-steps-wrapper {
+    flex-direction: column;
+    margin: 0 15px;
+  }
+
+  #quaker-campbell .contest-quaker-steps-wrapper img {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+
+  #quaker-campbell .quaker-steps-microsite .contest-quaker-steps{
+    margin-bottom: 50px;
+  }
+
+  #quaker-campbell .quaker-steps-microsite .contest-quaker-steps:last-child{
+    margin-bottom: 0px;
+  }
+
+  .quaker-filter-clear-col {
+    padding-bottom: 8px;
+  }
+
+  #quaker-videos-carousel .quaker-video-preimg img, #quaker-videos-carousel .quaker-video-preimg-1 img, #quaker-videos-carousel .quaker-video-preimg-2 img {
+    width: 95% !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5% !important;
+  }
+
+  #quaker-videos-carousel .quaker-video-iframe-container {
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding-top: 54.25%;
+  }
+
+  #quaker-videos-carousel .carousel-control-next,
+  #quaker-videos-carousel .carousel-control-prev {
+    top: -48%;
+  }
+
+  .quaker-videos-description p {
+    padding-top: 8px;
+  }
+
+  .quaker-power-oats-caorusel-section, .quaker-featured-products-block, .quaker-related-block {
+    padding: 48px 16px 80px;
+  }
+
+  .quaker-video-section {
+    padding: 48px 16px 80px;
+  }
+
+  .quaker-coupon-message h4 {
+    font-size: 22px;
+  }
+
+  .quaker-featured-prod-img-col a {
+    height: 250px;
+  }
+
+  .quaker-recipe-ingredients-heading h3, .quaker-recipe-how-to-make-details h3 {
+    font-size: 32px;
+  }
+
+  .quaker-top-banner .quaker-banner-copy, .quaker-about-top-banner .quaker-banner-copy, .quaker-top-banner-recipe-detail .quaker-banner-copy {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .quaker-featured-prod-img-col .w-power-oats {
+    width: 250px;
+  }
+
+  .quaker-top-banner img {
+    height: 160px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .quaker-about-top-banner img, .quaker-top-banner-recipe-detail img {
+    height: 300px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .quaker-recipe-details-main-container {
+    padding: 0 16px 48px;
+  }
+
+  .quaker-recipes-block, .quaker-related-product-block {
+    padding: 48px 16px 48px;
+  }
+
+  .quaker-related-product-block-carousel {
+    padding-bottom: 80px !important;
+  }
+
+  #quaker-carousel-Related-Products .carousel-control-prev, #quaker-carousel-Related-Products .carousel-control-next {
+   top: 10%;
+  }
+
+  .quaker-recipe-detail-section {
+    padding: 0 16px 32px;
+  }
+
+  .quaker-coupon-block {
+    padding: 48px 16px 96px;
+    text-align: center;
+    margin-bottom: -2px;
+    margin-top: -1px;
+  }
+
+  .quaker-featured-recipes-bg-left img, .quaker-featured-recipes-bg-right img {
+    width: 100px;
+  }
+
+  .featured-prod-heading h1, .featured-recipe-heading h1, .quaker-video-heading h1 {
+    font-size: 48px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .quaker-power-oats-heading h1 {
+    font-size: 32px;
+    padding: 0 16px 16px;
+    text-align: center;
+  }
+
+  .quaker-recipe-detail-heading h1 {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .quaker-recipes-main-heading h1, .quaker-about-us-intro h1 {
+    font-size: 48px;
+  }
+
+  .quaker-about-us-intro {
+    padding: 48px 16px 48px;
+    text-align: center;
+  }
+
+  .quaker-recipes-main-heading h1 {
+    padding: 0 0 32px 0;
+    text-align: center;
+  }
+
+  /*.quakers-featured-product-description h4 {*/
+  /*  overflow: hidden;*/
+  /*  display: -webkit-box;*/
+  /*  -webkit-line-clamp: 2;*/
+  /*  -webkit-box-orient: vertical;*/
+  /*  height: 58px;*/
+  /*  padding-top: 4px;*/
+  /*}*/
+
+  #quaker-power-of-oats-carousel .quaker-view-featured-products a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quaker-featured-prod-img-col img {
+    width: 250px;
+  }
+
+  .quaker-recipes-main-block {
+    padding: 48px 16px 48px;
+  }
+
+  .quaker-featured-recipe-img-col {
+    padding-top: 32px;
+  }
+
+  /*.quaker-recipes-col {*/
+  /*  padding-top: 16px;*/
+  /*}*/
+
+  .quaker-featured-recipe-img-col:first-child, .quaker-recipes-col:first-child {
+    padding-top: 0 !important;
+  }
+
+  .quaker-video-box {
+    width: 100%;
+    /*margin-bottom: 40px;*/
+  }
+
+  .quaker-coupon-message {
+    padding-bottom: 16px;
+  }
+
+  .quaker-featured-recipe-section {
+    background: linear-gradient(#032953 40%, #F1F1F1 40%) no-repeat;
+  }
+
+  .quaker-featured-recipe-section {
+    padding: 48px 16px 48px;
+  }
+
+  .quaker-featured-recipe-side-description-col {
+    /*order: 2;*/
+  }
+
+  .quaker-featured-recipe-side-img-col {
+    height: 350px;
+    /*order: 1;*/
+  }
+
+  .quaker-recipes-filters-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1n+1) {
+    padding-right: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+2) {
+    padding-right: 0 !important;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+2) {
+    padding-left: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1) {
+    padding-top: 0 !important;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+1), .recipe-filter-btn-col:nth-of-type(2n+4) {
+    padding-top: 16px;
+  }
+
+  .quaker-recipe-type-col, .quaker-recipe-print-col, .quaker-recipe-detail-rating-col, .quaker-recipe-cook-time, .quaker-recipe-prep-time, .quaker-recipe-servings {
+    padding-top: 16px;
+  }
+
+  .quaker-recipe-quick-info-block, .quaker-recipe-print, .quaker-recipe-type {
+    order: 2;
+  }
+
+  .quaker-recipe-detail-heading, .quaker-recipe-print-icon, .quaker-recipe-type-icon {
+    order: 1;
+  }
+
+  .quaker-recipe-cooking-info, .quaker-recipe-type-name {
+    order: 3;
+  }
+
+  .quaker-recipe-quick-info-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quaker-recipe-type-col, .quaker-recipe-print-col, .quaker-recipe-servings, .quaker-recipe-detail-rating-col, .quaker-recipe-prep-time, .quaker-recipe-cook-time {
+    display: -webkit-inline-box;
+    align-items: center;
+    justify-content: flex-start;
+    width: 300px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /*.w-serving-icons {*/
+  /*  width: 18%;*/
+  /*}*/
+
+  .quaker-recipe-print {
+    padding-right: 0;
+    padding-left: 16px;
+  }
+
+  .w-recipe-type-icon {
+    padding-right: 16px;
+  }
+
+  .quaker-recipe-type-name p {
+    color: #004179;
+  }
+
+  .quaker-recipe-cooking-info p, .quaker-recipe-cooking-info p {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .quaker-related-product-copy {
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .recipe-related-product-title {
+    padding: 16px 0;
+  }
+
+  .quaker-recipe-how-to-make-block {
+    padding: 48px 0 0;
+  }
+
+  .quaker-recipe-how-to-make-details {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .quaker-recipe-pattern-dsk {
+    display: none !important;
+  }
+
+  .quaker-recipe-detail-subtitle {
+    padding: 0 0 32px;
+  }
+
+  .quaker-recipe-ingredients-col {
+    padding-top: 16px;
+  }
+
+  .quaker-about-us-description {
+    padding: 64px 16px 64px;
+  }
+
+  .quaker-history-block {
+    padding: 0 16px 48px;
+  }
+
+  .quaker-history-info-col {
+    height: 425px;
+  }
+
+  .quaker-history-images-col {
+    background-size: cover !important;
+    height: 500px;
+  }
+
+  .btn_quaker, .quaker .btn_carousel {
+    padding: 16px 32px !important;
+  }
+
+  .quakers-featured-recipe-description h2, .quakers-featured-recipe-description p {
+    text-align: center;
+  }
+
+  .featured-recipe-gold-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-recipe-gold-btn a, .featured-recipe-gold-btn a:hover, .featured-recipe-gold-btn a:focus, .featured-recipe-gold-btn a:active {
+    color: #FFFFFF;
+    background-color: #BD9C7C;
+    padding: 12px 24px;
+    border-radius: 25px;
+    width: 200px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-recipe-gold-btn .fa-chevron-right {
+    color: #FFFFFF;
+  }
+
+  .featured-recipe-gold-btn p {
+    color: #FFFFFF;
+  }
+
+
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .quaker-campbell-banner{
+    flex-flow: column;
+  }
+
+  .quaker-campbell-banner img {
+    width: 100%;
+    order: 2;
+  }
+
+  .quaker-campbell-banner .contest-banner-text{
+    order: 1;
+    padding: 20px;
+    text-align: center;
+
+  }
+
+  .btn_quaker, .quaker .btn_carousel {
+    padding: 16px 24px;
+  }
+
+  /*.quaker-power-oats-caorusel-section {*/
+  /*  background: linear-gradient(#023B6B 50%, #FFFFFF 25%) no-repeat !important;*/
+  /*}*/
+
+  #quaker-power-of-oats-carousel .carousel-control-prev, #quaker-power-of-oats-carousel .carousel-control-next {
+    top: -45%;
+  }
+
+  .quaker .brands-navbar__ul a:hover, .quaker .brands-navbar__ul a:active, .quaker .brands-navbar__ul a:focus {
+    color: #032953 !important;
+  }
+
+  .quaker .choose-lang_fr:hover, .quaker .choose-lang_fr:active, .quaker .choose-lang_fr:focus, .quaker .tr-navbar-trigger-mobile:hover, .quaker .tr-navbar-trigger-mobile:active, .quaker .tr-navbar-trigger-mobile:focus, .quaker #button-mbl-back, .quaker #button-mbl-back:hover, .quaker #button-mbl-back:active, .quaker #button-mbl-back:focus {
+    color: #032953 !important;
+  }
+
+  .brands-tr-navbar_copy-mbl:active, .brands-tr-navbar_copy-mbl:hover, .brands-tr-navbar_copy-mbl:focus {
+    color: #032953 !important;
+  }
+
+  .quaker .brands-navbar__item-first-border, .quaker .brands-navbar__item-border, .quaker .choose-lang_fr, .quaker .hr-navbar, .quaker .brands-tr-navbar_copy-mbl, .quaker .navbar-mbl-tr {
+    color: #032953 !important;
+  }
+
+  .quaker .brands-navbar_accout-options .sign_in:hover, .quaker .brands-navbar_accout-options .sign_in:active, .quaker .brands-navbar_accout-options .sign_in:focus, .quaker .sign-in_left, .quaker .sign-in_left:hover, .quaker .sign-in_left:focus, .quaker .sign-in_left:active {
+    color: #032953 !important;
+  }
+
+
+  .quaker .brands-navbar__top-bar, .quaker .brands-navbar__middle-bar, .quaker .brands-navbar__bottom-bar {
+    background-color: #032953;
+  }
+
+  .tr-navbar-trigger-mobile .arrow {
+    border: solid #032953;
+    border-width: 0 3px 3px 0;
+  }
+
+  .quaker header .menu a {
+    color: #032953;
+  }
+
+  .quaker .menu_account_mobile_only .sign_up {
+    color: #FFFFFF !important;
+  }
+
+  .quaker .tr-search-icon {
+    background-color: #032953;
+  }
+
+  .custom-filter-button, .custom-filter-button:hover, .custom-filter-button:active, .custom-filter-button:focus {
+    width: 100%;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1n+4) {
+    padding-top: 16px;
+  }
+
+  .quaker-body-navigation-left {
+    left: 16%;
+  }
+
+  .campbell-logo {
+    display: none;
+  }
+
+  #quaker-campbell-carousel.custom-slick-arrow .slick-next.slick-arrow, #quaker-campbell-carousel.custom-slick-arrow .slick-prev.slick-arrow {
+    top: 40% !important;
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3%;
+  }
+
+  #quaker-videos-carousel .carousel-control-next {
+    right: -16px;
+  }
+
+  #quaker-videos-carousel .carousel-control-prev {
+    left: -16px;
+  }
+
+  div#to-open-close-search-popover-container {
+    display: none;
+  }
+
+  /*.quaker-power-oats-caorusel-section {*/
+  /*  background: linear-gradient(#023B6B 45%, #E9EAEB 20%) no-repeat;*/
+  /*}*/
+
+  #quaker-featured-products-carousel .carousel-control-prev,
+  #quaker-featured-products-carousel .carousel-control-next,
+  #quaker-related-products-carousel .carousel-control-prev,
+  #quaker-related-products-carousel .carousel-control-next {
+    top: -40%;
+  }
+
+
+
+}
+
+@media only screen and (max-width: 1199px) {
+
+  .quaker-history-top-date-navigation ol {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .quaker-history-top-date-navigation ol:before {
+    /*width: 100%;*/
+    width: 62.5em;
+  }
+
+  .quaker-history-top-date-navigation ol:before {
+    top: 40px;
+    /*z-index: -1;*/
+  }
+
+}
+
+@media only screen and (max-width: 1400px) {
+
+  .quaker-campbell-banner h1 {
+    font-size: 32px;
+  }
+
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px) {
+  .quaker-featured-recipes-bg-left {
+    top: -50px;
+  }
+
+}
+
+  @media only screen and (max-width: 1200px) {
+
+  .quaker-history-carousel-top-navigation .carousel-control-prev {
+    left: -16px;
+  }
+
+  .quaker-history-carousel-top-navigation .carousel-control-next {
+    right: -16px;
+  }
+
+  .quaker-history-carousel-indicators:before {
+    width: 100%;
+  }
+
+  .quaker-nav-campbell {
+    padding-left: 20px !important;
+  }
+
+
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  .quaker-filter-clear-col {
+    padding-bottom: 16px;
+  }
+
+  /*.quaker-videos-description p {*/
+  /*  overflow: hidden;*/
+  /*  display: -webkit-box;*/
+  /*  -webkit-line-clamp: 3;*/
+  /*  -webkit-box-orient: vertical;*/
+  /*  height: 78px;*/
+  /*}*/
+
+  #quaker-videos-carousel .carousel-control-prev,
+  #quaker-videos-carousel .carousel-control-next {
+    top: -40%;
+  }
+
+  #quaker-videos-carousel .quaker-video-preimg img, #quaker-videos-carousel .quaker-video-preimg-1 img, #quaker-videos-carousel .quaker-video-preimg-2 img {
+    width: 100% !important;
+  }
+
+  .quaker-video-carousel-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quaker-carousel-indicators {
+    display: none !important;
+  }
+
+  .quaker-power-oats-caorusel-section, .quaker-related-block, .quaker-video-section {
+    padding: 64px 16px 64px;
+  }
+
+  .quaker-history-images-col {
+    background-size: cover !important;
+    height: 600px;
+  }
+
+  #quaker-power-of-oats-carousel .quaker-featured-prod-img-col a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+  }
+
+  .quakers-featured-product-description div {
+    /*overflow: hidden;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    height: 128px;
+  }
+
+  /*.quaker-history-carousel-row {*/
+  /*  height: 600px;*/
+  /*}*/
+
+  /*.quaker-recipe-print-col {*/
+  /*  display: flex;*/
+  /*  align-items: flex-start;*/
+  /*  justify-content: flex-start;*/
+  /*}*/
+  /*.quaker-recipe-type-col {*/
+  /*  display: flex;*/
+  /*  align-items: flex-end;*/
+  /*  justify-content: flex-end;*/
+  /*}*/
+  /*.quaker-recipe-detail-rating-col {*/
+  /*    display: flex;*/
+  /*    align-items: flex-start;*/
+  /*    justify-content: flex-start;*/
+  /*}*/
+  .quaker-recipe-pattern-mbl {
+    display: none !important;
+  }
+
+  .w-recipe-type-icon {
+    padding-left: 8px;
+    border-left: 2px solid #BD9C7C;
+  }
+
+  .quaker-top-banner img, .quaker-top-banner-recipe-detail img {
+    height: 300px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .quaker-about-top-banner img {
+    height: 500px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .quaker-banner {
+    margin-bottom: -20px;
+  }
+
+  .featured-carousel-indicators, .quaker-product-group-carousel-indicators {
+    display: none !important;
+  }
+
+  .quaker-featured-recipe-img-col, .quaker-recipes-col {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .quaker-featured-prod-img-col {
+    padding-right: 15px;
+  }
+
+  .quaker-featured-prod-img-col:nth-of-type(4n+4) {
+    padding-right: 0;
+  }
+
+  .quaker-featured-recipe-img-col:first-child, .quaker-recipes-col:first-child {
+    padding-right: 15px;
+    padding-left: 0;
+  }
+
+  .quaker-featured-recipe-img-col:nth-of-type(3n+3), .quaker-recipes-col:nth-of-type(3n+3) {
+    padding-right: 0 !important;
+    padding-left: 15px;
+  }
+
+  .quakers-featured-recipes-description h4, .quakers-featured-product-description h4, .quakers-recipes-description h4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 55px;
+    padding-top: 4px;
+  }
+
+  .quakers-featured-product-description h4 a {
+    color: #023B6B;
+  }
+
+  .quaker-video-col:nth-child(odd) {
+    padding-right: 15px;
+  }
+
+  .quaker-video-col:nth-child(even) {
+    padding-left: 15px;
+  }
+
+  .quaker-coupon-message {
+    padding-right: 32px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+5), .recipe-filter-btn-col:nth-of-type(2n+2) {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1) {
+    padding-right: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(3n) {
+    padding-left: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(3n+3) {
+    padding-right: 0;
+    padding-left: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(3n+1) {
+    padding-right: 8px;
+    padding-left: 0;
+  }
+
+  /*.quaker-recipe-prep-time {*/
+  /*  display: flex;*/
+  /*  align-items: flex-end;*/
+  /*  justify-content: flex-end;*/
+  /*}*/
+  /*.quaker-recipe-servings {*/
+  /*  display: flex;*/
+  /*  align-items: flex-start;*/
+  /*  justify-content: flex-start;*/
+  /*}*/
+  .quaker-related-product-copy {
+    padding: 0 32px;
+  }
+
+  .quaker-related-prod-img-div {
+    background: url("../images/quaker/quaker-featured-product-bg.png") bottom center no-repeat, transparent;
+    background-size: contain;
+    position: relative;
+    width: 100%;
+    height: 500px;
+  }
+
+  .quaker-related-prod-img {
+    position: absolute;
+    bottom: -48px;
+  }
+
+  .quaker-about-us-description {
+    padding: 64px 0 64px;
+  }
+
+
+
+}
+
+
+@media only screen and (min-width: 992px) {
+
+  #quaker-power-of-oats-carousel .quaker-featured-prod-img-col a{
+    height: 350px;
+  }
+
+  .quaker-recipe-block-row {
+    height: 450px;
+  }
+
+  .quaker-nav-flex-left {
+    flex: 3;
+    text-align: right;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 32px;
+  }
+
+  .quaker-nav-flex-right {
+    flex: 2;
+    padding-left: 32px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(2n+5), .recipe-filter-btn-col:nth-of-type(2n+2), .recipe-filter-btn-col:nth-of-type(1), .recipe-filter-btn-col:nth-of-type(3n), .recipe-filter-btn-col:nth-of-type(3n+3), .recipe-filter-btn-col:nth-of-type(3n+1) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1n+1) {
+    padding-right: 8px;
+  }
+
+  .recipe-filter-btn-col:nth-of-type(1n+2) {
+    padding-left: 8px;
+  }
+
+  .recipe-filter-btn-col:last-of-type {
+    padding-right: 0;
+  }
+
+  .quaker-related-product-copy {
+    padding: 0 48px;
+  }
+
+
+
+}
+
+
+@media only screen and (min-width: 1025px) {
+
+  #quaker-featured-products-carousel .carousel-control-prev,
+  #quaker-featured-products-carousel .carousel-control-next,
+  #quaker-related-products-carousel .carousel-control-prev,
+  #quaker-related-products-carousel .carousel-control-next {
+    top: -40%;
+  }
+
+}
+
+
+@media only screen and (min-width: 1281px) {
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 15%;
+  }
+
+}
+
+
+@media only screen and (min-width: 1420px) {
+
+  .quaker-coupon-block {
+    margin-top: -2px;
+  }
+
+}
+
+@media only screen and (min-width: 1600px) {
+
+  .quaker-top-banner img, .quaker-top-banner-recipe-detail img {
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .quaker-about-top-banner img {
+    height: 600px;
+    object-fit: cover;
+  }
+
+}
+
+@media only screen and (min-width: 1921px) {
+
+  .quaker-coupon-block {
+    padding: 64px 0 148px 0;
+  }
+
+}
+
+
+/*Search*/
+
+.quaker-search {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.quaker-search input {
+  height: 42px;
+  padding: 15px;
+}
+
+input#quaker-recipe-search:focus {
+  outline: none;
+  border-color: #032953;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.quaker-nav-campbell {
+  padding-left: 10em;
+}
+
+html:lang(en) .hockey-hungry.fr  {
+  display: none;
+}
+
+html:lang(fr) .hockey-hungry.en {
+  display: none;
+}
+html:lang(fr) .campbell-product-img.en {
+  display: none;
+}
+
+html:lang(en) .campbell-product-img.fr {
+  display: none;
+}
+.learn-more {
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background: #D01C34;
+  color: #fff !important;
+  padding: 13px 28px !important;
+  text-decoration: none !important;
+  text-align: center;
+  transition: ease-in;
+  border: 2px solid #D01C34;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+  margin-top: 20px;
+}
+html:lang(en) .campbell-logo-img.fr {
+  display: none;
+}
+
+html:lang(fr) .campbell-logo-img.en {
+  display: none;
+}
+
+/*Navigation Dropdown*/
+
+#block-mainnavigation-2 > nav > div > div > div {
+  z-index: 999999;
+}
+
+.quaker-buynow-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+/*Buynow Modal*/
+
+.quaker-buynow-modal {
+  width: 85vw;
+  height: 100vh;
+  margin: auto
+}
+
+#quakerModal > div > div > div > iframe {
+  width: 95%;
+  height: 640px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 100vw !important;
+  }
+}
+
+.index {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 85vw;
+  margin: auto;
+}
+
+div#quakerModal {
+  width: 100vw;
+}
+
+.modal-body.ui-dialog-content {
+  text-align: center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top:2% !important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width:100vw;
+  }
+
+  #quakerModal {
+    padding:0 !important;
+  }
+}
+
+

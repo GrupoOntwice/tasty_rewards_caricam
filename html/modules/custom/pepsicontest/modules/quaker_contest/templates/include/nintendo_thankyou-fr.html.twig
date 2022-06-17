@@ -1,0 +1,88 @@
+
+<section class = "thankyou-page">
+  <div class="nintendo-contest-confirm">
+    <div class="nintendo-contest-confirm-text-banner">
+        {{ attach_library( 'quaker_contest/landing' ) }}
+        {{ attach_library( 'quaker_contest/nintendo' ) }}
+        <h1>{{ "Merci d’avoir participé!" |t }}</h1>
+        <div class="contest-description">
+            <p>
+                {{ "Votre participation au concours est maintenant confirmée. <br> <br>
+                Le CUP du produit que vous avez fourni équivaut à "|t}} {{data.nb_entries}} {{ data.nb_entries > 1? 'inscriptions' : 'inscription' }} {{" au concours!<br><br>
+                Les tirages seront effectués conformément aux dispositions du <a href='/en-ca/contest/fritolayquakercontest/officialrules'> Règlement officiel </a>.Un courriel sera envoyé aux gagnants potentiels, alors assurez-vous de vérifier vos courriels (sans oublier vos courriers indésirables).<br><br>"|t}}
+            </p>
+        {% if data.code != '' %}
+
+            <p>
+                {{ "EN PRIME!<br>
+                Voici votre code à usage unique pour obtenir 100 points platine My Nintendo<sup>TM</sup>* échangeables contre des récompenses My Nintendo, comme des fonds d’écran ou des articles (jusqu’à épuisement des stocks).<br><br>
+
+                Astuce : prenez une capture d’écran de cette page pour accéder à votre code à usage unique.."|t }}
+            </p>
+
+            <!--Hardcode for now-->
+            <div class="code-number">
+                {{data.code }}
+            </div>
+
+            <p>
+                {{ "Pour échanger ce code à usage unique, visitez le site Web My Nintendo (https://my.nintendo.com/?lang=fr-CA?cid=C1031-09-2:).
+                Ce code unique est valable pour 100 points platine!<br><br>
+
+                Comment obtenir vos points platine:  <br><br>
+
+                1. Connectez-vous à votre compte Nintendo au my.nintendo.com ou créez un nouveau compte.<br>
+                2. Cliquez sur Menu et sélectionnez « Utiliser un code de points ».<br>
+                3. Entrez le code de 12 chiffres (plus les tirets) lorsqu’on vous le demande et cliquez sur Envoyer. "|t}}
+            </p>
+
+        {% endif %}
+
+        <br>
+        <p class = "text-white" style = "font-size: 14px; margin-left: 15px"><a href="{{data.back_button}}">Vous avez un autre CUP</a> ?{{ 'N’oubliez pas, vous avez droit à un maximum de 3 inscriptions par jour.' |t }}</p>
+
+
+        </div>
+    </div>
+
+    <div class = "thankyou-img-container">
+
+    <img class="nintendo-fritolay-img en desktop" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt="nintendo-switch">
+    <img class="nintendo-fritolay-img fr desktop" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/console.png" alt="nintendo-switch">
+    <a class = "btn_nintendo" href = "/en-ca/contest/fritolayquakercontest/landing">{{ 'Homepage' |t }}</a>
+
+    </div>
+  </div>
+
+{#    <img class="nintendo-fritolay-img en mobile" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-v1.png" alt="nintendo-switch">#}
+{#    <img class="nintendo-fritolay-img fr mobile" src="/themes/tastytheme/src/images/contest-nintendo/fritolay-logo-white-fr-v1.png" alt="nintendo-switch">#}
+{% if data.code != '' %}
+  <p class = "thankyou-legal">{{ "* Ce code de points My Nintendo ne peut être utilisé qu’une fois pour obtenir des points platine et doit être utilisé d’ici le 15/06/2022. Un compte Nintendo est requis pour utiliser le code et pour obtenir les points. En créant un compte Nintendo, l’utilisateur sera inscrit automatiquement au programme de récompenses My Nintendo. Les points platine arrivent à expiration 6 mois après la date de leur obtention. Les codes de points n’ont aucune valeur en espèces.
+<br>Les conditions d’utilisation du programme de récompenses My Nintendo s’appliquent : <a href = 'https://accounts.nintendo.com/term_point'> https://accounts.nintendo.com/term_point </a>
+"|t }}</p>
+{% endif %}
+</section>
+
+<section class="nintendo-landing-contest-rules">
+
+  <img class = "logo-nintendo" src="/themes/tastytheme/src/images/contest-nintendo/nintendo-microsite/rules-logo.png" alt = "logo">
+
+  <div class="container">
+    <div class="margin-bottom margin-top">
+      {{data.legal_footer|raw}}
+    </div>
+    <div class="nintendo-landing-contest-rules-text-wrap">
+      {% if data.langcode == 'fr' %}
+        <a class="btn_nintendo rules_btn" href="{{ '/fr-ca/contest/fritolayquakercontest/officialrules' |t }}">{{'Règlements officiels'|t}}</a><br>
+        <a class="btn_nintendo" href="{{ '/fr-ca/contest/fritolayquakercontest/faq' |t }}">{{'FAQ'|t }}</a>
+      {% else %}
+        <a class="btn_nintendo rules_btn" href="{{ '/en-ca/contest/fritolayquakercontest/officialrules' |t }}">{{'Official Rules'|t}}</a><br>
+        <a class="btn_nintendo" href="{{ '/en-ca/contest/fritolayquakercontest/faq' |t }}">{{'FAQ'|t }}</a>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+
+

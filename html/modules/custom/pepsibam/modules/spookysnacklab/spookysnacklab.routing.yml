@@ -1,0 +1,15 @@
+en-us.spookysnacklab:
+  path: '/spookysnacklab'
+  defaults:
+    _controller: '\Drupal\spookysnacklab\Controller\SpookySnackLabController::index'
+    _title: 'Spooky Snack Lab'
+  requirements:
+    _access: 'TRUE'  
+
+en-us.spookysnacklab.load.recipes:
+  path: '/spookysnacklab/load-recipes/{offset}'
+  defaults:
+    _controller: '\Drupal\spookysnacklab\Controller\SpookySnackLabController::moreRecipes'
+    _title: 'Load Recipes'
+  requirements:
+    _access: 'TRUE'  

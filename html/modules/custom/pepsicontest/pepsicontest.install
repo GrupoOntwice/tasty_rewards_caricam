@@ -1,0 +1,169 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the pepsicontest module.
+ *
+ * This file contains the functions required to perform install and
+ * uninstall operations.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * 
+ * @ingroup pepsicontest
+ */
+function pepsicontest_install() {
+  
+}
+
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It's good to clean up after ourselves
+ *
+ * 
+ */
+function pepsicontest_uninstall() {
+  \Drupal::database()->schema()->dropTable('pepsicontest_reg_contest');
+  \Drupal::database()->schema()->dropTable('pepsicontest_reg_answer');
+  
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup bampostalcode
+ */
+function pepsicontest_schema() {
+  $schema['pepsicontest_reg_contest'] = array(
+    'description' => 'Store registration contest, user data and answers',
+    'fields' => array(
+      'contest_id' => array(
+        'description' => 'Constest Id',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'user_id' => array(
+        'description' => 'User Id',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'contest_name' => array(
+        'description' => 'Contest Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'first_name' => array(
+        'description' => 'User First Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'last_name' => array(
+        'description' => 'User Last Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'email' => array(
+        'description' => 'User email',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'gender' => array(
+        'description' => 'User gender',
+        'type' => 'varchar',
+        'length' => 1,
+        'not null' => TRUE,
+      ),
+      'postalcode' => array(
+        'description' => 'Postal Code',
+        'type' => 'varchar',
+        'length' => 6,
+        'not null' => TRUE,
+      ),
+      'province' => array(
+        'description' => 'Province',
+        'type' => 'varchar',
+        'length' => 2,
+        'not null' => TRUE,
+      ),
+      'city' => array(
+        'description' => 'City',
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ),
+      'language' => array(
+        'description' => 'Language',
+        'type' => 'varchar',
+        'length' => 2,
+        'not null' => TRUE,
+      ),
+      'regdate' => array(
+        'description' => 'Registration date',
+        'type' => 'varchar',
+        'length' => 20, 
+        'not null' => TRUE,
+      ),
+      'user_ip' => array(
+        'description' => 'Ip Address',
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+      ),
+      'user_agent' => array(
+        'description' => 'User browser',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('contest_id','user_id'),
+    //'indexes' => array(
+    //  'contest_idx' => array('contest_id','user_id'),
+    //),  
+  );
+  $schema['pepsicontest_reg_answer'] = array(
+    'description' => 'Store answers given by user',
+    'fields' => array(
+      'contest_id' => array(
+        'description' => 'Constest Id',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'user_id' => array(
+        'description' => 'User Id',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'question_id' => array(
+        'description' => 'Question Id ',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+      'answer' => array(
+        'description' => 'Answer given by user',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+    ),
+    //'primary key' => array('contest_id','user_id','question_id','answer'),
+    'unique keys' => array(
+      'contest_idx' => array('contest_id','user_id','question_id','answer'),
+    ),  
+  );
+
+  return $schema;
+}

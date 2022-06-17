@@ -1,0 +1,21 @@
+bamTranslationImport:
+  original_language: en
+  translation_language: fr
+
+  #the fields which is translated
+  translation_fields: title,body,field_meta_tags,field_recipe_subtitle,field_recipe_cook_time,field_recipe_prep_time,field_recipe_how_to_make,field_recipe_ingredients,field_recipe_video
+
+  #the fields which share the same value with the original language node
+  translation_fields_ShareWithTargetNode: field_recipe_image,field_recipe_sponsor,field_recipe_category,field_recipe_brands_category,field_recipe_occasions_category
+
+  # node id which needs to be translated
+  # The original node and translation node should be imported.
+  # format: original_nid:translation_nid
+  nid:
+    link1: 301-304
+    link2: 302-305
+    link3: 303-306
+
+
+
+

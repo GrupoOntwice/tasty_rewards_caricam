@@ -1,0 +1,26 @@
+{% set snack_link = iframe_url %}
+
+{% if node.body.0.value|striptags is not empty %}
+  <p class="recipe-detail__cook-instruction">
+    {{ node.body.0.value | raw }}
+    <br>
+    {% if snack_link %}
+      <span class="shop_now snacks-com-updates">
+        <a href="{{snack_link}}" target="_blank" >
+          <img class = "w-75" src = "/themes/tastytheme/src/images/shop-at-snacks-btn.png" alt = "snacks.com"/>
+        </a>
+	    </span>
+    {% endif %}
+  </p>
+{% else %}
+  <p class="recipe-detail__cook-instruction">
+    {# No content is available #}
+    {% if snack_link %}
+      <span class="shop_now snacks-com-updates">
+        <a href="{{snack_link}}" target="_blank" >
+          <img class = "w-75" src = "/themes/tastytheme/src/images/shop-at-snacks-btn.png" alt = "snacks.com"/>
+        </a>
+      </span>
+    {% endif %}
+  </p>
+{% endif %}

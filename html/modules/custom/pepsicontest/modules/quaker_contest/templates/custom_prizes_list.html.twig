@@ -1,0 +1,351 @@
+{{ attach_library( 'quaker_contest/landing' ) }}
+<script type="text/javascript">
+  window.popup_contest = 1;
+</script>
+{% if data.contest_type == 'hockey' %}
+  {{ attach_library( 'quaker_contest/hockey' ) }}
+  {% include '@quaker_contest/include/contest-prizes-hockey.html.twig' %}
+{% else %}
+  {{ attach_library( 'quaker_contest/grabsnack' ) }}
+
+
+
+<style>
+
+
+  .prizes-banner {
+    background-image: url('/themes/tastytheme/src/images/grab-snack/thankyou-background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .button-style {
+    background-color: #F40522;
+    border: 1px solid #F40522;
+    color: #fff;
+    font-family: 'OpenSans-semibold';
+    padding: 8px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 20px;
+  }
+
+  .mw-100 {
+    max-width: 100%;
+  }
+
+  .mw-50 {
+    max-width:50%;
+  }
+
+  .color-black {
+    color: #000;
+  }
+
+  .faq-btn {
+    padding-top: 2rem;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+
+  .prizes-red-text {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+  }
+
+.prizes-row {
+  padding-bottom:30px;
+}
+
+
+
+
+  .p-3 {
+    padding: 5rem;
+  }
+
+  .color-link {
+    color:#F30522;
+  }
+
+  .grabsnack-prizes {
+    margin: auto !important;
+    padding-left: 2rem;
+  }
+
+  .all-prizes {
+    padding-top: 2rem;
+  }
+
+  .decrease-maxwidth {
+    max-width: 75%;
+  }
+
+  .prices-available {
+    background-image: url("/themes/tastytheme/src/images/grab-snack/yellow-background.jpg");
+  }
+
+  .prizes-btn {
+    width: 80%;
+  }
+
+  .color-lightblue {
+    color:#17B3F1
+  }
+
+  .prize-towel {
+    width: 82%;
+  }
+
+  .grabsnack-prizes {
+    display: flex;
+  }
+
+  .montserrat-black {
+    font-family: 'Montserrat-black';
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .price-img {
+    max-width: 100% !important;
+    margin: 20px 0;
+  }
+
+  .price-name {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .free-coupon img{
+    width: 33%;
+  }
+
+
+
+
+  @media (max-width: 967px) {
+    .prize-btn {
+      width: 147px !important;
+    }
+    .grabsnack-prizes {
+      padding-left: 0 !important;
+    }
+
+    .grabsnack-prizes p br {
+      display: none;
+    }
+
+    .grabsnack-prizes p, .grabsnack-prizes h1{
+      text-align: center;
+    }
+
+    .prizes-btn {
+      text-align: center;
+    }
+    .free-coupon{
+      padding: 0;
+    }
+    .free-coupon img {
+      max-width: 75%;
+      width: 100%;
+    }
+
+    .prizes-btn {
+      width:100%;
+    }
+
+    .prizes-row {
+      padding-top: 2rem;
+    }
+  }
+
+
+
+
+</style>
+
+
+<section class = "prizes-banner">
+  <div class = "container-fluid">
+
+    <div class = "row prizes-row">
+
+
+      <div class = "col-lg-6 grabsnack-prizes m-auto pl-5 ">
+        <div>
+
+        <h1 class = "text-uppercase montserrat-black color-lightblue text-left">{{'Prizes'|t}}</h1>
+        <p class = "opensans-semibold">{{'You won’t find this swag in any store! Enter for a chance to win<sup>†</sup><br>
+          exclusive swag inspired by your favourite brands - Doritos<sup>®</sup>, <br> Lay’s<sup>®</sup>, Ruffles<sup>®</sup>, Cheetos<sup>®</sup>
+          and Miss Vickie’s<sup>®</sup>.' |t }}</p>
+
+        <div class = "prizes-btn">
+          <button class = "button-style text-uppercase  js-entercontest opensans-semibold" data-link="{{data.signup_link}}">{{ 'Enter Now'|t }}</button>
+        </div>
+        </div>
+
+      </div>
+
+      <div class = "col-lg-6">
+
+        <img class = "mw-100" src = "/themes/tastytheme/src/images/grab-snack/Tiles-Prizes-3.png"/>
+
+        <div class = "prizes-not-as-shown text-right p-1">
+          <span class = "text-uppercase color-black montserrat-semibold span-font">{{ 'Prizes not exactly as shown'|t }}</span>
+        </div>
+
+      </div>
+
+
+
+  </div>
+  </div>
+
+</section>
+
+<div class="container">
+  <div class="col-md-12 back-btn faq-btn">
+    {# {{ how to get language? }}/contest/grabsnackswinswag/landing #}
+    <a class="contest-back-btn color-black" href="{{data.back_button}}">
+      < {{'Back'|t}}
+    </a>
+  </div>
+</div>
+
+
+<section class = "all-prizes">
+  <div class = "container text-center">
+    <div class = "row">
+
+      <div class = "col-sm-4 text-center">
+        <div class = "prices-available text-center">
+            <div>
+          <img class = "price-img decrease-maxwidth" src = "/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_sterio.png" alt="brand-price"/>
+            </div>
+        </div>
+        <div class = "price-name">
+        <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'RUFFLES branded wireless boom box speaker (1 available in week 2 / 4 / 6/ 8; ARV $653.00 each)' |t }}</span>
+        </div>
+      </div>
+
+      <div class = "col-sm-4 text-center ">
+        <div class =" prices-available text-center">
+          <img class = " price-img decrease-maxwidth prize-towel" src = "/themes/tastytheme/src/images/grab-snack/Lays_Towel.png"/>
+        </div>
+        <div class = "price-name">
+        <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'LAY’S branded towel (7 per week; ARV $54.00 each)'|t }}</span>
+        </div>
+      </div>
+
+      <div class = "col-sm-4 text-center">
+        <div class ="prices-available text-center">
+          <img class = " price-img decrease-maxwidth" src = "/themes/tastytheme/src/images/grab-snack/hat.png"/>
+        </div>
+        <div class = "price-name">
+        <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'DORITOS branded bucket hat (35 per week; ARV $21.00 each)' |t }}</span>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 text-center">
+            <div class="  prices-available text-center">
+              <img class=" price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_doritoes-fannypack.png" />
+            </div>
+            <div class = "price-name">
+            <span class = "text-uppercase color-lightblue montserrat-black text-center"> {{ 'DORITOS branded fanny pack (35 per week; ARV $20.00 each)' |t }}</span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 text-center ">
+            <div class=" prices-available text-center">
+              <img class=" price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_ruffles-blue-cap.png" />
+            </div>
+            <div class = "price-name">
+            <span class = "text-uppercase color-lightblue montserrat-black text-center">{{' RUFFLES snapback hat (42 per week; ARV $24.00 each)' |t }}</span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 text-center">
+            <div class =" prices-available text-center">
+              <img class=" price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_cheetos-tshirt.png" />
+            </div>
+            <div class = "price-name">
+            <span class = "text-uppercase color-lightblue montserrat-black text-center">{{'CHEETOS branded t-shirt (42 per week; ARV $15.00 each)'|t  }};
+</span>
+            </div>
+          </div>
+
+
+
+
+            <div class="container">
+            <div class="row">
+              <div class="col-sm-4 text-center">
+                <div class="prices-available text-center">
+                  <img class=" price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/Lays-beach-ball.png" />
+                </div>
+                <div class = "price-name">
+                <span class = "text-uppercase color-lightblue montserrat-black text-center">{{'LAY’S branded beach ball (49 per week; ARV $3.00 each)'|t}};</span>
+                </div>
+              </div>
+
+              <div class="col-sm-4 text-center ">
+                <div class=" prices-available text-center">
+                  <img class=" price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_missvickies-bag.png" />
+                </div>
+                <div class = "price-name">
+                <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'MISS VICKIE’S branded beach bag (49 per week; ARV $12.00 each)'|t }}</span>
+                </div>
+              </div>
+
+              <div class="col-sm-4 text-center">
+                <div class =" prices-available text-center">
+                  <img class="price-img decrease-maxwidth" src="/themes/tastytheme/src/images/grab-snack/PRIZE-TILES_instant-camera.png" />
+                </div>
+                <div class = "price-name">
+                <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'Instant camera (1 available in week 1 / 3 / 5/ 7; ARV $89.99 each)'|t }}</span>
+                </div>
+              </div>
+
+
+
+              <div class = "text-center w-100 p-2 free-coupon">
+
+                {% if data.langcode == 'en' %}
+                  <img class = "mw-50"  src="/themes/tastytheme/src/images/grab-snack/Microsite_Coupon_EN.jpeg" alt = "coupon-prizes"/>
+                {% elseif data.langcode == 'fr' %}
+                  <img class = "mw-50"  src="/themes/tastytheme/src/images/grab-snack/Microsite_Coupon_FR.jpeg" alt = "coupon-prizes"/>
+                {% endif %}
+
+                <div class = "price-name">
+                  <span class = "text-uppercase color-lightblue montserrat-black text-center">{{ 'Free Product Coupons'|t }}</span>
+                </div>
+              </div>
+
+              <div class = "prizes-red-text text-center">
+
+                <p class = "text-uppercase color-link montserrat-black span-font">{{'Prizes not exactly as shown'|t}}</p>
+              </div>
+
+            </div>
+            </div>
+
+            </div>
+
+</section>
+
+
+
+{% endif %}

@@ -1,0 +1,5 @@
+services:
+  maintenance_subscriber:
+    class: '\Drupal\bammaintenance200\EventSubscriber\MaintenanceEventSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

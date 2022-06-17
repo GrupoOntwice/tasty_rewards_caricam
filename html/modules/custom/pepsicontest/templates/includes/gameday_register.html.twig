@@ -1,0 +1,270 @@
+{{ attach_library( 'pepsicontest/gamedayLibrary' ) }}
+{{ attach_library('tastytheme/slickLibrary') }}
+
+<script type="text/javascript">
+  window.language = '{{data.langcode}}';
+</script>
+
+<section class = "es" id="banner" class="gameday banner d-block">
+  <img class="noMobile-sm w-100" src="/themes/brandstheme/src/images/gameday/gameday-banner-spanish.webp" alt="Gameday Banner">
+  <img class="noDesktop-sm w-100" src="/themes/brandstheme/src/images/gameday/gameday-mobile-header-es.png" alt="Gameday Header">
+</section>
+
+<section class = "en" id="banner" class="gameday banner d-block">
+  <img class="noMobile-sm w-100" src="/themes/brandstheme/src/images/gameday/gameday-banner.webp" alt="Gameday Banner">
+  <img class="noDesktop-sm w-100" src="/themes/brandstheme/src/images/gameday/gameday-mobile-header.png" alt="Gameday Header">
+</section>
+
+
+<section id="contest" class="padding-top-large">
+  <div class="contest-detail__wrapper padding-top-large padding-bottom-large">
+        <div id="gameday-contest-detail" class="contest-detail__view">
+{#            <h1 class="show_mobile">{{ data.title | raw}}</h1>#}
+            <h2 class="contest-detail__about heading-text somerton-regular">
+                {{'YOU COULD <br> <span> WIN<sup>*</sup> PRIZES </span> <br> EVERY WEEK!'|t}}
+            </h2>
+          <p class = "text-white padding-bottom opensans-regular">{{ 'Frito-Lay<sup>®</sup> is giving away signed NFL merchandise and official gear from your favorite teams. Enter daily for a chance to grab the W — new prizes to be won every week! '|t }}</p>
+          <span class = "text-white">{{ '*See <a href="/en-us/contests/gamedaystartshere/officialrules"> official rules</a> for details.' |t }} </span>
+
+        </div>
+    {% if data.submitted == 1 and data.success == 1 %}
+      <div class = "gameday-form-submit gameday-d-md-flex">
+        <div id = "gameday-submit" class="contest-detail__form">
+          <div>
+
+            <h3 class = "text-uppercase">{{'Entry Received'|t}}</h3>
+            <p class = "text-white">{{"You’re in the game! Stay tuned for winner announcements, and remember, you can enter every day for new chances to win!"|t}}</p>
+      </div>
+        </div>
+
+        <div id = "gameday-submit-form" class = "gameday-form-submit-img">
+          <div>
+          <img src = "/themes/brandstheme/src/images/gameday/form-submit.png" alt = "entry received"/>
+          </div>
+        </div>
+      </div>
+
+
+
+    {% else %}
+        {% set newregister =  data.logged_in == "0"? 1 : 0  %}
+        <div class="contest-detail__form">
+
+                <form data-toggle="validator" role="form" id='contestsignup-form' method="POST" autocomplete="off">
+
+                    <input type="hidden" name="newregister"  value="{{newregister}}">
+                    <input type="hidden" name="contest_type"  value="gameday">
+                    {% if data.language != 'en-us' and data.language != 'es-us' %}
+                        <p class="modal__inquiry">{{ "* Indicates required field."|t }}</p>
+                    {% endif %}
+                  <div class="contest-detail__user-name">
+                    <div class="contest-detail__user-name-col">
+                      <label for="contest-firstname" class = "visuallyhidden"> Firstname </label>
+                      <input type="text" id="contest-firstname" class="contest-detail__user-first-name {{data.error.firstname?'has-error':''}}" name='firstname' id="contest-firstname"  placeholder="{{ 'First Name *'|t }}" value="{{data.firstname?:''}}"  {{data.firstname?form_field_status:''}}>
+
+                      <span class="help-block err_firstname">{{data.error.firstname?:''}}</span>
+                    </div>
+
+                    <div class="contest-detail__user-name-col">
+                      <label for = "contest-lastname" class = "visuallyhidden"> Lastname </label>
+                      <input type="text" id="contest-lastname" class="contest-detail__user-last-name {{data.error.lastname?'has-error':''}}" name="lastname" placeholder="{{ 'Last Name *'|t }}" value="{{data.lastname?:''}}"  {{data.lastname?form_field_status:''}}>
+
+                      <span class="help-block err_lastname">{{data.error.lastname?:''}}</span>
+                    </div>
+                  </div>
+                  <label for = "contest-email" class = "visuallyhidden"> Email </label>
+                    <input type="text" id="contest-email" class="contest-detail__input {{data.error.email?'has-error':''}}" name="email" placeholder="{{ 'Email *'| t }}" value="{{data.email?:''}}" {{data.email?form_field_status:''}}>
+
+                    <span class="help-block err_email">{{data.error.email| raw?:''  }}</span>
+
+                    {% if data.logged_in == "0" %}
+                        <label for = "contest-password" class = "visuallyhidden"> password </label>
+                        <input type="password" id="contest-password" class="contest-detail__input {{data.error.password?'has-error':''}}" name="password" placeholder="{{ 'Password *'| t }}" value="{{data.password?:''}}" {{data.password?form_field_status:''}}>
+
+                        <span class="help-block err_password">{{data.error.password| raw?:''  }}</span>
+                    {% endif %}
+
+
+
+                  <label for = "contest-postalcode" class = "visuallyhidden"> Postalcode </label>
+                    <input type="text" id="contest-postalcode" class="contest-detail__input {{data.error.postalcode?'has-error':''}}" name="postalcode" placeholder="{{ 'Postal Code'|t }} *" value="{{data.postalcode?:''}}" {{data.postalcode?form_field_status:''}}>
+
+                    <span class="help-block err_email">{{data.error.postalcode| raw?:''  }}</span>
+
+                    <label for = "contest-team" class = "visuallyhidden"> {{'Postalcode'|t}} </label>
+                  {% if data.logged_in == "0" %}
+
+                    <p class="contest-detail__container-birth">{{ 'Date of Birth'| t}}  *</p>
+
+
+                    <div>
+                        <div class="contest-detail__sign-up-birth {{data.error.bday?'has-error':''}}">
+                          <label for = "contest-bday" class = "visuallyhidden"> Birthday </label>
+                            <input type="hidden" name='bday' id="contest-bday" class="form-control"  >
+
+                              <label class = "visuallyhidden"> {{'Month'|t}} </label>
+                                <select id = "contest-bday-month" class="contest-detail__sign-up-select form-control" name="bday_month">
+                                    {{ data.bdaydropdown.monthoption | raw }}
+                                </select>
+                              <label class = "visuallyhidden"> {{'Day'|t}} </label>
+                                <select class="contest-detail__sign-up-select form-control" name="bday_day">
+                                    {{ data.bdaydropdown.dayoption | raw }}
+                                </select>
+
+                          <label class = "visuallyhidden"> {{'Year'|t}} </label>
+                            <select class="contest-detail__sign-up-select form-control" name="bday_year">
+                                {{ data.bdaydropdown.yearoption | raw }}
+                            </select>
+
+                            <a href="#/" class="contest-detail__user-info-icon tip">
+                                <img src="/themes/tastytheme/src/images/information.png" alt="{{'information'|trans }}" />
+                                <p>
+                                    {{"You must be at least 18 years of age or older to be a Tasty Rewards<sup>TM</sup> Member. <br />Why do we collect your birthday? <br />We use your birthday to send you a birthday greeting each year, and to provide the most relevant content for our members."|t|raw}}
+                                </p>
+                            </a>
+                        </div>
+
+                        <span class="help-block err_email">{{data.error.bday| raw?:''  }}</span>
+                    </div>
+
+                    <div>
+                        <div class="contest-detail__sign-up-gender">
+                          <label for = "contest-gender" class = "visuallyhidden"> Gender </label>
+                            <select id="contest-gender" class="form-control contest-detail__sign-up-select-gender {{data.error.gender?'has-error':''}}" name="gender">
+                                <option value='' >{{ 'Gender'|t }}</option>
+                                <option value='M' {{ data.gender=='M'?'selected':'' }}>{{ 'Male'|t }}</option>
+                                <option value='F' {{ data.gender=='F'?'selected':'' }}>{{ 'Female'|t }}</option>
+                                <option value='O' {{ data.gender=='O'?'selected':'' }}>{{ 'Other'|t }}</option>
+                            </select>
+                        </div>
+                        <span class="help-block err_email">{{data.error.gender| raw?:''  }}</span>
+                    </div>
+                  {% endif %}
+                    {% set disable_submit = 0 %}
+
+                    <select class="team form-control modal__sign-up-select" name="team" id="contest-team" >
+                        {{ data.team_options| raw }}
+
+                    </select>
+
+                    {# <input type="text" id="contest-team" class="contest-detail__input {{data.error.team?'has-error':''}}" name="team" placeholder="{{ 'Favorite Football Team'|t }} *" value="{{data.team?:''}}" {{data.team?form_field_status:''}}> #}
+
+                    <span class="help-block err_email">{{data.error.team| raw?:''  }}</span>
+
+                        {% if data.is_legal_age == "0" %}
+                          <p class="contest-detail__checkbox-text">{{ "You must be at least 18 years of age or older "|t }}</p>
+                        {% endif %}
+                    <div class="contest-detail__sign-up-select-checkbox">
+
+                        <div class="contest-detail__checkboxes-wrap">
+                          <div class = "margin-bottom">
+                            {% if data.status == "4" %}
+                                {% set disable_submit = 1 %}
+                                <input type="checkbox" class="contest-detail__checkboxes-color" id="check" />
+                                <label for="check" class="hidden">subscribed-sweepstakes</label>
+                                <p class="contest-detail__checkbox-text">{{ "You have already entered this sweepstake today. You can only participate once per day."|t }}</p>
+                            {% elseif data.optin == "1" %}
+                                <input type="checkbox" class="contest-detail__checkboxes-color" id="check" />
+                              <label for="check" class="hidden">subscribed-email</label>
+                                <p class="contest-detail__checkbox-text">{{ "You are already subscribed to Tasty Rewards<sup>TM</sup> emails."|t }}</p>
+                              <label for="contest_optin" class="hidden">checkbox</label>
+                                <input type="checkbox" class="hidden" id="contest_optin" name='optin' checked />
+                            {% else %}
+                                <label for="contest_optin" class="visuallyhidden">optin-label</label>
+                                <input type="checkbox" class="" id="contest_optin" name='optin'  {{ data.optin==1?'checked' }}/>
+
+                                <p class="contest-detail__checkbox-text optin opensans-regular">{{'Yes! Sign me up to Tasty Rewards<sup>TM</sup> by email so I never miss out on exciting updates, offers or contests (and I have the option to unsubscribe at any time).'| t }}</p>
+                            {% endif %}
+                          </div>
+
+
+                            {% if disable_submit != 1 %}
+                              <div>
+                                <label for="accept-rules" class="visuallyhidden">optin-label</label>
+                              <input type="checkbox" class="" id="accept-rules" name='accept_rules'  {{ data.accept_rules==1?'checked' }}/>
+                              <p class="contest-detail__checkbox-text opensans-regular">{{ 'I have read and agree to the' |t }} <a href = "{{ '/en-us/contests/gamedaystartshere/officialrules' |t }}">
+                                  {{ 'Official Rules' |t }} </a></p>
+
+                              </div>
+                              <span style = "margin-left: 30px" class="help-block err_email">{{data.error.accept_rules| raw?:''  }}</span>
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
+                    <div class="contest-detail__sign-up-select-button">
+                        <input type="hidden" id="grecaptcharesponse_contest" name="grecaptcharesponse_contest">
+                        <input type="hidden" name='socialsource' id='contest-socialsource'>
+                        <input id="submitcontest" class="gameday-btn-yellow gameday_submit_btn text-uppercase opensans-regular" type="button" value="{{'Enter'| t}}" {% if disable_submit %} disabled="disabled" {% endif %} >
+
+                    </div>
+                    <div class="contest-detail__sign-up-select-button">
+                        <span class="help-block err_captcha">{{data.error.grecaptcharesponse| raw?:''  }}</span>
+                    </div>
+                </form>
+
+
+        </div>
+    {% endif %}
+    </div>
+
+</section>
+
+<section id="gameday-videos">
+  <h2 class = "text-uppercase somerton-regular">{{'Game day Starts Here Videos'|t|raw}}</h2>
+  {% include '@pepsicontest/includes/gameday_videos.html.twig' %}
+</section>
+
+<section id="gameday-recipes">
+  <img class = "top-left" src="/themes/brandstheme/src/images/gameday/top-left.png" alt = "gameday-top-left">
+  <img class = "top-right" src="/themes/brandstheme/src/images/gameday/top-right.png" alt = "gameday-top-right">
+
+
+  {% include '@pepsicontest/includes/gameday_recipes.html.twig' %}
+  <img class = "gameday-bottom-right" src="/themes/brandstheme/src/images/gameday/top-left.png" alt = "gameday-bottom-right" >
+
+
+</section>
+
+
+
+{#<section id="brands">#}
+{#    <!--brand carousel -->#}
+{#    {% include '@tastytheme/includes/brands.html.twig' %}#}
+{#    <!--brand carousel end -->#}
+
+{#</section>#}
+
+
+
+<section id="coupons">
+  <div style="background-image: url('/themes/brandstheme/src/images/gameday/coupon-bg.png');">
+    <div class="container gameday-d-md-flex padding-top-medium-dsk padding-bottom-medium-dsk gameday-coupon-padding">
+      <div class="coupon--display">
+        <a href="/en-us/coupons" tabindex="-1">
+          <div class="coupon--leftcol" style="opacity: 1; left: 0px;">
+            <img class = "en"  alt="the season for savings" data-entity-type="file" src="/themes/brandstheme/src/images/gameday/coupon-img.png">
+            <img class = "es"  alt="the season for savings" data-entity-type="file" src="/themes/brandstheme/src/images/gameday/coupon-img-es.png">
+          </div>
+        </a>
+      </div>
+      <div class="coupon--text" style="opacity: 1; right: 0px;">
+        <h3 class="heading-text somerton-regular" style="font-size:2em;">{{'SAVE ON THESE GAME DAY FLAVORS'|t}} </h3>
+
+        <a class="gameday-btn gameday-coupon-btn  opensans-bold" href="/en-us/coupons" tabindex="-1">{{'Get My Coupon'|t}}*</a>
+        <p class="coupon-disclaimer opensans-regular">*{{'Coupons available while quantities last'|t}}.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class = "footer-rules">
+  <div class = "container">
+ <p> {{data.legal_footer|raw}}</p>
+  </div>
+</section>
+
+
+

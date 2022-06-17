@@ -1,0 +1,27 @@
+<div class="recipe-filters">
+	{# @TODO: Change the ID of the form along with the css code #}
+    <form action="/en-us/recipes" method="post" id="views-exposed-form-recipes-page-1" accept-charset="UTF-8" class="recipe-filter-form">
+	   <div class="form--inline form-inline clearfix">
+
+	      <div class="form-item js-form-item form-type-select js-form-type-select form-item-field-recipe-brands-category-target-id js-form-item-field-recipe-brands-category-target-id form-no-label form-group">
+	         <span class="multiselect-native-select">
+                <label for="edit-field-recipe-brands-category-target-id--2" class="hidden">Brands</label>
+	            <select data-drupal-selector="edit-field-recipe-brands-category-target-id" multiple="multiple" name="field_recipe_brands_category_target_id[]" class="form-select form-control" id="edit-field-recipe-brands-category-target-id--2" size="9">
+	            	{% for brand in data.brands %}
+	               		<option value="{{brand.tid}}">{{brand.name}}</option>
+	            	{% endfor %}
+	            </select>
+	         </span>
+	      </div>
+
+	      <div class="form-item js-form-item form-type-textfield js-form-type-textfield form-item-combine js-form-item-combine form-no-label form-group">
+              <label id="search_label" for="edit-combine--2" class="hidden">{{'Search'|t}}</label>
+              <input placeholder="{{'Search'|t}}  " data-drupal-selector="edit-combine" aria-labelledby="search_label" class="form-text form-control js-search-input" type="text" id="edit-combine--2" name="combine" value="" size="30" maxlength="128">
+	      </div>
+	      <div data-drupal-selector="edit-actions" class="form-actions form-group js-form-wrapper form-wrapper" id="edit-actions--3">
+	      	<button data-drupal-selector="edit-submit-recipes-2" class="button js-form-submit form-submit btn-primary btn icon-before" type="submit" id="edit-submit-recipes--2" value="Search" name=""><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+	         {{'Search'|t}}</button>
+	      </div>
+	   </div>
+	</form>
+</div>

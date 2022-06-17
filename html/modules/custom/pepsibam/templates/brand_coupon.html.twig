@@ -1,0 +1,221 @@
+{{ attach_library( 'pepsibam/pepsicouponScrolllibrary' ) }}
+
+
+{% set trackingpage = "coupon" %}
+{% set trackinglang = data.language %}
+{% include '@pepsi/custom/doubleclick_tag.html.twig' %}
+
+
+<section id="banner">
+    {# Add the dynamic image here #}
+    {# {{ drupal_view('carousel2', 'block_coupon_header') }}   #}
+    {# page main display #}
+
+    {% set theme = row.content["#row"]._entity.getTranslation(language).field_color_theme.getValue().0.value %} 
+  {% set thememobile = row.content["#row"]._entity.getTranslation(language).field_mobile_color_theme.getValue().0.value %}
+  {% set mobile_text_pos = row.content["#row"]._entity.getTranslation(language).field_carouseltext_vertical_pos.getValue().0.value %}    
+
+  
+    {% set title = data.title %}
+    {% set subtitle = data.subtitle %}
+
+     {#  {% set link_url = row.content["#row"]._entity.getTranslation(language).field_cta_text.0.url %}
+      {% set link_title = row.content["#row"]._entity.getTranslation(language).field_cta_text.0.title %} #}
+
+    {% set img = file_url(data.coupon_image) %}
+    {% set mobileimg = file_url(data.mobile_image) %}
+    {% set thankyou_img = file_url(data.banner_image) %}
+
+    {# {% set img = data.coupon_image %} #}
+    {# {% set mobileimg = data.mobile_image %} #}
+    {% set thankyou_mobileimg = file_url(data.banner_image_mobile) %}
+    {% set description = data.description %}
+    {# {% set position = row.content["#row"]._entity.getTranslation(language).field_cta_position.getValue().0.value %} #}
+    {# {% set subtitle = row.content["#row"]._entity.getTranslation(language).field_subtitle.getValue().0.value %} #}
+    {# {{row.content}} #}
+    <div class="banner_slide ">
+        <span class="hidden banner-img">{{thankyou_img}}?versionid={{ "now"|date("h") }}</span>
+        <span class="hidden banner-mobileimg">{{thankyou_mobileimg}}?versionid={{ "now"|date("h") }}</span>
+      <div class="banner-desktop {{theme}}"  style="background-image: url('{{img}}?versionid={{ "now"|date("h") }}');">
+        <div class="banner_slide--text {{class_pos}}">
+      {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+          {% if subtitle %}
+            <h1> {{ subtitle | raw}}</h1>
+          {% endif %}
+
+          {% if description %}
+              <p>
+                {{description|raw}}
+              </p>
+           {% endif %}
+
+           {% if link_url %}
+            <a class="btn_red" href="{{link_url}}">
+              {{ link_title }}
+            </a>
+
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="banner-mobile {{thememobile}}"  style="background-image: url('{{mobileimg}}');">
+        <div class="banner_slide--text {{class_pos}} {{mobile_text_pos}}">
+          {# {{ kint(row.content["#row"]._entity.getTranslation(language).field_activation_enddate.getValue().0.value) }} #}
+          {# <span class="end_date"> {{ end_date }}</span> #}
+
+          {% if subtitle %}
+            <h1> {{ subtitle | raw}}</h1>
+          {% endif %}
+
+          {% if description %}
+            <p>
+              {{description|raw}}
+            </p>
+          {% endif %}
+
+          {% if link_url %}
+            <a class="btn_red" href="{{link_url}}">
+              {{ link_title }}
+            </a>
+
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="arrow-section-general"></div>
+    </div>
+</section>
+
+<script>
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;   
+    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    if ((is_chrome) && (is_safari)) {is_safari = false;}  
+    if (is_safari) {       
+        if (!document.cookie.match(/^(.*;)?\s*fixed\s*=\s*[^;]+(.*)?$/)) {            
+            document.cookie = 'fixed=fixed; expires=Tue, 19 Jan 2038 03:14:07 UTC; path=/';
+             window.location.replace("{{data.iframe_domain}}_safari_fix.html");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+    if (event.data === "WsScrollTop=true") {
+        scrollToTop(280);
+    } else if (event.data === "WsScrollToIframeTop=true") {
+        scrollToTop(0);
+    // } else if (event.data==="confirmationPage=true"){
+    } else if (event.data==="ThankYouPage=true"){
+         //  INSERT HERE ACTION TO SHOW THE HIDDEN BLOCK    
+        var couponblock = document.getElementById("coupons");
+        if (couponblock.classList.contains("hidden")) {
+            couponblock.classList.remove("hidden");
+        }
+
+        var banner = document.querySelector(".banner-desktop");
+        var banner_mobile = document.querySelector(".banner-mobile");
+        var banner_img_url = document.querySelector(".banner-img").innerText;
+        var banner_mobileimg_url = document.querySelector(".banner-mobileimg").innerText;
+        banner.style.backgroundImage = "url('" + banner_img_url + "')";
+        banner_mobile.style.backgroundImage = "url('" + banner_mobileimg_url + "')";
+
+    }
+    else
+        return;
+}    
+/*
+function scrollToTop() {                
+    document.body.scrollTop =500; // For Safari
+    document.documentElement.scrollTop =500; // For Chrome, Firefox, IE and Opera   
+} 
+*/
+function scrollToTop(top) {                
+    var iframeElement = document.getElementById("CouponFrame");
+    document.body.scrollTop = iframeElement.offsetTop + top;  // For Safari
+    document.documentElement.scrollTop = iframeElement.offsetTop + top;  // For Chrome, Firefox, IE and Opera
+} 
+
+
+</script>
+
+<section id="contest" class="brand-coupon">
+    <div class="arrow-section-body"></div>
+
+    {# {% if (data.language != 'en-us') %} #}
+
+        {% if (data.device_no_supported == 1)%}
+            <section id="contentBlocks" class="container-fluid">
+                <h2 class="pink signika text-center uppercase"> {{ 'Oops! The coupon section is not compatible with this device. Please try to log in from a desktop.'|t }} </h2>
+                <div class="col-xs-12 text-center">
+                    <br>
+                    <br>
+                    <a class="primary h3" href="{{ path('<front>') }}"> {{'Go back to the home page'|t }} </a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </section>
+
+        {% else %}
+
+            {% if (data.coupon_body is empty) %}
+
+                {% if (data.error)%}
+
+                    <section id="contentBlocks" class="container-fluid">
+                        <h2 class="pink signika text-center uppercase"> {{ 'Oops! It seems we are having a connexion issue'|t }} </h2>
+                        <div class="col-xs-12 text-center">
+                            <a class="btn btn-primary btn-contest" href="{{ path(data.language ~ '.pepsibam.coupon') }}"> {{'Reload this page'|t }} </a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                        </div>
+                    </section>
+
+                {% else %}    
+                    <section id="contentBlocks" class="container-fluid">
+                        {% if (data.coupon_title is empty) %}
+                          <h2>{{'Hungry for a new adventure?<sup>TM</sup> '|t}}</h2>
+                        {% else %} 
+                          <h2>{{data.coupon_title|raw}}</h2>
+                        {% endif %}
+
+                        {% if (data.coupon_description is empty) %}
+                          <p>{{'We’re snacks for the curious, packed with ingredients like real peas, chickpeas, and rice.'|t}}</p>
+                        {% else %} 
+                          {{data.coupon_description|raw}}
+                        {% endif %}
+                        <iframe style="width:100%;min-height:50px" id="CouponFrame" src="{{data.iframe_url}}"></iframe> 
+                    </section>
+                {% endif %}
+            {% else %}
+
+                {{data.coupon_body|raw}}
+
+            {% endif %}
+        {% endif %}
+    {# {% endif %} #}
+</section>
+<section id="coupons" class="hidden">
+        {{ drupal_block('couponblockcallout') }}
+</section>
+{% if (data.language == 'en-us' or data.language == 'es-us') %}
+<section id="contest">
+
+    
+    <section id="coupons-usa">
+        {# {{ drupal_block('secondsectionblock') }} #}
+    </section>
+    <!--brand carousel -->
+    {% include '@tastytheme/includes/brands.html.twig' %}
+    <!--brand carousel end -->
+</section>         
+{% endif %}
