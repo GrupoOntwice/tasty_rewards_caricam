@@ -45,7 +45,7 @@ $databases['default']['default'] = array (
 > Nota: este paso solo se hace una unica vez
 
 
-## Instrucciones para correr de nuevo migraciones y seeders en el proyecto
+## Instrucciones para correr de nuevo migraciones en el proyecto
 
 Correr el siguiente comando:
 
