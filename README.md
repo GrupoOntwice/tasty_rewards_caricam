@@ -1,4 +1,4 @@
-# Pepsico - Tasterewards 2022
+# Pepsico - Tasty Rewards 2022
 
 ## Requisitos
 
@@ -31,6 +31,7 @@ composer install
 
 - Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conection de la base datos:
 
+```
 $databases['default']['default'] = array (
 	'database' => '',
 	'username' => '',
@@ -41,6 +42,7 @@ $databases['default']['default'] = array (
 	'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
 	'driver' => 'mysql',
 );
+```
 
 > Nota: este paso solo se hace una unica vez
 
