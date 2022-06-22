@@ -1,4 +1,4 @@
-# Pepsico - Tasty Rewards 2022
+# Pepsico - Tasty Rewards Caricam 2022
 
 ## Requisitos
 
@@ -8,6 +8,7 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
 - MySQL 5.7
 - Redis >= 5.0
 - PHP >= 7.4
+- Drupal 9.X
 - Composer para poder emplear la carpeta vendor (https://getcomposer.org/download/)
 - Apache
   - Tener activo modo rewrite
@@ -33,11 +34,11 @@ composer install
 
 ```
 $databases['default']['default'] = array (
-	'database' => '',
-	'username' => '',
-	'password' => '',
-	'prefix' => '',
-	'host' => '',
+	'database' => definido_por_DPM_PepsiCo,
+	'username' => definido_por_DPM_PepsiCo,
+	'password' => definido_por_DPM_PepsiCo,
+	'prefix' => definido_por_DPM_PepsiCo,
+	'host' => definido_por_DPM_PepsiCo,
 	'port' => '3306',
 	'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
 	'driver' => 'mysql',
