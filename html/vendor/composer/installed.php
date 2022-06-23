@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c6d7391ca91341b3653395eab05951b46735e896',
+        'reference' => '831a6e93067517c2136935eaaa3c60889db2d1bd',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -126,6 +126,12 @@
             'aliases' => array(),
             'reference' => '9ef08d471573d6a56405b06ef6830dd70c883072',
             'dev_requirement' => false,
+        ),
+        'container-interop/container-interop' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '^1.2.0',
+            ),
         ),
         'dflydev/dot-access-data' => array(
             'pretty_version' => 'v1.1.0',
@@ -634,7 +640,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c6d7391ca91341b3653395eab05951b46735e896',
+            'reference' => '831a6e93067517c2136935eaaa3c60889db2d1bd',
             'dev_requirement' => false,
         ),
         'drupal/link' => array(
@@ -865,6 +871,15 @@
                 0 => '9.3.9',
             ),
         ),
+        'drupal/upgrade_status' => array(
+            'pretty_version' => '3.14.0',
+            'version' => '3.14.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/upgrade_status',
+            'aliases' => array(),
+            'reference' => '8.x-3.14',
+            'dev_requirement' => false,
+        ),
         'drupal/user' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1003,6 +1018,15 @@
             'reference' => '3ef837a12833c74b438d2c3780023c4244e0abae',
             'dev_requirement' => false,
         ),
+        'laminas/laminas-servicemanager' => array(
+            'pretty_version' => '3.12.0',
+            'version' => '3.12.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-servicemanager',
+            'aliases' => array(),
+            'reference' => '05ac4b1fb1fe9333313eeafced9b6c7946589487',
+            'dev_requirement' => false,
+        ),
         'laminas/laminas-stdlib' => array(
             'pretty_version' => '3.6.1',
             'version' => '3.6.1.0',
@@ -1010,6 +1034,15 @@
             'install_path' => __DIR__ . '/../laminas/laminas-stdlib',
             'aliases' => array(),
             'reference' => 'db581851a092246ad99e12d4fddf105184924c71',
+            'dev_requirement' => false,
+        ),
+        'laminas/laminas-text' => array(
+            'pretty_version' => '2.9.0',
+            'version' => '2.9.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-text',
+            'aliases' => array(),
+            'reference' => '8879e75d03e09b0d6787e6680cfa255afd4645a7',
             'dev_requirement' => false,
         ),
         'league/container' => array(
@@ -1028,6 +1061,24 @@
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
             'reference' => 'f640ac1bdddff06ea333a920c95bbad8872429ab',
+            'dev_requirement' => false,
+        ),
+        'mathieuviossat/arraytotexttable' => array(
+            'pretty_version' => 'v1.0.8',
+            'version' => '1.0.8.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mathieuviossat/arraytotexttable',
+            'aliases' => array(),
+            'reference' => '6b1af924478cb9c3a903269e304fff006fe0dbf4',
+            'dev_requirement' => false,
+        ),
+        'mglaman/phpstan-drupal' => array(
+            'pretty_version' => '1.1.20',
+            'version' => '1.1.20.0',
+            'type' => 'phpstan-extension',
+            'install_path' => __DIR__ . '/../mglaman/phpstan-drupal',
+            'aliases' => array(),
+            'reference' => 'f9d8493835cc50ab9e3592486d129c2b355db335',
             'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
@@ -1099,6 +1150,24 @@
             'reference' => 'e43bac82edc26ca04b36143a48bde1c051cfd5b1',
             'dev_requirement' => false,
         ),
+        'phpstan/phpstan' => array(
+            'pretty_version' => '1.7.15',
+            'version' => '1.7.15.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpstan/phpstan',
+            'aliases' => array(),
+            'reference' => 'cd0202ea1b1fc6d1bbe156c6e2e18a03e0ff160a',
+            'dev_requirement' => false,
+        ),
+        'phpstan/phpstan-deprecation-rules' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'phpstan-extension',
+            'install_path' => __DIR__ . '/../phpstan/phpstan-deprecation-rules',
+            'aliases' => array(),
+            'reference' => 'e5ccafb0dd8d835dd65d8d7a1a0d2b1b75414682',
+            'dev_requirement' => false,
+        ),
         'psr/cache' => array(
             'pretty_version' => '1.0.1',
             'version' => '1.0.1.0',
@@ -1120,8 +1189,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.0',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '^1.0',
             ),
         ),
         'psr/event-dispatcher-implementation' => array(
