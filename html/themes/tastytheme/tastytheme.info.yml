@@ -56,7 +56,6 @@ features:
 
 # Information added by Drupal.org packaging script on 2019-05-10
 # version: '8.x-6.4'
-core: '8.x'
 core_version_requirement: ^8 || ^9
 project: 'tastytheme'
 datestamp: 1557494981

@@ -17,10 +17,10 @@ Ahora para hacer funcionar el proyecto cuando es un dominio se puede hacer apunt
 
 ## Configuración del Proyecto
 
-Para ejecutar el proyecto es necesario ocupar composer de la siguiente manera:
+1. Si la carpeta vendor no existe se debe:
 
 - Posicionarse en la carpeta raíz del proyecto (/html)
-
+- Eliminar el composer.lock
 - Ejecutar
 
 ```
@@ -30,25 +30,24 @@ composer install
 
 ```
 
-- Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conection de la base datos:
+2. Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conection de la base datos:
 
 ```
 $databases['default']['default'] = array (
-	'database' => definido_por_DPM_PepsiCo,
-	'username' => definido_por_DPM_PepsiCo,
-	'password' => definido_por_DPM_PepsiCo,
-	'prefix' => definido_por_DPM_PepsiCo,
-	'host' => definido_por_DPM_PepsiCo,
-	'port' => '3306',
-	'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-	'driver' => 'mysql',
+  'database' => definido_por_DPM_PepsiCo,
+  'username' => definido_por_DPM_PepsiCo,
+  'password' => definido_por_DPM_PepsiCo,
+  'host' => definido_por_DPM_PepsiCo,
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
 );
 ```
 
-> Nota: este paso solo se hace una unica vez
+> NOTA: este paso solo se hace una unica vez
 
 
-## Instrucciones para correr de nuevo migraciones en el proyecto
+3. Instrucciones para correr de nuevo migraciones en el proyecto en caso de no contar con una base de datos valida:
 
 Correr el siguiente comando:
 
@@ -56,7 +55,7 @@ Correr el siguiente comando:
 drush cim -y
 
 ```
-
+> NOTA: Si se tiene una de datos valida no este paso no es necesario
 
 ## Instrucciones para actualizar composer
 
