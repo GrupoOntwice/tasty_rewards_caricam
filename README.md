@@ -17,11 +17,11 @@ Ahora para hacer funcionar el proyecto cuando es un dominio se puede hacer apunt
 
 ## Configuración del Proyecto
 
-1. Si la carpeta vendor no existe se debe:
+1. Si la carpeta vendor **NO** existe se debe:
 
 - Posicionarse en la carpeta raíz del proyecto (/html)
 - Eliminar el composer.lock
-- Ejecutar
+- Ejecutar el siguiente comando:
 
 ```
 
@@ -30,37 +30,37 @@ composer install
 
 ```
 
-2. Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conection de la base datos:
+2. Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conexion de la base datos:
 
 ```
-$databases['default']['default'] = array (
-  'database' => definido_por_DPM_PepsiCo,
-  'username' => definido_por_DPM_PepsiCo,
-  'password' => definido_por_DPM_PepsiCo,
-  'host' => definido_por_DPM_PepsiCo,
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+  $databases['default']['default'] = array (
+    'database' => definido_por_DPM_PepsiCo,
+    'username' => definido_por_DPM_PepsiCo,
+    'password' => definido_por_DPM_PepsiCo,
+    'host' => definido_por_DPM_PepsiCo,
+    'port' => definido_por_DPM_PepsiCo,
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'driver' => 'mysql',
+  );
 ```
 
-> NOTA: este paso solo se hace una unica vez
+> NOTA: Estos cambios deben ser implementados cada vez que se vaya a realizar una nueva instalación 
 
 
-3. Instrucciones para correr de nuevo migraciones en el proyecto en caso de no contar con una base de datos valida:
+3. Dirigirse a la **carpeta /db** donde se debe tomar el archivo  **sql.gz** llamado  **dump.sql.gz** para levantar la base de datos que debe tener el mismo nombre que fue definido en el paso anterior al momento de una nueva instalación o actualización del sitio.
 
-Correr el siguiente comando:
-
-```
-drush cim -y
+- Despues de la importación ejecutar el comando:
 
 ```
-> NOTA: Si se tiene una de datos valida no este paso no es necesario
-
-## Instrucciones para actualizar composer
-
-Correr el siguiente comando:
+drush cr
 
 ```
-composer update
+
+**NOTA:** al momento de generarse un error, cuando se ejecuta un comando que incluya **drush**, se solicita enviar la respuesta via ticket implementando el comando de la siguiente manera:
+
+```
+drush [Comando] --debug
+ej:
+drush cr --debug
+
 ```
