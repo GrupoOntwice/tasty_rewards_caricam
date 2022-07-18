@@ -56,7 +56,7 @@ drush cr
 
 ```
 
-**NOTA:** al momento de generarse un error, cuando se ejecuta un comando que incluya **drush**, se solicita enviar la respuesta via ticket implementando el comando de la siguiente manera:
+**NOTA:** En caso de generarse un error cuando se ejecuta un comando que incluya **drush**, se solicita enviar la respuesta via ticket implementando el comando de la siguiente manera:
 
 ```
 drush [Comando] --debug
