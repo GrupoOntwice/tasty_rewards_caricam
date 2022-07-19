@@ -47,7 +47,7 @@ composer install
 > NOTA: Estos cambios deben ser implementados cada vez que se vaya a realizar una nueva instalación 
 
 
-3. Dirigirse a la **carpeta /db** donde se debe tomar el archivo  **sql.gz** llamado  **dump.sql.gz** para levantar la base de datos que debe tener el mismo nombre que fue definido en el paso anterior al momento de una nueva instalación o actualización del sitio.
+3. Dirigirse a la **carpeta /db** donde se debe tomar el archivo  **sql.zip** llamado  **dump.sql.zip** para levantar la base de datos que debe tener el mismo nombre que fue definido en el paso anterior al momento de una nueva instalación o actualización del sitio.
 
 - Despues de la importación ejecutar el comando:
 
