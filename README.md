@@ -12,9 +12,11 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
 - Composer para poder emplear la carpeta vendor (https://getcomposer.org/download/)
 - Apache
   - Tener activo modo rewrite
-  - El servidor APACHE debe estar direccionado a la carpeta  **/html**, para efectos de la carga y despliegue de contenidos. 
+  - Verificar:
+    - El servidor APACHE debe estar direccionado a la carpeta  **/html**
+    - Desde esta misma carpeta (/html) se encontrara el archivo **index.php** el cual permite la carga del sitio.
 
-Ahora para hacer funcionar el proyecto cuando es un dominio se puede hacer apuntando a la carpeta raiz (/html)
+> NOTA: Esta instalacion no corresponde a un multisite, por lo que el index siempre estara en **/html** 
 
 ## Configuración del Proyecto
 
@@ -45,7 +47,8 @@ composer install
   );
 ```
 
-> NOTA: Estos cambios deben ser implementados cada vez que se vaya a realizar una nueva instalación 
+> NOTA: Estos cambios deben ser implementados cada vez que se vaya a realizar una nueva instalación.
+>       La referencia a la carpeta /html/sites/default/ en este README es unicamente para la instaciona de la base de datos.
 
 
 3. Dirigirse a la **carpeta /db** donde se debe tomar el archivo  **sql.zip** llamado  **dump.sql.zip** para levantar la base de datos que debe tener el mismo nombre que fue definido en el paso anterior al momento de una nueva instalación o actualización del sitio.
