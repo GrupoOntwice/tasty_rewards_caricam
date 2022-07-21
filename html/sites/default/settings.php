@@ -1,5 +1,7 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -765,7 +767,7 @@ $databases['default']['default'] = array (
 	'driver' => 'mysql',
 );
 
-$settings['php_storage']['twig']['directory'] = '/data01/cache/www.tastyrewards.com/tmp';
+$settings['php_storage']['twig']['directory'] = '/tmp';
 $settings['php_storage']['twig']['secret'] = $settings['hash_salt'];
 
 $settings['rebuild_access'] = FALSE;
