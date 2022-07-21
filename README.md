@@ -12,6 +12,7 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
 - Composer para poder emplear la carpeta vendor (https://getcomposer.org/download/)
 - Apache
   - Tener activo modo rewrite
+  - El servidor APACHE debe estar direccionado a la carpeta  **/html**, para efectos de la carga y despliegue de contenidos. 
 
 Ahora para hacer funcionar el proyecto cuando es un dominio se puede hacer apuntando a la carpeta raiz (/html)
 
