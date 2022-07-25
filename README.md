@@ -15,6 +15,11 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
   - Verificar:
     - El servidor APACHE debe estar direccionado a la carpeta  **/html**
     - Desde esta misma carpeta (/html) se encontrara el archivo **index.php** el cual permite la carga del sitio.
+    - Cambiar los permisos de carpeta **/html/sites/default** y su contenido ejecutando: 
+
+```
+  chmod -R 755 /html/sites/default
+```
 
 > NOTA: Esta instalacion no corresponde a un multisite, por lo que el index siempre estara en **/html** 
 
@@ -27,10 +32,7 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
 - Ejecutar el siguiente comando:
 
 ```
-
-composer install
-
-
+  composer install
 ```
 
 2. Editar en el archivo settings.php (html/sites/default/settings.php), agregando en las lineas 757 a la 766 el string de conexion de la base datos:
@@ -42,6 +44,7 @@ composer install
     'password' => definido_por_DPM_PepsiCo,
     'host' => definido_por_DPM_PepsiCo,
     'port' => definido_por_DPM_PepsiCo,
+    'prefix' => '',
     'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
     'driver' => 'mysql',
   );
@@ -56,15 +59,15 @@ composer install
 - Despues de la importación ejecutar el comando:
 
 ```
-drush cr
+  drush cr
 
 ```
 
 **NOTA:** En caso de generarse un error cuando se ejecuta un comando que incluya **drush**, se solicita enviar la respuesta via ticket implementando el comando de la siguiente manera:
 
 ```
-drush [Comando] --debug
-ej:
-drush cr --debug
+  drush [Comando] --debug
+  ej:
+  drush cr --debug
 
 ```
