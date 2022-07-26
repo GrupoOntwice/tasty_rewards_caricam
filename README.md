@@ -16,9 +16,16 @@ Los requerimientos necesarios para que el proyecto funcione son los siguientes:
     - El servidor APACHE debe estar direccionado a la carpeta  **/html**
     - Desde esta misma carpeta (/html) se encontrara el archivo **index.php** el cual permite la carga del sitio.
     - Cambiar los permisos de carpeta **/html/sites/default** y su contenido ejecutando: 
-
 ```
-  chmod -R 755 /html/sites/default
+  chmod 750 /html/sites/default
+```
+    - Crear la carpeta **/html/sites/default/files** si no existe y asignar el siguiente permiso
+```
+  chmod 770 /html/sites/default/files
+```
+    - Cambiar los permisos del archivo **/html/sites/default/settings.php** ejecutando:
+```
+  chmod 440 /html/sites/default/settings.php
 ```
 
 > NOTA: Esta instalacion no corresponde a un multisite, por lo que el index siempre estara en **/html** 
